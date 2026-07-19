@@ -62,512 +62,512 @@
 <!-- =========================================
                 HERO
 ========================================== -->
+<main>
+    <section class="hero">
 
-<section class="hero">
+        <div class="container hero__container">
 
-    <div class="container hero__container">
+            <div class="hero__content">
 
-        <div class="hero__content">
+                <span class="hero__badge">
 
-            <span class="hero__badge">
+                    Adventure Manager
 
-                Adventure Manager
+                </span>
 
-            </span>
-
-            <h1>
-
-                Good Morning,
-                <span id="userName">Krishan</span>
-
-            </h1>
-
-            <p>
-
-                Continue your Pokémon adventures,
-                create new journeys,
-                or revisit completed ones.
-
-            </p>
-
-        </div>
-
-        <div class="hero__actions">
-
-            <button
-                id="newAdventureBtn"
-                class="btn btn-primary">
-
-                + New Adventure
-            </button>
-
-            <button
-                id="archiveBtn"
-                class="btn btn-outline">
-
-                Archive
-
-            </button>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================================
-            SEARCH BAR
-========================================== -->
-
-<section class="search">
-
-    <div class="container">
-
-        <input
-            id="searchAdventure"
-            type="search"
-            class="search__input"
-            placeholder="Search adventures..."
-            autocomplete="off"
-        >
-
-    </div>
-
-</section>
-
-<!-- =========================================
-            ADVENTURES
-========================================== -->
-
-<section class="adventures" id="adventures">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span class="section-tag">
-
-                My Adventures
-
-            </span>
-
-            <h2 class="section-title">
-
-                Continue Playing
-
-            </h2>
-
-        </div>
-
-        <div class="adventures__grid" id="adventureGrid">
-
-            <!-- CARD -->
-
-            <article
-                class="adventure-card"
-                data-adventure-id="1"
-                data-game="emerald"
-                data-challenge="normal"
-                data-status="active"
-                data-progress="72">
-
-                <div class="adventure-card__top">
-
-                    <div>
-
-                        <h3>
-
-                            🌿 Pokémon Emerald
-
-                        </h3>
-
-                        <p>
-
-                            Normal Adventure
-
-                        </p>
-
-                    </div>
-
-                    <button
-                        class="card-menu"
-                        aria-label="Adventure Options">
-
-                        ⋮
-
-                    </button>
-
-                </div>
-
-                <div class="progress">
-
-                    <div class="progress__label">
-
-                        <span>
-                            Progress
-                        </span>
-                    
-                        <span>
-                            72%
-                        </span>
-                    
-                    </div>
-
-                    <div class="progress__bar">
-
-                        <div
-                            class="progress__fill"
-                            style="width:72%;">
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="adventure-card__stats">
-
-                    <div>
-
-                        🏅 Badges
-
-                        <strong>
-
-                            6 / 8
-
-                        </strong>
-
-                    </div>
-
-                    <div>
-
-                        📅 Last Played
-
-                        <strong>
-
-                            Yesterday
-
-                        </strong>
-
-                    </div>
-
-                </div>
-
-                <button
-                    class="btn btn-primary adventure-card__button"
-                    data-adventure-id="1">
-
-                    Continue →
-
-                </button>
-
-            </article>
-
-            <!-- CARD -->
-
-            <article
-                class="adventure-card"
-                data-adventure-id="2"
-                data-game="emerald"
-                data-challenge="living-dex"
-                data-status="active"
-                data-progress="15">
-
-                <div class="adventure-card__top">
-
-                    <div>
-
-                        <h3>
-
-                            ❤️ Pokémon Emerald
-
-                        </h3>
-
-                        <p>
-
-                            Living Dex
-
-                        </p>
-
-                    </div>
-
-                    <button
-                        class="card-menu"
-                        aria-label="Adventure Options">
-
-                        ⋮
-
-                    </button>
-
-                </div>
-
-                <div class="progress">
-
-                    <div class="progress__label">
-
-                        <span>
-
-                            Progress
-
-                        </span>
-
-                        <span>
-
-                            15%
-
-                        </span>
-
-                    </div>
-
-                    <div class="progress__bar">
-
-                        <div
-                            class="progress__fill"
-                            style="width:15%;">
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="adventure-card__stats">
-
-                    <div>
-
-                        🏅 Badges
-
-                        <strong>
-
-                            2 / 8
-
-                        </strong>
-
-                    </div>
-
-                    <div>
-
-                        📅 Last Played
-
-                        <strong>
-
-                            3 Days Ago
-
-                        </strong>
-
-                    </div>
-
-                </div>
-
-                <button
-                    class="btn btn-primary adventure-card__button"
-                    data-adventure-id="2">
-                    Continue →
-
-                </button>
-
-            </article>
-
-            <!-- CARD -->
-
-            <article
-                class="adventure-card"
-                data-adventure-id="3"
-                data-game="emerald"
-                data-challenge="nuzlocke"
-                data-status="active"
-                data-progress="41">
-
-                <div class="adventure-card__top">
-
-                    <div>
-
-                        <h3>
-
-                            ☠ Pokémon Emerald
-
-                        </h3>
-
-                        <p>
-
-                            Nuzlocke
-
-                        </p>
-
-                    </div>
-
-                    <button
-                        class="card-menu"
-                        aria-label="Adventure Options">
-
-                        ⋮
-
-                    </button>
-
-                </div>
-
-                <div class="progress">
-
-                    <div class="progress__label">
-
-                        <span>
-
-                            Progress
-
-                        </span>
-
-                        <span>
-
-                            41%
-
-                        </span>
-
-                    </div>
-
-                    <div class="progress__bar">
-
-                        <div
-                            class="progress__fill"
-                            style="width:41%;">
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="adventure-card__stats">
-
-                    <div>
-
-                        🏅 Badge
-
-                        <strong>
-
-                            5
-
-                        </strong>
-
-                    </div>
-
-                    <div>
-
-                        📅 Last Played
-
-                        <strong>
-
-                            Today
-
-                        </strong>
-
-                    </div>
-
-                </div>
-
-                <button
-                    class="btn btn-primary adventure-card__button"
-                    data-adventure-id="3">
-
-                    Continue →
-
-                </button>
-
-            </article>
-
-            <!-- CREATE CARD -->
-
-            <article
-                class="create-card"
-                id="createAdventureCard">
-
-                <div class="create-card__icon">
-
-                    +
-
-                </div>
-
-                <h3>
-
-                    Create New Adventure
-
-                </h3>
+                <h1>
+                    Good Morning, <span id="userName">Krishan</span> 👋
+                </h1>
 
                 <p>
 
-                    Start a new journey with
-                    any Pokémon game.
+                    Continue your Pokémon adventures,
+                    create new journeys,
+                    or revisit completed ones.
 
                 </p>
 
-                <button class="btn btn-secondary">
+            </div>
 
-                    Create
+            <div class="hero__actions">
 
+                <button
+                    id="newAdventureBtn"
+                    class="btn btn-primary">
+
+                    + New Adventure
                 </button>
 
-            </article>
+                <button
+                    id="archiveBtn"
+                    class="btn btn-outline">
 
-        </div>
+                    Archive
 
-    </div>
-
-</section>
-
-<!-- =========================================
-                ARCHIVE
-========================================== -->
-
-<section class="archive" id="archive">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span class="section-tag">
-
-                Archive
-
-            </span>
-
-            <h2 class="section-title">
-
-                Completed Adventures
-
-            </h2>
-
-        </div>
-
-        <div class="archive__list">
-
-            <div class="archive__item">
-
-                🌿 Pokémon Emerald
-
-                <span>
-
-                    100% Complete • 2026
-
-                </span>
-
-            </div>
-
-            <div class="archive__item">
-
-                ❤️ HeartGold
-
-                <span>
-
-                    100% Complete • 2027
-
-                </span>
-
+                </button>
             </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+    <!-- =========================================
+                SEARCH BAR
+    ========================================== -->
 
+    <section class="search">
+
+        <div class="container">
+            <label for="searchAdventure" class="sr-only">
+                Search Adventures
+            </label>
+
+            <input
+                id="searchAdventure"
+                type="search"
+                class="search__input"
+                placeholder="Search adventures..."
+                autocomplete="off"
+            >
+
+        </div>
+
+    </section>
+
+    <!-- =========================================
+                ADVENTURES
+    ========================================== -->
+
+    <section class="adventures" id="adventures">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="section-tag">
+
+                    My Adventures
+
+                </span>
+
+                <h2 class="section-title">
+
+                    Continue Playing
+
+                </h2>
+
+            </div>
+
+            <div class="adventures__grid" id="adventureGrid">
+
+                <!-- CARD -->
+
+                <article
+                    class="adventure-card"
+                    data-adventure-id="1"
+                    data-game="emerald"
+                    data-challenge="normal"
+                    data-status="active"
+                    data-progress="72">
+
+                    <div class="adventure-card__top">
+
+                        <div>
+
+                            <h3>
+
+                                🌿 Pokémon Emerald
+
+                            </h3>
+
+                            <p>
+
+                                Normal Adventure
+
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="card-menu"
+                            aria-label="Adventure Options">
+
+                            ⋮
+
+                        </button>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div class="progress__label">
+
+                            <span>
+                                Progress
+                            </span>
+                        
+                            <span>
+                                72%
+                            </span>
+                        
+                        </div>
+
+                        <div class="progress__bar">
+
+                            <div
+                                class="progress__fill"
+                                style="width:72%;">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="adventure-card__stats">
+
+                        <div>
+
+                            🏅 Badges
+
+                            <strong>
+
+                                6 / 8
+
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            📅 Last Played
+
+                            <strong>
+
+                                Yesterday
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary adventure-card__button"
+                        data-adventure-id="1">
+
+                        Continue Adventure
+
+                    </button>
+
+                </article>
+
+                <!-- CARD -->
+
+                <article
+                    class="adventure-card"
+                    data-adventure-id="2"
+                    data-game="emerald"
+                    data-challenge="living-dex"
+                    data-status="active"
+                    data-progress="15">
+
+                    <div class="adventure-card__top">
+
+                        <div>
+
+                            <h3>
+
+                                ❤️ Pokémon Emerald
+
+                            </h3>
+
+                            <p>
+
+                                Living Dex
+
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="card-menu"
+                            aria-label="Adventure Options">
+
+                            ⋮
+
+                        </button>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div class="progress__label">
+
+                            <span>
+
+                                Progress
+
+                            </span>
+
+                            <span>
+
+                                15%
+
+                            </span>
+
+                        </div>
+
+                        <div class="progress__bar">
+
+                            <div
+                                class="progress__fill"
+                                style="width:15%;">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="adventure-card__stats">
+
+                        <div>
+
+                            🏅 Badges
+
+                            <strong>
+
+                                2 / 8
+
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            📅 Last Played
+
+                            <strong>
+
+                                3 Days Ago
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary adventure-card__button"
+                        data-adventure-id="2">
+                        Continue Adventure
+
+                    </button>
+
+                </article>
+
+                <!-- CARD -->
+
+                <article
+                    class="adventure-card"
+                    data-adventure-id="3"
+                    data-game="emerald"
+                    data-challenge="nuzlocke"
+                    data-status="active"
+                    data-progress="41">
+
+                    <div class="adventure-card__top">
+
+                        <div>
+
+                            <h3>
+
+                                ☠ Pokémon Emerald
+
+                            </h3>
+
+                            <p>
+
+                                Nuzlocke
+
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="card-menu"
+                            aria-label="Adventure Options">
+
+                            ⋮
+
+                        </button>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div class="progress__label">
+
+                            <span>
+
+                                Progress
+
+                            </span>
+
+                            <span>
+
+                                41%
+
+                            </span>
+
+                        </div>
+
+                        <div class="progress__bar">
+
+                            <div
+                                class="progress__fill"
+                                style="width:41%;">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="adventure-card__stats">
+
+                        <div>
+
+                            🏅 Badge
+
+                            <strong>
+
+                                5 / 8
+
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            📅 Last Played
+
+                            <strong>
+
+                                Today
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary adventure-card__button"
+                        data-adventure-id="3">
+
+                        Continue Adventure
+
+                    </button>
+
+                </article>
+
+                <!-- CREATE CARD -->
+
+                <article
+                    class="create-card"
+                    id="createAdventureCard">
+
+                    <div class="create-card__icon">
+
+                        +
+
+                    </div>
+
+                    <h3>
+
+                        Create New Adventure
+
+                    </h3>
+
+                    <p>
+
+                        Start a new journey with
+                        any Pokémon game.
+
+                    </p>
+
+                    <button class="btn btn-secondary">
+
+                        Create
+
+                    </button>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================================
+                    ARCHIVE
+    ========================================== -->
+
+    <section class="archive" id="archive">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="section-tag">
+
+                    Archive
+
+                </span>
+
+                <h2 class="section-title">
+
+                    Completed Adventures
+
+                </h2>
+
+            </div>
+
+            <div class="archive__list">
+
+                <div class="archive__item">
+
+                    🌿 Pokémon Emerald
+
+                    <span>
+
+                        100% Complete • 2026
+
+                    </span>
+
+                </div>
+
+                <div class="archive__item">
+
+                    ❤️ HeartGold
+
+                    <span>
+
+                        100% Complete • 2027
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+</main>
 <!-- =========================================
                 FOOTER
 ========================================== -->

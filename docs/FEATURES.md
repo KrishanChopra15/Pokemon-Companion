@@ -1,47 +1,60 @@
-PC-001 Homepage
+# Pokémon Companion Features
 
-Status:
-Completed
+This document tracks every major feature planned for Pokémon Companion.
 
-Priority:
-Critical
+---
 
----------------------
+## PC-001 — Homepage
 
-PC-002 Dashboard
+**Status:** ✅ Completed
 
-Status:
-In Progress
+**Priority:** Critical
 
-Priority:
-Critical
+**Description:**
+The landing page introducing Pokémon Companion and providing navigation to all major modules.
 
----------------------
+---
 
-PC-003 National Pokédex
+## PC-002 — Dashboard (My Adventures)
 
-Status:
-Planned
+**Status:** 🚧 In Progress
 
-Priority:
-Critical
+**Priority:** Critical
 
----------------------
+**Description:**
+The trainer's personal dashboard showing progress, recent activity, team overview, achievements, and quick actions.
 
-PC-004 Living Dex
+---
 
-Status:
-Planned
+## PC-003 — National Pokédex
 
-Priority:
-High
+**Status:** 📅 Planned
 
----------------------
+**Priority:** Critical
 
-PC-005 World Explorer
+**Description:**
+Browse every Pokémon with search, filtering, sorting, and detailed information.
 
-Status:
-Planned
+---
 
-Priority:
-High
+## PC-004 — Living Dex
+
+**Status:** 📅 Planned
+
+**Priority:** High
+
+**Description:**
+Track ownership of every Pokémon, including forms, regional variants, shinies, and completion percentage.
+
+---
+
+## PC-005 — World Explorer
+
+**Status:** 📅 Planned
+
+**Priority:** High
+
+**Description:**
+Interactive maps, routes, cities, caves, hidden items, NPCs, and legendary locations for every region.
+
+---

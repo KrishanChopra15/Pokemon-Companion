@@ -267,18 +267,16 @@
 =============================== */
 
 .pokedex-grid {
-
-    max-width: 1320px;
+    max-width: 1400px;
     margin: 0 auto;
     padding-bottom: 4rem;
-
 }
 
 .pokemon-grid {
 
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 
     gap: 2.25rem;
 

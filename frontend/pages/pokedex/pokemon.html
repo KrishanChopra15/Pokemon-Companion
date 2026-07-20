@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Pokémon Companion | Pokémon Details</title>
+
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/shared.css">
+    <link rel="stylesheet" href="../../css/pokemon.css">
+
+</head>
+
+<body>
+
+    <!-- =========================================
+                    NAVBAR
+    ========================================== -->
+
+    <header class="navbar">
+
+        <!-- Copy the complete navbar from my-adventures.html -->
+
+    </header>
+
+    <main class="pokemon-page">
+
+        <div class="container">
+
+        <!-- =========================================
+                        POKÉMON HERO
+        ========================================== -->
+
+        <section class="pokemon-hero">
+        
+            <!-- =========================================
+                            HERO TOP BAR
+            ========================================== -->
+        
+            <div class="hero__top">
+            
+                <nav
+                    class="hero__breadcrumb"
+                    aria-label="Breadcrumb">
+            
+                    <a href="pokedex.html">
+                    
+                        National Pokédex
+                    
+                    </a>
+                
+                    <span class="hero__breadcrumb-separator">
+                    
+                        ›
+                    
+                    </span>
+                
+                    <span
+                        class="hero__breadcrumb-current"
+                        id="breadcrumbPokemonName">
+                
+                        Charizard
+                
+                    </span>
+                
+                </nav>
+            
+                <div class="hero__navigation">
+                
+                    <button
+                        class="hero__nav-button"
+                        id="previousPokemon">
+                
+                        ← Previous
+                
+                    </button>
+                
+                    <button
+                        class="hero__nav-button"
+                        id="nextPokemon">
+                
+                        Next →
+                
+                    </button>
+                
+                </div>
+            
+            </div>
+        
+            <!-- =========================================
+                            HERO CONTENT
+            ========================================== -->
+        
+            <div class="hero__content">
+            
+                <!-- Pokémon Artwork -->
+            
+                <div class="hero__image">
+                
+                    <img
+                        id="pokemonImage"
+                        src="../../assets/images/pokemon/artwork/006.png"
+                        alt="Charizard">
+                
+                </div>
+            
+                <!-- Pokémon Information -->
+            
+                <div class="hero__info">
+                
+                    <span
+                        class="hero__number"
+                        id="pokemonNumber">
+                
+                        #0006
+                
+                    </span>
+                
+                    <h1
+                        class="hero__name"
+                        id="pokemonName">
+                
+                        Charizard
+                
+                    </h1>
+                
+                    <div
+                        class="hero__types"
+                        id="pokemonTypes">
+                
+                        <span class="type type--fire">
+                        
+                            Fire
+                        
+                        </span>
+                    
+                        <span class="type type--flying">
+                        
+                            Flying
+                        
+                        </span>
+                    
+                    </div>
+                
+                    <p
+                        class="hero__description"
+                        id="pokemonDescription">
+                
+                        Spits fire that is hot enough to melt boulders.
+                        Known for its powerful wings and fiery breath.
+                
+                    </p>
+                
+                    <div class="hero__meta">
+                    
+                        <div class="hero__meta-item">
+                        
+                            <span class="hero__meta-label">
+                            
+                                Height
+                            
+                            </span>
+                        
+                            <span
+                                class="hero__meta-value"
+                                id="pokemonHeight">
+                        
+                                1.7 m
+                        
+                            </span>
+                        
+                        </div>
+                    
+                        <div class="hero__meta-item">
+                        
+                            <span class="hero__meta-label">
+                            
+                                Weight
+                            
+                            </span>
+                        
+                            <span
+                                class="hero__meta-value"
+                                id="pokemonWeight">
+                        
+                                90.5 kg
+                        
+                            </span>
+                        
+                        </div>
+                    
+                        <div class="hero__meta-item">
+                        
+                            <span class="hero__meta-label">
+                            
+                                Category
+                            
+                            </span>
+                        
+                            <span
+                                class="hero__meta-value"
+                                id="pokemonCategory">
+                        
+                                Flame Pokémon
+                        
+                            </span>
+                        
+                        </div>
+                    
+                    </div>
+                
+                    <button
+                        class="hero__favorite"
+                        id="favoriteButton">
+                
+                        🤍 Favorite
+                
+                    </button>
+                
+                </div>
+            
+            </div>
+        
+        </section>
+            <!-- =========================================
+                        BASIC INFORMATION
+            ========================================== -->
+
+            <section class="pokemon-info">
+
+            </section>
+
+            <!-- =========================================
+                        BASE STATS
+            ========================================== -->
+
+            <section class="pokemon-stats">
+            
+                <div class="section-header">
+                
+                    <h2>Base Stats</h2>
+                
+                    <p>
+                        The six core attributes that determine a Pokémon's battle performance.
+                    </p>
+                
+                </div>
+            
+                <div class="stats-card">
+                
+                    <div id="pokemonStats">
+                    
+                        <!-- HP -->
+                    
+                        <div class="stat-row">
+                        
+                            <span class="stat-name">
+                                HP
+                            </span>
+                        
+                            <div class="stat-bar">
+                            
+                                <div
+                                    class="stat-fill"
+                                    style="width:52%;">
+                                </div>
+                            
+                            </div>
+                        
+                            <span class="stat-value">
+                                78
+                            </span>
+                        
+                        </div>
+                    
+                        <!-- Attack -->
+                    
+                        <div class="stat-row">
+                        
+                            <span class="stat-name">
+                                Attack
+                            </span>
+                        
+                            <div class="stat-bar">
+                            
+                                <div
+                                    class="stat-fill"
+                                    style="width:56%;">
+                                </div>
+                            
+                            </div>
+                        
+                            <span class="stat-value">
+                                84
+                            </span>
+                        
+                        </div>
+                    
+                        <!-- Defense -->
+                    
+                        <div class="stat-row">
+                        
+                            <span class="stat-name">
+                                Defense
+                            </span>
+                        
+                            <div class="stat-bar">
+                            
+                                <div
+                                    class="stat-fill"
+                                    style="width:52%;">
+                                </div>
+                            
+                            </div>
+                        
+                            <span class="stat-value">
+                                78
+                            </span>
+                        
+                        </div>
+                    
+                        <!-- Special Attack -->
+                    
+                        <div class="stat-row">
+                        
+                            <span class="stat-name">
+                                Sp. Attack
+                            </span>
+                        
+                            <div class="stat-bar">
+                            
+                                <div
+                                    class="stat-fill"
+                                    style="width:73%;">
+                                </div>
+                            
+                            </div>
+                        
+                            <span class="stat-value">
+                                109
+                            </span>
+                        
+                        </div>
+                    
+                        <!-- Special Defense -->
+                    
+                        <div class="stat-row">
+                        
+                            <span class="stat-name">
+                                Sp. Defense
+                            </span>
+                        
+                            <div class="stat-bar">
+                            
+                                <div
+                                    class="stat-fill"
+                                    style="width:57%;">
+                                </div>
+                            
+                            </div>
+                        
+                            <span class="stat-value">
+                                85
+                            </span>
+                        
+                        </div>
+                    
+                        <!-- Speed -->
+                    
+                        <div class="stat-row">
+                        
+                            <span class="stat-name">
+                                Speed
+                            </span>
+                        
+                            <div class="stat-bar">
+                            
+                                <div
+                                    class="stat-fill"
+                                    style="width:67%;">
+                                </div>
+                            
+                            </div>
+                        
+                            <span class="stat-value">
+                                100
+                            </span>
+                        
+                        </div>
+                    
+                    </div>
+                
+                    <div class="stats-total">
+                    
+                        <span>Total Base Stats</span>
+                    
+                        <strong id="pokemonStatTotal">
+                        
+                            534
+                        
+                        </strong>
+                    
+                    </div>
+                
+                </div>
+            
+            </section>
+
+            <!-- =========================================
+                            EVOLUTION CHAIN
+            ========================================== -->
+
+            <section class="pokemon-evolution">
+            
+                <div class="section-header">
+                
+                    <h2>Evolution Chain</h2>
+                
+                    <p>
+                        Evolution path for this Pokémon.
+                    </p>
+                
+                </div>
+            
+                <div class="evolution-chain" id="evolutionChain">
+                
+                    <article class="evolution-card">
+                    
+                        <img
+                            src="../../assets/images/pokemon/artwork/004.png"
+                            alt="Charmander">
+                    
+                        <span class="evolution-number">
+                            #0004
+                        </span>
+                    
+                        <h3 class="evolution-name">
+                            Charmander
+                        </h3>
+                    
+                    </article>
+                
+                    <div class="evolution-arrow">
+                    
+                        <span>→</span>
+                    
+                        <small>Lv.16</small>
+                    
+                    </div>
+                
+                    <article class="evolution-card">
+                    
+                        <img
+                            src="../../assets/images/pokemon/artwork/005.png"
+                            alt="Charmeleon">
+                    
+                        <span class="evolution-number">
+                            #0005
+                        </span>
+                    
+                        <h3 class="evolution-name">
+                            Charmeleon
+                        </h3>
+                    
+                    </article>
+                
+                    <div class="evolution-arrow">
+                    
+                        <span>→</span>
+                    
+                        <small>Lv.36</small>
+                    
+                    </div>
+                
+                    <article class="evolution-card evolution-card--current">
+                    
+                        <img
+                            src="../../assets/images/pokemon/artwork/006.png"
+                            alt="Charizard">
+                    
+                        <span class="evolution-number">
+                            #0006
+                        </span>
+                    
+                        <h3 class="evolution-name">
+                            Charizard
+                        </h3>
+                    
+                    </article>
+                
+                </div>
+            
+            </section>
+            <!-- =========================================
+                        TYPE EFFECTIVENESS
+            ========================================== -->
+
+            <section class="pokemon-effectiveness">
+
+            </section>
+
+            <!-- =========================================
+                        ABILITIES
+            ========================================== -->
+
+            <section class="pokemon-abilities">
+
+            </section>
+
+            <!-- =========================================
+                        POKÉDEX ENTRY
+            ========================================== -->
+
+            <section class="pokemon-entry">
+
+            </section>
+
+            <!-- =========================================
+                        MOVES
+            ========================================== -->
+
+            <section class="pokemon-moves">
+
+            </section>
+
+            <!-- =========================================
+                        PREVIOUS / NEXT
+            ========================================== -->
+
+            <section class="pokemon-navigation">
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- =========================================
+                    FOOTER
+    ========================================== -->
+
+    <footer class="footer">
+
+        <!-- Copy the complete footer from my-adventures.html -->
+
+    </footer>
+
+    <script src="../../js/pokedex/pokemon-data.js"></script>
+    <script src="../../js/pokedex/favorites.js"></script>
+    <script src="../../js/pokedex/pokemon.js"></script>
+
+</body>
+
+</html>

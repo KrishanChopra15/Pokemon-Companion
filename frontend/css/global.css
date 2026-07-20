@@ -158,9 +158,37 @@ body {
 
     -webkit-font-smoothing: antialiased;
 
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
 }
 
+input,
+textarea {
 
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+
+}
+
+button {
+
+    user-select: none;
+    -webkit-user-select: none;
+
+}
+
+img {
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+
+}
 
 /* ===============================
    Typography

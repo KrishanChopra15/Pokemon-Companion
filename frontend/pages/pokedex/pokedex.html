@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Pokémon Companion | National Pokédex</title>
+
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/shared.css">
+    <link rel="stylesheet" href="../../css/pokedex.css">
+
+</head>
+
+<body>
+
+    <!-- =========================================
+                    NAVBAR
+    ========================================== -->
+
+    <header class="navbar">
+
+        <!-- Copy the complete navbar from my-adventures.html -->
+
+    </header>
+
+    <main>
+
+        <!-- =========================================
+                        HERO
+        ========================================== -->
+
+        <section class="hero">
+
+            <div class="container hero__container">
+
+                <div class="hero__content">
+
+                    <span class="hero__badge">
+
+                        National Pokédex
+
+                    </span>
+
+                    <h1>
+
+                        Explore the National Pokédex
+
+                    </h1>
+
+                    <p>
+
+                        Browse every Pokémon ever discovered.
+                        Search, filter, compare, and explore detailed
+                        information from every generation.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================================
+                        SEARCH
+        ========================================== -->
+
+        <section class="search">
+
+            <div class="container">
+
+                <div class="search__container">
+
+                    <label
+                        for="pokemonSearch"
+                        class="sr-only">
+
+                        Search Pokémon
+
+                    </label>
+
+                    <input
+
+                        id="pokemonSearch"
+
+                        name="search"
+
+                        class="search__input"
+
+                        type="search"
+
+                        placeholder="Search Pokémon by name or Pokédex number..."
+
+                        autocomplete="off">
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================================
+                        FILTERS
+        ========================================== -->
+
+        <section class="filters">
+
+            <div class="container">
+
+                <div class="filters__container">
+
+                    <label for="generationFilter" class="sr-only">
+
+                        Filter by Generation
+
+                    </label>
+
+                    <select
+                        id="generationFilter"
+                        name="generation">
+
+                        <option value="all">All Generations</option>
+                        <option value="1">Generation I (Kanto)</option>
+                        <option value="2">Generation II (Johto)</option>
+                        <option value="3">Generation III (Hoenn)</option>
+                        <option value="4">Generation IV (Sinnoh)</option>
+                        <option value="5">Generation V (Unova)</option>
+                        <option value="6">Generation VI (Kalos)</option>
+                        <option value="7">Generation VII (Alola)</option>
+                        <option value="8">Generation VIII (Galar)</option>
+                        <option value="9">Generation IX (Paldea)</option>
+
+                    </select>
+
+                    <label for="typeFilter" class="sr-only">
+
+                        Filter by Type
+
+                    </label>
+
+                    <select
+                        id="typeFilter"
+                        name="type">
+
+                        <option value="all">
+                            All Types
+                        </option>
+
+                    </select>
+
+                    <label for="sortPokemon" class="sr-only">
+
+                        Sort Pokémon
+
+                    </label>
+
+                    <select id="sortPokemon">
+
+                        <option value="number">
+                            National Dex ↑
+                        </option>
+                    
+                        <option value="number-desc">
+                            National Dex ↓
+                        </option>
+                    
+                        <option value="name">
+                            Name (A-Z)
+                        </option>
+                    
+                        <option value="name-desc">
+                            Name (Z-A)
+                        </option>
+                    
+                    </select>
+                
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================================
+                        RESULTS
+        ========================================== -->
+
+        <section class="results">
+        
+            <div class="container">
+            
+                <div class="results__container">
+                
+                    <p class="results__count">
+                    
+                        Showing
+                        <strong id="pokemonCount">1025</strong>
+                        Pokémon
+                    
+                    </p>
+                
+                </div>
+            
+            </div>
+        
+        </section>
+
+        <!-- =========================================
+                    POKÉMON GRID
+        ========================================== -->
+
+        <section class="pokedex-grid">
+        
+            <div class="container">
+            
+                <div
+                    class="pokemon-grid"
+                    id="pokemonGrid">
+            
+                    <!-- Pokémon cards go here -->
+                
+                </div>
+            
+            </div>
+        
+        </section>
+
+        <!-- =========================================
+                    PAGINATION
+        ========================================== -->
+
+        <section class="pagination">
+
+            <div class="container pagination__container">
+
+                <button
+                    class="btn btn-outline"
+                    aria-label="Go to previous page">
+
+                    Previous
+
+                </button>
+
+                <button class="btn btn-primary">
+
+                    1
+
+                </button>
+
+                <button class="btn btn-outline">
+
+                    2
+
+                </button>
+
+                <button class="btn btn-outline">
+
+                    3
+
+                </button>
+
+                <button
+                    class="btn btn-outline"
+                    aria-label="Go to next page">
+
+                    Next
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =========================================
+                    FOOTER
+    ========================================== -->
+
+    <footer class="footer">
+
+        <!-- Copy the complete footer from my-adventures.html -->
+
+    </footer>
+
+    <script src="../../js/pokedex/pokemon-data.js"></script>
+    <script src="../../js/pokedex/favorites.js"></script>
+    <script src="../../js/pokedex/pokedex.js"></script>
+
+</body>
+
+</html>

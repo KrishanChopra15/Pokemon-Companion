@@ -21,3 +21,13 @@ const pokemonWeight = document.getElementById("pokemonWeight");
 const pokemonCategory = document.getElementById("pokemonCategory");
 
 pokemonName.textContent = pokemon.name;
+pokemonNumber.textContent = pokemon.number;
+
+pokemonImage.src = pokemon.image;
+pokemonImage.alt = pokemon.name;
+
+pokemonDescription.textContent = pokemon.description;
+
+pokemonHeight.textContent = pokemon.height;
+pokemonWeight.textContent = pokemon.weight;
+pokemonCategory.textContent = pokemon.category;

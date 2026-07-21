@@ -1,152 +1,126 @@
 const axios = require("axios");
-const fs = require("fs");
 const path = require("path");
 
-const TOTAL_POKEMON = 10;
+const {
+    toTitleCase,
+    saveJSON,
+    getIdFromUrl,
+    formatGeneration,
+    formatGameName,
+    cleanFlavorText
+} = require("./utils");
+
+const { TOTAL_POKEMON } = require("./config");
 
 const OUTPUT_FILE = path.join(
     __dirname,
     "../database/species.json"
 );
 
-function formatGeneration(generation) {
-
-    const generations = {
-
-        "generation-i": "Generation I",
-        "generation-ii": "Generation II",
-        "generation-iii": "Generation III",
-        "generation-iv": "Generation IV",
-        "generation-v": "Generation V",
-        "generation-vi": "Generation VI",
-        "generation-vii": "Generation VII",
-        "generation-viii": "Generation VIII",
-        "generation-ix": "Generation IX"
-
-    };
-
-    return generations[generation] || generation;
-
-}
-
-function formatGameName(game) {
-
-    const names = {
-
-        "firered": "FireRed",
-        "leafgreen": "LeafGreen",
-        "heartgold": "HeartGold",
-        "soulsilver": "SoulSilver",
-        "lets-go-pikachu": "Let's Go Pikachu",
-        "lets-go-eevee": "Let's Go Eevee",
-        "omega-ruby": "Omega Ruby",
-        "alpha-sapphire": "Alpha Sapphire",
-        "black-2": "Black 2",
-        "white-2": "White 2"
-
-    };
-
-    if (names[game]) return names[game];
-
-    return game
-        .split("-")
-        .map(word =>
-            word.charAt(0).toUpperCase() +
-            word.slice(1)
-        )
-        .join(" ");
-
-}
-
 async function downloadSpecies() {
 
-    const speciesList = [];
+    try {
 
-    for (let id = 1; id <= TOTAL_POKEMON; id++) {
+        const speciesList = [];
 
-        console.log(`Downloading Species #${id}...`);
+        for (let id = 1; id <= TOTAL_POKEMON; id++) {
 
-        const response = await axios.get(
-            `https://pokeapi.co/api/v2/pokemon-species/${id}`
-        );
+            console.log(`Downloading Species #${id}...`);
 
-        const species = response.data;
+            const { data: species } = await axios.get(
+                `https://pokeapi.co/api/v2/pokemon-species/${id}`
+            );
 
-        speciesList.push({
+            speciesList.push({
 
-            id: species.id,
+                id: species.id,
 
-            generation: formatGeneration(species.generation.name),
+                name: toTitleCase(species.name),
 
-            category:
-                species.genera
-                    .find(genus => genus.language.name === "en")
-                    ?.genus || "Unknown",
+                generation: formatGeneration(species.generation.name),
 
-            color:
-                species.color.name
-                    .replace(/\b\w/g, c => c.toUpperCase()),
+                category:
+                    species.genera
+                        .find(genus => genus.language.name === "en")
+                        ?.genus || "Unknown",
 
-            shape: species.shape
-                ? species.shape.name.replace(/\b\w/g, c => c.toUpperCase())
-                : "Unknown",
-
-            habitat: species.habitat
-                ? species.habitat.name.replace(/\b\w/g, c => c.toUpperCase())
-                : "Unknown",
-
-            captureRate: species.capture_rate,
-
-            baseFriendship: species.base_happiness,
-
-            hatchCounter: species.hatch_counter,
-
-            genderRate: species.gender_rate,
-
-            growthRate:
-                species.growth_rate.name
-                    .replace(/-/g, " ")
-                    .replace(/\b\w/g, c => c.toUpperCase()),
-
-            legendary: species.is_legendary,
-
-            mythical: species.is_mythical,
-
-            baby: species.is_baby,
-
-            eggGroups:
-                species.egg_groups.map(group =>
-                    group.name
-                        .replace(/\b\w/g, c => c.toUpperCase())
+                color: toTitleCase(
+                    species.color.name
                 ),
 
-            entries: species.flavor_text_entries
-                .filter(entry =>
-                    entry.language.name === "en"
-                )
-                .map(entry => ({
+                shape: species.shape
+                    ? toTitleCase(species.shape.name)
+                    : "Unknown",
 
-                    game: formatGameName(entry.version.name),
+                habitat: species.habitat
+                    ? toTitleCase(species.habitat.name)
+                    : "Unknown",
 
-                    text: entry.flavor_text
-                        .replace(/\f/g, " ")
-                        .replace(/\n/g, " ")
-                        .replace(/\s+/g, " ")
-                        .replace(/POKéMON/g, "Pokémon")
-                        .trim()
+                captureRate: species.capture_rate,
 
-                }))
+                baseFriendship: species.base_happiness,
 
-        });
+                hatchCounter: species.hatch_counter,
+
+                genderRate: species.gender_rate,
+
+                growthRate: toTitleCase(
+                    species.growth_rate.name
+                ),
+
+                legendary: species.is_legendary,
+
+                mythical: species.is_mythical,
+
+                baby: species.is_baby,
+
+                evolutionChainId: getIdFromUrl(
+                    species.evolution_chain.url
+                ),
+                
+                eggGroups: species.egg_groups
+                    .map(group => toTitleCase(group.name))
+                    .sort(),
+
+                entries: species.flavor_text_entries
+                    .filter(entry =>
+                        entry.language.name === "en"
+                    )
+                    .map(entry => ({
+                    
+                        game: formatGameName(entry.version.name),
+                    
+                        text: cleanFlavorText(
+                            entry.flavor_text
+                        )
+                    
+                    }))
+                    .sort((a, b) =>
+                        a.game.localeCompare(b.game)
+                    )
+
+            });
+
+        }
+
+        speciesList.sort((a, b) => a.id - b.id);
+
+        saveJSON(
+            OUTPUT_FILE,
+            speciesList
+        );
+
+        console.log(
+            `Successfully downloaded ${speciesList.length} Pokémon species.`
+        );
+    } catch (error) {
+
+        console.error("Error downloading species:");
+
+        console.error(error.message);
 
     }
 
-    fs.writeFileSync(
-        OUTPUT_FILE,
-        JSON.stringify(speciesList, null, 4)
-    );
-
-    console.log("species.json created successfully!");
 }
 
 downloadSpecies();

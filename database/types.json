@@ -1,0 +1,704 @@
+[
+    {
+        "id": 1,
+        "name": "Normal",
+        "color": "#A8A77A",
+        "gradient": {
+            "start": "#A8A77A",
+            "end": "#8F8D6B"
+        },
+        "emoji": "⚪",
+        "icon": "assets/icons/types/normal.svg",
+        "description": "Normal-type Pokémon are versatile and well-balanced, relying on straightforward attacks and adaptable abilities.",
+        "damageRelations": {
+            "doubleDamageTo": [],
+            "halfDamageTo": [
+                "Rock",
+                "Steel"
+            ],
+            "noDamageTo": [
+                "Ghost"
+            ],
+            "doubleDamageFrom": [
+                "Fighting"
+            ],
+            "halfDamageFrom": [],
+            "noDamageFrom": [
+                "Ghost"
+            ]
+        }
+    },
+    {
+        "id": 2,
+        "name": "Fighting",
+        "color": "#C22E28",
+        "gradient": {
+            "start": "#C22E28",
+            "end": "#B71C1C"
+        },
+        "emoji": "🥊",
+        "icon": "assets/icons/types/fighting.svg",
+        "description": "Fighting-type Pokémon rely on physical strength, martial arts, and close-range combat techniques.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Dark",
+                "Ice",
+                "Normal",
+                "Rock",
+                "Steel"
+            ],
+            "halfDamageTo": [
+                "Bug",
+                "Fairy",
+                "Flying",
+                "Poison",
+                "Psychic"
+            ],
+            "noDamageTo": [
+                "Ghost"
+            ],
+            "doubleDamageFrom": [
+                "Fairy",
+                "Flying",
+                "Psychic"
+            ],
+            "halfDamageFrom": [
+                "Bug",
+                "Dark",
+                "Rock"
+            ],
+            "noDamageFrom": []
+        }
+    },
+    {
+        "id": 3,
+        "name": "Flying",
+        "color": "#A98FF3",
+        "gradient": {
+            "start": "#A98FF3",
+            "end": "#7986CB"
+        },
+        "emoji": "🕊️",
+        "icon": "assets/icons/types/flying.svg",
+        "description": "Flying-type Pokémon dominate the skies with aerial speed, agility, and wind-based techniques.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Bug",
+                "Fighting",
+                "Grass"
+            ],
+            "halfDamageTo": [
+                "Electric",
+                "Rock",
+                "Steel"
+            ],
+            "noDamageTo": [],
+            "doubleDamageFrom": [
+                "Electric",
+                "Ice",
+                "Rock"
+            ],
+            "halfDamageFrom": [
+                "Bug",
+                "Fighting",
+                "Grass"
+            ],
+            "noDamageFrom": [
+                "Ground"
+            ]
+        }
+    },
+    {
+        "id": 4,
+        "name": "Poison",
+        "color": "#A33EA1",
+        "gradient": {
+            "start": "#A33EA1",
+            "end": "#8E24AA"
+        },
+        "emoji": "☠️",
+        "icon": "assets/icons/types/poison.svg",
+        "description": "Poison-type Pokémon weaken opponents through toxins, venom, and lingering status effects.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Fairy",
+                "Grass"
+            ],
+            "halfDamageTo": [
+                "Ghost",
+                "Ground",
+                "Poison",
+                "Rock"
+            ],
+            "noDamageTo": [
+                "Steel"
+            ],
+            "doubleDamageFrom": [
+                "Ground",
+                "Psychic"
+            ],
+            "halfDamageFrom": [
+                "Bug",
+                "Fairy",
+                "Fighting",
+                "Grass",
+                "Poison"
+            ],
+            "noDamageFrom": []
+        }
+    },
+    {
+        "id": 5,
+        "name": "Ground",
+        "color": "#E2BF65",
+        "gradient": {
+            "start": "#E2BF65",
+            "end": "#C0A060"
+        },
+        "emoji": "🌍",
+        "icon": "assets/icons/types/ground.svg",
+        "description": "Ground-type Pokémon command the earth with devastating earthquakes and powerful terrain-based attacks.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Electric",
+                "Fire",
+                "Poison",
+                "Rock",
+                "Steel"
+            ],
+            "halfDamageTo": [
+                "Bug",
+                "Grass"
+            ],
+            "noDamageTo": [
+                "Flying"
+            ],
+            "doubleDamageFrom": [
+                "Grass",
+                "Ice",
+                "Water"
+            ],
+            "halfDamageFrom": [
+                "Poison",
+                "Rock"
+            ],
+            "noDamageFrom": [
+                "Electric"
+            ]
+        }
+    },
+    {
+        "id": 6,
+        "name": "Rock",
+        "color": "#B6A136",
+        "gradient": {
+            "start": "#B6A136",
+            "end": "#9E8B2F"
+        },
+        "emoji": "🪨",
+        "icon": "assets/icons/types/rock.svg",
+        "description": "Rock-type Pokémon possess exceptional durability and unleash crushing attacks with stone and boulders.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Bug",
+                "Fire",
+                "Flying",
+                "Ice"
+            ],
+            "halfDamageTo": [
+                "Fighting",
+                "Ground",
+                "Steel"
+            ],
+            "noDamageTo": [],
+            "doubleDamageFrom": [
+                "Fighting",
+                "Grass",
+                "Ground",
+                "Steel",
+                "Water"
+            ],
+            "halfDamageFrom": [
+                "Fire",
+                "Flying",
+                "Normal",
+                "Poison"
+            ],
+            "noDamageFrom": []
+        }
+    },
+    {
+        "id": 7,
+        "name": "Bug",
+        "color": "#A6B91A",
+        "gradient": {
+            "start": "#A6B91A",
+            "end": "#7CB342"
+        },
+        "emoji": "🐛",
+        "icon": "assets/icons/types/bug.svg",
+        "description": "Bug-type Pokémon rely on speed, swarms, and unique evolutionary traits to outmaneuver opponents.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Dark",
+                "Grass",
+                "Psychic"
+            ],
+            "halfDamageTo": [
+                "Fairy",
+                "Fighting",
+                "Fire",
+                "Flying",
+                "Ghost",
+                "Poison",
+                "Steel"
+            ],
+            "noDamageTo": [],
+            "doubleDamageFrom": [
+                "Fire",
+                "Flying",
+                "Rock"
+            ],
+            "halfDamageFrom": [
+                "Fighting",
+                "Grass",
+                "Ground"
+            ],
+            "noDamageFrom": []
+        }
+    },
+    {
+        "id": 8,
+        "name": "Ghost",
+        "color": "#735797",
+        "gradient": {
+            "start": "#735797",
+            "end": "#5E35B1"
+        },
+        "emoji": "👻",
+        "icon": "assets/icons/types/ghost.svg",
+        "description": "Ghost-type Pokémon use supernatural powers, curses, and spectral abilities to confuse their opponents.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Ghost",
+                "Psychic"
+            ],
+            "halfDamageTo": [
+                "Dark"
+            ],
+            "noDamageTo": [
+                "Normal"
+            ],
+            "doubleDamageFrom": [
+                "Dark",
+                "Ghost"
+            ],
+            "halfDamageFrom": [
+                "Bug",
+                "Poison"
+            ],
+            "noDamageFrom": [
+                "Fighting",
+                "Normal"
+            ]
+        }
+    },
+    {
+        "id": 9,
+        "name": "Steel",
+        "color": "#B7B7CE",
+        "gradient": {
+            "start": "#B7B7CE",
+            "end": "#90A4AE"
+        },
+        "emoji": "⚙️",
+        "icon": "assets/icons/types/steel.svg",
+        "description": "Steel-type Pokémon are incredibly resilient, boasting unmatched defenses and metallic strength.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Fairy",
+                "Ice",
+                "Rock"
+            ],
+            "halfDamageTo": [
+                "Electric",
+                "Fire",
+                "Steel",
+                "Water"
+            ],
+            "noDamageTo": [],
+            "doubleDamageFrom": [
+                "Fighting",
+                "Fire",
+                "Ground"
+            ],
+            "halfDamageFrom": [
+                "Bug",
+                "Dragon",
+                "Fairy",
+                "Flying",
+                "Grass",
+                "Ice",
+                "Normal",
+                "Psychic",
+                "Rock",
+                "Steel"
+            ],
+            "noDamageFrom": [
+                "Poison"
+            ]
+        }
+    },
+    {
+        "id": 10,
+        "name": "Fire",
+        "color": "#EE8130",
+        "gradient": {
+            "start": "#EE8130",
+            "end": "#F57C00"
+        },
+        "emoji": "🔥",
+        "icon": "assets/icons/types/fire.svg",
+        "description": "Fire-type Pokémon specialize in powerful flame-based attacks that can overwhelm opponents with heat and intensity.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Bug",
+                "Grass",
+                "Ice",
+                "Steel"
+            ],
+            "halfDamageTo": [
+                "Dragon",
+                "Fire",
+                "Rock",
+                "Water"
+            ],
+            "noDamageTo": [],
+            "doubleDamageFrom": [
+                "Ground",
+                "Rock",
+                "Water"
+            ],
+            "halfDamageFrom": [
+                "Bug",
+                "Fairy",
+                "Fire",
+                "Grass",
+                "Ice",
+                "Steel"
+            ],
+            "noDamageFrom": []
+        }
+    },
+    {
+        "id": 11,
+        "name": "Water",
+        "color": "#6390F0",
+        "gradient": {
+            "start": "#6390F0",
+            "end": "#1976D2"
+        },
+        "emoji": "💧",
+        "icon": "assets/icons/types/water.svg",
+        "description": "Water-type Pokémon excel at flowing attacks, adaptability, and defensive strategies in battle.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Fire",
+                "Ground",
+                "Rock"
+            ],
+            "halfDamageTo": [
+                "Dragon",
+                "Grass",
+                "Water"
+            ],
+            "noDamageTo": [],
+            "doubleDamageFrom": [
+                "Electric",
+                "Grass"
+            ],
+            "halfDamageFrom": [
+                "Fire",
+                "Ice",
+                "Steel",
+                "Water"
+            ],
+            "noDamageFrom": []
+        }
+    },
+    {
+        "id": 12,
+        "name": "Grass",
+        "color": "#7AC74C",
+        "gradient": {
+            "start": "#7AC74C",
+            "end": "#43A047"
+        },
+        "emoji": "🌿",
+        "icon": "assets/icons/types/grass.svg",
+        "description": "Grass-type Pokémon use nature, plants, and sunlight to recover health and control the battlefield.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Ground",
+                "Rock",
+                "Water"
+            ],
+            "halfDamageTo": [
+                "Bug",
+                "Dragon",
+                "Fire",
+                "Flying",
+                "Grass",
+                "Poison",
+                "Steel"
+            ],
+            "noDamageTo": [],
+            "doubleDamageFrom": [
+                "Bug",
+                "Fire",
+                "Flying",
+                "Ice",
+                "Poison"
+            ],
+            "halfDamageFrom": [
+                "Electric",
+                "Grass",
+                "Ground",
+                "Water"
+            ],
+            "noDamageFrom": []
+        }
+    },
+    {
+        "id": 13,
+        "name": "Electric",
+        "color": "#F7D02C",
+        "gradient": {
+            "start": "#F7D02C",
+            "end": "#FBC02D"
+        },
+        "emoji": "⚡",
+        "icon": "assets/icons/types/electric.svg",
+        "description": "Electric-type Pokémon harness lightning and electricity to strike quickly with high-speed attacks.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Flying",
+                "Water"
+            ],
+            "halfDamageTo": [
+                "Dragon",
+                "Electric",
+                "Grass"
+            ],
+            "noDamageTo": [
+                "Ground"
+            ],
+            "doubleDamageFrom": [
+                "Ground"
+            ],
+            "halfDamageFrom": [
+                "Electric",
+                "Flying",
+                "Steel"
+            ],
+            "noDamageFrom": []
+        }
+    },
+    {
+        "id": 14,
+        "name": "Psychic",
+        "color": "#F95587",
+        "gradient": {
+            "start": "#F95587",
+            "end": "#EC407A"
+        },
+        "emoji": "🔮",
+        "icon": "assets/icons/types/psychic.svg",
+        "description": "Psychic-type Pokémon possess extraordinary mental abilities, telekinesis, and powerful psychic energy.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Fighting",
+                "Poison"
+            ],
+            "halfDamageTo": [
+                "Psychic",
+                "Steel"
+            ],
+            "noDamageTo": [
+                "Dark"
+            ],
+            "doubleDamageFrom": [
+                "Bug",
+                "Dark",
+                "Ghost"
+            ],
+            "halfDamageFrom": [
+                "Fighting",
+                "Psychic"
+            ],
+            "noDamageFrom": []
+        }
+    },
+    {
+        "id": 15,
+        "name": "Ice",
+        "color": "#96D9D6",
+        "gradient": {
+            "start": "#96D9D6",
+            "end": "#4DD0E1"
+        },
+        "emoji": "❄️",
+        "icon": "assets/icons/types/ice.svg",
+        "description": "Ice-type Pokémon freeze opponents with chilling attacks and powerful blizzards.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Dragon",
+                "Flying",
+                "Grass",
+                "Ground"
+            ],
+            "halfDamageTo": [
+                "Fire",
+                "Ice",
+                "Steel",
+                "Water"
+            ],
+            "noDamageTo": [],
+            "doubleDamageFrom": [
+                "Fighting",
+                "Fire",
+                "Rock",
+                "Steel"
+            ],
+            "halfDamageFrom": [
+                "Ice"
+            ],
+            "noDamageFrom": []
+        }
+    },
+    {
+        "id": 16,
+        "name": "Dragon",
+        "color": "#6F35FC",
+        "gradient": {
+            "start": "#6F35FC",
+            "end": "#512DA8"
+        },
+        "emoji": "🐉",
+        "icon": "assets/icons/types/dragon.svg",
+        "description": "Dragon-type Pokémon are among the strongest, known for immense power, resilience, and legendary status.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Dragon"
+            ],
+            "halfDamageTo": [
+                "Steel"
+            ],
+            "noDamageTo": [
+                "Fairy"
+            ],
+            "doubleDamageFrom": [
+                "Dragon",
+                "Fairy",
+                "Ice"
+            ],
+            "halfDamageFrom": [
+                "Electric",
+                "Fire",
+                "Grass",
+                "Water"
+            ],
+            "noDamageFrom": []
+        }
+    },
+    {
+        "id": 17,
+        "name": "Dark",
+        "color": "#705746",
+        "gradient": {
+            "start": "#705746",
+            "end": "#424242"
+        },
+        "emoji": "🌑",
+        "icon": "assets/icons/types/dark.svg",
+        "description": "Dark-type Pokémon specialize in cunning tactics, deception, and powerful moves that exploit opponents' weaknesses.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Ghost",
+                "Psychic"
+            ],
+            "halfDamageTo": [
+                "Dark",
+                "Fairy",
+                "Fighting"
+            ],
+            "noDamageTo": [],
+            "doubleDamageFrom": [
+                "Bug",
+                "Fairy",
+                "Fighting"
+            ],
+            "halfDamageFrom": [
+                "Dark",
+                "Ghost"
+            ],
+            "noDamageFrom": [
+                "Psychic"
+            ]
+        }
+    },
+    {
+        "id": 18,
+        "name": "Fairy",
+        "color": "#D685AD",
+        "gradient": {
+            "start": "#D685AD",
+            "end": "#EC407A"
+        },
+        "emoji": "🧚",
+        "icon": "assets/icons/types/fairy.svg",
+        "description": "Fairy-type Pokémon wield mystical magic and charm, making them especially effective against Dragon-type Pokémon.",
+        "damageRelations": {
+            "doubleDamageTo": [
+                "Dark",
+                "Dragon",
+                "Fighting"
+            ],
+            "halfDamageTo": [
+                "Fire",
+                "Poison",
+                "Steel"
+            ],
+            "noDamageTo": [],
+            "doubleDamageFrom": [
+                "Poison",
+                "Steel"
+            ],
+            "halfDamageFrom": [
+                "Bug",
+                "Dark",
+                "Fighting"
+            ],
+            "noDamageFrom": [
+                "Dragon"
+            ]
+        }
+    },
+    {
+        "id": 19,
+        "name": "Stellar",
+        "color": null,
+        "gradient": null,
+        "emoji": "",
+        "icon": null,
+        "description": "",
+        "damageRelations": {
+            "doubleDamageTo": [],
+            "halfDamageTo": [],
+            "noDamageTo": [],
+            "doubleDamageFrom": [],
+            "halfDamageFrom": [],
+            "noDamageFrom": []
+        }
+    }
+]

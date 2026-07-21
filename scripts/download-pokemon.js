@@ -1,8 +1,13 @@
 const axios = require("axios");
-const fs = require("fs");
 const path = require("path");
 
-const TOTAL_POKEMON = 10;
+const {
+    toTitleCase,
+    saveJSON,
+    getIdFromUrl
+} = require("./utils");
+
+const { TOTAL_POKEMON } = require("./config");
 
 const OUTPUT_FILE = path.join(
     __dirname,
@@ -11,115 +16,134 @@ const OUTPUT_FILE = path.join(
 
 async function downloadPokemon() {
 
-    const pokemonList = [];
+    try {
 
-    for (let id = 1; id <= TOTAL_POKEMON; id++) {
+        const pokemonList = [];
 
-        console.log(`Downloading Pokémon #${id}...`);
+        for (let id = 1; id <= TOTAL_POKEMON; id++) {
 
-        const response = await axios.get(
-            `https://pokeapi.co/api/v2/pokemon/${id}`
+            console.log(`Downloading Pokémon #${id}...`);
+
+            const { data: pokemon } = await axios.get(
+                `https://pokeapi.co/api/v2/pokemon/${id}`
+            );
+
+            const sprites = pokemon.sprites;
+
+            const artwork = sprites.other;
+
+            const stats = pokemon.stats;
+
+            const types = pokemon.types;
+
+            const abilities = pokemon.abilities;
+
+            pokemonList.push({
+
+                id: pokemon.id,
+
+                speciesId: getIdFromUrl(
+                    pokemon.species.url
+                ),
+
+                order: pokemon.order,
+
+                number: `#${String(pokemon.id).padStart(4, "0")}`,
+
+                name: toTitleCase(pokemon.name),
+
+                height: pokemon.height / 10,
+
+                weight: pokemon.weight / 10,
+
+                artwork: {
+                
+                    official:
+                        artwork["official-artwork"].front_default,
+                
+                    home:
+                        artwork.home.front_default,
+                
+                    dreamWorld:
+                        artwork.dream_world.front_default
+                
+                },
+
+                sprites: {
+                
+                    front: sprites.front_default,
+                
+                    back: sprites.back_default,
+                
+                    frontShiny: sprites.front_shiny,
+                
+                    backShiny: sprites.back_shiny
+                
+                },
+
+                types: types
+                    .map(type => ({
+                    
+                        id: getIdFromUrl(type.type.url),
+                    
+                        name: toTitleCase(type.type.name),
+                    
+                        slot: type.slot
+                    
+                    }))
+                    .sort((a, b) => a.slot - b.slot),
+
+                abilities: abilities
+                    .map(ability => ({
+                    
+                        id: getIdFromUrl(ability.ability.url),
+                    
+                        name: toTitleCase(ability.ability.name),
+                    
+                        hidden: ability.is_hidden,
+                    
+                        slot: ability.slot
+                    
+                    }))
+                    .sort((a, b) => a.slot - b.slot),
+                
+                stats: {
+                
+                    hp: stats[0].base_stat,
+                
+                    attack: stats[1].base_stat,
+                
+                    defense: stats[2].base_stat,
+                
+                    specialAttack: stats[3].base_stat,
+                
+                    specialDefense: stats[4].base_stat,
+                
+                    speed: stats[5].base_stat
+                
+                }
+
+            });
+
+        }
+        pokemonList.sort((a, b) => a.id - b.id);
+
+        saveJSON(
+            OUTPUT_FILE,
+            pokemonList
         );
 
-        const pokemon = response.data;
+        console.log(
+            `Successfully downloaded ${pokemonList.length} Pokémon.`
+        );
+    } catch (error) {
 
-        pokemonList.push({
+        console.error("Error downloading Pokémon:");
 
-            id: pokemon.id,
-
-            number: `#${String(pokemon.id).padStart(4, "0")}`,
-
-            name:
-                pokemon.name.charAt(0).toUpperCase() +
-                pokemon.name.slice(1),
-
-            height: pokemon.height / 10,
-
-            weight: pokemon.weight / 10,
-
-            generation: null,
-
-            artwork: {
-            
-                official:
-                    pokemon.sprites.other["official-artwork"].front_default,
-            
-                home:
-                    pokemon.sprites.other.home.front_default,
-            
-                dreamWorld:
-                    pokemon.sprites.other.dream_world.front_default
-            
-            },
-
-            sprites: {
-            
-                front:
-                    pokemon.sprites.front_default,
-            
-                back:
-                    pokemon.sprites.back_default,
-            
-                frontShiny:
-                    pokemon.sprites.front_shiny,
-            
-                backShiny:
-                    pokemon.sprites.back_shiny
-            
-            },
-
-            types: pokemon.types.map(type => ({
-            
-                name:
-                    type.type.name
-                        .replace(/\b\w/g, c => c.toUpperCase()),
-            
-                slot: type.slot
-            
-            })),
-
-            abilities: pokemon.abilities.map(ability => ({
-            
-                name:
-                    ability.ability.name
-                        .replace("-", " ")
-                        .replace(/\b\w/g, c => c.toUpperCase()),
-            
-                hidden: ability.is_hidden,
-            
-                slot: ability.slot
-            
-            })),
-
-            stats: {
-
-                hp: pokemon.stats[0].base_stat,
-
-                attack: pokemon.stats[1].base_stat,
-
-                defense: pokemon.stats[2].base_stat,
-
-                specialAttack: pokemon.stats[3].base_stat,
-
-                specialDefense: pokemon.stats[4].base_stat,
-
-                speed: pokemon.stats[5].base_stat
-
-            }
-
-        });
+        console.error(error.message);
 
     }
 
-    fs.writeFileSync(
-
-        OUTPUT_FILE,
-
-        JSON.stringify(pokemonList, null, 4)
-
-    );
-
-    console.log("Done!");
 }
 
 downloadPokemon();

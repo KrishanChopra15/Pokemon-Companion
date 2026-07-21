@@ -1,0 +1,1357 @@
+[
+    {
+        "id": 1,
+        "generation": "Generation I",
+        "category": "Seed Pokémon",
+        "color": "Green",
+        "shape": "Quadruped",
+        "habitat": "Grassland",
+        "captureRate": 45,
+        "baseFriendship": 70,
+        "hatchCounter": 20,
+        "genderRate": 1,
+        "growthRate": "Medium Slow",
+        "legendary": false,
+        "mythical": false,
+        "baby": false,
+        "eggGroups": [
+            "Monster",
+            "Plant"
+        ],
+        "entries": [
+            {
+                "game": "Red",
+                "text": "A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon."
+            },
+            {
+                "game": "Blue",
+                "text": "A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon."
+            },
+            {
+                "game": "Yellow",
+                "text": "It can go for days without eating a single morsel. In the bulb on its back, it stores energy."
+            },
+            {
+                "game": "Gold",
+                "text": "The seed on its back is filled with nutrients. The seed grows steadily larger as its body grows."
+            },
+            {
+                "game": "Silver",
+                "text": "It carries a seed on its back right from birth. As it grows older, the seed also grows larger."
+            },
+            {
+                "game": "Crystal",
+                "text": "While it is young, it uses the nutrients that are stored in the seeds on its back in order to grow."
+            },
+            {
+                "game": "Ruby",
+                "text": "BULBASAUR can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun’s rays, the seed grows progressively larger."
+            },
+            {
+                "game": "Sapphire",
+                "text": "BULBASAUR can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun’s rays, the seed grows progressively larger."
+            },
+            {
+                "game": "Emerald",
+                "text": "BULBASAUR can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun’s rays, the seed grows progressively larger."
+            },
+            {
+                "game": "FireRed",
+                "text": "There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger."
+            },
+            {
+                "game": "LeafGreen",
+                "text": "A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon."
+            },
+            {
+                "game": "Diamond",
+                "text": "For some time after its birth, it grows by gaining nourishment from the seed on its back."
+            },
+            {
+                "game": "Pearl",
+                "text": "For some time after its birth, it grows by gaining nourishment from the seed on its back."
+            },
+            {
+                "game": "Platinum",
+                "text": "For some time after its birth, it grows by gaining nourishment from the seed on its back."
+            },
+            {
+                "game": "HeartGold",
+                "text": "The seed on its back is filled with nutrients. The seed grows steadily larger as its body grows."
+            },
+            {
+                "game": "SoulSilver",
+                "text": "It carries a seed on its back right from birth. As it grows older, the seed also grows larger."
+            },
+            {
+                "game": "Black",
+                "text": "For some time after its birth, it grows by gaining nourishment from the seed on its back."
+            },
+            {
+                "game": "White",
+                "text": "For some time after its birth, it grows by gaining nourishment from the seed on its back."
+            },
+            {
+                "game": "Black 2",
+                "text": "For some time after its birth, it grows by gaining nourishment from the seed on its back."
+            },
+            {
+                "game": "White 2",
+                "text": "For some time after its birth, it grows by gaining nourishment from the seed on its back."
+            },
+            {
+                "game": "X",
+                "text": "A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon."
+            },
+            {
+                "game": "Y",
+                "text": "For some time after its birth, it grows by gaining nourishment from the seed on its back."
+            },
+            {
+                "game": "Omega Ruby",
+                "text": "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun’s rays, the seed grows progressively larger."
+            },
+            {
+                "game": "Alpha Sapphire",
+                "text": "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun’s rays, the seed grows progressively larger."
+            },
+            {
+                "game": "Let's Go Pikachu",
+                "text": "It can go for days without eating a single morsel. In the bulb on its back, it stores energy."
+            },
+            {
+                "game": "Let's Go Eevee",
+                "text": "It can go for days without eating a single morsel. In the bulb on its back, it stores energy."
+            },
+            {
+                "game": "Sword",
+                "text": "There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger."
+            },
+            {
+                "game": "Shield",
+                "text": "While it is young, it uses the nutrients that are stored in the seed on its back in order to grow."
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "generation": "Generation I",
+        "category": "Seed Pokémon",
+        "color": "Green",
+        "shape": "Quadruped",
+        "habitat": "Grassland",
+        "captureRate": 45,
+        "baseFriendship": 70,
+        "hatchCounter": 20,
+        "genderRate": 1,
+        "growthRate": "Medium Slow",
+        "legendary": false,
+        "mythical": false,
+        "baby": false,
+        "eggGroups": [
+            "Monster",
+            "Plant"
+        ],
+        "entries": [
+            {
+                "game": "Red",
+                "text": "When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs."
+            },
+            {
+                "game": "Blue",
+                "text": "When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs."
+            },
+            {
+                "game": "Yellow",
+                "text": "The bulb on its back grows by drawing energy. It gives off an aroma when it is ready to bloom."
+            },
+            {
+                "game": "Gold",
+                "text": "Exposure to sun­ light adds to its strength. Sunlight also makes the bud on its back grow larger."
+            },
+            {
+                "game": "Silver",
+                "text": "If the bud on its back starts to smell sweet, it is evidence that the large flower will soon bloom."
+            },
+            {
+                "game": "Crystal",
+                "text": "The bulb on its back grows as it absorbs nutrients. The bulb gives off a pleasant aroma when it blooms."
+            },
+            {
+                "game": "Ruby",
+                "text": "There is a bud on this Pokémon’s back. To support its weight, IVYSAUR’s legs and trunk grow thick and strong. If it starts spending more time lying in the sunlight, it’s a sign that the bud will bloom into a large flower soon."
+            },
+            {
+                "game": "Sapphire",
+                "text": "There is a bud on this Pokémon’s back. To support its weight, IVYSAUR’s legs and trunk grow thick and strong. If it starts spending more time lying in the sunlight, it’s a sign that the bud will bloom into a large flower soon."
+            },
+            {
+                "game": "Emerald",
+                "text": "To support its bulb, IVYSAUR’s legs grow sturdy. If it spends more time lying in the sunlight, the bud will soon bloom into a large flower."
+            },
+            {
+                "game": "FireRed",
+                "text": "There is a plant bulb on its back. When it absorbs nutrients, the bulb is said to blossom into a large flower."
+            },
+            {
+                "game": "LeafGreen",
+                "text": "When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs."
+            },
+            {
+                "game": "Diamond",
+                "text": "When the bud on its back starts swelling, a sweet aroma wafts to indicate the flower’s coming bloom."
+            },
+            {
+                "game": "Pearl",
+                "text": "When the bud on its back starts swelling, a sweet aroma wafts to indicate the flower’s coming bloom."
+            },
+            {
+                "game": "Platinum",
+                "text": "When the bud on its back starts swelling, a sweet aroma wafts to indicate the flower’s coming bloom."
+            },
+            {
+                "game": "HeartGold",
+                "text": "Exposure to sunlight adds to its strength. Sunlight also makes the bud on its back grow larger."
+            },
+            {
+                "game": "SoulSilver",
+                "text": "If the bud on its back starts to smell sweet, it is evidence that the large flower will soon bloom."
+            },
+            {
+                "game": "Black",
+                "text": "When the bud on its back starts swelling, a sweet aroma wafts to indicate the flower’s coming bloom."
+            },
+            {
+                "game": "White",
+                "text": "When the bud on its back starts swelling, a sweet aroma wafts to indicate the flower’s coming bloom."
+            },
+            {
+                "game": "Black 2",
+                "text": "When the bud on its back starts swelling, a sweet aroma wafts to indicate the flower’s coming bloom."
+            },
+            {
+                "game": "White 2",
+                "text": "When the bud on its back starts swelling, a sweet aroma wafts to indicate the flower’s coming bloom."
+            },
+            {
+                "game": "X",
+                "text": "There is a plant bulb on its back. When it absorbs nutrients, the bulb is said to blossom into a large flower."
+            },
+            {
+                "game": "Y",
+                "text": "When the bud on its back starts swelling, a sweet aroma wafts to indicate the flower’s coming bloom."
+            },
+            {
+                "game": "Omega Ruby",
+                "text": "There is a bud on this Pokémon’s back. To support its weight, Ivysaur’s legs and trunk grow thick and strong. If it starts spending more time lying in the sunlight, it’s a sign that the bud will bloom into a large flower soon."
+            },
+            {
+                "game": "Alpha Sapphire",
+                "text": "There is a bud on this Pokémon’s back. To support its weight, Ivysaur’s legs and trunk grow thick and strong. If it starts spending more time lying in the sunlight, it’s a sign that the bud will bloom into a large flower soon."
+            },
+            {
+                "game": "Let's Go Pikachu",
+                "text": "The bud on its back grows by drawing energy. It gives off an aroma when it is ready to bloom."
+            },
+            {
+                "game": "Let's Go Eevee",
+                "text": "The bud on its back grows by drawing energy. It gives off an aroma when it is ready to bloom."
+            },
+            {
+                "game": "Sword",
+                "text": "When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs."
+            },
+            {
+                "game": "Shield",
+                "text": "Exposure to sunlight adds to its strength. Sunlight also makes the bud on its back grow larger."
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "generation": "Generation I",
+        "category": "Seed Pokémon",
+        "color": "Green",
+        "shape": "Quadruped",
+        "habitat": "Grassland",
+        "captureRate": 45,
+        "baseFriendship": 70,
+        "hatchCounter": 20,
+        "genderRate": 1,
+        "growthRate": "Medium Slow",
+        "legendary": false,
+        "mythical": false,
+        "baby": false,
+        "eggGroups": [
+            "Monster",
+            "Plant"
+        ],
+        "entries": [
+            {
+                "game": "Red",
+                "text": "The plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight."
+            },
+            {
+                "game": "Blue",
+                "text": "The plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight."
+            },
+            {
+                "game": "Yellow",
+                "text": "The flower on its back catches the sun's rays. The sunlight is then absorbed and used for energy."
+            },
+            {
+                "game": "Gold",
+                "text": "By spreading the broad petals of its flower and catching the sun's rays, it fills its body with power."
+            },
+            {
+                "game": "Silver",
+                "text": "It is able to con­ vert sunlight into energy. As a result, it is more powerful in the summertime."
+            },
+            {
+                "game": "Crystal",
+                "text": "As it warms it­ self and absorbs the sunlight, its flower petals release a pleasant fragrance."
+            },
+            {
+                "game": "Ruby",
+                "text": "There is a large flower on VENUSAUR’s back. The flower is said to take on vivid colors if it gets plenty of nutrition and sunlight. The flower’s aroma soothes the emotions of people."
+            },
+            {
+                "game": "Sapphire",
+                "text": "There is a large flower on VENUSAUR’s back. The flower is said to take on vivid colors if it gets plenty of nutrition and sunlight. The flower’s aroma soothes the emotions of people."
+            },
+            {
+                "game": "Emerald",
+                "text": "VENUSAUR’s flower is said to take on vivid colors if it gets plenty of nutrition and sunlight. The flower’s aroma soothes the emotions of people."
+            },
+            {
+                "game": "FireRed",
+                "text": "A bewitching aroma wafts from its flower. The fragrance becalms those engaged in a battle."
+            },
+            {
+                "game": "LeafGreen",
+                "text": "Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight."
+            },
+            {
+                "game": "Diamond",
+                "text": "After a rainy day, the flower on its back smells stronger. The scent attracts other Pokémon."
+            },
+            {
+                "game": "Pearl",
+                "text": "After a rainy day, the flower on its back smells stronger. The scent attracts other Pokémon."
+            },
+            {
+                "game": "Platinum",
+                "text": "After a rainy day, the flower on its back smells stronger. The scent attracts other Pokémon."
+            },
+            {
+                "game": "HeartGold",
+                "text": "By spreading the broad petals of its flower and catching the sun’s rays, it fills its body with power."
+            },
+            {
+                "game": "SoulSilver",
+                "text": "It is able to convert sunlight into energy. As a result, it is more powerful in the summertime."
+            },
+            {
+                "game": "Black",
+                "text": "After a rainy day, the flower on its back smells stronger. The scent attracts other Pokémon."
+            },
+            {
+                "game": "White",
+                "text": "After a rainy day, the flower on its back smells stronger. The scent attracts other Pokémon."
+            },
+            {
+                "game": "Black 2",
+                "text": "After a rainy day, the flower on its back smells stronger. The scent attracts other Pokémon."
+            },
+            {
+                "game": "White 2",
+                "text": "After a rainy day, the flower on its back smells stronger. The scent attracts other Pokémon."
+            },
+            {
+                "game": "X",
+                "text": "By spreading the broad petals of its flower and catching the sun’s rays, it fills its body with power."
+            },
+            {
+                "game": "Y",
+                "text": "After a rainy day, the flower on its back smells stronger. The scent attracts other Pokémon."
+            },
+            {
+                "game": "Omega Ruby",
+                "text": "There is a large flower on Venusaur’s back. The flower is said to take on vivid colors if it gets plenty of nutrition and sunlight. The flower’s aroma soothes the emotions of people."
+            },
+            {
+                "game": "Alpha Sapphire",
+                "text": "There is a large flower on Venusaur’s back. The flower is said to take on vivid colors if it gets plenty of nutrition and sunlight. The flower’s aroma soothes the emotions of people."
+            },
+            {
+                "game": "Let's Go Pikachu",
+                "text": "The flower on its back catches the sun’s rays. The sunlight is then absorbed and used for energy."
+            },
+            {
+                "game": "Let's Go Eevee",
+                "text": "The flower on its back catches the sun’s rays. The sunlight is then absorbed and used for energy."
+            },
+            {
+                "game": "Sword",
+                "text": "Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight."
+            },
+            {
+                "game": "Shield",
+                "text": "A bewitching aroma wafts from its flower. The fragrance becalms those engaged in a battle."
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "generation": "Generation I",
+        "category": "Lizard Pokémon",
+        "color": "Red",
+        "shape": "Upright",
+        "habitat": "Mountain",
+        "captureRate": 45,
+        "baseFriendship": 70,
+        "hatchCounter": 20,
+        "genderRate": 1,
+        "growthRate": "Medium Slow",
+        "legendary": false,
+        "mythical": false,
+        "baby": false,
+        "eggGroups": [
+            "Monster",
+            "Dragon"
+        ],
+        "entries": [
+            {
+                "game": "Red",
+                "text": "Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail."
+            },
+            {
+                "game": "Blue",
+                "text": "Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail."
+            },
+            {
+                "game": "Yellow",
+                "text": "The flame at the tip of its tail makes a sound as it burns. You can only hear it in quiet places."
+            },
+            {
+                "game": "Gold",
+                "text": "The flame on its tail shows the strength of its life force. If it is weak, the flame also burns weakly."
+            },
+            {
+                "game": "Silver",
+                "text": "The flame on its tail indicates CHARMANDER's life force. If it is healthy, the flame burns brightly."
+            },
+            {
+                "game": "Crystal",
+                "text": "If it's healthy, the flame on the tip of its tail will burn vigor­ ously, even if it gets a bit wet."
+            },
+            {
+                "game": "Ruby",
+                "text": "The flame that burns at the tip of its tail is an indication of its emotions. The flame wavers when CHARMANDER is enjoying itself. If the Pokémon becomes enraged, the flame burns fiercely."
+            },
+            {
+                "game": "Sapphire",
+                "text": "The flame that burns at the tip of its tail is an indication of its emotions. The flame wavers when CHARMANDER is enjoying itself. If the Pokémon becomes enraged, the flame burns fiercely."
+            },
+            {
+                "game": "Emerald",
+                "text": "The flame that burns at the tip of its tail is an indication of its emotions. The flame wavers when CHARMANDER is happy, and blazes when it is enraged."
+            },
+            {
+                "game": "FireRed",
+                "text": "From the time it is born, a flame burns at the tip of its tail. Its life would end if the flame were to go out."
+            },
+            {
+                "game": "LeafGreen",
+                "text": "It has a preference for hot things. When it rains, steam is said to spout from the tip of its tail."
+            },
+            {
+                "game": "Diamond",
+                "text": "The fire on the tip of its tail is a measure of its life. If healthy, its tail burns intensely."
+            },
+            {
+                "game": "Pearl",
+                "text": "The fire on the tip of its tail is a measure of its life. If healthy, its tail burns intensely."
+            },
+            {
+                "game": "Platinum",
+                "text": "The fire on the tip of its tail is a measure of its life. If healthy, its tail burns intensely."
+            },
+            {
+                "game": "HeartGold",
+                "text": "The flame on its tail shows the strength of its life force. If it is weak, the flame also burns weakly."
+            },
+            {
+                "game": "SoulSilver",
+                "text": "The flame on its tail indicates CHARMANDER’s life force. If it is healthy, the flame burns brightly."
+            },
+            {
+                "game": "Black",
+                "text": "The fire on the tip of its tail is a measure of its life. If healthy, its tail burns intensely."
+            },
+            {
+                "game": "White",
+                "text": "The fire on the tip of its tail is a measure of its life. If healthy, its tail burns intensely."
+            },
+            {
+                "game": "Black 2",
+                "text": "The fire on the tip of its tail is a measure of its life. If healthy, its tail burns intensely."
+            },
+            {
+                "game": "White 2",
+                "text": "The fire on the tip of its tail is a measure of its life. If healthy, its tail burns intensely."
+            },
+            {
+                "game": "X",
+                "text": "The flame on its tail indicates Charmander’s life force. If it is healthy, the flame burns brightly."
+            },
+            {
+                "game": "Y",
+                "text": "From the time it is born, a flame burns at the tip of its tail. Its life would end if the flame were to go out."
+            },
+            {
+                "game": "Omega Ruby",
+                "text": "The flame that burns at the tip of its tail is an indication of its emotions. The flame wavers when Charmander is enjoying itself. If the Pokémon becomes enraged, the flame burns fiercely."
+            },
+            {
+                "game": "Alpha Sapphire",
+                "text": "The flame that burns at the tip of its tail is an indication of its emotions. The flame wavers when Charmander is enjoying itself. If the Pokémon becomes enraged, the flame burns fiercely."
+            },
+            {
+                "game": "Let's Go Pikachu",
+                "text": "The flame at the tip of its tail makes a sound as it burns. You can only hear it in quiet places."
+            },
+            {
+                "game": "Let's Go Eevee",
+                "text": "The flame at the tip of its tail makes a sound as it burns. You can only hear it in quiet places."
+            },
+            {
+                "game": "Sword",
+                "text": "It has a preference for hot things. When it rains, steam is said to spout from the tip of its tail."
+            },
+            {
+                "game": "Shield",
+                "text": "From the time it is born, a flame burns at the tip of its tail. Its life would end if the flame were to go out."
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "generation": "Generation I",
+        "category": "Flame Pokémon",
+        "color": "Red",
+        "shape": "Upright",
+        "habitat": "Mountain",
+        "captureRate": 45,
+        "baseFriendship": 70,
+        "hatchCounter": 20,
+        "genderRate": 1,
+        "growthRate": "Medium Slow",
+        "legendary": false,
+        "mythical": false,
+        "baby": false,
+        "eggGroups": [
+            "Monster",
+            "Dragon"
+        ],
+        "entries": [
+            {
+                "game": "Red",
+                "text": "When it swings its burning tail, it elevates the temperature to unbearably high levels."
+            },
+            {
+                "game": "Blue",
+                "text": "When it swings its burning tail, it elevates the temperature to unbearably high levels."
+            },
+            {
+                "game": "Yellow",
+                "text": "Tough fights could excite this Pokémon. When excited, it may blow out bluish- white flames."
+            },
+            {
+                "game": "Gold",
+                "text": "It is very hot­ headed by nature, so it constantly seeks opponents. It calms down only when it wins."
+            },
+            {
+                "game": "Silver",
+                "text": "It has a barbaric nature. In battle, it whips its fiery tail around and slashes away with sharp claws."
+            },
+            {
+                "game": "Crystal",
+                "text": "If it becomes agitated during battle, it spouts intense flames, incinerating its surroundings."
+            },
+            {
+                "game": "Ruby",
+                "text": "CHARMELEON mercilessly destroys its foes using its sharp claws. If it encounters a strong foe, it turns aggressive. In this excited state, the flame at the tip of its tail flares with a bluish white color."
+            },
+            {
+                "game": "Sapphire",
+                "text": "CHARMELEON mercilessly destroys its foes using its sharp claws. If it encounters a strong foe, it turns aggressive. In this excited state, the flame at the tip of its tail flares with a bluish white color."
+            },
+            {
+                "game": "Emerald",
+                "text": "Without pity, its sharp claws destroy foes. If it encounters a strong enemy, it becomes agitated, and the flame on its tail flares with a bluish white color."
+            },
+            {
+                "game": "FireRed",
+                "text": "It lashes about with its tail to knock down its foe. It then tears up the fallen opponent with sharp claws."
+            },
+            {
+                "game": "LeafGreen",
+                "text": "When it swings its burning tail, it elevates the air temperature to unbearably high levels."
+            },
+            {
+                "game": "Diamond",
+                "text": "In the rocky mountains where CHARMELEON live, their fiery tails shine at night like stars."
+            },
+            {
+                "game": "Pearl",
+                "text": "In the rocky mountains where CHARMELEON live, their fiery tails shine at night like stars."
+            },
+            {
+                "game": "Platinum",
+                "text": "In the rocky mountains where CHARMELEON live, their fiery tails shine at night like stars."
+            },
+            {
+                "game": "HeartGold",
+                "text": "It is very hotheaded by nature, so it constantly seeks opponents. It calms down only when it wins."
+            },
+            {
+                "game": "SoulSilver",
+                "text": "It has a barbaric nature. In battle, it whips its fiery tail around and slashes away with sharp claws."
+            },
+            {
+                "game": "Black",
+                "text": "In the rocky mountains where Charmeleon live, their fiery tails shine at night like stars."
+            },
+            {
+                "game": "White",
+                "text": "In the rocky mountains where Charmeleon live, their fiery tails shine at night like stars."
+            },
+            {
+                "game": "Black 2",
+                "text": "In the rocky mountains where Charmeleon live, their fiery tails shine at night like stars."
+            },
+            {
+                "game": "White 2",
+                "text": "In the rocky mountains where Charmeleon live, their fiery tails shine at night like stars."
+            },
+            {
+                "game": "X",
+                "text": "It lashes about with its tail to knock down its foe. It then tears up the fallen opponent with sharp claws."
+            },
+            {
+                "game": "Y",
+                "text": "When it swings its burning tail, it elevates the air temperature to unbearably high levels."
+            },
+            {
+                "game": "Omega Ruby",
+                "text": "Charmeleon mercilessly destroys its foes using its sharp claws. If it encounters a strong foe, it turns aggressive. In this excited state, the flame at the tip of its tail flares with a bluish white color."
+            },
+            {
+                "game": "Alpha Sapphire",
+                "text": "Charmeleon mercilessly destroys its foes using its sharp claws. If it encounters a strong foe, it turns aggressive. In this excited state, the flame at the tip of its tail flares with a bluish white color."
+            },
+            {
+                "game": "Let's Go Pikachu",
+                "text": "Tough fights could excite this Pokémon. When excited, it may breathe out bluish-white flames."
+            },
+            {
+                "game": "Let's Go Eevee",
+                "text": "Tough fights could excite this Pokémon. When excited, it may breathe out bluish-white flames."
+            },
+            {
+                "game": "Sword",
+                "text": "It has a barbaric nature. In battle, it whips its fiery tail around and slashes away with sharp claws."
+            },
+            {
+                "game": "Shield",
+                "text": "If it becomes agitated during battle, it spouts intense flames, incinerating its surroundings."
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "generation": "Generation I",
+        "category": "Flame Pokémon",
+        "color": "Red",
+        "shape": "Upright",
+        "habitat": "Mountain",
+        "captureRate": 45,
+        "baseFriendship": 70,
+        "hatchCounter": 20,
+        "genderRate": 1,
+        "growthRate": "Medium Slow",
+        "legendary": false,
+        "mythical": false,
+        "baby": false,
+        "eggGroups": [
+            "Monster",
+            "Dragon"
+        ],
+        "entries": [
+            {
+                "game": "Black",
+                "text": "It is said that Charizard’s fire burns hotter if it has experienced harsh battles."
+            },
+            {
+                "game": "Red",
+                "text": "Spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally."
+            },
+            {
+                "game": "Blue",
+                "text": "Spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally."
+            },
+            {
+                "game": "Yellow",
+                "text": "When expelling a blast of super hot fire, the red flame at the tip of its tail burns more intensely."
+            },
+            {
+                "game": "Gold",
+                "text": "If CHARIZARD be­ comes furious, the flame at the tip of its tail flares up in a whitish- blue color."
+            },
+            {
+                "game": "Silver",
+                "text": "Breathing intense, hot flames, it can melt almost any­ thing. Its breath inflicts terrible pain on enemies."
+            },
+            {
+                "game": "Crystal",
+                "text": "It uses its wings to fly high. The temperature of its fire increases as it gains exper­ ience in battle."
+            },
+            {
+                "game": "Ruby",
+                "text": "CHARIZARD flies around the sky in search of powerful opponents. It breathes fire of such great heat that it melts anything. However, it never turns its fiery breath on any opponent weaker than itself."
+            },
+            {
+                "game": "Sapphire",
+                "text": "CHARIZARD flies around the sky in search of powerful opponents. It breathes fire of such great heat that it melts anything. However, it never turns its fiery breath on any opponent weaker than itself."
+            },
+            {
+                "game": "Emerald",
+                "text": "A CHARIZARD flies about in search of strong opponents. It breathes intense flames that can melt any material. However, it will never torch a weaker foe."
+            },
+            {
+                "game": "FireRed",
+                "text": "Its wings can carry this Pokémon close to an altitude of 4,600 feet. It blows out fire at very high temperatures."
+            },
+            {
+                "game": "LeafGreen",
+                "text": "It spits fire that is hot enough to melt boulders. It may cause forest fires by blowing flames."
+            },
+            {
+                "game": "Diamond",
+                "text": "It is said that CHARIZARD’s fire burns hotter if it has experienced harsh battles."
+            },
+            {
+                "game": "Pearl",
+                "text": "It is said that CHARIZARD’s fire burns hotter if it has experienced harsh battles."
+            },
+            {
+                "game": "Platinum",
+                "text": "It is said that CHARIZARD’s fire burns hotter if it has experienced harsh battles."
+            },
+            {
+                "game": "HeartGold",
+                "text": "If CHARIZARD becomes furious, the flame at the tip of its tail flares up in a light blue shade."
+            },
+            {
+                "game": "SoulSilver",
+                "text": "Breathing intense, hot flames, it can melt almost anything. Its breath inflicts terrible pain on enemies."
+            },
+            {
+                "game": "White",
+                "text": "It is said that Charizard’s fire burns hotter if it has experienced harsh battles."
+            },
+            {
+                "game": "Black 2",
+                "text": "It is said that Charizard’s fire burns hotter if it has experienced harsh battles."
+            },
+            {
+                "game": "White 2",
+                "text": "It is said that Charizard’s fire burns hotter if it has experienced harsh battles."
+            },
+            {
+                "game": "X",
+                "text": "When expelling a blast of superhot fire, the red flame at the tip of its tail burns more intensely."
+            },
+            {
+                "game": "Y",
+                "text": "Its wings can carry this Pokémon close to an altitude of 4,600 feet. It blows out fire at very high temperatures."
+            },
+            {
+                "game": "Omega Ruby",
+                "text": "Charizard flies around the sky in search of powerful opponents. It breathes fire of such great heat that it melts anything. However, it never turns its fiery breath on any opponent weaker than itself."
+            },
+            {
+                "game": "Alpha Sapphire",
+                "text": "Charizard flies around the sky in search of powerful opponents. It breathes fire of such great heat that it melts anything. However, it never turns its fiery breath on any opponent weaker than itself."
+            },
+            {
+                "game": "Let's Go Pikachu",
+                "text": "When this Pokémon expels a blast of superhot fire, the red flame at the tip of its tail burns more intensely."
+            },
+            {
+                "game": "Let's Go Eevee",
+                "text": "When this Pokémon expels a blast of superhot fire, the red flame at the tip of its tail burns more intensely."
+            },
+            {
+                "game": "Sword",
+                "text": "It spits fire that is hot enough to melt boulders. It may cause forest fires by blowing flames."
+            },
+            {
+                "game": "Shield",
+                "text": "Its wings can carry this Pokémon close to an altitude of 4,600 feet. It blows out fire at very high temperatures."
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "generation": "Generation I",
+        "category": "Tiny Turtle Pokémon",
+        "color": "Blue",
+        "shape": "Upright",
+        "habitat": "Waters-Edge",
+        "captureRate": 45,
+        "baseFriendship": 70,
+        "hatchCounter": 20,
+        "genderRate": 1,
+        "growthRate": "Medium Slow",
+        "legendary": false,
+        "mythical": false,
+        "baby": false,
+        "eggGroups": [
+            "Monster",
+            "Water1"
+        ],
+        "entries": [
+            {
+                "game": "Red",
+                "text": "After birth, its back swells and hardens into a shell. Powerfully sprays foam from its mouth."
+            },
+            {
+                "game": "Blue",
+                "text": "After birth, its back swells and hardens into a shell. Powerfully sprays foam from its mouth."
+            },
+            {
+                "game": "Yellow",
+                "text": "Shoots water at prey while in the water. Withdraws into its shell when in danger."
+            },
+            {
+                "game": "Gold",
+                "text": "The shell is soft when it is born. It soon becomes so resilient, prod­ ding fingers will bounce off it."
+            },
+            {
+                "game": "Silver",
+                "text": "The shell, which hardens soon after it is born, is resilient. If you poke it, it will bounce back out."
+            },
+            {
+                "game": "Crystal",
+                "text": "When it feels threatened, it draws its legs inside its shell and sprays water from its mouth."
+            },
+            {
+                "game": "Ruby",
+                "text": "SQUIRTLE’s shell is not merely used for protection. The shell’s rounded shape and the grooves on its surface help minimize resistance in water, enabling this Pokémon to swim at high speeds."
+            },
+            {
+                "game": "Sapphire",
+                "text": "SQUIRTLE’s shell is not merely used for protection. The shell’s rounded shape and the grooves on its surface help minimize resistance in water, enabling this Pokémon to swim at high speeds."
+            },
+            {
+                "game": "Emerald",
+                "text": "Its shell is not just for protection. Its rounded shape and the grooves on its surface minimize resistance in water, enabling SQUIRTLE to swim at high speeds."
+            },
+            {
+                "game": "FireRed",
+                "text": "When it retracts its long neck into its shell, it squirts out water with vigorous force."
+            },
+            {
+                "game": "LeafGreen",
+                "text": "After birth, its back swells and hardens into a shell. It powerfully sprays foam from its mouth."
+            },
+            {
+                "game": "Diamond",
+                "text": "It shelters itself in its shell, then strikes back with spouts of water at every opportunity."
+            },
+            {
+                "game": "Pearl",
+                "text": "It shelters itself in its shell, then strikes back with spouts of water at every opportunity."
+            },
+            {
+                "game": "Platinum",
+                "text": "It shelters itself in its shell, then strikes back with spouts of water at every opportunity."
+            },
+            {
+                "game": "HeartGold",
+                "text": "The shell is soft when it is born. It soon becomes so resilient, prodding fingers will bounce off it."
+            },
+            {
+                "game": "SoulSilver",
+                "text": "The shell, which hardens soon after it is born, is resilient. If you poke it, it will bounce back out."
+            },
+            {
+                "game": "Black",
+                "text": "It shelters itself in its shell, then strikes back with spouts of water at every opportunity."
+            },
+            {
+                "game": "White",
+                "text": "It shelters itself in its shell, then strikes back with spouts of water at every opportunity."
+            },
+            {
+                "game": "Black 2",
+                "text": "It shelters itself in its shell then strikes back with spouts of water at every opportunity."
+            },
+            {
+                "game": "White 2",
+                "text": "It shelters itself in its shell then strikes back with spouts of water at every opportunity."
+            },
+            {
+                "game": "X",
+                "text": "It shelters itself in its shell, then strikes back with spouts of water at every opportunity."
+            },
+            {
+                "game": "Y",
+                "text": "Shoots water at prey while in the water. Withdraws into its shell when in danger."
+            },
+            {
+                "game": "Omega Ruby",
+                "text": "Squirtle’s shell is not merely used for protection. The shell’s rounded shape and the grooves on its surface help minimize resistance in water, enabling this Pokémon to swim at high speeds."
+            },
+            {
+                "game": "Alpha Sapphire",
+                "text": "Squirtle’s shell is not merely used for protection. The shell’s rounded shape and the grooves on its surface help minimize resistance in water, enabling this Pokémon to swim at high speeds."
+            },
+            {
+                "game": "Let's Go Pikachu",
+                "text": "Shoots water at prey while in the water. Withdraws into its shell when in danger."
+            },
+            {
+                "game": "Let's Go Eevee",
+                "text": "Shoots water at prey while in the water. Withdraws into its shell when in danger."
+            },
+            {
+                "game": "Sword",
+                "text": "When it retracts its long neck into its shell, it squirts out water with vigorous force."
+            },
+            {
+                "game": "Shield",
+                "text": "When it feels threatened, it draws its limbs inside its shell and sprays water from its mouth."
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "generation": "Generation I",
+        "category": "Turtle Pokémon",
+        "color": "Blue",
+        "shape": "Upright",
+        "habitat": "Waters-Edge",
+        "captureRate": 45,
+        "baseFriendship": 70,
+        "hatchCounter": 20,
+        "genderRate": 1,
+        "growthRate": "Medium Slow",
+        "legendary": false,
+        "mythical": false,
+        "baby": false,
+        "eggGroups": [
+            "Monster",
+            "Water1"
+        ],
+        "entries": [
+            {
+                "game": "Red",
+                "text": "Often hides in water to stalk unwary prey. For swimming fast, it moves its ears to maintain balance."
+            },
+            {
+                "game": "Blue",
+                "text": "Often hides in water to stalk unwary prey. For swimming fast, it moves its ears to maintain balance."
+            },
+            {
+                "game": "Yellow",
+                "text": "When tapped, this Pokémon will pull in its head, but its tail will still stick out a little bit."
+            },
+            {
+                "game": "Gold",
+                "text": "It is recognized as a symbol of longevity. If its shell has algae on it, that WARTORTLE is very old."
+            },
+            {
+                "game": "Silver",
+                "text": "It cleverly con­ trols its furry ears and tail to maintain its balance while swimming."
+            },
+            {
+                "game": "Crystal",
+                "text": "Its long, furry tail is a symbol of longevity, making it quite popular among older people."
+            },
+            {
+                "game": "Ruby",
+                "text": "Its tail is large and covered with a rich, thick fur. The tail becomes increasingly deeper in color as WARTORTLE ages. The scratches on its shell are evidence of this Pokémon’s toughness as a battler."
+            },
+            {
+                "game": "Sapphire",
+                "text": "Its tail is large and covered with a rich, thick fur. The tail becomes increasingly deeper in color as WARTORTLE ages. The scratches on its shell are evidence of this Pokémon’s toughness as a battler."
+            },
+            {
+                "game": "Emerald",
+                "text": "Its large tail is covered with rich, thick fur that deepens in color with age. The scratches on its shell are evidence of this Pokémon’s toughness in battle."
+            },
+            {
+                "game": "FireRed",
+                "text": "This Pokémon is very popular as a pet. Its fur-covered tail is a symbol of its longevity."
+            },
+            {
+                "game": "LeafGreen",
+                "text": "It often hides in water to stalk unwary prey. For fast swimming, it moves its ears to maintain balance."
+            },
+            {
+                "game": "Diamond",
+                "text": "It is said to live 10,000 years. Its furry tail is popular as a symbol of longevity."
+            },
+            {
+                "game": "Pearl",
+                "text": "It is said to live 10,000 years. Its furry tail is popular as a symbol of longevity."
+            },
+            {
+                "game": "Platinum",
+                "text": "It is said to live 10,000 years. Its furry tail is popular as a symbol of longevity."
+            },
+            {
+                "game": "HeartGold",
+                "text": "It is a well-established symbol of longevity. If its shell has algae on it, that WARTORTLE is very old."
+            },
+            {
+                "game": "SoulSilver",
+                "text": "It cleverly controls its furry ears and tail to maintain its balance while swimming."
+            },
+            {
+                "game": "Black",
+                "text": "It is said to live 10,000 years. Its furry tail is popular as a symbol of longevity."
+            },
+            {
+                "game": "White",
+                "text": "It is said to live 10,000 years. Its furry tail is popular as a symbol of longevity."
+            },
+            {
+                "game": "Black 2",
+                "text": "It is said to live 10,000 years. Its furry tail is popular as a symbol of longevity."
+            },
+            {
+                "game": "White 2",
+                "text": "It is said to live 10,000 years. Its furry tail is popular as a symbol of longevity."
+            },
+            {
+                "game": "X",
+                "text": "When tapped, this Pokémon will pull in its head, but its tail will still stick out a little bit."
+            },
+            {
+                "game": "Y",
+                "text": "It is said to live 10,000 years. Its furry tail is popular as a symbol of longevity."
+            },
+            {
+                "game": "Omega Ruby",
+                "text": "Its tail is large and covered with a rich, thick fur. The tail becomes increasingly deeper in color as Wartortle ages. The scratches on its shell are evidence of this Pokémon’s toughness as a battler."
+            },
+            {
+                "game": "Alpha Sapphire",
+                "text": "Its tail is large and covered with a rich, thick fur. The tail becomes increasingly deeper in color as Wartortle ages. The scratches on its shell are evidence of this Pokémon’s toughness as a battler."
+            },
+            {
+                "game": "Let's Go Pikachu",
+                "text": "When tapped on its head, this Pokémon will pull it in, but its tail will still stick out a little bit."
+            },
+            {
+                "game": "Let's Go Eevee",
+                "text": "When tapped on its head, this Pokémon will pull it in, but its tail will still stick out a little bit."
+            },
+            {
+                "game": "Sword",
+                "text": "It is recognized as a symbol of longevity. If its shell has algae on it, that Wartortle is very old."
+            },
+            {
+                "game": "Shield",
+                "text": "It cleverly controls its furry ears and tail to maintain its balance while swimming."
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "generation": "Generation I",
+        "category": "Shellfish Pokémon",
+        "color": "Blue",
+        "shape": "Upright",
+        "habitat": "Waters-Edge",
+        "captureRate": 45,
+        "baseFriendship": 70,
+        "hatchCounter": 20,
+        "genderRate": 1,
+        "growthRate": "Medium Slow",
+        "legendary": false,
+        "mythical": false,
+        "baby": false,
+        "eggGroups": [
+            "Monster",
+            "Water1"
+        ],
+        "entries": [
+            {
+                "game": "Red",
+                "text": "A brutal Pokémon with pressurized water jets on its shell. They are used for high speed tackles."
+            },
+            {
+                "game": "Blue",
+                "text": "A brutal Pokémon with pressurized water jets on its shell. They are used for high speed tackles."
+            },
+            {
+                "game": "Yellow",
+                "text": "Once it takes aim at its enemy, it blasts out water with even more force than a fire hose."
+            },
+            {
+                "game": "Gold",
+                "text": "It deliberately makes itself heavy so it can with­ stand the recoil of the water jets it fires."
+            },
+            {
+                "game": "Silver",
+                "text": "The rocket cannons on its shell fire jets of water capable of punch­ ing holes through thick steel."
+            },
+            {
+                "game": "Crystal",
+                "text": "It firmly plants its feet on the ground before shooting water from the jets on its back."
+            },
+            {
+                "game": "Ruby",
+                "text": "BLASTOISE has water spouts that protrude from its shell. The water spouts are very accurate. They can shoot bullets of water with enough accuracy to strike empty cans from a distance of over 160 feet."
+            },
+            {
+                "game": "Sapphire",
+                "text": "BLASTOISE has water spouts that protrude from its shell. The water spouts are very accurate. They can shoot bullets of water with enough accuracy to strike empty cans from a distance of over 160 feet."
+            },
+            {
+                "game": "Emerald",
+                "text": "The waterspouts that protrude from its shell are highly accurate. Their bullets of water can precisely nail tin cans from a distance of over 160 feet."
+            },
+            {
+                "game": "FireRed",
+                "text": "It crushes its foe under its heavy body to cause fainting. In a pinch, it will withdraw inside its shell."
+            },
+            {
+                "game": "LeafGreen",
+                "text": "The pressurized water jets on this brutal Pokémon’s shell are used for high- speed tackles."
+            },
+            {
+                "game": "Diamond",
+                "text": "The jets of water it spouts from the rocket cannons on its shell can punch through thick steel."
+            },
+            {
+                "game": "Pearl",
+                "text": "The jets of water it spouts from the rocket cannons on its shell can punch through thick steel."
+            },
+            {
+                "game": "Platinum",
+                "text": "The jets of water it spouts from the rocket cannons on its shell can punch through thick steel."
+            },
+            {
+                "game": "HeartGold",
+                "text": "It deliberately makes itself heavy so it can withstand the recoil of the water jets it fires."
+            },
+            {
+                "game": "SoulSilver",
+                "text": "The rocket cannons on its shell fire jets of water capable of punching holes through thick steel."
+            },
+            {
+                "game": "Black",
+                "text": "The jets of water it spouts from the rocket cannons on its shell can punch through thick steel."
+            },
+            {
+                "game": "White",
+                "text": "The jets of water it spouts from the rocket cannons on its shell can punch through thick steel."
+            },
+            {
+                "game": "Black 2",
+                "text": "The jets of water it spouts from the rocket cannons on its shell can punch through thick steel."
+            },
+            {
+                "game": "White 2",
+                "text": "The jets of water it spouts from the rocket cannons on its shell can punch through thick steel."
+            },
+            {
+                "game": "X",
+                "text": "It crushes its foe under its heavy body to cause fainting. In a pinch, it will withdraw inside its shell."
+            },
+            {
+                "game": "Y",
+                "text": "The pressurized water jets on this brutal Pokémon’s shell are used for high-speed tackles."
+            },
+            {
+                "game": "Omega Ruby",
+                "text": "Blastoise has water spouts that protrude from its shell. The water spouts are very accurate. They can shoot bullets of water with enough accuracy to strike empty cans from a distance of over 160 feet."
+            },
+            {
+                "game": "Alpha Sapphire",
+                "text": "Blastoise has water spouts that protrude from its shell. The water spouts are very accurate. They can shoot bullets of water with enough accuracy to strike empty cans from a distance of over 160 feet."
+            },
+            {
+                "game": "Let's Go Pikachu",
+                "text": "Once it takes aim at its enemy, it blasts out water with even more force than a fire hose."
+            },
+            {
+                "game": "Let's Go Eevee",
+                "text": "Once it takes aim at its enemy, it blasts out water with even more force than a fire hose."
+            },
+            {
+                "game": "Sword",
+                "text": "It crushes its foe under its heavy body to cause fainting. In a pinch, it will withdraw inside its shell."
+            },
+            {
+                "game": "Shield",
+                "text": "The rocket cannons on its shell fire jets of water capable of punching holes through thick steel."
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "generation": "Generation I",
+        "category": "Worm Pokémon",
+        "color": "Green",
+        "shape": "Armor",
+        "habitat": "Forest",
+        "captureRate": 255,
+        "baseFriendship": 70,
+        "hatchCounter": 15,
+        "genderRate": 4,
+        "growthRate": "Medium",
+        "legendary": false,
+        "mythical": false,
+        "baby": false,
+        "eggGroups": [
+            "Bug"
+        ],
+        "entries": [
+            {
+                "game": "Red",
+                "text": "Its short feet are tipped with suction pads that enable it to tirelessly climb slopes and walls."
+            },
+            {
+                "game": "Blue",
+                "text": "Its short feet are tipped with suction pads that enable it to tirelessly climb slopes and walls."
+            },
+            {
+                "game": "Yellow",
+                "text": "If you touch the feeler on top of its head, it will release a horrible stink to protect itself."
+            },
+            {
+                "game": "Gold",
+                "text": "For protection, it releases a horri­ ble stench from the antenna on its head to drive away enemies."
+            },
+            {
+                "game": "Silver",
+                "text": "Its feet have suction cups designed to stick to any surface. It tenaciously climbs trees to forage."
+            },
+            {
+                "game": "Crystal",
+                "text": "It crawls into foliage where it camouflages itself among leaves that are the same color as its body."
+            },
+            {
+                "game": "Ruby",
+                "text": "CATERPIE has a voracious appetite. It can devour leaves bigger than its body right before your eyes. From its antenna, this Pokémon releases a terrifically strong odor."
+            },
+            {
+                "game": "Sapphire",
+                "text": "CATERPIE has a voracious appetite. It can devour leaves bigger than its body right before your eyes. From its antenna, this Pokémon releases a terrifically strong odor."
+            },
+            {
+                "game": "Emerald",
+                "text": "Its voracious appetite compels it to devour leaves bigger than itself without hesitation. It releases a terribly strong odor from its antennae."
+            },
+            {
+                "game": "FireRed",
+                "text": "It is covered with a green skin. When it grows, it sheds the skin, covers itself with silk, and becomes a cocoon."
+            },
+            {
+                "game": "LeafGreen",
+                "text": "Its short feet are tipped with suction pads that enable it to tirelessly climb slopes and walls."
+            },
+            {
+                "game": "Diamond",
+                "text": "It releases a stench from its red antenna to repel enemies. It grows by molting repeatedly."
+            },
+            {
+                "game": "Pearl",
+                "text": "It releases a stench from its red antenna to repel enemies. It grows by molting repeatedly."
+            },
+            {
+                "game": "Platinum",
+                "text": "It releases a stench from its red antenna to repel enemies. It grows by molting repeatedly."
+            },
+            {
+                "game": "HeartGold",
+                "text": "For protection, it releases a horrible stench from the antennae on its head to drive away enemies."
+            },
+            {
+                "game": "SoulSilver",
+                "text": "Its feet have suction cups designed to stick to any surface. It tenaciously climbs trees to forage."
+            },
+            {
+                "game": "Black",
+                "text": "It releases a stench from its red antenna to repel enemies. It grows by molting repeatedly."
+            },
+            {
+                "game": "White",
+                "text": "It releases a stench from its red antenna to repel enemies. It grows by molting repeatedly."
+            },
+            {
+                "game": "Black 2",
+                "text": "It releases a stench from its red antenna to repel enemies. It grows by molting repeatedly."
+            },
+            {
+                "game": "White 2",
+                "text": "It releases a stench from its red antenna to repel enemies. It grows by molting repeatedly."
+            },
+            {
+                "game": "X",
+                "text": "For protection, it releases a horrible stench from the antennae on its head to drive away enemies."
+            },
+            {
+                "game": "Y",
+                "text": "Its feet have suction cups designed to stick to any surface. It tenaciously climbs trees to forage."
+            },
+            {
+                "game": "Omega Ruby",
+                "text": "Caterpie has a voracious appetite. It can devour leaves bigger than its body right before your eyes. From its antenna, this Pokémon releases a terrifically strong odor."
+            },
+            {
+                "game": "Alpha Sapphire",
+                "text": "Caterpie has a voracious appetite. It can devour leaves bigger than its body right before your eyes. From its antenna, this Pokémon releases a terrifically strong odor."
+            },
+            {
+                "game": "Sun",
+                "text": "When attacked by bird Pokémon, it resists by releasing a terrifically strong odor from its antennae, but it often becomes their prey."
+            },
+            {
+                "game": "Moon",
+                "text": "It’s easy to catch, and it grows quickly, making it one of the top recommendations for novice Pokémon Trainers."
+            },
+            {
+                "game": "Ultra Sun",
+                "text": "Perhaps because it would like to grow up quickly, it has a voracious appetite, eating a hundred leaves a day."
+            },
+            {
+                "game": "Ultra Moon",
+                "text": "Its body is soft and weak. In nature, its perpetual fate is to be seen by others as food."
+            },
+            {
+                "game": "Let's Go Pikachu",
+                "text": "If you touch the feeler on top of its head, it will release a horrible stink to protect itself."
+            },
+            {
+                "game": "Let's Go Eevee",
+                "text": "If you touch the feeler on top of its head, it will release a horrible stink to protect itself."
+            },
+            {
+                "game": "Sword",
+                "text": "For protection, it releases a horrible stench from the antenna on its head to drive away enemies."
+            },
+            {
+                "game": "Shield",
+                "text": "Its short feet are tipped with suction pads that enable it to tirelessly climb slopes and walls."
+            }
+        ]
+    }
+]

@@ -1,0 +1,468 @@
+[
+    {
+        "id": 1,
+        "number": "#0001",
+        "name": "Bulbasaur",
+        "height": 0.7,
+        "weight": 6.9,
+        "generation": null,
+        "artwork": {
+            "official": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+            "home": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/1.png",
+            "dreamWorld": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+        },
+        "sprites": {
+            "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+            "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png",
+            "frontShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png",
+            "backShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png"
+        },
+        "types": [
+            {
+                "name": "Grass",
+                "slot": 1
+            },
+            {
+                "name": "Poison",
+                "slot": 2
+            }
+        ],
+        "abilities": [
+            {
+                "name": "Overgrow",
+                "hidden": false,
+                "slot": 1
+            },
+            {
+                "name": "Chlorophyll",
+                "hidden": true,
+                "slot": 3
+            }
+        ],
+        "stats": {
+            "hp": 45,
+            "attack": 49,
+            "defense": 49,
+            "specialAttack": 65,
+            "specialDefense": 65,
+            "speed": 45
+        }
+    },
+    {
+        "id": 2,
+        "number": "#0002",
+        "name": "Ivysaur",
+        "height": 1,
+        "weight": 13,
+        "generation": null,
+        "artwork": {
+            "official": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png",
+            "home": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/2.png",
+            "dreamWorld": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg"
+        },
+        "sprites": {
+            "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
+            "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/2.png",
+            "frontShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/2.png",
+            "backShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/2.png"
+        },
+        "types": [
+            {
+                "name": "Grass",
+                "slot": 1
+            },
+            {
+                "name": "Poison",
+                "slot": 2
+            }
+        ],
+        "abilities": [
+            {
+                "name": "Overgrow",
+                "hidden": false,
+                "slot": 1
+            },
+            {
+                "name": "Chlorophyll",
+                "hidden": true,
+                "slot": 3
+            }
+        ],
+        "stats": {
+            "hp": 60,
+            "attack": 62,
+            "defense": 63,
+            "specialAttack": 80,
+            "specialDefense": 80,
+            "speed": 60
+        }
+    },
+    {
+        "id": 3,
+        "number": "#0003",
+        "name": "Venusaur",
+        "height": 2,
+        "weight": 100,
+        "generation": null,
+        "artwork": {
+            "official": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png",
+            "home": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/3.png",
+            "dreamWorld": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg"
+        },
+        "sprites": {
+            "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+            "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/3.png",
+            "frontShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/3.png",
+            "backShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/3.png"
+        },
+        "types": [
+            {
+                "name": "Grass",
+                "slot": 1
+            },
+            {
+                "name": "Poison",
+                "slot": 2
+            }
+        ],
+        "abilities": [
+            {
+                "name": "Overgrow",
+                "hidden": false,
+                "slot": 1
+            },
+            {
+                "name": "Chlorophyll",
+                "hidden": true,
+                "slot": 3
+            }
+        ],
+        "stats": {
+            "hp": 80,
+            "attack": 82,
+            "defense": 83,
+            "specialAttack": 100,
+            "specialDefense": 100,
+            "speed": 80
+        }
+    },
+    {
+        "id": 4,
+        "number": "#0004",
+        "name": "Charmander",
+        "height": 0.6,
+        "weight": 8.5,
+        "generation": null,
+        "artwork": {
+            "official": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+            "home": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/4.png",
+            "dreamWorld": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/4.svg"
+        },
+        "sprites": {
+            "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+            "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/4.png",
+            "frontShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/4.png",
+            "backShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/4.png"
+        },
+        "types": [
+            {
+                "name": "Fire",
+                "slot": 1
+            }
+        ],
+        "abilities": [
+            {
+                "name": "Blaze",
+                "hidden": false,
+                "slot": 1
+            },
+            {
+                "name": "Solar Power",
+                "hidden": true,
+                "slot": 3
+            }
+        ],
+        "stats": {
+            "hp": 39,
+            "attack": 52,
+            "defense": 43,
+            "specialAttack": 60,
+            "specialDefense": 50,
+            "speed": 65
+        }
+    },
+    {
+        "id": 5,
+        "number": "#0005",
+        "name": "Charmeleon",
+        "height": 1.1,
+        "weight": 19,
+        "generation": null,
+        "artwork": {
+            "official": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png",
+            "home": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/5.png",
+            "dreamWorld": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/5.svg"
+        },
+        "sprites": {
+            "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png",
+            "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/5.png",
+            "frontShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/5.png",
+            "backShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/5.png"
+        },
+        "types": [
+            {
+                "name": "Fire",
+                "slot": 1
+            }
+        ],
+        "abilities": [
+            {
+                "name": "Blaze",
+                "hidden": false,
+                "slot": 1
+            },
+            {
+                "name": "Solar Power",
+                "hidden": true,
+                "slot": 3
+            }
+        ],
+        "stats": {
+            "hp": 58,
+            "attack": 64,
+            "defense": 58,
+            "specialAttack": 80,
+            "specialDefense": 65,
+            "speed": 80
+        }
+    },
+    {
+        "id": 6,
+        "number": "#0006",
+        "name": "Charizard",
+        "height": 1.7,
+        "weight": 90.5,
+        "generation": null,
+        "artwork": {
+            "official": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png",
+            "home": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/6.png",
+            "dreamWorld": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg"
+        },
+        "sprites": {
+            "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+            "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/6.png",
+            "frontShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png",
+            "backShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/6.png"
+        },
+        "types": [
+            {
+                "name": "Fire",
+                "slot": 1
+            },
+            {
+                "name": "Flying",
+                "slot": 2
+            }
+        ],
+        "abilities": [
+            {
+                "name": "Blaze",
+                "hidden": false,
+                "slot": 1
+            },
+            {
+                "name": "Solar Power",
+                "hidden": true,
+                "slot": 3
+            }
+        ],
+        "stats": {
+            "hp": 78,
+            "attack": 84,
+            "defense": 78,
+            "specialAttack": 109,
+            "specialDefense": 85,
+            "speed": 100
+        }
+    },
+    {
+        "id": 7,
+        "number": "#0007",
+        "name": "Squirtle",
+        "height": 0.5,
+        "weight": 9,
+        "generation": null,
+        "artwork": {
+            "official": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+            "home": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/7.png",
+            "dreamWorld": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/7.svg"
+        },
+        "sprites": {
+            "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
+            "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/7.png",
+            "frontShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/7.png",
+            "backShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/7.png"
+        },
+        "types": [
+            {
+                "name": "Water",
+                "slot": 1
+            }
+        ],
+        "abilities": [
+            {
+                "name": "Torrent",
+                "hidden": false,
+                "slot": 1
+            },
+            {
+                "name": "Rain Dish",
+                "hidden": true,
+                "slot": 3
+            }
+        ],
+        "stats": {
+            "hp": 44,
+            "attack": 48,
+            "defense": 65,
+            "specialAttack": 50,
+            "specialDefense": 64,
+            "speed": 43
+        }
+    },
+    {
+        "id": 8,
+        "number": "#0008",
+        "name": "Wartortle",
+        "height": 1,
+        "weight": 22.5,
+        "generation": null,
+        "artwork": {
+            "official": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png",
+            "home": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/8.png",
+            "dreamWorld": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/8.svg"
+        },
+        "sprites": {
+            "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png",
+            "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/8.png",
+            "frontShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/8.png",
+            "backShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/8.png"
+        },
+        "types": [
+            {
+                "name": "Water",
+                "slot": 1
+            }
+        ],
+        "abilities": [
+            {
+                "name": "Torrent",
+                "hidden": false,
+                "slot": 1
+            },
+            {
+                "name": "Rain Dish",
+                "hidden": true,
+                "slot": 3
+            }
+        ],
+        "stats": {
+            "hp": 59,
+            "attack": 63,
+            "defense": 80,
+            "specialAttack": 65,
+            "specialDefense": 80,
+            "speed": 58
+        }
+    },
+    {
+        "id": 9,
+        "number": "#0009",
+        "name": "Blastoise",
+        "height": 1.6,
+        "weight": 85.5,
+        "generation": null,
+        "artwork": {
+            "official": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png",
+            "home": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/9.png",
+            "dreamWorld": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/9.svg"
+        },
+        "sprites": {
+            "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
+            "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/9.png",
+            "frontShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/9.png",
+            "backShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/9.png"
+        },
+        "types": [
+            {
+                "name": "Water",
+                "slot": 1
+            }
+        ],
+        "abilities": [
+            {
+                "name": "Torrent",
+                "hidden": false,
+                "slot": 1
+            },
+            {
+                "name": "Rain Dish",
+                "hidden": true,
+                "slot": 3
+            }
+        ],
+        "stats": {
+            "hp": 79,
+            "attack": 83,
+            "defense": 100,
+            "specialAttack": 85,
+            "specialDefense": 105,
+            "speed": 78
+        }
+    },
+    {
+        "id": 10,
+        "number": "#0010",
+        "name": "Caterpie",
+        "height": 0.3,
+        "weight": 2.9,
+        "generation": null,
+        "artwork": {
+            "official": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10.png",
+            "home": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/10.png",
+            "dreamWorld": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/10.svg"
+        },
+        "sprites": {
+            "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png",
+            "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/10.png",
+            "frontShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/10.png",
+            "backShiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/10.png"
+        },
+        "types": [
+            {
+                "name": "Bug",
+                "slot": 1
+            }
+        ],
+        "abilities": [
+            {
+                "name": "Shield Dust",
+                "hidden": false,
+                "slot": 1
+            },
+            {
+                "name": "Run Away",
+                "hidden": true,
+                "slot": 3
+            }
+        ],
+        "stats": {
+            "hp": 45,
+            "attack": 30,
+            "defense": 35,
+            "specialAttack": 20,
+            "specialDefense": 20,
+            "speed": 45
+        }
+    }
+]

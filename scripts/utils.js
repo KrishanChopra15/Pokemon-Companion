@@ -94,7 +94,7 @@ function formatGameName(game) {
 }
 
 /**
- * Cleans Pokédex flavor text.
+ * Cleans text returned by PokéAPI.
  */
 function cleanFlavorText(text) {
 
@@ -105,8 +105,10 @@ function cleanFlavorText(text) {
     return text
         .replace(/\f/g, " ")
         .replace(/\n/g, " ")
+        .replace(/\r/g, " ")
         .replace(/\s+/g, " ")
         .replace(/POKéMON/g, "Pokémon")
+        .replace(/\$effect_chance/g, "Effect Chance")
         .trim();
 
 }

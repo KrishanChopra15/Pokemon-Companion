@@ -304,7 +304,7 @@
 
     color: var(--text-primary);
 
-    font-size: 1rem;
+    font-size: 1.05rem;
 
     font-weight: 700;
 
@@ -660,5 +660,195 @@
     border: 1px solid var(--border);
 
     font-size: 1.5rem;
+
+}
+
+/* =====================================================
+   Abilities
+===================================================== */
+
+.pokemon-abilities {
+
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+
+}
+
+.abilities-grid {
+
+    display: grid;
+
+    gap: 1.5rem;
+
+}
+
+.ability-card {
+
+    padding: 2rem;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+
+}
+
+.ability-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: var(--primary);
+
+    box-shadow: var(--shadow-lg);
+
+}
+
+.ability-card__header {
+
+    display: flex;
+
+    justify-content: flex-start;
+
+    align-items: flex-start;
+
+    gap: 1rem;
+
+    margin-bottom: 1rem;
+
+    padding-bottom: 1rem;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+.ability-card__header h3 {
+
+    margin: 0;
+
+    font-size: 1.5rem;
+
+    font-weight: 700;
+
+    color: var(--text-primary);
+
+}
+
+.ability-card p {
+
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    line-height: 1.7;
+
+}
+
+.ability-badge {
+
+    padding: .35rem .9rem;
+
+    border-radius: 999px;
+
+    background: rgba(59,130,246,.15);
+
+    color: var(--primary);
+
+    font-size: .8rem;
+
+    font-weight: 700;
+
+    letter-spacing: .03em;
+}
+
+.ability-badge--hidden {
+
+    background: rgba(234,179,8,.18);
+
+    color: #facc15;
+
+}
+
+/* =====================================================
+   TYPE EFFECTIVENESS
+===================================================== */
+
+.pokemon-effectiveness {
+
+    margin: 5rem 0;
+
+}
+
+.effectiveness-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 1.5rem;
+
+}
+
+.effectiveness-card {
+
+    padding: 2rem;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+
+}
+
+.effectiveness-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: var(--primary);
+
+    box-shadow: var(--shadow-lg);
+
+}
+
+.effectiveness-card h3 {
+
+    margin-bottom: 1.25rem;
+
+    font-size: 1.3rem;
+
+    font-weight: 700;
+
+}
+
+.effectiveness-types {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: .75rem;
+
+}
+
+@media (max-width: 900px){
+
+    .effectiveness-grid{
+
+        grid-template-columns: 1fr;
+
+    }
 
 }

@@ -310,8 +310,6 @@
 
     overflow: hidden;
 
-    position: relative;
-
     transition:
         transform .25s ease,
         border-color .25s ease,
@@ -321,7 +319,7 @@
 
 .pokemon-card:hover {
 
-    transform: translateY(-4px) scale(1.01);
+    transform: translateY(-6px);
 
     border-color: var(--primary);
 
@@ -398,9 +396,9 @@
 
     align-items: center;
 
-    width: 180px;
+    width: 170px;
 
-    height: 180px;
+    height: 170px;
 
     border-radius: 12px;
 
@@ -471,24 +469,6 @@
 
 }
 
-/* Type Badge */
-
-.type {
-
-    padding: .5rem 1rem;
-
-    letter-spacing: .3px;
-
-    border-radius: 999px;
-
-    font-size: var(--fs-sm);
-
-    font-weight: 600;
-
-    color: white;
-
-}
-
 /* Button */
 
 .pokemon-card__button {
@@ -509,68 +489,6 @@
 
 }
 
-/* ==================================
-   Pokémon Type Colors
-================================== */
-
-.type--grass {
-
-    background: #78C850;
-
-}
-
-.type--poison {
-
-    background: #A040A0;
-
-}
-
-.type--fire {
-
-    background: #F08030;
-
-}
-
-.type--water {
-
-    background: #6890F0;
-
-}
-
-.type--electric {
-
-    background: #F8D030;
-
-    color: #222;
-
-}
-
-.type--normal {
-
-    background: #A8A878;
-
-}
-
-.type--fighting {
-
-    background: #C03028;
-
-}
-
-.type--steel {
-
-    background: #B8B8D0;
-
-    color: #222;
-
-}
-
-.type--flying {
-
-    background: #A890F0;
-
-}
-
 /* ===============================
    Pagination
 =============================== */
@@ -578,3 +496,29 @@
 /* ===============================
    Responsive
 =============================== */
+
+@media (max-width:768px){
+
+    .hero{
+
+        min-height:auto;
+
+        padding:5rem 0;
+
+    }
+
+    .filters__container{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+    }
+
+    .filters__container select{
+
+        width:100%;
+
+    }
+
+}

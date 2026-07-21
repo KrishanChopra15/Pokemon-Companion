@@ -361,3 +361,138 @@
 
 }
 
+/* ==================================
+   Pokémon Types
+================================== */
+
+.type{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:.45rem .95rem;
+
+    border-radius:999px;
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+    color:white;
+
+    line-height:1;
+
+    white-space: nowrap;
+
+    transition: .2s ease;
+
+    user-select:none;
+}
+
+.type--none{
+
+    background:rgba(255,255,255,.08);
+
+    color:var(--text-secondary);
+
+}
+
+.type--grass {
+
+    background: #78C850;
+
+}
+
+.type--poison {
+
+    background: #A040A0;
+
+}
+
+.type--fire {
+
+    background: #F08030;
+
+}
+
+.type--water {
+
+    background: #6890F0;
+
+}
+
+.type--electric {
+
+    background: #F8D030;
+
+    color: #222;
+
+}
+
+.type--normal {
+
+    background: #A8A878;
+
+}
+
+.type--fighting {
+
+    background: #C03028;
+
+}
+
+.type--steel {
+
+    background: #B8B8D0;
+
+    color: #222;
+
+}
+
+.type--flying {
+
+    background: #A890F0;
+
+}
+
+.type--bug{
+    background:#A8B820;
+}
+
+.type--rock{
+    background:#B8A038;
+}
+
+.type--ground{
+    background:#E0C068;
+    color:#222;
+}
+
+.type--ice{
+    background:#98D8D8;
+    color:#222;
+}
+
+.type--psychic{
+    background:#F85888;
+}
+
+.type--ghost{
+    background:#705898;
+}
+
+.type--dragon{
+    background:#7038F8;
+}
+
+.type--dark{
+    background:#705848;
+}
+
+.type--fairy{
+    background:#EE99AC;
+    color:#222;
+}

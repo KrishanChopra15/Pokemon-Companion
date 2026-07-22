@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "name": "Specific Move",
+        "description": "One specific move.  How this move is chosen depends upon on the move being used."
+    },
+    {
+        "id": 2,
+        "name": "Selected Pokemon Me First",
+        "description": "One other Pokémon on the field, selected by the trainer.  Stolen moves reuse the same target."
+    },
+    {
+        "id": 3,
+        "name": "Ally",
+        "description": "The user’s ally (if any)."
+    },
+    {
+        "id": 4,
+        "name": "Users Field",
+        "description": "The user’s side of the field.  Affects the user and its ally (if any)."
+    },
+    {
+        "id": 5,
+        "name": "User Or Ally",
+        "description": "Either the user or its ally, selected by the trainer."
+    },
+    {
+        "id": 6,
+        "name": "Opponents Field",
+        "description": "The opposing side of the field.  Affects opposing Pokémon."
+    },
+    {
+        "id": 7,
+        "name": "User",
+        "description": "The user."
+    },
+    {
+        "id": 8,
+        "name": "Random Opponent",
+        "description": "One opposing Pokémon, selected at random."
+    },
+    {
+        "id": 9,
+        "name": "All Other Pokemon",
+        "description": "Every other Pokémon on the field."
+    },
+    {
+        "id": 10,
+        "name": "Selected Pokemon",
+        "description": "One other Pokémon on the field, selected by the trainer."
+    },
+    {
+        "id": 11,
+        "name": "All Opponents",
+        "description": "All opposing Pokémon."
+    },
+    {
+        "id": 12,
+        "name": "Entire Field",
+        "description": "The entire field.  Affects all Pokémon."
+    },
+    {
+        "id": 13,
+        "name": "User And Allies",
+        "description": "The user and its allies."
+    },
+    {
+        "id": 14,
+        "name": "All Pokemon",
+        "description": "Every Pokémon on the field."
+    }
+]

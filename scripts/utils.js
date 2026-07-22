@@ -150,6 +150,18 @@ function formatVersionGroup(name) {
 
 }
 
+function formatApiName(name) {
+
+    if (!name) {
+        return "";
+    }
+
+    return toTitleCase(
+        name.replace(/-/g, " ")
+    );
+
+}
+
 /**
  * Cleans text returned by PokéAPI.
  */
@@ -200,6 +212,8 @@ function sortTitleCaseNames(array) {
 }
 
 
+
+
 module.exports = {
 
     toTitleCase,
@@ -207,6 +221,7 @@ module.exports = {
     formatGeneration,
     formatGameName,
     formatVersionGroup,
+    formatApiName,
     cleanFlavorText,
     saveJSON,
     sortTitleCaseNames

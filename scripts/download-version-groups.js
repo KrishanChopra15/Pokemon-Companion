@@ -3,10 +3,9 @@ const path = require("path");
 
 const {
     saveJSON,
+    getIdFromUrl,
     formatGeneration,
-    formatVersionGroup,
-    formatGameName,
-    getIdFromUrl
+    formatApiName
 } = require("./utils");
 
 const OUTPUT_FILE = path.join(
@@ -35,39 +34,45 @@ async function downloadVersionGroups() {
             );
 
             versionGroups.push({
-
+            
                 id: versionGroup.id,
+            
+                order: versionGroup.order,
 
-                name: formatVersionGroup(
-                    versionGroup.name
+                generationOrder: getIdFromUrl(
+                    versionGroup.generation.url
                 ),
 
+                apiName: versionGroup.name,
+            
+                name: formatApiName(
+                    versionGroup.name
+                ),
+            
                 generation: {
-
+                
                     id: getIdFromUrl(
                         versionGroup.generation.url
                     ),
-
+                
                     name: formatGeneration(
                         versionGroup.generation.name
                     )
-
+                
                 },
-
-                games: versionGroup.versions
-                    .map(version => ({
-                    
-                        id: getIdFromUrl(
-                            version.url
-                        ),
-                    
-                        name: formatGameName(
-                            version.name
-                        )
-                    
-                    }))
-                    .sort((a, b) => a.id - b.id)
-
+            
+                games: versionGroup.versions.map(game => ({
+                
+                    id: getIdFromUrl(
+                        game.url
+                    ),
+                
+                    name: formatApiName(
+                        game.name
+                    )
+                
+                }))
+            
             });
 
         }

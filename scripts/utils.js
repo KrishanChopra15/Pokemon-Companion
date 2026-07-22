@@ -211,6 +211,13 @@ function sortTitleCaseNames(array) {
 
 }
 
+function hasFlag(flags, name) {
+
+    return (flags ?? []).some(
+        flag => flag.name === name
+    );
+
+}
 
 
 
@@ -224,6 +231,7 @@ module.exports = {
     formatApiName,
     cleanFlavorText,
     saveJSON,
-    sortTitleCaseNames
+    sortTitleCaseNames,
+    hasFlag
 
 };

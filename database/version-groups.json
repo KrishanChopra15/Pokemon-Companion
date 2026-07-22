@@ -1,0 +1,534 @@
+[
+    {
+        "id": 1,
+        "name": "Red Blue",
+        "generation": {
+            "id": 1,
+            "name": "Generation I"
+        },
+        "games": [
+            {
+                "id": 1,
+                "name": "Red"
+            },
+            {
+                "id": 2,
+                "name": "Blue"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Yellow",
+        "generation": {
+            "id": 1,
+            "name": "Generation I"
+        },
+        "games": [
+            {
+                "id": 3,
+                "name": "Yellow"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Gold Silver",
+        "generation": {
+            "id": 2,
+            "name": "Generation II"
+        },
+        "games": [
+            {
+                "id": 4,
+                "name": "Gold"
+            },
+            {
+                "id": 5,
+                "name": "Silver"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Crystal",
+        "generation": {
+            "id": 2,
+            "name": "Generation II"
+        },
+        "games": [
+            {
+                "id": 6,
+                "name": "Crystal"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Ruby Sapphire",
+        "generation": {
+            "id": 3,
+            "name": "Generation III"
+        },
+        "games": [
+            {
+                "id": 7,
+                "name": "Ruby"
+            },
+            {
+                "id": 8,
+                "name": "Sapphire"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Emerald",
+        "generation": {
+            "id": 3,
+            "name": "Generation III"
+        },
+        "games": [
+            {
+                "id": 9,
+                "name": "Emerald"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "name": "FireRed LeafGreen",
+        "generation": {
+            "id": 3,
+            "name": "Generation III"
+        },
+        "games": [
+            {
+                "id": 10,
+                "name": "FireRed"
+            },
+            {
+                "id": 11,
+                "name": "LeafGreen"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Diamond Pearl",
+        "generation": {
+            "id": 4,
+            "name": "Generation IV"
+        },
+        "games": [
+            {
+                "id": 12,
+                "name": "Diamond"
+            },
+            {
+                "id": 13,
+                "name": "Pearl"
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Platinum",
+        "generation": {
+            "id": 4,
+            "name": "Generation IV"
+        },
+        "games": [
+            {
+                "id": 14,
+                "name": "Platinum"
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "name": "HeartGold SoulSilver",
+        "generation": {
+            "id": 4,
+            "name": "Generation IV"
+        },
+        "games": [
+            {
+                "id": 15,
+                "name": "HeartGold"
+            },
+            {
+                "id": 16,
+                "name": "SoulSilver"
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Black White",
+        "generation": {
+            "id": 5,
+            "name": "Generation V"
+        },
+        "games": [
+            {
+                "id": 17,
+                "name": "Black"
+            },
+            {
+                "id": 18,
+                "name": "White"
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Colosseum",
+        "generation": {
+            "id": 3,
+            "name": "Generation III"
+        },
+        "games": [
+            {
+                "id": 19,
+                "name": "Colosseum"
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Xd",
+        "generation": {
+            "id": 3,
+            "name": "Generation III"
+        },
+        "games": [
+            {
+                "id": 20,
+                "name": "Xd"
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "name": "Black 2 White 2",
+        "generation": {
+            "id": 5,
+            "name": "Generation V"
+        },
+        "games": [
+            {
+                "id": 21,
+                "name": "Black 2"
+            },
+            {
+                "id": 22,
+                "name": "White 2"
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "name": "X Y",
+        "generation": {
+            "id": 6,
+            "name": "Generation VI"
+        },
+        "games": [
+            {
+                "id": 23,
+                "name": "X"
+            },
+            {
+                "id": 24,
+                "name": "Y"
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "name": "Omega Ruby Alpha Sapphire",
+        "generation": {
+            "id": 6,
+            "name": "Generation VI"
+        },
+        "games": [
+            {
+                "id": 25,
+                "name": "Omega Ruby"
+            },
+            {
+                "id": 26,
+                "name": "Alpha Sapphire"
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "name": "Sun Moon",
+        "generation": {
+            "id": 7,
+            "name": "Generation VII"
+        },
+        "games": [
+            {
+                "id": 27,
+                "name": "Sun"
+            },
+            {
+                "id": 28,
+                "name": "Moon"
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "name": "Ultra Sun Ultra Moon",
+        "generation": {
+            "id": 7,
+            "name": "Generation VII"
+        },
+        "games": [
+            {
+                "id": 29,
+                "name": "Ultra Sun"
+            },
+            {
+                "id": 30,
+                "name": "Ultra Moon"
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "name": "Let's Go Pikachu Let's Go Eevee",
+        "generation": {
+            "id": 7,
+            "name": "Generation VII"
+        },
+        "games": [
+            {
+                "id": 31,
+                "name": "Let's Go Pikachu"
+            },
+            {
+                "id": 32,
+                "name": "Let's Go Eevee"
+            }
+        ]
+    },
+    {
+        "id": 20,
+        "name": "Sword Shield",
+        "generation": {
+            "id": 8,
+            "name": "Generation VIII"
+        },
+        "games": [
+            {
+                "id": 33,
+                "name": "Sword"
+            },
+            {
+                "id": 34,
+                "name": "Shield"
+            }
+        ]
+    },
+    {
+        "id": 21,
+        "name": "The Isle Of Armor",
+        "generation": {
+            "id": 8,
+            "name": "Generation VIII"
+        },
+        "games": [
+            {
+                "id": 35,
+                "name": "The Isle Of Armor Sword"
+            },
+            {
+                "id": 50,
+                "name": "The Isle Of Armor Shield"
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "name": "The Crown Tundra",
+        "generation": {
+            "id": 8,
+            "name": "Generation VIII"
+        },
+        "games": [
+            {
+                "id": 36,
+                "name": "The Crown Tundra Sword"
+            },
+            {
+                "id": 51,
+                "name": "The Crown Tundra Shield"
+            }
+        ]
+    },
+    {
+        "id": 23,
+        "name": "Brilliant Diamond Shining Pearl",
+        "generation": {
+            "id": 8,
+            "name": "Generation VIII"
+        },
+        "games": [
+            {
+                "id": 37,
+                "name": "Brilliant Diamond"
+            },
+            {
+                "id": 38,
+                "name": "Shining Pearl"
+            }
+        ]
+    },
+    {
+        "id": 24,
+        "name": "Legends Arceus",
+        "generation": {
+            "id": 8,
+            "name": "Generation VIII"
+        },
+        "games": [
+            {
+                "id": 39,
+                "name": "Legends Arceus"
+            }
+        ]
+    },
+    {
+        "id": 25,
+        "name": "Scarlet Violet",
+        "generation": {
+            "id": 9,
+            "name": "Generation IX"
+        },
+        "games": [
+            {
+                "id": 40,
+                "name": "Scarlet"
+            },
+            {
+                "id": 41,
+                "name": "Violet"
+            }
+        ]
+    },
+    {
+        "id": 26,
+        "name": "The Teal Mask",
+        "generation": {
+            "id": 9,
+            "name": "Generation IX"
+        },
+        "games": [
+            {
+                "id": 42,
+                "name": "The Teal Mask Scarlet"
+            },
+            {
+                "id": 52,
+                "name": "The Teal Mask Violet"
+            }
+        ]
+    },
+    {
+        "id": 27,
+        "name": "The Indigo Disk",
+        "generation": {
+            "id": 9,
+            "name": "Generation IX"
+        },
+        "games": [
+            {
+                "id": 43,
+                "name": "The Indigo Disk Scarlet"
+            },
+            {
+                "id": 53,
+                "name": "The Indigo Disk Violet"
+            }
+        ]
+    },
+    {
+        "id": 28,
+        "name": "Red Green Japan",
+        "generation": {
+            "id": 1,
+            "name": "Generation I"
+        },
+        "games": [
+            {
+                "id": 44,
+                "name": "Red Japan"
+            },
+            {
+                "id": 45,
+                "name": "Green Japan"
+            }
+        ]
+    },
+    {
+        "id": 29,
+        "name": "Blue Japan",
+        "generation": {
+            "id": 1,
+            "name": "Generation I"
+        },
+        "games": [
+            {
+                "id": 46,
+                "name": "Blue Japan"
+            }
+        ]
+    },
+    {
+        "id": 30,
+        "name": "Legends Za",
+        "generation": {
+            "id": 9,
+            "name": "Generation IX"
+        },
+        "games": [
+            {
+                "id": 47,
+                "name": "Legends Za"
+            }
+        ]
+    },
+    {
+        "id": 31,
+        "name": "Mega Dimension",
+        "generation": {
+            "id": 9,
+            "name": "Generation IX"
+        },
+        "games": [
+            {
+                "id": 48,
+                "name": "Mega Dimension"
+            }
+        ]
+    },
+    {
+        "id": 32,
+        "name": "Champions",
+        "generation": {
+            "id": 9,
+            "name": "Generation IX"
+        },
+        "games": [
+            {
+                "id": 49,
+                "name": "Champions"
+            }
+        ]
+    }
+]

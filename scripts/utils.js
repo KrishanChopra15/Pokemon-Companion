@@ -68,18 +68,22 @@ function formatGeneration(generation) {
 function formatGameName(game) {
 
     const names = {
-
+    
         "firered": "FireRed",
         "leafgreen": "LeafGreen",
+    
         "heartgold": "HeartGold",
         "soulsilver": "SoulSilver",
+    
         "lets-go-pikachu": "Let's Go Pikachu",
         "lets-go-eevee": "Let's Go Eevee",
+    
         "omega-ruby": "Omega Ruby",
         "alpha-sapphire": "Alpha Sapphire",
+    
         "black-2": "Black 2",
         "white-2": "White 2"
-
+    
     };
 
     if (names[game]) {
@@ -87,6 +91,59 @@ function formatGameName(game) {
     }
 
     return game
+        .split("-")
+        .map(word => toTitleCase(word))
+        .join(" ");
+
+}
+
+/**
+ * Converts PokéAPI version-group names into readable text.
+ */
+function formatVersionGroup(name) {
+
+    const names = {
+
+        "firered-leafgreen":
+            "FireRed LeafGreen",
+
+        "heartgold-soulsilver":
+            "HeartGold SoulSilver",
+
+        "black-white":
+            "Black White",
+
+        "black-2-white-2":
+            "Black 2 White 2",
+
+        "omega-ruby-alpha-sapphire":
+            "Omega Ruby Alpha Sapphire",
+
+        "sun-moon":
+            "Sun Moon",
+
+        "ultra-sun-ultra-moon":
+            "Ultra Sun Ultra Moon",
+
+        "lets-go-pikachu-lets-go-eevee":
+            "Let's Go Pikachu Let's Go Eevee",
+
+        "sword-shield":
+            "Sword Shield",
+
+        "brilliant-diamond-shining-pearl":
+            "Brilliant Diamond Shining Pearl",
+
+        "scarlet-violet":
+            "Scarlet Violet"
+
+    };
+
+    if (names[name]) {
+        return names[name];
+    }
+
+    return name
         .split("-")
         .map(word => toTitleCase(word))
         .join(" ");
@@ -142,13 +199,16 @@ function sortTitleCaseNames(array) {
 
 }
 
+
 module.exports = {
 
     toTitleCase,
     getIdFromUrl,
     formatGeneration,
     formatGameName,
+    formatVersionGroup,
     cleanFlavorText,
     saveJSON,
     sortTitleCaseNames
+
 };

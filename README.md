@@ -4,21 +4,26 @@
   <strong>Everything you need for every Pokémon adventure.</strong>
 </p>
 
+<p align="center">
+An open-source Pokémon companion built to provide a complete database, game tracking, collection management, and future AI-powered tools for every Pokémon game.
+</p>
+
 ---
 
-## 📖 Overview
+# 📖 Overview
 
-Pokémon Companion is a comprehensive web application built for Pokémon trainers who want a single place to manage, explore, and complete every Pokémon game.
+Pokémon Companion is a modern web application designed to become the ultimate companion for Pokémon trainers.
 
-Whether you're completing the National Pokédex, building competitive teams, tracking your journey, or discovering hidden locations, Pokémon Companion provides the tools needed for every adventure.
+The goal of the project is to provide a single platform where players can explore every Pokémon, track game progress, build teams, complete Pokédexes, discover locations, and manage their entire Pokémon journey across every main series title.
 
-The project is designed with scalability in mind, allowing new games, mechanics, and features to be added as the Pokémon franchise continues to grow.
+The project is built with scalability and long-term maintainability in mind. Its custom database generation pipeline allows new Pokémon games, mechanics, forms, and future generations to be integrated with minimal changes.
 
 ---
 
 # ✨ Features
 
-### 📚 Pokédex
+## 📚 Pokédex
+
 - Complete National Pokédex
 - Regional Pokédex support
 - Living Dex tracker
@@ -28,47 +33,149 @@ The project is designed with scalability in mind, allowing new games, mechanics,
 - Gigantamax Forms
 - Evolution chains
 
-### 🌍 World Explorer
+---
+
+## 🌍 World Explorer
+
 - Interactive region maps
 - Route information
 - Town & city guides
 - Hidden items
-- Legendary locations
+- Legendary Pokémon locations
 - Dungeon exploration
 
-### ⚔ Team Builder
-- Create unlimited teams
+---
+
+## ⚔ Team Builder
+
+- Unlimited custom teams
 - Type coverage analysis
 - Team statistics
 - Weakness checker
 - Move recommendations
 
-### 🎮 Adventure Tracker
-- Track game progress
-- Gym badges
-- Elite Four
-- Champion status
-- Story progression
-- Side quests
+---
 
-### 🤖 AI Assistant *(Future)*
+## 🎮 Adventure Tracker
+
+- Story progression
+- Gym badge tracker
+- Elite Four progress
+- Champion completion
+- Side quests
+- Game completion statistics
+
+---
+
+## 🤖 AI Assistant *(Planned)*
+
 - Pokémon recommendations
 - Team suggestions
-- Strategy guidance
-- Battle advice
-- Adventure assistant
+- Battle strategy
+- Adventure guidance
+- Intelligent search
 
-### 🏆 Trainer Legacy
+---
+
+## 🏆 Trainer Legacy
+
 - Personal achievements
-- Completion statistics
-- Collection history
-- Lifetime progress
+- Collection statistics
+- Completion history
+- Lifetime trainer progress
 
-### 👥 Community *(Future)*
+---
+
+## 👥 Community *(Planned)*
+
 - Friend comparison
+- Public trainer profiles
 - Shared collections
 - Leaderboards
-- Public trainer profiles
+
+---
+
+# 🗄 Database
+
+Pokémon Companion uses a custom-generated Pokémon database built from official Pokémon datasets.
+
+Current datasets include:
+
+- Pokémon
+- Species
+- Abilities
+- Moves
+- Types
+- Damage Classes
+- Move Targets
+- Version Groups
+
+Historical datasets:
+
+- Ability History
+- Move History
+- Move Effect History
+
+Legacy datasets:
+
+- Legacy Pokémon Types
+  - ??? Type
+  - Shadow Type
+
+Placeholder datasets prepared for future development:
+
+- Evolutions
+- Forms
+- Games
+- Items
+- Learnsets
+- Locations
+- Sprites
+
+The database architecture has been designed for future expansion while maintaining compatibility with existing data.
+
+---
+
+# ✅ Database Validation
+
+Every generated database is validated before being committed.
+
+Run the validator using:
+
+```bash
+node scripts/validate/validate-database.js
+```
+
+Validation includes:
+
+- File existence
+- JSON validation
+- Duplicate ID detection
+- Duplicate name detection
+- Cross-reference validation
+- Data integrity validation
+- Historical data validation
+
+The validation pipeline helps ensure long-term database consistency and catches generator regressions before changes are committed.
+
+---
+
+# ⚙ Database Generation
+
+Database files are automatically generated from external Pokémon datasets.
+
+The project includes scripts for generating:
+
+- Pokémon
+- Species
+- Abilities
+- Moves
+- Types
+- Version Groups
+- Historical data
+- Legacy data
+
+Generated files are validated before being added to the repository.
 
 ---
 
@@ -87,33 +194,41 @@ The project is designed with scalability in mind, allowing new games, mechanics,
 
 ## Database
 
-- MongoDB
+- Custom JSON Database
+- MongoDB *(Future User Data)*
 
-## Future Integrations
+## External Data Sources
 
-- AI-powered assistant
-- Pokémon API integrations
-- Cloud synchronization
-- Offline support
+- PokéAPI
+- Veekun Pokédex Database
 
 ---
 
 # 📂 Project Structure
 
-```
+```text
 pokemon-companion/
 
-├── backend/
+├── database/
+│   ├── history/
+│   ├── legacy/
+│   ├── abilities.json
+│   ├── damage-classes.json
+│   ├── move-targets.json
+│   ├── moves.json
+│   ├── pokemon.json
+│   ├── species.json
+│   ├── types.json
+│   └── version-groups.json
 │
-├── docs/
+├── scripts/
+│   ├── download/
+│   ├── inspect/
+│   └── validate/
 │
 ├── frontend/
-│   ├── assets/
-│   ├── components/
-│   ├── css/
-│   ├── js/
-│   ├── pages/
-│   └── data/
+│
+├── docs/
 │
 ├── README.md
 └── LICENSE
@@ -125,28 +240,65 @@ pokemon-companion/
 
 ## ✅ Completed
 
+### Project
+
 - Project architecture
-- CSS architecture
-- Home page
-- Responsive design foundation
-- Shared components
-- Design system
+- Database architecture
+- Shared utilities
+- Validation framework
 
-## 🚧 In Progress
+### Database
 
-- Dashboard (My Adventures)
+- Pokémon dataset
+- Species dataset
+- Ability dataset
+- Move dataset
+- Type dataset
+- Damage Classes
+- Move Targets
+- Version Groups
+- Legacy Types
+
+### History
+
+- Ability History
+- Move History
+- Move Effect History
+
+### Validation
+
+- Phase 1 — File Validation
+- Phase 2 — JSON Validation
+- Phase 3 — Duplicate Detection
+- Phase 4 — Reference Validation
+- Phase 5 — Data Integrity
+- Phase 6 — History Validation
+
+---
+
+## 🚧 Currently In Development
+
+- Pokédex Interface
+- Pokémon Details
+- Dashboard
+- Frontend Integration
+
+---
 
 ## 📅 Planned
 
-- Pokédex
-- Pokémon Details
-- World Explorer
+- Evolutions
+- Forms
+- Learnsets
+- Locations
+- Items
+- Games
+- Sprites
 - Team Builder
+- World Explorer
 - Adventure Tracker
 - AI Assistant
-- Backend API
-- User Authentication
-- Cloud Sync
+- Community Features
 
 ---
 
@@ -154,22 +306,22 @@ pokemon-companion/
 
 ## Version 1.0
 
-- Home
-- Dashboard
+- Complete Database
 - Pokédex
 - Pokémon Details
-- Team Builder
-- Adventure Tracker
+- Dashboard
+- Database Validation
+- Frontend Foundation
 
 ---
 
 ## Version 2.0
 
+- Team Builder
 - World Explorer
-- Interactive Maps
-- Friend Comparison
-- Trainer Profiles
+- Adventure Tracker
 - Collections
+- Trainer Profiles
 - Achievements
 
 ---
@@ -177,10 +329,10 @@ pokemon-companion/
 ## Version 3.0
 
 - AI Assistant
-- Offline Support
 - Cloud Sync
+- Offline Support
 - Progressive Web App
-- Performance Optimization
+- Community Features
 
 ---
 
@@ -192,7 +344,29 @@ Screenshots will be added as development progresses.
 
 # ⚙ Installation
 
-Installation instructions will be added once the first stable release is available.
+Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Generate the database (when required):
+
+```bash
+node scripts/download/<generator>.js
+```
+
+Validate the database:
+
+```bash
+node scripts/validate/validate-database.js
+```
 
 ---
 
@@ -200,7 +374,12 @@ Installation instructions will be added once the first stable release is availab
 
 Contributions are welcome.
 
-Contribution guidelines will be published once the project reaches its first stable version.
+Please ensure that:
+
+- Generated database files pass validation.
+- New datasets follow the existing project structure.
+- Code follows the project's formatting conventions.
+- Documentation is updated alongside new features.
 
 ---
 

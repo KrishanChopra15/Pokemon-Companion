@@ -1,18 +1,33 @@
 # Pokémon Companion Project Specification
 
-> Everything you need for every Pokémon adventure.
+> **Everything you need for every Pokémon adventure.**
 
 ---
 
 # Vision
 
-Build the world's most comprehensive Pokémon companion platform that helps trainers explore, understand, and complete every Pokémon game from every generation.
+Build the world's most comprehensive Pokémon companion platform that helps trainers explore, understand, and complete every Pokémon game across every generation.
+
+Pokémon Companion aims to combine a complete Pokémon database, adventure tracking, collection management, team building, and future AI-powered assistance into a single modern platform.
 
 ---
 
 # Mission
 
-Create a single application that replaces the need to switch between multiple Pokémon websites by providing an integrated experience for research, exploration, team building, progress tracking, and intelligent assistance.
+Provide a unified experience that eliminates the need to switch between multiple Pokémon websites by offering accurate data, interactive tools, intelligent recommendations, and personalized trainer progress in one application.
+
+---
+
+# Core Principles
+
+Pokémon Companion is built around six guiding principles:
+
+- **Accuracy** — Pokémon data should be complete, version-aware, and thoroughly validated.
+- **Scalability** — New games, mechanics, and generations should be added with minimal architectural changes.
+- **Maintainability** — Modular systems, reusable utilities, and automated validation should simplify long-term development.
+- **Performance** — Fast loading times and responsive interactions across desktop and mobile devices.
+- **Accessibility** — Interfaces should be intuitive and usable for every trainer.
+- **Longevity** — The project should continue evolving alongside the Pokémon franchise.
 
 ---
 
@@ -20,26 +35,31 @@ Create a single application that replaces the need to switch between multiple Po
 
 ## Primary Goals
 
-- Help players achieve 100% completion in every Pokémon game.
-- Provide the most complete Pokémon encyclopedia available.
-- Track every collectible and milestone.
-- Offer intelligent recommendations using AI.
-- Deliver a modern, fast, and responsive user experience.
+- Build the most complete Pokémon encyclopedia available.
+- Help trainers achieve 100% completion in every supported Pokémon game.
+- Track every collectible, milestone, and achievement.
+- Provide intelligent recommendations through future AI features.
+- Deliver a modern, responsive, and enjoyable user experience.
+
+---
 
 ## Long-Term Goals
 
 - Support every mainline Pokémon game.
 - Support major spin-off titles where practical.
-- Enable cloud synchronization across devices.
-- Build an active trainer community with social features.
+- Synchronize progress across multiple devices.
+- Build an active trainer community.
+- Continue expanding alongside future Pokémon generations.
 
 ---
 
-# Core Modules
+# Application Modules
+
+---
 
 ## 🏠 Homepage
 
-The landing page introducing Pokémon Companion and providing access to all major features.
+The landing page introducing Pokémon Companion and providing access to every major feature.
 
 ---
 
@@ -51,20 +71,20 @@ Features include:
 
 - Continue Adventure
 - Quick Actions
-- Team Overview
 - Recent Activity
+- Team Overview
 - Pokédex Progress
-- Achievement Progress
 - Collection Statistics
+- Achievement Progress
 - Daily Goals
 
 ---
 
 ## 📚 Pokémon Encyclopedia
 
-A complete reference covering every Pokémon and related game data.
+A comprehensive reference covering every Pokémon and related game information.
 
-### Pokémon Database
+### Pokémon
 
 - National Pokédex
 - Regional Pokédexes
@@ -73,65 +93,67 @@ A complete reference covering every Pokémon and related game data.
 - Gigantamax Forms
 - Evolution Chains
 - Base Stats
-- Typing
+- Types
+- Abilities
 - Locations
 - Learnsets
 
-### Move Database
+### Moves
 
 - Level-Up Moves
 - TM Moves
 - HM Moves
-- Egg Moves
 - Tutor Moves
+- Egg Moves
 - Move Effects
-- Move Distribution
+- Historical Changes
+- Version-Specific Data
 
-### Ability Database
+### Abilities
 
 - Standard Abilities
 - Hidden Abilities
 - Battle Effects
-- Ability Distribution
+- Historical Changes
 
-### Item Database
+### Items
 
 - Healing Items
-- Poké Balls
 - Evolution Items
-- Battle Items
-- Key Items
-- Berries
 - Held Items
-- Technical Machines (TMs)
-- Hidden Machines (HMs)
+- Battle Items
+- Poké Balls
+- Berries
+- Key Items
+- TMs
+- HMs
 
 ---
 
 # 🌍 World Explorer
 
-Explore every Pokémon region interactively.
+Explore every Pokémon region through interactive maps.
 
-## Interactive Maps
+## World Data
 
 - Regions
-- Cities
 - Routes
+- Cities
 - Caves
 - Forests
-- Oceans
 - Islands
+- Oceans
 
 ## Discoverable Content
 
 - Hidden Items
-- NPC Locations
+- NPCs
 - Trainers
 - Shops
-- Gyms
 - Pokémon Centers
-- Fishing Spots
-- Surf Spots
+- Gyms
+- Fishing Locations
+- Surf Locations
 - Secret Bases
 - Legendary Encounters
 
@@ -139,24 +161,22 @@ Explore every Pokémon region interactively.
 
 # 🎮 Adventure Tracker
 
-Track your progress throughout every Pokémon game.
+Track progression through every supported Pokémon game.
 
-### Pokédex Tracking
+### Pokédex Progress
 
 - National Dex
 - Living Dex
+- Regional Dex
 - Shiny Dex
-- Gender Dex
 - Form Dex
-- Regional Forms
-- Mega Forms
-- Gigantamax Forms
+- Gender Differences
 
 ### Story Progress
 
 - Gym Badges
 - Elite Four
-- Champion Status
+- Champion
 - Story Milestones
 - Side Quests
 - Trainer Battles
@@ -164,14 +184,13 @@ Track your progress throughout every Pokémon game.
 ### Completion Tracking
 
 - Hidden Items
-- TMs Collected
-- HMs Collected
 - Legendary Pokémon
 - Mythical Pokémon
-- Battle Frontier
-- Contest Wins
-- Pokéathlon
-- Trainer Card Stars
+- TMs
+- HMs
+- Battle Facilities
+- Contest Progress
+- Trainer Card Progress
 
 ---
 
@@ -179,7 +198,7 @@ Track your progress throughout every Pokémon game.
 
 Create and manage Pokémon teams.
 
-Features:
+Features include:
 
 - Unlimited Teams
 - Type Coverage Analysis
@@ -187,40 +206,42 @@ Features:
 - Team Statistics
 - Move Suggestions
 - Item Suggestions
-- Export & Share Teams
+- Team Export
+- Team Sharing
 
 ---
 
 # 🤖 AI Assistant
 
-Future AI-powered companion.
+A future intelligent Pokémon companion.
 
-Capabilities may include:
+Potential capabilities:
 
 - Team Recommendations
 - Battle Strategy
-- Move Suggestions
 - Adventure Guidance
+- Collection Advice
+- Move Suggestions
 - Location Assistance
-- Completion Advice
-- Question & Answer Support
+- Natural Language Search
+- General Pokémon Questions
 
 ---
 
 # 👥 Community
 
-Planned social features.
+Future social features.
 
 - Friend System
 - Trainer Profiles
 - Public Collections
 - Achievement Sharing
 - Leaderboards
-- Challenges
+- Community Challenges
 
 ---
 
-# Technical Stack
+# Technical Architecture
 
 ## Frontend
 
@@ -228,43 +249,91 @@ Planned social features.
 - CSS3
 - Vanilla JavaScript
 
+---
+
 ## Backend
 
 - Node.js
 - Express.js
 
-## Database
+---
 
-- MongoDB
+## Data Architecture
+
+### Generated Pokémon Database
+
+Automatically generated datasets including:
+
+- Pokémon
+- Species
+- Moves
+- Abilities
+- Types
+- Damage Classes
+- Move Targets
+- Version Groups
+- Historical Data
+- Legacy Data
+
+Every generated dataset is validated before being committed.
+
+### User Database
+
+MongoDB stores user-specific information including:
+
+- Accounts
+- Teams
+- Collections
+- Adventure Progress
+- Achievements
+- Preferences
+
+---
 
 ## Future Integrations
 
 - AI Services
-- Cloud Sync
 - OCR Recognition
 - Save File Import
 - Pokémon HOME (subject to feasibility)
+- Cloud Synchronization
+
+---
+
+# Development Philosophy
+
+The project follows a **database-first** development approach.
+
+Core Pokémon data is generated automatically from trusted external sources and verified using a multi-phase validation pipeline before frontend or backend features consume it.
+
+This approach prioritizes:
+
+- Data accuracy
+- Consistency
+- Maintainability
+- Scalability
 
 ---
 
 # Design Principles
 
 - Mobile-first responsive design
-- Accessibility-focused interface
+- Accessible user interface
 - Modular architecture
 - Reusable UI components
 - Fast page loading
-- Scalable codebase
-- Backend-ready frontend
+- Version-aware Pokémon data
+- Long-term maintainability
 
 ---
 
 # Success Criteria
 
-The project will be considered successful when it:
+Pokémon Companion will be considered successful when it:
 
-- Provides a complete Pokémon encyclopedia.
-- Helps trainers complete every supported game.
-- Offers intuitive navigation and modern UI.
+- Provides one of the most complete Pokémon encyclopedias available.
+- Helps trainers complete every supported Pokémon game.
+- Offers a modern and intuitive user experience.
 - Reduces reliance on multiple external Pokémon resources.
-- Becomes a reliable companion for casual and competitive trainers alike.
+- Continues evolving alongside new Pokémon generations.
+- Serves as a reliable companion for casual, completionist, and competitive players alike.

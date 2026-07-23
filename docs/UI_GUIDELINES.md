@@ -1,32 +1,52 @@
 # UI Guidelines
 
-This document defines the design system used throughout Pokémon Companion. Every page should follow these guidelines to ensure a consistent user experience.
+This document defines the design system and frontend standards used throughout Pokémon Companion.
+
+Every page, component, and feature should follow these guidelines to ensure a consistent, accessible, scalable, and maintainable user experience.
+
+---
+
+# Design Philosophy
+
+Pokémon Companion follows five core design principles:
+
+- **Consistency** — Similar interactions should always behave the same.
+- **Clarity** — Information should be easy to understand at a glance.
+- **Scalability** — Components should support future expansion.
+- **Accessibility** — Every trainer should be able to use the application comfortably.
+- **Performance** — Interfaces should remain fast and responsive.
 
 ---
 
 # Design Principles
 
-- Clean and modern
+Every page should be:
+
+- Clean
+- Modern
 - Mobile-first
 - Responsive
 - Accessible
 - Fast
-- Consistent
-- Reusable components
-- Minimal visual clutter
+- Modular
+- Data-driven
+- Reusable
+- Minimal
+
+Avoid unnecessary visual clutter.
 
 ---
 
 # Page Structure
 
-Every page should follow the same structure.
+Every page should follow a consistent layout.
 
 ```
 Navbar
 
-Main Content
-
 Page Header
+
+Main Content
 
 Content Sections
 
@@ -36,41 +56,69 @@ Footer
 Each page should include:
 
 - Page title
-- Optional page description
+- Optional description
 - Breadcrumbs (where appropriate)
 - Responsive layout
 - Consistent spacing
+- Loading state
+- Empty state
+- Error state
 
 ---
 
-# Color Palette
+# Layout Guidelines
+
+Pages should use reusable layout containers.
+
+Examples:
+
+- Container
+- Section
+- Grid
+- Flex layouts
+- Sidebar layouts
+- Split layouts
+
+Avoid custom layouts unless necessary.
+
+---
+
+# Color System
 
 All colors must use CSS variables defined in `global.css`.
 
-Do **not** hardcode colors.
+Never hardcode colors.
 
-## Primary
+## Brand Colors
 
 - Primary
 - Primary Hover
 - Primary Active
 
-## Secondary
+---
+
+## Secondary Colors
 
 - Secondary
 - Secondary Hover
 
-## Surface
+---
+
+## Surface Colors
 
 - Background
 - Surface
 - Elevated Surface
 
-## Text
+---
 
-- Primary Text
-- Secondary Text
-- Muted Text
+## Text Colors
+
+- Primary
+- Secondary
+- Muted
+
+---
 
 ## Status Colors
 
@@ -78,6 +126,25 @@ Do **not** hardcode colors.
 - Warning
 - Error
 - Info
+
+---
+
+## Pokémon Type Colors
+
+Type colors should be defined globally and reused throughout the application.
+
+Examples:
+
+- Fire
+- Water
+- Grass
+- Electric
+- Psychic
+- Dragon
+- Ghost
+- Steel
+
+Avoid redefining type colors on individual pages.
 
 ---
 
@@ -93,6 +160,8 @@ Use the global typography scale.
 - H4
 - H5
 
+---
+
 ## Body
 
 - Large
@@ -100,47 +169,48 @@ Use the global typography scale.
 - Small
 - Caption
 
-Text should be easy to read on all screen sizes.
+Typography should remain readable across all supported screen sizes.
 
 ---
 
 # Spacing
 
-Use the global spacing scale.
+Use only the global spacing scale.
 
 ```
-4px
-8px
-12px
-16px
-20px
-24px
-32px
-40px
-48px
-64px
-80px
-96px
+4
+8
+12
+16
+20
+24
+32
+40
+48
+64
+80
+96
 ```
 
-Avoid arbitrary spacing values.
+Never use arbitrary spacing values unless absolutely necessary.
 
 ---
 
 # Border Radius
 
-Use only the predefined radius variables.
+Use predefined radius variables.
 
 - Small
 - Medium
 - Large
 - Extra Large
+- Pill (where appropriate)
 
 ---
 
 # Shadows
 
-Use predefined shadow variables.
+Use shared shadow variables.
 
 - Small
 - Medium
@@ -154,7 +224,7 @@ Avoid creating custom shadows for individual pages.
 
 All buttons should use shared button components.
 
-Types:
+Supported button styles:
 
 - Primary
 - Secondary
@@ -163,7 +233,7 @@ Types:
 - Icon
 - Danger
 
-States:
+Supported states:
 
 - Default
 - Hover
@@ -178,7 +248,7 @@ States:
 
 All forms should maintain a consistent appearance.
 
-Elements:
+Supported controls:
 
 - Labels
 - Inputs
@@ -187,57 +257,67 @@ Elements:
 - Checkboxes
 - Radio Buttons
 - Toggles
+- Search Inputs
 
-Validation:
+Validation states:
 
 - Success
 - Warning
 - Error
 
+Forms should provide clear validation feedback.
+
 ---
 
 # Cards
 
-Use shared card components.
+Cards are one of the primary UI building blocks.
 
-Cards should include:
+Every card should provide:
 
 - Consistent padding
 - Border radius
 - Elevation
-- Hover effect
 - Responsive layout
+- Hover feedback (where appropriate)
+
+Avoid creating page-specific card styles when shared components are sufficient.
 
 ---
 
 # Navigation
 
-Navigation should remain consistent across all pages.
+Navigation should remain consistent across the application.
 
-Includes:
+Components include:
 
 - Navbar
 - Mobile Navigation
+- Sidebar
 - Breadcrumbs
 - Pagination
 - Tabs
+
+Navigation should clearly indicate the current page.
 
 ---
 
 # Icons
 
-Icons should be:
+Icons should:
 
-- Consistent style
-- Properly aligned
-- Accessible
-- Used only when they improve usability
+- Use a consistent style
+- Be visually aligned
+- Improve usability
+- Include accessible labels when necessary
+
+Avoid decorative icons that do not provide value.
 
 ---
 
 # Components
 
-Reusable components include:
+Shared components include:
 
 - Buttons
 - Cards
@@ -247,6 +327,7 @@ Reusable components include:
 - Progress Bars
 - Tooltips
 - Modals
+- Dialogs
 - Dropdowns
 - Accordions
 - Tabs
@@ -254,39 +335,64 @@ Reusable components include:
 - Empty States
 - Loading Indicators
 - Skeleton Loaders
+- Toast Notifications
 
-Avoid creating duplicate versions of existing components.
+Always reuse existing components before creating new ones.
+
+---
+
+# Data Presentation
+
+Database-driven pages should display information consistently.
+
+Examples:
+
+- Pokémon Cards
+- Move Cards
+- Ability Cards
+- Search Results
+- Lists
+- Tables
+- Statistics
+
+Every data view should support:
+
+- Loading
+- Empty
+- Error
+- Success
 
 ---
 
 # Animations
 
-Animations should be subtle and improve usability.
+Animations should improve usability rather than distract from it.
 
 Allowed:
 
-- Fade In
-- Fade Out
-- Hover Lift
-- Scale
+- Fade
 - Slide
+- Scale
+- Hover Lift
+- Collapse
+- Expand
 - Progress Fill
 - Loading Spinner
-- Smooth Collapse
 
 Avoid:
 
-- Flashing animations
+- Flashing
 - Excessive bouncing
+- Long delays
 - Distracting motion
 
-Respect reduced-motion accessibility preferences where possible.
+Respect the user's reduced-motion accessibility preferences.
 
 ---
 
 # Responsive Design
 
-Breakpoints:
+Supported breakpoints:
 
 - Mobile
 - Tablet
@@ -294,7 +400,9 @@ Breakpoints:
 - Desktop
 - Large Desktop
 
-Layouts should adapt gracefully without horizontal scrolling.
+Layouts should adapt without horizontal scrolling.
+
+Content should remain readable at every breakpoint.
 
 ---
 
@@ -305,18 +413,21 @@ Every page should:
 - Support keyboard navigation
 - Use semantic HTML
 - Maintain sufficient color contrast
-- Include visible focus states
-- Provide descriptive labels for form controls
-- Include alt text for meaningful images
+- Provide visible focus indicators
+- Include descriptive labels
+- Include alt text where appropriate
+- Support screen readers where practical
+
+Accessibility should never be treated as an optional enhancement.
 
 ---
 
 # CSS Architecture
 
-Stylesheets should follow this responsibility split:
+Stylesheets follow a shared responsibility model.
 
 - `global.css` — Reset, variables, typography, spacing, colors
-- `shared.css` — Reusable components and utilities
+- `shared.css` — Shared components, layouts, and utilities
 - Page CSS — Page-specific layout and styling only
 
 Page styles should never redefine shared components unless customization is required.
@@ -325,47 +436,70 @@ Page styles should never redefine shared components unless customization is requ
 
 # JavaScript Guidelines
 
-- Keep page logic in its own JavaScript file.
-- Place shared utilities in `shared.js`.
+- Keep page logic inside dedicated JavaScript files.
+- Place reusable utilities inside `shared.js`.
 - Avoid inline JavaScript.
+- Prefer modular functions.
 - Use event delegation where appropriate.
-- Keep functions modular and reusable.
+- Minimize global variables.
 
 ---
 
 # Naming Conventions
 
-Use descriptive, semantic class names.
+Use semantic, descriptive class names.
 
-Examples:
+Good examples:
 
 ```
-dashboard-header
 pokemon-card
 team-grid
-search-bar
+dashboard-header
 progress-card
+search-bar
+ability-badge
+move-list
 ```
 
-Avoid names tied only to appearance such as:
+Avoid names based only on appearance.
+
+Bad examples:
 
 ```
 red-box
 left-panel
-big-button
+blue-button
+big-card
 ```
+
+---
+
+# Performance Guidelines
+
+Frontend code should prioritize performance.
+
+Recommendations:
+
+- Lazy-load large assets
+- Optimize images
+- Minimize layout shifts
+- Avoid unnecessary DOM updates
+- Reuse components whenever possible
 
 ---
 
 # Quality Checklist
 
-Before completing a page, verify:
+Before completing any page, verify:
 
-- Responsive on all supported screen sizes
+- Responsive across supported screen sizes
 - Consistent spacing
-- Reuses shared components
+- Shared components reused
 - No duplicate CSS
 - Accessible markup
 - Clean HTML structure
 - Optimized assets
 - No console errors
+- Proper loading state
+- Proper empty state
+- Proper error state

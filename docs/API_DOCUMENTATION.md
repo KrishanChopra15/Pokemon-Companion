@@ -1,6 +1,8 @@
 # API Documentation
 
-This document outlines the planned REST API endpoints for Pokémon Companion.
+This document describes the planned REST API for Pokémon Companion.
+
+The API is designed to provide access to Pokémon data, trainer information, collections, game progress, and future AI-powered features. While the database generation pipeline is complete, most public API endpoints are still under development.
 
 ---
 
@@ -12,9 +14,50 @@ This document outlines the planned REST API endpoints for Pokémon Companion.
 
 ---
 
+# API Status
+
+| Module | Status |
+|---------|--------|
+| Authentication | 📝 Planned |
+| Pokémon | 📝 Planned |
+| Species | 📝 Planned |
+| Moves | 📝 Planned |
+| Abilities | 📝 Planned |
+| Types | 📝 Planned |
+| Items | 🚧 Planned |
+| Teams | 🚧 Planned |
+| Adventure Tracker | 🚧 Planned |
+| Collections | 🚧 Planned |
+| AI Assistant | 🔮 Future |
+| Friends | 🔮 Future |
+
+---
+
+# Response Format
+
+Successful requests will return:
+
+```json
+{
+    "success": true,
+    "data": {}
+}
+```
+
+Errors will return:
+
+```json
+{
+    "success": false,
+    "message": "Error description"
+}
+```
+
+---
+
 # Authentication
 
-## POST /login
+## POST `/login`
 
 Authenticate an existing trainer.
 
@@ -22,7 +65,7 @@ Authenticate an existing trainer.
 
 ---
 
-## POST /register
+## POST `/register`
 
 Create a new trainer account.
 
@@ -30,17 +73,17 @@ Create a new trainer account.
 
 ---
 
-## POST /logout
+## POST `/logout`
 
-Logout the current trainer.
+Logout the authenticated trainer.
 
 **Status:** Planned
 
 ---
 
-## GET /me
+## GET `/me`
 
-Return the currently authenticated trainer.
+Retrieve the currently authenticated trainer.
 
 **Status:** Planned
 
@@ -48,24 +91,56 @@ Return the currently authenticated trainer.
 
 # Pokémon
 
-## GET /pokemon
+## GET `/pokemon`
 
-Retrieve a list of Pokémon.
+Retrieve a paginated list of Pokémon.
 
 Supports:
 
 - Pagination
 - Search
-- Filters
 - Sorting
+- Filtering
+- Regional Pokédex
+- Generation filtering
+- Type filtering
 
 **Status:** Planned
 
 ---
 
-## GET /pokemon/:id
+## GET `/pokemon/:id`
 
 Retrieve detailed information for a single Pokémon.
+
+Returns:
+
+- Basic Information
+- Stats
+- Types
+- Abilities
+- Forms
+- Evolution Chain
+- Sprites
+- Artwork
+
+**Status:** Planned
+
+---
+
+# Species
+
+## GET `/species`
+
+Retrieve Pokémon species.
+
+**Status:** Planned
+
+---
+
+## GET `/species/:id`
+
+Retrieve detailed species information.
 
 **Status:** Planned
 
@@ -73,17 +148,31 @@ Retrieve detailed information for a single Pokémon.
 
 # Moves
 
-## GET /moves
+## GET `/moves`
 
 Retrieve all Pokémon moves.
+
+Supports:
+
+- Search
+- Damage Class
+- Type
+- Generation
+- Sorting
 
 **Status:** Planned
 
 ---
 
-## GET /moves/:id
+## GET `/moves/:id`
 
-Retrieve details for a specific move.
+Retrieve detailed move information.
+
+Includes:
+
+- Current move data
+- Historical changes
+- Move effects
 
 **Status:** Planned
 
@@ -91,17 +180,40 @@ Retrieve details for a specific move.
 
 # Abilities
 
-## GET /abilities
+## GET `/abilities`
 
-Retrieve all abilities.
+Retrieve all Pokémon abilities.
 
 **Status:** Planned
 
 ---
 
-## GET /abilities/:id
+## GET `/abilities/:id`
 
-Retrieve a specific ability.
+Retrieve detailed ability information.
+
+Includes:
+
+- Current ability data
+- Historical effect changes
+
+**Status:** Planned
+
+---
+
+# Types
+
+## GET `/types`
+
+Retrieve all Pokémon types.
+
+**Status:** Planned
+
+---
+
+## GET `/types/:id`
+
+Retrieve a specific Pokémon type.
 
 **Status:** Planned
 
@@ -109,7 +221,7 @@ Retrieve a specific ability.
 
 # Items
 
-## GET /items
+## GET `/items`
 
 Retrieve all items.
 
@@ -117,9 +229,9 @@ Retrieve all items.
 
 ---
 
-## GET /items/:id
+## GET `/items/:id`
 
-Retrieve item details.
+Retrieve detailed item information.
 
 **Status:** Planned
 
@@ -127,23 +239,23 @@ Retrieve item details.
 
 # Teams
 
-## GET /teams
+## GET `/teams`
 
-Retrieve all teams belonging to the authenticated user.
-
-**Status:** Planned
-
----
-
-## POST /teams
-
-Create a new Pokémon team.
+Retrieve all saved teams.
 
 **Status:** Planned
 
 ---
 
-## PUT /teams/:id
+## POST `/teams`
+
+Create a new team.
+
+**Status:** Planned
+
+---
+
+## PUT `/teams/:id`
 
 Update an existing team.
 
@@ -151,7 +263,7 @@ Update an existing team.
 
 ---
 
-## DELETE /teams/:id
+## DELETE `/teams/:id`
 
 Delete a saved team.
 
@@ -161,17 +273,17 @@ Delete a saved team.
 
 # Adventure Tracker
 
-## GET /tracker
+## GET `/tracker`
 
-Retrieve the trainer's adventure progress.
+Retrieve game progress.
 
 **Status:** Planned
 
 ---
 
-## POST /tracker
+## POST `/tracker`
 
-Create or update adventure progress.
+Create or update game progress.
 
 **Status:** Planned
 
@@ -179,7 +291,7 @@ Create or update adventure progress.
 
 # Badges
 
-## GET /badges
+## GET `/badges`
 
 Retrieve badge progress.
 
@@ -187,9 +299,9 @@ Retrieve badge progress.
 
 ---
 
-## PUT /badges/:id
+## PUT `/badges/:id`
 
-Update the status of a Gym Badge.
+Update badge completion.
 
 **Status:** Planned
 
@@ -197,15 +309,15 @@ Update the status of a Gym Badge.
 
 # Collections
 
-## GET /collection
+## GET `/collection`
 
-Retrieve the user's Pokémon collection.
+Retrieve Living Dex and collection progress.
 
 **Status:** Planned
 
 ---
 
-## PUT /collection
+## PUT `/collection`
 
 Update collection progress.
 
@@ -215,7 +327,7 @@ Update collection progress.
 
 # Achievements
 
-## GET /achievements
+## GET `/achievements`
 
 Retrieve unlocked achievements.
 
@@ -225,9 +337,17 @@ Retrieve unlocked achievements.
 
 # Search
 
-## GET /search
+## GET `/search`
 
-Search across Pokémon, moves, abilities, items, and locations.
+Global search across:
+
+- Pokémon
+- Species
+- Moves
+- Abilities
+- Types
+- Items
+- Locations
 
 **Status:** Planned
 
@@ -235,9 +355,16 @@ Search across Pokémon, moves, abilities, items, and locations.
 
 # AI Assistant
 
-## POST /ai/chat
+## POST `/ai/chat`
 
-Send a question to the AI Assistant.
+Send a message to the Pokémon AI Assistant.
+
+Future capabilities include:
+
+- Team recommendations
+- Battle advice
+- Pokémon suggestions
+- Adventure guidance
 
 **Status:** Future
 
@@ -245,7 +372,7 @@ Send a question to the AI Assistant.
 
 # Friends
 
-## GET /friends
+## GET `/friends`
 
 Retrieve the user's friends.
 
@@ -253,7 +380,7 @@ Retrieve the user's friends.
 
 ---
 
-## POST /friends
+## POST `/friends`
 
 Send a friend request.
 
@@ -261,8 +388,45 @@ Send a friend request.
 
 ---
 
-## DELETE /friends/:id
+## DELETE `/friends/:id`
 
 Remove a friend.
 
 **Status:** Future
+
+---
+
+# Versioning
+
+The API follows semantic versioning.
+
+Current version:
+
+```
+v1
+```
+
+Future breaking changes will be introduced through new API versions without affecting existing clients.
+
+---
+
+# Development Notes
+
+The custom Pokémon database powering these endpoints is generated using automated scripts and validated before release.
+
+Current validated datasets include:
+
+- Pokémon
+- Species
+- Moves
+- Abilities
+- Types
+- Damage Classes
+- Move Targets
+- Version Groups
+- Historical Move Data
+- Historical Ability Data
+- Historical Move Effect Data
+- Legacy Pokémon Types
+
+Additional endpoints will be implemented as new datasets become available.

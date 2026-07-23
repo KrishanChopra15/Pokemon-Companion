@@ -20,5 +20,27 @@
             "noDamageFrom": []
         },
         "legacy": true
+    },
+    {
+        "id": 10002,
+        "apiName": "shadow",
+        "name": "Shadow",
+        "color": "#5B3A8E",
+        "gradient": {
+            "start": "#7B5CB8",
+            "end": "#2D1B4E"
+        },
+        "emoji": "🌑",
+        "icon": "assets/icons/types/shadow.svg",
+        "description": "The Shadow type was introduced in Pokémon Colosseum and Pokémon XD: Gale of Darkness. It is exclusive to Shadow Pokémon and was never part of the main series battle type system.",
+        "damageRelations": {
+            "doubleDamageTo": [],
+            "doubleDamageFrom": [],
+            "halfDamageTo": [],
+            "halfDamageFrom": [],
+            "noDamageTo": [],
+            "noDamageFrom": []
+        },
+        "legacy": true
     }
 ]

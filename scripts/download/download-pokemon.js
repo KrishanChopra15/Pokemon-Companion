@@ -4,10 +4,10 @@ const path = require("path");
 const {
     toTitleCase,
     saveJSON,
-    getIdFromUrl
+    getIdFromUrl,
+    getResourceList,
+    createNamedApiReference
 } = require("../utils");
-
-const { TOTAL_POKEMON } = require("../config");
 
 const OUTPUT_FILE = path.join(
     __dirname,
@@ -20,7 +20,16 @@ async function downloadPokemon() {
 
         const pokemonList = [];
 
-        for (let id = 1; id <= TOTAL_POKEMON; id++) {
+        const pokemonResources =
+            await getResourceList(
+                "pokemon"
+            );
+        
+        for (const pokemonResource of pokemonResources) {
+        
+            const id = getIdFromUrl(
+                pokemonResource.url
+            );
 
             console.log(`Downloading Pokémon #${id}...`);
 
@@ -34,9 +43,11 @@ async function downloadPokemon() {
 
             const stats = pokemon.stats;
 
-            const types = pokemon.types;
+            const pokemonTypes =
+                pokemon.types;
 
-            const abilities = pokemon.abilities;
+            const pokemonAbilities =
+                pokemon.abilities;
 
             pokemonList.push({
 
@@ -81,24 +92,24 @@ async function downloadPokemon() {
                 
                 },
 
-                types: types
+                types: pokemonTypes
                     .map(type => ({
                     
-                        id: getIdFromUrl(type.type.url),
-                    
-                        name: toTitleCase(type.type.name),
+                        ...createNamedApiReference(
+                            type.type
+                        ),
                     
                         slot: type.slot
                     
                     }))
                     .sort((a, b) => a.slot - b.slot),
 
-                abilities: abilities
+                abilities: pokemonAbilities
                     .map(ability => ({
                     
-                        id: getIdFromUrl(ability.ability.url),
-                    
-                        name: toTitleCase(ability.ability.name),
+                        ...createNamedApiReference(
+                            ability.ability
+                        ),
                     
                         hidden: ability.is_hidden,
                     

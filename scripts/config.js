@@ -1,7 +1,0 @@
-module.exports = {
-    TOTAL_POKEMON: 1025,
-    TOTAL_ABILITIES: 307,
-    TOTAL_DAMAGE_CLASSES: 3,
-    TOTAL_MOVE_TARGETS: 14,
-    TOTAL_MOVES: 937
-};

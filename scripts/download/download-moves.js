@@ -3,16 +3,15 @@ const path = require("path");
 
 const {
     formatApiName,
-    formatGeneration,
     saveJSON,
-    getIdFromUrl,
     hasFlag,
-    cleanFlavorText
-} = require("../utils");
-
-const {
-    TOTAL_MOVES
-} = require("../config");
+    cleanFlavorText,
+    getIdFromUrl,
+    createGenerationReference,
+    createVersionGroupReference,
+    createNamedApiReference,
+    getResourceList
+} = require("../utils")
 
 const versionGroups = require(
     "../../database/version-groups.json"
@@ -29,11 +28,16 @@ async function downloadMoves() {
 
         const moves = [];
 
-        for (
-            let id = 1;
-            id <= TOTAL_MOVES;
-            id++
-        ) {
+        const moveList =
+            await getResourceList(
+                "move"
+            );
+        
+        for (const moveResource of moveList) {
+        
+            const id = getIdFromUrl(
+                moveResource.url
+            );
 
             console.log(
                 `Downloading Move #${id}...`
@@ -186,19 +190,11 @@ async function downloadMoves() {
             
                 versions.push({
 
-                    versionGroup: {
-                    
-                        id: versionGroup.id,
-                    
-                        order: versionGroup.order,
-                    
-                        apiName:
-                            versionGroup.apiName,
-                    
-                        name:
-                            versionGroup.name
-                    
-                    },
+                    versionGroup:
+                        createVersionGroupReference(
+                            versionGroup,
+                            true
+                        ),
                 
                     power,
                 
@@ -208,15 +204,10 @@ async function downloadMoves() {
                 
                     effectChance,
                 
-                    type: {
-                    
-                        id: getIdFromUrl(type.url),
-                    
-                        name: formatApiName(
-                            type.name
-                        )
-                    
-                    },
+                    type:
+                        createNamedApiReference(
+                            type
+                        ),
                 
                     description:
                 
@@ -236,53 +227,25 @@ async function downloadMoves() {
                     move.name
                 ),
             
-                generation: {
-                
-                    id: getIdFromUrl(
-                        generation.url
+                generation:
+                    createGenerationReference(
+                        generation
                     ),
-                
-                    name: formatGeneration(
-                        generation.name
-                    )
-                
-                },
             
-                type: {
-                
-                    id: getIdFromUrl(
-                        type.url
+                type:
+                    createNamedApiReference(
+                        type
                     ),
-                
-                    name: formatApiName(
-                        type.name
-                    )
-                
-                },
             
-                damageClass: {
-                
-                    id: getIdFromUrl(
-                        damageClass.url
+                damageClass:
+                    createNamedApiReference(
+                        damageClass
                     ),
-                
-                    name: formatApiName(
-                        damageClass.name
-                    )
-                
-                },
             
-                target: {
-                
-                    id: getIdFromUrl(
-                        target.url
+                target:
+                    createNamedApiReference(
+                        target
                     ),
-                
-                    name: formatApiName(
-                        target.name
-                    )
-                
-                },
             
                 priority: move.priority,
 
@@ -311,17 +274,9 @@ async function downloadMoves() {
                 contest: {
                 
                     type: contestType
-                        ? {
-                        
-                            id: getIdFromUrl(
-                                contestType.url
-                            ),
-                        
-                            name: formatApiName(
-                                contestType.name
-                            )
-                        
-                        }
+                        ? createNamedApiReference(
+                            contestType
+                        )
                         : null,
                     
                     effect: contestEffect
@@ -339,72 +294,49 @@ async function downloadMoves() {
                 },
 
                 meta: meta
-                    ? {
+                ? {
+                
+                    ailment: meta.ailment
+                        ? createNamedApiReference(
+                            meta.ailment
+                        )
+                        : null,
                     
-                        ailment: meta.ailment
-                            ? {
-                            
-                                id: getIdFromUrl(
-                                    meta.ailment.url
-                                ),
-                            
-                                name: formatApiName(
-                                    meta.ailment.name
-                                )
-                            
-                            }
-                            : null,
-                        
-                        category: meta.category
-                            ? {
-                            
-                                id: getIdFromUrl(
-                                    meta.category.url
-                                ),
-                            
-                                name: formatApiName(
-                                    meta.category.name
-                                )
-                            
-                            }
-                            : null,
-                        
-                        minHits: meta.min_hits,
-                        
-                        maxHits: meta.max_hits,
-                        
-                        minTurns: meta.min_turns,
-                        
-                        maxTurns: meta.max_turns,
-                        
-                        drain: meta.drain,
-                        
-                        healing: meta.healing,
-                        
-                        critRate: meta.crit_rate,
-                        
-                        ailmentChance: meta.ailment_chance,
-                        
-                        flinchChance: meta.flinch_chance,
-                        
-                        statChance: meta.stat_chance
-                        
-                    }
-                    : null,
+                    category: meta.category
+                        ? createNamedApiReference(
+                            meta.category
+                        )
+                        : null,
+                    
+                    minHits: meta.min_hits,
+                    
+                    maxHits: meta.max_hits,
+                    
+                    minTurns: meta.min_turns,
+                    
+                    maxTurns: meta.max_turns,
+                    
+                    drain: meta.drain,
+                    
+                    healing: meta.healing,
+                    
+                    critRate: meta.crit_rate,
+                    
+                    ailmentChance: meta.ailment_chance,
+                    
+                    flinchChance: meta.flinch_chance,
+                    
+                    statChance: meta.stat_chance
+                    
+                }
+                : null,
 
                 statChanges: statChanges.map(change => ({
                 
-                    stat: {
-                    
-                        id: getIdFromUrl(
-                            change.stat.url
+                    stat:
+                        createNamedApiReference(
+                            change.stat
                         ),
-                    
-                        name: formatApiName(
-                            change.stat.name
-                        )
-                    
-                    },
                 
                     change: change.change
                 

@@ -4,12 +4,12 @@ const path = require("path");
 const {
     toTitleCase,
     saveJSON,
-    formatGeneration,
     cleanFlavorText,
-    getIdFromUrl
+    getIdFromUrl,
+    createPokemonReference,
+    createGenerationReference,
+    getResourceList
 } = require("../utils");
-
-const { TOTAL_ABILITIES } = require("../config");
 
 const metadata = require(
     "../../database/metadata/ability-metadata.json"
@@ -23,37 +23,61 @@ const OUTPUT_FILE = path.join(
 async function downloadAbilities() {
 
     try {
-
         const abilities = [];
+        
+        const abilityList =
+            await getResourceList(
+                "ability"
+            );
+        
+        for (const abilityResource of abilityList) {
+        
+            const id = getIdFromUrl(
+                abilityResource.url
+            );
+        
 
-        for (let id = 1; id <= TOTAL_ABILITIES; id++) {
+            console.log(
+                `Downloading Ability #${id}...`
+            );
 
-            console.log(`Downloading Ability #${id}...`);
-
-            const { data: ability } = await axios.get(
+            const {
+                data: ability
+            } = await axios.get(
                 `https://pokeapi.co/api/v2/ability/${id}`
             );
 
-            const effectEntry = ability.effect_entries.find(
-                entry => entry.language.name === "en"
-            );
+            const effectEntry =
+                ability.effect_entries.find(
+                    entry =>
+                        entry.language.name === "en"
+                );
 
-            const flavorEntry = ability.flavor_text_entries.find(
-                entry => entry.language.name === "en"
-            );
+            const flavorEntry =
+                ability.flavor_text_entries.find(
+                    entry =>
+                        entry.language.name === "en"
+                );
 
-            const abilityMetadata =
-                metadata[toTitleCase(ability.name)] || {};
+            const metadataEntry =
+                metadata[
+                    toTitleCase(
+                        ability.name
+                    )
+                ] || {};
 
             abilities.push({
 
                 id: ability.id,
 
-                name: toTitleCase(ability.name),
-
-                generation: formatGeneration(
-                    ability.generation.name
+                name: toTitleCase(
+                    ability.name
                 ),
+
+                generation:
+                    createGenerationReference(
+                        ability.generation
+                    ),
 
                 description: cleanFlavorText(
                     flavorEntry?.flavor_text
@@ -70,24 +94,29 @@ async function downloadAbilities() {
                 isMainSeries:
                     ability.is_main_series,
 
-                pokemon:
-                    ability.pokemon
-                        .map(entry =>
-                            getIdFromUrl(entry.pokemon.url)
+                pokemon: ability.pokemon
+                    .map(entry =>
+                        createPokemonReference(
+                            entry.pokemon
                         )
-                        .sort((a, b) => a - b),
+                    )
+                    .sort(
+                        (a, b) => a - b
+                    ),
 
                 icon:
-                    abilityMetadata.icon || null,
+                    metadataEntry.icon ?? null,
 
                 color:
-                    abilityMetadata.color || null
+                    metadataEntry.color ?? null
 
             });
 
         }
 
-        abilities.sort((a, b) => a.id - b.id);
+        abilities.sort(
+            (a, b) => a.id - b.id
+        );
 
         saveJSON(
             OUTPUT_FILE,
@@ -100,9 +129,13 @@ async function downloadAbilities() {
 
     } catch (error) {
 
-        console.error("Error downloading abilities:");
+        console.error(
+            "Error downloading abilities:"
+        );
 
-        console.error(error.message);
+        console.error(
+            error.message
+        );
 
     }
 

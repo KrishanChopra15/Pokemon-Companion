@@ -1,5 +1,19 @@
 const fs = require("fs");
 
+const axios = require("axios");
+
+const versionGroups = require(
+    "../database/version-groups.json"
+);
+
+const versionGroupApiMap = new Map(
+    versionGroups.map(group => [
+        group.apiName,
+        group
+    ])
+);
+/* Formatting */
+
 /**
  * Converts a string to Title Case.
  * Examples:
@@ -17,27 +31,6 @@ function toTitleCase(text) {
         .replace(/\b\w/g, char => char.toUpperCase());
 
     }
-
-/**
- * Extracts the numeric ID from a PokéAPI URL.
- * Example:
- * https://pokeapi.co/api/v2/type/10/
- * -> 10
- */
-function getIdFromUrl(url) {
-
-    if (!url) {
-        return null;
-    }
-
-    return Number(
-        url
-            .split("/")
-            .filter(Boolean)
-            .pop()
-    );
-
-}
 
 /**
  * Converts PokéAPI generation names into readable text.
@@ -162,6 +155,8 @@ function formatApiName(name) {
 
 }
 
+/* Cleaning */
+
 /**
  * Cleans text returned by PokéAPI.
  */
@@ -182,6 +177,54 @@ function cleanFlavorText(text) {
 
 }
 
+function cleanEffectText(
+    text
+) {
+
+    if (!text) {
+
+        return null;
+
+    }
+
+    return text
+
+        // [Defense]{mechanic:defense} → Defense
+        .replace(
+            /\[([^\]]+)\]\{[^}]+\}/g,
+            "$1"
+        )
+
+        // []{move:dig} → Dig
+        .replace(
+            /\[\]\{move:([^}]+)\}/g,
+            (_, move) => formatApiName(move)
+        )
+
+        // []{type:normal} → Normal
+        .replace(
+            /\[\]\{type:([^}]+)\}/g,
+            (_, type) => formatApiName(type)
+        )
+
+        .replace(
+            /\[\]\{ability:([^}]+)\}/g,
+            (_, ability) => formatApiName(
+                ability
+            )
+        )
+
+        // Remove extra spaces
+        .replace(
+            /\s+/g,
+            " "
+        )
+
+        .trim();
+}
+
+/* JSON */
+
 /**
  * Saves JSON data to a file.
  */
@@ -194,6 +237,8 @@ function saveJSON(filePath, data) {
     );
 
 }
+
+/* General Utilities */
 
 /**
  * Converts an array of objects with a `name` property
@@ -219,6 +264,27 @@ function hasFlag(flags, name) {
 
 }
 
+/**
+ * Extracts the numeric ID from a PokéAPI URL.
+ * Example:
+ * https://pokeapi.co/api/v2/type/10/
+ * -> 10
+ */
+function getIdFromUrl(url) {
+
+    if (!url) {
+        return null;
+    }
+
+    return Number(
+        url
+            .split("/")
+            .filter(Boolean)
+            .pop()
+    );
+
+}
+
 function createLookupMap(
     primary,
     legacy = []
@@ -237,17 +303,248 @@ function createLookupMap(
 
 }
 
+/* Reference Builders */
+
+/**
+ * Creates a lightweight reference object
+ * from a PokéAPI resource or local database object.
+ */
+function createNamedApiReference(
+    resource
+) {
+
+    if (!resource) {
+
+        return null;
+
+    }
+
+    return {
+
+        id:
+            resource.id ??
+            getIdFromUrl(
+                resource.url
+            ),
+
+        name: formatApiName(
+            resource.name
+        )
+
+    };
+
+}
+
+function createVersionGroupReference(
+    versionGroup,
+    includeOrder = false
+) {
+
+    if (!versionGroup) {
+
+        return null;
+
+    }
+
+    const reference = {
+
+        id: versionGroup.id,
+
+        apiName: versionGroup.apiName,
+
+        name: versionGroup.name
+
+    };
+
+    if (includeOrder) {
+
+        reference.order =
+            versionGroup.order;
+
+    }
+
+    return reference;
+
+}
+
+/**
+ * Creates a Generation reference.
+ */
+function createGenerationReference(
+    generation
+) {
+
+    if (!generation) {
+
+        return null;
+
+    }
+
+    return {
+
+        id: getIdFromUrl(
+            generation.url
+        ),
+
+        name: formatGeneration(
+            generation.name
+        )
+
+    };
+
+}
+
+function createGameReference(
+    game
+) {
+
+    return createNamedApiReference(
+        game
+    );
+
+}
+
+function createPokemonReference(
+    pokemon
+) {
+
+    if (!pokemon) {
+
+        return null;
+
+    }
+
+    return getIdFromUrl(
+        pokemon.url
+    );
+
+}
+
+function createTypeReference(
+    type
+) {
+
+    if (!type) {
+
+        return null;
+
+    }
+
+    const reference =
+        createNamedApiReference(
+            type
+        );
+
+    if (type.legacy) {
+
+        reference.legacy = true;
+
+    }
+
+    return reference;
+
+}
+
+function createTargetReference(
+    target
+) {
+
+    return createNamedApiReference(
+        target
+    );
+
+}
+
+/**
+ * Returns all resources for a PokéAPI endpoint.
+ */
+async function getResourceList(
+    endpoint
+) {
+
+    const {
+        data
+    } = await axios.get(
+        `https://pokeapi.co/api/v2/${endpoint}?limit=100000`
+    );
+
+    return data.results;
+
+}
+
+/**
+ * Creates a lookup that maps each
+ * version name to its version group.
+ */
+async function getVersionGroupLookup() {
+
+    const versions =
+        await getResourceList(
+            "version"
+        );
+
+    const lookup = new Map();
+
+    for (const version of versions) {
+
+        const id = getIdFromUrl(
+            version.url
+        );
+
+        const {
+            data
+        } = await axios.get(
+            `https://pokeapi.co/api/v2/version/${id}`
+        );
+
+        const versionGroup =
+            versionGroupApiMap.get(
+                data.version_group.name
+            );
+
+        lookup.set(
+
+            data.name,
+
+            createVersionGroupReference(
+                versionGroup,
+                true
+            )
+
+        );
+
+    }
+
+    return lookup;
+
+}
+
 module.exports = {
 
     toTitleCase,
-    getIdFromUrl,
     formatGeneration,
     formatGameName,
     formatVersionGroup,
     formatApiName,
+
     cleanFlavorText,
+    cleanEffectText,
+
     saveJSON,
+
     sortTitleCaseNames,
     hasFlag,
-    createLookupMap
+    getIdFromUrl,
+    createLookupMap,
+
+    createNamedApiReference,
+    createVersionGroupReference,
+    createGenerationReference,
+    createGameReference,
+    createPokemonReference,
+    createTypeReference,
+    createTargetReference,
+
+    getResourceList,
+    getVersionGroupLookup
 };

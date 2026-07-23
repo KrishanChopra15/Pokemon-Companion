@@ -1,0 +1,282 @@
+{
+    "1": {
+        "effectId": 8,
+        "versionGroup": {
+            "id": 11,
+            "apiName": "black-white",
+            "name": "Black White"
+        },
+        "shortEffect": "User faints.",
+        "effect": "Halves the target's Defense for damage calculation, which is similar to doubling the attack's power."
+    },
+    "2": {
+        "effectId": 18,
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver"
+        },
+        "shortEffect": "Never misses.",
+        "effect": "Hits Pokémon under the effects of Dig and Fly."
+    },
+    "3": {
+        "effectId": 29,
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver"
+        },
+        "shortEffect": "Immediately ends wild battles. Forces trainers to switch Pokémon.",
+        "effect": "Does nothing in trainer battles."
+    },
+    "4": {
+        "effectId": 38,
+        "versionGroup": {
+            "id": 8,
+            "apiName": "diamond-pearl",
+            "name": "Diamond Pearl"
+        },
+        "shortEffect": "User sleeps for two turns, completely healing itself.",
+        "effect": "Works while asleep through Sleep Talk if not at full health."
+    },
+    "5": {
+        "effectId": 46,
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver"
+        },
+        "shortEffect": "If the user misses, it takes half the damage it would have inflicted in recoil.",
+        "effect": "If this move misses, the user takes 1 point of damage in recoil."
+    },
+    "6": {
+        "effectId": 46,
+        "versionGroup": {
+            "id": 11,
+            "apiName": "black-white",
+            "name": "Black White"
+        },
+        "shortEffect": "If the user misses, it takes half the damage it would have inflicted in recoil.",
+        "effect": "If this move misses, the user takes half of the damage it would have inflicted in recoil."
+    },
+    "7": {
+        "effectId": 82,
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver"
+        },
+        "shortEffect": "If the user is hit after using this move, its Attack rises by one stage.",
+        "effect": "Locks the user into this move. Due to a bug, if this move misses, its accuracy drops to 1/256 as long as the user is still locked in."
+    },
+    "8": {
+        "effectId": 84,
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver"
+        },
+        "shortEffect": "Randomly selects and uses any move in the game.",
+        "effect": "Can call any move except for Struggle and itself."
+    },
+    "9": {
+        "effectId": 109,
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver"
+        },
+        "shortEffect": "Raises the user's evasion by two stages.",
+        "effect": "Does not interact with Stomp."
+    },
+    "10": {
+        "effectId": 109,
+        "versionGroup": {
+            "id": 11,
+            "apiName": "black-white",
+            "name": "Black White"
+        },
+        "shortEffect": "Raises the user's evasion by two stages.",
+        "effect": "Raises evasion by one stage."
+    },
+    "11": {
+        "effectId": 146,
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver"
+        },
+        "shortEffect": "Raises the user's Defense by one stage. User charges for one turn before attacking.",
+        "effect": "Does not raise Defense."
+    },
+    "12": {
+        "effectId": 148,
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver"
+        },
+        "shortEffect": "Inflicts regular damage and can hit Dig users.",
+        "effect": "Does not hit Pokémon under the effects of Dig."
+    },
+    "13": {
+        "effectId": 150,
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver"
+        },
+        "shortEffect": "Inflicts regular damage and can hit Pokémon in the air.",
+        "effect": "Does not hit Pokémon under the effects of Fly."
+    },
+    "14": {
+        "effectId": 151,
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver"
+        },
+        "shortEffect": "Has a $effect_chance% chance to make the target flinch.",
+        "effect": "Does not interact with Minimize."
+    },
+    "15": {
+        "effectId": 153,
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver"
+        },
+        "shortEffect": "Has a $effect_chance% chance to paralyze the target.",
+        "effect": "Does not hit Pokémon under the effects of Fly."
+    },
+    "16": {
+        "effectId": 155,
+        "versionGroup": {
+            "id": 11,
+            "apiName": "black-white",
+            "name": "Black White"
+        },
+        "shortEffect": "Hits once for every conscious Pokémon the trainer has.",
+        "effect": "Determines damage using each participant's base Attack and the opponent's base Defense in place of calculated stats."
+    },
+    "17": {
+        "effectId": 156,
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver"
+        },
+        "shortEffect": "User flies high into the air, dodging all attacks, and hits next turn.",
+        "effect": "Swift can hit the user while in the air, and no other moves can. Due to a bug, if the user fails to carry out the move's second turn, e.g. due to paralysis, it remains in the air until it switches out or uses Fly again successfully. It can act as if it were on the ground in the meantime, but moves still miss it."
+    },
+    "18": {
+        "effectId": 161,
+        "versionGroup": {
+            "id": 8,
+            "apiName": "diamond-pearl",
+            "name": "Diamond Pearl"
+        },
+        "shortEffect": "Stores energy up to three times for use with Spit Up and Swallow.",
+        "effect": "Does not raise Defense or Special Defense."
+    },
+    "19": {
+        "effectId": 175,
+        "versionGroup": {
+            "id": 8,
+            "apiName": "diamond-pearl",
+            "name": "Diamond Pearl"
+        },
+        "shortEffect": "Raises the user's Special Defense by one stage. User's Electric moves have doubled power next turn.",
+        "effect": "Does not raise the user's Special Defense."
+    },
+    "20": {
+        "effectId": 180,
+        "versionGroup": {
+            "id": 11,
+            "apiName": "black-white",
+            "name": "Black White"
+        },
+        "shortEffect": "User will recover half its max HP at the end of the next turn.",
+        "effect": "Heals replacement Pokémon by half of their max HP."
+    },
+    "21": {
+        "effectId": 255,
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver"
+        },
+        "shortEffect": "User takes 1/4 its max HP in recoil.",
+        "effect": "Inflicts Normal-type damage."
+    },
+    "22": {
+        "effectId": 257,
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver"
+        },
+        "shortEffect": "User digs underground, dodging all attacks, and hits next turn.",
+        "effect": "Swift can hit the user while underground, and no other moves can. Due to a bug, if the user fails to carry out the move's second turn, e.g. due to paralysis, it remains underground until it switches out or uses Dig again successfully. It can act as if it were aboveground in the meantime, but moves still miss it."
+    },
+    "23": {
+        "effectId": 261,
+        "versionGroup": {
+            "id": 8,
+            "apiName": "diamond-pearl",
+            "name": "Diamond Pearl"
+        },
+        "shortEffect": "Has a $effect_chance% chance to freeze the target.",
+        "effect": "Does not interact with Hail."
+    },
+    "24": {
+        "effectId": 274,
+        "versionGroup": {
+            "id": 11,
+            "apiName": "black-white",
+            "name": "Black White"
+        },
+        "shortEffect": "Has a $effect_chance% chance to burn the target and a $effect_chance% chance to make the target flinch.",
+        "effect": "Ignores Wonder Guard."
+    },
+    "25": {
+        "effectId": 27,
+        "versionGroup": {
+            "id": 8,
+            "apiName": "diamond-pearl",
+            "name": "Diamond Pearl"
+        },
+        "shortEffect": "User waits for two turns, then hits back for twice the damage it took.",
+        "effect": "Lasts either two or three turns."
+    },
+    "26": {
+        "effectId": 224,
+        "versionGroup": {
+            "id": 11,
+            "apiName": "black-white",
+            "name": "Black White"
+        },
+        "shortEffect": "Hits through Protect and Detect.",
+        "effect": "If the target is not under the effect of Detect or Protect, this move will fail."
+    },
+    "27": {
+        "effectId": 255,
+        "versionGroup": {
+            "id": 8,
+            "apiName": "diamond-pearl",
+            "name": "Diamond Pearl"
+        },
+        "shortEffect": "User takes 1/4 its max HP in recoil.",
+        "effect": "The user receieves 1/2 of the damage dealt in recoil."
+    },
+    "28": {
+        "effectId": 187,
+        "versionGroup": {
+            "id": 11,
+            "apiName": "black-white",
+            "name": "Black White"
+        },
+        "shortEffect": "Destroys Reflect and Light Screen.",
+        "effect": "The barriers are destroyed even if this move has no effect."
+    }
+}

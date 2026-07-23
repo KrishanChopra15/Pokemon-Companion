@@ -3,9 +3,10 @@ const path = require("path");
 
 const {
     saveJSON,
-    getIdFromUrl,
-    formatGeneration,
-    formatApiName
+    formatApiName,
+    getResourceList,
+    createGenerationReference,
+    createGameReference
 } = require("../utils");
 
 const OUTPUT_FILE = path.join(
@@ -19,60 +20,57 @@ async function downloadVersionGroups() {
 
         const versionGroups = [];
 
-        const { data } = await axios.get(
-            "https://pokeapi.co/api/v2/version-group?limit=100"
-        );
+        const versionGroupResources =
+            await getResourceList(
+                "version-group"
+            );
 
-        for (const versionGroupInfo of data.results) {
+        for (const versionGroupResource of versionGroupResources) {
 
             console.log(
-                `Downloading ${versionGroupInfo.name}...`
+                `Downloading ${versionGroupResource.name}...`
             );
 
-            const { data: versionGroup } = await axios.get(
-                versionGroupInfo.url
+            const {
+                data: versionGroup
+            } = await axios.get(
+                versionGroupResource.url
             );
+
+            const generation =
+                createGenerationReference(
+                    versionGroup.generation
+                );
 
             versionGroups.push({
-            
+
                 id: versionGroup.id,
-            
+
                 order: versionGroup.order,
 
-                generationOrder: getIdFromUrl(
-                    versionGroup.generation.url
-                ),
+                generationOrder:
+                    generation.id,
 
-                apiName: versionGroup.name,
-            
-                name: formatApiName(
-                    versionGroup.name
-                ),
-            
-                generation: {
-                
-                    id: getIdFromUrl(
-                        versionGroup.generation.url
+                apiName:
+                    versionGroup.name,
+
+                name:
+                    formatApiName(
+                        versionGroup.name
                     ),
-                
-                    name: formatGeneration(
-                        versionGroup.generation.name
-                    )
-                
-                },
-            
-                games: versionGroup.versions.map(game => ({
-                
-                    id: getIdFromUrl(
-                        game.url
-                    ),
-                
-                    name: formatApiName(
-                        game.name
-                    )
-                
-                }))
-            
+
+                generation,
+
+                games:
+                    versionGroup.versions
+                        .map(
+                            createGameReference
+                        )
+                        .sort(
+                            (a, b) =>
+                                a.id - b.id
+                        )
+
             });
 
         }
@@ -96,7 +94,9 @@ async function downloadVersionGroups() {
             "Error downloading version groups:"
         );
 
-        console.error(error.message);
+        console.error(
+            error.message
+        );
 
     }
 

@@ -68,5 +68,15 @@
         "id": 14,
         "name": "All Pokemon",
         "description": "Every Pokémon on the field."
+    },
+    {
+        "id": 15,
+        "name": "All Allies",
+        "description": "All of the user’s allies."
+    },
+    {
+        "id": 16,
+        "name": "Fainting Pokemon",
+        "description": ""
     }
 ]

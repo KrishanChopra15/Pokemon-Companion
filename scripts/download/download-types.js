@@ -4,79 +4,154 @@ const path = require("path");
 const {
     toTitleCase,
     saveJSON,
-    sortTitleCaseNames
+    getResourceList,
+    createNamedApiReference
 } = require("../utils");
 
-const metadata = require("../../database/metadata/type-metadata.json");
+const metadata = require(
+    "../../database/metadata/type-metadata.json"
+);
+
 const OUTPUT_FILE = path.join(
     __dirname,
     "../../database/types.json"
 );
 
 async function downloadTypes() {
+
     try {
-        const response = await axios.get(
-            "https://pokeapi.co/api/v2/type"
-        );
+
+        const typeResources =
+            await getResourceList(
+                "type"
+            );
 
         const types = [];
 
-        for (const typeInfo of response.data.results) {
+        for (const typeResource of typeResources) {
 
-            if (["unknown", "shadow"].includes(typeInfo.name)) {
+            if (
+                ["unknown", "shadow"].includes(
+                    typeResource.name
+                )
+            ) {
+
                 continue;
+
             }
 
-            console.log(`Downloading ${typeInfo.name}...`);
+            console.log(
+                `Downloading ${typeResource.name}...`
+            );
 
-            const typeResponse = await axios.get(typeInfo.url);
+            const {
+                data: type
+            } = await axios.get(
+                typeResource.url
+            );
 
-            const type = typeResponse.data;
+            const metadataEntry =
+                metadata[
+                    toTitleCase(type.name)
+                ] || {};
 
-            const typeName = toTitleCase(type.name);
-
-            const typeMetadata = metadata[typeName] || {};
-
-            const damage = type.damage_relations;
+            const damage =
+                type.damage_relations;
 
             types.push({
-            
+
                 id: type.id,
-                name: typeName,
-            
-                color: typeMetadata.color || null,           
-                gradient: typeMetadata.gradient || null,         
-                emoji: typeMetadata.emoji || "",            
-                icon: typeMetadata.icon || null,           
-                description: typeMetadata.description || "",
+
+                name: toTitleCase(
+                    type.name
+                ),
+
+                color:
+                    metadataEntry.color ?? null,
+
+                gradient:
+                    metadataEntry.gradient ?? null,
+
+                emoji:
+                    metadataEntry.emoji ?? "",
+
+                icon:
+                    metadataEntry.icon ?? null,
+
+                description:
+                    metadataEntry.description ?? "",
 
                 damageRelations: {
-                
+
                     doubleDamageTo:
-                        sortTitleCaseNames(damage.double_damage_to),
-                
+                        damage.double_damage_to
+                            .map(
+                                createNamedApiReference
+                            )
+                            .sort(
+                                (a, b) =>
+                                    a.id - b.id
+                            ),
+
                     halfDamageTo:
-                        sortTitleCaseNames(damage.half_damage_to),
-                
+                        damage.half_damage_to
+                            .map(
+                                createNamedApiReference
+                            )
+                            .sort(
+                                (a, b) =>
+                                    a.id - b.id
+                            ),
+
                     noDamageTo:
-                        sortTitleCaseNames(damage.no_damage_to),
-                
+                        damage.no_damage_to
+                            .map(
+                                createNamedApiReference
+                            )
+                            .sort(
+                                (a, b) =>
+                                    a.id - b.id
+                            ),
+
                     doubleDamageFrom:
-                        sortTitleCaseNames(damage.double_damage_from),
-                
+                        damage.double_damage_from
+                            .map(
+                                createNamedApiReference
+                            )
+                            .sort(
+                                (a, b) =>
+                                    a.id - b.id
+                            ),
+
                     halfDamageFrom:
-                        sortTitleCaseNames(damage.half_damage_from),
-                
+                        damage.half_damage_from
+                            .map(
+                                createNamedApiReference
+                            )
+                            .sort(
+                                (a, b) =>
+                                    a.id - b.id
+                            ),
+
                     noDamageFrom:
-                        sortTitleCaseNames(damage.no_damage_from)
-                
+                        damage.no_damage_from
+                            .map(
+                                createNamedApiReference
+                            )
+                            .sort(
+                                (a, b) =>
+                                    a.id - b.id
+                            )
+
                 }
-            
+
             });
 
         }
 
-        types.sort((a, b) => a.id - b.id);
+        types.sort(
+            (a, b) => a.id - b.id
+        );
 
         saveJSON(
             OUTPUT_FILE,
@@ -87,11 +162,15 @@ async function downloadTypes() {
             `Successfully downloaded ${types.length} Pokémon types.`
         );
 
-        } catch (error) {
+    } catch (error) {
 
-        console.error("Error downloading types:");
+        console.error(
+            "Error downloading types:"
+        );
 
-        console.error(error.message);
+        console.error(
+            error.message
+        );
 
     }
 

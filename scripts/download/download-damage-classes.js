@@ -3,12 +3,10 @@ const path = require("path");
 
 const {
     toTitleCase,
-    saveJSON
+    saveJSON,
+    getIdFromUrl,
+    getResourceList
 } = require("../utils");
-
-const {
-    TOTAL_DAMAGE_CLASSES
-} = require("../config");
 
 const OUTPUT_FILE = path.join(
     __dirname,
@@ -21,25 +19,34 @@ async function downloadDamageClasses() {
 
         const damageClasses = [];
 
-        for (
-            let id = 1;
-            id <= TOTAL_DAMAGE_CLASSES;
-            id++
-        ) {
+        const damageClassList =
+            await getResourceList(
+                "move-damage-class"
+            );
+
+        for (const damageClassResource of damageClassList) {
+
+            const id = getIdFromUrl(
+                damageClassResource.url
+            );
 
             console.log(
                 `Downloading Damage Class #${id}...`
             );
 
-            const { data } = await axios.get(
+            const {
+                data: damageClass
+            } = await axios.get(
                 `https://pokeapi.co/api/v2/move-damage-class/${id}`
             );
 
             damageClasses.push({
 
-                id: data.id,
+                id: damageClass.id,
 
-                name: toTitleCase(data.name)
+                name: toTitleCase(
+                    damageClass.name
+                )
 
             });
 
@@ -64,7 +71,9 @@ async function downloadDamageClasses() {
             "Error downloading damage classes:"
         );
 
-        console.error(error.message);
+        console.error(
+            error.message
+        );
 
     }
 

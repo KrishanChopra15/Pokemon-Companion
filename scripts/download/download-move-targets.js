@@ -3,12 +3,10 @@ const path = require("path");
 
 const {
     formatApiName,
-    saveJSON
+    saveJSON,
+    getIdFromUrl,
+    getResourceList
 } = require("../utils");
-
-const {
-    TOTAL_MOVE_TARGETS
-} = require("../config");
 
 const OUTPUT_FILE = path.join(
     __dirname,
@@ -21,34 +19,43 @@ async function downloadMoveTargets() {
 
         const moveTargets = [];
 
-        for (
-            let id = 1;
-            id <= TOTAL_MOVE_TARGETS;
-            id++
-        ) {
+        const moveTargetList =
+            await getResourceList(
+                "move-target"
+            );
+
+        for (const moveTargetResource of moveTargetList) {
+
+            const id = getIdFromUrl(
+                moveTargetResource.url
+            );
 
             console.log(
                 `Downloading Move Target #${id}...`
             );
 
-            const { data } = await axios.get(
+            const {
+                data: moveTarget
+            } = await axios.get(
                 `https://pokeapi.co/api/v2/move-target/${id}`
             );
 
-            const description = data.descriptions.find(
-                entry => entry.language.name === "en"
-            );
+            const description =
+                moveTarget.descriptions.find(
+                    entry =>
+                        entry.language.name === "en"
+                );
 
             moveTargets.push({
 
-                id: data.id,
+                id: moveTarget.id,
 
                 name: formatApiName(
-                    data.name
+                    moveTarget.name
                 ),
 
                 description:
-                    description?.description || ""
+                    description?.description ?? ""
 
             });
 
@@ -73,7 +80,9 @@ async function downloadMoveTargets() {
             "Error downloading move targets:"
         );
 
-        console.error(error.message);
+        console.error(
+            error.message
+        );
 
     }
 

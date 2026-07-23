@@ -3,7 +3,11 @@ const path = require("path");
 
 const {
     saveJSON,
-    createLookupMap
+    createLookupMap,
+    cleanEffectText,
+    createVersionGroupReference,
+    createTypeReference,
+    createTargetReference
 } = require("../utils");
 
 const versionGroups = require(
@@ -65,9 +69,11 @@ const rows = database.prepare(`
         mc.effect_id,
         mc.effect_chance
     FROM move_changelog mc
+    JOIN version_groups vg
+        ON vg.id = mc.changed_in_version_group_id
     ORDER BY
         mc.move_id,
-        mc.changed_in_version_group_id;
+        vg."order";
 `).all();
 
 const history = new Map();
@@ -83,21 +89,14 @@ for (const row of rows) {
 
     }
 
-    const versionGroup = versionGroupMap.get(
-        row.changed_in_version_group_id
-    );
-
     const change = {
 
-        versionGroup: {
-
-            id: versionGroup.id,
-
-            apiName: versionGroup.apiName,
-
-            name: versionGroup.name
-
-        }
+        versionGroup:
+            createVersionGroupReference(
+                versionGroupMap.get(
+                    row.changed_in_version_group_id
+                )
+            )
 
     };
 
@@ -134,43 +133,29 @@ for (const row of rows) {
 
     if (row.type_id) {
 
-        const type = typeMap.get(
-            row.type_id
-        );
-
-        change.type = {
-        
-            id: type.id,
-        
-            name: type.name
-        
-        };
-
-        if (type.legacy) {
-        
-            change.type.legacy = true;
-        
-        }
+        change.type =
+            createTypeReference(
+                typeMap.get(
+                    row.type_id
+                )
+            );
 
     }
 
     if (row.target_id) {
 
-        const target = targetMap.get(
-            row.target_id
-        );
-
-        change.target = {
-
-            id: target.id,
-
-            name: target.name
-
-        };
+        change.target =
+            createTargetReference(
+                targetMap.get(
+                    row.target_id
+                )
+            );
 
     }
 
-    history.get(row.move_id).push(
+    history.get(
+        row.move_id
+    ).push(
         change
     );
 

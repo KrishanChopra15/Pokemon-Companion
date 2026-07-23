@@ -13,18 +13,33 @@
         "damageRelations": {
             "doubleDamageTo": [],
             "halfDamageTo": [
-                "Rock",
-                "Steel"
+                {
+                    "id": 6,
+                    "name": "Rock"
+                },
+                {
+                    "id": 9,
+                    "name": "Steel"
+                }
             ],
             "noDamageTo": [
-                "Ghost"
+                {
+                    "id": 8,
+                    "name": "Ghost"
+                }
             ],
             "doubleDamageFrom": [
-                "Fighting"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                }
             ],
             "halfDamageFrom": [],
             "noDamageFrom": [
-                "Ghost"
+                {
+                    "id": 8,
+                    "name": "Ghost"
+                }
             ]
         }
     },
@@ -41,31 +56,82 @@
         "description": "Fighting-type Pokémon rely on physical strength, martial arts, and close-range combat techniques.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Dark",
-                "Ice",
-                "Normal",
-                "Rock",
-                "Steel"
+                {
+                    "id": 1,
+                    "name": "Normal"
+                },
+                {
+                    "id": 6,
+                    "name": "Rock"
+                },
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 15,
+                    "name": "Ice"
+                },
+                {
+                    "id": 17,
+                    "name": "Dark"
+                }
             ],
             "halfDamageTo": [
-                "Bug",
-                "Fairy",
-                "Flying",
-                "Poison",
-                "Psychic"
+                {
+                    "id": 3,
+                    "name": "Flying"
+                },
+                {
+                    "id": 4,
+                    "name": "Poison"
+                },
+                {
+                    "id": 7,
+                    "name": "Bug"
+                },
+                {
+                    "id": 14,
+                    "name": "Psychic"
+                },
+                {
+                    "id": 18,
+                    "name": "Fairy"
+                }
             ],
             "noDamageTo": [
-                "Ghost"
+                {
+                    "id": 8,
+                    "name": "Ghost"
+                }
             ],
             "doubleDamageFrom": [
-                "Fairy",
-                "Flying",
-                "Psychic"
+                {
+                    "id": 3,
+                    "name": "Flying"
+                },
+                {
+                    "id": 14,
+                    "name": "Psychic"
+                },
+                {
+                    "id": 18,
+                    "name": "Fairy"
+                }
             ],
             "halfDamageFrom": [
-                "Bug",
-                "Dark",
-                "Rock"
+                {
+                    "id": 6,
+                    "name": "Rock"
+                },
+                {
+                    "id": 7,
+                    "name": "Bug"
+                },
+                {
+                    "id": 17,
+                    "name": "Dark"
+                }
             ],
             "noDamageFrom": []
         }
@@ -83,28 +149,67 @@
         "description": "Flying-type Pokémon dominate the skies with aerial speed, agility, and wind-based techniques.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Bug",
-                "Fighting",
-                "Grass"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                },
+                {
+                    "id": 7,
+                    "name": "Bug"
+                },
+                {
+                    "id": 12,
+                    "name": "Grass"
+                }
             ],
             "halfDamageTo": [
-                "Electric",
-                "Rock",
-                "Steel"
+                {
+                    "id": 6,
+                    "name": "Rock"
+                },
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 13,
+                    "name": "Electric"
+                }
             ],
             "noDamageTo": [],
             "doubleDamageFrom": [
-                "Electric",
-                "Ice",
-                "Rock"
+                {
+                    "id": 6,
+                    "name": "Rock"
+                },
+                {
+                    "id": 13,
+                    "name": "Electric"
+                },
+                {
+                    "id": 15,
+                    "name": "Ice"
+                }
             ],
             "halfDamageFrom": [
-                "Bug",
-                "Fighting",
-                "Grass"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                },
+                {
+                    "id": 7,
+                    "name": "Bug"
+                },
+                {
+                    "id": 12,
+                    "name": "Grass"
+                }
             ],
             "noDamageFrom": [
-                "Ground"
+                {
+                    "id": 5,
+                    "name": "Ground"
+                }
             ]
         }
     },
@@ -121,28 +226,70 @@
         "description": "Poison-type Pokémon weaken opponents through toxins, venom, and lingering status effects.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Fairy",
-                "Grass"
+                {
+                    "id": 12,
+                    "name": "Grass"
+                },
+                {
+                    "id": 18,
+                    "name": "Fairy"
+                }
             ],
             "halfDamageTo": [
-                "Ghost",
-                "Ground",
-                "Poison",
-                "Rock"
+                {
+                    "id": 4,
+                    "name": "Poison"
+                },
+                {
+                    "id": 5,
+                    "name": "Ground"
+                },
+                {
+                    "id": 6,
+                    "name": "Rock"
+                },
+                {
+                    "id": 8,
+                    "name": "Ghost"
+                }
             ],
             "noDamageTo": [
-                "Steel"
+                {
+                    "id": 9,
+                    "name": "Steel"
+                }
             ],
             "doubleDamageFrom": [
-                "Ground",
-                "Psychic"
+                {
+                    "id": 5,
+                    "name": "Ground"
+                },
+                {
+                    "id": 14,
+                    "name": "Psychic"
+                }
             ],
             "halfDamageFrom": [
-                "Bug",
-                "Fairy",
-                "Fighting",
-                "Grass",
-                "Poison"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                },
+                {
+                    "id": 4,
+                    "name": "Poison"
+                },
+                {
+                    "id": 7,
+                    "name": "Bug"
+                },
+                {
+                    "id": 12,
+                    "name": "Grass"
+                },
+                {
+                    "id": 18,
+                    "name": "Fairy"
+                }
             ],
             "noDamageFrom": []
         }
@@ -160,30 +307,72 @@
         "description": "Ground-type Pokémon command the earth with devastating earthquakes and powerful terrain-based attacks.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Electric",
-                "Fire",
-                "Poison",
-                "Rock",
-                "Steel"
+                {
+                    "id": 4,
+                    "name": "Poison"
+                },
+                {
+                    "id": 6,
+                    "name": "Rock"
+                },
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                },
+                {
+                    "id": 13,
+                    "name": "Electric"
+                }
             ],
             "halfDamageTo": [
-                "Bug",
-                "Grass"
+                {
+                    "id": 7,
+                    "name": "Bug"
+                },
+                {
+                    "id": 12,
+                    "name": "Grass"
+                }
             ],
             "noDamageTo": [
-                "Flying"
+                {
+                    "id": 3,
+                    "name": "Flying"
+                }
             ],
             "doubleDamageFrom": [
-                "Grass",
-                "Ice",
-                "Water"
+                {
+                    "id": 11,
+                    "name": "Water"
+                },
+                {
+                    "id": 12,
+                    "name": "Grass"
+                },
+                {
+                    "id": 15,
+                    "name": "Ice"
+                }
             ],
             "halfDamageFrom": [
-                "Poison",
-                "Rock"
+                {
+                    "id": 4,
+                    "name": "Poison"
+                },
+                {
+                    "id": 6,
+                    "name": "Rock"
+                }
             ],
             "noDamageFrom": [
-                "Electric"
+                {
+                    "id": 13,
+                    "name": "Electric"
+                }
             ]
         }
     },
@@ -200,29 +389,77 @@
         "description": "Rock-type Pokémon possess exceptional durability and unleash crushing attacks with stone and boulders.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Bug",
-                "Fire",
-                "Flying",
-                "Ice"
+                {
+                    "id": 3,
+                    "name": "Flying"
+                },
+                {
+                    "id": 7,
+                    "name": "Bug"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                },
+                {
+                    "id": 15,
+                    "name": "Ice"
+                }
             ],
             "halfDamageTo": [
-                "Fighting",
-                "Ground",
-                "Steel"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                },
+                {
+                    "id": 5,
+                    "name": "Ground"
+                },
+                {
+                    "id": 9,
+                    "name": "Steel"
+                }
             ],
             "noDamageTo": [],
             "doubleDamageFrom": [
-                "Fighting",
-                "Grass",
-                "Ground",
-                "Steel",
-                "Water"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                },
+                {
+                    "id": 5,
+                    "name": "Ground"
+                },
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 11,
+                    "name": "Water"
+                },
+                {
+                    "id": 12,
+                    "name": "Grass"
+                }
             ],
             "halfDamageFrom": [
-                "Fire",
-                "Flying",
-                "Normal",
-                "Poison"
+                {
+                    "id": 1,
+                    "name": "Normal"
+                },
+                {
+                    "id": 3,
+                    "name": "Flying"
+                },
+                {
+                    "id": 4,
+                    "name": "Poison"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                }
             ],
             "noDamageFrom": []
         }
@@ -240,29 +477,77 @@
         "description": "Bug-type Pokémon rely on speed, swarms, and unique evolutionary traits to outmaneuver opponents.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Dark",
-                "Grass",
-                "Psychic"
+                {
+                    "id": 12,
+                    "name": "Grass"
+                },
+                {
+                    "id": 14,
+                    "name": "Psychic"
+                },
+                {
+                    "id": 17,
+                    "name": "Dark"
+                }
             ],
             "halfDamageTo": [
-                "Fairy",
-                "Fighting",
-                "Fire",
-                "Flying",
-                "Ghost",
-                "Poison",
-                "Steel"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                },
+                {
+                    "id": 3,
+                    "name": "Flying"
+                },
+                {
+                    "id": 4,
+                    "name": "Poison"
+                },
+                {
+                    "id": 8,
+                    "name": "Ghost"
+                },
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                },
+                {
+                    "id": 18,
+                    "name": "Fairy"
+                }
             ],
             "noDamageTo": [],
             "doubleDamageFrom": [
-                "Fire",
-                "Flying",
-                "Rock"
+                {
+                    "id": 3,
+                    "name": "Flying"
+                },
+                {
+                    "id": 6,
+                    "name": "Rock"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                }
             ],
             "halfDamageFrom": [
-                "Fighting",
-                "Grass",
-                "Ground"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                },
+                {
+                    "id": 5,
+                    "name": "Ground"
+                },
+                {
+                    "id": 12,
+                    "name": "Grass"
+                }
             ],
             "noDamageFrom": []
         }
@@ -280,26 +565,56 @@
         "description": "Ghost-type Pokémon use supernatural powers, curses, and spectral abilities to confuse their opponents.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Ghost",
-                "Psychic"
+                {
+                    "id": 8,
+                    "name": "Ghost"
+                },
+                {
+                    "id": 14,
+                    "name": "Psychic"
+                }
             ],
             "halfDamageTo": [
-                "Dark"
+                {
+                    "id": 17,
+                    "name": "Dark"
+                }
             ],
             "noDamageTo": [
-                "Normal"
+                {
+                    "id": 1,
+                    "name": "Normal"
+                }
             ],
             "doubleDamageFrom": [
-                "Dark",
-                "Ghost"
+                {
+                    "id": 8,
+                    "name": "Ghost"
+                },
+                {
+                    "id": 17,
+                    "name": "Dark"
+                }
             ],
             "halfDamageFrom": [
-                "Bug",
-                "Poison"
+                {
+                    "id": 4,
+                    "name": "Poison"
+                },
+                {
+                    "id": 7,
+                    "name": "Bug"
+                }
             ],
             "noDamageFrom": [
-                "Fighting",
-                "Normal"
+                {
+                    "id": 1,
+                    "name": "Normal"
+                },
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                }
             ]
         }
     },
@@ -316,36 +631,99 @@
         "description": "Steel-type Pokémon are incredibly resilient, boasting unmatched defenses and metallic strength.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Fairy",
-                "Ice",
-                "Rock"
+                {
+                    "id": 6,
+                    "name": "Rock"
+                },
+                {
+                    "id": 15,
+                    "name": "Ice"
+                },
+                {
+                    "id": 18,
+                    "name": "Fairy"
+                }
             ],
             "halfDamageTo": [
-                "Electric",
-                "Fire",
-                "Steel",
-                "Water"
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                },
+                {
+                    "id": 11,
+                    "name": "Water"
+                },
+                {
+                    "id": 13,
+                    "name": "Electric"
+                }
             ],
             "noDamageTo": [],
             "doubleDamageFrom": [
-                "Fighting",
-                "Fire",
-                "Ground"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                },
+                {
+                    "id": 5,
+                    "name": "Ground"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                }
             ],
             "halfDamageFrom": [
-                "Bug",
-                "Dragon",
-                "Fairy",
-                "Flying",
-                "Grass",
-                "Ice",
-                "Normal",
-                "Psychic",
-                "Rock",
-                "Steel"
+                {
+                    "id": 1,
+                    "name": "Normal"
+                },
+                {
+                    "id": 3,
+                    "name": "Flying"
+                },
+                {
+                    "id": 6,
+                    "name": "Rock"
+                },
+                {
+                    "id": 7,
+                    "name": "Bug"
+                },
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 12,
+                    "name": "Grass"
+                },
+                {
+                    "id": 14,
+                    "name": "Psychic"
+                },
+                {
+                    "id": 15,
+                    "name": "Ice"
+                },
+                {
+                    "id": 16,
+                    "name": "Dragon"
+                },
+                {
+                    "id": 18,
+                    "name": "Fairy"
+                }
             ],
             "noDamageFrom": [
-                "Poison"
+                {
+                    "id": 4,
+                    "name": "Poison"
+                }
             ]
         }
     },
@@ -362,30 +740,81 @@
         "description": "Fire-type Pokémon specialize in powerful flame-based attacks that can overwhelm opponents with heat and intensity.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Bug",
-                "Grass",
-                "Ice",
-                "Steel"
+                {
+                    "id": 7,
+                    "name": "Bug"
+                },
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 12,
+                    "name": "Grass"
+                },
+                {
+                    "id": 15,
+                    "name": "Ice"
+                }
             ],
             "halfDamageTo": [
-                "Dragon",
-                "Fire",
-                "Rock",
-                "Water"
+                {
+                    "id": 6,
+                    "name": "Rock"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                },
+                {
+                    "id": 11,
+                    "name": "Water"
+                },
+                {
+                    "id": 16,
+                    "name": "Dragon"
+                }
             ],
             "noDamageTo": [],
             "doubleDamageFrom": [
-                "Ground",
-                "Rock",
-                "Water"
+                {
+                    "id": 5,
+                    "name": "Ground"
+                },
+                {
+                    "id": 6,
+                    "name": "Rock"
+                },
+                {
+                    "id": 11,
+                    "name": "Water"
+                }
             ],
             "halfDamageFrom": [
-                "Bug",
-                "Fairy",
-                "Fire",
-                "Grass",
-                "Ice",
-                "Steel"
+                {
+                    "id": 7,
+                    "name": "Bug"
+                },
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                },
+                {
+                    "id": 12,
+                    "name": "Grass"
+                },
+                {
+                    "id": 15,
+                    "name": "Ice"
+                },
+                {
+                    "id": 18,
+                    "name": "Fairy"
+                }
             ],
             "noDamageFrom": []
         }
@@ -403,25 +832,61 @@
         "description": "Water-type Pokémon excel at flowing attacks, adaptability, and defensive strategies in battle.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Fire",
-                "Ground",
-                "Rock"
+                {
+                    "id": 5,
+                    "name": "Ground"
+                },
+                {
+                    "id": 6,
+                    "name": "Rock"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                }
             ],
             "halfDamageTo": [
-                "Dragon",
-                "Grass",
-                "Water"
+                {
+                    "id": 11,
+                    "name": "Water"
+                },
+                {
+                    "id": 12,
+                    "name": "Grass"
+                },
+                {
+                    "id": 16,
+                    "name": "Dragon"
+                }
             ],
             "noDamageTo": [],
             "doubleDamageFrom": [
-                "Electric",
-                "Grass"
+                {
+                    "id": 12,
+                    "name": "Grass"
+                },
+                {
+                    "id": 13,
+                    "name": "Electric"
+                }
             ],
             "halfDamageFrom": [
-                "Fire",
-                "Ice",
-                "Steel",
-                "Water"
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                },
+                {
+                    "id": 11,
+                    "name": "Water"
+                },
+                {
+                    "id": 15,
+                    "name": "Ice"
+                }
             ],
             "noDamageFrom": []
         }
@@ -439,32 +904,89 @@
         "description": "Grass-type Pokémon use nature, plants, and sunlight to recover health and control the battlefield.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Ground",
-                "Rock",
-                "Water"
+                {
+                    "id": 5,
+                    "name": "Ground"
+                },
+                {
+                    "id": 6,
+                    "name": "Rock"
+                },
+                {
+                    "id": 11,
+                    "name": "Water"
+                }
             ],
             "halfDamageTo": [
-                "Bug",
-                "Dragon",
-                "Fire",
-                "Flying",
-                "Grass",
-                "Poison",
-                "Steel"
+                {
+                    "id": 3,
+                    "name": "Flying"
+                },
+                {
+                    "id": 4,
+                    "name": "Poison"
+                },
+                {
+                    "id": 7,
+                    "name": "Bug"
+                },
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                },
+                {
+                    "id": 12,
+                    "name": "Grass"
+                },
+                {
+                    "id": 16,
+                    "name": "Dragon"
+                }
             ],
             "noDamageTo": [],
             "doubleDamageFrom": [
-                "Bug",
-                "Fire",
-                "Flying",
-                "Ice",
-                "Poison"
+                {
+                    "id": 3,
+                    "name": "Flying"
+                },
+                {
+                    "id": 4,
+                    "name": "Poison"
+                },
+                {
+                    "id": 7,
+                    "name": "Bug"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                },
+                {
+                    "id": 15,
+                    "name": "Ice"
+                }
             ],
             "halfDamageFrom": [
-                "Electric",
-                "Grass",
-                "Ground",
-                "Water"
+                {
+                    "id": 5,
+                    "name": "Ground"
+                },
+                {
+                    "id": 11,
+                    "name": "Water"
+                },
+                {
+                    "id": 12,
+                    "name": "Grass"
+                },
+                {
+                    "id": 13,
+                    "name": "Electric"
+                }
             ],
             "noDamageFrom": []
         }
@@ -482,24 +1004,54 @@
         "description": "Electric-type Pokémon harness lightning and electricity to strike quickly with high-speed attacks.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Flying",
-                "Water"
+                {
+                    "id": 3,
+                    "name": "Flying"
+                },
+                {
+                    "id": 11,
+                    "name": "Water"
+                }
             ],
             "halfDamageTo": [
-                "Dragon",
-                "Electric",
-                "Grass"
+                {
+                    "id": 12,
+                    "name": "Grass"
+                },
+                {
+                    "id": 13,
+                    "name": "Electric"
+                },
+                {
+                    "id": 16,
+                    "name": "Dragon"
+                }
             ],
             "noDamageTo": [
-                "Ground"
+                {
+                    "id": 5,
+                    "name": "Ground"
+                }
             ],
             "doubleDamageFrom": [
-                "Ground"
+                {
+                    "id": 5,
+                    "name": "Ground"
+                }
             ],
             "halfDamageFrom": [
-                "Electric",
-                "Flying",
-                "Steel"
+                {
+                    "id": 3,
+                    "name": "Flying"
+                },
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 13,
+                    "name": "Electric"
+                }
             ],
             "noDamageFrom": []
         }
@@ -517,24 +1069,54 @@
         "description": "Psychic-type Pokémon possess extraordinary mental abilities, telekinesis, and powerful psychic energy.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Fighting",
-                "Poison"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                },
+                {
+                    "id": 4,
+                    "name": "Poison"
+                }
             ],
             "halfDamageTo": [
-                "Psychic",
-                "Steel"
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 14,
+                    "name": "Psychic"
+                }
             ],
             "noDamageTo": [
-                "Dark"
+                {
+                    "id": 17,
+                    "name": "Dark"
+                }
             ],
             "doubleDamageFrom": [
-                "Bug",
-                "Dark",
-                "Ghost"
+                {
+                    "id": 7,
+                    "name": "Bug"
+                },
+                {
+                    "id": 8,
+                    "name": "Ghost"
+                },
+                {
+                    "id": 17,
+                    "name": "Dark"
+                }
             ],
             "halfDamageFrom": [
-                "Fighting",
-                "Psychic"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                },
+                {
+                    "id": 14,
+                    "name": "Psychic"
+                }
             ],
             "noDamageFrom": []
         }
@@ -552,26 +1134,65 @@
         "description": "Ice-type Pokémon freeze opponents with chilling attacks and powerful blizzards.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Dragon",
-                "Flying",
-                "Grass",
-                "Ground"
+                {
+                    "id": 3,
+                    "name": "Flying"
+                },
+                {
+                    "id": 5,
+                    "name": "Ground"
+                },
+                {
+                    "id": 12,
+                    "name": "Grass"
+                },
+                {
+                    "id": 16,
+                    "name": "Dragon"
+                }
             ],
             "halfDamageTo": [
-                "Fire",
-                "Ice",
-                "Steel",
-                "Water"
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                },
+                {
+                    "id": 11,
+                    "name": "Water"
+                },
+                {
+                    "id": 15,
+                    "name": "Ice"
+                }
             ],
             "noDamageTo": [],
             "doubleDamageFrom": [
-                "Fighting",
-                "Fire",
-                "Rock",
-                "Steel"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                },
+                {
+                    "id": 6,
+                    "name": "Rock"
+                },
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                }
             ],
             "halfDamageFrom": [
-                "Ice"
+                {
+                    "id": 15,
+                    "name": "Ice"
+                }
             ],
             "noDamageFrom": []
         }
@@ -589,24 +1210,54 @@
         "description": "Dragon-type Pokémon are among the strongest, known for immense power, resilience, and legendary status.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Dragon"
+                {
+                    "id": 16,
+                    "name": "Dragon"
+                }
             ],
             "halfDamageTo": [
-                "Steel"
+                {
+                    "id": 9,
+                    "name": "Steel"
+                }
             ],
             "noDamageTo": [
-                "Fairy"
+                {
+                    "id": 18,
+                    "name": "Fairy"
+                }
             ],
             "doubleDamageFrom": [
-                "Dragon",
-                "Fairy",
-                "Ice"
+                {
+                    "id": 15,
+                    "name": "Ice"
+                },
+                {
+                    "id": 16,
+                    "name": "Dragon"
+                },
+                {
+                    "id": 18,
+                    "name": "Fairy"
+                }
             ],
             "halfDamageFrom": [
-                "Electric",
-                "Fire",
-                "Grass",
-                "Water"
+                {
+                    "id": 10,
+                    "name": "Fire"
+                },
+                {
+                    "id": 11,
+                    "name": "Water"
+                },
+                {
+                    "id": 12,
+                    "name": "Grass"
+                },
+                {
+                    "id": 13,
+                    "name": "Electric"
+                }
             ],
             "noDamageFrom": []
         }
@@ -624,26 +1275,59 @@
         "description": "Dark-type Pokémon specialize in cunning tactics, deception, and powerful moves that exploit opponents' weaknesses.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Ghost",
-                "Psychic"
+                {
+                    "id": 8,
+                    "name": "Ghost"
+                },
+                {
+                    "id": 14,
+                    "name": "Psychic"
+                }
             ],
             "halfDamageTo": [
-                "Dark",
-                "Fairy",
-                "Fighting"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                },
+                {
+                    "id": 17,
+                    "name": "Dark"
+                },
+                {
+                    "id": 18,
+                    "name": "Fairy"
+                }
             ],
             "noDamageTo": [],
             "doubleDamageFrom": [
-                "Bug",
-                "Fairy",
-                "Fighting"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                },
+                {
+                    "id": 7,
+                    "name": "Bug"
+                },
+                {
+                    "id": 18,
+                    "name": "Fairy"
+                }
             ],
             "halfDamageFrom": [
-                "Dark",
-                "Ghost"
+                {
+                    "id": 8,
+                    "name": "Ghost"
+                },
+                {
+                    "id": 17,
+                    "name": "Dark"
+                }
             ],
             "noDamageFrom": [
-                "Psychic"
+                {
+                    "id": 14,
+                    "name": "Psychic"
+                }
             ]
         }
     },
@@ -660,27 +1344,63 @@
         "description": "Fairy-type Pokémon wield mystical magic and charm, making them especially effective against Dragon-type Pokémon.",
         "damageRelations": {
             "doubleDamageTo": [
-                "Dark",
-                "Dragon",
-                "Fighting"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                },
+                {
+                    "id": 16,
+                    "name": "Dragon"
+                },
+                {
+                    "id": 17,
+                    "name": "Dark"
+                }
             ],
             "halfDamageTo": [
-                "Fire",
-                "Poison",
-                "Steel"
+                {
+                    "id": 4,
+                    "name": "Poison"
+                },
+                {
+                    "id": 9,
+                    "name": "Steel"
+                },
+                {
+                    "id": 10,
+                    "name": "Fire"
+                }
             ],
             "noDamageTo": [],
             "doubleDamageFrom": [
-                "Poison",
-                "Steel"
+                {
+                    "id": 4,
+                    "name": "Poison"
+                },
+                {
+                    "id": 9,
+                    "name": "Steel"
+                }
             ],
             "halfDamageFrom": [
-                "Bug",
-                "Dark",
-                "Fighting"
+                {
+                    "id": 2,
+                    "name": "Fighting"
+                },
+                {
+                    "id": 7,
+                    "name": "Bug"
+                },
+                {
+                    "id": 17,
+                    "name": "Dark"
+                }
             ],
             "noDamageFrom": [
-                "Dragon"
+                {
+                    "id": 16,
+                    "name": "Dragon"
+                }
             ]
         }
     },

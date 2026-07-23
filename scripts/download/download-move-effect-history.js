@@ -57,27 +57,33 @@ const history = new Map();
 
 for (const row of rows) {
 
+    const versionGroup =
+        versionGroupMap.get(
+            row.changed_in_version_group_id
+        );
+    
     history.set(
         row.id,
         {
-
-            effectId: row.effect_id,
-
+        
+            effectId:
+                row.effect_id,
+        
             versionGroup:
                 createVersionGroupReference(
-                    versionGroupMap.get(
-                        row.changed_in_version_group_id
-                    )
+                    versionGroup
                 ),
-
-            shortEffect: cleanEffectText(
-                row.short_effect
-            ),
-
-            effect: cleanEffectText(
-                row.effect
-            )
-
+            
+            shortEffect:
+                cleanEffectText(
+                    row.short_effect
+                ),
+            
+            effect:
+                cleanEffectText(
+                    row.effect
+                )
+            
         }
     );
 

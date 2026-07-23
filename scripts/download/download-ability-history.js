@@ -61,21 +61,25 @@ for (const row of rows) {
 
     }
 
+    const versionGroup =
+        versionGroupMap.get(
+            row.changed_in_version_group_id
+        );
+    
     history.get(
         row.ability_id
     ).push({
-
+    
         versionGroup:
             createVersionGroupReference(
-                versionGroupMap.get(
-                    row.changed_in_version_group_id
-                )
+                versionGroup
             ),
-
-        effect: cleanEffectText(
-            row.effect
-        )
-
+        
+        effect:
+            cleanEffectText(
+                row.effect
+            )
+        
     });
 
 }

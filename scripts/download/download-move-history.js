@@ -4,7 +4,6 @@ const path = require("path");
 const {
     saveJSON,
     createLookupMap,
-    cleanEffectText,
     createVersionGroupReference,
     createTypeReference,
     createTargetReference
@@ -36,10 +35,11 @@ const versionGroupMap =
         versionGroups
     );
 
-const typeMap = createLookupMap(
-    types,
-    legacyTypes
-);
+const typeMap =
+    createLookupMap(
+        types,
+        legacyTypes
+    );
 
 const targetMap =
     createLookupMap(
@@ -89,13 +89,16 @@ for (const row of rows) {
 
     }
 
+    const versionGroup =
+        versionGroupMap.get(
+            row.changed_in_version_group_id
+        );
+
     const change = {
 
         versionGroup:
             createVersionGroupReference(
-                versionGroupMap.get(
-                    row.changed_in_version_group_id
-                )
+                versionGroup
             )
 
     };
@@ -133,22 +136,28 @@ for (const row of rows) {
 
     if (row.type_id) {
 
+        const type =
+            typeMap.get(
+                row.type_id
+            );
+
         change.type =
             createTypeReference(
-                typeMap.get(
-                    row.type_id
-                )
+                type
             );
 
     }
 
     if (row.target_id) {
 
+        const target =
+            targetMap.get(
+                row.target_id
+            );
+
         change.target =
             createTargetReference(
-                targetMap.get(
-                    row.target_id
-                )
+                target
             );
 
     }

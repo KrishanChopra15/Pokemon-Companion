@@ -90,6 +90,9 @@ function formatGameName(game) {
 
 }
 
+// TODO:
+// Verify whether this helper is still needed after the
+// data pipeline is fully complete. Remove if unused.
 /**
  * Converts PokéAPI version-group names into readable text.
  */
@@ -240,6 +243,9 @@ function saveJSON(filePath, data) {
 
 /* General Utilities */
 
+// TODO:
+// Verify whether this helper is still needed after the
+// data pipeline is fully complete. Remove if unused.
 /**
  * Converts an array of objects with a `name` property
  * into a sorted array of Title Case names.

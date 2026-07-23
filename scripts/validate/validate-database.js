@@ -25,14 +25,45 @@ const DATABASE_FILES = [
 
 const ENTITY_FILES = [
 
-    "abilities.json",
-    "damage-classes.json",
-    "move-targets.json",
-    "moves.json",
-    "pokemon.json",
-    "species.json",
-    "types.json",
-    "version-groups.json"
+    {
+        file: "abilities.json",
+        uniqueName: true
+    },
+
+    {
+        file: "damage-classes.json",
+        uniqueName: true
+    },
+
+    {
+        file: "move-targets.json",
+        uniqueName: true
+    },
+
+    {
+        file: "moves.json",
+        uniqueName: true
+    },
+
+    {
+        file: "pokemon.json",
+        uniqueName: true
+    },
+
+    {
+        file: "species.json",
+        uniqueName: true
+    },
+
+    {
+        file: "types.json",
+        uniqueName: true
+    },
+
+    {
+        file: "version-groups.json",
+        uniqueName: true
+    }
 
 ];
 
@@ -211,13 +242,52 @@ function validateUniqueIds(
 
 }
 
+function validateUniqueNames(
+    file,
+    data
+) {
+
+    const names = new Set();
+
+    for (const entry of data) {
+
+        if (
+            entry.name === undefined
+        ) {
+
+            continue;
+
+        }
+
+        if (
+            names.has(entry.name)
+        ) {
+
+            errors.push(
+                `${file} contains duplicate name "${entry.name}".`
+            );
+
+            continue;
+
+        }
+
+        names.add(
+            entry.name
+        );
+
+    }
+
+}
+
 function validateDuplicateIds() {
 
     console.log(
         "Phase 3 - Checking duplicate IDs..."
     );
 
-    for (const file of ENTITY_FILES) {
+    for (const entity of ENTITY_FILES) {
+    
+        const file = entity.file;
 
         const filePath = path.join(
             DATABASE_DIR,
@@ -249,8 +319,41 @@ function validateDuplicateIds() {
 function validateDuplicateNames() {
 
     console.log(
-        "Phase 4 - Duplicate name validation (Coming Soon)\n"
+        "Phase 4 - Checking duplicate names..."
     );
+
+    for (const entity of ENTITY_FILES) {
+
+        if (!entity.uniqueName) {
+
+            continue;
+
+        }
+
+        const filePath = path.join(
+            DATABASE_DIR,
+            entity.file
+        );
+
+        const data = JSON.parse(
+            fs.readFileSync(
+                filePath,
+                "utf8"
+            )
+        );
+
+        validateUniqueNames(
+            entity.file,
+            data
+        );
+
+        console.log(
+            `✓ ${entity.file}`
+        );
+
+    }
+
+    console.log("");
 
 }
 

@@ -1,0 +1,24 @@
+[
+    {
+        "id": 10001,
+        "apiName": "unknown",
+        "name": "???",
+        "color": "#808080",
+        "gradient": {
+            "start": "#9E9E9E",
+            "end": "#616161"
+        },
+        "emoji": "❓",
+        "icon": "assets/icons/types/unknown.svg",
+        "description": "The ??? type existed in Generation II through Generation IV. It was used internally for certain mechanics, most notably the move Curse. The type was removed in Generation V.",
+        "damageRelations": {
+            "doubleDamageTo": [],
+            "doubleDamageFrom": [],
+            "halfDamageTo": [],
+            "halfDamageFrom": [],
+            "noDamageTo": [],
+            "noDamageFrom": []
+        },
+        "legacy": true
+    }
+]

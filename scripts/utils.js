@@ -219,7 +219,23 @@ function hasFlag(flags, name) {
 
 }
 
+function createLookupMap(
+    primary,
+    legacy = []
+) {
 
+    return new Map([
+        ...primary.map(item => [
+            item.id,
+            item
+        ]),
+        ...legacy.map(item => [
+            item.id,
+            item
+        ])
+    ]);
+
+}
 
 module.exports = {
 
@@ -232,6 +248,6 @@ module.exports = {
     cleanFlavorText,
     saveJSON,
     sortTitleCaseNames,
-    hasFlag
-
+    hasFlag,
+    createLookupMap
 };

@@ -1,0 +1,1673 @@
+{
+    "2": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "type": {
+                "id": 1,
+                "name": "Normal"
+            }
+        }
+    ],
+    "13": [
+        {
+            "versionGroup": {
+                "id": 5,
+                "apiName": "ruby-sapphire",
+                "name": "Ruby Sapphire"
+            },
+            "accuracy": 75
+        }
+    ],
+    "14": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "pp": 30
+        }
+    ],
+    "16": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "type": {
+                "id": 1,
+                "name": "Normal"
+            }
+        }
+    ],
+    "17": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "power": 35
+        }
+    ],
+    "18": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "accuracy": 85
+        },
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "accuracy": 100
+        }
+    ],
+    "19": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "power": 70
+        }
+    ],
+    "20": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "accuracy": 75
+        }
+    ],
+    "22": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "pp": 10
+        },
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 35,
+            "pp": 15
+        }
+    ],
+    "26": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "power": 70
+        },
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 85,
+            "pp": 25
+        }
+    ],
+    "28": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "type": {
+                "id": 1,
+                "name": "Normal"
+            }
+        }
+    ],
+    "33": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 35,
+            "accuracy": 95
+        }
+    ],
+    "35": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "accuracy": 85
+        }
+    ],
+    "37": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 90,
+            "pp": 20
+        }
+    ],
+    "38": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "power": 100
+        }
+    ],
+    "40": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "effectChance": 20
+        }
+    ],
+    "42": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 14,
+            "accuracy": 85
+        }
+    ],
+    "44": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "effectChance": 10,
+            "type": {
+                "id": 1,
+                "name": "Normal"
+            }
+        }
+    ],
+    "46": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "accuracy": 100
+        }
+    ],
+    "50": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "accuracy": 55
+        },
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "accuracy": 80
+        }
+    ],
+    "53": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 95
+        }
+    ],
+    "56": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 120
+        }
+    ],
+    "57": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 95
+        }
+    ],
+    "58": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 95
+        }
+    ],
+    "59": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "accuracy": 90
+        },
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 120
+        }
+    ],
+    "66": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "pp": 25
+        }
+    ],
+    "67": [
+        {
+            "versionGroup": {
+                "id": 5,
+                "apiName": "ruby-sapphire",
+                "name": "Ruby Sapphire"
+            },
+            "power": 50,
+            "accuracy": 90,
+            "effectChance": 30
+        }
+    ],
+    "71": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "pp": 20
+        }
+    ],
+    "72": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "pp": 10
+        }
+    ],
+    "74": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            }
+        },
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "pp": 40
+        }
+    ],
+    "80": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "power": 70
+        },
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 90,
+            "pp": 20
+        }
+    ],
+    "83": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 15,
+            "accuracy": 70
+        }
+    ],
+    "85": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 95
+        }
+    ],
+    "87": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "effectChance": 10
+        },
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 120
+        }
+    ],
+    "88": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "accuracy": 65
+        }
+    ],
+    "91": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "power": 100
+        },
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "power": 60
+        }
+    ],
+    "92": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "accuracy": 85
+        }
+    ],
+    "94": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "effectChance": 30
+        }
+    ],
+    "95": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "accuracy": 60
+        },
+        {
+            "versionGroup": {
+                "id": 9,
+                "apiName": "platinum",
+                "name": "Platinum"
+            },
+            "accuracy": 70
+        }
+    ],
+    "105": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "pp": 20
+        }
+    ],
+    "107": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "pp": 20
+        }
+    ],
+    "112": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "pp": 30
+        }
+    ],
+    "120": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "power": 130
+        }
+    ],
+    "122": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 20
+        }
+    ],
+    "123": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 20
+        }
+    ],
+    "126": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "effectChance": 30
+        },
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 120
+        }
+    ],
+    "128": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "pp": 10,
+            "accuracy": 75
+        }
+    ],
+    "130": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 100,
+            "pp": 15
+        }
+    ],
+    "136": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "power": 85
+        },
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 100,
+            "pp": 20
+        }
+    ],
+    "137": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "accuracy": 75
+        },
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "accuracy": 90
+        }
+    ],
+    "139": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "accuracy": 55
+        },
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "accuracy": 80
+        }
+    ],
+    "143": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "effectChance": 10
+        }
+    ],
+    "145": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 20
+        }
+    ],
+    "146": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "effectChance": 0
+        }
+    ],
+    "148": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "accuracy": 70
+        }
+    ],
+    "149": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "accuracy": 80
+        }
+    ],
+    "151": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "pp": 40
+        }
+    ],
+    "152": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "accuracy": 85
+        },
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 90
+        }
+    ],
+    "153": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "power": 170
+        }
+    ],
+    "157": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "effectChance": 0
+        }
+    ],
+    "161": [
+        {
+            "versionGroup": {
+                "id": 3,
+                "apiName": "gold-silver",
+                "name": "Gold Silver"
+            },
+            "effectChance": 0
+        }
+    ],
+    "165": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "target": {
+                "id": 10,
+                "name": "Selected Pokemon"
+            }
+        }
+    ],
+    "168": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 40,
+            "pp": 10
+        }
+    ],
+    "170": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "pp": 40
+        }
+    ],
+    "173": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 40
+        }
+    ],
+    "174": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "type": {
+                "id": 10001,
+                "name": "???",
+                "legacy": true
+            }
+        }
+    ],
+    "178": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "accuracy": 85
+        },
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "target": {
+                "id": 10,
+                "name": "Selected Pokemon"
+            }
+        }
+    ],
+    "184": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "accuracy": 90
+        }
+    ],
+    "186": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "type": {
+                "id": 1,
+                "name": "Normal"
+            }
+        }
+    ],
+    "192": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "power": 100
+        }
+    ],
+    "195": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "target": {
+                "id": 12,
+                "name": "Entire Field"
+            }
+        }
+    ],
+    "198": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "accuracy": 80
+        }
+    ],
+    "200": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "power": 90
+        },
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "pp": 15
+        }
+    ],
+    "202": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "pp": 5
+        },
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 60
+        }
+    ],
+    "204": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "type": {
+                "id": 1,
+                "name": "Normal"
+            }
+        }
+    ],
+    "210": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 10
+        },
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 20
+        }
+    ],
+    "215": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "target": {
+                "id": 4,
+                "name": "Users Field"
+            }
+        }
+    ],
+    "236": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "type": {
+                "id": 1,
+                "name": "Normal"
+            }
+        }
+    ],
+    "237": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 1
+        }
+    ],
+    "248": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 80,
+            "pp": 15,
+            "accuracy": 90
+        },
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 100
+        }
+    ],
+    "249": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "power": 20
+        }
+    ],
+    "250": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 15,
+            "accuracy": 70
+        }
+    ],
+    "251": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 10
+        }
+    ],
+    "253": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 50
+        }
+    ],
+    "254": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "pp": 10
+        }
+    ],
+    "257": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 100
+        }
+    ],
+    "261": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "accuracy": 75
+        }
+    ],
+    "265": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 60
+        }
+    ],
+    "266": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "priority": 3
+        }
+    ],
+    "267": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "target": {
+                "id": 1,
+                "name": "Specific Move"
+            }
+        }
+    ],
+    "282": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 20
+        }
+    ],
+    "291": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "power": 60
+        }
+    ],
+    "294": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            }
+        }
+    ],
+    "305": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "effectChance": 30
+        }
+    ],
+    "309": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 100,
+            "accuracy": 85
+        }
+    ],
+    "312": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "target": {
+                "id": 4,
+                "name": "Users Field"
+            }
+        }
+    ],
+    "314": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 55
+        }
+    ],
+    "315": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 140
+        }
+    ],
+    "317": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 50,
+            "pp": 10,
+            "accuracy": 80
+        }
+    ],
+    "326": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "pp": 30
+        }
+    ],
+    "328": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 15,
+            "accuracy": 70
+        }
+    ],
+    "330": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 95
+        }
+    ],
+    "331": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 10
+        }
+    ],
+    "333": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 10
+        }
+    ],
+    "343": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 40
+        },
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "pp": 40
+        }
+    ],
+    "348": [
+        {
+            "versionGroup": {
+                "id": 8,
+                "apiName": "diamond-pearl",
+                "name": "Diamond Pearl"
+            },
+            "power": 70
+        }
+    ],
+    "350": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "accuracy": 80
+        }
+    ],
+    "353": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 120,
+            "accuracy": 85
+        }
+    ],
+    "358": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 60
+        }
+    ],
+    "364": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 50
+        }
+    ],
+    "366": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "pp": 30
+        }
+    ],
+    "372": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 50
+        }
+    ],
+    "375": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "accuracy": 90
+        }
+    ],
+    "382": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 0
+        }
+    ],
+    "386": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 60
+        }
+    ],
+    "387": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 130
+        }
+    ],
+    "396": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 90
+        }
+    ],
+    "403": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "pp": 20
+        }
+    ],
+    "406": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 90
+        }
+    ],
+    "408": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 70
+        }
+    ],
+    "409": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "power": 60,
+            "pp": 5
+        }
+    ],
+    "412": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 80
+        }
+    ],
+    "434": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 140
+        }
+    ],
+    "437": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 140
+        }
+    ],
+    "441": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "accuracy": 70
+        }
+    ],
+    "448": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 60
+        }
+    ],
+    "463": [
+        {
+            "versionGroup": {
+                "id": 11,
+                "apiName": "black-white",
+                "name": "Black White"
+            },
+            "accuracy": 70
+        },
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 120
+        }
+    ],
+    "472": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "priority": -7
+        }
+    ],
+    "476": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "priority": 3
+        }
+    ],
+    "478": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "priority": -7
+        }
+    ],
+    "480": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 40
+        }
+    ],
+    "485": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 70,
+            "pp": 15
+        }
+    ],
+    "490": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 60
+        }
+    ],
+    "506": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 50
+        }
+    ],
+    "510": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 30
+        }
+    ],
+    "518": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 50
+        }
+    ],
+    "519": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 50
+        }
+    ],
+    "520": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 50
+        }
+    ],
+    "522": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 30
+        }
+    ],
+    "524": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 40
+        }
+    ],
+    "533": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "pp": 20
+        }
+    ],
+    "542": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 120
+        }
+    ],
+    "546": [
+        {
+            "versionGroup": {
+                "id": 15,
+                "apiName": "x-y",
+                "name": "X Y"
+            },
+            "power": 85
+        }
+    ]
+}

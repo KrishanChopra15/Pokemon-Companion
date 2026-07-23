@@ -4,7 +4,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Has no effect in battle."
         }
@@ -14,7 +15,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Does not prevent regular KOs from full HP."
         }
@@ -24,7 +26,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         }
@@ -34,7 +37,8 @@
             "versionGroup": {
                 "id": 8,
                 "apiName": "diamond-pearl",
-                "name": "Diamond Pearl"
+                "name": "Diamond Pearl",
+                "order": 12
             },
             "effect": "Does not absorb non-damaging Electric moves, i.e. Thunder Wave."
         }
@@ -44,7 +48,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         }
@@ -54,7 +59,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Triggers on every hit of multiple-hit moves."
         }
@@ -64,7 +70,8 @@
             "versionGroup": {
                 "id": 8,
                 "apiName": "diamond-pearl",
-                "name": "Diamond Pearl"
+                "name": "Diamond Pearl",
+                "order": 12
             },
             "effect": "Will O Wisp does not trigger this ability for Pokémon immune to burns."
         }
@@ -74,7 +81,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         }
@@ -84,7 +92,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         },
@@ -92,7 +101,8 @@
             "versionGroup": {
                 "id": 8,
                 "apiName": "diamond-pearl",
-                "name": "Diamond Pearl"
+                "name": "Diamond Pearl",
+                "order": 12
             },
             "effect": "Does not take effect if acquired after entering battle."
         }
@@ -102,7 +112,8 @@
             "versionGroup": {
                 "id": 8,
                 "apiName": "diamond-pearl",
-                "name": "Diamond Pearl"
+                "name": "Diamond Pearl",
+                "order": 12
             },
             "effect": "Affects other Pokémon with this ability."
         }
@@ -112,7 +123,8 @@
             "versionGroup": {
                 "id": 8,
                 "apiName": "diamond-pearl",
-                "name": "Diamond Pearl"
+                "name": "Diamond Pearl",
+                "order": 12
             },
             "effect": "Inflicts only 1/16 of the attacker's maximum HP in damage."
         }
@@ -122,7 +134,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Fire Fang and moves that inflict typeless damage ignore this ability regardless of type."
         }
@@ -132,7 +145,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         },
@@ -140,7 +154,8 @@
             "versionGroup": {
                 "id": 8,
                 "apiName": "diamond-pearl",
-                "name": "Diamond Pearl"
+                "name": "Diamond Pearl",
+                "order": 12
             },
             "effect": "Cannot influence the natures of Pokémon encountered by interacting with them on the overworld."
         },
@@ -148,7 +163,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Passes back bad poison as regular poison."
         }
@@ -158,7 +174,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         },
@@ -166,7 +183,8 @@
             "versionGroup": {
                 "id": 8,
                 "apiName": "diamond-pearl",
-                "name": "Diamond Pearl"
+                "name": "Diamond Pearl",
+                "order": 12
             },
             "effect": "Does not affect non-damaging Electric moves, i.e. Thunder Wave. Increases the frequency of Match Call calls on the overworld if any party Pokémon has this ability."
         },
@@ -174,7 +192,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Redirects Electric moves without negating them or granting any Special Attack boost. Does not redirect Hidden Power."
         }
@@ -184,7 +203,8 @@
             "versionGroup": {
                 "id": 8,
                 "apiName": "diamond-pearl",
-                "name": "Diamond Pearl"
+                "name": "Diamond Pearl",
+                "order": 12
             },
             "effect": "Can copy Forecast and Trace."
         },
@@ -192,7 +212,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Can copy Flower Gift and Wonder Guard."
         }
@@ -202,7 +223,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         }
@@ -212,7 +234,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         }
@@ -222,7 +245,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Prevents Heal Bell from curing the Pokémon, whether or not it is in battle."
         }
@@ -232,7 +256,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         },
@@ -240,7 +265,8 @@
             "versionGroup": {
                 "id": 8,
                 "apiName": "diamond-pearl",
-                "name": "Diamond Pearl"
+                "name": "Diamond Pearl",
+                "order": 12
             },
             "effect": "Does not affect friendly Pokémon's moves that target all other Pokémon. This ability's presence is not announced upon entering battle."
         }
@@ -250,7 +276,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         }
@@ -260,7 +287,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         }
@@ -270,7 +298,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         },
@@ -278,7 +307,8 @@
             "versionGroup": {
                 "id": 8,
                 "apiName": "diamond-pearl",
-                "name": "Diamond Pearl"
+                "name": "Diamond Pearl",
+                "order": 12
             },
             "effect": "Doubles Cut's grass-cutting radius on the overworld if any party Pokémon has this ability."
         }
@@ -288,7 +318,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Has no effect in battle."
         }
@@ -298,7 +329,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         }
@@ -308,7 +340,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         }
@@ -318,7 +351,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Powers up only when paired with Minus."
         }
@@ -328,7 +362,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Powers up only when paired with Plus."
         }
@@ -338,7 +373,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         }
@@ -348,7 +384,8 @@
             "versionGroup": {
                 "id": 8,
                 "apiName": "diamond-pearl",
-                "name": "Diamond Pearl"
+                "name": "Diamond Pearl",
+                "order": 12
             },
             "effect": "Chance of taking effect is 33%."
         },
@@ -356,7 +393,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Chance of taking effect is 30%."
         }
@@ -366,7 +404,8 @@
             "versionGroup": {
                 "id": 8,
                 "apiName": "diamond-pearl",
-                "name": "Diamond Pearl"
+                "name": "Diamond Pearl",
+                "order": 12
             },
             "effect": "Does not take effect during sleep."
         }
@@ -376,7 +415,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         },
@@ -384,7 +424,8 @@
             "versionGroup": {
                 "id": 8,
                 "apiName": "diamond-pearl",
-                "name": "Diamond Pearl"
+                "name": "Diamond Pearl",
+                "order": 12
             },
             "effect": "Increases the frequency of cries heard on the overworld if any party Pokémon has this ability."
         }
@@ -394,7 +435,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         }
@@ -404,7 +446,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         }
@@ -414,7 +457,8 @@
             "versionGroup": {
                 "id": 6,
                 "apiName": "emerald",
-                "name": "Emerald"
+                "name": "Emerald",
+                "order": 8
             },
             "effect": "Has no overworld effect."
         }
@@ -424,7 +468,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Poison still damages the Pokémon outside of battle."
         }
@@ -434,7 +479,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Triple Kick is unaffected."
         }
@@ -444,7 +490,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Paralysis cannot prevent the Pokémon from moving, though the Speed cut is unaffected. Poison still damages the Pokémon outside of battle."
         }
@@ -454,7 +501,8 @@
             "versionGroup": {
                 "id": 9,
                 "apiName": "platinum",
-                "name": "Platinum"
+                "name": "Platinum",
+                "order": 13
             },
             "effect": "Due to a glitch, moves affected by this ability have a (100 - accuracy)% chance to hit through Detect or Protect."
         }
@@ -464,7 +512,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Struggle is unaffected. Helping Hand and Defense Curl are not taken into account."
         }
@@ -474,7 +523,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Rest works as usual during strong sunlight."
         }
@@ -484,7 +534,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Fling can be used as usual."
         }
@@ -494,7 +545,8 @@
             "versionGroup": {
                 "id": 11,
                 "apiName": "black-white",
-                "name": "Black White"
+                "name": "Black White",
+                "order": 15
             },
             "effect": "Redirects Water moves without negating them or granting any Special Attack boost. Does not redirect Hidden Power."
         }

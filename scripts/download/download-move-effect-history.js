@@ -57,35 +57,82 @@ const history = new Map();
 
 for (const row of rows) {
 
+    if (!history.has(row.effect_id)) {
+
+        history.set(
+            row.effect_id,
+            []
+        );
+
+    }
+
     const versionGroup =
         versionGroupMap.get(
             row.changed_in_version_group_id
         );
-    
-    history.set(
-        row.id,
-        {
-        
-            effectId:
-                row.effect_id,
-        
-            versionGroup:
-                createVersionGroupReference(
-                    versionGroup
-                ),
-            
-            shortEffect:
-                cleanEffectText(
-                    row.short_effect
-                ),
-            
-            effect:
-                cleanEffectText(
-                    row.effect
-                )
-            
-        }
-    );
+
+    const change = {
+
+        versionGroup:
+            createVersionGroupReference(
+                versionGroup,
+                true
+            )
+
+    };
+
+    const shortEffect =
+        cleanEffectText(
+            row.short_effect
+        );
+
+    if (shortEffect) {
+
+        change.shortEffect =
+            shortEffect;
+
+    }
+
+    const effect =
+        cleanEffectText(
+            row.effect
+        );
+
+    if (effect) {
+
+        change.effect =
+            effect;
+
+    }
+
+    if (
+
+        Object.keys(change).length > 1
+
+    ) {
+
+        history.get(
+            row.effect_id
+        ).push(
+            change
+        );
+
+    }
+
+}
+
+/*
+ * Remove empty history arrays.
+ */
+for (const [effectId, entries] of history) {
+
+    if (entries.length === 0) {
+
+        history.delete(
+            effectId
+        );
+
+    }
 
 }
 

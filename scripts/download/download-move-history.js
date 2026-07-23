@@ -98,7 +98,8 @@ for (const row of rows) {
 
         versionGroup:
             createVersionGroupReference(
-                versionGroup
+                versionGroup,
+                true
             )
 
     };
@@ -162,11 +163,29 @@ for (const row of rows) {
 
     }
 
-    history.get(
-        row.move_id
-    ).push(
-        change
-    );
+    if (
+
+        Object.keys(change).length > 1
+
+    ) {
+
+        history.get(
+            row.move_id
+        ).push(
+            change
+        );
+
+    }
+
+}
+
+for (const [moveId, entries] of history) {
+
+    if (entries.length === 0) {
+
+        history.delete(moveId);
+
+    }
 
 }
 

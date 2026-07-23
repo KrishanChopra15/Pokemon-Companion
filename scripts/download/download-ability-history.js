@@ -72,7 +72,8 @@ for (const row of rows) {
     
         versionGroup:
             createVersionGroupReference(
-                versionGroup
+                versionGroup,
+                true
             ),
         
         effect:

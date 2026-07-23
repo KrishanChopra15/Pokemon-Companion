@@ -6,11 +6,11 @@ const {
     getIdFromUrl,
     formatGeneration,
     formatApiName
-} = require("./utils");
+} = require("../utils");
 
 const OUTPUT_FILE = path.join(
     __dirname,
-    "../database/version-groups.json"
+    "../../database/version-groups.json"
 );
 
 async function downloadVersionGroups() {

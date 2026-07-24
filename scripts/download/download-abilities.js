@@ -1,15 +1,36 @@
-const axios = require("axios");
 const path = require("path");
 
 const {
+    saveJSON
+} = require("../utils/json");
+
+const {
     toTitleCase,
-    saveJSON,
-    cleanFlavorText,
+    cleanFlavorText
+} = require("../utils/formatting");
+
+const {
     getIdFromUrl,
-    createPokemonReference,
-    createGenerationReference,
+    findEnglishEntry,
+    sortById,
+    getMetadataEntry
+} = require("../utils/helpers");
+
+const {
+    getResource,
     getResourceList
-} = require("../utils");
+} = require("../utils/api");
+
+const {
+    createPokemonReference,
+    createGenerationReference
+} = require("../utils/references");
+
+const {
+    printSuccess,
+    printOutputFile,
+    printError
+} = require("../utils/logger");
 
 const metadata = require(
     "../../database/metadata/ability-metadata.json"
@@ -23,85 +44,93 @@ const OUTPUT_FILE = path.join(
 async function downloadAbilities() {
 
     try {
+
         const abilities = [];
-        
-        const abilityList =
+
+        const abilityResources =
             await getResourceList(
                 "ability"
             );
-        
-        for (const abilityResource of abilityList) {
-        
-            const id = getIdFromUrl(
-                abilityResource.url
-            );
-        
+
+        for (const abilityResource of abilityResources) {
+
+            const id =
+                getIdFromUrl(
+                    abilityResource.url
+                );
 
             console.log(
                 `Downloading Ability #${id}...`
             );
 
-            const {
-                data: ability
-            } = await axios.get(
-                `https://pokeapi.co/api/v2/ability/${id}`
-            );
+            const ability =
+                await getResource(
+                    "ability",
+                    id
+                );
 
             const effectEntry =
-                ability.effect_entries.find(
-                    entry =>
-                        entry.language.name === "en"
+                findEnglishEntry(
+                    ability.effect_entries
                 );
 
             const flavorEntry =
-                ability.flavor_text_entries.find(
-                    entry =>
-                        entry.language.name === "en"
+                findEnglishEntry(
+                    ability.flavor_text_entries
                 );
 
             const metadataEntry =
-                metadata[
-                    toTitleCase(
-                        ability.name
-                    )
-                ] || {};
+                getMetadataEntry(
+                    metadata,
+                    ability.name
+                );
 
             abilities.push({
 
-                id: ability.id,
+                id:
+                    ability.id,
 
-                name: toTitleCase(
-                    ability.name
-                ),
+                name:
+                    toTitleCase(
+                        ability.name
+                    ),
 
                 generation:
                     createGenerationReference(
                         ability.generation
                     ),
 
-                description: cleanFlavorText(
-                    flavorEntry?.flavor_text
-                ),
+                description:
+                    cleanFlavorText(
+                        flavorEntry?.flavor_text
+                    ),
 
-                shortEffect: cleanFlavorText(
-                    effectEntry?.short_effect
-                ),
+                shortEffect:
+                    cleanFlavorText(
+                        effectEntry?.short_effect
+                    ),
 
-                effect: cleanFlavorText(
-                    effectEntry?.effect
-                ),
+                effect:
+                    cleanFlavorText(
+                        effectEntry?.effect
+                    ),
 
                 isMainSeries:
                     ability.is_main_series,
 
-                pokemon: ability.pokemon
-                    .map(entry =>
-                        createPokemonReference(
-                            entry.pokemon
+                pokemon:
+                    sortById(
+
+                        ability.pokemon.map(
+
+                            entry =>
+
+                                createPokemonReference(
+                                    entry.pokemon
+                                )
+
                         )
-                    )
-                    .sort(
-                        (a, b) => a - b
+
                     ),
 
                 icon:
@@ -114,8 +143,8 @@ async function downloadAbilities() {
 
         }
 
-        abilities.sort(
-            (a, b) => a.id - b.id
+        sortById(
+            abilities
         );
 
         saveJSON(
@@ -123,18 +152,19 @@ async function downloadAbilities() {
             abilities
         );
 
-        console.log(
-            `Successfully downloaded ${abilities.length} abilities.`
+        printSuccess(
+            `Downloaded ${abilities.length} abilities`
+        );
+
+        printOutputFile(
+            OUTPUT_FILE
         );
 
     } catch (error) {
 
-        console.error(
-            "Error downloading abilities:"
-        );
-
-        console.error(
-            error.message
+        printError(
+            error,
+            "Error downloading abilities"
         );
 
     }

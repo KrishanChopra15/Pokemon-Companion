@@ -1,0 +1,4620 @@
+[
+    {
+        "id": 2,
+        "name": "karate-chop",
+        "current": {
+            "power": 50,
+            "accuracy": 100,
+            "pp": 25,
+            "effectChance": null,
+            "type": "fighting"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": {
+                    "name": "normal",
+                    "url": "https://pokeapi.co/api/v2/type/1/"
+                },
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "name": "razor-wind",
+        "current": {
+            "power": 80,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": 75,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "ruby-sapphire",
+                    "url": "https://pokeapi.co/api/v2/version-group/5/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "name": "swords-dance",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 20,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 30,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "name": "gust",
+        "current": {
+            "power": 40,
+            "accuracy": 100,
+            "pp": 35,
+            "effectChance": null,
+            "type": "flying"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": {
+                    "name": "normal",
+                    "url": "https://pokeapi.co/api/v2/type/1/"
+                },
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "name": "wing-attack",
+        "current": {
+            "power": 60,
+            "accuracy": 100,
+            "pp": 35,
+            "effectChance": null,
+            "type": "flying"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 35,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "name": "whirlwind",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 20,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": 85,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            },
+            {
+                "accuracy": 100,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "name": "fly",
+        "current": {
+            "power": 90,
+            "accuracy": 95,
+            "pp": 15,
+            "effectChance": null,
+            "type": "flying"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 70,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 20,
+        "name": "bind",
+        "current": {
+            "power": 15,
+            "accuracy": 85,
+            "pp": 20,
+            "effectChance": 100,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": 75,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "name": "vine-whip",
+        "current": {
+            "power": 45,
+            "accuracy": 100,
+            "pp": 25,
+            "effectChance": null,
+            "type": "grass"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 10,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 35,
+                "pp": 15,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 26,
+        "name": "jump-kick",
+        "current": {
+            "power": 100,
+            "accuracy": 95,
+            "pp": 10,
+            "effectChance": null,
+            "type": "fighting"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 70,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 85,
+                "pp": 25,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 28,
+        "name": "sand-attack",
+        "current": {
+            "power": null,
+            "accuracy": 100,
+            "pp": 15,
+            "effectChance": null,
+            "type": "ground"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": {
+                    "name": "normal",
+                    "url": "https://pokeapi.co/api/v2/type/1/"
+                },
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 33,
+        "name": "tackle",
+        "current": {
+            "power": 40,
+            "accuracy": 100,
+            "pp": 35,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": 95,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 35,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 50,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sun-moon",
+                    "url": "https://pokeapi.co/api/v2/version-group/17/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 35,
+        "name": "wrap",
+        "current": {
+            "power": 15,
+            "accuracy": 90,
+            "pp": 20,
+            "effectChance": 100,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": 85,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 37,
+        "name": "thrash",
+        "current": {
+            "power": 120,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 90,
+                "pp": 20,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 38,
+        "name": "double-edge",
+        "current": {
+            "power": 120,
+            "accuracy": 100,
+            "pp": 15,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 100,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 40,
+        "name": "poison-sting",
+        "current": {
+            "power": 15,
+            "accuracy": 100,
+            "pp": 35,
+            "effectChance": 30,
+            "type": "poison"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 42,
+        "name": "pin-missile",
+        "current": {
+            "power": 25,
+            "accuracy": 95,
+            "pp": 20,
+            "effectChance": null,
+            "type": "bug"
+        },
+        "pastValues": [
+            {
+                "accuracy": 85,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 14,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 44,
+        "name": "bite",
+        "current": {
+            "power": 60,
+            "accuracy": 100,
+            "pp": 25,
+            "effectChance": 30,
+            "type": "dark"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": {
+                    "name": "normal",
+                    "url": "https://pokeapi.co/api/v2/type/1/"
+                },
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 46,
+        "name": "roar",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 20,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": 100,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 50,
+        "name": "disable",
+        "current": {
+            "power": null,
+            "accuracy": 100,
+            "pp": 20,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": 55,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            },
+            {
+                "accuracy": 80,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 53,
+        "name": "flamethrower",
+        "current": {
+            "power": 90,
+            "accuracy": 100,
+            "pp": 15,
+            "effectChance": 10,
+            "type": "fire"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 95,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 56,
+        "name": "hydro-pump",
+        "current": {
+            "power": 110,
+            "accuracy": 80,
+            "pp": 5,
+            "effectChance": null,
+            "type": "water"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 120,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 57,
+        "name": "surf",
+        "current": {
+            "power": 90,
+            "accuracy": 100,
+            "pp": 15,
+            "effectChance": null,
+            "type": "water"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 95,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 58,
+        "name": "ice-beam",
+        "current": {
+            "power": 90,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": 10,
+            "type": "ice"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 95,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 59,
+        "name": "blizzard",
+        "current": {
+            "power": 110,
+            "accuracy": 70,
+            "pp": 5,
+            "effectChance": 10,
+            "type": "ice"
+        },
+        "pastValues": [
+            {
+                "accuracy": 90,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 120,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 66,
+        "name": "submission",
+        "current": {
+            "power": 80,
+            "accuracy": 80,
+            "pp": 20,
+            "effectChance": null,
+            "type": "fighting"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 25,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 67,
+        "name": "low-kick",
+        "current": {
+            "power": null,
+            "accuracy": 100,
+            "pp": 20,
+            "effectChance": null,
+            "type": "fighting"
+        },
+        "pastValues": [
+            {
+                "accuracy": 90,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 50,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "ruby-sapphire",
+                    "url": "https://pokeapi.co/api/v2/version-group/5/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 71,
+        "name": "absorb",
+        "current": {
+            "power": 20,
+            "accuracy": 100,
+            "pp": 25,
+            "effectChance": null,
+            "type": "grass"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 20,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 20,
+                "pp": 25,
+                "type": null,
+                "version_group": {
+                    "name": "lets-go-pikachu-lets-go-eevee",
+                    "url": "https://pokeapi.co/api/v2/version-group/19/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 40,
+                "pp": 15,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 72,
+        "name": "mega-drain",
+        "current": {
+            "power": 40,
+            "accuracy": 100,
+            "pp": 15,
+            "effectChance": null,
+            "type": "grass"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 10,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 40,
+                "pp": 15,
+                "type": null,
+                "version_group": {
+                    "name": "lets-go-pikachu-lets-go-eevee",
+                    "url": "https://pokeapi.co/api/v2/version-group/19/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 75,
+                "pp": 10,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 74,
+        "name": "growth",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 20,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 40,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 76,
+        "name": "solar-beam",
+        "current": {
+            "power": 120,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "grass"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 120,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "lets-go-pikachu-lets-go-eevee",
+                    "url": "https://pokeapi.co/api/v2/version-group/19/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 200,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 80,
+        "name": "petal-dance",
+        "current": {
+            "power": 120,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "grass"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 70,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 90,
+                "pp": 20,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 81,
+        "name": "string-shot",
+        "current": {
+            "power": null,
+            "accuracy": 95,
+            "pp": 40,
+            "effectChance": null,
+            "type": "bug"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sun-moon",
+                    "url": "https://pokeapi.co/api/v2/version-group/17/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 83,
+        "name": "fire-spin",
+        "current": {
+            "power": 35,
+            "accuracy": 85,
+            "pp": 15,
+            "effectChance": 100,
+            "type": "fire"
+        },
+        "pastValues": [
+            {
+                "accuracy": 70,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 15,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 85,
+        "name": "thunderbolt",
+        "current": {
+            "power": 90,
+            "accuracy": 100,
+            "pp": 15,
+            "effectChance": 10,
+            "type": "electric"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 95,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 86,
+        "name": "thunder-wave",
+        "current": {
+            "power": null,
+            "accuracy": 90,
+            "pp": 20,
+            "effectChance": null,
+            "type": "electric"
+        },
+        "pastValues": [
+            {
+                "accuracy": 100,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sun-moon",
+                    "url": "https://pokeapi.co/api/v2/version-group/17/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 87,
+        "name": "thunder",
+        "current": {
+            "power": 110,
+            "accuracy": 70,
+            "pp": 10,
+            "effectChance": 30,
+            "type": "electric"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 120,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 88,
+        "name": "rock-throw",
+        "current": {
+            "power": 50,
+            "accuracy": 90,
+            "pp": 15,
+            "effectChance": null,
+            "type": "rock"
+        },
+        "pastValues": [
+            {
+                "accuracy": 65,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 91,
+        "name": "dig",
+        "current": {
+            "power": 80,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "ground"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 100,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 60,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 92,
+        "name": "toxic",
+        "current": {
+            "power": null,
+            "accuracy": 90,
+            "pp": 10,
+            "effectChance": null,
+            "type": "poison"
+        },
+        "pastValues": [
+            {
+                "accuracy": 85,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 94,
+        "name": "psychic",
+        "current": {
+            "power": 90,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": 10,
+            "type": "psychic"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 95,
+        "name": "hypnosis",
+        "current": {
+            "power": null,
+            "accuracy": 60,
+            "pp": 20,
+            "effectChance": null,
+            "type": "psychic"
+        },
+        "pastValues": [
+            {
+                "accuracy": 60,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            },
+            {
+                "accuracy": 70,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "platinum",
+                    "url": "https://pokeapi.co/api/v2/version-group/9/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 100,
+        "name": "teleport",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 20,
+            "effectChance": null,
+            "type": "psychic"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "lets-go-pikachu-lets-go-eevee",
+                    "url": "https://pokeapi.co/api/v2/version-group/19/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 105,
+        "name": "recover",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 5,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 20,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 107,
+        "name": "minimize",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 10,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 20,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 112,
+        "name": "barrier",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 20,
+            "effectChance": null,
+            "type": "psychic"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 30,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 120,
+        "name": "self-destruct",
+        "current": {
+            "power": 200,
+            "accuracy": 100,
+            "pp": 5,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 130,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 122,
+        "name": "lick",
+        "current": {
+            "power": 30,
+            "accuracy": 100,
+            "pp": 30,
+            "effectChance": 30,
+            "type": "ghost"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 20,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 123,
+        "name": "smog",
+        "current": {
+            "power": 30,
+            "accuracy": 70,
+            "pp": 20,
+            "effectChance": 40,
+            "type": "poison"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 20,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 126,
+        "name": "fire-blast",
+        "current": {
+            "power": 110,
+            "accuracy": 85,
+            "pp": 5,
+            "effectChance": 10,
+            "type": "fire"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 120,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 128,
+        "name": "clamp",
+        "current": {
+            "power": 35,
+            "accuracy": 85,
+            "pp": 15,
+            "effectChance": 100,
+            "type": "water"
+        },
+        "pastValues": [
+            {
+                "accuracy": 75,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 10,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 130,
+        "name": "skull-bash",
+        "current": {
+            "power": 130,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": 100,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 100,
+                "pp": 15,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 136,
+        "name": "high-jump-kick",
+        "current": {
+            "power": 130,
+            "accuracy": 90,
+            "pp": 10,
+            "effectChance": null,
+            "type": "fighting"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 85,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 100,
+                "pp": 20,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 137,
+        "name": "glare",
+        "current": {
+            "power": null,
+            "accuracy": 100,
+            "pp": 30,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": 75,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            },
+            {
+                "accuracy": 90,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 139,
+        "name": "poison-gas",
+        "current": {
+            "power": null,
+            "accuracy": 90,
+            "pp": 40,
+            "effectChance": null,
+            "type": "poison"
+        },
+        "pastValues": [
+            {
+                "accuracy": 55,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            },
+            {
+                "accuracy": 80,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 141,
+        "name": "leech-life",
+        "current": {
+            "power": 80,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "bug"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 20,
+                "pp": 15,
+                "type": null,
+                "version_group": {
+                    "name": "sun-moon",
+                    "url": "https://pokeapi.co/api/v2/version-group/17/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 143,
+        "name": "sky-attack",
+        "current": {
+            "power": 140,
+            "accuracy": 90,
+            "pp": 5,
+            "effectChance": 30,
+            "type": "flying"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 140,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "lets-go-pikachu-lets-go-eevee",
+                    "url": "https://pokeapi.co/api/v2/version-group/19/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 200,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 145,
+        "name": "bubble",
+        "current": {
+            "power": 40,
+            "accuracy": 100,
+            "pp": 30,
+            "effectChance": 10,
+            "type": "water"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 20,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 146,
+        "name": "dizzy-punch",
+        "current": {
+            "power": 70,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": 20,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 148,
+        "name": "flash",
+        "current": {
+            "power": null,
+            "accuracy": 100,
+            "pp": 20,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": 70,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 149,
+        "name": "psywave",
+        "current": {
+            "power": null,
+            "accuracy": 100,
+            "pp": 15,
+            "effectChance": null,
+            "type": "psychic"
+        },
+        "pastValues": [
+            {
+                "accuracy": 80,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 151,
+        "name": "acid-armor",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 20,
+            "effectChance": null,
+            "type": "poison"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 40,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 152,
+        "name": "crabhammer",
+        "current": {
+            "power": 100,
+            "accuracy": 90,
+            "pp": 10,
+            "effectChance": null,
+            "type": "water"
+        },
+        "pastValues": [
+            {
+                "accuracy": 85,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 90,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 153,
+        "name": "explosion",
+        "current": {
+            "power": 250,
+            "accuracy": 100,
+            "pp": 5,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 170,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 157,
+        "name": "rock-slide",
+        "current": {
+            "power": 75,
+            "accuracy": 90,
+            "pp": 10,
+            "effectChance": 30,
+            "type": "rock"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 161,
+        "name": "tri-attack",
+        "current": {
+            "power": 80,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": 20,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "gold-silver",
+                    "url": "https://pokeapi.co/api/v2/version-group/3/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 165,
+        "name": "struggle",
+        "current": {
+            "power": 50,
+            "accuracy": null,
+            "pp": 1,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": 10,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 168,
+        "name": "thief",
+        "current": {
+            "power": 60,
+            "accuracy": 100,
+            "pp": 25,
+            "effectChance": null,
+            "type": "dark"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 40,
+                "pp": 10,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 170,
+        "name": "mind-reader",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 5,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 40,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 173,
+        "name": "snore",
+        "current": {
+            "power": 50,
+            "accuracy": 100,
+            "pp": 15,
+            "effectChance": 30,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 40,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 174,
+        "name": "curse",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 10,
+            "effectChance": null,
+            "type": "ghost"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": {
+                    "name": "unknown",
+                    "url": "https://pokeapi.co/api/v2/type/10001/"
+                },
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 178,
+        "name": "cotton-spore",
+        "current": {
+            "power": null,
+            "accuracy": 100,
+            "pp": 40,
+            "effectChance": null,
+            "type": "grass"
+        },
+        "pastValues": [
+            {
+                "accuracy": 85,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": 10,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 184,
+        "name": "scary-face",
+        "current": {
+            "power": null,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": 90,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 186,
+        "name": "sweet-kiss",
+        "current": {
+            "power": null,
+            "accuracy": 75,
+            "pp": 10,
+            "effectChance": null,
+            "type": "fairy"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": {
+                    "name": "normal",
+                    "url": "https://pokeapi.co/api/v2/type/1/"
+                },
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 192,
+        "name": "zap-cannon",
+        "current": {
+            "power": 120,
+            "accuracy": 50,
+            "pp": 5,
+            "effectChance": 100,
+            "type": "electric"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 100,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 195,
+        "name": "perish-song",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 5,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": 12,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 198,
+        "name": "bone-rush",
+        "current": {
+            "power": 25,
+            "accuracy": 90,
+            "pp": 10,
+            "effectChance": null,
+            "type": "ground"
+        },
+        "pastValues": [
+            {
+                "accuracy": 80,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 200,
+        "name": "outrage",
+        "current": {
+            "power": 120,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "dragon"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 90,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 15,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 202,
+        "name": "giga-drain",
+        "current": {
+            "power": 75,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "grass"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 5,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 60,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 204,
+        "name": "charm",
+        "current": {
+            "power": null,
+            "accuracy": 100,
+            "pp": 20,
+            "effectChance": null,
+            "type": "fairy"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": {
+                    "name": "normal",
+                    "url": "https://pokeapi.co/api/v2/type/1/"
+                },
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 207,
+        "name": "swagger",
+        "current": {
+            "power": null,
+            "accuracy": 85,
+            "pp": 15,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": 90,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sun-moon",
+                    "url": "https://pokeapi.co/api/v2/version-group/17/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 210,
+        "name": "fury-cutter",
+        "current": {
+            "power": 40,
+            "accuracy": 95,
+            "pp": 20,
+            "effectChance": null,
+            "type": "bug"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 10,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 20,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 215,
+        "name": "heal-bell",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 5,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": 4,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 229,
+        "name": "rapid-spin",
+        "current": {
+            "power": 50,
+            "accuracy": 100,
+            "pp": 40,
+            "effectChance": 100,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 20,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 236,
+        "name": "moonlight",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 5,
+            "effectChance": null,
+            "type": "fairy"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": {
+                    "name": "normal",
+                    "url": "https://pokeapi.co/api/v2/type/1/"
+                },
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 237,
+        "name": "hidden-power",
+        "current": {
+            "power": 60,
+            "accuracy": 100,
+            "pp": 15,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 1,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 248,
+        "name": "future-sight",
+        "current": {
+            "power": 120,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "psychic"
+        },
+        "pastValues": [
+            {
+                "accuracy": 90,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 80,
+                "pp": 15,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 100,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 249,
+        "name": "rock-smash",
+        "current": {
+            "power": 40,
+            "accuracy": 100,
+            "pp": 15,
+            "effectChance": 50,
+            "type": "fighting"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 20,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 250,
+        "name": "whirlpool",
+        "current": {
+            "power": 35,
+            "accuracy": 85,
+            "pp": 15,
+            "effectChance": 100,
+            "type": "water"
+        },
+        "pastValues": [
+            {
+                "accuracy": 70,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 15,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 251,
+        "name": "beat-up",
+        "current": {
+            "power": null,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "dark"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 10,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 253,
+        "name": "uproar",
+        "current": {
+            "power": 90,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 50,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 254,
+        "name": "stockpile",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 20,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 10,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 257,
+        "name": "heat-wave",
+        "current": {
+            "power": 95,
+            "accuracy": 90,
+            "pp": 10,
+            "effectChance": 10,
+            "type": "fire"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 100,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 261,
+        "name": "will-o-wisp",
+        "current": {
+            "power": null,
+            "accuracy": 85,
+            "pp": 15,
+            "effectChance": null,
+            "type": "fire"
+        },
+        "pastValues": [
+            {
+                "accuracy": 75,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 265,
+        "name": "smelling-salts",
+        "current": {
+            "power": 70,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 60,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 266,
+        "name": "follow-me",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 20,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [
+                    {
+                        "effect": "Inflige des dégats réguliers.  A une chance d'empoisonner la cible.",
+                        "language": {
+                            "name": "fr",
+                            "url": "https://pokeapi.co/api/v2/language/5/"
+                        },
+                        "short_effect": "A une chance d'empoisonner la cible."
+                    },
+                    {
+                        "effect": "Inflicts regular damage.  Has a chance to poison the target.",
+                        "language": {
+                            "name": "en",
+                            "url": "https://pokeapi.co/api/v2/language/9/"
+                        },
+                        "short_effect": "Has a chance to poison the target."
+                    }
+                ],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 267,
+        "name": "nature-power",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 20,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": 1,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 282,
+        "name": "knock-off",
+        "current": {
+            "power": 65,
+            "accuracy": 100,
+            "pp": 20,
+            "effectChance": null,
+            "type": "dark"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 20,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 291,
+        "name": "dive",
+        "current": {
+            "power": 80,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "water"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 60,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 294,
+        "name": "tail-glow",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 20,
+            "effectChance": null,
+            "type": "bug"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 296,
+        "name": "mist-ball",
+        "current": {
+            "power": 95,
+            "accuracy": 100,
+            "pp": 5,
+            "effectChance": 50,
+            "type": "psychic"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 70,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "scarlet-violet",
+                    "url": "https://pokeapi.co/api/v2/version-group/25/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 305,
+        "name": "poison-fang",
+        "current": {
+            "power": 50,
+            "accuracy": 100,
+            "pp": 15,
+            "effectChance": 50,
+            "type": "poison"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 309,
+        "name": "meteor-mash",
+        "current": {
+            "power": 90,
+            "accuracy": 90,
+            "pp": 10,
+            "effectChance": 20,
+            "type": "steel"
+        },
+        "pastValues": [
+            {
+                "accuracy": 85,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 100,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 312,
+        "name": "aromatherapy",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 5,
+            "effectChance": null,
+            "type": "grass"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": 4,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 314,
+        "name": "air-cutter",
+        "current": {
+            "power": 60,
+            "accuracy": 95,
+            "pp": 25,
+            "effectChance": null,
+            "type": "flying"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 55,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 315,
+        "name": "overheat",
+        "current": {
+            "power": 130,
+            "accuracy": 90,
+            "pp": 5,
+            "effectChance": 100,
+            "type": "fire"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 140,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 317,
+        "name": "rock-tomb",
+        "current": {
+            "power": 60,
+            "accuracy": 95,
+            "pp": 15,
+            "effectChance": 100,
+            "type": "rock"
+        },
+        "pastValues": [
+            {
+                "accuracy": 80,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 50,
+                "pp": 10,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 326,
+        "name": "extrasensory",
+        "current": {
+            "power": 80,
+            "accuracy": 100,
+            "pp": 20,
+            "effectChance": 10,
+            "type": "psychic"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 30,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 328,
+        "name": "sand-tomb",
+        "current": {
+            "power": 35,
+            "accuracy": 85,
+            "pp": 15,
+            "effectChance": 100,
+            "type": "ground"
+        },
+        "pastValues": [
+            {
+                "accuracy": 70,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 15,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 330,
+        "name": "muddy-water",
+        "current": {
+            "power": 90,
+            "accuracy": 85,
+            "pp": 10,
+            "effectChance": 30,
+            "type": "water"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 95,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 331,
+        "name": "bullet-seed",
+        "current": {
+            "power": 25,
+            "accuracy": 100,
+            "pp": 30,
+            "effectChance": null,
+            "type": "grass"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 10,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 333,
+        "name": "icicle-spear",
+        "current": {
+            "power": 25,
+            "accuracy": 100,
+            "pp": 30,
+            "effectChance": null,
+            "type": "ice"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 10,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 336,
+        "name": "howl",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 40,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": 7,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 343,
+        "name": "covet",
+        "current": {
+            "power": 60,
+            "accuracy": 100,
+            "pp": 25,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 40,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 40,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 348,
+        "name": "leaf-blade",
+        "current": {
+            "power": 90,
+            "accuracy": 100,
+            "pp": 15,
+            "effectChance": null,
+            "type": "grass"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 70,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "diamond-pearl",
+                    "url": "https://pokeapi.co/api/v2/version-group/8/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 350,
+        "name": "rock-blast",
+        "current": {
+            "power": 25,
+            "accuracy": 90,
+            "pp": 10,
+            "effectChance": null,
+            "type": "rock"
+        },
+        "pastValues": [
+            {
+                "accuracy": 80,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 353,
+        "name": "doom-desire",
+        "current": {
+            "power": 140,
+            "accuracy": 100,
+            "pp": 5,
+            "effectChance": null,
+            "type": "steel"
+        },
+        "pastValues": [
+            {
+                "accuracy": 85,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 120,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 358,
+        "name": "wake-up-slap",
+        "current": {
+            "power": 70,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "fighting"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 60,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 364,
+        "name": "feint",
+        "current": {
+            "power": 30,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 50,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 366,
+        "name": "tailwind",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 15,
+            "effectChance": null,
+            "type": "flying"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 30,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 372,
+        "name": "assurance",
+        "current": {
+            "power": 60,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "dark"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 50,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 375,
+        "name": "psycho-shift",
+        "current": {
+            "power": null,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "psychic"
+        },
+        "pastValues": [
+            {
+                "accuracy": 90,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 382,
+        "name": "me-first",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 20,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 0,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 386,
+        "name": "punishment",
+        "current": {
+            "power": null,
+            "accuracy": 100,
+            "pp": 5,
+            "effectChance": null,
+            "type": "dark"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 60,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 387,
+        "name": "last-resort",
+        "current": {
+            "power": 140,
+            "accuracy": 100,
+            "pp": 5,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 130,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 389,
+        "name": "sucker-punch",
+        "current": {
+            "power": 70,
+            "accuracy": 100,
+            "pp": 5,
+            "effectChance": null,
+            "type": "dark"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 80,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sun-moon",
+                    "url": "https://pokeapi.co/api/v2/version-group/17/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 396,
+        "name": "aura-sphere",
+        "current": {
+            "power": 80,
+            "accuracy": null,
+            "pp": 20,
+            "effectChance": null,
+            "type": "fighting"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 90,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 403,
+        "name": "air-slash",
+        "current": {
+            "power": 75,
+            "accuracy": 95,
+            "pp": 15,
+            "effectChance": 30,
+            "type": "flying"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 20,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 406,
+        "name": "dragon-pulse",
+        "current": {
+            "power": 85,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "dragon"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 90,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 408,
+        "name": "power-gem",
+        "current": {
+            "power": 80,
+            "accuracy": 100,
+            "pp": 20,
+            "effectChance": null,
+            "type": "rock"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 70,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 409,
+        "name": "drain-punch",
+        "current": {
+            "power": 75,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "fighting"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 60,
+                "pp": 5,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 412,
+        "name": "energy-ball",
+        "current": {
+            "power": 90,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": 10,
+            "type": "grass"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 80,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 434,
+        "name": "draco-meteor",
+        "current": {
+            "power": 130,
+            "accuracy": 90,
+            "pp": 5,
+            "effectChance": 100,
+            "type": "dragon"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 140,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 437,
+        "name": "leaf-storm",
+        "current": {
+            "power": 130,
+            "accuracy": 90,
+            "pp": 5,
+            "effectChance": 100,
+            "type": "grass"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 140,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 441,
+        "name": "gunk-shot",
+        "current": {
+            "power": 120,
+            "accuracy": 80,
+            "pp": 5,
+            "effectChance": 30,
+            "type": "poison"
+        },
+        "pastValues": [
+            {
+                "accuracy": 70,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 448,
+        "name": "chatter",
+        "current": {
+            "power": 65,
+            "accuracy": 100,
+            "pp": 20,
+            "effectChance": 100,
+            "type": "flying"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 60,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 463,
+        "name": "magma-storm",
+        "current": {
+            "power": 100,
+            "accuracy": 75,
+            "pp": 5,
+            "effectChance": 100,
+            "type": "fire"
+        },
+        "pastValues": [
+            {
+                "accuracy": 70,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "black-white",
+                    "url": "https://pokeapi.co/api/v2/version-group/11/"
+                }
+            },
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 120,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 464,
+        "name": "dark-void",
+        "current": {
+            "power": null,
+            "accuracy": 50,
+            "pp": 10,
+            "effectChance": null,
+            "type": "dark"
+        },
+        "pastValues": [
+            {
+                "accuracy": 80,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sun-moon",
+                    "url": "https://pokeapi.co/api/v2/version-group/17/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 472,
+        "name": "wonder-room",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 10,
+            "effectChance": null,
+            "type": "psychic"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 476,
+        "name": "rage-powder",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 20,
+            "effectChance": null,
+            "type": "bug"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [
+                    {
+                        "effect": "Inflige des dégats réguliers.  A une chance d'empoisonner la cible.",
+                        "language": {
+                            "name": "fr",
+                            "url": "https://pokeapi.co/api/v2/language/5/"
+                        },
+                        "short_effect": "A une chance d'empoisonner la cible."
+                    },
+                    {
+                        "effect": "Inflicts regular damage.  Has a chance to poison the target.",
+                        "language": {
+                            "name": "en",
+                            "url": "https://pokeapi.co/api/v2/language/9/"
+                        },
+                        "short_effect": "Has a chance to poison the target."
+                    }
+                ],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 478,
+        "name": "magic-room",
+        "current": {
+            "power": null,
+            "accuracy": null,
+            "pp": 10,
+            "effectChance": null,
+            "type": "psychic"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 480,
+        "name": "storm-throw",
+        "current": {
+            "power": 60,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "fighting"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 40,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 485,
+        "name": "synchronoise",
+        "current": {
+            "power": 120,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "psychic"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 70,
+                "pp": 15,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 490,
+        "name": "low-sweep",
+        "current": {
+            "power": 65,
+            "accuracy": 100,
+            "pp": 20,
+            "effectChance": 100,
+            "type": "fighting"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 60,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 506,
+        "name": "hex",
+        "current": {
+            "power": 65,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "ghost"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 50,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 510,
+        "name": "incinerate",
+        "current": {
+            "power": 60,
+            "accuracy": 100,
+            "pp": 15,
+            "effectChance": null,
+            "type": "fire"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 30,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 518,
+        "name": "water-pledge",
+        "current": {
+            "power": 80,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "water"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 50,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 519,
+        "name": "fire-pledge",
+        "current": {
+            "power": 80,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "fire"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 50,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 520,
+        "name": "grass-pledge",
+        "current": {
+            "power": 80,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "grass"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 50,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 522,
+        "name": "struggle-bug",
+        "current": {
+            "power": 50,
+            "accuracy": 100,
+            "pp": 20,
+            "effectChance": 100,
+            "type": "bug"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 30,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 524,
+        "name": "frost-breath",
+        "current": {
+            "power": 60,
+            "accuracy": 90,
+            "pp": 10,
+            "effectChance": 100,
+            "type": "ice"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 40,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 533,
+        "name": "sacred-sword",
+        "current": {
+            "power": 90,
+            "accuracy": 100,
+            "pp": 15,
+            "effectChance": null,
+            "type": "fighting"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": null,
+                "pp": 20,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 542,
+        "name": "hurricane",
+        "current": {
+            "power": 110,
+            "accuracy": 70,
+            "pp": 10,
+            "effectChance": 30,
+            "type": "flying"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 120,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 546,
+        "name": "techno-blast",
+        "current": {
+            "power": 120,
+            "accuracy": 100,
+            "pp": 5,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 85,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "x-y",
+                    "url": "https://pokeapi.co/api/v2/version-group/15/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 560,
+        "name": "flying-press",
+        "current": {
+            "power": 100,
+            "accuracy": 95,
+            "pp": 10,
+            "effectChance": null,
+            "type": "fighting"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 80,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sun-moon",
+                    "url": "https://pokeapi.co/api/v2/version-group/17/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 565,
+        "name": "fell-stinger",
+        "current": {
+            "power": 50,
+            "accuracy": 100,
+            "pp": 25,
+            "effectChance": null,
+            "type": "bug"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 30,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sun-moon",
+                    "url": "https://pokeapi.co/api/v2/version-group/17/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 570,
+        "name": "parabolic-charge",
+        "current": {
+            "power": 65,
+            "accuracy": 100,
+            "pp": 20,
+            "effectChance": null,
+            "type": "electric"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 50,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sun-moon",
+                    "url": "https://pokeapi.co/api/v2/version-group/17/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 595,
+        "name": "mystical-fire",
+        "current": {
+            "power": 75,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": 100,
+            "type": "fire"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 65,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sun-moon",
+                    "url": "https://pokeapi.co/api/v2/version-group/17/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 718,
+        "name": "multi-attack",
+        "current": {
+            "power": 120,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": null,
+            "type": "normal"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 90,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 729,
+        "name": "zippy-zap",
+        "current": {
+            "power": 80,
+            "accuracy": 100,
+            "pp": 10,
+            "effectChance": 100,
+            "type": "electric"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 50,
+                "pp": 15,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 733,
+        "name": "bouncy-bubble",
+        "current": {
+            "power": 60,
+            "accuracy": 100,
+            "pp": 20,
+            "effectChance": null,
+            "type": "water"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 90,
+                "pp": 15,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 734,
+        "name": "buzzy-buzz",
+        "current": {
+            "power": 60,
+            "accuracy": 100,
+            "pp": 20,
+            "effectChance": 100,
+            "type": "electric"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 90,
+                "pp": 15,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 735,
+        "name": "sizzly-slide",
+        "current": {
+            "power": 60,
+            "accuracy": 100,
+            "pp": 20,
+            "effectChance": 100,
+            "type": "fire"
+        },
+        "pastValues": [
+            {
+                "accuracy": null,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 90,
+                "pp": 15,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 736,
+        "name": "glitzy-glow",
+        "current": {
+            "power": 80,
+            "accuracy": 95,
+            "pp": 15,
+            "effectChance": null,
+            "type": "psychic"
+        },
+        "pastValues": [
+            {
+                "accuracy": 100,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 90,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 737,
+        "name": "baddy-bad",
+        "current": {
+            "power": 80,
+            "accuracy": 95,
+            "pp": 15,
+            "effectChance": null,
+            "type": "dark"
+        },
+        "pastValues": [
+            {
+                "accuracy": 100,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 90,
+                "pp": null,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 738,
+        "name": "sappy-seed",
+        "current": {
+            "power": 100,
+            "accuracy": 90,
+            "pp": 10,
+            "effectChance": 100,
+            "type": "grass"
+        },
+        "pastValues": [
+            {
+                "accuracy": 100,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 90,
+                "pp": 15,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 739,
+        "name": "freezy-frost",
+        "current": {
+            "power": 100,
+            "accuracy": 90,
+            "pp": 10,
+            "effectChance": null,
+            "type": "ice"
+        },
+        "pastValues": [
+            {
+                "accuracy": 100,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 90,
+                "pp": 15,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    },
+    {
+        "id": 740,
+        "name": "sparkly-swirl",
+        "current": {
+            "power": 120,
+            "accuracy": 85,
+            "pp": 5,
+            "effectChance": null,
+            "type": "fairy"
+        },
+        "pastValues": [
+            {
+                "accuracy": 100,
+                "effect_chance": null,
+                "effect_entries": [],
+                "power": 90,
+                "pp": 15,
+                "type": null,
+                "version_group": {
+                    "name": "sword-shield",
+                    "url": "https://pokeapi.co/api/v2/version-group/20/"
+                }
+            }
+        ]
+    }
+]

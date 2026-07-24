@@ -1,28 +1,43 @@
-const axios = require("axios");
 const path = require("path");
 
 const {
+    saveJSON
+} = require("../utils/json");
+
+const {
     toTitleCase,
-    saveJSON,
-    getIdFromUrl,
     formatGameName,
     cleanFlavorText,
+    formatNationalDexNumber
+} = require("../utils/formatting");
+
+const {
+    getIdFromUrl,
+    findEnglishEntry,
+    createReferenceList
+} = require("../utils/helpers");
+
+const {
+    getResource,
     getResourceList,
-    getVersionGroupLookup,
+    getVersionGroupLookup
+} = require("../utils/api");
+
+const {
     createGenerationReference,
     createNamedApiReference
-} = require("../utils");
+} = require("../utils/references");
+
+const {
+    printSuccess,
+    printOutputFile,
+    printError
+} = require("../utils/logger");
 
 const OUTPUT_FILE = path.join(
     __dirname,
     "../../database/species.json"
 );
-
-function createNationalDexNumber(id) {
-
-    return `#${String(id).padStart(4, "0")}`;
-
-}
 
 async function downloadSpecies() {
 
@@ -40,20 +55,25 @@ async function downloadSpecies() {
 
         for (const speciesResource of speciesResources) {
 
-            const id = getIdFromUrl(
-                speciesResource.url
-            );
+            const id =
+                getIdFromUrl(
+                    speciesResource.url
+                );
 
             console.log(
                 `Downloading Species #${id}...`
             );
 
-            const {
-                data: species
-            } = await axios.get(
-                `https://pokeapi.co/api/v2/pokemon-species/${id}`
-            );
+            const species =
+                await getResource(
+                    "pokemon-species",
+                    id
+                );
 
+            const englishGenus =
+                findEnglishEntry(
+                    species.genera
+                );
             const entries = species.flavor_text_entries
 
                 .filter(
@@ -104,7 +124,7 @@ async function downloadSpecies() {
                     species.id,
 
                 number:
-                    createNationalDexNumber(
+                    formatNationalDexNumber(
                         species.id
                     ),
 
@@ -119,15 +139,7 @@ async function downloadSpecies() {
                     ),
 
                 category:
-
-                    species.genera.find(
-
-                        genus =>
-
-                            genus.language.name === "en"
-
-                    )?.genus ??
-
+                    englishGenus?.genus ??
                     "Unknown",
 
                 color:
@@ -136,24 +148,14 @@ async function downloadSpecies() {
                     ),
 
                 shape:
-
-                    species.shape
-
-                        ? createNamedApiReference(
-                            species.shape
-                        )
-
-                        : null,
+                    createNamedApiReference(
+                        species.shape
+                    ),
 
                 habitat:
-
-                    species.habitat
-
-                        ? createNamedApiReference(
-                            species.habitat
-                        )
-
-                        : null,
+                    createNamedApiReference(
+                        species.habitat
+                    ),
 
                 captureRate:
                     species.capture_rate,
@@ -182,33 +184,17 @@ async function downloadSpecies() {
                     species.is_baby,
 
                 evolutionChainId:
-
                     species.evolution_chain
-
                         ? getIdFromUrl(
                             species.evolution_chain.url
                         )
-
                         : null,
 
                 eggGroups:
-
-                    species.egg_groups
-
-                        .map(
-
-                            group =>
-
-                                createNamedApiReference(
-                                    group
-                                )
-
-                        )
-
-                        .sort(
-                            (a, b) =>
-                                a.id - b.id
-                        ),
+                    createReferenceList(
+                        species.egg_groups,
+                        createNamedApiReference
+                    ),
 
                 entries
 
@@ -217,7 +203,8 @@ async function downloadSpecies() {
         }
 
         speciesList.sort(
-            (a, b) => a.id - b.id
+            (a, b) =>
+                a.id - b.id
         );
 
         saveJSON(
@@ -225,26 +212,19 @@ async function downloadSpecies() {
             speciesList
         );
 
-        console.log("");
-
-        console.log(
-            `Successfully downloaded ${speciesList.length} Pokémon species.`
+        printSuccess(
+            `Downloaded ${speciesList.length} Pokémon species`
         );
 
-        console.log(
-            `Saved to ${OUTPUT_FILE}`
+        printOutputFile(
+            OUTPUT_FILE
         );
 
     } catch (error) {
 
-        console.error("");
-
-        console.error(
-            "Error downloading species:"
-        );
-
-        console.error(
-            error.message
+        printError(
+            error,
+            "Error downloading species"
         );
 
     }

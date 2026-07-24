@@ -1,12 +1,27 @@
-const axios = require("axios");
 const path = require("path");
 
 const {
-    toTitleCase,
-    saveJSON,
-    getIdFromUrl,
+    saveJSON
+} = require("../utils/json");
+
+const {
+    toTitleCase
+} = require("../utils/formatting");
+
+const {
+    getIdFromUrl
+} = require("../utils/helpers");
+
+const {
+    getResource,
     getResourceList
-} = require("../utils");
+} = require("../utils/api");
+
+const {
+    printSuccess,
+    printOutputFile,
+    printError
+} = require("../utils/logger");
 
 const OUTPUT_FILE = path.join(
     __dirname,
@@ -19,41 +34,45 @@ async function downloadDamageClasses() {
 
         const damageClasses = [];
 
-        const damageClassList =
+        const damageClassResources =
             await getResourceList(
                 "move-damage-class"
             );
 
-        for (const damageClassResource of damageClassList) {
+        for (const damageClassResource of damageClassResources) {
 
-            const id = getIdFromUrl(
-                damageClassResource.url
-            );
+            const id =
+                getIdFromUrl(
+                    damageClassResource.url
+                );
 
             console.log(
                 `Downloading Damage Class #${id}...`
             );
 
-            const {
-                data: damageClass
-            } = await axios.get(
-                `https://pokeapi.co/api/v2/move-damage-class/${id}`
-            );
+            const damageClass =
+                await getResource(
+                    "move-damage-class",
+                    id
+                );
 
             damageClasses.push({
 
-                id: damageClass.id,
+                id:
+                    damageClass.id,
 
-                name: toTitleCase(
-                    damageClass.name
-                )
+                name:
+                    toTitleCase(
+                        damageClass.name
+                    )
 
             });
 
         }
 
         damageClasses.sort(
-            (a, b) => a.id - b.id
+            (a, b) =>
+                a.id - b.id
         );
 
         saveJSON(
@@ -61,18 +80,19 @@ async function downloadDamageClasses() {
             damageClasses
         );
 
-        console.log(
-            `Successfully downloaded ${damageClasses.length} damage classes.`
+        printSuccess(
+            `Downloaded ${damageClasses.length} damage classes`
+        );
+
+        printOutputFile(
+            OUTPUT_FILE
         );
 
     } catch (error) {
 
-        console.error(
-            "Error downloading damage classes:"
-        );
-
-        console.error(
-            error.message
+        printError(
+            error,
+            "Error downloading damage classes"
         );
 
     }

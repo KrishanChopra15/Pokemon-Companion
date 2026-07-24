@@ -1,12 +1,30 @@
-const Database = require("better-sqlite3");
 const path = require("path");
 
 const {
-    saveJSON,
-    createLookupMap,
-    cleanEffectText,
+    saveJSON
+} = require("../utils/json");
+
+const {
+    createLookupMap
+} = require("../utils/helpers");
+
+const {
+    cleanEffectText
+} = require("../utils/formatting");
+
+const {
     createVersionGroupReference
-} = require("../utils");
+} = require("../utils/references");
+
+const {
+    withVeekunDatabase
+} = require("../utils/database");
+
+const {
+    printSuccess,
+    printOutputFile,
+    printError
+} = require("../utils/logger");
 
 const versionGroups = require(
     "../../database/version-groups.json"
@@ -17,85 +35,97 @@ const OUTPUT_FILE = path.join(
     "../../database/history/ability-history.json"
 );
 
-const versionGroupMap = createLookupMap(
-    versionGroups
-);
+function downloadAbilityHistory() {
 
-const database = new Database(
-    path.join(
-        __dirname,
-        "../../database/external/veekun/veekun-pokedex.sqlite"
-    ),
-    {
-        readonly: true
-    }
-);
+    try {
 
-const rows = database.prepare(`
-    SELECT
-        ac.ability_id,
-        ac.changed_in_version_group_id,
-        acp.effect
-    FROM ability_changelog ac
-    JOIN ability_changelog_prose acp
-        ON acp.ability_changelog_id = ac.id
-    JOIN version_groups vg
-        ON vg.id = ac.changed_in_version_group_id
-    WHERE
-        acp.local_language_id = 9
-    ORDER BY
-        ac.ability_id,
-        vg."order";
-`).all();
+        withVeekunDatabase(database => {
 
-const history = new Map();
+            const versionGroupMap =
+                createLookupMap(
+                    versionGroups
+                );
 
-for (const row of rows) {
+            const rows = database.prepare(`
+                SELECT
+                    ac.ability_id,
+                    ac.changed_in_version_group_id,
+                    acp.effect
+                FROM ability_changelog ac
+                JOIN ability_changelog_prose acp
+                    ON acp.ability_changelog_id = ac.id
+                JOIN version_groups vg
+                    ON vg.id = ac.changed_in_version_group_id
+                WHERE
+                    acp.local_language_id = 9
+                ORDER BY
+                    ac.ability_id,
+                    vg."order";
+            `).all();
 
-    if (!history.has(row.ability_id)) {
+            const history = new Map();
 
-        history.set(
-            row.ability_id,
-            []
+            for (const row of rows) {
+
+                if (!history.has(row.ability_id)) {
+
+                    history.set(
+                        row.ability_id,
+                        []
+                    );
+
+                }
+
+                const versionGroup =
+                    versionGroupMap.get(
+                        row.changed_in_version_group_id
+                    );
+
+                history.get(
+                    row.ability_id
+                ).push({
+
+                    versionGroup:
+                        createVersionGroupReference(
+                            versionGroup,
+                            true
+                        ),
+
+                    effect:
+                        cleanEffectText(
+                            row.effect
+                        )
+
+                });
+
+            }
+
+            saveJSON(
+                OUTPUT_FILE,
+                Object.fromEntries(
+                    history
+                )
+            );
+
+            printSuccess(
+                `Downloaded history for ${history.size} abilities`
+            );
+
+            printOutputFile(
+                OUTPUT_FILE
+            );
+
+        });
+
+    } catch (error) {
+
+        printError(
+            error,
+            "Error downloading ability history"
         );
 
     }
-
-    const versionGroup =
-        versionGroupMap.get(
-            row.changed_in_version_group_id
-        );
-    
-    history.get(
-        row.ability_id
-    ).push({
-    
-        versionGroup:
-            createVersionGroupReference(
-                versionGroup,
-                true
-            ),
-        
-        effect:
-            cleanEffectText(
-                row.effect
-            )
-        
-    });
 
 }
 
-const output = Object.fromEntries(
-    history
-);
-
-saveJSON(
-    OUTPUT_FILE,
-    output
-);
-
-console.log(
-    `Successfully saved history for ${history.size} abilities.`
-);
-
-database.close();
+downloadAbilityHistory();

@@ -1,13 +1,35 @@
-const axios = require("axios");
 const path = require("path");
 
 const {
+    saveJSON
+} = require("../utils/json");
+
+const {
     toTitleCase,
-    saveJSON,
+    formatNationalDexNumber
+} = require("../utils/formatting");
+
+const {
     getIdFromUrl,
-    getResourceList,
+    sortById,
+    sortByProperty,
+    createReferenceList
+} = require("../utils/helpers");
+
+const {
+    getResource,
+    getResourceList
+} = require("../utils/api");
+
+const {
     createNamedApiReference
-} = require("../utils");
+} = require("../utils/references");
+
+const {
+    printSuccess,
+    printOutputFile,
+    printError
+} = require("../utils/logger");
 
 const OUTPUT_FILE = path.join(
     __dirname,
@@ -24,134 +46,183 @@ async function downloadPokemon() {
             await getResourceList(
                 "pokemon"
             );
-        
+
         for (const pokemonResource of pokemonResources) {
-        
-            const id = getIdFromUrl(
-                pokemonResource.url
+
+            const id =
+                getIdFromUrl(
+                    pokemonResource.url
+                );
+
+            console.log(
+                `Downloading Pokémon #${id}...`
             );
 
-            console.log(`Downloading Pokémon #${id}...`);
+            const pokemon =
+                await getResource(
+                    "pokemon",
+                    id
+                );
 
-            const { data: pokemon } = await axios.get(
-                `https://pokeapi.co/api/v2/pokemon/${id}`
-            );
+            const sprites =
+                pokemon.sprites;
 
-            const sprites = pokemon.sprites;
+            const artwork =
+                sprites.other;
 
-            const artwork = sprites.other;
-
-            const stats = pokemon.stats;
-
-            const pokemonTypes =
-                pokemon.types;
-
-            const pokemonAbilities =
-                pokemon.abilities;
+            const stats =
+                pokemon.stats;
 
             pokemonList.push({
 
-                id: pokemon.id,
+                id:
+                    pokemon.id,
 
-                speciesId: getIdFromUrl(
-                    pokemon.species.url
-                ),
+                speciesId:
+                    getIdFromUrl(
+                        pokemon.species.url
+                    ),
 
-                order: pokemon.order,
+                order:
+                    pokemon.order,
 
-                number: `#${String(pokemon.id).padStart(4, "0")}`,
+                number:
+                    formatNationalDexNumber(
+                        pokemon.id
+                    ),
 
-                name: toTitleCase(pokemon.name),
+                name:
+                    toTitleCase(
+                        pokemon.name
+                    ),
 
-                height: pokemon.height / 10,
+                height:
+                    pokemon.height / 10,
 
-                weight: pokemon.weight / 10,
+                weight:
+                    pokemon.weight / 10,
 
                 artwork: {
-                
+
                     official:
-                        artwork["official-artwork"].front_default,
-                
+                        artwork[
+                            "official-artwork"
+                        ].front_default,
+
                     home:
                         artwork.home.front_default,
-                
+
                     dreamWorld:
                         artwork.dream_world.front_default
-                
+
                 },
 
                 sprites: {
-                
-                    front: sprites.front_default,
-                
-                    back: sprites.back_default,
-                
-                    frontShiny: sprites.front_shiny,
-                
-                    backShiny: sprites.back_shiny
-                
+
+                    front:
+                        sprites.front_default,
+
+                    back:
+                        sprites.back_default,
+
+                    frontShiny:
+                        sprites.front_shiny,
+
+                    backShiny:
+                        sprites.back_shiny
+
                 },
 
-                types: pokemonTypes
-                    .map(type => ({
-                    
-                        ...createNamedApiReference(
-                            type.type
-                        ),
-                    
-                        slot: type.slot
-                    
-                    }))
-                    .sort((a, b) => a.slot - b.slot),
+                types:
 
-                abilities: pokemonAbilities
-                    .map(ability => ({
+                    sortByProperty(
                     
-                        ...createNamedApiReference(
-                            ability.ability
-                        ),
+                        pokemon.types.map(type => ({
+                        
+                            ...createNamedApiReference(
+                                type.type
+                            ),
+                        
+                            slot:
+                                type.slot
+                        
+                        })),
                     
-                        hidden: ability.is_hidden,
+                        "slot"
                     
-                        slot: ability.slot
+                    ),
+
+                abilities:
+
+                    sortByProperty(
                     
-                    }))
-                    .sort((a, b) => a.slot - b.slot),
-                
+                        pokemon.abilities.map(ability => ({
+                        
+                            ...createNamedApiReference(
+                                ability.ability
+                            ),
+                        
+                            hidden:
+                                ability.is_hidden,
+                        
+                            slot:
+                                ability.slot
+                        
+                        })),
+                    
+                        "slot"
+                    
+                    ),
+
                 stats: {
-                
-                    hp: stats[0].base_stat,
-                
-                    attack: stats[1].base_stat,
-                
-                    defense: stats[2].base_stat,
-                
-                    specialAttack: stats[3].base_stat,
-                
-                    specialDefense: stats[4].base_stat,
-                
-                    speed: stats[5].base_stat
-                
+
+                    hp:
+                        stats[0].base_stat,
+
+                    attack:
+                        stats[1].base_stat,
+
+                    defense:
+                        stats[2].base_stat,
+
+                    specialAttack:
+                        stats[3].base_stat,
+
+                    specialDefense:
+                        stats[4].base_stat,
+
+                    speed:
+                        stats[5].base_stat
+
                 }
 
             });
 
         }
-        pokemonList.sort((a, b) => a.id - b.id);
+
+        sortById(
+            pokemonList
+        );
 
         saveJSON(
             OUTPUT_FILE,
             pokemonList
         );
 
-        console.log(
-            `Successfully downloaded ${pokemonList.length} Pokémon.`
+        printSuccess(
+            `Downloaded ${pokemonList.length} Pokémon`
         );
+
+        printOutputFile(
+            OUTPUT_FILE
+        );
+
     } catch (error) {
 
-        console.error("Error downloading Pokémon:");
-
-        console.error(error.message);
+        printError(
+            error,
+            "Error downloading Pokémon"
+        );
 
     }
 

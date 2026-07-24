@@ -1,13 +1,32 @@
-const axios = require("axios");
 const path = require("path");
 
 const {
-    saveJSON,
-    formatApiName,
-    getResourceList,
+    saveJSON
+} = require("../utils/json");
+
+const {
+    formatApiName
+} = require("../utils/formatting");
+
+const {
+    createReferenceList
+} = require("../utils/helpers");
+
+const {
+    getResource,
+    getResourceList
+} = require("../utils/api");
+
+const {
     createGenerationReference,
     createGameReference
-} = require("../utils");
+} = require("../utils/references");
+
+const {
+    printSuccess,
+    printOutputFile,
+    printError
+} = require("../utils/logger");
 
 const OUTPUT_FILE = path.join(
     __dirname,
@@ -31,11 +50,11 @@ async function downloadVersionGroups() {
                 `Downloading ${versionGroupResource.name}...`
             );
 
-            const {
-                data: versionGroup
-            } = await axios.get(
-                versionGroupResource.url
-            );
+            const versionGroup =
+                await getResource(
+                    "version-group",
+                    versionGroupResource.name
+                );
 
             const generation =
                 createGenerationReference(
@@ -44,9 +63,11 @@ async function downloadVersionGroups() {
 
             versionGroups.push({
 
-                id: versionGroup.id,
+                id:
+                    versionGroup.id,
 
-                order: versionGroup.order,
+                order:
+                    versionGroup.order,
 
                 generationOrder:
                     generation.id,
@@ -62,21 +83,18 @@ async function downloadVersionGroups() {
                 generation,
 
                 games:
-                    versionGroup.versions
-                        .map(
-                            createGameReference
-                        )
-                        .sort(
-                            (a, b) =>
-                                a.id - b.id
-                        )
+                    createReferenceList(
+                        versionGroup.versions,
+                        createGameReference
+                    )
 
             });
 
         }
 
         versionGroups.sort(
-            (a, b) => a.id - b.id
+            (a, b) =>
+                a.id - b.id
         );
 
         saveJSON(
@@ -84,18 +102,19 @@ async function downloadVersionGroups() {
             versionGroups
         );
 
-        console.log(
-            `Successfully downloaded ${versionGroups.length} version groups.`
+        printSuccess(
+            `Downloaded ${versionGroups.length} version groups`
+        );
+
+        printOutputFile(
+            OUTPUT_FILE
         );
 
     } catch (error) {
 
-        console.error(
-            "Error downloading version groups:"
-        );
-
-        console.error(
-            error.message
+        printError(
+            error,
+            "Error downloading version groups"
         );
 
     }

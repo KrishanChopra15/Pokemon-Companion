@@ -1,12 +1,33 @@
-const axios = require("axios");
 const path = require("path");
 
 const {
-    toTitleCase,
-    saveJSON,
-    getResourceList,
+    saveJSON
+} = require("../utils/json");
+
+const {
+    toTitleCase
+} = require("../utils/formatting");
+
+const {
+    sortById,
+    createReferenceList,
+    getMetadataEntry
+} = require("../utils/helpers");
+
+const {
+    getResource,
+    getResourceList
+} = require("../utils/api");
+
+const {
     createNamedApiReference
-} = require("../utils");
+} = require("../utils/references");
+
+const {
+    printSuccess,
+    printOutputFile,
+    printError
+} = require("../utils/logger");
 
 const metadata = require(
     "../../database/metadata/type-metadata.json"
@@ -44,27 +65,30 @@ async function downloadTypes() {
                 `Downloading ${typeResource.name}...`
             );
 
-            const {
-                data: type
-            } = await axios.get(
-                typeResource.url
-            );
+            const type =
+                await getResource(
+                    "type",
+                    typeResource.name
+                );
 
             const metadataEntry =
-                metadata[
-                    toTitleCase(type.name)
-                ] || {};
+                getMetadataEntry(
+                    metadata,
+                    type.name
+                );
 
             const damage =
                 type.damage_relations;
 
             types.push({
 
-                id: type.id,
+                id:
+                    type.id,
 
-                name: toTitleCase(
-                    type.name
-                ),
+                name:
+                    toTitleCase(
+                        type.name
+                    ),
 
                 color:
                     metadataEntry.color ?? null,
@@ -84,64 +108,40 @@ async function downloadTypes() {
                 damageRelations: {
 
                     doubleDamageTo:
-                        damage.double_damage_to
-                            .map(
-                                createNamedApiReference
-                            )
-                            .sort(
-                                (a, b) =>
-                                    a.id - b.id
-                            ),
+                        createReferenceList(
+                            damage.double_damage_to,
+                            createNamedApiReference
+                        ),
 
                     halfDamageTo:
-                        damage.half_damage_to
-                            .map(
-                                createNamedApiReference
-                            )
-                            .sort(
-                                (a, b) =>
-                                    a.id - b.id
-                            ),
+                        createReferenceList(
+                            damage.half_damage_to,
+                            createNamedApiReference
+                        ),
 
                     noDamageTo:
-                        damage.no_damage_to
-                            .map(
-                                createNamedApiReference
-                            )
-                            .sort(
-                                (a, b) =>
-                                    a.id - b.id
-                            ),
+                        createReferenceList(
+                            damage.no_damage_to,
+                            createNamedApiReference
+                        ),
 
                     doubleDamageFrom:
-                        damage.double_damage_from
-                            .map(
-                                createNamedApiReference
-                            )
-                            .sort(
-                                (a, b) =>
-                                    a.id - b.id
-                            ),
+                       createReferenceList(
+                            damage.double_damage_from,
+                            createNamedApiReference
+                        ),
 
                     halfDamageFrom:
-                        damage.half_damage_from
-                            .map(
-                                createNamedApiReference
-                            )
-                            .sort(
-                                (a, b) =>
-                                    a.id - b.id
-                            ),
+                       createReferenceList(
+                            damage.half_damage_from,
+                            createNamedApiReference
+                        ),
 
                     noDamageFrom:
-                        damage.no_damage_from
-                            .map(
-                                createNamedApiReference
-                            )
-                            .sort(
-                                (a, b) =>
-                                    a.id - b.id
-                            )
+                       createReferenceList(
+                            damage.no_damage_from,
+                            createNamedApiReference
+                        )
 
                 }
 
@@ -149,8 +149,8 @@ async function downloadTypes() {
 
         }
 
-        types.sort(
-            (a, b) => a.id - b.id
+        sortById(
+            types
         );
 
         saveJSON(
@@ -158,18 +158,19 @@ async function downloadTypes() {
             types
         );
 
-        console.log(
-            `Successfully downloaded ${types.length} Pokémon types.`
+        printSuccess(
+            `Downloaded ${types.length} Pokémon types`
+        );
+
+        printOutputFile(
+            OUTPUT_FILE
         );
 
     } catch (error) {
 
-        console.error(
-            "Error downloading types:"
-        );
-
-        console.error(
-            error.message
+        printError(
+            error,
+            "Error downloading types"
         );
 
     }

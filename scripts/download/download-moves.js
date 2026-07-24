@@ -1,17 +1,45 @@
-const axios = require("axios");
 const path = require("path");
 
 const {
+    saveJSON
+} = require("../utils/json");
+
+const {
     formatApiName,
-    saveJSON,
-    hasFlag,
-    cleanFlavorText,
+    cleanFlavorText
+} = require("../utils/formatting");
+
+const {
     getIdFromUrl,
-    createGenerationReference,
-    createVersionGroupReference,
-    createNamedApiReference,
+    findEnglishEntry,
+    sortById
+} = require("../utils/helpers");
+
+const {
+    getResource,
     getResourceList
-} = require("../utils")
+} = require("../utils/api");
+
+const {
+    createGenerationReference,
+    createNamedApiReference
+} = require("../utils/references");
+
+const {
+    buildFlavorMap,
+    buildMoveHistory,
+    buildMoveVersions,
+    createMoveFlags,
+    createMoveContest,
+    createMoveMeta,
+    createStatChanges
+} = require("../utils/moves");
+
+const {
+    printSuccess,
+    printOutputFile,
+    printError
+} = require("../utils/logger");
 
 const versionGroups = require(
     "../../database/version-groups.json"
@@ -28,336 +56,123 @@ async function downloadMoves() {
 
         const moves = [];
 
-        const moveList =
+        const moveResources =
             await getResourceList(
                 "move"
             );
-        
-        for (const moveResource of moveList) {
-        
-            const id = getIdFromUrl(
-                moveResource.url
-            );
+
+        for (const moveResource of moveResources) {
+
+            const id =
+                getIdFromUrl(
+                    moveResource.url
+                );
 
             console.log(
                 `Downloading Move #${id}...`
             );
 
-            const { data: move } = await axios.get(
-                `https://pokeapi.co/api/v2/move/${id}`
-            );
-
-            const type = move.type;
-
-            const target = move.target;
-
-            const damageClass = move.damage_class;
-
-            const generation = move.generation;
-
-            const meta = move.meta;
-
-            const contestType = move.contest_type;
-
-            const contestEffect = move.contest_effect;
-
-            const superContestEffect =
-                move.super_contest_effect;
-
-            const flags = move.flags;
-
-            const statChanges = move.stat_changes;
-
-            const pastValues = move.past_values;
-
-            const effectEntries = move.effect_entries;
-
-            const flavorEntries =
-                move.flavor_text_entries;
-
-            const englishEffect = effectEntries.find(
-                entry => entry.language.name === "en"
-            );
-
-            const history = [];
-
-            const flavorMap = new Map();
-
-            for (const past of pastValues) {
-            
-                const versionGroup = versionGroups.find(
-                    vg =>
-                        vg.apiName ===
-                        past.version_group.name
+            const move =
+                await getResource(
+                    "move",
+                    id
                 );
 
-                if (!versionGroup) {
-                
-                    continue;
-                
-                }
-            
-                history.push({
-                
-                    order: versionGroup.order,
-                
-                    data: past
-                
-                });
-            
-            }
-
-            history.sort(
-            
-                (a, b) => a.order - b.order
-            
-            );
-
-            for (const entry of flavorEntries) {
-            
-                if (entry.language.name !== "en") {
-                    continue;
-                }
-            
-                flavorMap.set(
-                
-                    entry.version_group.name,
-                
-                    cleanFlavorText(
-                        entry.flavor_text
-                    )
-                
+            const englishEffect =
+                findEnglishEntry(
+                    move.effect_entries
                 );
-            
-            }
 
-            const versions = [];
+            const history =
+                buildMoveHistory(
+                    move.past_values,
+                    versionGroups
+                );
 
-            for (const versionGroup of versionGroups) {
-            
-                let power = move.power;
+            const flavorMap =
+                buildFlavorMap(
+                    move.flavor_text_entries
+                );
 
-                let accuracy = move.accuracy;
-
-                let pp = move.pp;
-
-                let effectChance = move.effect_chance;
-
-                let type = move.type;
-
-                for (const change of history) {
-                
-                    if (change.order > versionGroup.order) {
-                    
-                        break;
-                    
-                    }
-                
-                    const past = change.data;
-                
-                    if (past.power !== null) {
-                    
-                        power = past.power;
-                    
-                    }
-                
-                    if (past.accuracy !== null) {
-                    
-                        accuracy = past.accuracy;
-                    
-                    }
-                
-                    if (past.pp !== null) {
-                    
-                        pp = past.pp;
-                    
-                    }
-                
-                    if (past.effect_chance !== null) {
-                    
-                        effectChance =
-                            past.effect_chance;
-                    
-                    }
-                
-                    if (past.type !== null) {
-                    
-                        type = past.type;
-                    
-                    }
-                
-                }
-            
-                versions.push({
-
-                    versionGroup:
-                        createVersionGroupReference(
-                            versionGroup,
-                            true
-                        ),
-                
-                    power,
-                
-                    accuracy,
-                
-                    pp,
-                
-                    effectChance,
-                
-                    type:
-                        createNamedApiReference(
-                            type
-                        ),
-                
-                    description:
-                
-                        flavorMap.get(
-                            versionGroup.apiName
-                        ) || null
-                    
-                });
-            
-            }
+            const versions =
+                buildMoveVersions(
+                    move,
+                    history,
+                    flavorMap,
+                    versionGroups
+                );
 
             moves.push({
-            
-                id: move.id,
-            
-                name: formatApiName(
-                    move.name
-                ),
-            
+
+                id:
+                    move.id,
+
+                name:
+                    formatApiName(
+                        move.name
+                    ),
+
                 generation:
                     createGenerationReference(
-                        generation
+                        move.generation
                     ),
-            
+
                 type:
                     createNamedApiReference(
-                        type
+                        move.type
                     ),
-            
+
                 damageClass:
                     createNamedApiReference(
-                        damageClass
+                        move.damage_class
                     ),
-            
+
                 target:
                     createNamedApiReference(
-                        target
+                        move.target
                     ),
-            
-                priority: move.priority,
 
-                flags: {
-                
-                    contact: hasFlag(flags, "contact"),
-                
-                    protect: hasFlag(flags, "protect"),
-                
-                    mirror: hasFlag(flags, "mirror"),
-                
-                    sound: hasFlag(flags, "sound"),
-                
-                    punch: hasFlag(flags, "punch"),
-                
-                    bite: hasFlag(flags, "bite"),
-                
-                    pulse: hasFlag(flags, "pulse"),
-                
-                    powder: hasFlag(flags, "powder"),
-                
-                    heal: hasFlag(flags, "heal")
-                
-                },
-                
-                contest: {
-                
-                    type: contestType
-                        ? createNamedApiReference(
-                            contestType
-                        )
-                        : null,
-                    
-                    effect: contestEffect
-                        ? getIdFromUrl(
-                            contestEffect.url
-                        )
-                        : null,
-                    
-                    superEffect: superContestEffect
-                        ? getIdFromUrl(
-                            superContestEffect.url
-                        )
-                        : null
-                    
-                },
+                priority:
+                    move.priority,
 
-                meta: meta
-                ? {
-                
-                    ailment: meta.ailment
-                        ? createNamedApiReference(
-                            meta.ailment
-                        )
-                        : null,
-                    
-                    category: meta.category
-                        ? createNamedApiReference(
-                            meta.category
-                        )
-                        : null,
-                    
-                    minHits: meta.min_hits,
-                    
-                    maxHits: meta.max_hits,
-                    
-                    minTurns: meta.min_turns,
-                    
-                    maxTurns: meta.max_turns,
-                    
-                    drain: meta.drain,
-                    
-                    healing: meta.healing,
-                    
-                    critRate: meta.crit_rate,
-                    
-                    ailmentChance: meta.ailment_chance,
-                    
-                    flinchChance: meta.flinch_chance,
-                    
-                    statChance: meta.stat_chance
-                    
-                }
-                : null,
+                flags:
+                    createMoveFlags(
+                        move.flags
+                    ),
 
-                statChanges: statChanges.map(change => ({
-                
-                    stat:
-                        createNamedApiReference(
-                            change.stat
-                        ),
-                
-                    change: change.change
-                
-                })),
+                contest:
+                    createMoveContest(
+                        move
+                    ),
 
-                effect: cleanFlavorText(
-                    englishEffect?.effect
-                ),
+                meta:
+                    createMoveMeta(
+                        move.meta
+                    ),
 
-                shortEffect: cleanFlavorText(
-                    englishEffect?.short_effect
-                ),
+                statChanges:
+                    createStatChanges(
+                        move.stat_changes
+                    ),
+
+                effect:
+                    cleanFlavorText(
+                        englishEffect?.effect
+                    ),
+
+                shortEffect:
+                    cleanFlavorText(
+                        englishEffect?.short_effect
+                    ),
 
                 versions
 
             });
-        
+
         }
 
-        moves.sort(
-            (a, b) => a.id - b.id
+        sortById(
+            moves
         );
 
         saveJSON(
@@ -365,17 +180,20 @@ async function downloadMoves() {
             moves
         );
 
-        console.log(
-            `Successfully downloaded ${moves.length} moves.`
+        printSuccess(
+            `Downloaded ${moves.length} moves`
+        );
+
+        printOutputFile(
+            OUTPUT_FILE
         );
 
     } catch (error) {
 
-        console.error(
-            "Error downloading moves:"
+        printError(
+            error,
+            "Error downloading moves"
         );
-
-        console.error(error.message);
 
     }
 

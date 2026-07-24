@@ -1,12 +1,28 @@
-const axios = require("axios");
 const path = require("path");
 
 const {
-    formatApiName,
-    saveJSON,
+    saveJSON
+} = require("../utils/json");
+
+const {
+    formatApiName
+} = require("../utils/formatting");
+
+const {
     getIdFromUrl,
+    findEnglishEntry 
+} = require("../utils/helpers");
+
+const {
+    getResource,
     getResourceList
-} = require("../utils");
+} = require("../utils/api");
+
+const {
+    printSuccess,
+    printOutputFile,
+    printError
+} = require("../utils/logger");
 
 const OUTPUT_FILE = path.join(
     __dirname,
@@ -19,40 +35,42 @@ async function downloadMoveTargets() {
 
         const moveTargets = [];
 
-        const moveTargetList =
+        const moveTargetResources =
             await getResourceList(
                 "move-target"
             );
 
-        for (const moveTargetResource of moveTargetList) {
+        for (const moveTargetResource of moveTargetResources) {
 
-            const id = getIdFromUrl(
-                moveTargetResource.url
-            );
+            const id =
+                getIdFromUrl(
+                    moveTargetResource.url
+                );
 
             console.log(
                 `Downloading Move Target #${id}...`
             );
 
-            const {
-                data: moveTarget
-            } = await axios.get(
-                `https://pokeapi.co/api/v2/move-target/${id}`
-            );
+            const moveTarget =
+                await getResource(
+                    "move-target",
+                    id
+                );
 
             const description =
-                moveTarget.descriptions.find(
-                    entry =>
-                        entry.language.name === "en"
+                findEnglishEntry(
+                    moveTarget.descriptions
                 );
 
             moveTargets.push({
 
-                id: moveTarget.id,
+                id:
+                    moveTarget.id,
 
-                name: formatApiName(
-                    moveTarget.name
-                ),
+                name:
+                    formatApiName(
+                        moveTarget.name
+                    ),
 
                 description:
                     description?.description ?? ""
@@ -62,7 +80,8 @@ async function downloadMoveTargets() {
         }
 
         moveTargets.sort(
-            (a, b) => a.id - b.id
+            (a, b) =>
+                a.id - b.id
         );
 
         saveJSON(
@@ -70,18 +89,19 @@ async function downloadMoveTargets() {
             moveTargets
         );
 
-        console.log(
-            `Successfully downloaded ${moveTargets.length} move targets.`
+        printSuccess(
+            `Downloaded ${moveTargets.length} move targets`
+        );
+
+        printOutputFile(
+            OUTPUT_FILE
         );
 
     } catch (error) {
 
-        console.error(
-            "Error downloading move targets:"
-        );
-
-        console.error(
-            error.message
+        printError(
+            error,
+            "Error downloading move targets"
         );
 
     }

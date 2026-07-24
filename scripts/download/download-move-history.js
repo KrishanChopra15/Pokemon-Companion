@@ -1,13 +1,28 @@
-const Database = require("better-sqlite3");
 const path = require("path");
 
 const {
-    saveJSON,
-    createLookupMap,
+    saveJSON
+} = require("../utils/json");
+
+const {
+    createLookupMap
+} = require("../utils/helpers");
+
+const {
     createVersionGroupReference,
     createTypeReference,
     createTargetReference
-} = require("../utils");
+} = require("../utils/references");
+
+const {
+    withVeekunDatabase
+} = require("../utils/database");
+
+const {
+    printSuccess,
+    printOutputFile,
+    printError
+} = require("../utils/logger");
 
 const versionGroups = require(
     "../../database/version-groups.json"
@@ -30,176 +45,187 @@ const OUTPUT_FILE = path.join(
     "../../database/history/move-history.json"
 );
 
-const versionGroupMap =
-    createLookupMap(
-        versionGroups
-    );
+function downloadMoveHistory() {
 
-const typeMap =
-    createLookupMap(
-        types,
-        legacyTypes
-    );
+    try {
 
-const targetMap =
-    createLookupMap(
-        moveTargets
-    );
+        withVeekunDatabase(database => {
 
-const database = new Database(
-    path.join(
-        __dirname,
-        "../../database/external/veekun/veekun-pokedex.sqlite"
-    ),
-    {
-        readonly: true
-    }
-);
+            const versionGroupMap =
+                createLookupMap(
+                    versionGroups
+                );
 
-const rows = database.prepare(`
-    SELECT
-        mc.move_id,
-        mc.changed_in_version_group_id,
-        mc.type_id,
-        mc.power,
-        mc.pp,
-        mc.accuracy,
-        mc.priority,
-        mc.target_id,
-        mc.effect_id,
-        mc.effect_chance
-    FROM move_changelog mc
-    JOIN version_groups vg
-        ON vg.id = mc.changed_in_version_group_id
-    ORDER BY
-        mc.move_id,
-        vg."order";
-`).all();
+            const typeMap =
+                createLookupMap(
+                    types,
+                    legacyTypes
+                );
 
-const history = new Map();
+            const targetMap =
+                createLookupMap(
+                    moveTargets
+                );
 
-for (const row of rows) {
+            const rows = database.prepare(`
+                SELECT
+                    mc.move_id,
+                    mc.changed_in_version_group_id,
+                    mc.type_id,
+                    mc.power,
+                    mc.pp,
+                    mc.accuracy,
+                    mc.priority,
+                    mc.target_id,
+                    mc.effect_id,
+                    mc.effect_chance
+                FROM move_changelog mc
+                JOIN version_groups vg
+                    ON vg.id = mc.changed_in_version_group_id
+                ORDER BY
+                    mc.move_id,
+                    vg."order";
+            `).all();
 
-    if (!history.has(row.move_id)) {
+            const history = new Map();
 
-        history.set(
-            row.move_id,
-            []
-        );
+            for (const row of rows) {
 
-    }
+                if (!history.has(row.move_id)) {
 
-    const versionGroup =
-        versionGroupMap.get(
-            row.changed_in_version_group_id
-        );
+                    history.set(
+                        row.move_id,
+                        []
+                    );
 
-    const change = {
+                }
 
-        versionGroup:
-            createVersionGroupReference(
-                versionGroup,
-                true
-            )
+                const versionGroup =
+                    versionGroupMap.get(
+                        row.changed_in_version_group_id
+                    );
 
-    };
+                const change = {
 
-    if (row.power !== null) {
+                    versionGroup:
+                        createVersionGroupReference(
+                            versionGroup,
+                            true
+                        )
 
-        change.power = row.power;
+                };
 
-    }
+                if (row.power !== null) {
 
-    if (row.pp !== null) {
+                    change.power =
+                        row.power;
 
-        change.pp = row.pp;
+                }
 
-    }
+                if (row.pp !== null) {
 
-    if (row.accuracy !== null) {
+                    change.pp =
+                        row.pp;
 
-        change.accuracy = row.accuracy;
+                }
 
-    }
+                if (row.accuracy !== null) {
 
-    if (row.priority !== null) {
+                    change.accuracy =
+                        row.accuracy;
 
-        change.priority = row.priority;
+                }
 
-    }
+                if (row.priority !== null) {
 
-    if (row.effect_chance !== null) {
+                    change.priority =
+                        row.priority;
 
-        change.effectChance =
-            row.effect_chance;
+                }
 
-    }
+                if (row.effect_chance !== null) {
 
-    if (row.type_id) {
+                    change.effectChance =
+                        row.effect_chance;
 
-        const type =
-            typeMap.get(
-                row.type_id
+                }
+
+                if (row.type_id) {
+
+                    change.type =
+                        createTypeReference(
+                            typeMap.get(
+                                row.type_id
+                            )
+                        );
+
+                }
+
+                if (row.target_id) {
+
+                    change.target =
+                        createTargetReference(
+                            targetMap.get(
+                                row.target_id
+                            )
+                        );
+
+                }
+
+                if (
+
+                    Object.keys(change).length > 1
+
+                ) {
+
+                    history.get(
+                        row.move_id
+                    ).push(
+                        change
+                    );
+
+                }
+
+            }
+
+            for (const [moveId, entries] of history) {
+
+                if (entries.length === 0) {
+
+                    history.delete(
+                        moveId
+                    );
+
+                }
+
+            }
+
+            saveJSON(
+                OUTPUT_FILE,
+                Object.fromEntries(
+                    history
+                )
             );
 
-        change.type =
-            createTypeReference(
-                type
+            printSuccess(
+                `Downloaded history for ${history.size} moves`
             );
 
-    }
-
-    if (row.target_id) {
-
-        const target =
-            targetMap.get(
-                row.target_id
+            printOutputFile(
+                OUTPUT_FILE
             );
 
-        change.target =
-            createTargetReference(
-                target
-            );
+        });
 
-    }
+    } catch (error) {
 
-    if (
-
-        Object.keys(change).length > 1
-
-    ) {
-
-        history.get(
-            row.move_id
-        ).push(
-            change
+        printError(
+            error,
+            "Error downloading move history"
         );
 
     }
 
 }
 
-for (const [moveId, entries] of history) {
-
-    if (entries.length === 0) {
-
-        history.delete(moveId);
-
-    }
-
-}
-
-const output = Object.fromEntries(
-    history
-);
-
-saveJSON(
-    OUTPUT_FILE,
-    output
-);
-
-console.log(
-    `Successfully saved history for ${history.size} moves.`
-);
-
-database.close();
+downloadMoveHistory();

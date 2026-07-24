@@ -10,11 +10,17 @@
  *
  * These are required for historical move data and older games.
  */
+
 const path = require("path");
 
 const {
     saveJSON
-} = require("../../utils");
+} = require("../../utils/json");
+
+const {
+    printSuccess,
+    printOutputFile
+} = require("../../utils/logger");
 
 const OUTPUT_FILE = path.join(
     __dirname,
@@ -112,6 +118,10 @@ saveJSON(
     legacyTypes
 );
 
-console.log(
-    `Successfully generated ${legacyTypes.length} legacy types.`
+printSuccess(
+    `Generated ${legacyTypes.length} legacy types`
+);
+
+printOutputFile(
+    OUTPUT_FILE
 );

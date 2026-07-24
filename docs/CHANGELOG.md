@@ -17,9 +17,15 @@ This project follows the principles of **Keep a Changelog** and uses **Semantic 
 - Complete Moves dataset
 - Complete Abilities dataset
 - Complete Types dataset
-- Damage Classes dataset
-- Move Targets dataset
-- Version Groups dataset
+- Complete Damage Classes dataset
+- Complete Move Targets dataset
+- Complete Version Groups dataset
+
+#### Generated Datasets
+
+- Pokémon Index
+- Category Indexes
+- Species Forms
 
 #### Historical Data
 
@@ -33,60 +39,102 @@ This project follows the principles of **Keep a Changelog** and uses **Semantic 
   - ??? Type
   - Shadow Type
 
+#### Data Pipeline
+
+- Modular download pipeline
+- Dataset generation pipeline
+- Shared API client
+- Shared database utilities
+- Shared JSON utilities
+- Shared logger
+- Shared formatting utilities
+- Shared helper utilities
+- Shared reference builders
+- Pokémon utility module
+- Move utility module
+
 #### Database Generation
 
-- Automated database generation scripts
-- Shared generation utilities
-- Historical data generators
-- Legacy data generators
+- Pokémon downloader
+- Species downloader
+- Moves downloader
+- Abilities downloader
+- Types downloader
+- Version Groups downloader
+- Damage Classes downloader
+- Move Targets downloader
+- Historical dataset generators
+- Legacy dataset generators
+- Pokémon Index generator
+- Category Index generator
+- Species Forms generator
 - Data inspection scripts
-
-#### Validation Pipeline
-
-- Phase 1 — File existence validation
-- Phase 2 — JSON validation
-- Phase 3 — Duplicate ID validation
-- Phase 4 — Duplicate Name validation
-- Phase 5 — Reference validation
-- Phase 6 — Data integrity validation
-- Phase 7 — Historical data validation
 
 #### Documentation
 
 - Updated README
 - Updated API documentation
-- Database validation documentation
+- Improved project documentation
+- Architecture documentation
+- Data pipeline documentation
 
 ---
 
 ### Changed
 
+#### Architecture
+
+- Refactored the entire data generation pipeline into modular utility modules.
+- Removed duplicated helper logic across download and generation scripts.
+- Centralized API communication through a shared API client.
+- Centralized JSON loading and saving utilities.
+- Centralized logging utilities.
+- Centralized formatting utilities.
+- Centralized reference builders.
+- Improved project organization and maintainability.
+
 #### Database
 
-- Standardized history file architecture
-- Historical datasets now use chronological arrays
-- Improved database generation consistency
-- Improved validation coverage
-- Improved project folder organization
+- Standardized history dataset architecture.
+- Improved generated dataset consistency.
+- Improved category generation.
+- Improved Pokémon form generation.
+- Improved lookup performance using shared lookup maps.
+- Improved sorting consistency across datasets.
+- Simplified download scripts by extracting reusable logic.
 
-#### Validation
+#### Project Structure
 
-- Improved reference validation
-- Improved move validation
-- Improved Pokémon integrity validation
-- Improved historical data validation
-- Added validation for legacy Pokémon types
+- Added dedicated utility modules.
+- Added generated dataset directory.
+- Improved script organization.
+- Removed legacy utility implementation.
+
+---
+
+### Removed
+
+- Legacy `scripts/utils.js`
+- Duplicate helper implementations
+- Duplicate lookup map implementations
+- Duplicate move processing logic
+- Duplicate sorting implementations
 
 ---
 
 ### Fixed
 
-- Fixed legacy type validation for ??? and Shadow types
-- Fixed move history generation producing empty history entries
-- Fixed empty history arrays after generation
-- Fixed move effect history generation architecture
-- Fixed cross-reference validation issues
-- Fixed historical data consistency
+- Fixed move history generation.
+- Fixed move effect history generation.
+- Fixed ability history generation.
+- Fixed legacy Pokémon type handling.
+- Fixed lookup inconsistencies.
+- Fixed duplicated helper functions.
+- Fixed repeated sorting implementations.
+- Fixed generated Pokémon category ordering.
+- Fixed species form generation consistency.
+- Fixed cross-reference generation.
+- Fixed dataset generation consistency.
 
 ---
 
@@ -94,24 +142,28 @@ This project follows the principles of **Keep a Changelog** and uses **Semantic 
 
 ### Added
 
+#### Frontend
+
 - Dashboard (My Adventures)
 - Dashboard layout
-- Quick Actions section
-- Team Preview section
-- Progress cards
-- Achievement section
-- Recent Activity section
+- Quick Actions
+- Team Preview
+- Progress Cards
+- Achievement Section
+- Recent Activity
+- Shared navigation
 
 ### Changed
 
-- Improved shared UI components
-- Improved responsive layouts
-- Navigation consistency
+- Improved responsive layouts.
+- Improved shared UI components.
+- Improved navigation consistency.
 
 ### Fixed
 
-- General styling improvements
-- Layout fixes
+- Dashboard layout improvements.
+- General styling fixes.
+- Responsive fixes.
 
 ---
 
@@ -124,6 +176,7 @@ This project follows the principles of **Keep a Changelog** and uses **Semantic 
 - Repository setup
 - Frontend architecture
 - Backend architecture
+- Initial project structure
 - Global CSS
 - Shared CSS
 - Home page
@@ -136,3 +189,4 @@ This project follows the principles of **Keep a Changelog** and uses **Semantic 
 - LICENSE
 - Development roadmap
 - Project specification
+- Initial API documentation

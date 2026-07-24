@@ -1,10 +1,10 @@
 # Future Ideas
 
-This document serves as a collection of ideas, experiments, and long-term concepts for Pokémon Companion.
+This document collects ideas, experiments, and long-term concepts for Pokémon Companion.
 
-Features listed here are **not currently scheduled for implementation**, but have been identified as valuable additions for future versions of the project.
+Features listed here are **not currently scheduled for implementation**, but represent ideas that could significantly improve the project in future releases.
 
-Ideas may move into the development roadmap as the project evolves.
+As Pokémon Companion evolves, ideas from this document may be promoted into the official development roadmap.
 
 ---
 
@@ -28,16 +28,17 @@ Upload screenshots from supported Pokémon games and automatically identify:
 
 - Pokémon
 - Battle information
-- Location
-- Trainer
+- Locations
+- Trainers
 - Items
 - Menus
-- Current objectives
+- Objectives
+- Team members
 
 Potential technologies:
 
 - OCR
-- Image Recognition
+- Computer Vision
 - AI Vision Models
 
 ---
@@ -46,20 +47,20 @@ Potential technologies:
 
 Import save files from supported Pokémon games to automatically populate:
 
-- Pokédex progress
+- Pokédex
 - Living Dex
-- Current team
-- PC storage
+- Current Team
+- PC Storage
 - Inventory
 - Badges
-- Story progression
-- Play time
+- Story Progress
+- Play Time
 
 Future support:
 
 - Emulator saves
-- Physical cartridge backups
-- Pokémon HOME exports (if available)
+- Cartridge backups
+- Pokémon HOME exports (where possible)
 
 ---
 
@@ -69,12 +70,12 @@ Visualize exploration across every Pokémon game.
 
 Features:
 
-- Visited routes
-- Hidden item completion
-- Encounter completion
-- Missing trainers
-- Collection progress
-- Exploration percentage
+- Visited Routes
+- Hidden Item Completion
+- Encounter Completion
+- Trainer Battles
+- Exploration Percentage
+- Area Completion
 
 ---
 
@@ -82,34 +83,35 @@ Features:
 
 Generate battle recommendations using:
 
-- Opponent team
-- Type matchups
+- Opponent Team
+- Type Matchups
 - Abilities
-- Held items
-- Available Pokémon
-- Current movesets
-- Difficulty level
+- Held Items
+- Current Team
+- Available Moves
+- Difficulty Level
 
 Future enhancements:
 
-- Battle simulation
-- Alternative strategies
-- Risk analysis
+- Battle Simulation
+- Alternative Strategies
+- Risk Analysis
+- Turn Prediction
 
 ---
 
 ## Emulator Companion
 
-Interactive guides for supported Pokémon emulators.
+Interactive companion for supported Pokémon emulators.
 
 Potential features:
 
 - Emulator recommendations
-- BIOS guidance
 - Controller setup
 - Save management
-- Cheats
 - Performance optimization
+- ROM organization
+- Screenshot import
 
 ---
 
@@ -120,8 +122,7 @@ Analyze battle recordings and provide:
 - Mistake detection
 - Better move suggestions
 - Damage review
-- Prediction analysis
-- Type matchup breakdown
+- Type matchup analysis
 - AI coaching
 
 ---
@@ -130,28 +131,28 @@ Analyze battle recordings and provide:
 
 Dedicated tracker for Nuzlocke challenges.
 
-Features may include:
+Features:
 
-- Encounter tracking
-- Fainted Pokémon log
-- Rule enforcement
-- Route completion
-- Challenge statistics
-- Run history
+- Encounter Tracking
+- Fainted Pokémon Log
+- Rule Enforcement
+- Route Progress
+- Challenge Statistics
+- Run History
 
 ---
 
 ## Professor Oak Challenge
 
-Track progress through Professor Oak's Challenge.
+Dedicated tracker for Professor Oak's Challenge.
 
 Includes:
 
-- Required Pokédex entries
-- Evolution checklist
-- Experience tracking
-- Grinding progress
-- Completion percentage
+- Required Pokédex Entries
+- Evolution Checklist
+- Experience Tracking
+- Grinding Progress
+- Completion Percentage
 
 ---
 
@@ -159,35 +160,64 @@ Includes:
 
 A dedicated dashboard focused entirely on collection progress.
 
-Potential features:
+Features:
 
-- Regional completion
-- National completion
-- Form completion
-- Shiny completion
+- National Completion
+- Regional Completion
+- Form Completion
+- Shiny Completion
 - Alpha Pokémon
-- Gender differences
+- Gender Differences
 - Event Pokémon
 
 ---
 
 ## Collection Timeline
 
-Visual timeline showing when Pokémon were obtained.
+Timeline showing when Pokémon were obtained.
 
 Includes:
 
-- Capture history
+- Captures
 - Trades
 - Evolutions
-- Shiny encounters
+- Shiny Encounters
 - Milestones
+
+---
+
+## AI Adventure Guide
+
+An AI assistant capable of guiding players through an entire Pokémon adventure.
+
+Potential capabilities:
+
+- Recommend the next objective
+- Explain game mechanics
+- Suggest nearby encounters
+- Recommend useful items
+- Optimize team progression
+
+---
+
+## Team Analyzer
+
+Automatically evaluate a Pokémon team.
+
+Possible insights:
+
+- Offensive coverage
+- Defensive coverage
+- Shared weaknesses
+- Missing roles
+- Suggested replacements
+- Difficulty rating
 
 ---
 
 # 🔬 Research Required
 
-These ideas require further investigation before implementation.
+These ideas require additional investigation.
 
 ---
 
@@ -202,9 +232,9 @@ Evaluate OCR libraries capable of recognizing:
 - UI elements
 - Item names
 
-Possible technologies:
+Potential technologies:
 
-- Tesseract
+- Tesseract OCR
 - Google Vision
 - OpenAI Vision
 
@@ -212,33 +242,35 @@ Possible technologies:
 
 ## Automatic Save Detection
 
-Research automatic detection of emulator save files across:
+Automatically locate emulator save files.
+
+Platforms:
 
 - Windows
 - macOS
 - Linux
 
-Supported emulators:
+Potential emulator support:
 
 - mGBA
 - VBA
 - melonDS
 - Citra
 - Ryujinx
-- yuzu (archival support)
+- Azahar
 
 ---
 
 ## Pokémon HOME Integration
 
-Investigate official APIs or supported integration methods.
+Investigate official integration methods.
 
 Potential capabilities:
 
-- Import collections
+- Import Collections
 - Synchronize Living Dex
-- Import teams
-- View stored Pokémon
+- Import Teams
+- View Stored Pokémon
 
 ---
 
@@ -246,14 +278,14 @@ Potential capabilities:
 
 Synchronize trainer progress across devices.
 
-Potential providers:
+Possible providers:
 
 - MongoDB Atlas
 - Firebase
 - Supabase
-- Custom backend
+- Custom Backend
 
-Data to synchronize:
+Data:
 
 - Teams
 - Collections
@@ -265,12 +297,13 @@ Data to synchronize:
 
 ## AI Team Builder
 
-Research whether AI can automatically generate competitive or casual teams based on:
+Research automatic team generation using:
 
 - Available Pokémon
-- Preferred playstyle
-- Game version
-- Challenge type
+- Playstyle
+- Difficulty
+- Game Version
+- Competitive Format
 
 ---
 
@@ -282,15 +315,29 @@ Potential integrations:
 
 - Smogon
 - Pokémon Showdown
-- Official tournament data
+- Official Tournament Data
+
+---
+
+## Offline Database Updates
+
+Research delivering updated Pokémon datasets without requiring a full application update.
+
+Potential approaches:
+
+- Incremental downloads
+- Versioned database packages
+- Background synchronization
 
 ---
 
 # 💡 Parking Lot
 
-Interesting ideas that may eventually become features.
+Interesting ideas that may become future features.
 
-### Gameplay
+---
+
+## Gameplay
 
 - Daily Pokémon Challenges
 - Random Team Generator
@@ -299,12 +346,12 @@ Interesting ideas that may eventually become features.
 - Raid Planner
 - Outbreak Tracker
 - Mass Outbreak Tracker
-- Tera Raid Planner
 - Dynamax Adventure Planner
+- Battle Frontier Planner
 
 ---
 
-### Collection Tools
+## Collection Tools
 
 - Evolution Planner
 - Breeding Assistant
@@ -316,7 +363,7 @@ Interesting ideas that may eventually become features.
 
 ---
 
-### Trainer Tools
+## Trainer Tools
 
 - Trainer Journal
 - Collection Timeline
@@ -328,7 +375,7 @@ Interesting ideas that may eventually become features.
 
 ---
 
-### Database
+## Database
 
 - Event Distribution Database
 - Mystery Gift Archive
@@ -337,26 +384,43 @@ Interesting ideas that may eventually become features.
 - Move Tutor Database
 - TM/HM Database
 - Encounter Database
+- Berry Database
+- Ribbon Database
 
 ---
 
-### AI
+## AI
 
 - AI Pokédex Search
 - AI Collection Advisor
 - AI Adventure Guide
 - AI Breeding Assistant
 - AI Competitive Coach
+- AI Team Analyzer
+- AI Move Tutor
+- AI Collection Optimizer
+
+---
+
+## Community
+
+- Public Team Sharing
+- Team Ratings
+- Challenge Sharing
+- Community Collections
+- Global Completion Statistics
 
 ---
 
 # Guiding Principles
 
-Future features should align with the project's core philosophy:
+Every future feature should align with the project's core philosophy.
 
-- Improve the trainer's experience.
-- Support every main series Pokémon game.
-- Be data-driven and highly accurate.
+- Improve the trainer experience.
+- Support every main-series Pokémon game.
+- Remain data-driven and highly accurate.
+- Build on the generated Pokémon database.
 - Prioritize maintainability and scalability.
-- Build upon the validated database foundation.
+- Design reusable systems instead of one-off solutions.
 - Enhance gameplay without replacing it.
+- Keep the project accessible to both casual and competitive players.

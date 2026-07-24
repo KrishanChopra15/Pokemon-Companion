@@ -1,6 +1,10 @@
 # Pokémon Companion Features
 
-This document tracks the major features planned for Pokémon Companion. Each feature is assigned a unique identifier, current development status, priority, and description.
+This document tracks the planned and completed features for Pokémon Companion.
+
+Each feature has a unique identifier, development status, priority, and description.
+
+The project follows a **data-first architecture**, where the complete Pokémon database is generated before frontend and backend features are implemented.
 
 ---
 
@@ -13,13 +17,15 @@ This document tracks the major features planned for Pokémon Companion. Each fea
 
 ---
 
+# Core Platform
+
 ## PC-001 — Homepage
 
 **Status:** ✅ Completed
 
 **Priority:** Critical
 
-**Description:**
+**Description**
 
 The landing page introducing Pokémon Companion and providing navigation to all major modules.
 
@@ -31,9 +37,9 @@ The landing page introducing Pokémon Companion and providing navigation to all 
 
 **Priority:** Critical
 
-**Description:**
+**Description**
 
-The trainer's personal dashboard displaying progress, recent activity, collections, achievements, quick actions, and team overview.
+The trainer dashboard displaying recent activity, collections, achievements, progress, quick actions, and team overview.
 
 ---
 
@@ -43,7 +49,7 @@ The trainer's personal dashboard displaying progress, recent activity, collectio
 
 **Priority:** Critical
 
-**Description:**
+**Description**
 
 Secure trainer authentication including registration, login, logout, password recovery, and session management.
 
@@ -55,11 +61,13 @@ Secure trainer authentication including registration, login, logout, password re
 
 **Priority:** High
 
-**Description:**
+**Description**
 
-Manage trainer information, profile customization, settings, and personal preferences.
+Manage trainer information, profile customization, application settings, and personal preferences.
 
 ---
+
+# Pokédex
 
 ## PC-005 — National Pokédex
 
@@ -67,9 +75,9 @@ Manage trainer information, profile customization, settings, and personal prefer
 
 **Priority:** Critical
 
-**Description:**
+**Description**
 
-Browse every Pokémon with advanced search, filters, sorting, and detailed Pokémon information.
+Browse every Pokémon with advanced searching, filtering, sorting, and generation support.
 
 ---
 
@@ -79,9 +87,19 @@ Browse every Pokémon with advanced search, filters, sorting, and detailed Poké
 
 **Priority:** Critical
 
-**Description:**
+**Description**
 
-Comprehensive Pokémon information including stats, abilities, moves, forms, evolutions, sprites, artwork, and historical data.
+Detailed Pokémon pages including:
+
+- Stats
+- Types
+- Abilities
+- Hidden Abilities
+- Forms
+- Evolution Chain
+- Sprites
+- Official Artwork
+- Historical Data
 
 ---
 
@@ -91,11 +109,13 @@ Comprehensive Pokémon information including stats, abilities, moves, forms, evo
 
 **Priority:** High
 
-**Description:**
+**Description**
 
-Track ownership of every Pokémon, including regional forms, alternate forms, shinies, and overall completion progress.
+Track ownership of Pokémon, regional forms, alternate forms, shiny Pokémon, and overall Pokédex completion.
 
 ---
+
+# Battle Tools
 
 ## PC-008 — Team Builder
 
@@ -103,165 +123,307 @@ Track ownership of every Pokémon, including regional forms, alternate forms, sh
 
 **Priority:** Critical
 
-**Description:**
+**Description**
 
-Create, edit, and manage Pokémon teams with type coverage analysis, weaknesses, strengths, and team statistics.
+Create, edit, and manage Pokémon teams with advanced team analysis.
+
+Features include:
+
+- Type Coverage
+- Weakness Analysis
+- Resistance Analysis
+- Team Statistics
+- Suggested Improvements
 
 ---
 
-## PC-009 — World Explorer
+## PC-009 — Damage Calculator
+
+**Status:** 📅 Planned
+
+**Priority:** Medium
+
+**Description**
+
+Calculate battle damage using Pokémon stats, moves, abilities, held items, weather, terrain, and battle modifiers.
+
+---
+
+## PC-010 — Battle Analyzer
+
+**Status:** 📅 Planned
+
+**Priority:** Medium
+
+**Description**
+
+Analyze matchups between Pokémon and recommend optimal strategies.
+
+---
+
+# Adventure
+
+## PC-011 — World Explorer
 
 **Status:** 📅 Planned
 
 **Priority:** High
 
-**Description:**
+**Description**
 
 Explore every Pokémon region through interactive maps, routes, cities, caves, landmarks, and points of interest.
 
 ---
 
-## PC-010 — Adventure Tracker
+## PC-012 — Adventure Tracker
 
 **Status:** 📅 Planned
 
 **Priority:** High
 
-**Description:**
+**Description**
 
-Track game progression including story completion, Gym Badges, Elite Four, Champion status, quests, and collectibles.
+Track:
+
+- Story progression
+- Gym Badges
+- Elite Four
+- Champion completion
+- Side quests
+- Game completion
 
 ---
 
-## PC-011 — Collections
+## PC-013 — Collections
 
 **Status:** 📅 Planned
 
 **Priority:** High
 
-**Description:**
+**Description**
 
-Manage Living Dex progress, shiny collections, form collections, regional Pokédexes, and special Pokémon collections.
+Manage:
+
+- Living Dex
+- Shiny Collection
+- Form Collection
+- Regional Pokédexes
+- Collection Statistics
 
 ---
 
-## PC-012 — Move Database
+# Databases
+
+## PC-014 — Move Database
 
 **Status:** 📅 Planned
 
 **Priority:** Medium
 
-**Description:**
+**Description**
 
-Browse every Pokémon move with historical changes, effects, categories, and version-specific information.
+Browse every Pokémon move including:
+
+- Historical changes
+- Version history
+- Categories
+- Flags
+- Contest information
 
 ---
 
-## PC-013 — Ability Database
+## PC-015 — Ability Database
 
 **Status:** 📅 Planned
 
 **Priority:** Medium
 
-**Description:**
+**Description**
 
-Browse every Pokémon ability with detailed descriptions and historical effect changes.
+Browse every Pokémon ability including historical effect changes and detailed descriptions.
 
 ---
 
-## PC-014 — Item Database
+## PC-016 — Item Database
 
 **Status:** 📅 Planned
 
 **Priority:** Medium
 
-**Description:**
+**Description**
 
-Browse every Pokémon item including held items, evolution items, berries, TMs, and key items.
+Browse held items, evolution items, berries, TMs, HMs, key items, and battle items.
 
 ---
 
-## PC-015 — Search
+## PC-017 — Type Database
+
+**Status:** 📅 Planned
+
+**Priority:** Medium
+
+**Description**
+
+Browse every Pokémon type, including offensive and defensive type matchups.
+
+---
+
+# Utilities
+
+## PC-018 — Global Search
 
 **Status:** 📅 Planned
 
 **Priority:** High
 
-**Description:**
+**Description**
 
-Global search across Pokémon, moves, abilities, items, regions, locations, and other supported datasets.
+Search across:
+
+- Pokémon
+- Species
+- Moves
+- Abilities
+- Types
+- Items
+- Locations
 
 ---
 
-## PC-016 — Achievements
+## PC-019 — Achievements
 
 **Status:** 📅 Planned
 
 **Priority:** Medium
 
-**Description:**
+**Description**
 
-Unlock achievements, milestones, and completion rewards while progressing through games.
+Unlock achievements and milestones while progressing through games.
 
 ---
 
-## PC-017 — AI Assistant
+# AI
+
+## PC-020 — AI Assistant
 
 **Status:** 🔮 Future
 
 **Priority:** Medium
 
-**Description:**
+**Description**
 
-AI-powered assistant capable of answering Pokémon questions, recommending teams, providing battle advice, and helping with adventure progression.
+An intelligent Pokémon assistant capable of:
+
+- Team recommendations
+- Battle advice
+- Pokémon suggestions
+- Adventure guidance
+- Smart search
 
 ---
 
-## PC-018 — Friends
+# Community
+
+## PC-021 — Friends
 
 **Status:** 🔮 Future
 
 **Priority:** Low
 
-**Description:**
+**Description**
 
-Friend system with trainer profiles, progress comparison, collections, and social interaction.
+Friend system including trainer profiles, collection comparison, and shared progress.
 
 ---
 
-## PC-019 — Cloud Synchronization
+## PC-022 — Cloud Synchronization
 
 **Status:** 🔮 Future
 
 **Priority:** Low
 
-**Description:**
+**Description**
 
 Synchronize trainer progress, collections, and settings across multiple devices.
 
 ---
 
-## PC-020 — Progressive Web App
+## PC-023 — Progressive Web App
 
 **Status:** 🔮 Future
 
 **Priority:** Low
 
-**Description:**
+**Description**
 
-Offline support, installable application, and improved mobile experience.
+Installable offline application with enhanced mobile support.
+
+---
+
+# Infrastructure
+
+## PC-024 — Data Generation Pipeline
+
+**Status:** ✅ Completed
+
+**Priority:** Critical
+
+**Description**
+
+A modular pipeline responsible for downloading, generating, and maintaining the complete Pokémon database.
+
+Completed components include:
+
+- Download scripts
+- Dataset generators
+- History generators
+- Legacy data generators
+- Shared utility modules
+- JSON utilities
+- API utilities
+- Logger
+- Database utilities
+
+---
+
+## PC-025 — Database Validation
+
+**Status:** 🚧 In Progress
+
+**Priority:** Critical
+
+**Description**
+
+Comprehensive validation of every generated dataset including:
+
+- File validation
+- JSON validation
+- Duplicate detection
+- Cross-reference validation
+- Data integrity checks
+- Historical dataset validation
 
 ---
 
 # Development Notes
 
-The project follows a database-first development approach.
+Pokémon Companion follows a **database-first development approach**.
 
-Current completed milestones include:
+## Completed
 
-- Database generation pipeline
-- Historical dataset generation
-- Legacy Pokémon data support
-- Complete database validation pipeline
+- Complete data generation pipeline
+- Modular utility architecture
+- Core Pokémon datasets
+- Historical datasets
+- Generated datasets
+- Legacy datasets
 
-Frontend and backend modules will continue to build upon this validated database foundation.
+## Current Focus
+
+- Validation layer
+- Backend REST API
+- Frontend integration
+- Pokédex interface
+- Dashboard
+
+Future features will build upon the generated database rather than downloading data directly from external APIs.

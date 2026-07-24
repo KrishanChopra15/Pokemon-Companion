@@ -2,66 +2,128 @@
 
 This roadmap outlines the long-term development plan for Pokémon Companion.
 
-The project is being developed in carefully planned milestones, beginning with a robust database and tooling foundation before moving on to frontend features and advanced functionality.
+The project is being developed in carefully planned milestones, beginning with a robust data generation pipeline before expanding into backend services, frontend features, and AI-powered tools.
 
 > **Current Status:** 🚧 Active Development
 
 ---
 
-# ✅ Phase 1 — Database Foundation (Completed)
+# ✅ Phase 1 — Data Pipeline (Completed)
 
-**Goal:** Build a scalable Pokémon database and development pipeline.
+**Goal:** Build a scalable Pokémon database and automated generation pipeline.
 
-### Database
+### Core Datasets
 
-- Complete Pokémon dataset
-- Complete Species dataset
-- Complete Moves dataset
-- Complete Abilities dataset
-- Complete Types dataset
+- Pokémon
+- Species
+- Moves
+- Abilities
+- Types
 - Damage Classes
 - Move Targets
 - Version Groups
 
-### Historical Data
+### Generated Datasets
+
+- Pokémon Index
+- Category Indexes
+- Species Forms
+
+### Historical Datasets
 
 - Ability History
 - Move History
 - Move Effect History
 
-### Legacy Data
+### Legacy Datasets
 
 - ??? Type
 - Shadow Type
 
 ### Tooling
 
-- Automated database generation
+- Automated download pipeline
+- Dataset generation pipeline
 - Database inspection tools
-- Shared generation utilities
-- Database validation pipeline
+- Modular utility architecture
+- Shared API client
+- Shared JSON utilities
+- Shared database utilities
+- Shared logger
+- Shared formatting utilities
+- Shared helper modules
+
+**Status:** ✅ Completed
+
+---
+
+# 🚧 Phase 2 — Validation Layer
+
+**Goal:** Ensure every generated dataset is internally consistent.
 
 ### Validation
 
 - File existence validation
 - JSON validation
 - Duplicate detection
-- Reference validation
+- Cross-reference validation
+- Generated dataset validation
+- Historical dataset validation
+- Legacy dataset validation
 - Data integrity validation
-- Historical data validation
 
-**Status:** ✅ Completed
+### Build System
+
+- Automated validation pipeline
+- Build automation
+- Generation verification
+
+**Status:** 🚧 In Progress
 
 ---
 
-# 🚧 Phase 2 — Core Platform
+# 📅 Phase 3 — Backend API
+
+**Goal:** Build the REST API powering Pokémon Companion.
+
+### API
+
+- Pokémon endpoints
+- Species endpoints
+- Move endpoints
+- Ability endpoints
+- Type endpoints
+- Search endpoints
+- Generated dataset endpoints
+
+### Authentication
+
+- User accounts
+- Login
+- Registration
+- JWT authentication
+- User profiles
+
+### Infrastructure
+
+- Express.js
+- MongoDB
+- Middleware
+- Error handling
+- API documentation
+
+**Status:** 📅 Planned
+
+---
+
+# 📅 Phase 4 — Frontend Foundation
 
 **Goal:** Build the first playable version of Pokémon Companion.
 
 ### User Experience
 
 - Homepage
-- Dashboard (My Adventures)
+- Dashboard
 - Authentication
 - User Profile
 - Settings
@@ -72,34 +134,35 @@ The project is being developed in carefully planned milestones, beginning with a
 - Pokémon Details
 - Search
 - Filters
-- Type pages
-- Ability pages
-- Move pages
+- Type Pages
+- Ability Pages
+- Move Pages
 
-### Backend
+### UI
 
-- REST API
-- User authentication
-- Database integration
-- Session management
+- Responsive layout
+- Shared components
+- Navigation
+- Theme system
 
-**Status:** 🚧 In Progress
+**Status:** 📅 Planned
 
 ---
 
-# 📅 Phase 3 — Database Expansion
+# 📅 Phase 5 — Database Expansion
 
 **Goal:** Complete the remaining Pokémon datasets.
 
 ### Core Data
 
 - Evolutions
-- Forms
 - Learnsets
 - Games
 - Items
 - Locations
-- Sprites
+- Encounter Tables
+- Trainers
+- Maps
 
 ### World Data
 
@@ -110,31 +173,31 @@ The project is being developed in carefully planned milestones, beginning with a
 
 ### Validation
 
-- Extend validation pipeline to new datasets
+- Extend validation to all new datasets
 
 **Status:** 📅 Planned
 
 ---
 
-# 📅 Phase 4 — Adventure & Exploration
+# 📅 Phase 6 — Adventure & Exploration
 
 **Goal:** Help trainers explore every Pokémon game.
 
 ### World Explorer
 
-- Interactive maps
-- Route information
-- Encounter tables
-- Hidden items
-- Legendary locations
+- Interactive Maps
+- Route Information
+- Encounter Tables
+- Hidden Items
+- Legendary Locations
 
 ### Adventure Tracker
 
-- Story progression
-- Gym badges
+- Story Progression
+- Gym Badges
 - Elite Four
-- Champion completion
-- Side quests
+- Champion Completion
+- Side Quests
 
 ### Collections
 
@@ -147,9 +210,9 @@ The project is being developed in carefully planned milestones, beginning with a
 
 ---
 
-# 📅 Phase 5 — Team Builder
+# 📅 Phase 7 — Team Builder
 
-**Goal:** Build powerful tools for trainers.
+**Goal:** Build advanced tools for trainers.
 
 ### Team Management
 
@@ -170,30 +233,30 @@ The project is being developed in carefully planned milestones, beginning with a
 
 ---
 
-# 📅 Phase 6 — AI Features
+# 🔮 Phase 8 — AI Features
 
 **Goal:** Introduce intelligent Pokémon tools.
 
 ### AI Assistant
 
-- Pokémon recommendations
-- Team suggestions
-- Battle advice
-- Adventure guidance
-- Intelligent search
+- Pokémon Recommendations
+- Team Suggestions
+- Battle Advice
+- Adventure Guidance
+- Intelligent Search
 
 ### Smart Utilities
 
-- Collection analysis
-- Save import
-- Screenshot recognition
-- Emulator integration
+- Collection Analysis
+- Save Import
+- Screenshot Recognition
+- Emulator Integration
 
 **Status:** 🔮 Future
 
 ---
 
-# 📅 Phase 7 — Community
+# 🔮 Phase 9 — Community
 
 **Goal:** Connect trainers together.
 
@@ -206,15 +269,15 @@ The project is being developed in carefully planned milestones, beginning with a
 
 ### Community
 
-- Achievement sharing
+- Achievement Sharing
 - Leaderboards
-- Community challenges
+- Community Challenges
 
 **Status:** 🔮 Future
 
 ---
 
-# 🔮 Future Ideas
+# 💡 Future Ideas
 
 These ideas are not assigned to a specific milestone and may be implemented in future versions.
 
@@ -231,16 +294,37 @@ These ideas are not assigned to a specific milestone and may be implemented in f
 
 ---
 
+# 📊 Overall Progress
+
+| Area | Status |
+|------|--------|
+| Data Pipeline | ✅ Complete |
+| Download Scripts | ✅ Complete |
+| Dataset Generators | ✅ Complete |
+| Utility Modules | ✅ Complete |
+| Validation Layer | 🚧 In Progress |
+| Backend API | 📅 Planned |
+| Frontend | 📅 Planned |
+| Database Expansion | 📅 Planned |
+| Trainer Features | 📅 Planned |
+| AI Features | 🔮 Future |
+| Community Features | 🔮 Future |
+
+---
+
 # Long-Term Vision
 
-Pokémon Companion aims to become a complete companion for every Pokémon game by combining:
+Pokémon Companion aims to become the definitive companion application for every Pokémon game.
+
+The long-term vision combines:
 
 - A comprehensive Pokémon database
 - Adventure tracking
 - Collection management
 - Team building
+- Battle analysis
 - World exploration
 - AI-powered assistance
 - Community features
 
-into a single, modern platform that grows alongside the Pokémon franchise.
+into a single modern platform that grows alongside future Pokémon generations while remaining easy to maintain through its modular data generation pipeline.

@@ -7,7 +7,14 @@ const {
 } = require("../utils/json");
 
 const {
-    printPhase
+    sortByProperty
+} = require("../utils/helpers");
+
+const {
+    printPhase,
+    printSection,
+    printSuccess,
+    printOutputFile
 } = require("../utils/logger");
 
 const INPUT_FILE =
@@ -90,32 +97,32 @@ function generateCategoryIndex(
     category
 ) {
 
-    return pokemon
+    const index =
+        pokemon
 
-        .filter(
+            .filter(
+                entry =>
+                    entry.category ===
+                    category
+            )
 
-            entry =>
+            .map(
+                createEntry
+            )
 
-                entry.category ===
-                category
+    .sort(
+    
+        (a, b) =>
+        
+            a.speciesId -
+            b.speciesId ||
+    
+            a.order -
+            b.order
+    
+    )
 
-        )
-
-        .sort(
-
-            (a, b) =>
-
-                a.speciesId -
-                b.speciesId ||
-
-                a.order -
-                b.order
-
-        )
-
-        .map(
-            createEntry
-        );
+    return index;
 
 }
 
@@ -130,11 +137,9 @@ function main() {
             INPUT_FILE
         );
 
-    console.log(
+    printSection(
         `Loaded ${pokemon.length} Pokémon`
     );
-
-    console.log("");
 
     for (const category of CATEGORIES) {
 
@@ -168,10 +173,12 @@ function main() {
 
     }
 
-    console.log("");
+    printSuccess(
+        "Category indexes generated"
+    );
 
-    console.log(
-        "Category indexes generated successfully."
+    printOutputFile(
+        OUTPUT_DIR
     );
 
 }

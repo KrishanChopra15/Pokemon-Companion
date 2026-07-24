@@ -7,7 +7,15 @@ const {
 } = require("../utils/json");
 
 const {
-    printPhase
+    createLookupMap
+} = require("../utils/helpers");
+
+const {
+    printPhase,
+    printSection,
+    printSuccess,
+    printOutputFile,
+    printError
 } = require("../utils/logger");
 
 const {
@@ -21,26 +29,6 @@ const OUTPUT_FILE = path.join(
     "pokemon-index.json"
 );
 
-function createSpeciesLookup(species) {
-
-    return new Map(
-
-        species.map(
-
-            currentSpecies => [
-
-                currentSpecies.id,
-
-                currentSpecies
-
-            ]
-
-        )
-
-    );
-
-}
-
 function generatePokemonIndex() {
 
     const pokemon = loadJSON(
@@ -51,7 +39,7 @@ function generatePokemonIndex() {
         "species.json"
     );
 
-    console.log(
+    printSection(
         `Loaded ${pokemon.length} Pokémon`
     );
 
@@ -60,7 +48,7 @@ function generatePokemonIndex() {
     );
 
     const speciesLookup =
-        createSpeciesLookup(
+        createLookupMap(
             species
         );
 
@@ -80,9 +68,7 @@ function generatePokemonIndex() {
             missingSpecies++;
 
             console.warn(
-
                 `Missing species ${currentPokemon.speciesId} for Pokémon ${currentPokemon.id}`
-
             );
 
             continue;
@@ -98,7 +84,6 @@ function generatePokemonIndex() {
                 speciesName:
                     currentSpecies.name,
 
-                // Always use the National Dex number.
                 number:
                     currentSpecies.number
 
@@ -117,19 +102,15 @@ function generatePokemonIndex() {
         pokemonIndex
     );
 
-    console.log("");
-
-    console.log(
+    printSuccess(
         `Generated ${pokemonIndex.length} Pokémon index entries`
     );
 
-    console.log(
-        `Saved to ${OUTPUT_FILE}`
+    printOutputFile(
+        OUTPUT_FILE
     );
 
     if (missingSpecies > 0) {
-
-        console.log("");
 
         console.warn(
             `Skipped ${missingSpecies} Pokémon because their species could not be found.`
@@ -141,11 +122,22 @@ function generatePokemonIndex() {
 
 function main() {
 
-    printPhase(
-        "Phase 8 - Dataset Generation"
-    );
+    try {
 
-    generatePokemonIndex();
+        printPhase(
+            "Phase 8 - Dataset Generation"
+        );
+
+        generatePokemonIndex();
+
+    } catch (error) {
+
+        printError(
+            error,
+            "Error generating Pokémon index"
+        );
+
+    }
 
 }
 

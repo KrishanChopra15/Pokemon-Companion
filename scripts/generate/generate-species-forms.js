@@ -1,10 +1,17 @@
 const fs = require("fs");
 const path = require("path");
 
-const DATABASE_DIR = path.join(
-    __dirname,
-    "../../database"
-);
+const {
+    DATABASE_DIR
+} = require("../utils/json");
+
+const {
+    printPhase,
+    printSection,
+    printSuccess,
+    printOutputFile,
+    printError
+} = require("../utils/logger");
 
 const OUTPUT_DIR = path.join(
     DATABASE_DIR,
@@ -154,7 +161,9 @@ function determineCategory(identifier) {
 function createDisplayName(identifier) {
 
     if (!identifier) {
+
         return "Default";
+
     }
 
     return identifier
@@ -180,21 +189,13 @@ function sortForms(forms) {
     const order = {
 
         Default: 0,
-
         Mega: 1,
-
         Regional: 2,
-
         Gigantamax: 3,
-
         Primal: 4,
-
         Totem: 5,
-
         Gender: 6,
-
         Forme: 7,
-
         Alternate: 8
 
     };
@@ -217,7 +218,10 @@ function sortForms(forms) {
 
 }
 
-function createFormsForSpecies(species, pokemonList) {
+function createFormsForSpecies(
+    species,
+    pokemonList
+) {
 
     const forms = [];
 
@@ -230,104 +234,82 @@ function createFormsForSpecies(species, pokemonList) {
 
         if (!isDefault) {
 
-        const prefix =
-            species.name + " ";
+            const prefix =
+                species.name + " ";
 
-        if (
-            pokemon.name.startsWith(prefix)
-        ) {
-        
+            if (
+                pokemon.name.startsWith(prefix)
+            ) {
+
+                identifier =
+                    pokemon.name.substring(
+                        prefix.length
+                    );
+
+            } else {
+
+                identifier =
+                    pokemon.name.trim();
+
+            }
+
             identifier =
-                pokemon.name
-                    .substring(prefix.length);
-        
-        }
-        else {
-        
-            identifier =
-                pokemon.name.trim();
-        
-        }
 
-        identifier =
+                identifier
 
-            identifier
+                    .trim()
 
-                .trim()
+                    .toLowerCase()
 
-                .toLowerCase()
-                
-                .replace(/[.'’:]/g, "")
-                
-                .replace(/\s+/g, "-");
+                    .replace(/[.'’:]/g, "")
+
+                    .replace(/\s+/g, "-");
 
         }
 
         forms.push({
-        
+
             pokemonId:
                 pokemon.id,
-        
+
             order:
                 pokemon.order,
-        
+
             identifier,
-        
+
             displayName:
-        
                 isDefault
-        
                     ? "Default"
-        
                     : createDisplayName(
                         identifier
                     ),
-                
+
             category:
-                
                 isDefault
-                
                     ? "Default"
-                
                     : determineCategory(
                         identifier
                     ),
-                
+
             isDefault
-                
+
         });
 
     }
 
-    sortForms(
-        forms
-    );
+    sortForms(forms);
 
     for (const form of forms) {
 
         delete form.order;
 
     }
-    
+
     return forms;
 
 }
 
-function main() {
-
-    console.log("");
-
-    console.log(
-        "========================================"
-    );
-
-    console.log(
-        "Phase 8 - Dataset Generation"
-    );
-
-    console.log(
-        "========================================"
-    );
+function generateSpeciesForms() {
 
     const pokemon =
         loadJSON(
@@ -344,7 +326,7 @@ function main() {
             pokemon
         );
 
-    console.log(
+    printSection(
         `Loaded ${pokemon.length} Pokémon`
     );
 
@@ -361,17 +343,22 @@ function main() {
     for (const currentSpecies of species) {
 
         const pokemonList =
-            groups.get(currentSpecies.id);
+            groups.get(
+                currentSpecies.id
+            );
 
         if (!pokemonList) {
+
             continue;
+
         }
 
         generated.push({
 
             species: {
 
-                id: currentSpecies.id,
+                id:
+                    currentSpecies.id,
 
                 number:
                     currentSpecies.number,
@@ -382,32 +369,45 @@ function main() {
             },
 
             forms:
-
                 createFormsForSpecies(
-
                     currentSpecies,
-
                     pokemonList
-
                 )
 
         });
 
     }
 
-    saveJSON(
-        generated
-    );
+    saveJSON(generated);
 
-    console.log("");
-
-    console.log(
+    printSuccess(
         `Generated ${generated.length} species entries`
     );
 
-    console.log(
-        `Saved to ${OUTPUT_FILE}`
+    printOutputFile(
+        OUTPUT_FILE
     );
+
+}
+
+function main() {
+
+    try {
+
+        printPhase(
+            "Phase 8 - Dataset Generation"
+        );
+
+        generateSpeciesForms();
+
+    } catch (error) {
+
+        printError(
+            error,
+            "Error generating species forms"
+        );
+
+    }
 
 }
 

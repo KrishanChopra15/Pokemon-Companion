@@ -1,0 +1,602 @@
+[
+    {
+        "pokemonId": 10091,
+        "speciesId": 19,
+        "number": "#0019",
+        "order": 26,
+        "name": "Rattata Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10092,
+        "speciesId": 20,
+        "number": "#0020",
+        "order": 28,
+        "name": "Raticate Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10093,
+        "speciesId": 20,
+        "number": "#0020",
+        "order": 29,
+        "name": "Raticate Totem Alola",
+        "identifier": "totem-alola",
+        "displayName": "Totem Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10099,
+        "speciesId": 25,
+        "number": "#0025",
+        "order": 47,
+        "name": "Pikachu Alola Cap",
+        "identifier": "alola-cap",
+        "displayName": "Alola Cap",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10100,
+        "speciesId": 26,
+        "number": "#0026",
+        "order": 52,
+        "name": "Raichu Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10101,
+        "speciesId": 27,
+        "number": "#0027",
+        "order": 54,
+        "name": "Sandshrew Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10102,
+        "speciesId": 28,
+        "number": "#0028",
+        "order": 56,
+        "name": "Sandslash Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10103,
+        "speciesId": 37,
+        "number": "#0037",
+        "order": 67,
+        "name": "Vulpix Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10104,
+        "speciesId": 38,
+        "number": "#0038",
+        "order": 69,
+        "name": "Ninetales Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10105,
+        "speciesId": 50,
+        "number": "#0050",
+        "order": 85,
+        "name": "Diglett Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10106,
+        "speciesId": 51,
+        "number": "#0051",
+        "order": 87,
+        "name": "Dugtrio Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10107,
+        "speciesId": 52,
+        "number": "#0052",
+        "order": 89,
+        "name": "Meowth Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10161,
+        "speciesId": 52,
+        "number": "#0052",
+        "order": 90,
+        "name": "Meowth Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10108,
+        "speciesId": 53,
+        "number": "#0053",
+        "order": 92,
+        "name": "Persian Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10229,
+        "speciesId": 58,
+        "number": "#0058",
+        "order": -1,
+        "name": "Growlithe Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10230,
+        "speciesId": 59,
+        "number": "#0059",
+        "order": -1,
+        "name": "Arcanine Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10109,
+        "speciesId": 74,
+        "number": "#0074",
+        "order": 116,
+        "name": "Geodude Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10110,
+        "speciesId": 75,
+        "number": "#0075",
+        "order": 118,
+        "name": "Graveler Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10111,
+        "speciesId": 76,
+        "number": "#0076",
+        "order": 120,
+        "name": "Golem Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10162,
+        "speciesId": 77,
+        "number": "#0077",
+        "order": 122,
+        "name": "Ponyta Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10163,
+        "speciesId": 78,
+        "number": "#0078",
+        "order": 124,
+        "name": "Rapidash Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10164,
+        "speciesId": 79,
+        "number": "#0079",
+        "order": 126,
+        "name": "Slowpoke Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10165,
+        "speciesId": 80,
+        "number": "#0080",
+        "order": 129,
+        "name": "Slowbro Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10166,
+        "speciesId": 83,
+        "number": "#0083",
+        "order": 136,
+        "name": "Farfetchd Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10112,
+        "speciesId": 88,
+        "number": "#0088",
+        "order": 142,
+        "name": "Grimer Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10113,
+        "speciesId": 89,
+        "number": "#0089",
+        "order": 144,
+        "name": "Muk Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10231,
+        "speciesId": 100,
+        "number": "#0100",
+        "order": -1,
+        "name": "Voltorb Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10232,
+        "speciesId": 101,
+        "number": "#0101",
+        "order": -1,
+        "name": "Electrode Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10114,
+        "speciesId": 103,
+        "number": "#0103",
+        "order": 162,
+        "name": "Exeggutor Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10115,
+        "speciesId": 105,
+        "number": "#0105",
+        "order": 165,
+        "name": "Marowak Alola",
+        "identifier": "alola",
+        "displayName": "Alola",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10167,
+        "speciesId": 110,
+        "number": "#0110",
+        "order": 175,
+        "name": "Weezing Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10168,
+        "speciesId": 122,
+        "number": "#0122",
+        "order": 195,
+        "name": "Mr Mime Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10252,
+        "speciesId": 128,
+        "number": "#0128",
+        "order": -1,
+        "name": "Tauros Paldea Aqua Breed",
+        "identifier": "paldea-aqua-breed",
+        "displayName": "Paldea Aqua Breed",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10251,
+        "speciesId": 128,
+        "number": "#0128",
+        "order": -1,
+        "name": "Tauros Paldea Blaze Breed",
+        "identifier": "paldea-blaze-breed",
+        "displayName": "Paldea Blaze Breed",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10250,
+        "speciesId": 128,
+        "number": "#0128",
+        "order": -1,
+        "name": "Tauros Paldea Combat Breed",
+        "identifier": "paldea-combat-breed",
+        "displayName": "Paldea Combat Breed",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10169,
+        "speciesId": 144,
+        "number": "#0144",
+        "order": 237,
+        "name": "Articuno Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10170,
+        "speciesId": 145,
+        "number": "#0145",
+        "order": 239,
+        "name": "Zapdos Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10171,
+        "speciesId": 146,
+        "number": "#0146",
+        "order": 241,
+        "name": "Moltres Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10233,
+        "speciesId": 157,
+        "number": "#0157",
+        "order": -1,
+        "name": "Typhlosion Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10253,
+        "speciesId": 194,
+        "number": "#0194",
+        "order": -1,
+        "name": "Wooper Paldea",
+        "identifier": "paldea",
+        "displayName": "Paldea",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10172,
+        "speciesId": 199,
+        "number": "#0199",
+        "order": 131,
+        "name": "Slowking Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10234,
+        "speciesId": 211,
+        "number": "#0211",
+        "order": -1,
+        "name": "Qwilfish Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10235,
+        "speciesId": 215,
+        "number": "#0215",
+        "order": -1,
+        "name": "Sneasel Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10173,
+        "speciesId": 222,
+        "number": "#0222",
+        "order": 322,
+        "name": "Corsola Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10174,
+        "speciesId": 263,
+        "number": "#0263",
+        "order": 362,
+        "name": "Zigzagoon Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10175,
+        "speciesId": 264,
+        "number": "#0264",
+        "order": 364,
+        "name": "Linoone Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10236,
+        "speciesId": 503,
+        "number": "#0503",
+        "order": -1,
+        "name": "Samurott Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10237,
+        "speciesId": 549,
+        "number": "#0549",
+        "order": -1,
+        "name": "Lilligant Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10176,
+        "speciesId": 554,
+        "number": "#0554",
+        "order": 672,
+        "name": "Darumaka Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10177,
+        "speciesId": 555,
+        "number": "#0555",
+        "order": 675,
+        "name": "Darmanitan Galar Standard",
+        "identifier": "galar-standard",
+        "displayName": "Galar Standard",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10178,
+        "speciesId": 555,
+        "number": "#0555",
+        "order": 676,
+        "name": "Darmanitan Galar Zen",
+        "identifier": "galar-zen",
+        "displayName": "Galar Zen",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10179,
+        "speciesId": 562,
+        "number": "#0562",
+        "order": 684,
+        "name": "Yamask Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10238,
+        "speciesId": 570,
+        "number": "#0570",
+        "order": -1,
+        "name": "Zorua Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10239,
+        "speciesId": 571,
+        "number": "#0571",
+        "order": -1,
+        "name": "Zoroark Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10180,
+        "speciesId": 618,
+        "number": "#0618",
+        "order": 741,
+        "name": "Stunfisk Galar",
+        "identifier": "galar",
+        "displayName": "Galar",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10240,
+        "speciesId": 628,
+        "number": "#0628",
+        "order": -1,
+        "name": "Braviary Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10241,
+        "speciesId": 705,
+        "number": "#0705",
+        "order": -1,
+        "name": "Sliggoo Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10242,
+        "speciesId": 706,
+        "number": "#0706",
+        "order": -1,
+        "name": "Goodra Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10243,
+        "speciesId": 713,
+        "number": "#0713",
+        "order": -1,
+        "name": "Avalugg Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10244,
+        "speciesId": 724,
+        "number": "#0724",
+        "order": -1,
+        "name": "Decidueye Hisui",
+        "identifier": "hisui",
+        "displayName": "Hisui",
+        "isDefault": false
+    }
+]

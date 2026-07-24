@@ -1,0 +1,22 @@
+[
+    {
+        "pokemonId": 10077,
+        "speciesId": 382,
+        "number": "#0382",
+        "order": 508,
+        "name": "Kyogre Primal",
+        "identifier": "primal",
+        "displayName": "Primal",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10078,
+        "speciesId": 383,
+        "number": "#0383",
+        "order": 510,
+        "name": "Groudon Primal",
+        "identifier": "primal",
+        "displayName": "Primal",
+        "isDefault": false
+    }
+]

@@ -18,6 +18,12 @@ const OUTPUT_FILE = path.join(
     "../../database/species.json"
 );
 
+function createNationalDexNumber(id) {
+
+    return `#${String(id).padStart(4, "0")}`;
+
+}
+
 async function downloadSpecies() {
 
     try {
@@ -94,11 +100,18 @@ async function downloadSpecies() {
 
             speciesList.push({
 
-                id: species.id,
+                id:
+                    species.id,
 
-                name: toTitleCase(
-                    species.name
-                ),
+                number:
+                    createNationalDexNumber(
+                        species.id
+                    ),
+
+                name:
+                    toTitleCase(
+                        species.name
+                    ),
 
                 generation:
                     createGenerationReference(
@@ -106,12 +119,15 @@ async function downloadSpecies() {
                     ),
 
                 category:
-                    species.genera
-                        .find(
-                            genus =>
-                                genus.language.name === "en"
-                        )
-                        ?.genus ??
+
+                    species.genera.find(
+
+                        genus =>
+
+                            genus.language.name === "en"
+
+                    )?.genus ??
+
                     "Unknown",
 
                 color:
@@ -120,17 +136,23 @@ async function downloadSpecies() {
                     ),
 
                 shape:
+
                     species.shape
+
                         ? createNamedApiReference(
                             species.shape
                         )
+
                         : null,
 
                 habitat:
+
                     species.habitat
+
                         ? createNamedApiReference(
                             species.habitat
                         )
+
                         : null,
 
                 captureRate:
@@ -160,17 +182,29 @@ async function downloadSpecies() {
                     species.is_baby,
 
                 evolutionChainId:
-                    getIdFromUrl(
-                        species.evolution_chain.url
-                    ),
+
+                    species.evolution_chain
+
+                        ? getIdFromUrl(
+                            species.evolution_chain.url
+                        )
+
+                        : null,
 
                 eggGroups:
+
                     species.egg_groups
-                        .map(group =>
-                            createNamedApiReference(
-                                group
-                            )
+
+                        .map(
+
+                            group =>
+
+                                createNamedApiReference(
+                                    group
+                                )
+
                         )
+
                         .sort(
                             (a, b) =>
                                 a.id - b.id
@@ -191,11 +225,19 @@ async function downloadSpecies() {
             speciesList
         );
 
+        console.log("");
+
         console.log(
             `Successfully downloaded ${speciesList.length} Pokémon species.`
         );
 
+        console.log(
+            `Saved to ${OUTPUT_FILE}`
+        );
+
     } catch (error) {
+
+        console.error("");
 
         console.error(
             "Error downloading species:"

@@ -1,6 +1,7 @@
 [
     {
         "id": 1,
+        "number": "#0001",
         "name": "Bulbasaur",
         "generation": {
             "id": 1,
@@ -158,6 +159,7 @@
     },
     {
         "id": 2,
+        "number": "#0002",
         "name": "Ivysaur",
         "generation": {
             "id": 1,
@@ -315,6 +317,7 @@
     },
     {
         "id": 3,
+        "number": "#0003",
         "name": "Venusaur",
         "generation": {
             "id": 1,
@@ -472,6 +475,7 @@
     },
     {
         "id": 4,
+        "number": "#0004",
         "name": "Charmander",
         "generation": {
             "id": 1,
@@ -629,6 +633,7 @@
     },
     {
         "id": 5,
+        "number": "#0005",
         "name": "Charmeleon",
         "generation": {
             "id": 1,
@@ -786,6 +791,7 @@
     },
     {
         "id": 6,
+        "number": "#0006",
         "name": "Charizard",
         "generation": {
             "id": 1,
@@ -943,6 +949,7 @@
     },
     {
         "id": 7,
+        "number": "#0007",
         "name": "Squirtle",
         "generation": {
             "id": 1,
@@ -1100,6 +1107,7 @@
     },
     {
         "id": 8,
+        "number": "#0008",
         "name": "Wartortle",
         "generation": {
             "id": 1,
@@ -1257,6 +1265,7 @@
     },
     {
         "id": 9,
+        "number": "#0009",
         "name": "Blastoise",
         "generation": {
             "id": 1,
@@ -1414,6 +1423,7 @@
     },
     {
         "id": 10,
+        "number": "#0010",
         "name": "Caterpie",
         "generation": {
             "id": 1,
@@ -1583,6 +1593,7 @@
     },
     {
         "id": 11,
+        "number": "#0011",
         "name": "Metapod",
         "generation": {
             "id": 1,
@@ -1752,6 +1763,7 @@
     },
     {
         "id": 12,
+        "number": "#0012",
         "name": "Butterfree",
         "generation": {
             "id": 1,
@@ -1921,6 +1933,7 @@
     },
     {
         "id": 13,
+        "number": "#0013",
         "name": "Weedle",
         "generation": {
             "id": 1,
@@ -2066,6 +2079,7 @@
     },
     {
         "id": 14,
+        "number": "#0014",
         "name": "Kakuna",
         "generation": {
             "id": 1,
@@ -2211,6 +2225,7 @@
     },
     {
         "id": 15,
+        "number": "#0015",
         "name": "Beedrill",
         "generation": {
             "id": 1,
@@ -2356,6 +2371,7 @@
     },
     {
         "id": 16,
+        "number": "#0016",
         "name": "Pidgey",
         "generation": {
             "id": 1,
@@ -2501,6 +2517,7 @@
     },
     {
         "id": 17,
+        "number": "#0017",
         "name": "Pidgeotto",
         "generation": {
             "id": 1,
@@ -2646,6 +2663,7 @@
     },
     {
         "id": 18,
+        "number": "#0018",
         "name": "Pidgeot",
         "generation": {
             "id": 1,
@@ -2791,6 +2809,7 @@
     },
     {
         "id": 19,
+        "number": "#0019",
         "name": "Rattata",
         "generation": {
             "id": 1,
@@ -2952,6 +2971,7 @@
     },
     {
         "id": 20,
+        "number": "#0020",
         "name": "Raticate",
         "generation": {
             "id": 1,
@@ -3113,6 +3133,7 @@
     },
     {
         "id": 21,
+        "number": "#0021",
         "name": "Spearow",
         "generation": {
             "id": 1,
@@ -3274,6 +3295,7 @@
     },
     {
         "id": 22,
+        "number": "#0022",
         "name": "Fearow",
         "generation": {
             "id": 1,
@@ -3435,6 +3457,7 @@
     },
     {
         "id": 23,
+        "number": "#0023",
         "name": "Ekans",
         "generation": {
             "id": 1,
@@ -3592,6 +3615,7 @@
     },
     {
         "id": 24,
+        "number": "#0024",
         "name": "Arbok",
         "generation": {
             "id": 1,
@@ -3749,6 +3773,7 @@
     },
     {
         "id": 25,
+        "number": "#0025",
         "name": "Pikachu",
         "generation": {
             "id": 1,
@@ -3926,6 +3951,7 @@
     },
     {
         "id": 26,
+        "number": "#0026",
         "name": "Raichu",
         "generation": {
             "id": 1,
@@ -4103,6 +4129,7 @@
     },
     {
         "id": 27,
+        "number": "#0027",
         "name": "Sandshrew",
         "generation": {
             "id": 1,
@@ -4272,6 +4299,7 @@
     },
     {
         "id": 28,
+        "number": "#0028",
         "name": "Sandslash",
         "generation": {
             "id": 1,
@@ -4441,6 +4469,7 @@
     },
     {
         "id": 29,
+        "number": "#0029",
         "name": "Nidoran F",
         "generation": {
             "id": 1,
@@ -4598,6 +4627,7 @@
     },
     {
         "id": 30,
+        "number": "#0030",
         "name": "Nidorina",
         "generation": {
             "id": 1,
@@ -4751,6 +4781,7 @@
     },
     {
         "id": 31,
+        "number": "#0031",
         "name": "Nidoqueen",
         "generation": {
             "id": 1,
@@ -4904,6 +4935,7 @@
     },
     {
         "id": 32,
+        "number": "#0032",
         "name": "Nidoran M",
         "generation": {
             "id": 1,
@@ -5061,6 +5093,7 @@
     },
     {
         "id": 33,
+        "number": "#0033",
         "name": "Nidorino",
         "generation": {
             "id": 1,
@@ -5218,6 +5251,7 @@
     },
     {
         "id": 34,
+        "number": "#0034",
         "name": "Nidoking",
         "generation": {
             "id": 1,
@@ -5375,6 +5409,7 @@
     },
     {
         "id": 35,
+        "number": "#0035",
         "name": "Clefairy",
         "generation": {
             "id": 1,
@@ -5548,6 +5583,7 @@
     },
     {
         "id": 36,
+        "number": "#0036",
         "name": "Clefable",
         "generation": {
             "id": 1,
@@ -5721,6 +5757,7 @@
     },
     {
         "id": 37,
+        "number": "#0037",
         "name": "Vulpix",
         "generation": {
             "id": 1,
@@ -5894,6 +5931,7 @@
     },
     {
         "id": 38,
+        "number": "#0038",
         "name": "Ninetales",
         "generation": {
             "id": 1,
@@ -6067,6 +6105,7 @@
     },
     {
         "id": 39,
+        "number": "#0039",
         "name": "Jigglypuff",
         "generation": {
             "id": 1,
@@ -6236,6 +6275,7 @@
     },
     {
         "id": 40,
+        "number": "#0040",
         "name": "Wigglytuff",
         "generation": {
             "id": 1,
@@ -6405,6 +6445,7 @@
     },
     {
         "id": 41,
+        "number": "#0041",
         "name": "Zubat",
         "generation": {
             "id": 1,
@@ -6578,6 +6619,7 @@
     },
     {
         "id": 42,
+        "number": "#0042",
         "name": "Golbat",
         "generation": {
             "id": 1,
@@ -6751,6 +6793,7 @@
     },
     {
         "id": 43,
+        "number": "#0043",
         "name": "Oddish",
         "generation": {
             "id": 1,
@@ -6904,6 +6947,7 @@
     },
     {
         "id": 44,
+        "number": "#0044",
         "name": "Gloom",
         "generation": {
             "id": 1,
@@ -7057,6 +7101,7 @@
     },
     {
         "id": 45,
+        "number": "#0045",
         "name": "Vileplume",
         "generation": {
             "id": 1,
@@ -7210,6 +7255,7 @@
     },
     {
         "id": 46,
+        "number": "#0046",
         "name": "Paras",
         "generation": {
             "id": 1,
@@ -7379,6 +7425,7 @@
     },
     {
         "id": 47,
+        "number": "#0047",
         "name": "Parasect",
         "generation": {
             "id": 1,
@@ -7548,6 +7595,7 @@
     },
     {
         "id": 48,
+        "number": "#0048",
         "name": "Venonat",
         "generation": {
             "id": 1,
@@ -7693,6 +7741,7 @@
     },
     {
         "id": 49,
+        "number": "#0049",
         "name": "Venomoth",
         "generation": {
             "id": 1,
@@ -7838,6 +7887,7 @@
     },
     {
         "id": 50,
+        "number": "#0050",
         "name": "Diglett",
         "generation": {
             "id": 1,
@@ -8007,6 +8057,7 @@
     },
     {
         "id": 51,
+        "number": "#0051",
         "name": "Dugtrio",
         "generation": {
             "id": 1,
@@ -8176,6 +8227,7 @@
     },
     {
         "id": 52,
+        "number": "#0052",
         "name": "Meowth",
         "generation": {
             "id": 1,
@@ -8345,6 +8397,7 @@
     },
     {
         "id": 53,
+        "number": "#0053",
         "name": "Persian",
         "generation": {
             "id": 1,
@@ -8514,6 +8567,7 @@
     },
     {
         "id": 54,
+        "number": "#0054",
         "name": "Psyduck",
         "generation": {
             "id": 1,
@@ -8691,6 +8745,7 @@
     },
     {
         "id": 55,
+        "number": "#0055",
         "name": "Golduck",
         "generation": {
             "id": 1,
@@ -8868,6 +8923,7 @@
     },
     {
         "id": 56,
+        "number": "#0056",
         "name": "Mankey",
         "generation": {
             "id": 1,
@@ -9029,6 +9085,7 @@
     },
     {
         "id": 57,
+        "number": "#0057",
         "name": "Primeape",
         "generation": {
             "id": 1,
@@ -9190,6 +9247,7 @@
     },
     {
         "id": 58,
+        "number": "#0058",
         "name": "Growlithe",
         "generation": {
             "id": 1,
@@ -9363,6 +9421,7 @@
     },
     {
         "id": 59,
+        "number": "#0059",
         "name": "Arcanine",
         "generation": {
             "id": 1,
@@ -9536,6 +9595,7 @@
     },
     {
         "id": 60,
+        "number": "#0060",
         "name": "Poliwag",
         "generation": {
             "id": 1,
@@ -9705,6 +9765,7 @@
     },
     {
         "id": 61,
+        "number": "#0061",
         "name": "Poliwhirl",
         "generation": {
             "id": 1,
@@ -9874,6 +9935,7 @@
     },
     {
         "id": 62,
+        "number": "#0062",
         "name": "Poliwrath",
         "generation": {
             "id": 1,
@@ -10043,6 +10105,7 @@
     },
     {
         "id": 63,
+        "number": "#0063",
         "name": "Abra",
         "generation": {
             "id": 1,
@@ -10216,6 +10279,7 @@
     },
     {
         "id": 64,
+        "number": "#0064",
         "name": "Kadabra",
         "generation": {
             "id": 1,
@@ -10389,6 +10453,7 @@
     },
     {
         "id": 65,
+        "number": "#0065",
         "name": "Alakazam",
         "generation": {
             "id": 1,
@@ -10562,6 +10627,7 @@
     },
     {
         "id": 66,
+        "number": "#0066",
         "name": "Machop",
         "generation": {
             "id": 1,
@@ -10735,6 +10801,7 @@
     },
     {
         "id": 67,
+        "number": "#0067",
         "name": "Machoke",
         "generation": {
             "id": 1,
@@ -10908,6 +10975,7 @@
     },
     {
         "id": 68,
+        "number": "#0068",
         "name": "Machamp",
         "generation": {
             "id": 1,
@@ -11081,6 +11149,7 @@
     },
     {
         "id": 69,
+        "number": "#0069",
         "name": "Bellsprout",
         "generation": {
             "id": 1,
@@ -11226,6 +11295,7 @@
     },
     {
         "id": 70,
+        "number": "#0070",
         "name": "Weepinbell",
         "generation": {
             "id": 1,
@@ -11371,6 +11441,7 @@
     },
     {
         "id": 71,
+        "number": "#0071",
         "name": "Victreebel",
         "generation": {
             "id": 1,
@@ -11516,6 +11587,7 @@
     },
     {
         "id": 72,
+        "number": "#0072",
         "name": "Tentacool",
         "generation": {
             "id": 1,
@@ -11689,6 +11761,7 @@
     },
     {
         "id": 73,
+        "number": "#0073",
         "name": "Tentacruel",
         "generation": {
             "id": 1,
@@ -11862,6 +11935,7 @@
     },
     {
         "id": 74,
+        "number": "#0074",
         "name": "Geodude",
         "generation": {
             "id": 1,
@@ -12027,6 +12101,7 @@
     },
     {
         "id": 75,
+        "number": "#0075",
         "name": "Graveler",
         "generation": {
             "id": 1,
@@ -12192,6 +12267,7 @@
     },
     {
         "id": 76,
+        "number": "#0076",
         "name": "Golem",
         "generation": {
             "id": 1,
@@ -12357,6 +12433,7 @@
     },
     {
         "id": 77,
+        "number": "#0077",
         "name": "Ponyta",
         "generation": {
             "id": 1,
@@ -12514,6 +12591,7 @@
     },
     {
         "id": 78,
+        "number": "#0078",
         "name": "Rapidash",
         "generation": {
             "id": 1,
@@ -12671,6 +12749,7 @@
     },
     {
         "id": 79,
+        "number": "#0079",
         "name": "Slowpoke",
         "generation": {
             "id": 1,
@@ -12844,6 +12923,7 @@
     },
     {
         "id": 80,
+        "number": "#0080",
         "name": "Slowbro",
         "generation": {
             "id": 1,
@@ -13017,6 +13097,7 @@
     },
     {
         "id": 81,
+        "number": "#0081",
         "name": "Magnemite",
         "generation": {
             "id": 1,
@@ -13190,6 +13271,7 @@
     },
     {
         "id": 82,
+        "number": "#0082",
         "name": "Magneton",
         "generation": {
             "id": 1,
@@ -13363,6 +13445,7 @@
     },
     {
         "id": 83,
+        "number": "#0083",
         "name": "Farfetchd",
         "generation": {
             "id": 1,
@@ -13520,6 +13603,7 @@
     },
     {
         "id": 84,
+        "number": "#0084",
         "name": "Doduo",
         "generation": {
             "id": 1,
@@ -13665,6 +13749,7 @@
     },
     {
         "id": 85,
+        "number": "#0085",
         "name": "Dodrio",
         "generation": {
             "id": 1,
@@ -13810,6 +13895,7 @@
     },
     {
         "id": 86,
+        "number": "#0086",
         "name": "Seel",
         "generation": {
             "id": 1,
@@ -13967,6 +14053,7 @@
     },
     {
         "id": 87,
+        "number": "#0087",
         "name": "Dewgong",
         "generation": {
             "id": 1,
@@ -14124,6 +14211,7 @@
     },
     {
         "id": 88,
+        "number": "#0088",
         "name": "Grimer",
         "generation": {
             "id": 1,
@@ -14285,6 +14373,7 @@
     },
     {
         "id": 89,
+        "number": "#0089",
         "name": "Muk",
         "generation": {
             "id": 1,
@@ -14446,6 +14535,7 @@
     },
     {
         "id": 90,
+        "number": "#0090",
         "name": "Shellder",
         "generation": {
             "id": 1,
@@ -14615,6 +14705,7 @@
     },
     {
         "id": 91,
+        "number": "#0091",
         "name": "Cloyster",
         "generation": {
             "id": 1,
@@ -14784,6 +14875,7 @@
     },
     {
         "id": 92,
+        "number": "#0092",
         "name": "Gastly",
         "generation": {
             "id": 1,
@@ -14957,6 +15049,7 @@
     },
     {
         "id": 93,
+        "number": "#0093",
         "name": "Haunter",
         "generation": {
             "id": 1,
@@ -15130,6 +15223,7 @@
     },
     {
         "id": 94,
+        "number": "#0094",
         "name": "Gengar",
         "generation": {
             "id": 1,
@@ -15303,6 +15397,7 @@
     },
     {
         "id": 95,
+        "number": "#0095",
         "name": "Onix",
         "generation": {
             "id": 1,
@@ -15460,6 +15555,7 @@
     },
     {
         "id": 96,
+        "number": "#0096",
         "name": "Drowzee",
         "generation": {
             "id": 1,
@@ -15621,6 +15717,7 @@
     },
     {
         "id": 97,
+        "number": "#0097",
         "name": "Hypno",
         "generation": {
             "id": 1,
@@ -15782,6 +15879,7 @@
     },
     {
         "id": 98,
+        "number": "#0098",
         "name": "Krabby",
         "generation": {
             "id": 1,
@@ -15935,6 +16033,7 @@
     },
     {
         "id": 99,
+        "number": "#0099",
         "name": "Kingler",
         "generation": {
             "id": 1,
@@ -16088,6 +16187,7 @@
     },
     {
         "id": 100,
+        "number": "#0100",
         "name": "Voltorb",
         "generation": {
             "id": 1,
@@ -16237,6 +16337,7 @@
     },
     {
         "id": 101,
+        "number": "#0101",
         "name": "Electrode",
         "generation": {
             "id": 1,
@@ -16386,6 +16487,7 @@
     },
     {
         "id": 102,
+        "number": "#0102",
         "name": "Exeggcute",
         "generation": {
             "id": 1,
@@ -16555,6 +16657,7 @@
     },
     {
         "id": 103,
+        "number": "#0103",
         "name": "Exeggutor",
         "generation": {
             "id": 1,
@@ -16724,6 +16827,7 @@
     },
     {
         "id": 104,
+        "number": "#0104",
         "name": "Cubone",
         "generation": {
             "id": 1,
@@ -16893,6 +16997,7 @@
     },
     {
         "id": 105,
+        "number": "#0105",
         "name": "Marowak",
         "generation": {
             "id": 1,
@@ -17062,6 +17167,7 @@
     },
     {
         "id": 106,
+        "number": "#0106",
         "name": "Hitmonlee",
         "generation": {
             "id": 1,
@@ -17215,6 +17321,7 @@
     },
     {
         "id": 107,
+        "number": "#0107",
         "name": "Hitmonchan",
         "generation": {
             "id": 1,
@@ -17368,6 +17475,7 @@
     },
     {
         "id": 108,
+        "number": "#0108",
         "name": "Lickitung",
         "generation": {
             "id": 1,
@@ -17533,6 +17641,7 @@
     },
     {
         "id": 109,
+        "number": "#0109",
         "name": "Koffing",
         "generation": {
             "id": 1,
@@ -17686,6 +17795,7 @@
     },
     {
         "id": 110,
+        "number": "#0110",
         "name": "Weezing",
         "generation": {
             "id": 1,
@@ -17839,6 +17949,7 @@
     },
     {
         "id": 111,
+        "number": "#0111",
         "name": "Rhyhorn",
         "generation": {
             "id": 1,
@@ -18000,6 +18111,7 @@
     },
     {
         "id": 112,
+        "number": "#0112",
         "name": "Rhydon",
         "generation": {
             "id": 1,
@@ -18161,6 +18273,7 @@
     },
     {
         "id": 113,
+        "number": "#0113",
         "name": "Chansey",
         "generation": {
             "id": 1,
@@ -18334,6 +18447,7 @@
     },
     {
         "id": 114,
+        "number": "#0114",
         "name": "Tangela",
         "generation": {
             "id": 1,
@@ -18491,6 +18605,7 @@
     },
     {
         "id": 115,
+        "number": "#0115",
         "name": "Kangaskhan",
         "generation": {
             "id": 1,
@@ -18660,6 +18775,7 @@
     },
     {
         "id": 116,
+        "number": "#0116",
         "name": "Horsea",
         "generation": {
             "id": 1,
@@ -18817,6 +18933,7 @@
     },
     {
         "id": 117,
+        "number": "#0117",
         "name": "Seadra",
         "generation": {
             "id": 1,
@@ -18974,6 +19091,7 @@
     },
     {
         "id": 118,
+        "number": "#0118",
         "name": "Goldeen",
         "generation": {
             "id": 1,
@@ -19143,6 +19261,7 @@
     },
     {
         "id": 119,
+        "number": "#0119",
         "name": "Seaking",
         "generation": {
             "id": 1,
@@ -19312,6 +19431,7 @@
     },
     {
         "id": 120,
+        "number": "#0120",
         "name": "Staryu",
         "generation": {
             "id": 1,
@@ -19481,6 +19601,7 @@
     },
     {
         "id": 121,
+        "number": "#0121",
         "name": "Starmie",
         "generation": {
             "id": 1,
@@ -19650,6 +19771,7 @@
     },
     {
         "id": 122,
+        "number": "#0122",
         "name": "Mr Mime",
         "generation": {
             "id": 1,
@@ -19815,6 +19937,7 @@
     },
     {
         "id": 123,
+        "number": "#0123",
         "name": "Scyther",
         "generation": {
             "id": 1,
@@ -19988,6 +20111,7 @@
     },
     {
         "id": 124,
+        "number": "#0124",
         "name": "Jynx",
         "generation": {
             "id": 1,
@@ -20149,6 +20273,7 @@
     },
     {
         "id": 125,
+        "number": "#0125",
         "name": "Electabuzz",
         "generation": {
             "id": 1,
@@ -20322,6 +20447,7 @@
     },
     {
         "id": 126,
+        "number": "#0126",
         "name": "Magmar",
         "generation": {
             "id": 1,
@@ -20495,6 +20621,7 @@
     },
     {
         "id": 127,
+        "number": "#0127",
         "name": "Pinsir",
         "generation": {
             "id": 1,
@@ -20664,6 +20791,7 @@
     },
     {
         "id": 128,
+        "number": "#0128",
         "name": "Tauros",
         "generation": {
             "id": 1,
@@ -20833,6 +20961,7 @@
     },
     {
         "id": 129,
+        "number": "#0129",
         "name": "Magikarp",
         "generation": {
             "id": 1,
@@ -21010,6 +21139,7 @@
     },
     {
         "id": 130,
+        "number": "#0130",
         "name": "Gyarados",
         "generation": {
             "id": 1,
@@ -21187,6 +21317,7 @@
     },
     {
         "id": 131,
+        "number": "#0131",
         "name": "Lapras",
         "generation": {
             "id": 1,
@@ -21360,6 +21491,7 @@
     },
     {
         "id": 132,
+        "number": "#0132",
         "name": "Ditto",
         "generation": {
             "id": 1,
@@ -21529,6 +21661,7 @@
     },
     {
         "id": 133,
+        "number": "#0133",
         "name": "Eevee",
         "generation": {
             "id": 1,
@@ -21702,6 +21835,7 @@
     },
     {
         "id": 134,
+        "number": "#0134",
         "name": "Vaporeon",
         "generation": {
             "id": 1,
@@ -21875,6 +22009,7 @@
     },
     {
         "id": 135,
+        "number": "#0135",
         "name": "Jolteon",
         "generation": {
             "id": 1,
@@ -22048,6 +22183,7 @@
     },
     {
         "id": 136,
+        "number": "#0136",
         "name": "Flareon",
         "generation": {
             "id": 1,
@@ -22221,6 +22357,7 @@
     },
     {
         "id": 137,
+        "number": "#0137",
         "name": "Porygon",
         "generation": {
             "id": 1,
@@ -22394,6 +22531,7 @@
     },
     {
         "id": 138,
+        "number": "#0138",
         "name": "Omanyte",
         "generation": {
             "id": 1,
@@ -22559,6 +22697,7 @@
     },
     {
         "id": 139,
+        "number": "#0139",
         "name": "Omastar",
         "generation": {
             "id": 1,
@@ -22724,6 +22863,7 @@
     },
     {
         "id": 140,
+        "number": "#0140",
         "name": "Kabuto",
         "generation": {
             "id": 1,
@@ -22889,6 +23029,7 @@
     },
     {
         "id": 141,
+        "number": "#0141",
         "name": "Kabutops",
         "generation": {
             "id": 1,
@@ -23054,6 +23195,7 @@
     },
     {
         "id": 142,
+        "number": "#0142",
         "name": "Aerodactyl",
         "generation": {
             "id": 1,
@@ -23223,6 +23365,7 @@
     },
     {
         "id": 143,
+        "number": "#0143",
         "name": "Snorlax",
         "generation": {
             "id": 1,
@@ -23396,6 +23539,7 @@
     },
     {
         "id": 144,
+        "number": "#0144",
         "name": "Articuno",
         "generation": {
             "id": 1,
@@ -23549,6 +23693,7 @@
     },
     {
         "id": 145,
+        "number": "#0145",
         "name": "Zapdos",
         "generation": {
             "id": 1,
@@ -23702,6 +23847,7 @@
     },
     {
         "id": 146,
+        "number": "#0146",
         "name": "Moltres",
         "generation": {
             "id": 1,
@@ -23855,6 +24001,7 @@
     },
     {
         "id": 147,
+        "number": "#0147",
         "name": "Dratini",
         "generation": {
             "id": 1,
@@ -24028,6 +24175,7 @@
     },
     {
         "id": 148,
+        "number": "#0148",
         "name": "Dragonair",
         "generation": {
             "id": 1,
@@ -24201,6 +24349,7 @@
     },
     {
         "id": 149,
+        "number": "#0149",
         "name": "Dragonite",
         "generation": {
             "id": 1,
@@ -24374,6 +24523,7 @@
     },
     {
         "id": 150,
+        "number": "#0150",
         "name": "Mewtwo",
         "generation": {
             "id": 1,
@@ -24519,6 +24669,7 @@
     },
     {
         "id": 151,
+        "number": "#0151",
         "name": "Mew",
         "generation": {
             "id": 1,
@@ -24664,6 +24815,7 @@
     },
     {
         "id": 152,
+        "number": "#0152",
         "name": "Chikorita",
         "generation": {
             "id": 2,
@@ -24793,6 +24945,7 @@
     },
     {
         "id": 153,
+        "number": "#0153",
         "name": "Bayleef",
         "generation": {
             "id": 2,
@@ -24922,6 +25075,7 @@
     },
     {
         "id": 154,
+        "number": "#0154",
         "name": "Meganium",
         "generation": {
             "id": 2,
@@ -25051,6 +25205,7 @@
     },
     {
         "id": 155,
+        "number": "#0155",
         "name": "Cyndaquil",
         "generation": {
             "id": 2,
@@ -25180,6 +25335,7 @@
     },
     {
         "id": 156,
+        "number": "#0156",
         "name": "Quilava",
         "generation": {
             "id": 2,
@@ -25309,6 +25465,7 @@
     },
     {
         "id": 157,
+        "number": "#0157",
         "name": "Typhlosion",
         "generation": {
             "id": 2,
@@ -25438,6 +25595,7 @@
     },
     {
         "id": 158,
+        "number": "#0158",
         "name": "Totodile",
         "generation": {
             "id": 2,
@@ -25567,6 +25725,7 @@
     },
     {
         "id": 159,
+        "number": "#0159",
         "name": "Croconaw",
         "generation": {
             "id": 2,
@@ -25696,6 +25855,7 @@
     },
     {
         "id": 160,
+        "number": "#0160",
         "name": "Feraligatr",
         "generation": {
             "id": 2,
@@ -25825,6 +25985,7 @@
     },
     {
         "id": 161,
+        "number": "#0161",
         "name": "Sentret",
         "generation": {
             "id": 2,
@@ -25950,6 +26111,7 @@
     },
     {
         "id": 162,
+        "number": "#0162",
         "name": "Furret",
         "generation": {
             "id": 2,
@@ -26075,6 +26237,7 @@
     },
     {
         "id": 163,
+        "number": "#0163",
         "name": "Hoothoot",
         "generation": {
             "id": 2,
@@ -26216,6 +26379,7 @@
     },
     {
         "id": 164,
+        "number": "#0164",
         "name": "Noctowl",
         "generation": {
             "id": 2,
@@ -26357,6 +26521,7 @@
     },
     {
         "id": 165,
+        "number": "#0165",
         "name": "Ledyba",
         "generation": {
             "id": 2,
@@ -26498,6 +26663,7 @@
     },
     {
         "id": 166,
+        "number": "#0166",
         "name": "Ledian",
         "generation": {
             "id": 2,
@@ -26639,6 +26805,7 @@
     },
     {
         "id": 167,
+        "number": "#0167",
         "name": "Spinarak",
         "generation": {
             "id": 2,
@@ -26780,6 +26947,7 @@
     },
     {
         "id": 168,
+        "number": "#0168",
         "name": "Ariados",
         "generation": {
             "id": 2,
@@ -26921,6 +27089,7 @@
     },
     {
         "id": 169,
+        "number": "#0169",
         "name": "Crobat",
         "generation": {
             "id": 2,
@@ -27074,6 +27243,7 @@
     },
     {
         "id": 170,
+        "number": "#0170",
         "name": "Chinchou",
         "generation": {
             "id": 2,
@@ -27223,6 +27393,7 @@
     },
     {
         "id": 171,
+        "number": "#0171",
         "name": "Lanturn",
         "generation": {
             "id": 2,
@@ -27372,6 +27543,7 @@
     },
     {
         "id": 172,
+        "number": "#0172",
         "name": "Pichu",
         "generation": {
             "id": 2,
@@ -27525,6 +27697,7 @@
     },
     {
         "id": 173,
+        "number": "#0173",
         "name": "Cleffa",
         "generation": {
             "id": 2,
@@ -27678,6 +27851,7 @@
     },
     {
         "id": 174,
+        "number": "#0174",
         "name": "Igglybuff",
         "generation": {
             "id": 2,
@@ -27827,6 +28001,7 @@
     },
     {
         "id": 175,
+        "number": "#0175",
         "name": "Togepi",
         "generation": {
             "id": 2,
@@ -27964,6 +28139,7 @@
     },
     {
         "id": 176,
+        "number": "#0176",
         "name": "Togetic",
         "generation": {
             "id": 2,
@@ -28105,6 +28281,7 @@
     },
     {
         "id": 177,
+        "number": "#0177",
         "name": "Natu",
         "generation": {
             "id": 2,
@@ -28246,6 +28423,7 @@
     },
     {
         "id": 178,
+        "number": "#0178",
         "name": "Xatu",
         "generation": {
             "id": 2,
@@ -28387,6 +28565,7 @@
     },
     {
         "id": 179,
+        "number": "#0179",
         "name": "Mareep",
         "generation": {
             "id": 2,
@@ -28524,6 +28703,7 @@
     },
     {
         "id": 180,
+        "number": "#0180",
         "name": "Flaaffy",
         "generation": {
             "id": 2,
@@ -28661,6 +28841,7 @@
     },
     {
         "id": 181,
+        "number": "#0181",
         "name": "Ampharos",
         "generation": {
             "id": 2,
@@ -28798,6 +28979,7 @@
     },
     {
         "id": 182,
+        "number": "#0182",
         "name": "Bellossom",
         "generation": {
             "id": 2,
@@ -28931,6 +29113,7 @@
     },
     {
         "id": 183,
+        "number": "#0183",
         "name": "Marill",
         "generation": {
             "id": 2,
@@ -29068,6 +29251,7 @@
     },
     {
         "id": 184,
+        "number": "#0184",
         "name": "Azumarill",
         "generation": {
             "id": 2,
@@ -29205,6 +29389,7 @@
     },
     {
         "id": 185,
+        "number": "#0185",
         "name": "Sudowoodo",
         "generation": {
             "id": 2,
@@ -29358,6 +29543,7 @@
     },
     {
         "id": 186,
+        "number": "#0186",
         "name": "Politoed",
         "generation": {
             "id": 2,
@@ -29507,6 +29693,7 @@
     },
     {
         "id": 187,
+        "number": "#0187",
         "name": "Hoppip",
         "generation": {
             "id": 2,
@@ -29636,6 +29823,7 @@
     },
     {
         "id": 188,
+        "number": "#0188",
         "name": "Skiploom",
         "generation": {
             "id": 2,
@@ -29765,6 +29953,7 @@
     },
     {
         "id": 189,
+        "number": "#0189",
         "name": "Jumpluff",
         "generation": {
             "id": 2,
@@ -29894,6 +30083,7 @@
     },
     {
         "id": 190,
+        "number": "#0190",
         "name": "Aipom",
         "generation": {
             "id": 2,
@@ -30031,6 +30221,7 @@
     },
     {
         "id": 191,
+        "number": "#0191",
         "name": "Sunkern",
         "generation": {
             "id": 2,
@@ -30156,6 +30347,7 @@
     },
     {
         "id": 192,
+        "number": "#0192",
         "name": "Sunflora",
         "generation": {
             "id": 2,
@@ -30281,6 +30473,7 @@
     },
     {
         "id": 193,
+        "number": "#0193",
         "name": "Yanma",
         "generation": {
             "id": 2,
@@ -30410,6 +30603,7 @@
     },
     {
         "id": 194,
+        "number": "#0194",
         "name": "Wooper",
         "generation": {
             "id": 2,
@@ -30547,6 +30741,7 @@
     },
     {
         "id": 195,
+        "number": "#0195",
         "name": "Quagsire",
         "generation": {
             "id": 2,
@@ -30684,6 +30879,7 @@
     },
     {
         "id": 196,
+        "number": "#0196",
         "name": "Espeon",
         "generation": {
             "id": 2,
@@ -30837,6 +31033,7 @@
     },
     {
         "id": 197,
+        "number": "#0197",
         "name": "Umbreon",
         "generation": {
             "id": 2,
@@ -30990,6 +31187,7 @@
     },
     {
         "id": 198,
+        "number": "#0198",
         "name": "Murkrow",
         "generation": {
             "id": 2,
@@ -31135,6 +31333,7 @@
     },
     {
         "id": 199,
+        "number": "#0199",
         "name": "Slowking",
         "generation": {
             "id": 2,
@@ -31288,6 +31487,7 @@
     },
     {
         "id": 200,
+        "number": "#0200",
         "name": "Misdreavus",
         "generation": {
             "id": 2,
@@ -31433,6 +31633,7 @@
     },
     {
         "id": 201,
+        "number": "#0201",
         "name": "Unown",
         "generation": {
             "id": 2,
@@ -31562,6 +31763,7 @@
     },
     {
         "id": 202,
+        "number": "#0202",
         "name": "Wobbuffet",
         "generation": {
             "id": 2,
@@ -31695,6 +31897,7 @@
     },
     {
         "id": 203,
+        "number": "#0203",
         "name": "Girafarig",
         "generation": {
             "id": 2,
@@ -31820,6 +32023,7 @@
     },
     {
         "id": 204,
+        "number": "#0204",
         "name": "Pineco",
         "generation": {
             "id": 2,
@@ -31953,6 +32157,7 @@
     },
     {
         "id": 205,
+        "number": "#0205",
         "name": "Forretress",
         "generation": {
             "id": 2,
@@ -32086,6 +32291,7 @@
     },
     {
         "id": 206,
+        "number": "#0206",
         "name": "Dunsparce",
         "generation": {
             "id": 2,
@@ -32227,6 +32433,7 @@
     },
     {
         "id": 207,
+        "number": "#0207",
         "name": "Gligar",
         "generation": {
             "id": 2,
@@ -32356,6 +32563,7 @@
     },
     {
         "id": 208,
+        "number": "#0208",
         "name": "Steelix",
         "generation": {
             "id": 2,
@@ -32493,6 +32701,7 @@
     },
     {
         "id": 209,
+        "number": "#0209",
         "name": "Snubbull",
         "generation": {
             "id": 2,
@@ -32638,6 +32847,7 @@
     },
     {
         "id": 210,
+        "number": "#0210",
         "name": "Granbull",
         "generation": {
             "id": 2,
@@ -32783,6 +32993,7 @@
     },
     {
         "id": 211,
+        "number": "#0211",
         "name": "Qwilfish",
         "generation": {
             "id": 2,
@@ -32920,6 +33131,7 @@
     },
     {
         "id": 212,
+        "number": "#0212",
         "name": "Scizor",
         "generation": {
             "id": 2,
@@ -33073,6 +33285,7 @@
     },
     {
         "id": 213,
+        "number": "#0213",
         "name": "Shuckle",
         "generation": {
             "id": 2,
@@ -33206,6 +33419,7 @@
     },
     {
         "id": 214,
+        "number": "#0214",
         "name": "Heracross",
         "generation": {
             "id": 2,
@@ -33351,6 +33565,7 @@
     },
     {
         "id": 215,
+        "number": "#0215",
         "name": "Sneasel",
         "generation": {
             "id": 2,
@@ -33504,6 +33719,7 @@
     },
     {
         "id": 216,
+        "number": "#0216",
         "name": "Teddiursa",
         "generation": {
             "id": 2,
@@ -33633,6 +33849,7 @@
     },
     {
         "id": 217,
+        "number": "#0217",
         "name": "Ursaring",
         "generation": {
             "id": 2,
@@ -33762,6 +33979,7 @@
     },
     {
         "id": 218,
+        "number": "#0218",
         "name": "Slugma",
         "generation": {
             "id": 2,
@@ -33887,6 +34105,7 @@
     },
     {
         "id": 219,
+        "number": "#0219",
         "name": "Magcargo",
         "generation": {
             "id": 2,
@@ -34012,6 +34231,7 @@
     },
     {
         "id": 220,
+        "number": "#0220",
         "name": "Swinub",
         "generation": {
             "id": 2,
@@ -34149,6 +34369,7 @@
     },
     {
         "id": 221,
+        "number": "#0221",
         "name": "Piloswine",
         "generation": {
             "id": 2,
@@ -34286,6 +34507,7 @@
     },
     {
         "id": 222,
+        "number": "#0222",
         "name": "Corsola",
         "generation": {
             "id": 2,
@@ -34439,6 +34661,7 @@
     },
     {
         "id": 223,
+        "number": "#0223",
         "name": "Remoraid",
         "generation": {
             "id": 2,
@@ -34588,6 +34811,7 @@
     },
     {
         "id": 224,
+        "number": "#0224",
         "name": "Octillery",
         "generation": {
             "id": 2,
@@ -34737,6 +34961,7 @@
     },
     {
         "id": 225,
+        "number": "#0225",
         "name": "Delibird",
         "generation": {
             "id": 2,
@@ -34890,6 +35115,7 @@
     },
     {
         "id": 226,
+        "number": "#0226",
         "name": "Mantine",
         "generation": {
             "id": 2,
@@ -35035,6 +35261,7 @@
     },
     {
         "id": 227,
+        "number": "#0227",
         "name": "Skarmory",
         "generation": {
             "id": 2,
@@ -35184,6 +35411,7 @@
     },
     {
         "id": 228,
+        "number": "#0228",
         "name": "Houndour",
         "generation": {
             "id": 2,
@@ -35317,6 +35545,7 @@
     },
     {
         "id": 229,
+        "number": "#0229",
         "name": "Houndoom",
         "generation": {
             "id": 2,
@@ -35450,6 +35679,7 @@
     },
     {
         "id": 230,
+        "number": "#0230",
         "name": "Kingdra",
         "generation": {
             "id": 2,
@@ -35587,6 +35817,7 @@
     },
     {
         "id": 231,
+        "number": "#0231",
         "name": "Phanpy",
         "generation": {
             "id": 2,
@@ -35712,6 +35943,7 @@
     },
     {
         "id": 232,
+        "number": "#0232",
         "name": "Donphan",
         "generation": {
             "id": 2,
@@ -35837,6 +36069,7 @@
     },
     {
         "id": 233,
+        "number": "#0233",
         "name": "Porygon2",
         "generation": {
             "id": 2,
@@ -35990,6 +36223,7 @@
     },
     {
         "id": 234,
+        "number": "#0234",
         "name": "Stantler",
         "generation": {
             "id": 2,
@@ -36119,6 +36353,7 @@
     },
     {
         "id": 235,
+        "number": "#0235",
         "name": "Smeargle",
         "generation": {
             "id": 2,
@@ -36260,6 +36495,7 @@
     },
     {
         "id": 236,
+        "number": "#0236",
         "name": "Tyrogue",
         "generation": {
             "id": 2,
@@ -36393,6 +36629,7 @@
     },
     {
         "id": 237,
+        "number": "#0237",
         "name": "Hitmontop",
         "generation": {
             "id": 2,
@@ -36526,6 +36763,7 @@
     },
     {
         "id": 238,
+        "number": "#0238",
         "name": "Smoochum",
         "generation": {
             "id": 2,
@@ -36667,6 +36905,7 @@
     },
     {
         "id": 239,
+        "number": "#0239",
         "name": "Elekid",
         "generation": {
             "id": 2,
@@ -36820,6 +37059,7 @@
     },
     {
         "id": 240,
+        "number": "#0240",
         "name": "Magby",
         "generation": {
             "id": 2,
@@ -36973,6 +37213,7 @@
     },
     {
         "id": 241,
+        "number": "#0241",
         "name": "Miltank",
         "generation": {
             "id": 2,
@@ -37122,6 +37363,7 @@
     },
     {
         "id": 242,
+        "number": "#0242",
         "name": "Blissey",
         "generation": {
             "id": 2,
@@ -37275,6 +37517,7 @@
     },
     {
         "id": 243,
+        "number": "#0243",
         "name": "Raikou",
         "generation": {
             "id": 2,
@@ -37400,6 +37643,7 @@
     },
     {
         "id": 244,
+        "number": "#0244",
         "name": "Entei",
         "generation": {
             "id": 2,
@@ -37525,6 +37769,7 @@
     },
     {
         "id": 245,
+        "number": "#0245",
         "name": "Suicune",
         "generation": {
             "id": 2,
@@ -37650,6 +37895,7 @@
     },
     {
         "id": 246,
+        "number": "#0246",
         "name": "Larvitar",
         "generation": {
             "id": 2,
@@ -37791,6 +38037,7 @@
     },
     {
         "id": 247,
+        "number": "#0247",
         "name": "Pupitar",
         "generation": {
             "id": 2,
@@ -37932,6 +38179,7 @@
     },
     {
         "id": 248,
+        "number": "#0248",
         "name": "Tyranitar",
         "generation": {
             "id": 2,
@@ -38073,6 +38321,7 @@
     },
     {
         "id": 249,
+        "number": "#0249",
         "name": "Lugia",
         "generation": {
             "id": 2,
@@ -38198,6 +38447,7 @@
     },
     {
         "id": 250,
+        "number": "#0250",
         "name": "Ho Oh",
         "generation": {
             "id": 2,
@@ -38323,6 +38573,7 @@
     },
     {
         "id": 251,
+        "number": "#0251",
         "name": "Celebi",
         "generation": {
             "id": 2,
@@ -38456,6 +38707,7 @@
     },
     {
         "id": 252,
+        "number": "#0252",
         "name": "Treecko",
         "generation": {
             "id": 3,
@@ -38573,6 +38825,7 @@
     },
     {
         "id": 253,
+        "number": "#0253",
         "name": "Grovyle",
         "generation": {
             "id": 3,
@@ -38690,6 +38943,7 @@
     },
     {
         "id": 254,
+        "number": "#0254",
         "name": "Sceptile",
         "generation": {
             "id": 3,
@@ -38807,6 +39061,7 @@
     },
     {
         "id": 255,
+        "number": "#0255",
         "name": "Torchic",
         "generation": {
             "id": 3,
@@ -38920,6 +39175,7 @@
     },
     {
         "id": 256,
+        "number": "#0256",
         "name": "Combusken",
         "generation": {
             "id": 3,
@@ -39033,6 +39289,7 @@
     },
     {
         "id": 257,
+        "number": "#0257",
         "name": "Blaziken",
         "generation": {
             "id": 3,
@@ -39146,6 +39403,7 @@
     },
     {
         "id": 258,
+        "number": "#0258",
         "name": "Mudkip",
         "generation": {
             "id": 3,
@@ -39263,6 +39521,7 @@
     },
     {
         "id": 259,
+        "number": "#0259",
         "name": "Marshtomp",
         "generation": {
             "id": 3,
@@ -39380,6 +39639,7 @@
     },
     {
         "id": 260,
+        "number": "#0260",
         "name": "Swampert",
         "generation": {
             "id": 3,
@@ -39497,6 +39757,7 @@
     },
     {
         "id": 261,
+        "number": "#0261",
         "name": "Poochyena",
         "generation": {
             "id": 3,
@@ -39610,6 +39871,7 @@
     },
     {
         "id": 262,
+        "number": "#0262",
         "name": "Mightyena",
         "generation": {
             "id": 3,
@@ -39723,6 +39985,7 @@
     },
     {
         "id": 263,
+        "number": "#0263",
         "name": "Zigzagoon",
         "generation": {
             "id": 3,
@@ -39844,6 +40107,7 @@
     },
     {
         "id": 264,
+        "number": "#0264",
         "name": "Linoone",
         "generation": {
             "id": 3,
@@ -39965,6 +40229,7 @@
     },
     {
         "id": 265,
+        "number": "#0265",
         "name": "Wurmple",
         "generation": {
             "id": 3,
@@ -40082,6 +40347,7 @@
     },
     {
         "id": 266,
+        "number": "#0266",
         "name": "Silcoon",
         "generation": {
             "id": 3,
@@ -40199,6 +40465,7 @@
     },
     {
         "id": 267,
+        "number": "#0267",
         "name": "Beautifly",
         "generation": {
             "id": 3,
@@ -40316,6 +40583,7 @@
     },
     {
         "id": 268,
+        "number": "#0268",
         "name": "Cascoon",
         "generation": {
             "id": 3,
@@ -40433,6 +40701,7 @@
     },
     {
         "id": 269,
+        "number": "#0269",
         "name": "Dustox",
         "generation": {
             "id": 3,
@@ -40550,6 +40819,7 @@
     },
     {
         "id": 270,
+        "number": "#0270",
         "name": "Lotad",
         "generation": {
             "id": 3,
@@ -40675,6 +40945,7 @@
     },
     {
         "id": 271,
+        "number": "#0271",
         "name": "Lombre",
         "generation": {
             "id": 3,
@@ -40800,6 +41071,7 @@
     },
     {
         "id": 272,
+        "number": "#0272",
         "name": "Ludicolo",
         "generation": {
             "id": 3,
@@ -40925,6 +41197,7 @@
     },
     {
         "id": 273,
+        "number": "#0273",
         "name": "Seedot",
         "generation": {
             "id": 3,
@@ -41050,6 +41323,7 @@
     },
     {
         "id": 274,
+        "number": "#0274",
         "name": "Nuzleaf",
         "generation": {
             "id": 3,
@@ -41175,6 +41449,7 @@
     },
     {
         "id": 275,
+        "number": "#0275",
         "name": "Shiftry",
         "generation": {
             "id": 3,
@@ -41300,6 +41575,7 @@
     },
     {
         "id": 276,
+        "number": "#0276",
         "name": "Taillow",
         "generation": {
             "id": 3,
@@ -41413,6 +41689,7 @@
     },
     {
         "id": 277,
+        "number": "#0277",
         "name": "Swellow",
         "generation": {
             "id": 3,
@@ -41526,6 +41803,7 @@
     },
     {
         "id": 278,
+        "number": "#0278",
         "name": "Wingull",
         "generation": {
             "id": 3,
@@ -41667,6 +41945,7 @@
     },
     {
         "id": 279,
+        "number": "#0279",
         "name": "Pelipper",
         "generation": {
             "id": 3,
@@ -41808,6 +42087,7 @@
     },
     {
         "id": 280,
+        "number": "#0280",
         "name": "Ralts",
         "generation": {
             "id": 3,
@@ -41937,6 +42217,7 @@
     },
     {
         "id": 281,
+        "number": "#0281",
         "name": "Kirlia",
         "generation": {
             "id": 3,
@@ -42066,6 +42347,7 @@
     },
     {
         "id": 282,
+        "number": "#0282",
         "name": "Gardevoir",
         "generation": {
             "id": 3,
@@ -42195,6 +42477,7 @@
     },
     {
         "id": 283,
+        "number": "#0283",
         "name": "Surskit",
         "generation": {
             "id": 3,
@@ -42328,6 +42611,7 @@
     },
     {
         "id": 284,
+        "number": "#0284",
         "name": "Masquerain",
         "generation": {
             "id": 3,
@@ -42461,6 +42745,7 @@
     },
     {
         "id": 285,
+        "number": "#0285",
         "name": "Shroomish",
         "generation": {
             "id": 3,
@@ -42578,6 +42863,7 @@
     },
     {
         "id": 286,
+        "number": "#0286",
         "name": "Breloom",
         "generation": {
             "id": 3,
@@ -42695,6 +42981,7 @@
     },
     {
         "id": 287,
+        "number": "#0287",
         "name": "Slakoth",
         "generation": {
             "id": 3,
@@ -42808,6 +43095,7 @@
     },
     {
         "id": 288,
+        "number": "#0288",
         "name": "Vigoroth",
         "generation": {
             "id": 3,
@@ -42921,6 +43209,7 @@
     },
     {
         "id": 289,
+        "number": "#0289",
         "name": "Slaking",
         "generation": {
             "id": 3,
@@ -43034,6 +43323,7 @@
     },
     {
         "id": 290,
+        "number": "#0290",
         "name": "Nincada",
         "generation": {
             "id": 3,
@@ -43155,6 +43445,7 @@
     },
     {
         "id": 291,
+        "number": "#0291",
         "name": "Ninjask",
         "generation": {
             "id": 3,
@@ -43276,6 +43567,7 @@
     },
     {
         "id": 292,
+        "number": "#0292",
         "name": "Shedinja",
         "generation": {
             "id": 3,
@@ -43397,6 +43689,7 @@
     },
     {
         "id": 293,
+        "number": "#0293",
         "name": "Whismur",
         "generation": {
             "id": 3,
@@ -43522,6 +43815,7 @@
     },
     {
         "id": 294,
+        "number": "#0294",
         "name": "Loudred",
         "generation": {
             "id": 3,
@@ -43647,6 +43941,7 @@
     },
     {
         "id": 295,
+        "number": "#0295",
         "name": "Exploud",
         "generation": {
             "id": 3,
@@ -43772,6 +44067,7 @@
     },
     {
         "id": 296,
+        "number": "#0296",
         "name": "Makuhita",
         "generation": {
             "id": 3,
@@ -43901,6 +44197,7 @@
     },
     {
         "id": 297,
+        "number": "#0297",
         "name": "Hariyama",
         "generation": {
             "id": 3,
@@ -44030,6 +44327,7 @@
     },
     {
         "id": 298,
+        "number": "#0298",
         "name": "Azurill",
         "generation": {
             "id": 3,
@@ -44151,6 +44449,7 @@
     },
     {
         "id": 299,
+        "number": "#0299",
         "name": "Nosepass",
         "generation": {
             "id": 3,
@@ -44284,6 +44583,7 @@
     },
     {
         "id": 300,
+        "number": "#0300",
         "name": "Skitty",
         "generation": {
             "id": 3,
@@ -44401,6 +44701,7 @@
     },
     {
         "id": 301,
+        "number": "#0301",
         "name": "Delcatty",
         "generation": {
             "id": 3,
@@ -44518,6 +44819,7 @@
     },
     {
         "id": 302,
+        "number": "#0302",
         "name": "Sableye",
         "generation": {
             "id": 3,
@@ -44655,6 +44957,7 @@
     },
     {
         "id": 303,
+        "number": "#0303",
         "name": "Mawile",
         "generation": {
             "id": 3,
@@ -44788,6 +45091,7 @@
     },
     {
         "id": 304,
+        "number": "#0304",
         "name": "Aron",
         "generation": {
             "id": 3,
@@ -44909,6 +45213,7 @@
     },
     {
         "id": 305,
+        "number": "#0305",
         "name": "Lairon",
         "generation": {
             "id": 3,
@@ -45030,6 +45335,7 @@
     },
     {
         "id": 306,
+        "number": "#0306",
         "name": "Aggron",
         "generation": {
             "id": 3,
@@ -45151,6 +45457,7 @@
     },
     {
         "id": 307,
+        "number": "#0307",
         "name": "Meditite",
         "generation": {
             "id": 3,
@@ -45264,6 +45571,7 @@
     },
     {
         "id": 308,
+        "number": "#0308",
         "name": "Medicham",
         "generation": {
             "id": 3,
@@ -45377,6 +45685,7 @@
     },
     {
         "id": 309,
+        "number": "#0309",
         "name": "Electrike",
         "generation": {
             "id": 3,
@@ -45506,6 +45815,7 @@
     },
     {
         "id": 310,
+        "number": "#0310",
         "name": "Manectric",
         "generation": {
             "id": 3,
@@ -45635,6 +45945,7 @@
     },
     {
         "id": 311,
+        "number": "#0311",
         "name": "Plusle",
         "generation": {
             "id": 3,
@@ -45748,6 +46059,7 @@
     },
     {
         "id": 312,
+        "number": "#0312",
         "name": "Minun",
         "generation": {
             "id": 3,
@@ -45861,6 +46173,7 @@
     },
     {
         "id": 313,
+        "number": "#0313",
         "name": "Volbeat",
         "generation": {
             "id": 3,
@@ -45978,6 +46291,7 @@
     },
     {
         "id": 314,
+        "number": "#0314",
         "name": "Illumise",
         "generation": {
             "id": 3,
@@ -46095,6 +46409,7 @@
     },
     {
         "id": 315,
+        "number": "#0315",
         "name": "Roselia",
         "generation": {
             "id": 3,
@@ -46224,6 +46539,7 @@
     },
     {
         "id": 316,
+        "number": "#0316",
         "name": "Gulpin",
         "generation": {
             "id": 3,
@@ -46337,6 +46653,7 @@
     },
     {
         "id": 317,
+        "number": "#0317",
         "name": "Swalot",
         "generation": {
             "id": 3,
@@ -46450,6 +46767,7 @@
     },
     {
         "id": 318,
+        "number": "#0318",
         "name": "Carvanha",
         "generation": {
             "id": 3,
@@ -46587,6 +46905,7 @@
     },
     {
         "id": 319,
+        "number": "#0319",
         "name": "Sharpedo",
         "generation": {
             "id": 3,
@@ -46724,6 +47043,7 @@
     },
     {
         "id": 320,
+        "number": "#0320",
         "name": "Wailmer",
         "generation": {
             "id": 3,
@@ -46865,6 +47185,7 @@
     },
     {
         "id": 321,
+        "number": "#0321",
         "name": "Wailord",
         "generation": {
             "id": 3,
@@ -47006,6 +47327,7 @@
     },
     {
         "id": 322,
+        "number": "#0322",
         "name": "Numel",
         "generation": {
             "id": 3,
@@ -47119,6 +47441,7 @@
     },
     {
         "id": 323,
+        "number": "#0323",
         "name": "Camerupt",
         "generation": {
             "id": 3,
@@ -47232,6 +47555,7 @@
     },
     {
         "id": 324,
+        "number": "#0324",
         "name": "Torkoal",
         "generation": {
             "id": 3,
@@ -47369,6 +47693,7 @@
     },
     {
         "id": 325,
+        "number": "#0325",
         "name": "Spoink",
         "generation": {
             "id": 3,
@@ -47482,6 +47807,7 @@
     },
     {
         "id": 326,
+        "number": "#0326",
         "name": "Grumpig",
         "generation": {
             "id": 3,
@@ -47595,6 +47921,7 @@
     },
     {
         "id": 327,
+        "number": "#0327",
         "name": "Spinda",
         "generation": {
             "id": 3,
@@ -47728,6 +48055,7 @@
     },
     {
         "id": 328,
+        "number": "#0328",
         "name": "Trapinch",
         "generation": {
             "id": 3,
@@ -47869,6 +48197,7 @@
     },
     {
         "id": 329,
+        "number": "#0329",
         "name": "Vibrava",
         "generation": {
             "id": 3,
@@ -48010,6 +48339,7 @@
     },
     {
         "id": 330,
+        "number": "#0330",
         "name": "Flygon",
         "generation": {
             "id": 3,
@@ -48151,6 +48481,7 @@
     },
     {
         "id": 331,
+        "number": "#0331",
         "name": "Cacnea",
         "generation": {
             "id": 3,
@@ -48268,6 +48599,7 @@
     },
     {
         "id": 332,
+        "number": "#0332",
         "name": "Cacturne",
         "generation": {
             "id": 3,
@@ -48385,6 +48717,7 @@
     },
     {
         "id": 333,
+        "number": "#0333",
         "name": "Swablu",
         "generation": {
             "id": 3,
@@ -48510,6 +48843,7 @@
     },
     {
         "id": 334,
+        "number": "#0334",
         "name": "Altaria",
         "generation": {
             "id": 3,
@@ -48635,6 +48969,7 @@
     },
     {
         "id": 335,
+        "number": "#0335",
         "name": "Zangoose",
         "generation": {
             "id": 3,
@@ -48748,6 +49083,7 @@
     },
     {
         "id": 336,
+        "number": "#0336",
         "name": "Seviper",
         "generation": {
             "id": 3,
@@ -48865,6 +49201,7 @@
     },
     {
         "id": 337,
+        "number": "#0337",
         "name": "Lunatone",
         "generation": {
             "id": 3,
@@ -48986,6 +49323,7 @@
     },
     {
         "id": 338,
+        "number": "#0338",
         "name": "Solrock",
         "generation": {
             "id": 3,
@@ -49107,6 +49445,7 @@
     },
     {
         "id": 339,
+        "number": "#0339",
         "name": "Barboach",
         "generation": {
             "id": 3,
@@ -49248,6 +49587,7 @@
     },
     {
         "id": 340,
+        "number": "#0340",
         "name": "Whiscash",
         "generation": {
             "id": 3,
@@ -49389,6 +49729,7 @@
     },
     {
         "id": 341,
+        "number": "#0341",
         "name": "Corphish",
         "generation": {
             "id": 3,
@@ -49522,6 +49863,7 @@
     },
     {
         "id": 342,
+        "number": "#0342",
         "name": "Crawdaunt",
         "generation": {
             "id": 3,
@@ -49655,6 +49997,7 @@
     },
     {
         "id": 343,
+        "number": "#0343",
         "name": "Baltoy",
         "generation": {
             "id": 3,
@@ -49784,6 +50127,7 @@
     },
     {
         "id": 344,
+        "number": "#0344",
         "name": "Claydol",
         "generation": {
             "id": 3,
@@ -49913,6 +50257,7 @@
     },
     {
         "id": 345,
+        "number": "#0345",
         "name": "Lileep",
         "generation": {
             "id": 3,
@@ -50042,6 +50387,7 @@
     },
     {
         "id": 346,
+        "number": "#0346",
         "name": "Cradily",
         "generation": {
             "id": 3,
@@ -50171,6 +50517,7 @@
     },
     {
         "id": 347,
+        "number": "#0347",
         "name": "Anorith",
         "generation": {
             "id": 3,
@@ -50300,6 +50647,7 @@
     },
     {
         "id": 348,
+        "number": "#0348",
         "name": "Armaldo",
         "generation": {
             "id": 3,
@@ -50429,6 +50777,7 @@
     },
     {
         "id": 349,
+        "number": "#0349",
         "name": "Feebas",
         "generation": {
             "id": 3,
@@ -50570,6 +50919,7 @@
     },
     {
         "id": 350,
+        "number": "#0350",
         "name": "Milotic",
         "generation": {
             "id": 3,
@@ -50711,6 +51061,7 @@
     },
     {
         "id": 351,
+        "number": "#0351",
         "name": "Castform",
         "generation": {
             "id": 3,
@@ -50844,6 +51195,7 @@
     },
     {
         "id": 352,
+        "number": "#0352",
         "name": "Kecleon",
         "generation": {
             "id": 3,
@@ -50965,6 +51317,7 @@
     },
     {
         "id": 353,
+        "number": "#0353",
         "name": "Shuppet",
         "generation": {
             "id": 3,
@@ -51086,6 +51439,7 @@
     },
     {
         "id": 354,
+        "number": "#0354",
         "name": "Banette",
         "generation": {
             "id": 3,
@@ -51207,6 +51561,7 @@
     },
     {
         "id": 355,
+        "number": "#0355",
         "name": "Duskull",
         "generation": {
             "id": 3,
@@ -51332,6 +51687,7 @@
     },
     {
         "id": 356,
+        "number": "#0356",
         "name": "Dusclops",
         "generation": {
             "id": 3,
@@ -51457,6 +51813,7 @@
     },
     {
         "id": 357,
+        "number": "#0357",
         "name": "Tropius",
         "generation": {
             "id": 3,
@@ -51582,6 +51939,7 @@
     },
     {
         "id": 358,
+        "number": "#0358",
         "name": "Chimecho",
         "generation": {
             "id": 3,
@@ -51699,6 +52057,7 @@
     },
     {
         "id": 359,
+        "number": "#0359",
         "name": "Absol",
         "generation": {
             "id": 3,
@@ -51836,6 +52195,7 @@
     },
     {
         "id": 360,
+        "number": "#0360",
         "name": "Wynaut",
         "generation": {
             "id": 3,
@@ -51957,6 +52317,7 @@
     },
     {
         "id": 361,
+        "number": "#0361",
         "name": "Snorunt",
         "generation": {
             "id": 3,
@@ -52102,6 +52463,7 @@
     },
     {
         "id": 362,
+        "number": "#0362",
         "name": "Glalie",
         "generation": {
             "id": 3,
@@ -52247,6 +52609,7 @@
     },
     {
         "id": 363,
+        "number": "#0363",
         "name": "Spheal",
         "generation": {
             "id": 3,
@@ -52376,6 +52739,7 @@
     },
     {
         "id": 364,
+        "number": "#0364",
         "name": "Sealeo",
         "generation": {
             "id": 3,
@@ -52505,6 +52869,7 @@
     },
     {
         "id": 365,
+        "number": "#0365",
         "name": "Walrein",
         "generation": {
             "id": 3,
@@ -52634,6 +52999,7 @@
     },
     {
         "id": 366,
+        "number": "#0366",
         "name": "Clamperl",
         "generation": {
             "id": 3,
@@ -52755,6 +53121,7 @@
     },
     {
         "id": 367,
+        "number": "#0367",
         "name": "Huntail",
         "generation": {
             "id": 3,
@@ -52876,6 +53243,7 @@
     },
     {
         "id": 368,
+        "number": "#0368",
         "name": "Gorebyss",
         "generation": {
             "id": 3,
@@ -52997,6 +53365,7 @@
     },
     {
         "id": 369,
+        "number": "#0369",
         "name": "Relicanth",
         "generation": {
             "id": 3,
@@ -53138,6 +53507,7 @@
     },
     {
         "id": 370,
+        "number": "#0370",
         "name": "Luvdisc",
         "generation": {
             "id": 3,
@@ -53267,6 +53637,7 @@
     },
     {
         "id": 371,
+        "number": "#0371",
         "name": "Bagon",
         "generation": {
             "id": 3,
@@ -53404,6 +53775,7 @@
     },
     {
         "id": 372,
+        "number": "#0372",
         "name": "Shelgon",
         "generation": {
             "id": 3,
@@ -53541,6 +53913,7 @@
     },
     {
         "id": 373,
+        "number": "#0373",
         "name": "Salamence",
         "generation": {
             "id": 3,
@@ -53678,6 +54051,7 @@
     },
     {
         "id": 374,
+        "number": "#0374",
         "name": "Beldum",
         "generation": {
             "id": 3,
@@ -53815,6 +54189,7 @@
     },
     {
         "id": 375,
+        "number": "#0375",
         "name": "Metang",
         "generation": {
             "id": 3,
@@ -53952,6 +54327,7 @@
     },
     {
         "id": 376,
+        "number": "#0376",
         "name": "Metagross",
         "generation": {
             "id": 3,
@@ -54089,6 +54465,7 @@
     },
     {
         "id": 377,
+        "number": "#0377",
         "name": "Regirock",
         "generation": {
             "id": 3,
@@ -54210,6 +54587,7 @@
     },
     {
         "id": 378,
+        "number": "#0378",
         "name": "Regice",
         "generation": {
             "id": 3,
@@ -54331,6 +54709,7 @@
     },
     {
         "id": 379,
+        "number": "#0379",
         "name": "Registeel",
         "generation": {
             "id": 3,
@@ -54452,6 +54831,7 @@
     },
     {
         "id": 380,
+        "number": "#0380",
         "name": "Latias",
         "generation": {
             "id": 3,
@@ -54565,6 +54945,7 @@
     },
     {
         "id": 381,
+        "number": "#0381",
         "name": "Latios",
         "generation": {
             "id": 3,
@@ -54678,6 +55059,7 @@
     },
     {
         "id": 382,
+        "number": "#0382",
         "name": "Kyogre",
         "generation": {
             "id": 3,
@@ -54791,6 +55173,7 @@
     },
     {
         "id": 383,
+        "number": "#0383",
         "name": "Groudon",
         "generation": {
             "id": 3,
@@ -54904,6 +55287,7 @@
     },
     {
         "id": 384,
+        "number": "#0384",
         "name": "Rayquaza",
         "generation": {
             "id": 3,
@@ -55017,6 +55401,7 @@
     },
     {
         "id": 385,
+        "number": "#0385",
         "name": "Jirachi",
         "generation": {
             "id": 3,
@@ -55138,6 +55523,7 @@
     },
     {
         "id": 386,
+        "number": "#0386",
         "name": "Deoxys",
         "generation": {
             "id": 3,
@@ -55251,6 +55637,7 @@
     },
     {
         "id": 387,
+        "number": "#0387",
         "name": "Turtwig",
         "generation": {
             "id": 4,
@@ -55349,6 +55736,7 @@
     },
     {
         "id": 388,
+        "number": "#0388",
         "name": "Grotle",
         "generation": {
             "id": 4,
@@ -55447,6 +55835,7 @@
     },
     {
         "id": 389,
+        "number": "#0389",
         "name": "Torterra",
         "generation": {
             "id": 4,
@@ -55545,6 +55934,7 @@
     },
     {
         "id": 390,
+        "number": "#0390",
         "name": "Chimchar",
         "generation": {
             "id": 4,
@@ -55643,6 +56033,7 @@
     },
     {
         "id": 391,
+        "number": "#0391",
         "name": "Monferno",
         "generation": {
             "id": 4,
@@ -55741,6 +56132,7 @@
     },
     {
         "id": 392,
+        "number": "#0392",
         "name": "Infernape",
         "generation": {
             "id": 4,
@@ -55839,6 +56231,7 @@
     },
     {
         "id": 393,
+        "number": "#0393",
         "name": "Piplup",
         "generation": {
             "id": 4,
@@ -55937,6 +56330,7 @@
     },
     {
         "id": 394,
+        "number": "#0394",
         "name": "Prinplup",
         "generation": {
             "id": 4,
@@ -56035,6 +56429,7 @@
     },
     {
         "id": 395,
+        "number": "#0395",
         "name": "Empoleon",
         "generation": {
             "id": 4,
@@ -56133,6 +56528,7 @@
     },
     {
         "id": 396,
+        "number": "#0396",
         "name": "Starly",
         "generation": {
             "id": 4,
@@ -56227,6 +56623,7 @@
     },
     {
         "id": 397,
+        "number": "#0397",
         "name": "Staravia",
         "generation": {
             "id": 4,
@@ -56321,6 +56718,7 @@
     },
     {
         "id": 398,
+        "number": "#0398",
         "name": "Staraptor",
         "generation": {
             "id": 4,
@@ -56415,6 +56813,7 @@
     },
     {
         "id": 399,
+        "number": "#0399",
         "name": "Bidoof",
         "generation": {
             "id": 4,
@@ -56513,6 +56912,7 @@
     },
     {
         "id": 400,
+        "number": "#0400",
         "name": "Bibarel",
         "generation": {
             "id": 4,
@@ -56611,6 +57011,7 @@
     },
     {
         "id": 401,
+        "number": "#0401",
         "name": "Kricketot",
         "generation": {
             "id": 4,
@@ -56705,6 +57106,7 @@
     },
     {
         "id": 402,
+        "number": "#0402",
         "name": "Kricketune",
         "generation": {
             "id": 4,
@@ -56799,6 +57201,7 @@
     },
     {
         "id": 403,
+        "number": "#0403",
         "name": "Shinx",
         "generation": {
             "id": 4,
@@ -56901,6 +57304,7 @@
     },
     {
         "id": 404,
+        "number": "#0404",
         "name": "Luxio",
         "generation": {
             "id": 4,
@@ -57003,6 +57407,7 @@
     },
     {
         "id": 405,
+        "number": "#0405",
         "name": "Luxray",
         "generation": {
             "id": 4,
@@ -57105,6 +57510,7 @@
     },
     {
         "id": 406,
+        "number": "#0406",
         "name": "Budew",
         "generation": {
             "id": 4,
@@ -57207,6 +57613,7 @@
     },
     {
         "id": 407,
+        "number": "#0407",
         "name": "Roserade",
         "generation": {
             "id": 4,
@@ -57313,6 +57720,7 @@
     },
     {
         "id": 408,
+        "number": "#0408",
         "name": "Cranidos",
         "generation": {
             "id": 4,
@@ -57423,6 +57831,7 @@
     },
     {
         "id": 409,
+        "number": "#0409",
         "name": "Rampardos",
         "generation": {
             "id": 4,
@@ -57533,6 +57942,7 @@
     },
     {
         "id": 410,
+        "number": "#0410",
         "name": "Shieldon",
         "generation": {
             "id": 4,
@@ -57643,6 +58053,7 @@
     },
     {
         "id": 411,
+        "number": "#0411",
         "name": "Bastiodon",
         "generation": {
             "id": 4,
@@ -57753,6 +58164,7 @@
     },
     {
         "id": 412,
+        "number": "#0412",
         "name": "Burmy",
         "generation": {
             "id": 4,
@@ -57847,6 +58259,7 @@
     },
     {
         "id": 413,
+        "number": "#0413",
         "name": "Wormadam",
         "generation": {
             "id": 4,
@@ -57937,6 +58350,7 @@
     },
     {
         "id": 414,
+        "number": "#0414",
         "name": "Mothim",
         "generation": {
             "id": 4,
@@ -58031,6 +58445,7 @@
     },
     {
         "id": 415,
+        "number": "#0415",
         "name": "Combee",
         "generation": {
             "id": 4,
@@ -58133,6 +58548,7 @@
     },
     {
         "id": 416,
+        "number": "#0416",
         "name": "Vespiquen",
         "generation": {
             "id": 4,
@@ -58235,6 +58651,7 @@
     },
     {
         "id": 417,
+        "number": "#0417",
         "name": "Pachirisu",
         "generation": {
             "id": 4,
@@ -58333,6 +58750,7 @@
     },
     {
         "id": 418,
+        "number": "#0418",
         "name": "Buizel",
         "generation": {
             "id": 4,
@@ -58431,6 +58849,7 @@
     },
     {
         "id": 419,
+        "number": "#0419",
         "name": "Floatzel",
         "generation": {
             "id": 4,
@@ -58529,6 +58948,7 @@
     },
     {
         "id": 420,
+        "number": "#0420",
         "name": "Cherubi",
         "generation": {
             "id": 4,
@@ -58635,6 +59055,7 @@
     },
     {
         "id": 421,
+        "number": "#0421",
         "name": "Cherrim",
         "generation": {
             "id": 4,
@@ -58741,6 +59162,7 @@
     },
     {
         "id": 422,
+        "number": "#0422",
         "name": "Shellos",
         "generation": {
             "id": 4,
@@ -58863,6 +59285,7 @@
     },
     {
         "id": 423,
+        "number": "#0423",
         "name": "Gastrodon",
         "generation": {
             "id": 4,
@@ -58985,6 +59408,7 @@
     },
     {
         "id": 424,
+        "number": "#0424",
         "name": "Ambipom",
         "generation": {
             "id": 4,
@@ -59087,6 +59511,7 @@
     },
     {
         "id": 425,
+        "number": "#0425",
         "name": "Drifloon",
         "generation": {
             "id": 4,
@@ -59205,6 +59630,7 @@
     },
     {
         "id": 426,
+        "number": "#0426",
         "name": "Drifblim",
         "generation": {
             "id": 4,
@@ -59323,6 +59749,7 @@
     },
     {
         "id": 427,
+        "number": "#0427",
         "name": "Buneary",
         "generation": {
             "id": 4,
@@ -59437,6 +59864,7 @@
     },
     {
         "id": 428,
+        "number": "#0428",
         "name": "Lopunny",
         "generation": {
             "id": 4,
@@ -59551,6 +59979,7 @@
     },
     {
         "id": 429,
+        "number": "#0429",
         "name": "Mismagius",
         "generation": {
             "id": 4,
@@ -59661,6 +60090,7 @@
     },
     {
         "id": 430,
+        "number": "#0430",
         "name": "Honchkrow",
         "generation": {
             "id": 4,
@@ -59771,6 +60201,7 @@
     },
     {
         "id": 431,
+        "number": "#0431",
         "name": "Glameow",
         "generation": {
             "id": 4,
@@ -59865,6 +60296,7 @@
     },
     {
         "id": 432,
+        "number": "#0432",
         "name": "Purugly",
         "generation": {
             "id": 4,
@@ -59959,6 +60391,7 @@
     },
     {
         "id": 433,
+        "number": "#0433",
         "name": "Chingling",
         "generation": {
             "id": 4,
@@ -60053,6 +60486,7 @@
     },
     {
         "id": 434,
+        "number": "#0434",
         "name": "Stunky",
         "generation": {
             "id": 4,
@@ -60155,6 +60589,7 @@
     },
     {
         "id": 435,
+        "number": "#0435",
         "name": "Skuntank",
         "generation": {
             "id": 4,
@@ -60257,6 +60692,7 @@
     },
     {
         "id": 436,
+        "number": "#0436",
         "name": "Bronzor",
         "generation": {
             "id": 4,
@@ -60359,6 +60795,7 @@
     },
     {
         "id": 437,
+        "number": "#0437",
         "name": "Bronzong",
         "generation": {
             "id": 4,
@@ -60461,6 +60898,7 @@
     },
     {
         "id": 438,
+        "number": "#0438",
         "name": "Bonsly",
         "generation": {
             "id": 4,
@@ -60579,6 +61017,7 @@
     },
     {
         "id": 439,
+        "number": "#0439",
         "name": "Mime Jr",
         "generation": {
             "id": 4,
@@ -60689,6 +61128,7 @@
     },
     {
         "id": 440,
+        "number": "#0440",
         "name": "Happiny",
         "generation": {
             "id": 4,
@@ -60807,6 +61247,7 @@
     },
     {
         "id": 441,
+        "number": "#0441",
         "name": "Chatot",
         "generation": {
             "id": 4,
@@ -60901,6 +61342,7 @@
     },
     {
         "id": 442,
+        "number": "#0442",
         "name": "Spiritomb",
         "generation": {
             "id": 4,
@@ -61003,6 +61445,7 @@
     },
     {
         "id": 443,
+        "number": "#0443",
         "name": "Gible",
         "generation": {
             "id": 4,
@@ -61125,6 +61568,7 @@
     },
     {
         "id": 444,
+        "number": "#0444",
         "name": "Gabite",
         "generation": {
             "id": 4,
@@ -61247,6 +61691,7 @@
     },
     {
         "id": 445,
+        "number": "#0445",
         "name": "Garchomp",
         "generation": {
             "id": 4,
@@ -61369,6 +61814,7 @@
     },
     {
         "id": 446,
+        "number": "#0446",
         "name": "Munchlax",
         "generation": {
             "id": 4,
@@ -61487,6 +61933,7 @@
     },
     {
         "id": 447,
+        "number": "#0447",
         "name": "Riolu",
         "generation": {
             "id": 4,
@@ -61605,6 +62052,7 @@
     },
     {
         "id": 448,
+        "number": "#0448",
         "name": "Lucario",
         "generation": {
             "id": 4,
@@ -61727,6 +62175,7 @@
     },
     {
         "id": 449,
+        "number": "#0449",
         "name": "Hippopotas",
         "generation": {
             "id": 4,
@@ -61829,6 +62278,7 @@
     },
     {
         "id": 450,
+        "number": "#0450",
         "name": "Hippowdon",
         "generation": {
             "id": 4,
@@ -61931,6 +62381,7 @@
     },
     {
         "id": 451,
+        "number": "#0451",
         "name": "Skorupi",
         "generation": {
             "id": 4,
@@ -62037,6 +62488,7 @@
     },
     {
         "id": 452,
+        "number": "#0452",
         "name": "Drapion",
         "generation": {
             "id": 4,
@@ -62143,6 +62595,7 @@
     },
     {
         "id": 453,
+        "number": "#0453",
         "name": "Croagunk",
         "generation": {
             "id": 4,
@@ -62245,6 +62698,7 @@
     },
     {
         "id": 454,
+        "number": "#0454",
         "name": "Toxicroak",
         "generation": {
             "id": 4,
@@ -62347,6 +62801,7 @@
     },
     {
         "id": 455,
+        "number": "#0455",
         "name": "Carnivine",
         "generation": {
             "id": 4,
@@ -62441,6 +62896,7 @@
     },
     {
         "id": 456,
+        "number": "#0456",
         "name": "Finneon",
         "generation": {
             "id": 4,
@@ -62551,6 +63007,7 @@
     },
     {
         "id": 457,
+        "number": "#0457",
         "name": "Lumineon",
         "generation": {
             "id": 4,
@@ -62661,6 +63118,7 @@
     },
     {
         "id": 458,
+        "number": "#0458",
         "name": "Mantyke",
         "generation": {
             "id": 4,
@@ -62771,6 +63229,7 @@
     },
     {
         "id": 459,
+        "number": "#0459",
         "name": "Snover",
         "generation": {
             "id": 4,
@@ -62877,6 +63336,7 @@
     },
     {
         "id": 460,
+        "number": "#0460",
         "name": "Abomasnow",
         "generation": {
             "id": 4,
@@ -62983,6 +63443,7 @@
     },
     {
         "id": 461,
+        "number": "#0461",
         "name": "Weavile",
         "generation": {
             "id": 4,
@@ -63101,6 +63562,7 @@
     },
     {
         "id": 462,
+        "number": "#0462",
         "name": "Magnezone",
         "generation": {
             "id": 4,
@@ -63219,6 +63681,7 @@
     },
     {
         "id": 463,
+        "number": "#0463",
         "name": "Lickilicky",
         "generation": {
             "id": 4,
@@ -63329,6 +63792,7 @@
     },
     {
         "id": 464,
+        "number": "#0464",
         "name": "Rhyperior",
         "generation": {
             "id": 4,
@@ -63435,6 +63899,7 @@
     },
     {
         "id": 465,
+        "number": "#0465",
         "name": "Tangrowth",
         "generation": {
             "id": 4,
@@ -63537,6 +64002,7 @@
     },
     {
         "id": 466,
+        "number": "#0466",
         "name": "Electivire",
         "generation": {
             "id": 4,
@@ -63655,6 +64121,7 @@
     },
     {
         "id": 467,
+        "number": "#0467",
         "name": "Magmortar",
         "generation": {
             "id": 4,
@@ -63773,6 +64240,7 @@
     },
     {
         "id": 468,
+        "number": "#0468",
         "name": "Togekiss",
         "generation": {
             "id": 4,
@@ -63879,6 +64347,7 @@
     },
     {
         "id": 469,
+        "number": "#0469",
         "name": "Yanmega",
         "generation": {
             "id": 4,
@@ -63973,6 +64442,7 @@
     },
     {
         "id": 470,
+        "number": "#0470",
         "name": "Leafeon",
         "generation": {
             "id": 4,
@@ -64091,6 +64561,7 @@
     },
     {
         "id": 471,
+        "number": "#0471",
         "name": "Glaceon",
         "generation": {
             "id": 4,
@@ -64209,6 +64680,7 @@
     },
     {
         "id": 472,
+        "number": "#0472",
         "name": "Gliscor",
         "generation": {
             "id": 4,
@@ -64303,6 +64775,7 @@
     },
     {
         "id": 473,
+        "number": "#0473",
         "name": "Mamoswine",
         "generation": {
             "id": 4,
@@ -64405,6 +64878,7 @@
     },
     {
         "id": 474,
+        "number": "#0474",
         "name": "Porygon Z",
         "generation": {
             "id": 4,
@@ -64523,6 +64997,7 @@
     },
     {
         "id": 475,
+        "number": "#0475",
         "name": "Gallade",
         "generation": {
             "id": 4,
@@ -64629,6 +65104,7 @@
     },
     {
         "id": 476,
+        "number": "#0476",
         "name": "Probopass",
         "generation": {
             "id": 4,
@@ -64739,6 +65215,7 @@
     },
     {
         "id": 477,
+        "number": "#0477",
         "name": "Dusknoir",
         "generation": {
             "id": 4,
@@ -64841,6 +65318,7 @@
     },
     {
         "id": 478,
+        "number": "#0478",
         "name": "Froslass",
         "generation": {
             "id": 4,
@@ -64963,6 +65441,7 @@
     },
     {
         "id": 479,
+        "number": "#0479",
         "name": "Rotom",
         "generation": {
             "id": 4,
@@ -65065,6 +65544,7 @@
     },
     {
         "id": 480,
+        "number": "#0480",
         "name": "Uxie",
         "generation": {
             "id": 4,
@@ -65159,6 +65639,7 @@
     },
     {
         "id": 481,
+        "number": "#0481",
         "name": "Mesprit",
         "generation": {
             "id": 4,
@@ -65253,6 +65734,7 @@
     },
     {
         "id": 482,
+        "number": "#0482",
         "name": "Azelf",
         "generation": {
             "id": 4,
@@ -65347,6 +65829,7 @@
     },
     {
         "id": 483,
+        "number": "#0483",
         "name": "Dialga",
         "generation": {
             "id": 4,
@@ -65441,6 +65924,7 @@
     },
     {
         "id": 484,
+        "number": "#0484",
         "name": "Palkia",
         "generation": {
             "id": 4,
@@ -65535,6 +66019,7 @@
     },
     {
         "id": 485,
+        "number": "#0485",
         "name": "Heatran",
         "generation": {
             "id": 4,
@@ -65629,6 +66114,7 @@
     },
     {
         "id": 486,
+        "number": "#0486",
         "name": "Regigigas",
         "generation": {
             "id": 4,
@@ -65731,6 +66217,7 @@
     },
     {
         "id": 487,
+        "number": "#0487",
         "name": "Giratina",
         "generation": {
             "id": 4,
@@ -65825,6 +66312,7 @@
     },
     {
         "id": 488,
+        "number": "#0488",
         "name": "Cresselia",
         "generation": {
             "id": 4,
@@ -65919,6 +66407,7 @@
     },
     {
         "id": 489,
+        "number": "#0489",
         "name": "Phione",
         "generation": {
             "id": 4,
@@ -66017,6 +66506,7 @@
     },
     {
         "id": 490,
+        "number": "#0490",
         "name": "Manaphy",
         "generation": {
             "id": 4,
@@ -66115,6 +66605,7 @@
     },
     {
         "id": 491,
+        "number": "#0491",
         "name": "Darkrai",
         "generation": {
             "id": 4,
@@ -66209,6 +66700,7 @@
     },
     {
         "id": 492,
+        "number": "#0492",
         "name": "Shaymin",
         "generation": {
             "id": 4,
@@ -66303,6 +66795,7 @@
     },
     {
         "id": 493,
+        "number": "#0493",
         "name": "Arceus",
         "generation": {
             "id": 4,
@@ -66397,6 +66890,7 @@
     },
     {
         "id": 494,
+        "number": "#0494",
         "name": "Victini",
         "generation": {
             "id": 5,
@@ -66467,6 +66961,7 @@
     },
     {
         "id": 495,
+        "number": "#0495",
         "name": "Snivy",
         "generation": {
             "id": 5,
@@ -66541,6 +67036,7 @@
     },
     {
         "id": 496,
+        "number": "#0496",
         "name": "Servine",
         "generation": {
             "id": 5,
@@ -66615,6 +67111,7 @@
     },
     {
         "id": 497,
+        "number": "#0497",
         "name": "Serperior",
         "generation": {
             "id": 5,
@@ -66689,6 +67186,7 @@
     },
     {
         "id": 498,
+        "number": "#0498",
         "name": "Tepig",
         "generation": {
             "id": 5,
@@ -66759,6 +67257,7 @@
     },
     {
         "id": 499,
+        "number": "#0499",
         "name": "Pignite",
         "generation": {
             "id": 5,
@@ -66829,6 +67328,7 @@
     },
     {
         "id": 500,
+        "number": "#0500",
         "name": "Emboar",
         "generation": {
             "id": 5,
@@ -66899,6 +67399,7 @@
     },
     {
         "id": 501,
+        "number": "#0501",
         "name": "Oshawott",
         "generation": {
             "id": 5,
@@ -66973,6 +67474,7 @@
     },
     {
         "id": 502,
+        "number": "#0502",
         "name": "Dewott",
         "generation": {
             "id": 5,
@@ -67047,6 +67549,7 @@
     },
     {
         "id": 503,
+        "number": "#0503",
         "name": "Samurott",
         "generation": {
             "id": 5,
@@ -67121,6 +67624,7 @@
     },
     {
         "id": 504,
+        "number": "#0504",
         "name": "Patrat",
         "generation": {
             "id": 5,
@@ -67191,6 +67695,7 @@
     },
     {
         "id": 505,
+        "number": "#0505",
         "name": "Watchog",
         "generation": {
             "id": 5,
@@ -67261,6 +67766,7 @@
     },
     {
         "id": 506,
+        "number": "#0506",
         "name": "Lillipup",
         "generation": {
             "id": 5,
@@ -67355,6 +67861,7 @@
     },
     {
         "id": 507,
+        "number": "#0507",
         "name": "Herdier",
         "generation": {
             "id": 5,
@@ -67449,6 +67956,7 @@
     },
     {
         "id": 508,
+        "number": "#0508",
         "name": "Stoutland",
         "generation": {
             "id": 5,
@@ -67543,6 +68051,7 @@
     },
     {
         "id": 509,
+        "number": "#0509",
         "name": "Purrloin",
         "generation": {
             "id": 5,
@@ -67621,6 +68130,7 @@
     },
     {
         "id": 510,
+        "number": "#0510",
         "name": "Liepard",
         "generation": {
             "id": 5,
@@ -67699,6 +68209,7 @@
     },
     {
         "id": 511,
+        "number": "#0511",
         "name": "Pansage",
         "generation": {
             "id": 5,
@@ -67769,6 +68280,7 @@
     },
     {
         "id": 512,
+        "number": "#0512",
         "name": "Simisage",
         "generation": {
             "id": 5,
@@ -67839,6 +68351,7 @@
     },
     {
         "id": 513,
+        "number": "#0513",
         "name": "Pansear",
         "generation": {
             "id": 5,
@@ -67909,6 +68422,7 @@
     },
     {
         "id": 514,
+        "number": "#0514",
         "name": "Simisear",
         "generation": {
             "id": 5,
@@ -67979,6 +68493,7 @@
     },
     {
         "id": 515,
+        "number": "#0515",
         "name": "Panpour",
         "generation": {
             "id": 5,
@@ -68049,6 +68564,7 @@
     },
     {
         "id": 516,
+        "number": "#0516",
         "name": "Simipour",
         "generation": {
             "id": 5,
@@ -68119,6 +68635,7 @@
     },
     {
         "id": 517,
+        "number": "#0517",
         "name": "Munna",
         "generation": {
             "id": 5,
@@ -68197,6 +68714,7 @@
     },
     {
         "id": 518,
+        "number": "#0518",
         "name": "Musharna",
         "generation": {
             "id": 5,
@@ -68275,6 +68793,7 @@
     },
     {
         "id": 519,
+        "number": "#0519",
         "name": "Pidove",
         "generation": {
             "id": 5,
@@ -68353,6 +68872,7 @@
     },
     {
         "id": 520,
+        "number": "#0520",
         "name": "Tranquill",
         "generation": {
             "id": 5,
@@ -68431,6 +68951,7 @@
     },
     {
         "id": 521,
+        "number": "#0521",
         "name": "Unfezant",
         "generation": {
             "id": 5,
@@ -68509,6 +69030,7 @@
     },
     {
         "id": 522,
+        "number": "#0522",
         "name": "Blitzle",
         "generation": {
             "id": 5,
@@ -68579,6 +69101,7 @@
     },
     {
         "id": 523,
+        "number": "#0523",
         "name": "Zebstrika",
         "generation": {
             "id": 5,
@@ -68649,6 +69172,7 @@
     },
     {
         "id": 524,
+        "number": "#0524",
         "name": "Roggenrola",
         "generation": {
             "id": 5,
@@ -68743,6 +69267,7 @@
     },
     {
         "id": 525,
+        "number": "#0525",
         "name": "Boldore",
         "generation": {
             "id": 5,
@@ -68837,6 +69362,7 @@
     },
     {
         "id": 526,
+        "number": "#0526",
         "name": "Gigalith",
         "generation": {
             "id": 5,
@@ -68931,6 +69457,7 @@
     },
     {
         "id": 527,
+        "number": "#0527",
         "name": "Woobat",
         "generation": {
             "id": 5,
@@ -69013,6 +69540,7 @@
     },
     {
         "id": 528,
+        "number": "#0528",
         "name": "Swoobat",
         "generation": {
             "id": 5,
@@ -69095,6 +69623,7 @@
     },
     {
         "id": 529,
+        "number": "#0529",
         "name": "Drilbur",
         "generation": {
             "id": 5,
@@ -69173,6 +69702,7 @@
     },
     {
         "id": 530,
+        "number": "#0530",
         "name": "Excadrill",
         "generation": {
             "id": 5,
@@ -69251,6 +69781,7 @@
     },
     {
         "id": 531,
+        "number": "#0531",
         "name": "Audino",
         "generation": {
             "id": 5,
@@ -69329,6 +69860,7 @@
     },
     {
         "id": 532,
+        "number": "#0532",
         "name": "Timburr",
         "generation": {
             "id": 5,
@@ -69407,6 +69939,7 @@
     },
     {
         "id": 533,
+        "number": "#0533",
         "name": "Gurdurr",
         "generation": {
             "id": 5,
@@ -69485,6 +70018,7 @@
     },
     {
         "id": 534,
+        "number": "#0534",
         "name": "Conkeldurr",
         "generation": {
             "id": 5,
@@ -69563,6 +70097,7 @@
     },
     {
         "id": 535,
+        "number": "#0535",
         "name": "Tympole",
         "generation": {
             "id": 5,
@@ -69641,6 +70176,7 @@
     },
     {
         "id": 536,
+        "number": "#0536",
         "name": "Palpitoad",
         "generation": {
             "id": 5,
@@ -69719,6 +70255,7 @@
     },
     {
         "id": 537,
+        "number": "#0537",
         "name": "Seismitoad",
         "generation": {
             "id": 5,
@@ -69797,6 +70334,7 @@
     },
     {
         "id": 538,
+        "number": "#0538",
         "name": "Throh",
         "generation": {
             "id": 5,
@@ -69875,6 +70413,7 @@
     },
     {
         "id": 539,
+        "number": "#0539",
         "name": "Sawk",
         "generation": {
             "id": 5,
@@ -69953,6 +70492,7 @@
     },
     {
         "id": 540,
+        "number": "#0540",
         "name": "Sewaddle",
         "generation": {
             "id": 5,
@@ -70023,6 +70563,7 @@
     },
     {
         "id": 541,
+        "number": "#0541",
         "name": "Swadloon",
         "generation": {
             "id": 5,
@@ -70093,6 +70634,7 @@
     },
     {
         "id": 542,
+        "number": "#0542",
         "name": "Leavanny",
         "generation": {
             "id": 5,
@@ -70163,6 +70705,7 @@
     },
     {
         "id": 543,
+        "number": "#0543",
         "name": "Venipede",
         "generation": {
             "id": 5,
@@ -70241,6 +70784,7 @@
     },
     {
         "id": 544,
+        "number": "#0544",
         "name": "Whirlipede",
         "generation": {
             "id": 5,
@@ -70319,6 +70863,7 @@
     },
     {
         "id": 545,
+        "number": "#0545",
         "name": "Scolipede",
         "generation": {
             "id": 5,
@@ -70397,6 +70942,7 @@
     },
     {
         "id": 546,
+        "number": "#0546",
         "name": "Cottonee",
         "generation": {
             "id": 5,
@@ -70495,6 +71041,7 @@
     },
     {
         "id": 547,
+        "number": "#0547",
         "name": "Whimsicott",
         "generation": {
             "id": 5,
@@ -70593,6 +71140,7 @@
     },
     {
         "id": 548,
+        "number": "#0548",
         "name": "Petilil",
         "generation": {
             "id": 5,
@@ -70691,6 +71239,7 @@
     },
     {
         "id": 549,
+        "number": "#0549",
         "name": "Lilligant",
         "generation": {
             "id": 5,
@@ -70789,6 +71338,7 @@
     },
     {
         "id": 550,
+        "number": "#0550",
         "name": "Basculin",
         "generation": {
             "id": 5,
@@ -70879,6 +71429,7 @@
     },
     {
         "id": 551,
+        "number": "#0551",
         "name": "Sandile",
         "generation": {
             "id": 5,
@@ -70973,6 +71524,7 @@
     },
     {
         "id": 552,
+        "number": "#0552",
         "name": "Krokorok",
         "generation": {
             "id": 5,
@@ -71067,6 +71619,7 @@
     },
     {
         "id": 553,
+        "number": "#0553",
         "name": "Krookodile",
         "generation": {
             "id": 5,
@@ -71161,6 +71714,7 @@
     },
     {
         "id": 554,
+        "number": "#0554",
         "name": "Darumaka",
         "generation": {
             "id": 5,
@@ -71239,6 +71793,7 @@
     },
     {
         "id": 555,
+        "number": "#0555",
         "name": "Darmanitan",
         "generation": {
             "id": 5,
@@ -71317,6 +71872,7 @@
     },
     {
         "id": 556,
+        "number": "#0556",
         "name": "Maractus",
         "generation": {
             "id": 5,
@@ -71395,6 +71951,7 @@
     },
     {
         "id": 557,
+        "number": "#0557",
         "name": "Dwebble",
         "generation": {
             "id": 5,
@@ -71477,6 +72034,7 @@
     },
     {
         "id": 558,
+        "number": "#0558",
         "name": "Crustle",
         "generation": {
             "id": 5,
@@ -71559,6 +72117,7 @@
     },
     {
         "id": 559,
+        "number": "#0559",
         "name": "Scraggy",
         "generation": {
             "id": 5,
@@ -71649,6 +72208,7 @@
     },
     {
         "id": 560,
+        "number": "#0560",
         "name": "Scrafty",
         "generation": {
             "id": 5,
@@ -71739,6 +72299,7 @@
     },
     {
         "id": 561,
+        "number": "#0561",
         "name": "Sigilyph",
         "generation": {
             "id": 5,
@@ -71817,6 +72378,7 @@
     },
     {
         "id": 562,
+        "number": "#0562",
         "name": "Yamask",
         "generation": {
             "id": 5,
@@ -71899,6 +72461,7 @@
     },
     {
         "id": 563,
+        "number": "#0563",
         "name": "Cofagrigus",
         "generation": {
             "id": 5,
@@ -71981,6 +72544,7 @@
     },
     {
         "id": 564,
+        "number": "#0564",
         "name": "Tirtouga",
         "generation": {
             "id": 5,
@@ -72079,6 +72643,7 @@
     },
     {
         "id": 565,
+        "number": "#0565",
         "name": "Carracosta",
         "generation": {
             "id": 5,
@@ -72177,6 +72742,7 @@
     },
     {
         "id": 566,
+        "number": "#0566",
         "name": "Archen",
         "generation": {
             "id": 5,
@@ -72275,6 +72841,7 @@
     },
     {
         "id": 567,
+        "number": "#0567",
         "name": "Archeops",
         "generation": {
             "id": 5,
@@ -72373,6 +72940,7 @@
     },
     {
         "id": 568,
+        "number": "#0568",
         "name": "Trubbish",
         "generation": {
             "id": 5,
@@ -72467,6 +73035,7 @@
     },
     {
         "id": 569,
+        "number": "#0569",
         "name": "Garbodor",
         "generation": {
             "id": 5,
@@ -72561,6 +73130,7 @@
     },
     {
         "id": 570,
+        "number": "#0570",
         "name": "Zorua",
         "generation": {
             "id": 5,
@@ -72651,6 +73221,7 @@
     },
     {
         "id": 571,
+        "number": "#0571",
         "name": "Zoroark",
         "generation": {
             "id": 5,
@@ -72741,6 +73312,7 @@
     },
     {
         "id": 572,
+        "number": "#0572",
         "name": "Minccino",
         "generation": {
             "id": 5,
@@ -72827,6 +73399,7 @@
     },
     {
         "id": 573,
+        "number": "#0573",
         "name": "Cinccino",
         "generation": {
             "id": 5,
@@ -72913,6 +73486,7 @@
     },
     {
         "id": 574,
+        "number": "#0574",
         "name": "Gothita",
         "generation": {
             "id": 5,
@@ -72991,6 +73565,7 @@
     },
     {
         "id": 575,
+        "number": "#0575",
         "name": "Gothorita",
         "generation": {
             "id": 5,
@@ -73069,6 +73644,7 @@
     },
     {
         "id": 576,
+        "number": "#0576",
         "name": "Gothitelle",
         "generation": {
             "id": 5,
@@ -73147,6 +73723,7 @@
     },
     {
         "id": 577,
+        "number": "#0577",
         "name": "Solosis",
         "generation": {
             "id": 5,
@@ -73225,6 +73802,7 @@
     },
     {
         "id": 578,
+        "number": "#0578",
         "name": "Duosion",
         "generation": {
             "id": 5,
@@ -73303,6 +73881,7 @@
     },
     {
         "id": 579,
+        "number": "#0579",
         "name": "Reuniclus",
         "generation": {
             "id": 5,
@@ -73381,6 +73960,7 @@
     },
     {
         "id": 580,
+        "number": "#0580",
         "name": "Ducklett",
         "generation": {
             "id": 5,
@@ -73455,6 +74035,7 @@
     },
     {
         "id": 581,
+        "number": "#0581",
         "name": "Swanna",
         "generation": {
             "id": 5,
@@ -73529,6 +74110,7 @@
     },
     {
         "id": 582,
+        "number": "#0582",
         "name": "Vanillite",
         "generation": {
             "id": 5,
@@ -73623,6 +74205,7 @@
     },
     {
         "id": 583,
+        "number": "#0583",
         "name": "Vanillish",
         "generation": {
             "id": 5,
@@ -73717,6 +74300,7 @@
     },
     {
         "id": 584,
+        "number": "#0584",
         "name": "Vanilluxe",
         "generation": {
             "id": 5,
@@ -73811,6 +74395,7 @@
     },
     {
         "id": 585,
+        "number": "#0585",
         "name": "Deerling",
         "generation": {
             "id": 5,
@@ -73881,6 +74466,7 @@
     },
     {
         "id": 586,
+        "number": "#0586",
         "name": "Sawsbuck",
         "generation": {
             "id": 5,
@@ -73951,6 +74537,7 @@
     },
     {
         "id": 587,
+        "number": "#0587",
         "name": "Emolga",
         "generation": {
             "id": 5,
@@ -74045,6 +74632,7 @@
     },
     {
         "id": 588,
+        "number": "#0588",
         "name": "Karrablast",
         "generation": {
             "id": 5,
@@ -74123,6 +74711,7 @@
     },
     {
         "id": 589,
+        "number": "#0589",
         "name": "Escavalier",
         "generation": {
             "id": 5,
@@ -74201,6 +74790,7 @@
     },
     {
         "id": 590,
+        "number": "#0590",
         "name": "Foongus",
         "generation": {
             "id": 5,
@@ -74279,6 +74869,7 @@
     },
     {
         "id": 591,
+        "number": "#0591",
         "name": "Amoonguss",
         "generation": {
             "id": 5,
@@ -74357,6 +74948,7 @@
     },
     {
         "id": 592,
+        "number": "#0592",
         "name": "Frillish",
         "generation": {
             "id": 5,
@@ -74443,6 +75035,7 @@
     },
     {
         "id": 593,
+        "number": "#0593",
         "name": "Jellicent",
         "generation": {
             "id": 5,
@@ -74529,6 +75122,7 @@
     },
     {
         "id": 594,
+        "number": "#0594",
         "name": "Alomomola",
         "generation": {
             "id": 5,
@@ -74619,6 +75213,7 @@
     },
     {
         "id": 595,
+        "number": "#0595",
         "name": "Joltik",
         "generation": {
             "id": 5,
@@ -74697,6 +75292,7 @@
     },
     {
         "id": 596,
+        "number": "#0596",
         "name": "Galvantula",
         "generation": {
             "id": 5,
@@ -74775,6 +75371,7 @@
     },
     {
         "id": 597,
+        "number": "#0597",
         "name": "Ferroseed",
         "generation": {
             "id": 5,
@@ -74857,6 +75454,7 @@
     },
     {
         "id": 598,
+        "number": "#0598",
         "name": "Ferrothorn",
         "generation": {
             "id": 5,
@@ -74939,6 +75537,7 @@
     },
     {
         "id": 599,
+        "number": "#0599",
         "name": "Klink",
         "generation": {
             "id": 5,
@@ -75017,6 +75616,7 @@
     },
     {
         "id": 600,
+        "number": "#0600",
         "name": "Klang",
         "generation": {
             "id": 5,
@@ -75095,6 +75695,7 @@
     },
     {
         "id": 601,
+        "number": "#0601",
         "name": "Klinklang",
         "generation": {
             "id": 5,
@@ -75173,6 +75774,7 @@
     },
     {
         "id": 602,
+        "number": "#0602",
         "name": "Tynamo",
         "generation": {
             "id": 5,
@@ -75243,6 +75845,7 @@
     },
     {
         "id": 603,
+        "number": "#0603",
         "name": "Eelektrik",
         "generation": {
             "id": 5,
@@ -75313,6 +75916,7 @@
     },
     {
         "id": 604,
+        "number": "#0604",
         "name": "Eelektross",
         "generation": {
             "id": 5,
@@ -75383,6 +75987,7 @@
     },
     {
         "id": 605,
+        "number": "#0605",
         "name": "Elgyem",
         "generation": {
             "id": 5,
@@ -75469,6 +76074,7 @@
     },
     {
         "id": 606,
+        "number": "#0606",
         "name": "Beheeyem",
         "generation": {
             "id": 5,
@@ -75555,6 +76161,7 @@
     },
     {
         "id": 607,
+        "number": "#0607",
         "name": "Litwick",
         "generation": {
             "id": 5,
@@ -75633,6 +76240,7 @@
     },
     {
         "id": 608,
+        "number": "#0608",
         "name": "Lampent",
         "generation": {
             "id": 5,
@@ -75711,6 +76319,7 @@
     },
     {
         "id": 609,
+        "number": "#0609",
         "name": "Chandelure",
         "generation": {
             "id": 5,
@@ -75789,6 +76398,7 @@
     },
     {
         "id": 610,
+        "number": "#0610",
         "name": "Axew",
         "generation": {
             "id": 5,
@@ -75871,6 +76481,7 @@
     },
     {
         "id": 611,
+        "number": "#0611",
         "name": "Fraxure",
         "generation": {
             "id": 5,
@@ -75953,6 +76564,7 @@
     },
     {
         "id": 612,
+        "number": "#0612",
         "name": "Haxorus",
         "generation": {
             "id": 5,
@@ -76035,6 +76647,7 @@
     },
     {
         "id": 613,
+        "number": "#0613",
         "name": "Cubchoo",
         "generation": {
             "id": 5,
@@ -76113,6 +76726,7 @@
     },
     {
         "id": 614,
+        "number": "#0614",
         "name": "Beartic",
         "generation": {
             "id": 5,
@@ -76191,6 +76805,7 @@
     },
     {
         "id": 615,
+        "number": "#0615",
         "name": "Cryogonal",
         "generation": {
             "id": 5,
@@ -76269,6 +76884,7 @@
     },
     {
         "id": 616,
+        "number": "#0616",
         "name": "Shelmet",
         "generation": {
             "id": 5,
@@ -76347,6 +76963,7 @@
     },
     {
         "id": 617,
+        "number": "#0617",
         "name": "Accelgor",
         "generation": {
             "id": 5,
@@ -76425,6 +77042,7 @@
     },
     {
         "id": 618,
+        "number": "#0618",
         "name": "Stunfisk",
         "generation": {
             "id": 5,
@@ -76507,6 +77125,7 @@
     },
     {
         "id": 619,
+        "number": "#0619",
         "name": "Mienfoo",
         "generation": {
             "id": 5,
@@ -76597,6 +77216,7 @@
     },
     {
         "id": 620,
+        "number": "#0620",
         "name": "Mienshao",
         "generation": {
             "id": 5,
@@ -76687,6 +77307,7 @@
     },
     {
         "id": 621,
+        "number": "#0621",
         "name": "Druddigon",
         "generation": {
             "id": 5,
@@ -76777,6 +77398,7 @@
     },
     {
         "id": 622,
+        "number": "#0622",
         "name": "Golett",
         "generation": {
             "id": 5,
@@ -76863,6 +77485,7 @@
     },
     {
         "id": 623,
+        "number": "#0623",
         "name": "Golurk",
         "generation": {
             "id": 5,
@@ -76949,6 +77572,7 @@
     },
     {
         "id": 624,
+        "number": "#0624",
         "name": "Pawniard",
         "generation": {
             "id": 5,
@@ -77035,6 +77659,7 @@
     },
     {
         "id": 625,
+        "number": "#0625",
         "name": "Bisharp",
         "generation": {
             "id": 5,
@@ -77121,6 +77746,7 @@
     },
     {
         "id": 626,
+        "number": "#0626",
         "name": "Bouffalant",
         "generation": {
             "id": 5,
@@ -77199,6 +77825,7 @@
     },
     {
         "id": 627,
+        "number": "#0627",
         "name": "Rufflet",
         "generation": {
             "id": 5,
@@ -77297,6 +77924,7 @@
     },
     {
         "id": 628,
+        "number": "#0628",
         "name": "Braviary",
         "generation": {
             "id": 5,
@@ -77395,6 +78023,7 @@
     },
     {
         "id": 629,
+        "number": "#0629",
         "name": "Vullaby",
         "generation": {
             "id": 5,
@@ -77489,6 +78118,7 @@
     },
     {
         "id": 630,
+        "number": "#0630",
         "name": "Mandibuzz",
         "generation": {
             "id": 5,
@@ -77583,6 +78213,7 @@
     },
     {
         "id": 631,
+        "number": "#0631",
         "name": "Heatmor",
         "generation": {
             "id": 5,
@@ -77661,6 +78292,7 @@
     },
     {
         "id": 632,
+        "number": "#0632",
         "name": "Durant",
         "generation": {
             "id": 5,
@@ -77739,6 +78371,7 @@
     },
     {
         "id": 633,
+        "number": "#0633",
         "name": "Deino",
         "generation": {
             "id": 5,
@@ -77817,6 +78450,7 @@
     },
     {
         "id": 634,
+        "number": "#0634",
         "name": "Zweilous",
         "generation": {
             "id": 5,
@@ -77895,6 +78529,7 @@
     },
     {
         "id": 635,
+        "number": "#0635",
         "name": "Hydreigon",
         "generation": {
             "id": 5,
@@ -77973,6 +78608,7 @@
     },
     {
         "id": 636,
+        "number": "#0636",
         "name": "Larvesta",
         "generation": {
             "id": 5,
@@ -78059,6 +78695,7 @@
     },
     {
         "id": 637,
+        "number": "#0637",
         "name": "Volcarona",
         "generation": {
             "id": 5,
@@ -78145,6 +78782,7 @@
     },
     {
         "id": 638,
+        "number": "#0638",
         "name": "Cobalion",
         "generation": {
             "id": 5,
@@ -78223,6 +78861,7 @@
     },
     {
         "id": 639,
+        "number": "#0639",
         "name": "Terrakion",
         "generation": {
             "id": 5,
@@ -78301,6 +78940,7 @@
     },
     {
         "id": 640,
+        "number": "#0640",
         "name": "Virizion",
         "generation": {
             "id": 5,
@@ -78379,6 +79019,7 @@
     },
     {
         "id": 641,
+        "number": "#0641",
         "name": "Tornadus",
         "generation": {
             "id": 5,
@@ -78453,6 +79094,7 @@
     },
     {
         "id": 642,
+        "number": "#0642",
         "name": "Thundurus",
         "generation": {
             "id": 5,
@@ -78527,6 +79169,7 @@
     },
     {
         "id": 643,
+        "number": "#0643",
         "name": "Reshiram",
         "generation": {
             "id": 5,
@@ -78605,6 +79248,7 @@
     },
     {
         "id": 644,
+        "number": "#0644",
         "name": "Zekrom",
         "generation": {
             "id": 5,
@@ -78683,6 +79327,7 @@
     },
     {
         "id": 645,
+        "number": "#0645",
         "name": "Landorus",
         "generation": {
             "id": 5,
@@ -78757,6 +79402,7 @@
     },
     {
         "id": 646,
+        "number": "#0646",
         "name": "Kyurem",
         "generation": {
             "id": 5,
@@ -78835,6 +79481,7 @@
     },
     {
         "id": 647,
+        "number": "#0647",
         "name": "Keldeo",
         "generation": {
             "id": 5,
@@ -78913,6 +79560,7 @@
     },
     {
         "id": 648,
+        "number": "#0648",
         "name": "Meloetta",
         "generation": {
             "id": 5,
@@ -78983,6 +79631,7 @@
     },
     {
         "id": 649,
+        "number": "#0649",
         "name": "Genesect",
         "generation": {
             "id": 5,
@@ -79053,6 +79702,7 @@
     },
     {
         "id": 650,
+        "number": "#0650",
         "name": "Chespin",
         "generation": {
             "id": 6,
@@ -79107,6 +79757,7 @@
     },
     {
         "id": 651,
+        "number": "#0651",
         "name": "Quilladin",
         "generation": {
             "id": 6,
@@ -79161,6 +79812,7 @@
     },
     {
         "id": 652,
+        "number": "#0652",
         "name": "Chesnaught",
         "generation": {
             "id": 6,
@@ -79215,6 +79867,7 @@
     },
     {
         "id": 653,
+        "number": "#0653",
         "name": "Fennekin",
         "generation": {
             "id": 6,
@@ -79269,6 +79922,7 @@
     },
     {
         "id": 654,
+        "number": "#0654",
         "name": "Braixen",
         "generation": {
             "id": 6,
@@ -79323,6 +79977,7 @@
     },
     {
         "id": 655,
+        "number": "#0655",
         "name": "Delphox",
         "generation": {
             "id": 6,
@@ -79377,6 +80032,7 @@
     },
     {
         "id": 656,
+        "number": "#0656",
         "name": "Froakie",
         "generation": {
             "id": 6,
@@ -79431,6 +80087,7 @@
     },
     {
         "id": 657,
+        "number": "#0657",
         "name": "Frogadier",
         "generation": {
             "id": 6,
@@ -79485,6 +80142,7 @@
     },
     {
         "id": 658,
+        "number": "#0658",
         "name": "Greninja",
         "generation": {
             "id": 6,
@@ -79539,6 +80197,7 @@
     },
     {
         "id": 659,
+        "number": "#0659",
         "name": "Bunnelby",
         "generation": {
             "id": 6,
@@ -79601,6 +80260,7 @@
     },
     {
         "id": 660,
+        "number": "#0660",
         "name": "Diggersby",
         "generation": {
             "id": 6,
@@ -79663,6 +80323,7 @@
     },
     {
         "id": 661,
+        "number": "#0661",
         "name": "Fletchling",
         "generation": {
             "id": 6,
@@ -79741,6 +80402,7 @@
     },
     {
         "id": 662,
+        "number": "#0662",
         "name": "Fletchinder",
         "generation": {
             "id": 6,
@@ -79819,6 +80481,7 @@
     },
     {
         "id": 663,
+        "number": "#0663",
         "name": "Talonflame",
         "generation": {
             "id": 6,
@@ -79897,6 +80560,7 @@
     },
     {
         "id": 664,
+        "number": "#0664",
         "name": "Scatterbug",
         "generation": {
             "id": 6,
@@ -79951,6 +80615,7 @@
     },
     {
         "id": 665,
+        "number": "#0665",
         "name": "Spewpa",
         "generation": {
             "id": 6,
@@ -80005,6 +80670,7 @@
     },
     {
         "id": 666,
+        "number": "#0666",
         "name": "Vivillon",
         "generation": {
             "id": 6,
@@ -80059,6 +80725,7 @@
     },
     {
         "id": 667,
+        "number": "#0667",
         "name": "Litleo",
         "generation": {
             "id": 6,
@@ -80121,6 +80788,7 @@
     },
     {
         "id": 668,
+        "number": "#0668",
         "name": "Pyroar",
         "generation": {
             "id": 6,
@@ -80183,6 +80851,7 @@
     },
     {
         "id": 669,
+        "number": "#0669",
         "name": "Flabebe",
         "generation": {
             "id": 6,
@@ -80245,6 +80914,7 @@
     },
     {
         "id": 670,
+        "number": "#0670",
         "name": "Floette",
         "generation": {
             "id": 6,
@@ -80307,6 +80977,7 @@
     },
     {
         "id": 671,
+        "number": "#0671",
         "name": "Florges",
         "generation": {
             "id": 6,
@@ -80369,6 +81040,7 @@
     },
     {
         "id": 672,
+        "number": "#0672",
         "name": "Skiddo",
         "generation": {
             "id": 6,
@@ -80423,6 +81095,7 @@
     },
     {
         "id": 673,
+        "number": "#0673",
         "name": "Gogoat",
         "generation": {
             "id": 6,
@@ -80477,6 +81150,7 @@
     },
     {
         "id": 674,
+        "number": "#0674",
         "name": "Pancham",
         "generation": {
             "id": 6,
@@ -80559,6 +81233,7 @@
     },
     {
         "id": 675,
+        "number": "#0675",
         "name": "Pangoro",
         "generation": {
             "id": 6,
@@ -80641,6 +81316,7 @@
     },
     {
         "id": 676,
+        "number": "#0676",
         "name": "Furfrou",
         "generation": {
             "id": 6,
@@ -80703,6 +81379,7 @@
     },
     {
         "id": 677,
+        "number": "#0677",
         "name": "Espurr",
         "generation": {
             "id": 6,
@@ -80765,6 +81442,7 @@
     },
     {
         "id": 678,
+        "number": "#0678",
         "name": "Meowstic",
         "generation": {
             "id": 6,
@@ -80827,6 +81505,7 @@
     },
     {
         "id": 679,
+        "number": "#0679",
         "name": "Honedge",
         "generation": {
             "id": 6,
@@ -80889,6 +81568,7 @@
     },
     {
         "id": 680,
+        "number": "#0680",
         "name": "Doublade",
         "generation": {
             "id": 6,
@@ -80951,6 +81631,7 @@
     },
     {
         "id": 681,
+        "number": "#0681",
         "name": "Aegislash",
         "generation": {
             "id": 6,
@@ -81013,6 +81694,7 @@
     },
     {
         "id": 682,
+        "number": "#0682",
         "name": "Spritzee",
         "generation": {
             "id": 6,
@@ -81075,6 +81757,7 @@
     },
     {
         "id": 683,
+        "number": "#0683",
         "name": "Aromatisse",
         "generation": {
             "id": 6,
@@ -81137,6 +81820,7 @@
     },
     {
         "id": 684,
+        "number": "#0684",
         "name": "Swirlix",
         "generation": {
             "id": 6,
@@ -81199,6 +81883,7 @@
     },
     {
         "id": 685,
+        "number": "#0685",
         "name": "Slurpuff",
         "generation": {
             "id": 6,
@@ -81261,6 +81946,7 @@
     },
     {
         "id": 686,
+        "number": "#0686",
         "name": "Inkay",
         "generation": {
             "id": 6,
@@ -81335,6 +82021,7 @@
     },
     {
         "id": 687,
+        "number": "#0687",
         "name": "Malamar",
         "generation": {
             "id": 6,
@@ -81409,6 +82096,7 @@
     },
     {
         "id": 688,
+        "number": "#0688",
         "name": "Binacle",
         "generation": {
             "id": 6,
@@ -81471,6 +82159,7 @@
     },
     {
         "id": 689,
+        "number": "#0689",
         "name": "Barbaracle",
         "generation": {
             "id": 6,
@@ -81533,6 +82222,7 @@
     },
     {
         "id": 690,
+        "number": "#0690",
         "name": "Skrelp",
         "generation": {
             "id": 6,
@@ -81607,6 +82297,7 @@
     },
     {
         "id": 691,
+        "number": "#0691",
         "name": "Dragalge",
         "generation": {
             "id": 6,
@@ -81681,6 +82372,7 @@
     },
     {
         "id": 692,
+        "number": "#0692",
         "name": "Clauncher",
         "generation": {
             "id": 6,
@@ -81755,6 +82447,7 @@
     },
     {
         "id": 693,
+        "number": "#0693",
         "name": "Clawitzer",
         "generation": {
             "id": 6,
@@ -81829,6 +82522,7 @@
     },
     {
         "id": 694,
+        "number": "#0694",
         "name": "Helioptile",
         "generation": {
             "id": 6,
@@ -81895,6 +82589,7 @@
     },
     {
         "id": 695,
+        "number": "#0695",
         "name": "Heliolisk",
         "generation": {
             "id": 6,
@@ -81961,6 +82656,7 @@
     },
     {
         "id": 696,
+        "number": "#0696",
         "name": "Tyrunt",
         "generation": {
             "id": 6,
@@ -82035,6 +82731,7 @@
     },
     {
         "id": 697,
+        "number": "#0697",
         "name": "Tyrantrum",
         "generation": {
             "id": 6,
@@ -82109,6 +82806,7 @@
     },
     {
         "id": 698,
+        "number": "#0698",
         "name": "Amaura",
         "generation": {
             "id": 6,
@@ -82179,6 +82877,7 @@
     },
     {
         "id": 699,
+        "number": "#0699",
         "name": "Aurorus",
         "generation": {
             "id": 6,
@@ -82249,6 +82948,7 @@
     },
     {
         "id": 700,
+        "number": "#0700",
         "name": "Sylveon",
         "generation": {
             "id": 6,
@@ -82331,6 +83031,7 @@
     },
     {
         "id": 701,
+        "number": "#0701",
         "name": "Hawlucha",
         "generation": {
             "id": 6,
@@ -82405,6 +83106,7 @@
     },
     {
         "id": 702,
+        "number": "#0702",
         "name": "Dedenne",
         "generation": {
             "id": 6,
@@ -82479,6 +83181,7 @@
     },
     {
         "id": 703,
+        "number": "#0703",
         "name": "Carbink",
         "generation": {
             "id": 6,
@@ -82561,6 +83264,7 @@
     },
     {
         "id": 704,
+        "number": "#0704",
         "name": "Goomy",
         "generation": {
             "id": 6,
@@ -82643,6 +83347,7 @@
     },
     {
         "id": 705,
+        "number": "#0705",
         "name": "Sliggoo",
         "generation": {
             "id": 6,
@@ -82725,6 +83430,7 @@
     },
     {
         "id": 706,
+        "number": "#0706",
         "name": "Goodra",
         "generation": {
             "id": 6,
@@ -82807,6 +83513,7 @@
     },
     {
         "id": 707,
+        "number": "#0707",
         "name": "Klefki",
         "generation": {
             "id": 6,
@@ -82885,6 +83592,7 @@
     },
     {
         "id": 708,
+        "number": "#0708",
         "name": "Phantump",
         "generation": {
             "id": 6,
@@ -82967,6 +83675,7 @@
     },
     {
         "id": 709,
+        "number": "#0709",
         "name": "Trevenant",
         "generation": {
             "id": 6,
@@ -83049,6 +83758,7 @@
     },
     {
         "id": 710,
+        "number": "#0710",
         "name": "Pumpkaboo",
         "generation": {
             "id": 6,
@@ -83111,6 +83821,7 @@
     },
     {
         "id": 711,
+        "number": "#0711",
         "name": "Gourgeist",
         "generation": {
             "id": 6,
@@ -83173,6 +83884,7 @@
     },
     {
         "id": 712,
+        "number": "#0712",
         "name": "Bergmite",
         "generation": {
             "id": 6,
@@ -83243,6 +83955,7 @@
     },
     {
         "id": 713,
+        "number": "#0713",
         "name": "Avalugg",
         "generation": {
             "id": 6,
@@ -83313,6 +84026,7 @@
     },
     {
         "id": 714,
+        "number": "#0714",
         "name": "Noibat",
         "generation": {
             "id": 6,
@@ -83387,6 +84101,7 @@
     },
     {
         "id": 715,
+        "number": "#0715",
         "name": "Noivern",
         "generation": {
             "id": 6,
@@ -83461,6 +84176,7 @@
     },
     {
         "id": 716,
+        "number": "#0716",
         "name": "Xerneas",
         "generation": {
             "id": 6,
@@ -83515,6 +84231,7 @@
     },
     {
         "id": 717,
+        "number": "#0717",
         "name": "Yveltal",
         "generation": {
             "id": 6,
@@ -83569,6 +84286,7 @@
     },
     {
         "id": 718,
+        "number": "#0718",
         "name": "Zygarde",
         "generation": {
             "id": 6,
@@ -83639,6 +84357,7 @@
     },
     {
         "id": 719,
+        "number": "#0719",
         "name": "Diancie",
         "generation": {
             "id": 6,
@@ -83693,6 +84412,7 @@
     },
     {
         "id": 720,
+        "number": "#0720",
         "name": "Hoopa",
         "generation": {
             "id": 6,
@@ -83747,6 +84467,7 @@
     },
     {
         "id": 721,
+        "number": "#0721",
         "name": "Volcanion",
         "generation": {
             "id": 6,
@@ -83801,6 +84522,7 @@
     },
     {
         "id": 722,
+        "number": "#0722",
         "name": "Rowlet",
         "generation": {
             "id": 7,
@@ -83867,6 +84589,7 @@
     },
     {
         "id": 723,
+        "number": "#0723",
         "name": "Dartrix",
         "generation": {
             "id": 7,
@@ -83933,6 +84656,7 @@
     },
     {
         "id": 724,
+        "number": "#0724",
         "name": "Decidueye",
         "generation": {
             "id": 7,
@@ -83999,6 +84723,7 @@
     },
     {
         "id": 725,
+        "number": "#0725",
         "name": "Litten",
         "generation": {
             "id": 7,
@@ -84061,6 +84786,7 @@
     },
     {
         "id": 726,
+        "number": "#0726",
         "name": "Torracat",
         "generation": {
             "id": 7,
@@ -84123,6 +84849,7 @@
     },
     {
         "id": 727,
+        "number": "#0727",
         "name": "Incineroar",
         "generation": {
             "id": 7,
@@ -84185,6 +84912,7 @@
     },
     {
         "id": 728,
+        "number": "#0728",
         "name": "Popplio",
         "generation": {
             "id": 7,
@@ -84251,6 +84979,7 @@
     },
     {
         "id": 729,
+        "number": "#0729",
         "name": "Brionne",
         "generation": {
             "id": 7,
@@ -84317,6 +85046,7 @@
     },
     {
         "id": 730,
+        "number": "#0730",
         "name": "Primarina",
         "generation": {
             "id": 7,
@@ -84383,6 +85113,7 @@
     },
     {
         "id": 731,
+        "number": "#0731",
         "name": "Pikipek",
         "generation": {
             "id": 7,
@@ -84437,6 +85168,7 @@
     },
     {
         "id": 732,
+        "number": "#0732",
         "name": "Trumbeak",
         "generation": {
             "id": 7,
@@ -84491,6 +85223,7 @@
     },
     {
         "id": 733,
+        "number": "#0733",
         "name": "Toucannon",
         "generation": {
             "id": 7,
@@ -84545,6 +85278,7 @@
     },
     {
         "id": 734,
+        "number": "#0734",
         "name": "Yungoos",
         "generation": {
             "id": 7,
@@ -84599,6 +85333,7 @@
     },
     {
         "id": 735,
+        "number": "#0735",
         "name": "Gumshoos",
         "generation": {
             "id": 7,
@@ -84653,6 +85388,7 @@
     },
     {
         "id": 736,
+        "number": "#0736",
         "name": "Grubbin",
         "generation": {
             "id": 7,
@@ -84715,6 +85451,7 @@
     },
     {
         "id": 737,
+        "number": "#0737",
         "name": "Charjabug",
         "generation": {
             "id": 7,
@@ -84777,6 +85514,7 @@
     },
     {
         "id": 738,
+        "number": "#0738",
         "name": "Vikavolt",
         "generation": {
             "id": 7,
@@ -84839,6 +85577,7 @@
     },
     {
         "id": 739,
+        "number": "#0739",
         "name": "Crabrawler",
         "generation": {
             "id": 7,
@@ -84893,6 +85632,7 @@
     },
     {
         "id": 740,
+        "number": "#0740",
         "name": "Crabominable",
         "generation": {
             "id": 7,
@@ -84947,6 +85687,7 @@
     },
     {
         "id": 741,
+        "number": "#0741",
         "name": "Oricorio",
         "generation": {
             "id": 7,
@@ -85001,6 +85742,7 @@
     },
     {
         "id": 742,
+        "number": "#0742",
         "name": "Cutiefly",
         "generation": {
             "id": 7,
@@ -85067,6 +85809,7 @@
     },
     {
         "id": 743,
+        "number": "#0743",
         "name": "Ribombee",
         "generation": {
             "id": 7,
@@ -85133,6 +85876,7 @@
     },
     {
         "id": 744,
+        "number": "#0744",
         "name": "Rockruff",
         "generation": {
             "id": 7,
@@ -85195,6 +85939,7 @@
     },
     {
         "id": 745,
+        "number": "#0745",
         "name": "Lycanroc",
         "generation": {
             "id": 7,
@@ -85257,6 +86002,7 @@
     },
     {
         "id": 746,
+        "number": "#0746",
         "name": "Wishiwashi",
         "generation": {
             "id": 7,
@@ -85319,6 +86065,7 @@
     },
     {
         "id": 747,
+        "number": "#0747",
         "name": "Mareanie",
         "generation": {
             "id": 7,
@@ -85381,6 +86128,7 @@
     },
     {
         "id": 748,
+        "number": "#0748",
         "name": "Toxapex",
         "generation": {
             "id": 7,
@@ -85443,6 +86191,7 @@
     },
     {
         "id": 749,
+        "number": "#0749",
         "name": "Mudbray",
         "generation": {
             "id": 7,
@@ -85505,6 +86254,7 @@
     },
     {
         "id": 750,
+        "number": "#0750",
         "name": "Mudsdale",
         "generation": {
             "id": 7,
@@ -85567,6 +86317,7 @@
     },
     {
         "id": 751,
+        "number": "#0751",
         "name": "Dewpider",
         "generation": {
             "id": 7,
@@ -85633,6 +86384,7 @@
     },
     {
         "id": 752,
+        "number": "#0752",
         "name": "Araquanid",
         "generation": {
             "id": 7,
@@ -85699,6 +86451,7 @@
     },
     {
         "id": 753,
+        "number": "#0753",
         "name": "Fomantis",
         "generation": {
             "id": 7,
@@ -85761,6 +86514,7 @@
     },
     {
         "id": 754,
+        "number": "#0754",
         "name": "Lurantis",
         "generation": {
             "id": 7,
@@ -85823,6 +86577,7 @@
     },
     {
         "id": 755,
+        "number": "#0755",
         "name": "Morelull",
         "generation": {
             "id": 7,
@@ -85885,6 +86640,7 @@
     },
     {
         "id": 756,
+        "number": "#0756",
         "name": "Shiinotic",
         "generation": {
             "id": 7,
@@ -85947,6 +86703,7 @@
     },
     {
         "id": 757,
+        "number": "#0757",
         "name": "Salandit",
         "generation": {
             "id": 7,
@@ -86013,6 +86770,7 @@
     },
     {
         "id": 758,
+        "number": "#0758",
         "name": "Salazzle",
         "generation": {
             "id": 7,
@@ -86079,6 +86837,7 @@
     },
     {
         "id": 759,
+        "number": "#0759",
         "name": "Stufful",
         "generation": {
             "id": 7,
@@ -86141,6 +86900,7 @@
     },
     {
         "id": 760,
+        "number": "#0760",
         "name": "Bewear",
         "generation": {
             "id": 7,
@@ -86203,6 +86963,7 @@
     },
     {
         "id": 761,
+        "number": "#0761",
         "name": "Bounsweet",
         "generation": {
             "id": 7,
@@ -86265,6 +87026,7 @@
     },
     {
         "id": 762,
+        "number": "#0762",
         "name": "Steenee",
         "generation": {
             "id": 7,
@@ -86327,6 +87089,7 @@
     },
     {
         "id": 763,
+        "number": "#0763",
         "name": "Tsareena",
         "generation": {
             "id": 7,
@@ -86389,6 +87152,7 @@
     },
     {
         "id": 764,
+        "number": "#0764",
         "name": "Comfey",
         "generation": {
             "id": 7,
@@ -86451,6 +87215,7 @@
     },
     {
         "id": 765,
+        "number": "#0765",
         "name": "Oranguru",
         "generation": {
             "id": 7,
@@ -86513,6 +87278,7 @@
     },
     {
         "id": 766,
+        "number": "#0766",
         "name": "Passimian",
         "generation": {
             "id": 7,
@@ -86575,6 +87341,7 @@
     },
     {
         "id": 767,
+        "number": "#0767",
         "name": "Wimpod",
         "generation": {
             "id": 7,
@@ -86641,6 +87408,7 @@
     },
     {
         "id": 768,
+        "number": "#0768",
         "name": "Golisopod",
         "generation": {
             "id": 7,
@@ -86707,6 +87475,7 @@
     },
     {
         "id": 769,
+        "number": "#0769",
         "name": "Sandygast",
         "generation": {
             "id": 7,
@@ -86769,6 +87538,7 @@
     },
     {
         "id": 770,
+        "number": "#0770",
         "name": "Palossand",
         "generation": {
             "id": 7,
@@ -86831,6 +87601,7 @@
     },
     {
         "id": 771,
+        "number": "#0771",
         "name": "Pyukumuku",
         "generation": {
             "id": 7,
@@ -86893,6 +87664,7 @@
     },
     {
         "id": 772,
+        "number": "#0772",
         "name": "Type Null",
         "generation": {
             "id": 7,
@@ -86955,6 +87727,7 @@
     },
     {
         "id": 773,
+        "number": "#0773",
         "name": "Silvally",
         "generation": {
             "id": 7,
@@ -87017,6 +87790,7 @@
     },
     {
         "id": 774,
+        "number": "#0774",
         "name": "Minior",
         "generation": {
             "id": 7,
@@ -87071,6 +87845,7 @@
     },
     {
         "id": 775,
+        "number": "#0775",
         "name": "Komala",
         "generation": {
             "id": 7,
@@ -87125,6 +87900,7 @@
     },
     {
         "id": 776,
+        "number": "#0776",
         "name": "Turtonator",
         "generation": {
             "id": 7,
@@ -87191,6 +87967,7 @@
     },
     {
         "id": 777,
+        "number": "#0777",
         "name": "Togedemaru",
         "generation": {
             "id": 7,
@@ -87257,6 +88034,7 @@
     },
     {
         "id": 778,
+        "number": "#0778",
         "name": "Mimikyu",
         "generation": {
             "id": 7,
@@ -87319,6 +88097,7 @@
     },
     {
         "id": 779,
+        "number": "#0779",
         "name": "Bruxish",
         "generation": {
             "id": 7,
@@ -87373,6 +88152,7 @@
     },
     {
         "id": 780,
+        "number": "#0780",
         "name": "Drampa",
         "generation": {
             "id": 7,
@@ -87439,6 +88219,7 @@
     },
     {
         "id": 781,
+        "number": "#0781",
         "name": "Dhelmise",
         "generation": {
             "id": 7,
@@ -87501,6 +88282,7 @@
     },
     {
         "id": 782,
+        "number": "#0782",
         "name": "Jangmo O",
         "generation": {
             "id": 7,
@@ -87563,6 +88345,7 @@
     },
     {
         "id": 783,
+        "number": "#0783",
         "name": "Hakamo O",
         "generation": {
             "id": 7,
@@ -87625,6 +88408,7 @@
     },
     {
         "id": 784,
+        "number": "#0784",
         "name": "Kommo O",
         "generation": {
             "id": 7,
@@ -87687,6 +88471,7 @@
     },
     {
         "id": 785,
+        "number": "#0785",
         "name": "Tapu Koko",
         "generation": {
             "id": 7,
@@ -87741,6 +88526,7 @@
     },
     {
         "id": 786,
+        "number": "#0786",
         "name": "Tapu Lele",
         "generation": {
             "id": 7,
@@ -87795,6 +88581,7 @@
     },
     {
         "id": 787,
+        "number": "#0787",
         "name": "Tapu Bulu",
         "generation": {
             "id": 7,
@@ -87849,6 +88636,7 @@
     },
     {
         "id": 788,
+        "number": "#0788",
         "name": "Tapu Fini",
         "generation": {
             "id": 7,
@@ -87903,6 +88691,7 @@
     },
     {
         "id": 789,
+        "number": "#0789",
         "name": "Cosmog",
         "generation": {
             "id": 7,
@@ -87965,6 +88754,7 @@
     },
     {
         "id": 790,
+        "number": "#0790",
         "name": "Cosmoem",
         "generation": {
             "id": 7,
@@ -88027,6 +88817,7 @@
     },
     {
         "id": 791,
+        "number": "#0791",
         "name": "Solgaleo",
         "generation": {
             "id": 7,
@@ -88089,6 +88880,7 @@
     },
     {
         "id": 792,
+        "number": "#0792",
         "name": "Lunala",
         "generation": {
             "id": 7,
@@ -88151,6 +88943,7 @@
     },
     {
         "id": 793,
+        "number": "#0793",
         "name": "Nihilego",
         "generation": {
             "id": 7,
@@ -88205,6 +88998,7 @@
     },
     {
         "id": 794,
+        "number": "#0794",
         "name": "Buzzwole",
         "generation": {
             "id": 7,
@@ -88259,6 +89053,7 @@
     },
     {
         "id": 795,
+        "number": "#0795",
         "name": "Pheromosa",
         "generation": {
             "id": 7,
@@ -88313,6 +89108,7 @@
     },
     {
         "id": 796,
+        "number": "#0796",
         "name": "Xurkitree",
         "generation": {
             "id": 7,
@@ -88367,6 +89163,7 @@
     },
     {
         "id": 797,
+        "number": "#0797",
         "name": "Celesteela",
         "generation": {
             "id": 7,
@@ -88421,6 +89218,7 @@
     },
     {
         "id": 798,
+        "number": "#0798",
         "name": "Kartana",
         "generation": {
             "id": 7,
@@ -88475,6 +89273,7 @@
     },
     {
         "id": 799,
+        "number": "#0799",
         "name": "Guzzlord",
         "generation": {
             "id": 7,
@@ -88529,6 +89328,7 @@
     },
     {
         "id": 800,
+        "number": "#0800",
         "name": "Necrozma",
         "generation": {
             "id": 7,
@@ -88591,6 +89391,7 @@
     },
     {
         "id": 801,
+        "number": "#0801",
         "name": "Magearna",
         "generation": {
             "id": 7,
@@ -88645,6 +89446,7 @@
     },
     {
         "id": 802,
+        "number": "#0802",
         "name": "Marshadow",
         "generation": {
             "id": 7,
@@ -88707,6 +89509,7 @@
     },
     {
         "id": 803,
+        "number": "#0803",
         "name": "Poipole",
         "generation": {
             "id": 7,
@@ -88753,6 +89556,7 @@
     },
     {
         "id": 804,
+        "number": "#0804",
         "name": "Naganadel",
         "generation": {
             "id": 7,
@@ -88799,6 +89603,7 @@
     },
     {
         "id": 805,
+        "number": "#0805",
         "name": "Stakataka",
         "generation": {
             "id": 7,
@@ -88845,6 +89650,7 @@
     },
     {
         "id": 806,
+        "number": "#0806",
         "name": "Blacephalon",
         "generation": {
             "id": 7,
@@ -88891,6 +89697,7 @@
     },
     {
         "id": 807,
+        "number": "#0807",
         "name": "Zeraora",
         "generation": {
             "id": 7,
@@ -88945,6 +89752,7 @@
     },
     {
         "id": 808,
+        "number": "#0808",
         "name": "Meltan",
         "generation": {
             "id": 7,
@@ -88999,6 +89807,7 @@
     },
     {
         "id": 809,
+        "number": "#0809",
         "name": "Melmetal",
         "generation": {
             "id": 7,
@@ -89053,6 +89862,7 @@
     },
     {
         "id": 810,
+        "number": "#0810",
         "name": "Grookey",
         "generation": {
             "id": 8,
@@ -89103,6 +89913,7 @@
     },
     {
         "id": 811,
+        "number": "#0811",
         "name": "Thwackey",
         "generation": {
             "id": 8,
@@ -89153,6 +89964,7 @@
     },
     {
         "id": 812,
+        "number": "#0812",
         "name": "Rillaboom",
         "generation": {
             "id": 8,
@@ -89203,6 +90015,7 @@
     },
     {
         "id": 813,
+        "number": "#0813",
         "name": "Scorbunny",
         "generation": {
             "id": 8,
@@ -89253,6 +90066,7 @@
     },
     {
         "id": 814,
+        "number": "#0814",
         "name": "Raboot",
         "generation": {
             "id": 8,
@@ -89303,6 +90117,7 @@
     },
     {
         "id": 815,
+        "number": "#0815",
         "name": "Cinderace",
         "generation": {
             "id": 8,
@@ -89353,6 +90168,7 @@
     },
     {
         "id": 816,
+        "number": "#0816",
         "name": "Sobble",
         "generation": {
             "id": 8,
@@ -89403,6 +90219,7 @@
     },
     {
         "id": 817,
+        "number": "#0817",
         "name": "Drizzile",
         "generation": {
             "id": 8,
@@ -89453,6 +90270,7 @@
     },
     {
         "id": 818,
+        "number": "#0818",
         "name": "Inteleon",
         "generation": {
             "id": 8,
@@ -89503,6 +90321,7 @@
     },
     {
         "id": 819,
+        "number": "#0819",
         "name": "Skwovet",
         "generation": {
             "id": 8,
@@ -89549,6 +90368,7 @@
     },
     {
         "id": 820,
+        "number": "#0820",
         "name": "Greedent",
         "generation": {
             "id": 8,
@@ -89595,6 +90415,7 @@
     },
     {
         "id": 821,
+        "number": "#0821",
         "name": "Rookidee",
         "generation": {
             "id": 8,
@@ -89641,6 +90462,7 @@
     },
     {
         "id": 822,
+        "number": "#0822",
         "name": "Corvisquire",
         "generation": {
             "id": 8,
@@ -89687,6 +90509,7 @@
     },
     {
         "id": 823,
+        "number": "#0823",
         "name": "Corviknight",
         "generation": {
             "id": 8,
@@ -89733,6 +90556,7 @@
     },
     {
         "id": 824,
+        "number": "#0824",
         "name": "Blipbug",
         "generation": {
             "id": 8,
@@ -89779,6 +90603,7 @@
     },
     {
         "id": 825,
+        "number": "#0825",
         "name": "Dottler",
         "generation": {
             "id": 8,
@@ -89825,6 +90650,7 @@
     },
     {
         "id": 826,
+        "number": "#0826",
         "name": "Orbeetle",
         "generation": {
             "id": 8,
@@ -89871,6 +90697,7 @@
     },
     {
         "id": 827,
+        "number": "#0827",
         "name": "Nickit",
         "generation": {
             "id": 8,
@@ -89917,6 +90744,7 @@
     },
     {
         "id": 828,
+        "number": "#0828",
         "name": "Thievul",
         "generation": {
             "id": 8,
@@ -89963,6 +90791,7 @@
     },
     {
         "id": 829,
+        "number": "#0829",
         "name": "Gossifleur",
         "generation": {
             "id": 8,
@@ -90009,6 +90838,7 @@
     },
     {
         "id": 830,
+        "number": "#0830",
         "name": "Eldegoss",
         "generation": {
             "id": 8,
@@ -90055,6 +90885,7 @@
     },
     {
         "id": 831,
+        "number": "#0831",
         "name": "Wooloo",
         "generation": {
             "id": 8,
@@ -90101,6 +90932,7 @@
     },
     {
         "id": 832,
+        "number": "#0832",
         "name": "Dubwool",
         "generation": {
             "id": 8,
@@ -90147,6 +90979,7 @@
     },
     {
         "id": 833,
+        "number": "#0833",
         "name": "Chewtle",
         "generation": {
             "id": 8,
@@ -90197,6 +91030,7 @@
     },
     {
         "id": 834,
+        "number": "#0834",
         "name": "Drednaw",
         "generation": {
             "id": 8,
@@ -90247,6 +91081,7 @@
     },
     {
         "id": 835,
+        "number": "#0835",
         "name": "Yamper",
         "generation": {
             "id": 8,
@@ -90293,6 +91128,7 @@
     },
     {
         "id": 836,
+        "number": "#0836",
         "name": "Boltund",
         "generation": {
             "id": 8,
@@ -90339,6 +91175,7 @@
     },
     {
         "id": 837,
+        "number": "#0837",
         "name": "Rolycoly",
         "generation": {
             "id": 8,
@@ -90385,6 +91222,7 @@
     },
     {
         "id": 838,
+        "number": "#0838",
         "name": "Carkol",
         "generation": {
             "id": 8,
@@ -90431,6 +91269,7 @@
     },
     {
         "id": 839,
+        "number": "#0839",
         "name": "Coalossal",
         "generation": {
             "id": 8,
@@ -90477,6 +91316,7 @@
     },
     {
         "id": 840,
+        "number": "#0840",
         "name": "Applin",
         "generation": {
             "id": 8,
@@ -90527,6 +91367,7 @@
     },
     {
         "id": 841,
+        "number": "#0841",
         "name": "Flapple",
         "generation": {
             "id": 8,
@@ -90577,6 +91418,7 @@
     },
     {
         "id": 842,
+        "number": "#0842",
         "name": "Appletun",
         "generation": {
             "id": 8,
@@ -90627,6 +91469,7 @@
     },
     {
         "id": 843,
+        "number": "#0843",
         "name": "Silicobra",
         "generation": {
             "id": 8,
@@ -90677,6 +91520,7 @@
     },
     {
         "id": 844,
+        "number": "#0844",
         "name": "Sandaconda",
         "generation": {
             "id": 8,
@@ -90727,6 +91571,7 @@
     },
     {
         "id": 845,
+        "number": "#0845",
         "name": "Cramorant",
         "generation": {
             "id": 8,
@@ -90777,6 +91622,7 @@
     },
     {
         "id": 846,
+        "number": "#0846",
         "name": "Arrokuda",
         "generation": {
             "id": 8,
@@ -90823,6 +91669,7 @@
     },
     {
         "id": 847,
+        "number": "#0847",
         "name": "Barraskewda",
         "generation": {
             "id": 8,
@@ -90869,6 +91716,7 @@
     },
     {
         "id": 848,
+        "number": "#0848",
         "name": "Toxel",
         "generation": {
             "id": 8,
@@ -90915,6 +91763,7 @@
     },
     {
         "id": 849,
+        "number": "#0849",
         "name": "Toxtricity",
         "generation": {
             "id": 8,
@@ -90961,6 +91810,7 @@
     },
     {
         "id": 850,
+        "number": "#0850",
         "name": "Sizzlipede",
         "generation": {
             "id": 8,
@@ -91007,6 +91857,7 @@
     },
     {
         "id": 851,
+        "number": "#0851",
         "name": "Centiskorch",
         "generation": {
             "id": 8,
@@ -91053,6 +91904,7 @@
     },
     {
         "id": 852,
+        "number": "#0852",
         "name": "Clobbopus",
         "generation": {
             "id": 8,
@@ -91103,6 +91955,7 @@
     },
     {
         "id": 853,
+        "number": "#0853",
         "name": "Grapploct",
         "generation": {
             "id": 8,
@@ -91153,6 +92006,7 @@
     },
     {
         "id": 854,
+        "number": "#0854",
         "name": "Sinistea",
         "generation": {
             "id": 8,
@@ -91203,6 +92057,7 @@
     },
     {
         "id": 855,
+        "number": "#0855",
         "name": "Polteageist",
         "generation": {
             "id": 8,
@@ -91253,6 +92108,7 @@
     },
     {
         "id": 856,
+        "number": "#0856",
         "name": "Hatenna",
         "generation": {
             "id": 8,
@@ -91299,6 +92155,7 @@
     },
     {
         "id": 857,
+        "number": "#0857",
         "name": "Hattrem",
         "generation": {
             "id": 8,
@@ -91345,6 +92202,7 @@
     },
     {
         "id": 858,
+        "number": "#0858",
         "name": "Hatterene",
         "generation": {
             "id": 8,
@@ -91391,6 +92249,7 @@
     },
     {
         "id": 859,
+        "number": "#0859",
         "name": "Impidimp",
         "generation": {
             "id": 8,
@@ -91441,6 +92300,7 @@
     },
     {
         "id": 860,
+        "number": "#0860",
         "name": "Morgrem",
         "generation": {
             "id": 8,
@@ -91491,6 +92351,7 @@
     },
     {
         "id": 861,
+        "number": "#0861",
         "name": "Grimmsnarl",
         "generation": {
             "id": 8,
@@ -91541,6 +92402,7 @@
     },
     {
         "id": 862,
+        "number": "#0862",
         "name": "Obstagoon",
         "generation": {
             "id": 8,
@@ -91587,6 +92449,7 @@
     },
     {
         "id": 863,
+        "number": "#0863",
         "name": "Perrserker",
         "generation": {
             "id": 8,
@@ -91633,6 +92496,7 @@
     },
     {
         "id": 864,
+        "number": "#0864",
         "name": "Cursola",
         "generation": {
             "id": 8,
@@ -91683,6 +92547,7 @@
     },
     {
         "id": 865,
+        "number": "#0865",
         "name": "Sirfetchd",
         "generation": {
             "id": 8,
@@ -91733,6 +92598,7 @@
     },
     {
         "id": 866,
+        "number": "#0866",
         "name": "Mr Rime",
         "generation": {
             "id": 8,
@@ -91779,6 +92645,7 @@
     },
     {
         "id": 867,
+        "number": "#0867",
         "name": "Runerigus",
         "generation": {
             "id": 8,
@@ -91829,6 +92696,7 @@
     },
     {
         "id": 868,
+        "number": "#0868",
         "name": "Milcery",
         "generation": {
             "id": 8,
@@ -91879,6 +92747,7 @@
     },
     {
         "id": 869,
+        "number": "#0869",
         "name": "Alcremie",
         "generation": {
             "id": 8,
@@ -91929,6 +92798,7 @@
     },
     {
         "id": 870,
+        "number": "#0870",
         "name": "Falinks",
         "generation": {
             "id": 8,
@@ -91979,6 +92849,7 @@
     },
     {
         "id": 871,
+        "number": "#0871",
         "name": "Pincurchin",
         "generation": {
             "id": 8,
@@ -92029,6 +92900,7 @@
     },
     {
         "id": 872,
+        "number": "#0872",
         "name": "Snom",
         "generation": {
             "id": 8,
@@ -92075,6 +92947,7 @@
     },
     {
         "id": 873,
+        "number": "#0873",
         "name": "Frosmoth",
         "generation": {
             "id": 8,
@@ -92121,6 +92994,7 @@
     },
     {
         "id": 874,
+        "number": "#0874",
         "name": "Stonjourner",
         "generation": {
             "id": 8,
@@ -92167,6 +93041,7 @@
     },
     {
         "id": 875,
+        "number": "#0875",
         "name": "Eiscue",
         "generation": {
             "id": 8,
@@ -92217,6 +93092,7 @@
     },
     {
         "id": 876,
+        "number": "#0876",
         "name": "Indeedee",
         "generation": {
             "id": 8,
@@ -92263,6 +93139,7 @@
     },
     {
         "id": 877,
+        "number": "#0877",
         "name": "Morpeko",
         "generation": {
             "id": 8,
@@ -92313,6 +93190,7 @@
     },
     {
         "id": 878,
+        "number": "#0878",
         "name": "Cufant",
         "generation": {
             "id": 8,
@@ -92363,6 +93241,7 @@
     },
     {
         "id": 879,
+        "number": "#0879",
         "name": "Copperajah",
         "generation": {
             "id": 8,
@@ -92413,6 +93292,7 @@
     },
     {
         "id": 880,
+        "number": "#0880",
         "name": "Dracozolt",
         "generation": {
             "id": 8,
@@ -92459,6 +93339,7 @@
     },
     {
         "id": 881,
+        "number": "#0881",
         "name": "Arctozolt",
         "generation": {
             "id": 8,
@@ -92505,6 +93386,7 @@
     },
     {
         "id": 882,
+        "number": "#0882",
         "name": "Dracovish",
         "generation": {
             "id": 8,
@@ -92551,6 +93433,7 @@
     },
     {
         "id": 883,
+        "number": "#0883",
         "name": "Arctovish",
         "generation": {
             "id": 8,
@@ -92597,6 +93480,7 @@
     },
     {
         "id": 884,
+        "number": "#0884",
         "name": "Duraludon",
         "generation": {
             "id": 8,
@@ -92647,6 +93531,7 @@
     },
     {
         "id": 885,
+        "number": "#0885",
         "name": "Dreepy",
         "generation": {
             "id": 8,
@@ -92697,6 +93582,7 @@
     },
     {
         "id": 886,
+        "number": "#0886",
         "name": "Drakloak",
         "generation": {
             "id": 8,
@@ -92747,6 +93633,7 @@
     },
     {
         "id": 887,
+        "number": "#0887",
         "name": "Dragapult",
         "generation": {
             "id": 8,
@@ -92797,6 +93684,7 @@
     },
     {
         "id": 888,
+        "number": "#0888",
         "name": "Zacian",
         "generation": {
             "id": 8,
@@ -92843,6 +93731,7 @@
     },
     {
         "id": 889,
+        "number": "#0889",
         "name": "Zamazenta",
         "generation": {
             "id": 8,
@@ -92889,6 +93778,7 @@
     },
     {
         "id": 890,
+        "number": "#0890",
         "name": "Eternatus",
         "generation": {
             "id": 8,
@@ -92935,6 +93825,7 @@
     },
     {
         "id": 891,
+        "number": "#0891",
         "name": "Kubfu",
         "generation": {
             "id": 8,
@@ -92981,6 +93872,7 @@
     },
     {
         "id": 892,
+        "number": "#0892",
         "name": "Urshifu",
         "generation": {
             "id": 8,
@@ -93027,6 +93919,7 @@
     },
     {
         "id": 893,
+        "number": "#0893",
         "name": "Zarude",
         "generation": {
             "id": 8,
@@ -93073,6 +93966,7 @@
     },
     {
         "id": 894,
+        "number": "#0894",
         "name": "Regieleki",
         "generation": {
             "id": 8,
@@ -93119,6 +94013,7 @@
     },
     {
         "id": 895,
+        "number": "#0895",
         "name": "Regidrago",
         "generation": {
             "id": 8,
@@ -93165,6 +94060,7 @@
     },
     {
         "id": 896,
+        "number": "#0896",
         "name": "Glastrier",
         "generation": {
             "id": 8,
@@ -93211,6 +94107,7 @@
     },
     {
         "id": 897,
+        "number": "#0897",
         "name": "Spectrier",
         "generation": {
             "id": 8,
@@ -93257,6 +94154,7 @@
     },
     {
         "id": 898,
+        "number": "#0898",
         "name": "Calyrex",
         "generation": {
             "id": 8,
@@ -93303,6 +94201,7 @@
     },
     {
         "id": 899,
+        "number": "#0899",
         "name": "Wyrdeer",
         "generation": {
             "id": 8,
@@ -93345,6 +94244,7 @@
     },
     {
         "id": 900,
+        "number": "#0900",
         "name": "Kleavor",
         "generation": {
             "id": 8,
@@ -93387,6 +94287,7 @@
     },
     {
         "id": 901,
+        "number": "#0901",
         "name": "Ursaluna",
         "generation": {
             "id": 8,
@@ -93429,6 +94330,7 @@
     },
     {
         "id": 902,
+        "number": "#0902",
         "name": "Basculegion",
         "generation": {
             "id": 8,
@@ -93471,6 +94373,7 @@
     },
     {
         "id": 903,
+        "number": "#0903",
         "name": "Sneasler",
         "generation": {
             "id": 8,
@@ -93513,6 +94416,7 @@
     },
     {
         "id": 904,
+        "number": "#0904",
         "name": "Overqwil",
         "generation": {
             "id": 8,
@@ -93555,6 +94459,7 @@
     },
     {
         "id": 905,
+        "number": "#0905",
         "name": "Enamorus",
         "generation": {
             "id": 8,
@@ -93597,6 +94502,7 @@
     },
     {
         "id": 906,
+        "number": "#0906",
         "name": "Sprigatito",
         "generation": {
             "id": 9,
@@ -93647,6 +94553,7 @@
     },
     {
         "id": 907,
+        "number": "#0907",
         "name": "Floragato",
         "generation": {
             "id": 9,
@@ -93697,6 +94604,7 @@
     },
     {
         "id": 908,
+        "number": "#0908",
         "name": "Meowscarada",
         "generation": {
             "id": 9,
@@ -93747,6 +94655,7 @@
     },
     {
         "id": 909,
+        "number": "#0909",
         "name": "Fuecoco",
         "generation": {
             "id": 9,
@@ -93793,6 +94702,7 @@
     },
     {
         "id": 910,
+        "number": "#0910",
         "name": "Crocalor",
         "generation": {
             "id": 9,
@@ -93839,6 +94749,7 @@
     },
     {
         "id": 911,
+        "number": "#0911",
         "name": "Skeledirge",
         "generation": {
             "id": 9,
@@ -93885,6 +94796,7 @@
     },
     {
         "id": 912,
+        "number": "#0912",
         "name": "Quaxly",
         "generation": {
             "id": 9,
@@ -93935,6 +94847,7 @@
     },
     {
         "id": 913,
+        "number": "#0913",
         "name": "Quaxwell",
         "generation": {
             "id": 9,
@@ -93985,6 +94898,7 @@
     },
     {
         "id": 914,
+        "number": "#0914",
         "name": "Quaquaval",
         "generation": {
             "id": 9,
@@ -94035,6 +94949,7 @@
     },
     {
         "id": 915,
+        "number": "#0915",
         "name": "Lechonk",
         "generation": {
             "id": 9,
@@ -94081,6 +94996,7 @@
     },
     {
         "id": 916,
+        "number": "#0916",
         "name": "Oinkologne",
         "generation": {
             "id": 9,
@@ -94127,6 +95043,7 @@
     },
     {
         "id": 917,
+        "number": "#0917",
         "name": "Tarountula",
         "generation": {
             "id": 9,
@@ -94173,6 +95090,7 @@
     },
     {
         "id": 918,
+        "number": "#0918",
         "name": "Spidops",
         "generation": {
             "id": 9,
@@ -94219,6 +95137,7 @@
     },
     {
         "id": 919,
+        "number": "#0919",
         "name": "Nymble",
         "generation": {
             "id": 9,
@@ -94265,6 +95184,7 @@
     },
     {
         "id": 920,
+        "number": "#0920",
         "name": "Lokix",
         "generation": {
             "id": 9,
@@ -94311,6 +95231,7 @@
     },
     {
         "id": 921,
+        "number": "#0921",
         "name": "Pawmi",
         "generation": {
             "id": 9,
@@ -94357,6 +95278,7 @@
     },
     {
         "id": 922,
+        "number": "#0922",
         "name": "Pawmo",
         "generation": {
             "id": 9,
@@ -94403,6 +95325,7 @@
     },
     {
         "id": 923,
+        "number": "#0923",
         "name": "Pawmot",
         "generation": {
             "id": 9,
@@ -94449,6 +95372,7 @@
     },
     {
         "id": 924,
+        "number": "#0924",
         "name": "Tandemaus",
         "generation": {
             "id": 9,
@@ -94499,6 +95423,7 @@
     },
     {
         "id": 925,
+        "number": "#0925",
         "name": "Maushold",
         "generation": {
             "id": 9,
@@ -94549,6 +95474,7 @@
     },
     {
         "id": 926,
+        "number": "#0926",
         "name": "Fidough",
         "generation": {
             "id": 9,
@@ -94599,6 +95525,7 @@
     },
     {
         "id": 927,
+        "number": "#0927",
         "name": "Dachsbun",
         "generation": {
             "id": 9,
@@ -94649,6 +95576,7 @@
     },
     {
         "id": 928,
+        "number": "#0928",
         "name": "Smoliv",
         "generation": {
             "id": 9,
@@ -94695,6 +95623,7 @@
     },
     {
         "id": 929,
+        "number": "#0929",
         "name": "Dolliv",
         "generation": {
             "id": 9,
@@ -94741,6 +95670,7 @@
     },
     {
         "id": 930,
+        "number": "#0930",
         "name": "Arboliva",
         "generation": {
             "id": 9,
@@ -94787,6 +95717,7 @@
     },
     {
         "id": 931,
+        "number": "#0931",
         "name": "Squawkabilly",
         "generation": {
             "id": 9,
@@ -94833,6 +95764,7 @@
     },
     {
         "id": 932,
+        "number": "#0932",
         "name": "Nacli",
         "generation": {
             "id": 9,
@@ -94879,6 +95811,7 @@
     },
     {
         "id": 933,
+        "number": "#0933",
         "name": "Naclstack",
         "generation": {
             "id": 9,
@@ -94925,6 +95858,7 @@
     },
     {
         "id": 934,
+        "number": "#0934",
         "name": "Garganacl",
         "generation": {
             "id": 9,
@@ -94971,6 +95905,7 @@
     },
     {
         "id": 935,
+        "number": "#0935",
         "name": "Charcadet",
         "generation": {
             "id": 9,
@@ -95017,6 +95952,7 @@
     },
     {
         "id": 936,
+        "number": "#0936",
         "name": "Armarouge",
         "generation": {
             "id": 9,
@@ -95063,6 +95999,7 @@
     },
     {
         "id": 937,
+        "number": "#0937",
         "name": "Ceruledge",
         "generation": {
             "id": 9,
@@ -95109,6 +96046,7 @@
     },
     {
         "id": 938,
+        "number": "#0938",
         "name": "Tadbulb",
         "generation": {
             "id": 9,
@@ -95155,6 +96093,7 @@
     },
     {
         "id": 939,
+        "number": "#0939",
         "name": "Bellibolt",
         "generation": {
             "id": 9,
@@ -95201,6 +96140,7 @@
     },
     {
         "id": 940,
+        "number": "#0940",
         "name": "Wattrel",
         "generation": {
             "id": 9,
@@ -95251,6 +96191,7 @@
     },
     {
         "id": 941,
+        "number": "#0941",
         "name": "Kilowattrel",
         "generation": {
             "id": 9,
@@ -95301,6 +96242,7 @@
     },
     {
         "id": 942,
+        "number": "#0942",
         "name": "Maschiff",
         "generation": {
             "id": 9,
@@ -95347,6 +96289,7 @@
     },
     {
         "id": 943,
+        "number": "#0943",
         "name": "Mabosstiff",
         "generation": {
             "id": 9,
@@ -95393,6 +96336,7 @@
     },
     {
         "id": 944,
+        "number": "#0944",
         "name": "Shroodle",
         "generation": {
             "id": 9,
@@ -95439,6 +96383,7 @@
     },
     {
         "id": 945,
+        "number": "#0945",
         "name": "Grafaiai",
         "generation": {
             "id": 9,
@@ -95485,6 +96430,7 @@
     },
     {
         "id": 946,
+        "number": "#0946",
         "name": "Bramblin",
         "generation": {
             "id": 9,
@@ -95531,6 +96477,7 @@
     },
     {
         "id": 947,
+        "number": "#0947",
         "name": "Brambleghast",
         "generation": {
             "id": 9,
@@ -95577,6 +96524,7 @@
     },
     {
         "id": 948,
+        "number": "#0948",
         "name": "Toedscool",
         "generation": {
             "id": 9,
@@ -95623,6 +96571,7 @@
     },
     {
         "id": 949,
+        "number": "#0949",
         "name": "Toedscruel",
         "generation": {
             "id": 9,
@@ -95669,6 +96618,7 @@
     },
     {
         "id": 950,
+        "number": "#0950",
         "name": "Klawf",
         "generation": {
             "id": 9,
@@ -95715,6 +96665,7 @@
     },
     {
         "id": 951,
+        "number": "#0951",
         "name": "Capsakid",
         "generation": {
             "id": 9,
@@ -95761,6 +96712,7 @@
     },
     {
         "id": 952,
+        "number": "#0952",
         "name": "Scovillain",
         "generation": {
             "id": 9,
@@ -95807,6 +96759,7 @@
     },
     {
         "id": 953,
+        "number": "#0953",
         "name": "Rellor",
         "generation": {
             "id": 9,
@@ -95853,6 +96806,7 @@
     },
     {
         "id": 954,
+        "number": "#0954",
         "name": "Rabsca",
         "generation": {
             "id": 9,
@@ -95899,6 +96853,7 @@
     },
     {
         "id": 955,
+        "number": "#0955",
         "name": "Flittle",
         "generation": {
             "id": 9,
@@ -95945,6 +96900,7 @@
     },
     {
         "id": 956,
+        "number": "#0956",
         "name": "Espathra",
         "generation": {
             "id": 9,
@@ -95991,6 +96947,7 @@
     },
     {
         "id": 957,
+        "number": "#0957",
         "name": "Tinkatink",
         "generation": {
             "id": 9,
@@ -96037,6 +96994,7 @@
     },
     {
         "id": 958,
+        "number": "#0958",
         "name": "Tinkatuff",
         "generation": {
             "id": 9,
@@ -96083,6 +97041,7 @@
     },
     {
         "id": 959,
+        "number": "#0959",
         "name": "Tinkaton",
         "generation": {
             "id": 9,
@@ -96129,6 +97088,7 @@
     },
     {
         "id": 960,
+        "number": "#0960",
         "name": "Wiglett",
         "generation": {
             "id": 9,
@@ -96175,6 +97135,7 @@
     },
     {
         "id": 961,
+        "number": "#0961",
         "name": "Wugtrio",
         "generation": {
             "id": 9,
@@ -96221,6 +97182,7 @@
     },
     {
         "id": 962,
+        "number": "#0962",
         "name": "Bombirdier",
         "generation": {
             "id": 9,
@@ -96267,6 +97229,7 @@
     },
     {
         "id": 963,
+        "number": "#0963",
         "name": "Finizen",
         "generation": {
             "id": 9,
@@ -96317,6 +97280,7 @@
     },
     {
         "id": 964,
+        "number": "#0964",
         "name": "Palafin",
         "generation": {
             "id": 9,
@@ -96367,6 +97331,7 @@
     },
     {
         "id": 965,
+        "number": "#0965",
         "name": "Varoom",
         "generation": {
             "id": 9,
@@ -96413,6 +97378,7 @@
     },
     {
         "id": 966,
+        "number": "#0966",
         "name": "Revavroom",
         "generation": {
             "id": 9,
@@ -96459,6 +97425,7 @@
     },
     {
         "id": 967,
+        "number": "#0967",
         "name": "Cyclizar",
         "generation": {
             "id": 9,
@@ -96505,6 +97472,7 @@
     },
     {
         "id": 968,
+        "number": "#0968",
         "name": "Orthworm",
         "generation": {
             "id": 9,
@@ -96551,6 +97519,7 @@
     },
     {
         "id": 969,
+        "number": "#0969",
         "name": "Glimmet",
         "generation": {
             "id": 9,
@@ -96597,6 +97566,7 @@
     },
     {
         "id": 970,
+        "number": "#0970",
         "name": "Glimmora",
         "generation": {
             "id": 9,
@@ -96643,6 +97613,7 @@
     },
     {
         "id": 971,
+        "number": "#0971",
         "name": "Greavard",
         "generation": {
             "id": 9,
@@ -96689,6 +97660,7 @@
     },
     {
         "id": 972,
+        "number": "#0972",
         "name": "Houndstone",
         "generation": {
             "id": 9,
@@ -96735,6 +97707,7 @@
     },
     {
         "id": 973,
+        "number": "#0973",
         "name": "Flamigo",
         "generation": {
             "id": 9,
@@ -96781,6 +97754,7 @@
     },
     {
         "id": 974,
+        "number": "#0974",
         "name": "Cetoddle",
         "generation": {
             "id": 9,
@@ -96827,6 +97801,7 @@
     },
     {
         "id": 975,
+        "number": "#0975",
         "name": "Cetitan",
         "generation": {
             "id": 9,
@@ -96873,6 +97848,7 @@
     },
     {
         "id": 976,
+        "number": "#0976",
         "name": "Veluza",
         "generation": {
             "id": 9,
@@ -96919,6 +97895,7 @@
     },
     {
         "id": 977,
+        "number": "#0977",
         "name": "Dondozo",
         "generation": {
             "id": 9,
@@ -96965,6 +97942,7 @@
     },
     {
         "id": 978,
+        "number": "#0978",
         "name": "Tatsugiri",
         "generation": {
             "id": 9,
@@ -97011,6 +97989,7 @@
     },
     {
         "id": 979,
+        "number": "#0979",
         "name": "Annihilape",
         "generation": {
             "id": 9,
@@ -97057,6 +98036,7 @@
     },
     {
         "id": 980,
+        "number": "#0980",
         "name": "Clodsire",
         "generation": {
             "id": 9,
@@ -97107,6 +98087,7 @@
     },
     {
         "id": 981,
+        "number": "#0981",
         "name": "Farigiraf",
         "generation": {
             "id": 9,
@@ -97153,6 +98134,7 @@
     },
     {
         "id": 982,
+        "number": "#0982",
         "name": "Dudunsparce",
         "generation": {
             "id": 9,
@@ -97199,6 +98181,7 @@
     },
     {
         "id": 983,
+        "number": "#0983",
         "name": "Kingambit",
         "generation": {
             "id": 9,
@@ -97245,6 +98228,7 @@
     },
     {
         "id": 984,
+        "number": "#0984",
         "name": "Great Tusk",
         "generation": {
             "id": 9,
@@ -97291,6 +98275,7 @@
     },
     {
         "id": 985,
+        "number": "#0985",
         "name": "Scream Tail",
         "generation": {
             "id": 9,
@@ -97337,6 +98322,7 @@
     },
     {
         "id": 986,
+        "number": "#0986",
         "name": "Brute Bonnet",
         "generation": {
             "id": 9,
@@ -97383,6 +98369,7 @@
     },
     {
         "id": 987,
+        "number": "#0987",
         "name": "Flutter Mane",
         "generation": {
             "id": 9,
@@ -97429,6 +98416,7 @@
     },
     {
         "id": 988,
+        "number": "#0988",
         "name": "Slither Wing",
         "generation": {
             "id": 9,
@@ -97475,6 +98463,7 @@
     },
     {
         "id": 989,
+        "number": "#0989",
         "name": "Sandy Shocks",
         "generation": {
             "id": 9,
@@ -97521,6 +98510,7 @@
     },
     {
         "id": 990,
+        "number": "#0990",
         "name": "Iron Treads",
         "generation": {
             "id": 9,
@@ -97567,6 +98557,7 @@
     },
     {
         "id": 991,
+        "number": "#0991",
         "name": "Iron Bundle",
         "generation": {
             "id": 9,
@@ -97613,6 +98604,7 @@
     },
     {
         "id": 992,
+        "number": "#0992",
         "name": "Iron Hands",
         "generation": {
             "id": 9,
@@ -97659,6 +98651,7 @@
     },
     {
         "id": 993,
+        "number": "#0993",
         "name": "Iron Jugulis",
         "generation": {
             "id": 9,
@@ -97705,6 +98698,7 @@
     },
     {
         "id": 994,
+        "number": "#0994",
         "name": "Iron Moth",
         "generation": {
             "id": 9,
@@ -97751,6 +98745,7 @@
     },
     {
         "id": 995,
+        "number": "#0995",
         "name": "Iron Thorns",
         "generation": {
             "id": 9,
@@ -97797,6 +98792,7 @@
     },
     {
         "id": 996,
+        "number": "#0996",
         "name": "Frigibax",
         "generation": {
             "id": 9,
@@ -97847,6 +98843,7 @@
     },
     {
         "id": 997,
+        "number": "#0997",
         "name": "Arctibax",
         "generation": {
             "id": 9,
@@ -97897,6 +98894,7 @@
     },
     {
         "id": 998,
+        "number": "#0998",
         "name": "Baxcalibur",
         "generation": {
             "id": 9,
@@ -97947,6 +98945,7 @@
     },
     {
         "id": 999,
+        "number": "#0999",
         "name": "Gimmighoul",
         "generation": {
             "id": 9,
@@ -97993,6 +98992,7 @@
     },
     {
         "id": 1000,
+        "number": "#1000",
         "name": "Gholdengo",
         "generation": {
             "id": 9,
@@ -98039,6 +99039,7 @@
     },
     {
         "id": 1001,
+        "number": "#1001",
         "name": "Wo Chien",
         "generation": {
             "id": 9,
@@ -98085,6 +99086,7 @@
     },
     {
         "id": 1002,
+        "number": "#1002",
         "name": "Chien Pao",
         "generation": {
             "id": 9,
@@ -98131,6 +99133,7 @@
     },
     {
         "id": 1003,
+        "number": "#1003",
         "name": "Ting Lu",
         "generation": {
             "id": 9,
@@ -98177,6 +99180,7 @@
     },
     {
         "id": 1004,
+        "number": "#1004",
         "name": "Chi Yu",
         "generation": {
             "id": 9,
@@ -98223,6 +99227,7 @@
     },
     {
         "id": 1005,
+        "number": "#1005",
         "name": "Roaring Moon",
         "generation": {
             "id": 9,
@@ -98269,6 +99274,7 @@
     },
     {
         "id": 1006,
+        "number": "#1006",
         "name": "Iron Valiant",
         "generation": {
             "id": 9,
@@ -98315,6 +99321,7 @@
     },
     {
         "id": 1007,
+        "number": "#1007",
         "name": "Koraidon",
         "generation": {
             "id": 9,
@@ -98361,6 +99368,7 @@
     },
     {
         "id": 1008,
+        "number": "#1008",
         "name": "Miraidon",
         "generation": {
             "id": 9,
@@ -98407,6 +99415,7 @@
     },
     {
         "id": 1009,
+        "number": "#1009",
         "name": "Walking Wake",
         "generation": {
             "id": 9,
@@ -98453,6 +99462,7 @@
     },
     {
         "id": 1010,
+        "number": "#1010",
         "name": "Iron Leaves",
         "generation": {
             "id": 9,
@@ -98499,6 +99509,7 @@
     },
     {
         "id": 1011,
+        "number": "#1011",
         "name": "Dipplin",
         "generation": {
             "id": 9,
@@ -98549,6 +99560,7 @@
     },
     {
         "id": 1012,
+        "number": "#1012",
         "name": "Poltchageist",
         "generation": {
             "id": 9,
@@ -98599,6 +99611,7 @@
     },
     {
         "id": 1013,
+        "number": "#1013",
         "name": "Sinistcha",
         "generation": {
             "id": 9,
@@ -98649,6 +99662,7 @@
     },
     {
         "id": 1014,
+        "number": "#1014",
         "name": "Okidogi",
         "generation": {
             "id": 9,
@@ -98695,6 +99709,7 @@
     },
     {
         "id": 1015,
+        "number": "#1015",
         "name": "Munkidori",
         "generation": {
             "id": 9,
@@ -98741,6 +99756,7 @@
     },
     {
         "id": 1016,
+        "number": "#1016",
         "name": "Fezandipiti",
         "generation": {
             "id": 9,
@@ -98787,6 +99803,7 @@
     },
     {
         "id": 1017,
+        "number": "#1017",
         "name": "Ogerpon",
         "generation": {
             "id": 9,
@@ -98833,6 +99850,7 @@
     },
     {
         "id": 1018,
+        "number": "#1018",
         "name": "Archaludon",
         "generation": {
             "id": 9,
@@ -98883,6 +99901,7 @@
     },
     {
         "id": 1019,
+        "number": "#1019",
         "name": "Hydrapple",
         "generation": {
             "id": 9,
@@ -98933,6 +99952,7 @@
     },
     {
         "id": 1020,
+        "number": "#1020",
         "name": "Gouging Fire",
         "generation": {
             "id": 9,
@@ -98979,6 +99999,7 @@
     },
     {
         "id": 1021,
+        "number": "#1021",
         "name": "Raging Bolt",
         "generation": {
             "id": 9,
@@ -99025,6 +100046,7 @@
     },
     {
         "id": 1022,
+        "number": "#1022",
         "name": "Iron Boulder",
         "generation": {
             "id": 9,
@@ -99071,6 +100093,7 @@
     },
     {
         "id": 1023,
+        "number": "#1023",
         "name": "Iron Crown",
         "generation": {
             "id": 9,
@@ -99117,6 +100140,7 @@
     },
     {
         "id": 1024,
+        "number": "#1024",
         "name": "Terapagos",
         "generation": {
             "id": 9,
@@ -99163,6 +100187,7 @@
     },
     {
         "id": 1025,
+        "number": "#1025",
         "name": "Pecharunt",
         "generation": {
             "id": 9,

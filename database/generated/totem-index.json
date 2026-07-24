@@ -1,0 +1,112 @@
+[
+    {
+        "pokemonId": 10149,
+        "speciesId": 105,
+        "number": "#0105",
+        "order": 166,
+        "name": "Marowak Totem",
+        "identifier": "totem",
+        "displayName": "Totem",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10121,
+        "speciesId": 735,
+        "number": "#0735",
+        "order": 882,
+        "name": "Gumshoos Totem",
+        "identifier": "totem",
+        "displayName": "Totem",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10122,
+        "speciesId": 738,
+        "number": "#0738",
+        "order": 886,
+        "name": "Vikavolt Totem",
+        "identifier": "totem",
+        "displayName": "Totem",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10150,
+        "speciesId": 743,
+        "number": "#0743",
+        "order": 895,
+        "name": "Ribombee Totem",
+        "identifier": "totem",
+        "displayName": "Totem",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10153,
+        "speciesId": 752,
+        "number": "#0752",
+        "order": 909,
+        "name": "Araquanid Totem",
+        "identifier": "totem",
+        "displayName": "Totem",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10128,
+        "speciesId": 754,
+        "number": "#0754",
+        "order": 912,
+        "name": "Lurantis Totem",
+        "identifier": "totem",
+        "displayName": "Totem",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10129,
+        "speciesId": 758,
+        "number": "#0758",
+        "order": 917,
+        "name": "Salazzle Totem",
+        "identifier": "totem",
+        "displayName": "Totem",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10154,
+        "speciesId": 777,
+        "number": "#0777",
+        "order": 950,
+        "name": "Togedemaru Totem",
+        "identifier": "totem",
+        "displayName": "Totem",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10144,
+        "speciesId": 778,
+        "number": "#0778",
+        "order": 953,
+        "name": "Mimikyu Totem Disguised",
+        "identifier": "totem-disguised",
+        "displayName": "Totem Disguised",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10145,
+        "speciesId": 778,
+        "number": "#0778",
+        "order": 954,
+        "name": "Mimikyu Totem Busted",
+        "identifier": "totem-busted",
+        "displayName": "Totem Busted",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10146,
+        "speciesId": 784,
+        "number": "#0784",
+        "order": 961,
+        "name": "Kommo O Totem",
+        "identifier": "totem",
+        "displayName": "Totem",
+        "isDefault": false
+    }
+]

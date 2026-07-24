@@ -1,0 +1,112 @@
+[
+    {
+        "pokemonId": 592,
+        "speciesId": 592,
+        "number": "#0592",
+        "order": 714,
+        "name": "Frillish Male",
+        "identifier": "male",
+        "displayName": "Male",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 593,
+        "speciesId": 593,
+        "number": "#0593",
+        "order": 715,
+        "name": "Jellicent Male",
+        "identifier": "male",
+        "displayName": "Male",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 668,
+        "speciesId": 668,
+        "number": "#0668",
+        "order": 800,
+        "name": "Pyroar Male",
+        "identifier": "male",
+        "displayName": "Male",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 678,
+        "speciesId": 678,
+        "number": "#0678",
+        "order": 811,
+        "name": "Meowstic Male",
+        "identifier": "male",
+        "displayName": "Male",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10025,
+        "speciesId": 678,
+        "number": "#0678",
+        "order": 812,
+        "name": "Meowstic Female",
+        "identifier": "female",
+        "displayName": "Female",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 876,
+        "speciesId": 876,
+        "number": "#0876",
+        "order": 1061,
+        "name": "Indeedee Male",
+        "identifier": "male",
+        "displayName": "Male",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10186,
+        "speciesId": 876,
+        "number": "#0876",
+        "order": 1062,
+        "name": "Indeedee Female",
+        "identifier": "female",
+        "displayName": "Female",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10248,
+        "speciesId": 902,
+        "number": "#0902",
+        "order": -1,
+        "name": "Basculegion Female",
+        "identifier": "female",
+        "displayName": "Female",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 902,
+        "speciesId": 902,
+        "number": "#0902",
+        "order": -1,
+        "name": "Basculegion Male",
+        "identifier": "male",
+        "displayName": "Male",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 10254,
+        "speciesId": 916,
+        "number": "#0916",
+        "order": -1,
+        "name": "Oinkologne Female",
+        "identifier": "female",
+        "displayName": "Female",
+        "isDefault": false
+    },
+    {
+        "pokemonId": 916,
+        "speciesId": 916,
+        "number": "#0916",
+        "order": 916,
+        "name": "Oinkologne Male",
+        "identifier": "male",
+        "displayName": "Male",
+        "isDefault": false
+    }
+]

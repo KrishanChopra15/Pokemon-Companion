@@ -5,9 +5,9 @@ This document describes the database architecture used by Pokémon Companion.
 The project uses a hybrid database design that separates official Pokémon data from user-generated content.
 
 - **Generated JSON Database** stores official Pokémon data generated from external sources.
-- **MongoDB** stores user accounts, progress, collections, teams, and personalized data.
+- **MongoDB** stores trainer accounts, progress, collections, teams, settings, and other personalized data.
 
-This architecture allows official game data to be regenerated whenever new Pokémon games are released while keeping user data completely independent.
+This architecture allows official Pokémon data to be regenerated whenever new games are released while keeping user data completely independent.
 
 ---
 
@@ -29,12 +29,29 @@ The data pipeline downloads information from PokéAPI and the Veekun Pokédex Da
 - Damage Classes
 - Move Targets
 - Version Groups
+- Forms
+- Evolutions
+- Learnsets
+- Items
+- Games
+- Locations
+- Sprites
 
 ### Generated Datasets
 
 - Pokémon Index
-- Category Indexes
+- Search Index
+- Type Index
+- Mega Index
+- Gigantamax Index
+- Regional Index
+- Primal Index
+- Totem Index
+- Gender Index
+- Alternate Index
+- Forme Index
 - Species Forms
+- Evolution Graph *(Planned)*
 
 ### Historical Datasets
 
@@ -45,21 +62,18 @@ The data pipeline downloads information from PokéAPI and the Veekun Pokédex Da
 ### Legacy Datasets
 
 - Legacy Pokémon Types
-  - ???
-  - Shadow
+    - ???
+    - Shadow
 
-### Planned Datasets
+### Metadata
 
-- Evolutions
-- Learnsets
-- Items
-- Games
-- Locations
-- Encounters
-- Trainers
-- Maps
+- Ability Metadata
+- Game Metadata
+- Item Metadata
+- Move Metadata
+- Type Metadata
 
-**Status:** ✅ Implemented
+**Status:** 🚧 In Development
 
 ---
 
@@ -89,16 +103,70 @@ Generated Database
 Validation Layer
         │
         ▼
-Application
+Frontend • Backend • AI
 ```
 
-The separation between downloading and dataset generation allows the project to regenerate data efficiently whenever new Pokémon games are released.
+Each stage has a single responsibility.
+
+- **Download** retrieves official data.
+- **Generate** transforms raw data into application-optimized datasets.
+- **Validate** ensures every dataset is internally consistent.
+- **Application** consumes only validated datasets.
+
+---
+
+# Raw Database
+
+The raw database mirrors official Pokémon data as closely as practical.
+
+Raw datasets prioritize completeness over optimization.
+
+Examples include:
+
+- pokemon.json
+- species.json
+- moves.json
+- abilities.json
+- evolutions.json
+- forms.json
+- items.json
+- locations.json
+- games.json
+- learnsets.json
+- sprites.json
+
+These datasets serve as the foundation for every generated dataset.
+
+---
+
+# Generated Database
+
+Generated datasets are optimized specifically for Pokémon Companion.
+
+Unlike the raw datasets, generated datasets are designed for:
+
+- Fast lookups
+- Frontend rendering
+- Search
+- AI features
+- Team analysis
+- Adventure tracking
+
+Generated datasets should avoid expensive runtime processing whenever possible.
+
+Examples:
+
+- Pokémon Index
+- Search Index
+- Category Indexes
+- Species Forms
+- Evolution Graph *(planned)*
 
 ---
 
 # MongoDB Collections
 
-MongoDB stores trainer-specific data that should never be regenerated from official Pokémon sources.
+MongoDB stores trainer-specific information that should never be regenerated from official Pokémon data.
 
 ---
 
@@ -108,12 +176,10 @@ Stores trainer accounts.
 
 Includes:
 
-- Account information
 - Authentication
-- Password hash
-- Settings
+- Profile
 - Preferences
-- Saved progress
+- Settings
 
 **Status:** Planned
 
@@ -127,8 +193,8 @@ Includes:
 
 - Team members
 - Nicknames
-- Movesets
 - Notes
+- Saved teams
 
 **Status:** Planned
 
@@ -136,14 +202,15 @@ Includes:
 
 ## Collections
 
-Stores trainer collection progress.
+Stores collection progress.
 
 Includes:
 
 - Living Dex
+- National Dex
+- Regional Dex
 - Shiny Collection
 - Form Collection
-- Regional Pokédex completion
 - Collection statistics
 
 **Status:** Planned
@@ -157,12 +224,13 @@ Stores game progress.
 Includes:
 
 - Current game
-- Story progression
-- Gym badges
+- Story progress
+- Badges
 - Elite Four
 - Champion
-- Side quests
-- Completion statistics
+- Play time
+- Notes
+- Challenge type
 
 **Status:** Planned
 
@@ -176,8 +244,8 @@ Includes:
 
 - Achievement progress
 - Completion dates
-- Rewards
 - Statistics
+- Rewards
 
 **Status:** Planned
 
@@ -189,10 +257,10 @@ Stores community features.
 
 Includes:
 
+- Friends
 - Friend requests
-- Friends list
 - Shared collections
-- Trainer comparisons
+- Progress comparison
 
 **Status:** Future
 
@@ -224,14 +292,17 @@ Pokémon
 ├── Types
 ├── Abilities
 ├── Forms
-├── Artwork
-└── Sprites
+├── Evolutions
+├── Learnsets
+├── Sprites
+└── Artwork
 
 Species
 │
 ├── Pokémon Index
 ├── Species Forms
-└── Evolution Data (Future)
+├── Evolution Graph
+└── Search Index
 
 Moves
 │
@@ -246,6 +317,12 @@ Abilities
 Types
 │
 └── Damage Relations
+
+Games
+│
+├── Locations
+├── Version Groups
+└── Regions
 ```
 
 ---
@@ -267,66 +344,92 @@ Users
 
 # Validation
 
-A comprehensive validation pipeline is currently being developed.
+A comprehensive validation pipeline ensures every generated dataset is internally consistent before it is used by the application.
 
-The validation layer will verify:
+Validation includes:
 
 - File existence
-- JSON validity
+- JSON validation
 - Duplicate IDs
 - Duplicate names
-- Cross-reference integrity
-- Generated dataset integrity
-- Historical dataset integrity
-- Legacy dataset integrity
+- Broken references
+- Missing references
+- Generated dataset validation
+- Historical dataset validation
+- Legacy dataset validation
+- Metadata validation
 
-The goal is to ensure every generated database remains internally consistent before it is used by the application.
+Future validation will also include:
+
+- Evolution graph integrity
+- Learnset validation
+- Item reference validation
+- Location reference validation
 
 ---
 
 # Design Principles
 
-The database architecture is designed around several core principles.
+The database architecture follows several core principles.
 
-### Separation of Concerns
+## Separation of Concerns
 
-Official Pokémon data and user-generated content are stored independently.
+Official Pokémon data and trainer data remain completely independent.
 
-### Deterministic Generation
+---
 
-Running the generation pipeline multiple times with the same source data always produces identical output.
+## Deterministic Generation
 
-### Modular Pipeline
+Running the generation pipeline with identical source data always produces identical output.
 
-Each download, generation, and validation step is independent and reusable.
+---
 
-### Scalability
+## Modular Pipeline
 
-Future Pokémon generations and mechanics can be added without redesigning the database.
+Every download, generation, and validation step is independent and reusable.
 
-### Maintainability
+---
 
-Shared utilities minimize duplicated code and simplify future development.
+## Scalability
+
+Future Pokémon generations, mechanics, forms, and games can be added without redesigning the database.
+
+---
+
+## Maintainability
+
+Shared utilities minimize duplicate logic and simplify future development.
+
+---
+
+## Performance
+
+Generated datasets are optimized to minimize runtime processing and improve frontend performance.
 
 ---
 
 # Future Expansion
 
-The current architecture is designed to support future datasets without requiring structural changes.
+The architecture is designed to support future datasets without structural changes.
 
 Planned additions include:
 
-- Evolutions
-- Learnsets
-- Items
-- Games
-- Locations
+- Evolution Graph
 - Encounter Tables
 - Trainers
 - Maps
 - Regions
+- Cities
+- Routes
+- NPC Database
+- Trainer Database
+- Hidden Items
+- Fishing Encounters
+- Surf Encounters
 - Battle Facilities
 - Ribbon Data
 - Contest Data
+- Mystery Gift Database
+- Event Distribution Database
 
-These datasets will integrate into the existing generation pipeline while preserving compatibility with current data.
+These datasets will integrate into the existing pipeline while preserving compatibility with the current architecture.

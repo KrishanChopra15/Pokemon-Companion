@@ -176,6 +176,32 @@ function formatNationalDexNumber(id) {
 
 }
 
+function formatMachineName(name) {
+
+    if (!name) {
+
+        return "";
+
+    }
+
+    const match =
+        name.match(
+            /^(tm|hm|tr)(\d+)$/i
+        );
+
+    if (match) {
+
+        return (
+            match[1].toUpperCase() +
+            match[2]
+        );
+
+    }
+
+    return toTitleCase(name);
+
+}
+
 /* ---------------------------------- */
 /* Text Cleaning                      */
 /* ---------------------------------- */
@@ -285,6 +311,7 @@ module.exports = {
     formatVersionGroup,
     formatApiName,
     formatNationalDexNumber,
+    formatMachineName,
 
     cleanFlavorText,
     cleanEffectText,

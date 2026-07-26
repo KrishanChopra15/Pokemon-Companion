@@ -10,7 +10,7 @@ const {
 
 const {
     getIdFromUrl,
-    findEnglishEntry 
+    findEnglishEntry
 } = require("../utils/helpers");
 
 const {
@@ -21,7 +21,8 @@ const {
 const {
     printSuccess,
     printOutputFile,
-    printError
+    printError,
+    printVerbose
 } = require("../utils/logger");
 
 const OUTPUT_FILE = path.join(
@@ -29,7 +30,11 @@ const OUTPUT_FILE = path.join(
     "../../database/move-targets.json"
 );
 
-async function downloadMoveTargets() {
+async function downloadMoveTargets(
+    {
+        verbose = true
+    } = {}
+) {
 
     try {
 
@@ -47,9 +52,13 @@ async function downloadMoveTargets() {
                     moveTargetResource.url
                 );
 
-            console.log(
-                `Downloading Move Target #${id}...`
-            );
+            if (verbose) {
+
+                printVerbose(
+                    `Downloading Move Target #${id}...`
+                );
+
+            }
 
             const moveTarget =
                 await getResource(
@@ -89,23 +98,58 @@ async function downloadMoveTargets() {
             moveTargets
         );
 
-        printSuccess(
-            `Downloaded ${moveTargets.length} move targets`
-        );
+        if (verbose) {
 
-        printOutputFile(
-            OUTPUT_FILE
-        );
+            printSuccess(
+                `Downloaded ${moveTargets.length} move targets`
+            );
+
+            printOutputFile(
+                OUTPUT_FILE
+            );
+
+        }
+
+        return {
+
+            success: true,
+
+            count:
+                moveTargets.length
+
+        };
 
     } catch (error) {
 
-        printError(
-            error,
-            "Error downloading move targets"
-        );
+        if (verbose) {
+
+            printError(
+                error,
+                "Error downloading move targets"
+            );
+
+        }
+
+        return {
+
+            success: false,
+
+            error
+
+        };
 
     }
 
 }
 
-downloadMoveTargets();
+module.exports = {
+
+    downloadMoveTargets
+
+};
+
+if (require.main === module) {
+
+    downloadMoveTargets();
+
+}

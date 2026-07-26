@@ -7,10 +7,7 @@
                 "name": "Gold Silver",
                 "order": 5
             },
-            "type": {
-                "id": 1,
-                "name": "Normal"
-            }
+            "type": null
         }
     ],
     "13": [
@@ -43,10 +40,7 @@
                 "name": "Gold Silver",
                 "order": 5
             },
-            "type": {
-                "id": 1,
-                "name": "Normal"
-            }
+            "type": null
         }
     ],
     "17": [
@@ -152,10 +146,7 @@
                 "name": "Gold Silver",
                 "order": 5
             },
-            "type": {
-                "id": 1,
-                "name": "Normal"
-            }
+            "type": null
         }
     ],
     "33": [
@@ -236,10 +227,7 @@
                 "order": 5
             },
             "effectChance": 10,
-            "type": {
-                "id": 1,
-                "name": "Normal"
-            }
+            "type": null
         }
     ],
     "46": [
@@ -877,11 +865,7 @@
                 "name": "Black White",
                 "order": 15
             },
-            "type": {
-                "id": 10001,
-                "name": "???",
-                "legacy": true
-            }
+            "type": null
         }
     ],
     "178": [
@@ -926,10 +910,7 @@
                 "name": "X Y",
                 "order": 17
             },
-            "type": {
-                "id": 1,
-                "name": "Normal"
-            }
+            "type": null
         }
     ],
     "192": [
@@ -1016,10 +997,7 @@
                 "name": "X Y",
                 "order": 17
             },
-            "type": {
-                "id": 1,
-                "name": "Normal"
-            }
+            "type": null
         }
     ],
     "210": [
@@ -1064,10 +1042,7 @@
                 "name": "X Y",
                 "order": 17
             },
-            "type": {
-                "id": 1,
-                "name": "Normal"
-            }
+            "type": null
         }
     ],
     "237": [

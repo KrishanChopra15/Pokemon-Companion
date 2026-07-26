@@ -1,0 +1,797 @@
+[
+    {
+        "id": 1,
+        "apiName": "red",
+        "name": "Red",
+        "generation": {
+            "id": 1,
+            "name": "Generation I"
+        },
+        "versionGroup": {
+            "id": 1,
+            "apiName": "red-blue",
+            "name": "Red Blue",
+            "order": 3
+        }
+    },
+    {
+        "id": 2,
+        "apiName": "blue",
+        "name": "Blue",
+        "generation": {
+            "id": 1,
+            "name": "Generation I"
+        },
+        "versionGroup": {
+            "id": 1,
+            "apiName": "red-blue",
+            "name": "Red Blue",
+            "order": 3
+        }
+    },
+    {
+        "id": 3,
+        "apiName": "yellow",
+        "name": "Yellow",
+        "generation": {
+            "id": 1,
+            "name": "Generation I"
+        },
+        "versionGroup": {
+            "id": 2,
+            "apiName": "yellow",
+            "name": "Yellow",
+            "order": 4
+        }
+    },
+    {
+        "id": 4,
+        "apiName": "gold",
+        "name": "Gold",
+        "generation": {
+            "id": 2,
+            "name": "Generation II"
+        },
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver",
+            "order": 5
+        }
+    },
+    {
+        "id": 5,
+        "apiName": "silver",
+        "name": "Silver",
+        "generation": {
+            "id": 2,
+            "name": "Generation II"
+        },
+        "versionGroup": {
+            "id": 3,
+            "apiName": "gold-silver",
+            "name": "Gold Silver",
+            "order": 5
+        }
+    },
+    {
+        "id": 6,
+        "apiName": "crystal",
+        "name": "Crystal",
+        "generation": {
+            "id": 2,
+            "name": "Generation II"
+        },
+        "versionGroup": {
+            "id": 4,
+            "apiName": "crystal",
+            "name": "Crystal",
+            "order": 6
+        }
+    },
+    {
+        "id": 7,
+        "apiName": "ruby",
+        "name": "Ruby",
+        "generation": {
+            "id": 3,
+            "name": "Generation III"
+        },
+        "versionGroup": {
+            "id": 5,
+            "apiName": "ruby-sapphire",
+            "name": "Ruby Sapphire",
+            "order": 7
+        }
+    },
+    {
+        "id": 8,
+        "apiName": "sapphire",
+        "name": "Sapphire",
+        "generation": {
+            "id": 3,
+            "name": "Generation III"
+        },
+        "versionGroup": {
+            "id": 5,
+            "apiName": "ruby-sapphire",
+            "name": "Ruby Sapphire",
+            "order": 7
+        }
+    },
+    {
+        "id": 9,
+        "apiName": "emerald",
+        "name": "Emerald",
+        "generation": {
+            "id": 3,
+            "name": "Generation III"
+        },
+        "versionGroup": {
+            "id": 6,
+            "apiName": "emerald",
+            "name": "Emerald",
+            "order": 8
+        }
+    },
+    {
+        "id": 10,
+        "apiName": "firered",
+        "name": "FireRed",
+        "generation": {
+            "id": 3,
+            "name": "Generation III"
+        },
+        "versionGroup": {
+            "id": 7,
+            "apiName": "firered-leafgreen",
+            "name": "Firered Leafgreen",
+            "order": 11
+        }
+    },
+    {
+        "id": 11,
+        "apiName": "leafgreen",
+        "name": "LeafGreen",
+        "generation": {
+            "id": 3,
+            "name": "Generation III"
+        },
+        "versionGroup": {
+            "id": 7,
+            "apiName": "firered-leafgreen",
+            "name": "Firered Leafgreen",
+            "order": 11
+        }
+    },
+    {
+        "id": 12,
+        "apiName": "diamond",
+        "name": "Diamond",
+        "generation": {
+            "id": 4,
+            "name": "Generation IV"
+        },
+        "versionGroup": {
+            "id": 8,
+            "apiName": "diamond-pearl",
+            "name": "Diamond Pearl",
+            "order": 12
+        }
+    },
+    {
+        "id": 13,
+        "apiName": "pearl",
+        "name": "Pearl",
+        "generation": {
+            "id": 4,
+            "name": "Generation IV"
+        },
+        "versionGroup": {
+            "id": 8,
+            "apiName": "diamond-pearl",
+            "name": "Diamond Pearl",
+            "order": 12
+        }
+    },
+    {
+        "id": 14,
+        "apiName": "platinum",
+        "name": "Platinum",
+        "generation": {
+            "id": 4,
+            "name": "Generation IV"
+        },
+        "versionGroup": {
+            "id": 9,
+            "apiName": "platinum",
+            "name": "Platinum",
+            "order": 13
+        }
+    },
+    {
+        "id": 15,
+        "apiName": "heartgold",
+        "name": "HeartGold",
+        "generation": {
+            "id": 4,
+            "name": "Generation IV"
+        },
+        "versionGroup": {
+            "id": 10,
+            "apiName": "heartgold-soulsilver",
+            "name": "Heartgold Soulsilver",
+            "order": 14
+        }
+    },
+    {
+        "id": 16,
+        "apiName": "soulsilver",
+        "name": "SoulSilver",
+        "generation": {
+            "id": 4,
+            "name": "Generation IV"
+        },
+        "versionGroup": {
+            "id": 10,
+            "apiName": "heartgold-soulsilver",
+            "name": "Heartgold Soulsilver",
+            "order": 14
+        }
+    },
+    {
+        "id": 17,
+        "apiName": "black",
+        "name": "Black",
+        "generation": {
+            "id": 5,
+            "name": "Generation V"
+        },
+        "versionGroup": {
+            "id": 11,
+            "apiName": "black-white",
+            "name": "Black White",
+            "order": 15
+        }
+    },
+    {
+        "id": 18,
+        "apiName": "white",
+        "name": "White",
+        "generation": {
+            "id": 5,
+            "name": "Generation V"
+        },
+        "versionGroup": {
+            "id": 11,
+            "apiName": "black-white",
+            "name": "Black White",
+            "order": 15
+        }
+    },
+    {
+        "id": 19,
+        "apiName": "colosseum",
+        "name": "Colosseum",
+        "generation": {
+            "id": 3,
+            "name": "Generation III"
+        },
+        "versionGroup": {
+            "id": 12,
+            "apiName": "colosseum",
+            "name": "Colosseum",
+            "order": 9
+        }
+    },
+    {
+        "id": 20,
+        "apiName": "xd",
+        "name": "Xd",
+        "generation": {
+            "id": 3,
+            "name": "Generation III"
+        },
+        "versionGroup": {
+            "id": 13,
+            "apiName": "xd",
+            "name": "Xd",
+            "order": 10
+        }
+    },
+    {
+        "id": 21,
+        "apiName": "black-2",
+        "name": "Black 2",
+        "generation": {
+            "id": 5,
+            "name": "Generation V"
+        },
+        "versionGroup": {
+            "id": 14,
+            "apiName": "black-2-white-2",
+            "name": "Black 2 White 2",
+            "order": 16
+        }
+    },
+    {
+        "id": 22,
+        "apiName": "white-2",
+        "name": "White 2",
+        "generation": {
+            "id": 5,
+            "name": "Generation V"
+        },
+        "versionGroup": {
+            "id": 14,
+            "apiName": "black-2-white-2",
+            "name": "Black 2 White 2",
+            "order": 16
+        }
+    },
+    {
+        "id": 23,
+        "apiName": "x",
+        "name": "X",
+        "generation": {
+            "id": 6,
+            "name": "Generation VI"
+        },
+        "versionGroup": {
+            "id": 15,
+            "apiName": "x-y",
+            "name": "X Y",
+            "order": 17
+        }
+    },
+    {
+        "id": 24,
+        "apiName": "y",
+        "name": "Y",
+        "generation": {
+            "id": 6,
+            "name": "Generation VI"
+        },
+        "versionGroup": {
+            "id": 15,
+            "apiName": "x-y",
+            "name": "X Y",
+            "order": 17
+        }
+    },
+    {
+        "id": 25,
+        "apiName": "omega-ruby",
+        "name": "Omega Ruby",
+        "generation": {
+            "id": 6,
+            "name": "Generation VI"
+        },
+        "versionGroup": {
+            "id": 16,
+            "apiName": "omega-ruby-alpha-sapphire",
+            "name": "Omega Ruby Alpha Sapphire",
+            "order": 18
+        }
+    },
+    {
+        "id": 26,
+        "apiName": "alpha-sapphire",
+        "name": "Alpha Sapphire",
+        "generation": {
+            "id": 6,
+            "name": "Generation VI"
+        },
+        "versionGroup": {
+            "id": 16,
+            "apiName": "omega-ruby-alpha-sapphire",
+            "name": "Omega Ruby Alpha Sapphire",
+            "order": 18
+        }
+    },
+    {
+        "id": 27,
+        "apiName": "sun",
+        "name": "Sun",
+        "generation": {
+            "id": 7,
+            "name": "Generation VII"
+        },
+        "versionGroup": {
+            "id": 17,
+            "apiName": "sun-moon",
+            "name": "Sun Moon",
+            "order": 19
+        }
+    },
+    {
+        "id": 28,
+        "apiName": "moon",
+        "name": "Moon",
+        "generation": {
+            "id": 7,
+            "name": "Generation VII"
+        },
+        "versionGroup": {
+            "id": 17,
+            "apiName": "sun-moon",
+            "name": "Sun Moon",
+            "order": 19
+        }
+    },
+    {
+        "id": 29,
+        "apiName": "ultra-sun",
+        "name": "Ultra Sun",
+        "generation": {
+            "id": 7,
+            "name": "Generation VII"
+        },
+        "versionGroup": {
+            "id": 18,
+            "apiName": "ultra-sun-ultra-moon",
+            "name": "Ultra Sun Ultra Moon",
+            "order": 20
+        }
+    },
+    {
+        "id": 30,
+        "apiName": "ultra-moon",
+        "name": "Ultra Moon",
+        "generation": {
+            "id": 7,
+            "name": "Generation VII"
+        },
+        "versionGroup": {
+            "id": 18,
+            "apiName": "ultra-sun-ultra-moon",
+            "name": "Ultra Sun Ultra Moon",
+            "order": 20
+        }
+    },
+    {
+        "id": 31,
+        "apiName": "lets-go-pikachu",
+        "name": "Let's Go Pikachu",
+        "generation": {
+            "id": 7,
+            "name": "Generation VII"
+        },
+        "versionGroup": {
+            "id": 19,
+            "apiName": "lets-go-pikachu-lets-go-eevee",
+            "name": "Lets Go Pikachu Lets Go Eevee",
+            "order": 21
+        }
+    },
+    {
+        "id": 32,
+        "apiName": "lets-go-eevee",
+        "name": "Let's Go Eevee",
+        "generation": {
+            "id": 7,
+            "name": "Generation VII"
+        },
+        "versionGroup": {
+            "id": 19,
+            "apiName": "lets-go-pikachu-lets-go-eevee",
+            "name": "Lets Go Pikachu Lets Go Eevee",
+            "order": 21
+        }
+    },
+    {
+        "id": 33,
+        "apiName": "sword",
+        "name": "Sword",
+        "generation": {
+            "id": 8,
+            "name": "Generation VIII"
+        },
+        "versionGroup": {
+            "id": 20,
+            "apiName": "sword-shield",
+            "name": "Sword Shield",
+            "order": 22
+        }
+    },
+    {
+        "id": 34,
+        "apiName": "shield",
+        "name": "Shield",
+        "generation": {
+            "id": 8,
+            "name": "Generation VIII"
+        },
+        "versionGroup": {
+            "id": 20,
+            "apiName": "sword-shield",
+            "name": "Sword Shield",
+            "order": 22
+        }
+    },
+    {
+        "id": 35,
+        "apiName": "the-isle-of-armor-sword",
+        "name": "The Isle Of Armor Sword",
+        "generation": {
+            "id": 8,
+            "name": "Generation VIII"
+        },
+        "versionGroup": {
+            "id": 21,
+            "apiName": "the-isle-of-armor",
+            "name": "The Isle Of Armor",
+            "order": 23
+        }
+    },
+    {
+        "id": 36,
+        "apiName": "the-crown-tundra-sword",
+        "name": "The Crown Tundra Sword",
+        "generation": {
+            "id": 8,
+            "name": "Generation VIII"
+        },
+        "versionGroup": {
+            "id": 22,
+            "apiName": "the-crown-tundra",
+            "name": "The Crown Tundra",
+            "order": 24
+        }
+    },
+    {
+        "id": 37,
+        "apiName": "brilliant-diamond",
+        "name": "Brilliant Diamond",
+        "generation": {
+            "id": 8,
+            "name": "Generation VIII"
+        },
+        "versionGroup": {
+            "id": 23,
+            "apiName": "brilliant-diamond-shining-pearl",
+            "name": "Brilliant Diamond Shining Pearl",
+            "order": 25
+        }
+    },
+    {
+        "id": 38,
+        "apiName": "shining-pearl",
+        "name": "Shining Pearl",
+        "generation": {
+            "id": 8,
+            "name": "Generation VIII"
+        },
+        "versionGroup": {
+            "id": 23,
+            "apiName": "brilliant-diamond-shining-pearl",
+            "name": "Brilliant Diamond Shining Pearl",
+            "order": 25
+        }
+    },
+    {
+        "id": 39,
+        "apiName": "legends-arceus",
+        "name": "Legends Arceus",
+        "generation": {
+            "id": 8,
+            "name": "Generation VIII"
+        },
+        "versionGroup": {
+            "id": 24,
+            "apiName": "legends-arceus",
+            "name": "Legends Arceus",
+            "order": 26
+        }
+    },
+    {
+        "id": 40,
+        "apiName": "scarlet",
+        "name": "Scarlet",
+        "generation": {
+            "id": 9,
+            "name": "Generation IX"
+        },
+        "versionGroup": {
+            "id": 25,
+            "apiName": "scarlet-violet",
+            "name": "Scarlet Violet",
+            "order": 27
+        }
+    },
+    {
+        "id": 41,
+        "apiName": "violet",
+        "name": "Violet",
+        "generation": {
+            "id": 9,
+            "name": "Generation IX"
+        },
+        "versionGroup": {
+            "id": 25,
+            "apiName": "scarlet-violet",
+            "name": "Scarlet Violet",
+            "order": 27
+        }
+    },
+    {
+        "id": 42,
+        "apiName": "the-teal-mask-scarlet",
+        "name": "The Teal Mask Scarlet",
+        "generation": {
+            "id": 9,
+            "name": "Generation IX"
+        },
+        "versionGroup": {
+            "id": 26,
+            "apiName": "the-teal-mask",
+            "name": "The Teal Mask",
+            "order": 28
+        }
+    },
+    {
+        "id": 43,
+        "apiName": "the-indigo-disk-scarlet",
+        "name": "The Indigo Disk Scarlet",
+        "generation": {
+            "id": 9,
+            "name": "Generation IX"
+        },
+        "versionGroup": {
+            "id": 27,
+            "apiName": "the-indigo-disk",
+            "name": "The Indigo Disk",
+            "order": 29
+        }
+    },
+    {
+        "id": 44,
+        "apiName": "red-japan",
+        "name": "Red Japan",
+        "generation": {
+            "id": 1,
+            "name": "Generation I"
+        },
+        "versionGroup": {
+            "id": 28,
+            "apiName": "red-green-japan",
+            "name": "Red Green Japan",
+            "order": 1
+        }
+    },
+    {
+        "id": 45,
+        "apiName": "green-japan",
+        "name": "Green Japan",
+        "generation": {
+            "id": 1,
+            "name": "Generation I"
+        },
+        "versionGroup": {
+            "id": 28,
+            "apiName": "red-green-japan",
+            "name": "Red Green Japan",
+            "order": 1
+        }
+    },
+    {
+        "id": 46,
+        "apiName": "blue-japan",
+        "name": "Blue Japan",
+        "generation": {
+            "id": 1,
+            "name": "Generation I"
+        },
+        "versionGroup": {
+            "id": 29,
+            "apiName": "blue-japan",
+            "name": "Blue Japan",
+            "order": 2
+        }
+    },
+    {
+        "id": 47,
+        "apiName": "legends-za",
+        "name": "Legends Za",
+        "generation": {
+            "id": 9,
+            "name": "Generation IX"
+        },
+        "versionGroup": {
+            "id": 30,
+            "apiName": "legends-za",
+            "name": "Legends Za",
+            "order": 30
+        }
+    },
+    {
+        "id": 48,
+        "apiName": "mega-dimension",
+        "name": "Mega Dimension",
+        "generation": {
+            "id": 9,
+            "name": "Generation IX"
+        },
+        "versionGroup": {
+            "id": 31,
+            "apiName": "mega-dimension",
+            "name": "Mega Dimension",
+            "order": 31
+        }
+    },
+    {
+        "id": 49,
+        "apiName": "champions",
+        "name": "Champions",
+        "generation": {
+            "id": 9,
+            "name": "Generation IX"
+        },
+        "versionGroup": {
+            "id": 32,
+            "apiName": "champions",
+            "name": "Champions",
+            "order": 32
+        }
+    },
+    {
+        "id": 50,
+        "apiName": "the-isle-of-armor-shield",
+        "name": "The Isle Of Armor Shield",
+        "generation": {
+            "id": 8,
+            "name": "Generation VIII"
+        },
+        "versionGroup": {
+            "id": 21,
+            "apiName": "the-isle-of-armor",
+            "name": "The Isle Of Armor",
+            "order": 23
+        }
+    },
+    {
+        "id": 51,
+        "apiName": "the-crown-tundra-shield",
+        "name": "The Crown Tundra Shield",
+        "generation": {
+            "id": 8,
+            "name": "Generation VIII"
+        },
+        "versionGroup": {
+            "id": 22,
+            "apiName": "the-crown-tundra",
+            "name": "The Crown Tundra",
+            "order": 24
+        }
+    },
+    {
+        "id": 52,
+        "apiName": "the-teal-mask-violet",
+        "name": "The Teal Mask Violet",
+        "generation": {
+            "id": 9,
+            "name": "Generation IX"
+        },
+        "versionGroup": {
+            "id": 26,
+            "apiName": "the-teal-mask",
+            "name": "The Teal Mask",
+            "order": 28
+        }
+    },
+    {
+        "id": 53,
+        "apiName": "the-indigo-disk-violet",
+        "name": "The Indigo Disk Violet",
+        "generation": {
+            "id": 9,
+            "name": "Generation IX"
+        },
+        "versionGroup": {
+            "id": 27,
+            "apiName": "the-indigo-disk",
+            "name": "The Indigo Disk",
+            "order": 29
+        }
+    }
+]

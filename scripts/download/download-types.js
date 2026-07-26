@@ -26,7 +26,8 @@ const {
 const {
     printSuccess,
     printOutputFile,
-    printError
+    printError,
+    printVerbose
 } = require("../utils/logger");
 
 const metadata = require(
@@ -38,7 +39,11 @@ const OUTPUT_FILE = path.join(
     "../../database/types.json"
 );
 
-async function downloadTypes() {
+async function downloadTypes(
+    {
+        verbose = true
+    } = {}
+) {
 
     try {
 
@@ -52,18 +57,27 @@ async function downloadTypes() {
         for (const typeResource of typeResources) {
 
             if (
-                ["unknown", "shadow"].includes(
+
+                [
+                    "unknown",
+                    "shadow"
+                ].includes(
                     typeResource.name
                 )
+
             ) {
 
                 continue;
 
             }
 
-            console.log(
-                `Downloading ${typeResource.name}...`
-            );
+            if (verbose) {
+
+                printVerbose(
+                    `Downloading ${typeResource.name}...`
+                );
+
+            }
 
             const type =
                 await getResource(
@@ -126,19 +140,19 @@ async function downloadTypes() {
                         ),
 
                     doubleDamageFrom:
-                       createReferenceList(
+                        createReferenceList(
                             damage.double_damage_from,
                             createNamedApiReference
                         ),
 
                     halfDamageFrom:
-                       createReferenceList(
+                        createReferenceList(
                             damage.half_damage_from,
                             createNamedApiReference
                         ),
 
                     noDamageFrom:
-                       createReferenceList(
+                        createReferenceList(
                             damage.no_damage_from,
                             createNamedApiReference
                         )
@@ -158,23 +172,61 @@ async function downloadTypes() {
             types
         );
 
-        printSuccess(
-            `Downloaded ${types.length} Pokémon types`
-        );
+        if (verbose) {
 
-        printOutputFile(
-            OUTPUT_FILE
-        );
+            printSuccess(
+                `Downloaded ${types.length} Pokémon types`
+            );
+
+            printOutputFile(
+                OUTPUT_FILE
+            );
+
+        }
+
+        return {
+
+            success: true,
+
+            count:
+                types.length,
+
+            output:
+                OUTPUT_FILE
+
+        };
 
     } catch (error) {
 
-        printError(
-            error,
-            "Error downloading types"
-        );
+        if (verbose) {
+
+            printError(
+                error,
+                "Error downloading types"
+            );
+
+        }
+
+        return {
+
+            success: false,
+
+            error
+
+        };
 
     }
 
 }
 
-downloadTypes();
+module.exports = {
+
+    downloadTypes
+
+};
+
+if (require.main === module) {
+
+    downloadTypes();
+
+}

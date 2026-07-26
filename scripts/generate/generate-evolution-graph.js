@@ -10,27 +10,29 @@ const {
 } = require("../utils/evolution");
 
 const {
+    printPhase,
     printSuccess,
     printOutputFile,
     printError
 } = require("../utils/logger");
-
-const INPUT_FILE = path.join(
-    __dirname,
-    "../../database/evolutions.json"
-);
 
 const OUTPUT_FILE = path.join(
     __dirname,
     "../../database/generated/evolution-graph.json"
 );
 
-function generateEvolutionGraph() {
+function generateEvolutionGraph(
+    {
+        verbose = true
+    } = {}
+) {
 
     try {
 
         const evolutionChains =
-            loadJSON("evolutions.json");
+            loadJSON(
+                "evolutions.json"
+            );
 
         const evolutionGraph =
             buildEvolutionGraph(
@@ -42,23 +44,72 @@ function generateEvolutionGraph() {
             evolutionGraph
         );
 
-        printSuccess(
-            `Generated ${evolutionGraph.length} evolution graph entries`
-        );
+        if (verbose) {
 
-        printOutputFile(
-            OUTPUT_FILE
-        );
+            printSuccess(
+                `Generated ${evolutionGraph.length} evolution graph entries`
+            );
+
+            printOutputFile(
+                OUTPUT_FILE
+            );
+
+        }
+
+        return {
+
+            count:
+                evolutionGraph.length,
+
+            output:
+                OUTPUT_FILE
+
+        };
 
     } catch (error) {
 
-        printError(
-            error,
-            "Error generating evolution graph"
-        );
+        if (verbose) {
+
+            printError(
+                error,
+                "Error generating evolution graph"
+            );
+
+        }
+
+        throw error;
 
     }
 
 }
 
-generateEvolutionGraph();
+module.exports = {
+
+    generateEvolutionGraph
+
+};
+
+if (require.main === module) {
+
+    (async () => {
+
+        try {
+
+            printPhase(
+                "Phase 8 - Evolution Graph Generation"
+            );
+
+            await generateEvolutionGraph();
+
+        } catch (error) {
+
+            printError(
+                error,
+                "Error generating evolution graph"
+            );
+
+        }
+
+    })();
+
+}

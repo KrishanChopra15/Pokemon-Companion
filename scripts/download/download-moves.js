@@ -38,7 +38,8 @@ const {
 const {
     printSuccess,
     printOutputFile,
-    printError
+    printError,
+    printVerbose
 } = require("../utils/logger");
 
 const versionGroups = require(
@@ -50,7 +51,11 @@ const OUTPUT_FILE = path.join(
     "../../database/moves.json"
 );
 
-async function downloadMoves() {
+async function downloadMoves(
+    {
+        verbose = true
+    } = {}
+) {
 
     try {
 
@@ -68,9 +73,13 @@ async function downloadMoves() {
                     moveResource.url
                 );
 
-            console.log(
-                `Downloading Move #${id}...`
-            );
+            if (verbose) {
+
+                printVerbose(
+                    `Downloading Move #${id}...`
+                );
+
+            }
 
             const move =
                 await getResource(
@@ -180,23 +189,61 @@ async function downloadMoves() {
             moves
         );
 
-        printSuccess(
-            `Downloaded ${moves.length} moves`
-        );
+        if (verbose) {
 
-        printOutputFile(
-            OUTPUT_FILE
-        );
+            printSuccess(
+                `Downloaded ${moves.length} moves`
+            );
+
+            printOutputFile(
+                OUTPUT_FILE
+            );
+
+        }
+
+        return {
+
+            success: true,
+
+            count:
+                moves.length,
+
+            output:
+                OUTPUT_FILE
+
+        };
 
     } catch (error) {
 
-        printError(
-            error,
-            "Error downloading moves"
-        );
+        if (verbose) {
+
+            printError(
+                error,
+                "Error downloading moves"
+            );
+
+        }
+
+        return {
+
+            success: false,
+
+            error
+
+        };
 
     }
 
 }
 
-downloadMoves();
+module.exports = {
+
+    downloadMoves
+
+};
+
+if (require.main === module) {
+
+    downloadMoves();
+
+}

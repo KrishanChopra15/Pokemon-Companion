@@ -20,7 +20,8 @@ const {
 const {
     printSuccess,
     printOutputFile,
-    printError
+    printError,
+    printVerbose
 } = require("../utils/logger");
 
 const OUTPUT_FILE = path.join(
@@ -28,7 +29,11 @@ const OUTPUT_FILE = path.join(
     "../../database/damage-classes.json"
 );
 
-async function downloadDamageClasses() {
+async function downloadDamageClasses(
+    {
+        verbose = true
+    } = {}
+) {
 
     try {
 
@@ -46,9 +51,13 @@ async function downloadDamageClasses() {
                     damageClassResource.url
                 );
 
-            console.log(
-                `Downloading Damage Class #${id}...`
-            );
+            if (verbose) {
+
+                printVerbose(
+                    `Downloading Damage Class #${id}...`
+                );
+
+            }
 
             const damageClass =
                 await getResource(
@@ -80,23 +89,58 @@ async function downloadDamageClasses() {
             damageClasses
         );
 
-        printSuccess(
-            `Downloaded ${damageClasses.length} damage classes`
-        );
+        if (verbose) {
 
-        printOutputFile(
-            OUTPUT_FILE
-        );
+            printSuccess(
+                `Downloaded ${damageClasses.length} damage classes`
+            );
+
+            printOutputFile(
+                OUTPUT_FILE
+            );
+
+        }
+
+        return {
+
+            success: true,
+
+            count:
+                damageClasses.length
+
+        };
 
     } catch (error) {
 
-        printError(
-            error,
-            "Error downloading damage classes"
-        );
+        if (verbose) {
+
+            printError(
+                error,
+                "Error downloading damage classes"
+            );
+
+        }
+
+        return {
+
+            success: false,
+
+            error
+
+        };
 
     }
 
 }
 
-downloadDamageClasses();
+module.exports = {
+
+    downloadDamageClasses
+
+};
+
+if (require.main === module) {
+
+    downloadDamageClasses();
+
+}

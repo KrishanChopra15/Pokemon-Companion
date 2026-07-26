@@ -1,5 +1,3 @@
-const path = require("path");
-
 const {
     loadJSON
 } = require("../utils/json");
@@ -9,12 +7,11 @@ const {
     printError
 } = require("../utils/logger");
 
-const INPUT_FILE = path.join(
-    __dirname,
-    "../../database/generated/evolution-graph.json"
-);
-
-function validateEvolutions() {
+function validateEvolutions(
+    {
+        verbose = true
+    } = {}
+) {
 
     try {
 
@@ -28,10 +25,6 @@ function validateEvolutions() {
 
         for (const pokemon of evolutions) {
 
-            //
-            // Species ID
-            //
-
             if (speciesIds.has(pokemon.speciesId)) {
 
                 throw new Error(
@@ -44,10 +37,6 @@ function validateEvolutions() {
                 pokemon.speciesId
             );
 
-            //
-            // Stage
-            //
-
             if (pokemon.stage < 1) {
 
                 throw new Error(
@@ -55,10 +44,6 @@ function validateEvolutions() {
                 );
 
             }
-
-            //
-            // Self evolution
-            //
 
             if (
                 pokemon.evolvesFrom ===
@@ -70,10 +55,6 @@ function validateEvolutions() {
                 );
 
             }
-
-            //
-            // Duplicate evolution targets
-            //
 
             const targets =
                 new Set();
@@ -110,10 +91,6 @@ function validateEvolutions() {
             }
 
         }
-
-        //
-        // Cross-reference validation
-        //
 
         for (const pokemon of evolutions) {
 
@@ -153,21 +130,63 @@ function validateEvolutions() {
 
         }
 
-        printSuccess(
-            `Validated ${evolutions.length} evolution records`
-        );
+        if (verbose) {
 
-    }
+            printSuccess(
+                `Validated ${evolutions.length} evolution records`
+            );
 
-    catch (error) {
+        }
 
-        printError(
-            error,
-            "Evolution validation failed"
-        );
+        return {
+
+            success: true,
+
+            count:
+                evolutions.length
+
+        };
+
+    } catch (error) {
+
+        if (verbose) {
+
+            printError(
+                error,
+                "Evolution validation failed"
+            );
+
+        }
+
+        return {
+
+            success: false,
+
+            count: 0,
+
+            error
+
+        };
 
     }
 
 }
 
-validateEvolutions();
+module.exports = {
+
+    validateEvolutions
+
+};
+
+if (require.main === module) {
+
+    const result =
+        validateEvolutions();
+
+    if (!result.success) {
+
+        process.exitCode = 1;
+
+    }
+
+}

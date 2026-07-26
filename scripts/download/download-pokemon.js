@@ -12,8 +12,7 @@ const {
 const {
     getIdFromUrl,
     sortById,
-    sortByProperty,
-    createReferenceList
+    sortByProperty
 } = require("../utils/helpers");
 
 const {
@@ -28,7 +27,8 @@ const {
 const {
     printSuccess,
     printOutputFile,
-    printError
+    printError,
+    printVerbose
 } = require("../utils/logger");
 
 const OUTPUT_FILE = path.join(
@@ -36,7 +36,11 @@ const OUTPUT_FILE = path.join(
     "../../database/pokemon.json"
 );
 
-async function downloadPokemon() {
+async function downloadPokemon(
+    {
+        verbose = true
+    } = {}
+) {
 
     try {
 
@@ -54,9 +58,13 @@ async function downloadPokemon() {
                     pokemonResource.url
                 );
 
-            console.log(
-                `Downloading Pokémon #${id}...`
-            );
+            if (verbose) {
+
+                printVerbose(
+                    `Downloading Pokémon #${id}...`
+                );
+
+            }
 
             const pokemon =
                 await getResource(
@@ -136,42 +144,42 @@ async function downloadPokemon() {
                 types:
 
                     sortByProperty(
-                    
+
                         pokemon.types.map(type => ({
-                        
+
                             ...createNamedApiReference(
                                 type.type
                             ),
-                        
+
                             slot:
                                 type.slot
-                        
+
                         })),
-                    
+
                         "slot"
-                    
+
                     ),
 
                 abilities:
 
                     sortByProperty(
-                    
+
                         pokemon.abilities.map(ability => ({
-                        
+
                             ...createNamedApiReference(
                                 ability.ability
                             ),
-                        
+
                             hidden:
                                 ability.is_hidden,
-                        
+
                             slot:
                                 ability.slot
-                        
+
                         })),
-                    
+
                         "slot"
-                    
+
                     ),
 
                 stats: {
@@ -209,23 +217,61 @@ async function downloadPokemon() {
             pokemonList
         );
 
-        printSuccess(
-            `Downloaded ${pokemonList.length} Pokémon`
-        );
+        if (verbose) {
 
-        printOutputFile(
-            OUTPUT_FILE
-        );
+            printSuccess(
+                `Downloaded ${pokemonList.length} Pokémon`
+            );
+
+            printOutputFile(
+                OUTPUT_FILE
+            );
+
+        }
+
+        return {
+
+            success: true,
+
+            count:
+                pokemonList.length,
+
+            output:
+                OUTPUT_FILE
+
+        };
 
     } catch (error) {
 
-        printError(
-            error,
-            "Error downloading Pokémon"
-        );
+        if (verbose) {
+
+            printError(
+                error,
+                "Error downloading Pokémon"
+            );
+
+        }
+
+        return {
+
+            success: false,
+
+            error
+
+        };
 
     }
 
 }
 
-downloadPokemon();
+module.exports = {
+
+    downloadPokemon
+
+};
+
+if (require.main === module) {
+
+    downloadPokemon();
+
+}

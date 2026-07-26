@@ -29,7 +29,11 @@ const OUTPUT_FILE = path.join(
     "pokemon-index.json"
 );
 
-function generatePokemonIndex() {
+function generatePokemonIndex(
+    {
+        verbose = true
+    } = {}
+) {
 
     const pokemon = loadJSON(
         "pokemon.json"
@@ -39,13 +43,17 @@ function generatePokemonIndex() {
         "species.json"
     );
 
-    printSection(
-        `Loaded ${pokemon.length} Pokémon`
-    );
+    if (verbose) {
 
-    console.log(
-        `Loaded ${species.length} Species`
-    );
+        printSection(
+            `Loaded ${pokemon.length} Pokémon`
+        );
+
+        console.log(
+            `Loaded ${species.length} Species`
+        );
+
+    }
 
     const speciesLookup =
         createLookupMap(
@@ -67,9 +75,13 @@ function generatePokemonIndex() {
 
             missingSpecies++;
 
-            console.warn(
-                `Missing species ${currentPokemon.speciesId} for Pokémon ${currentPokemon.id}`
-            );
+            if (verbose) {
+
+                console.warn(
+                    `Missing species ${currentPokemon.speciesId} for Pokémon ${currentPokemon.id}`
+                );
+
+            }
 
             continue;
 
@@ -102,43 +114,65 @@ function generatePokemonIndex() {
         pokemonIndex
     );
 
-    printSuccess(
-        `Generated ${pokemonIndex.length} Pokémon index entries`
-    );
+    if (verbose) {
 
-    printOutputFile(
-        OUTPUT_FILE
-    );
-
-    if (missingSpecies > 0) {
-
-        console.warn(
-            `Skipped ${missingSpecies} Pokémon because their species could not be found.`
+        printSuccess(
+            `Generated ${pokemonIndex.length} Pokémon index entries`
         );
+
+        printOutputFile(
+            OUTPUT_FILE
+        );
+
+        if (missingSpecies > 0) {
+
+            console.warn(
+                `Skipped ${missingSpecies} Pokémon because their species could not be found.`
+            );
+
+        }
 
     }
 
-}
+    return {
 
-function main() {
+        count:
+            pokemonIndex.length,
 
-    try {
+        output:
+            OUTPUT_FILE
 
-        printPhase(
-            "Phase 8 - Dataset Generation"
-        );
-
-        generatePokemonIndex();
-
-    } catch (error) {
-
-        printError(
-            error,
-            "Error generating Pokémon index"
-        );
-
-    }
+    };
 
 }
 
-main();
+module.exports = {
+
+    generatePokemonIndex
+
+};
+
+if (require.main === module) {
+
+    (async () => {
+
+        try {
+
+            printPhase(
+                "Phase 8 - Pokémon Index Generation"
+            );
+
+            await generatePokemonIndex();
+
+        } catch (error) {
+
+            printError(
+                error,
+                "Error generating Pokémon index"
+            );
+
+        }
+
+    })();
+
+}

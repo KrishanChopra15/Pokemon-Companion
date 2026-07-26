@@ -16,7 +16,8 @@ const {
 const {
     printSuccess,
     printOutputFile,
-    printError
+    printError,
+    printVerbose
 } = require("../utils/logger");
 
 const OUTPUT_FILE = path.join(
@@ -24,7 +25,11 @@ const OUTPUT_FILE = path.join(
     "../../database/evolutions.json"
 );
 
-async function downloadEvolutions() {
+async function downloadEvolutions(
+    {
+        verbose = true
+    } = {}
+) {
 
     try {
 
@@ -42,9 +47,13 @@ async function downloadEvolutions() {
                     evolutionResource.url
                 );
 
-            console.log(
-                `Downloading Evolution Chain #${id}...`
-            );
+            if (verbose) {
+
+                printVerbose(
+                    `Downloading Evolution Chain #${id}...`
+                );
+
+            }
 
             const evolutionChain =
                 await getResource(
@@ -63,23 +72,61 @@ async function downloadEvolutions() {
             evolutionChains
         );
 
-        printSuccess(
-            `Downloaded ${evolutionChains.length} evolution chains`
-        );
+        if (verbose) {
 
-        printOutputFile(
-            OUTPUT_FILE
-        );
+            printSuccess(
+                `Downloaded ${evolutionChains.length} evolution chains`
+            );
+
+            printOutputFile(
+                OUTPUT_FILE
+            );
+
+        }
+
+        return {
+
+            success: true,
+
+            count:
+                evolutionChains.length,
+
+            output:
+                OUTPUT_FILE
+
+        };
 
     } catch (error) {
 
-        printError(
-            error,
-            "Error downloading evolution chains"
-        );
+        if (verbose) {
+
+            printError(
+                error,
+                "Error downloading evolution chains"
+            );
+
+        }
+
+        return {
+
+            success: false,
+
+            error
+
+        };
 
     }
 
 }
 
-downloadEvolutions();
+module.exports = {
+
+    downloadEvolutions
+
+};
+
+if (require.main === module) {
+
+    downloadEvolutions();
+
+}

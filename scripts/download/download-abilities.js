@@ -29,7 +29,8 @@ const {
 const {
     printSuccess,
     printOutputFile,
-    printError
+    printError,
+    printVerbose
 } = require("../utils/logger");
 
 const metadata = require(
@@ -41,7 +42,11 @@ const OUTPUT_FILE = path.join(
     "../../database/abilities.json"
 );
 
-async function downloadAbilities() {
+async function downloadAbilities(
+    {
+        verbose = true
+    } = {}
+) {
 
     try {
 
@@ -59,9 +64,13 @@ async function downloadAbilities() {
                     abilityResource.url
                 );
 
-            console.log(
-                `Downloading Ability #${id}...`
-            );
+            if (verbose) {
+
+                printVerbose(
+                    `Downloading Ability #${id}...`
+                );
+
+            }
 
             const ability =
                 await getResource(
@@ -152,23 +161,58 @@ async function downloadAbilities() {
             abilities
         );
 
-        printSuccess(
-            `Downloaded ${abilities.length} abilities`
-        );
+        if (verbose) {
 
-        printOutputFile(
-            OUTPUT_FILE
-        );
+            printSuccess(
+                `Downloaded ${abilities.length} abilities`
+            );
+
+            printOutputFile(
+                OUTPUT_FILE
+            );
+
+        }
+
+        return {
+
+            success: true,
+
+            count:
+                abilities.length
+
+        };
 
     } catch (error) {
 
-        printError(
-            error,
-            "Error downloading abilities"
-        );
+        if (verbose) {
+
+            printError(
+                error,
+                "Error downloading abilities"
+            );
+
+        }
+
+        return {
+
+            success: false,
+
+            error
+
+        };
 
     }
 
 }
 
-downloadAbilities();
+module.exports = {
+
+    downloadAbilities
+
+};
+
+if (require.main === module) {
+
+    downloadAbilities();
+
+}

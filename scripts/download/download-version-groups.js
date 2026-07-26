@@ -25,7 +25,8 @@ const {
 const {
     printSuccess,
     printOutputFile,
-    printError
+    printError,
+    printVerbose
 } = require("../utils/logger");
 
 const OUTPUT_FILE = path.join(
@@ -33,7 +34,11 @@ const OUTPUT_FILE = path.join(
     "../../database/version-groups.json"
 );
 
-async function downloadVersionGroups() {
+async function downloadVersionGroups(
+    {
+        verbose = true
+    } = {}
+) {
 
     try {
 
@@ -46,9 +51,13 @@ async function downloadVersionGroups() {
 
         for (const versionGroupResource of versionGroupResources) {
 
-            console.log(
-                `Downloading ${versionGroupResource.name}...`
-            );
+            if (verbose) {
+
+                printVerbose(
+                    `Downloading ${versionGroupResource.name}...`
+                );
+
+            }
 
             const versionGroup =
                 await getResource(
@@ -102,23 +111,61 @@ async function downloadVersionGroups() {
             versionGroups
         );
 
-        printSuccess(
-            `Downloaded ${versionGroups.length} version groups`
-        );
+        if (verbose) {
 
-        printOutputFile(
-            OUTPUT_FILE
-        );
+            printSuccess(
+                `Downloaded ${versionGroups.length} version groups`
+            );
+
+            printOutputFile(
+                OUTPUT_FILE
+            );
+
+        }
+
+        return {
+
+            success: true,
+
+            count:
+                versionGroups.length,
+
+            output:
+                OUTPUT_FILE
+
+        };
 
     } catch (error) {
 
-        printError(
-            error,
-            "Error downloading version groups"
-        );
+        if (verbose) {
+
+            printError(
+                error,
+                "Error downloading version groups"
+            );
+
+        }
+
+        return {
+
+            success: false,
+
+            error
+
+        };
 
     }
 
 }
 
-downloadVersionGroups();
+module.exports = {
+
+    downloadVersionGroups
+
+};
+
+if (require.main === module) {
+
+    downloadVersionGroups();
+
+}

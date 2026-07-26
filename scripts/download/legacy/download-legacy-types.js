@@ -19,7 +19,8 @@ const {
 
 const {
     printSuccess,
-    printOutputFile
+    printOutputFile,
+    printError
 } = require("../../utils/logger");
 
 const OUTPUT_FILE = path.join(
@@ -113,15 +114,74 @@ const legacyTypes = [
 
 ];
 
-saveJSON(
-    OUTPUT_FILE,
-    legacyTypes
-);
+async function downloadLegacyTypes(
+    {
+        verbose = true
+    } = {}
+) {
 
-printSuccess(
-    `Generated ${legacyTypes.length} legacy types`
-);
+    try {
 
-printOutputFile(
-    OUTPUT_FILE
-);
+        saveJSON(
+            OUTPUT_FILE,
+            legacyTypes
+        );
+
+        if (verbose) {
+
+            printSuccess(
+                `Generated ${legacyTypes.length} legacy types`
+            );
+
+            printOutputFile(
+                OUTPUT_FILE
+            );
+
+        }
+
+        return {
+
+            success: true,
+
+            count:
+                legacyTypes.length,
+
+            output:
+                OUTPUT_FILE
+
+        };
+
+    } catch (error) {
+
+        if (verbose) {
+
+            printError(
+                error,
+                "Error generating legacy types"
+            );
+
+        }
+
+        return {
+
+            success: false,
+
+            error
+
+        };
+
+    }
+
+}
+
+module.exports = {
+
+    downloadLegacyTypes
+
+};
+
+if (require.main === module) {
+
+    downloadLegacyTypes();
+
+}

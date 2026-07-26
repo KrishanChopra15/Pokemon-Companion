@@ -31,7 +31,8 @@ const {
 const {
     printSuccess,
     printOutputFile,
-    printError
+    printError,
+    printVerbose
 } = require("../utils/logger");
 
 const OUTPUT_FILE = path.join(
@@ -39,7 +40,11 @@ const OUTPUT_FILE = path.join(
     "../../database/species.json"
 );
 
-async function downloadSpecies() {
+async function downloadSpecies(
+    {
+        verbose = true
+    } = {}
+) {
 
     try {
 
@@ -60,9 +65,13 @@ async function downloadSpecies() {
                     speciesResource.url
                 );
 
-            console.log(
-                `Downloading Species #${id}...`
-            );
+            if (verbose) {
+
+                printVerbose(
+                    `Downloading Species #${id}...`
+                );
+
+            }
 
             const species =
                 await getResource(
@@ -74,49 +83,51 @@ async function downloadSpecies() {
                 findEnglishEntry(
                     species.genera
                 );
-            const entries = species.flavor_text_entries
 
-                .filter(
-                    entry =>
-                        entry.language.name === "en"
-                )
+            const entries =
+                species.flavor_text_entries
 
-                .map(entry => {
+                    .filter(
+                        entry =>
+                            entry.language.name === "en"
+                    )
 
-                    const versionGroup =
-                        versionLookup.get(
-                            entry.version.name
-                        );
+                    .map(entry => {
 
-                    return {
-
-                        order:
-                            versionGroup?.order ??
-                            Number.MAX_SAFE_INTEGER,
-
-                        game:
-                            formatGameName(
+                        const versionGroup =
+                            versionLookup.get(
                                 entry.version.name
-                            ),
+                            );
 
-                        text:
-                            cleanFlavorText(
-                                entry.flavor_text
-                            )
+                        return {
 
-                    };
+                            order:
+                                versionGroup?.order ??
+                                Number.MAX_SAFE_INTEGER,
 
-                })
+                            game:
+                                formatGameName(
+                                    entry.version.name
+                                ),
 
-                .sort(
-                    (a, b) =>
-                        a.order - b.order
-                )
+                            text:
+                                cleanFlavorText(
+                                    entry.flavor_text
+                                )
 
-                .map(
-                    ({ order, ...entry }) =>
-                        entry
-                );
+                        };
+
+                    })
+
+                    .sort(
+                        (a, b) =>
+                            a.order - b.order
+                    )
+
+                    .map(
+                        ({ order, ...entry }) =>
+                            entry
+                    );
 
             speciesList.push({
 
@@ -212,23 +223,61 @@ async function downloadSpecies() {
             speciesList
         );
 
-        printSuccess(
-            `Downloaded ${speciesList.length} Pokémon species`
-        );
+        if (verbose) {
 
-        printOutputFile(
-            OUTPUT_FILE
-        );
+            printSuccess(
+                `Downloaded ${speciesList.length} Pokémon species`
+            );
+
+            printOutputFile(
+                OUTPUT_FILE
+            );
+
+        }
+
+        return {
+
+            success: true,
+
+            count:
+                speciesList.length,
+
+            output:
+                OUTPUT_FILE
+
+        };
 
     } catch (error) {
 
-        printError(
-            error,
-            "Error downloading species"
-        );
+        if (verbose) {
+
+            printError(
+                error,
+                "Error downloading species"
+            );
+
+        }
+
+        return {
+
+            success: false,
+
+            error
+
+        };
 
     }
 
 }
 
-downloadSpecies();
+module.exports = {
+
+    downloadSpecies
+
+};
+
+if (require.main === module) {
+
+    downloadSpecies();
+
+}

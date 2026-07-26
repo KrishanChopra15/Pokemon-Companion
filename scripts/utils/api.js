@@ -26,43 +26,152 @@ const api = axios.create({
 
 });
 
+const MAX_RETRIES = 5;
+
+const RETRY_DELAY = 1000;
+
+/* ---------------------------------- */
+/* Retry Helper                       */
+/* ---------------------------------- */
+
+function sleep(milliseconds) {
+
+    return new Promise(
+
+        resolve =>
+
+            setTimeout(
+                resolve,
+                milliseconds
+            )
+
+    );
+
+}
+
+async function requestWithRetry(
+
+    url,
+
+    options = {}
+
+) {
+
+    let lastError;
+
+    for (
+
+        let attempt = 1;
+
+        attempt <= MAX_RETRIES;
+
+        attempt++
+
+    ) {
+
+        try {
+
+            const {
+
+                data
+
+            } = await api.get(
+
+                url,
+
+                options
+
+            );
+
+            return data;
+
+        } catch (error) {
+
+            lastError = error;
+
+            const status =
+                error.response?.status;
+
+            const code =
+                error.code;
+
+            const retryable =
+
+                status === 429 ||
+
+                status === 502 ||
+
+                status === 503 ||
+
+                status === 504 ||
+
+                code === "ECONNRESET" ||
+
+                code === "ETIMEDOUT" ||
+
+                code === "ECONNABORTED" ||
+
+                code === "ERR_STREAM_PREMATURE_CLOSE" ||
+
+                code === "ERR_BAD_RESPONSE" ||
+
+                error.message?.includes(
+                    "stream has been aborted"
+                ) ||
+            
+                error.message?.includes(
+                    "socket hang up"
+                );
+
+            if (
+
+                !retryable ||
+
+                attempt === MAX_RETRIES
+
+            ) {
+
+                throw error;
+
+            }
+
+            console.log(
+
+                `Retry ${attempt}/${MAX_RETRIES}: ${url}`
+
+            );
+
+            await sleep(
+                RETRY_DELAY * attempt
+            );
+
+        }
+
+    }
+
+    throw lastError;
+
+}
+
 /* ---------------------------------- */
 /* Resources                          */
 /* ---------------------------------- */
 
-/**
- * Returns every resource
- * from a PokéAPI endpoint.
- *
- * Example:
- * getResourceList("pokemon")
- */
 async function getResourceList(
     endpoint
 ) {
 
-    const {
+    const data =
+        await requestWithRetry(
 
-        data
+            `/${endpoint}?limit=100000`
 
-    } = await api.get(
-
-        `/${endpoint}?limit=100000`
-
-    );
+        );
 
     return data.results;
 
 }
 
-/**
- * Downloads a single
- * PokéAPI resource.
- *
- * Examples:
- * getResource("move", 15)
- * getResource("version-group", "red-blue")
- */
 async function getResource(
 
     endpoint,
@@ -71,17 +180,11 @@ async function getResource(
 
 ) {
 
-    const {
-
-        data
-
-    } = await api.get(
+    return requestWithRetry(
 
         `/${endpoint}/${resource}`
 
     );
-
-    return data;
 
 }
 
@@ -106,11 +209,6 @@ const versionGroupApiMap =
 
     );
 
-/**
- * Creates a lookup that maps
- * every version to its
- * version group.
- */
 async function getVersionGroupLookup() {
 
     const versions =
@@ -159,6 +257,30 @@ async function getVersionGroupLookup() {
 
 }
 
+async function downloadFile(
+    url
+) {
+
+    const data =
+        await requestWithRetry(
+
+            url,
+
+            {
+
+                responseType:
+                    "arraybuffer"
+
+            }
+
+        );
+
+    return Buffer.from(
+        data
+    );
+
+}
+
 module.exports = {
 
     api,
@@ -167,6 +289,8 @@ module.exports = {
 
     getResourceList,
 
-    getVersionGroupLookup
+    getVersionGroupLookup,
+
+    downloadFile
 
 };

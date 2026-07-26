@@ -7,14 +7,11 @@ const {
 } = require("../utils/json");
 
 const {
-    sortByProperty
-} = require("../utils/helpers");
-
-const {
     printPhase,
     printSection,
     printSuccess,
-    printOutputFile
+    printOutputFile,
+    printError
 } = require("../utils/logger");
 
 const INPUT_FILE =
@@ -92,72 +89,72 @@ function createEntry(
 
 }
 
-function generateCategoryIndex(
+function buildCategoryIndex(
     pokemon,
     category
 ) {
 
-    const index =
-        pokemon
+    return pokemon
 
-            .filter(
-                entry =>
-                    entry.category ===
-                    category
-            )
+        .filter(
+            entry =>
+                entry.category ===
+                category
+        )
 
-            .map(
-                createEntry
-            )
+        .map(
+            createEntry
+        )
 
-    .sort(
-    
-        (a, b) =>
-        
-            a.speciesId -
-            b.speciesId ||
-    
-            a.order -
-            b.order
-    
-    )
+        .sort(
 
-    return index;
+            (a, b) =>
+
+                a.speciesId -
+                b.speciesId ||
+
+                a.order -
+                b.order
+
+        );
 
 }
 
-function main() {
-
-    printPhase(
-        "Phase 8 - Category Index Generation"
-    );
+function generateCategoryIndexes(
+    {
+        verbose = true
+    } = {}
+) {
 
     const pokemon =
         loadJSON(
             INPUT_FILE
         );
 
-    printSection(
-        `Loaded ${pokemon.length} Pokémon`
-    );
+    if (verbose) {
+
+        printSection(
+            `Loaded ${pokemon.length} Pokémon`
+        );
+
+    }
+
+    let generatedCount = 0;
 
     for (const category of CATEGORIES) {
 
         const index =
-            generateCategoryIndex(
+            buildCategoryIndex(
                 pokemon,
                 category
             );
 
         const outputFile =
             path.join(
-
                 OUTPUT_DIR,
-
                 createOutputName(
                     category
                 )
-
             );
 
         saveJSON(
@@ -165,22 +162,69 @@ function main() {
             index
         );
 
-        console.log(
+        generatedCount++;
 
-            `${createOutputName(category)} (${index.length})`
+        if (verbose) {
 
+            console.log(
+                `${createOutputName(category)} (${index.length})`
+            );
+
+        }
+
+    }
+
+    if (verbose) {
+
+        printSuccess(
+            "Category indexes generated"
+        );
+
+        printOutputFile(
+            OUTPUT_DIR
         );
 
     }
 
-    printSuccess(
-        "Category indexes generated"
-    );
+    return {
 
-    printOutputFile(
-        OUTPUT_DIR
-    );
+        count:
+            generatedCount,
+
+        output:
+            OUTPUT_DIR
+
+    };
 
 }
 
-main();
+module.exports = {
+
+    generateCategoryIndexes
+
+};
+
+if (require.main === module) {
+
+    (async () => {
+
+        try {
+
+            printPhase(
+                "Phase 8 - Category Index Generation"
+            );
+
+            await generateCategoryIndexes();
+
+        } catch (error) {
+
+            printError(
+                error,
+                "Error generating category indexes"
+            );
+
+        }
+
+    })();
+
+}

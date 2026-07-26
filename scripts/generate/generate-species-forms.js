@@ -1,8 +1,9 @@
-const fs = require("fs");
 const path = require("path");
 
 const {
-    DATABASE_DIR
+    DATABASE_DIR,
+    loadJSON,
+    saveJSON
 } = require("../utils/json");
 
 const {
@@ -13,63 +14,15 @@ const {
     printError
 } = require("../utils/logger");
 
-const OUTPUT_DIR = path.join(
-    DATABASE_DIR,
-    "generated"
-);
-
 const OUTPUT_FILE = path.join(
-    OUTPUT_DIR,
+    DATABASE_DIR,
+    "generated",
     "species-forms.json"
 );
 
-function loadJSON(file) {
-
-    return JSON.parse(
-
-        fs.readFileSync(
-
-            path.join(
-                DATABASE_DIR,
-                file
-            ),
-
-            "utf8"
-
-        )
-
-    );
-
-}
-
-function saveJSON(data) {
-
-    if (!fs.existsSync(OUTPUT_DIR)) {
-
-        fs.mkdirSync(
-            OUTPUT_DIR,
-            {
-                recursive: true
-            }
-        );
-
-    }
-
-    fs.writeFileSync(
-
-        OUTPUT_FILE,
-
-        JSON.stringify(
-            data,
-            null,
-            4
-        )
-
-    );
-
-}
-
-function groupBySpecies(pokemon) {
+function groupBySpecies(
+    pokemon
+) {
 
     const groups = new Map();
 
@@ -94,9 +47,12 @@ function groupBySpecies(pokemon) {
 
 }
 
-function determineCategory(identifier) {
+function determineCategory(
+    identifier
+) {
 
-    const value = identifier.toLowerCase();
+    const value =
+        identifier.toLowerCase();
 
     if (value.includes("mega")) {
         return "Mega";
@@ -107,12 +63,16 @@ function determineCategory(identifier) {
     }
 
     if (
+
         value.includes("alola") ||
         value.includes("galar") ||
         value.includes("hisui") ||
         value.includes("paldea")
+
     ) {
+
         return "Regional";
+
     }
 
     if (value.includes("primal")) {
@@ -124,13 +84,18 @@ function determineCategory(identifier) {
     }
 
     if (
+
         value.includes("male") ||
         value.includes("female")
+
     ) {
+
         return "Gender";
+
     }
 
     if (
+
         value.includes("attack") ||
         value.includes("defense") ||
         value.includes("speed") ||
@@ -150,15 +115,20 @@ function determineCategory(identifier) {
         value.includes("resolute") ||
         value.includes("ash") ||
         value.includes("battle-bond")
+
     ) {
+
         return "Forme";
+
     }
 
     return "Alternate";
 
 }
 
-function createDisplayName(identifier) {
+function createDisplayName(
+    identifier
+) {
 
     if (!identifier) {
 
@@ -184,7 +154,9 @@ function createDisplayName(identifier) {
 
 }
 
-function sortForms(forms) {
+function sortForms(
+    forms
+) {
 
     const order = {
 
@@ -200,21 +172,17 @@ function sortForms(forms) {
 
     };
 
-    forms.sort((a, b) => {
+    forms.sort(
 
-        const categoryDifference =
+        (a, b) =>
+
             order[a.category] -
-            order[b.category];
+            order[b.category] ||
 
-        if (categoryDifference !== 0) {
+            a.order -
+            b.order
 
-            return categoryDifference;
-
-        }
-
-        return a.order - b.order;
-
-    });
+    );
 
 }
 
@@ -230,7 +198,8 @@ function createFormsForSpecies(
         const isDefault =
             pokemon.id < 10000;
 
-        let identifier = "default";
+        let identifier =
+            "default";
 
         if (!isDefault) {
 
@@ -238,7 +207,11 @@ function createFormsForSpecies(
                 species.name + " ";
 
             if (
-                pokemon.name.startsWith(prefix)
+
+                pokemon.name.startsWith(
+                    prefix
+                )
+
             ) {
 
                 identifier =
@@ -278,6 +251,7 @@ function createFormsForSpecies(
             identifier,
 
             displayName:
+
                 isDefault
                     ? "Default"
                     : createDisplayName(
@@ -285,6 +259,7 @@ function createFormsForSpecies(
                     ),
 
             category:
+
                 isDefault
                     ? "Default"
                     : determineCategory(
@@ -297,7 +272,9 @@ function createFormsForSpecies(
 
     }
 
-    sortForms(forms);
+    sortForms(
+        forms
+    );
 
     for (const form of forms) {
 
@@ -309,7 +286,11 @@ function createFormsForSpecies(
 
 }
 
-function generateSpeciesForms() {
+function generateSpeciesForms(
+    {
+        verbose = true
+    } = {}
+) {
 
     const pokemon =
         loadJSON(
@@ -326,17 +307,21 @@ function generateSpeciesForms() {
             pokemon
         );
 
-    printSection(
-        `Loaded ${pokemon.length} Pokémon`
-    );
+    if (verbose) {
 
-    console.log(
-        `Loaded ${species.length} Species`
-    );
+        printSection(
+            `Loaded ${pokemon.length} Pokémon`
+        );
 
-    console.log(
-        `Created ${groups.size} species groups`
-    );
+        console.log(
+            `Loaded ${species.length} Species`
+        );
+
+        console.log(
+            `Created ${groups.size} species groups`
+        );
+
+    }
 
     const generated = [];
 
@@ -369,6 +354,7 @@ function generateSpeciesForms() {
             },
 
             forms:
+
                 createFormsForSpecies(
                     currentSpecies,
                     pokemonList
@@ -378,37 +364,62 @@ function generateSpeciesForms() {
 
     }
 
-    saveJSON(generated);
-
-    printSuccess(
-        `Generated ${generated.length} species entries`
+    saveJSON(
+        OUTPUT_FILE,
+        generated
     );
 
-    printOutputFile(
-        OUTPUT_FILE
-    );
+    if (verbose) {
 
-}
-
-function main() {
-
-    try {
-
-        printPhase(
-            "Phase 8 - Dataset Generation"
+        printSuccess(
+            `Generated ${generated.length} species entries`
         );
 
-        generateSpeciesForms();
-
-    } catch (error) {
-
-        printError(
-            error,
-            "Error generating species forms"
+        printOutputFile(
+            OUTPUT_FILE
         );
 
     }
 
+    return {
+
+        count:
+            generated.length,
+
+        output:
+            OUTPUT_FILE
+
+    };
+
 }
 
-main();
+module.exports = {
+
+    generateSpeciesForms
+
+};
+
+if (require.main === module) {
+
+    (async () => {
+
+        try {
+
+            printPhase(
+                "Phase 8 - Species Forms Generation"
+            );
+
+            await generateSpeciesForms();
+
+        } catch (error) {
+
+            printError(
+                error,
+                "Error generating species forms"
+            );
+
+        }
+
+    })();
+
+}

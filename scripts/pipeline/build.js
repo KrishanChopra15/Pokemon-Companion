@@ -21,7 +21,7 @@ const {
     validateAll
 } = require("./validate");
 
-const PIPELINE = [
+const BUILD_PIPELINE = [
 
     {
         name: "Download",
@@ -32,14 +32,14 @@ const PIPELINE = [
 
     {
         name: "Generate",
-        icon: "⚙",
+        icon: "⚙️",
         action: generateAll,
         label: "Generation completed"
     },
 
     {
         name: "Validate",
-        icon: "✅",
+        icon: "🛡️",
         action: validateAll,
         label: "Validation completed"
     }
@@ -71,20 +71,20 @@ async function buildAll(
 
             let index = 0;
 
-            index < PIPELINE.length;
+            index < BUILD_PIPELINE.length;
 
             index++
 
         ) {
 
             const step =
-                PIPELINE[index];
+                BUILD_PIPELINE[index];
 
             printPipelineStep(
 
                 index + 1,
 
-                PIPELINE.length,
+                BUILD_PIPELINE.length,
 
                 `${step.icon} ${step.name}`
 
@@ -117,19 +117,23 @@ async function buildAll(
 
             }
 
+            const successMessage =
+
+                result.message ??
+
+                step.label;
+
             printPipelineSuccess(
-                step.label
+                successMessage
             );
 
             summary.push({
 
-                label: step.name,
+                label:
+                    `${step.icon} ${step.name}`,
 
                 value:
-
-                    result.elapsed ||
-
-                    "Completed"
+                    result.elapsed
 
             });
 
@@ -149,9 +153,9 @@ async function buildAll(
 
                 elapsed,
 
-                PIPELINE.length,
+                BUILD_PIPELINE.length,
 
-                PIPELINE.length
+                BUILD_PIPELINE.length
 
             );
 
@@ -173,7 +177,10 @@ async function buildAll(
 
             success: true,
 
-            elapsed
+            elapsed,
+
+            message:
+                "Build completed"
 
         };
 

@@ -29,44 +29,65 @@ const {
     generateLearnsetDatabase
 } = require("../generate/generate-learnset-database");
 
-const PIPELINE = [
+const {
+    generateManifest
+} = require("../generate/generate-manifest");
 
-    {
+/**
+ * Generation execution order.
+ *
+ * Keep this list ordered by dependency.
+ */
+
+const GENERATION_PIPELINE = Object.freeze([
+
+    Object.freeze({
+        id: "pokemon-index",
         name: "Pokémon Index",
         icon: "📚",
-        action: generatePokemonIndex,
-        label: "Pokémon indexed"
-    },
+        action: generatePokemonIndex
+    }),
 
-    {
+    Object.freeze({
+        id: "category-indexes",
         name: "Category Indexes",
-        icon: "🗂",
-        action: generateCategoryIndexes,
-        label: "category indexes generated"
-    },
+        icon: "🗂️",
+        action: generateCategoryIndexes
+    }),
 
-    {
+    Object.freeze({
+        id: "species-forms",
         name: "Species Forms",
         icon: "📝",
-        action: generateSpeciesForms,
-        label: "species forms generated"
-    },
+        action: generateSpeciesForms
+    }),
 
-    {
+    Object.freeze({
+        id: "evolution-graph",
         name: "Evolution Graph",
         icon: "🧬",
-        action: generateEvolutionGraph,
-        label: "evolution entries generated"
-    },
+        action: generateEvolutionGraph
+    }),
 
-    {
+    Object.freeze({
+        id: "learnset-database",
         name: "Learnset Database",
         icon: "📖",
-        action: generateLearnsetDatabase,
-        label: "learnset databases generated"
-    }
+        action: generateLearnsetDatabase
+    }),
 
-];
+    Object.freeze({
+        id: "manifest",
+        name: "Manifest",
+        icon: "📦",
+        action: generateManifest
+    })
+
+
+]);
+
+const TOTAL_STEPS =
+    GENERATION_PIPELINE.length;
 
 async function generateAll(
     {
@@ -89,24 +110,21 @@ async function generateAll(
 
         }
 
+        let stepNumber = 0;
+
         for (
 
-            let index = 0;
-
-            index < PIPELINE.length;
-
-            index++
+            const step of GENERATION_PIPELINE
 
         ) {
 
-            const step =
-                PIPELINE[index];
+            stepNumber++;
 
             printPipelineStep(
 
-                index + 1,
+                stepNumber,
 
-                PIPELINE.length,
+                TOTAL_STEPS,
 
                 `${step.icon} ${step.name}`
 
@@ -119,13 +137,7 @@ async function generateAll(
 
                 });
 
-            if (
-
-                !result ||
-
-                result.success === false
-
-            ) {
+            if (!result?.success) {
 
                 throw (
 
@@ -141,17 +153,9 @@ async function generateAll(
 
             const successMessage =
 
-                result.message ||
+                result.message ??
 
-                (
-
-                    typeof result.count === "number"
-
-                        ? `${result.count} ${step.label}`
-
-                        : `${step.name} completed`
-
-                );
+                `${step.name} completed`;
 
             printPipelineSuccess(
                 successMessage
@@ -159,17 +163,18 @@ async function generateAll(
 
             summary.push({
 
-                label: step.name,
+                label:
+                    `${step.icon} ${step.name}`,
 
                 value:
 
                     typeof result.count === "number"
 
-                        ? String(
-                            result.count
-                        )
+                        ? result.count.toLocaleString()
 
-                        : "Completed"
+                        : result.elapsed ??
+
+                          "✓"
 
             });
 
@@ -186,13 +191,7 @@ async function generateAll(
         if (!nested) {
 
             printPipelineFooter(
-
-                elapsed,
-
-                PIPELINE.length,
-
-                PIPELINE.length
-
+                elapsed
             );
 
             printSummary(
@@ -213,7 +212,10 @@ async function generateAll(
 
             success: true,
 
-            elapsed
+            elapsed,
+
+            message:
+                "Generation completed"
 
         };
 
@@ -224,8 +226,11 @@ async function generateAll(
         if (!nested) {
 
             printError(
+
                 error,
+
                 "Generation pipeline failed"
+
             );
 
         }

@@ -407,6 +407,39 @@ function sortPokemonIndex(
 
 }
 
+/**
+ * Creates the lightweight lookup object
+ * used throughout the frontend.
+ */
+
+function createPokemonLookup(
+    pokemon
+) {
+
+    return {
+
+        id:
+            pokemon.id,
+
+        speciesId:
+            pokemon.speciesId,
+
+        identifier:
+            pokemon.identifier,
+
+        name:
+            pokemon.name,
+
+        displayName:
+            pokemon.displayName,
+
+        isDefault:
+            pokemon.isDefault
+
+    };
+
+}
+
 module.exports = {
 
     isDefaultPokemon,
@@ -419,6 +452,8 @@ module.exports = {
 
     createPokemonMetadata,
 
-    sortPokemonIndex
+    sortPokemonIndex,
+
+    createPokemonLookup
 
 };

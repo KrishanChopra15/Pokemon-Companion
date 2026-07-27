@@ -18,6 +18,30 @@ const CYAN = "\x1b[36m";
 
 const WHITE = "\x1b[37m";
 
+const COLOURS = {
+
+    RESET,
+
+    BOLD,
+
+    DIM,
+
+    RED,
+
+    GREEN,
+
+    YELLOW,
+
+    BLUE,
+
+    MAGENTA,
+
+    CYAN,
+
+    WHITE
+
+};
+
 function colour(
     colour,
     text
@@ -53,8 +77,10 @@ function printPhase(
             "══════════════════════════════════════════════════════"
         )
     );
-
+    console.log();
 }
+
+
 
 function printSection(
     title
@@ -81,6 +107,24 @@ function printSection(
             BLUE,
             "──────────────────────────────────────────────────────"
         )
+    );
+
+}
+
+function printDivider(
+    dividerColour = COLOURS.BLUE
+) {
+
+    console.log(
+
+        colour(
+
+            dividerColour,
+
+            "──────────────────────────────────────────────────────"
+
+        )
+
     );
 
 }
@@ -390,15 +434,14 @@ function printSummary(
 
     for (const row of rows) {
 
-        const label =
-            row.label.padEnd(
-                24,
-                "."
-            );
+        printLabelValue(
 
-        console.log(
+            row.label,
 
-            `  ${label} ${colour(GREEN, row.value)}`
+            colour(
+                COLOURS.GREEN,
+                row.value
+            )
 
         );
 
@@ -408,17 +451,138 @@ function printSummary(
 
 }
 
+function printSubSection(
+    title
+) {
+
+    console.log(
+
+        colour(
+
+            BOLD + YELLOW,
+
+            title
+
+        )
+
+    );
+
+    console.log(
+
+        colour(
+
+            DIM,
+
+            "─".repeat(
+                title.length
+            )
+
+        )
+
+    );
+
+}
+
+function printLabelValue(
+    label,
+    value,
+    valueColour = COLOURS.WHITE
+) {
+
+    console.log(
+
+        `  ${colour(
+
+            COLOURS.CYAN,
+
+            label.padEnd(18)
+
+        )}${colour(
+
+            valueColour,
+            String(value)
+
+        )}`
+
+    );
+
+}
+
+function printBullet(
+    text
+) {
+
+    console.log(
+
+        `  ${colour(
+
+            COLOURS.GREEN,
+
+            "•"
+
+        )} ${colour(
+
+            COLOURS.WHITE,
+
+            text
+
+        )}`
+
+    );
+
+}
+
+function printTree(
+    prefix,
+    text
+) {
+
+    console.log(
+
+        `${colour(
+
+            COLOURS.DIM,
+
+            prefix
+
+        )}${colour(
+
+            COLOURS.WHITE,
+
+            text
+
+        )}`
+
+    );
+
+}
+
+
 module.exports = {
+
+    COLOURS,
+
+    colour,
 
     printPhase,
 
-    printError,
+    printSection,
+
+    printDivider,
+
+    printSubSection,
+
+    printLabelValue,
+
+    printBullet,
+
+    printTree,
 
     printSuccess,
 
     printWarning,
 
-    printSection,
+    printError,
 
     printOutputFile,
 

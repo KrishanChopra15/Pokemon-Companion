@@ -15,7 +15,7 @@ const {
 
 const {
     buildLearnsets
-} = require("../utils/learnsets");
+} = require("../utils/build-learnsets");
 
 const {
     printSuccess,

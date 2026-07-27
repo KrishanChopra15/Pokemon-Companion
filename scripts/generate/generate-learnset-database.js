@@ -261,15 +261,22 @@ function generateLearnsetDatabase(
 
         return {
 
+            success: true,
+
             count:
                 database.length,
 
             output:
-                OUTPUT_FILE
+                OUTPUT_FILE,
+
+            message:
+                `${database.length} learnset databases generated`
 
         };
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         if (verbose) {
 
@@ -280,7 +287,13 @@ function generateLearnsetDatabase(
 
         }
 
-        throw error;
+        return {
+
+            success: false,
+
+            error
+
+        };
 
     }
 

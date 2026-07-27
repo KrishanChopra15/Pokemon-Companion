@@ -292,104 +292,134 @@ function generateSpeciesForms(
     } = {}
 ) {
 
-    const pokemon =
-        loadJSON(
-            "pokemon.json"
-        );
+    try {
 
-    const species =
-        loadJSON(
-            "species.json"
-        );
-
-    const groups =
-        groupBySpecies(
-            pokemon
-        );
-
-    if (verbose) {
-
-        printSection(
-            `Loaded ${pokemon.length} Pokémon`
-        );
-
-        console.log(
-            `Loaded ${species.length} Species`
-        );
-
-        console.log(
-            `Created ${groups.size} species groups`
-        );
-
-    }
-
-    const generated = [];
-
-    for (const currentSpecies of species) {
-
-        const pokemonList =
-            groups.get(
-                currentSpecies.id
+        const pokemon =
+            loadJSON(
+                "pokemon.json"
             );
 
-        if (!pokemonList) {
+        const species =
+            loadJSON(
+                "species.json"
+            );
 
-            continue;
+        const groups =
+            groupBySpecies(
+                pokemon
+            );
+
+        if (verbose) {
+
+            printSection(
+                `Loaded ${pokemon.length} Pokémon`
+            );
+
+            console.log(
+                `Loaded ${species.length} Species`
+            );
+
+            console.log(
+                `Created ${groups.size} species groups`
+            );
 
         }
 
-        generated.push({
+        const generated = [];
 
-            species: {
+        for (const currentSpecies of species) {
 
-                id:
-                    currentSpecies.id,
+            const pokemonList =
+                groups.get(
+                    currentSpecies.id
+                );
 
-                number:
-                    currentSpecies.number,
+            if (!pokemonList) {
 
-                name:
-                    currentSpecies.name
+                continue;
 
-            },
+            }
 
-            forms:
+            generated.push({
 
-                createFormsForSpecies(
-                    currentSpecies,
-                    pokemonList
-                )
+                species: {
 
-        });
+                    id:
+                        currentSpecies.id,
+
+                    number:
+                        currentSpecies.number,
+
+                    name:
+                        currentSpecies.name
+
+                },
+
+                forms:
+
+                    createFormsForSpecies(
+                        currentSpecies,
+                        pokemonList
+                    )
+
+            });
+
+        }
+
+        saveJSON(
+            OUTPUT_FILE,
+            generated
+        );
+
+        if (verbose) {
+
+            printSuccess(
+                `Generated ${generated.length} species entries`
+            );
+
+            printOutputFile(
+                OUTPUT_FILE
+            );
+
+        }
+
+        return {
+
+            success: true,
+
+            count:
+                generated.length,
+
+            output:
+                OUTPUT_FILE,
+
+            message:
+                `${generated.length} species forms generated`
+
+        };
 
     }
 
-    saveJSON(
-        OUTPUT_FILE,
-        generated
-    );
+    catch (error) {
 
-    if (verbose) {
+        if (verbose) {
 
-        printSuccess(
-            `Generated ${generated.length} species entries`
-        );
+            printError(
+                error,
+                "Error generating species forms"
+            );
 
-        printOutputFile(
-            OUTPUT_FILE
-        );
+        }
+
+        return {
+
+            success: false,
+
+            error
+
+        };
 
     }
-
-    return {
-
-        count:
-            generated.length,
-
-        output:
-            OUTPUT_FILE
-
-    };
 
 }
 

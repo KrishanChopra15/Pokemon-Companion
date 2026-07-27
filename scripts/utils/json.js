@@ -25,6 +25,19 @@ function loadJSON(file) {
 
 }
 
+function loadJSONFile(filePath) {
+
+    return JSON.parse(
+
+        fs.readFileSync(
+            filePath,
+            "utf8"
+        )
+
+    );
+
+}
+
 function saveJSON(outputFile, data) {
 
     const outputDir =
@@ -60,6 +73,8 @@ module.exports = {
     DATABASE_DIR,
 
     loadJSON,
+
+    loadJSONFile,
 
     saveJSON
 

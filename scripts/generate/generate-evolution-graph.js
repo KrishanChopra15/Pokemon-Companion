@@ -7,7 +7,7 @@ const {
 
 const {
     buildEvolutionGraph
-} = require("../utils/evolution");
+} = require("../utils/build-evolution");
 
 const {
     printPhase,
@@ -58,15 +58,22 @@ function generateEvolutionGraph(
 
         return {
 
+            success: true,
+
             count:
                 evolutionGraph.length,
 
             output:
-                OUTPUT_FILE
+                OUTPUT_FILE,
+
+            message:
+                `${evolutionGraph.length} evolution graph entries generated`
 
         };
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         if (verbose) {
 
@@ -77,7 +84,13 @@ function generateEvolutionGraph(
 
         }
 
-        throw error;
+        return {
+
+            success: false,
+
+            error
+
+        };
 
     }
 

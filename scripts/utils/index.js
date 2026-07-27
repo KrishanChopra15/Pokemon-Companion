@@ -7,6 +7,10 @@
 
 module.exports = {
 
+    /* Abilities */
+
+    ...require("./abilities"),
+
     /* API */
 
     ...require("./api"),
@@ -15,9 +19,17 @@ module.exports = {
 
     ...require("./formatting"),
 
+    /* Forms */
+
+    ...require("./forms"),
+
     /* Helpers */
 
     ...require("./helpers"),
+
+    /* Items */
+
+    ...require("./items"),
 
     /* JSON */
 
@@ -27,12 +39,31 @@ module.exports = {
 
     ...require("./logger"),
 
+    /* Lookup */
+
+    ...require("./lookup"),
+
+    /* Moves */
+
+    ...require("./build-moves"),
+
     /* Pokémon */
 
     ...require("./pokemon"),
 
-    /* Forms */
+    /* Search */
+    
+    ...require("./search"),
 
-    ...require("./forms")
+    searchEngine:
+       require("./searchEngine"),
+
+    /* Species */
+
+    ...require("./species"),
+
+    /* Types */
+
+    ...require("./types")
 
 };

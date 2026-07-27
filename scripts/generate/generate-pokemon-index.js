@@ -35,114 +35,144 @@ function generatePokemonIndex(
     } = {}
 ) {
 
-    const pokemon = loadJSON(
-        "pokemon.json"
-    );
+    try {
 
-    const species = loadJSON(
-        "species.json"
-    );
-
-    if (verbose) {
-
-        printSection(
-            `Loaded ${pokemon.length} Pokémon`
+        const pokemon = loadJSON(
+            "pokemon.json"
         );
 
-        console.log(
-            `Loaded ${species.length} Species`
+        const species = loadJSON(
+            "species.json"
         );
 
-    }
+        if (verbose) {
 
-    const speciesLookup =
-        createLookupMap(
-            species
-        );
-
-    const pokemonIndex = [];
-
-    let missingSpecies = 0;
-
-    for (const currentPokemon of pokemon) {
-
-        const currentSpecies =
-            speciesLookup.get(
-                currentPokemon.speciesId
+            printSection(
+                `Loaded ${pokemon.length} Pokémon`
             );
 
-        if (!currentSpecies) {
+            console.log(
+                `Loaded ${species.length} Species`
+            );
 
-            missingSpecies++;
+        }
 
-            if (verbose) {
+        const speciesLookup =
+            createLookupMap(
+                species
+            );
+
+        const pokemonIndex = [];
+
+        let missingSpecies = 0;
+
+        for (const currentPokemon of pokemon) {
+
+            const currentSpecies =
+                speciesLookup.get(
+                    currentPokemon.speciesId
+                );
+
+            if (!currentSpecies) {
+
+                missingSpecies++;
+
+                if (verbose) {
+
+                    console.warn(
+                        `Missing species ${currentPokemon.speciesId} for Pokémon ${currentPokemon.id}`
+                    );
+
+                }
+
+                continue;
+
+            }
+
+            pokemonIndex.push(
+
+                createPokemonMetadata({
+
+                    ...currentPokemon,
+
+                    speciesName:
+                        currentSpecies.name,
+
+                    number:
+                        currentSpecies.number
+
+                })
+
+            );
+
+        }
+
+        sortPokemonIndex(
+            pokemonIndex
+        );
+
+        saveJSON(
+            OUTPUT_FILE,
+            pokemonIndex
+        );
+
+        if (verbose) {
+
+            printSuccess(
+                `Generated ${pokemonIndex.length} Pokémon index entries`
+            );
+
+            printOutputFile(
+                OUTPUT_FILE
+            );
+
+            if (missingSpecies > 0) {
 
                 console.warn(
-                    `Missing species ${currentPokemon.speciesId} for Pokémon ${currentPokemon.id}`
+                    `Skipped ${missingSpecies} Pokémon because their species could not be found.`
                 );
 
             }
 
-            continue;
-
         }
 
-        pokemonIndex.push(
+        return {
 
-            createPokemonMetadata({
+            success: true,
 
-                ...currentPokemon,
+            count:
+                pokemonIndex.length,
 
-                speciesName:
-                    currentSpecies.name,
+            output:
+                OUTPUT_FILE,
 
-                number:
-                    currentSpecies.number
+            message:
+                `${pokemonIndex.length} Pokémon indexed`
 
-            })
-
-        );
+        };
 
     }
 
-    sortPokemonIndex(
-        pokemonIndex
-    );
+    catch (error) {
 
-    saveJSON(
-        OUTPUT_FILE,
-        pokemonIndex
-    );
+        if (verbose) {
 
-    if (verbose) {
-
-        printSuccess(
-            `Generated ${pokemonIndex.length} Pokémon index entries`
-        );
-
-        printOutputFile(
-            OUTPUT_FILE
-        );
-
-        if (missingSpecies > 0) {
-
-            console.warn(
-                `Skipped ${missingSpecies} Pokémon because their species could not be found.`
+            printError(
+                error,
+                "Error generating Pokémon index"
             );
 
         }
 
+        return {
+
+            success: false,
+
+            error
+
+        };
+
     }
-
-    return {
-
-        count:
-            pokemonIndex.length,
-
-        output:
-            OUTPUT_FILE
-
-    };
 
 }
 

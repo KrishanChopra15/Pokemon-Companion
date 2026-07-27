@@ -126,75 +126,105 @@ function generateCategoryIndexes(
     } = {}
 ) {
 
-    const pokemon =
-        loadJSON(
-            INPUT_FILE
-        );
+    try {
 
-    if (verbose) {
-
-        printSection(
-            `Loaded ${pokemon.length} Pokémon`
-        );
-
-    }
-
-    let generatedCount = 0;
-
-    for (const category of CATEGORIES) {
-
-        const index =
-            buildCategoryIndex(
-                pokemon,
-                category
+        const pokemon =
+            loadJSON(
+                INPUT_FILE
             );
-
-        const outputFile =
-            path.join(
-                OUTPUT_DIR,
-                createOutputName(
-                    category
-                )
-            );
-
-        saveJSON(
-            outputFile,
-            index
-        );
-
-        generatedCount++;
 
         if (verbose) {
 
-            console.log(
-                `${createOutputName(category)} (${index.length})`
+            printSection(
+                `Loaded ${pokemon.length} Pokémon`
             );
 
         }
 
+        let generatedCount = 0;
+
+        for (const category of CATEGORIES) {
+
+            const index =
+                buildCategoryIndex(
+                    pokemon,
+                    category
+                );
+
+            const outputFile =
+                path.join(
+                    OUTPUT_DIR,
+                    createOutputName(
+                        category
+                    )
+                );
+
+            saveJSON(
+                outputFile,
+                index
+            );
+
+            generatedCount++;
+
+            if (verbose) {
+
+                console.log(
+                    `${createOutputName(category)} (${index.length})`
+                );
+
+            }
+
+        }
+
+        if (verbose) {
+
+            printSuccess(
+                "Category indexes generated"
+            );
+
+            printOutputFile(
+                OUTPUT_DIR
+            );
+
+        }
+
+        return {
+
+            success: true,
+
+            count:
+                generatedCount,
+
+            output:
+                OUTPUT_DIR,
+
+            message:
+                `${generatedCount} category indexes generated`
+
+        };
+
     }
 
-    if (verbose) {
+    catch (error) {
 
-        printSuccess(
-            "Category indexes generated"
-        );
+        if (verbose) {
 
-        printOutputFile(
-            OUTPUT_DIR
-        );
+            printError(
+                error,
+                "Error generating category indexes"
+            );
+
+        }
+
+        return {
+
+            success: false,
+
+            error
+
+        };
 
     }
-
-    return {
-
-        count:
-            generatedCount,
-
-        output:
-            OUTPUT_DIR
-
-    };
 
 }
 
@@ -216,7 +246,9 @@ if (require.main === module) {
 
             await generateCategoryIndexes();
 
-        } catch (error) {
+        }
+
+        catch (error) {
 
             printError(
                 error,

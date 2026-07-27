@@ -51731,7 +51731,7 @@
     {
         "id": 1263,
         "apiName": "pokemon-hq-lab-area",
-        "name": "Pokemon HQ Lab ",
+        "name": "Pokemon HQ Lab",
         "gameIndex": 0,
         "location": {
             "id": 1106,
@@ -51808,7 +51808,7 @@
     {
         "id": 1270,
         "apiName": "pokespot-cave",
-        "name": "Cave Pokespot ",
+        "name": "Cave Pokespot",
         "gameIndex": 0,
         "location": {
             "id": 1109,
@@ -52077,7 +52077,7 @@
     {
         "id": 1293,
         "apiName": "gateon-port-area",
-        "name": "Gateon Port ",
+        "name": "Gateon Port",
         "gameIndex": 0,
         "location": {
             "id": 1107,
@@ -52088,7 +52088,7 @@
     {
         "id": 1294,
         "apiName": "pokespot-rock",
-        "name": "Rock Pokespot ",
+        "name": "Rock Pokespot",
         "gameIndex": 0,
         "location": {
             "id": 1109,

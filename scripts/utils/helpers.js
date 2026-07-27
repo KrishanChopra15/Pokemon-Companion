@@ -238,6 +238,38 @@ function sortById(
 
 }
 
+/**
+ * Creates a lookup object from an array.
+ *
+ * Example:
+ *
+ * createLookup(
+ *     pokemon,
+ *     pokemon => pokemon.id,
+ *     createPokemonLookup
+ * );
+ */
+
+function createLookup(
+    array,
+    keySelector,
+    valueSelector = value => value
+) {
+
+    const lookup = {};
+
+    for (const item of array) {
+
+        lookup[
+            keySelector(item)
+        ] = valueSelector(item);
+
+    }
+
+    return lookup;
+
+}
+
 module.exports = {
 
     hasFlag,
@@ -258,6 +290,8 @@ module.exports = {
 
     sortByProperty,
 
-    sortById
+    sortById,
+
+    createLookup
 
 };

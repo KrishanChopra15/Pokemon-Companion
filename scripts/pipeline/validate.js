@@ -17,23 +17,32 @@ const {
     validateEvolutions
 } = require("../validate/validate-evolutions");
 
-const PIPELINE = [
+/**
+ * Validation execution order.
+ *
+ * Keep this list ordered by dependency.
+ */
 
-    {
+const VALIDATION_PIPELINE = Object.freeze([
+
+    Object.freeze({
+        id: "database",
         name: "Database",
-        icon: "🗃",
-        action: validateDatabase,
-        label: "Database validated"
-    },
+        icon: "🗃️",
+        action: validateDatabase
+    }),
 
-    {
+    Object.freeze({
+        id: "evolution-graph",
         name: "Evolution Graph",
         icon: "🧬",
-        action: validateEvolutions,
-        label: "evolution records validated"
-    }
+        action: validateEvolutions
+    })
 
-];
+]);
+
+const TOTAL_STEPS =
+    VALIDATION_PIPELINE.length;
 
 async function validateAll(
     {
@@ -56,24 +65,21 @@ async function validateAll(
 
         }
 
+        let stepNumber = 0;
+
         for (
 
-            let index = 0;
-
-            index < PIPELINE.length;
-
-            index++
+            const step of VALIDATION_PIPELINE
 
         ) {
 
-            const step =
-                PIPELINE[index];
+            stepNumber++;
 
             printPipelineStep(
 
-                index + 1,
+                stepNumber,
 
-                PIPELINE.length,
+                TOTAL_STEPS,
 
                 `${step.icon} ${step.name}`
 
@@ -86,13 +92,7 @@ async function validateAll(
 
                 });
 
-            if (
-
-                !result ||
-
-                !result.success
-
-            ) {
+            if (!result?.success) {
 
                 throw (
 
@@ -108,17 +108,9 @@ async function validateAll(
 
             const successMessage =
 
-                result.message ||
+                result.message ??
 
-                (
-
-                    typeof result.count === "number"
-
-                        ? `${result.count} ${step.label}`
-
-                        : step.label
-
-                );
+                `${step.name} completed`;
 
             printPipelineSuccess(
                 successMessage
@@ -126,17 +118,18 @@ async function validateAll(
 
             summary.push({
 
-                label: step.name,
+                label:
+                    `${step.icon} ${step.name}`,
 
                 value:
 
                     typeof result.count === "number"
 
-                        ? String(
-                            result.count
-                        )
+                        ? result.count.toLocaleString()
 
-                        : "Passed"
+                        : result.elapsed ??
+
+                          "✓"
 
             });
 
@@ -153,13 +146,7 @@ async function validateAll(
         if (!nested) {
 
             printPipelineFooter(
-
-                elapsed,
-
-                PIPELINE.length,
-
-                PIPELINE.length
-
+                elapsed
             );
 
             printSummary(
@@ -180,7 +167,10 @@ async function validateAll(
 
             success: true,
 
-            elapsed
+            elapsed,
+
+            message:
+                "Validation completed"
 
         };
 
@@ -191,8 +181,11 @@ async function validateAll(
         if (!nested) {
 
             printError(
+
                 error,
+
                 "Validation pipeline failed"
+
             );
 
         }

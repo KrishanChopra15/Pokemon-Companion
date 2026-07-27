@@ -89,149 +89,159 @@ const {
     downloadSprites
 } = require("../download/download-sprites");
 
-const PIPELINE = [
+/**
+ * Download execution order.
+ *
+ * Keep this list ordered by dependency.
+ * Earlier resources may be required by later downloaders.
+ */
 
-    {
+const DOWNLOAD_PIPELINE = Object.freeze([
+
+    Object.freeze({
+        id: "version-groups",
         name: "Version Groups",
         icon: "📦",
         action: downloadVersionGroups,
-        label: "version groups"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "games",
         name: "Games",
         icon: "🎮",
         action: downloadGames,
-        label: "games"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "types",
         name: "Types",
         icon: "🎨",
         action: downloadTypes,
-        label: "types"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "legacy-types",
         name: "Legacy Types",
         icon: "🎨",
         action: downloadLegacyTypes,
-        label: "legacy types"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "damage-classes",
         name: "Damage Classes",
-        icon: "⚔",
+        icon: "⚔️",
         action: downloadDamageClasses,
-        label: "damage classes"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "move-targets",
         name: "Move Targets",
         icon: "🎯",
         action: downloadMoveTargets,
-        label: "move targets"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "abilities",
         name: "Abilities",
         icon: "✨",
         action: downloadAbilities,
-        label: "abilities"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "ability-history",
         name: "Ability History",
         icon: "📜",
         action: downloadAbilityHistory,
-        label: "ability history entries"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "moves",
         name: "Moves",
         icon: "💥",
         action: downloadMoves,
-        label: "moves"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "move-history",
         name: "Move History",
         icon: "📜",
         action: downloadMoveHistory,
-        label: "move history entries"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "move-effect-history",
         name: "Move Effect History",
         icon: "📜",
         action: downloadMoveEffectHistory,
-        label: "move effect history entries"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "pokemon",
         name: "Pokémon",
         icon: "⚪",
         action: downloadPokemon,
-        label: "Pokémon"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "species",
         name: "Species",
         icon: "📖",
         action: downloadSpecies,
-        label: "species"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "forms",
         name: "Forms",
         icon: "📝",
         action: downloadForms,
-        label: "forms"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "sprites",
         name: "Sprites",
-        icon: "🖼",
+        icon: "🖼️",
         action: downloadSprites,
-        label: "sprite records"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "evolution-chains",
         name: "Evolution Chains",
         icon: "🧬",
         action: downloadEvolutions,
-        label: "evolution chains"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "learnsets",
         name: "Learnsets",
         icon: "📚",
         action: downloadLearnsets,
-        label: "learnsets"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "machines",
         name: "Machines",
         icon: "💿",
         action: downloadMachines,
-        label: "machines"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "items",
         name: "Items",
         icon: "🎒",
         action: downloadItems,
-        label: "items"
-    },
+    }),
 
-    {
+    Object.freeze({
+        id: "locations",
         name: "Locations",
-        icon: "🗺",
+        icon: "🗺️",
         action: downloadLocations,
-        label: "locations"
-    }
+    })
 
-];
+]);
+
+const TOTAL_STEPS =
+    DOWNLOAD_PIPELINE.length;
 
 async function downloadAll(
     {
@@ -254,28 +264,23 @@ async function downloadAll(
 
         }
 
-        for (
+            let stepNumber = 1;
 
-            let index = 0;
-
-            index < PIPELINE.length;
-
-            index++
-
-        ) {
-
-            const step =
-                PIPELINE[index];
-
-            printPipelineStep(
-
-                index + 1,
-
-                PIPELINE.length,
-
-                `${step.icon} ${step.name}`
-
-            );
+            for (
+            
+                const step of DOWNLOAD_PIPELINE
+            
+            ) {
+            
+                printPipelineStep(
+                
+                    stepNumber,
+                
+                    TOTAL_STEPS,
+                
+                    `${step.icon} ${step.name}`
+                
+                );
 
             const result =
                 await step.action({
@@ -284,53 +289,48 @@ async function downloadAll(
 
                 });
 
-            if (
-
-                !result ||
-
-                !result.success
-
-            ) {
-
+            if (!result?.success) {
+            
                 throw (
-
+                
                     result?.error ??
-
+                
                     new Error(
                         `${step.name} failed.`
                     )
-
+                
                 );
-
+            
             }
 
             const successMessage =
 
-                result.message ||
+                result.message ??
 
-                (
-
-                    typeof result.count === "number"
-
-                        ? `${result.count} ${step.label} downloaded`
-
-                        : `${step.name} completed`
-
-                );
+                `${step.name} completed`;
 
             printPipelineSuccess(
                 successMessage
             );
 
             summary.push({
-
-                label: step.name,
-
-                value: String(
-                    result.count
-                )
-
+            
+                label:
+                    `${step.icon} ${step.name}`,
+            
+                value:
+            
+                    typeof result.count === "number"
+            
+                        ? result.count.toLocaleString()
+            
+                        : result.elapsed ??
+            
+                          "✓"
+            
             });
+            
+            stepNumber++;
 
         }
 
@@ -346,11 +346,7 @@ async function downloadAll(
 
             printPipelineFooter(
 
-                elapsed,
-
-                PIPELINE.length,
-
-                PIPELINE.length
+                elapsed
 
             );
 
@@ -369,11 +365,14 @@ async function downloadAll(
         }
 
         return {
-
+        
             success: true,
-
-            elapsed
-
+        
+            elapsed,
+        
+            message:
+                "Download completed"
+        
         };
 
     }

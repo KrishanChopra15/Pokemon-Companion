@@ -1,219 +1,430 @@
 const {
-    getIdFromUrl
-} = require("./helpers");
+    loadJSON
+} = require("./json");
 
 const {
     formatApiName
 } = require("./formatting");
 
-/* ---------------------------------- */
-/* Evolution Methods                  */
-/* ---------------------------------- */
-
-function extractEvolutionMethod(
-    details = {}
-) {
-
-    return {
-
-        trigger:
-            details.trigger
-                ? formatApiName(
-                    details.trigger.name
-                )
-                : null,
-
-        minLevel:
-            details.min_level,
-
-        item:
-            details.item
-                ? formatApiName(
-                    details.item.name
-                )
-                : null,
-
-        heldItem:
-            details.held_item
-                ? formatApiName(
-                    details.held_item.name
-                )
-                : null,
-
-        tradeSpecies:
-            details.trade_species
-                ? getIdFromUrl(
-                    details.trade_species.url
-                )
-                : null,
-
-        minHappiness:
-            details.min_happiness,
-
-        minAffection:
-            details.min_affection,
-
-        minBeauty:
-            details.min_beauty,
-
-        gender:
-            details.gender,
-
-        location:
-            details.location
-                ? formatApiName(
-                    details.location.name
-                )
-                : null,
-
-        knownMove:
-            details.known_move
-                ? formatApiName(
-                    details.known_move.name
-                )
-                : null,
-
-        knownMoveType:
-            details.known_move_type
-                ? formatApiName(
-                    details.known_move_type.name
-                )
-                : null,
-
-        partySpecies:
-            details.party_species
-                ? getIdFromUrl(
-                    details.party_species.url
-                )
-                : null,
-
-        partyType:
-            details.party_type
-                ? formatApiName(
-                    details.party_type.name
-                )
-                : null,
-
-        region:
-            details.region
-                ? formatApiName(
-                    details.region.name
-                )
-                : null,
-
-        timeOfDay:
-            details.time_of_day || null,
-
-        relativePhysicalStats:
-            details.relative_physical_stats,
-
-        turnUpsideDown:
-            details.turn_upside_down,
-
-        needsOverworldRain:
-            details.needs_overworld_rain,
-
-        nearSpecialRock:
-            details.near_special_rock,
-
-        needsMultiplayer:
-            details.needs_multiplayer
-
-    };
-
-}
+const {
+    COLOURS,
+    colour,
+    printSection,
+    printTree
+} = require("./logger");
 
 /* ---------------------------------- */
-/* Evolution Graph                    */
+/* Database                           */
 /* ---------------------------------- */
 
-function walkEvolutionNode(
-    node,
-    graph,
-    parentId = null,
-    stage = 1
-) {
-
-    const speciesId =
-        getIdFromUrl(
-            node.species.url
-        );
-
-    const evolvesTo =
-        node.evolves_to.map(child => ({
-
-            speciesId:
-                getIdFromUrl(
-                    child.species.url
-                ),
-
-            methods:
-                child.evolution_details.map(
-                    extractEvolutionMethod
-                )
-
-        }));
-
-    graph.push({
-
-        speciesId,
-
-        evolvesFrom:
-            parentId,
-
-        evolvesTo,
-
-        stage
-
-    });
-
-    for (const child of node.evolves_to) {
-
-        walkEvolutionNode(
-
-            child,
-
-            graph,
-
-            speciesId,
-
-            stage + 1
-
-        );
-
-    }
-
-}
-
-function buildEvolutionGraph(
-    evolutionChains
-) {
-
-    const graph = [];
-
-    for (const chain of evolutionChains) {
-
-        walkEvolutionNode(
-
-            chain.chain,
-
-            graph
-
-        );
-
-    }
-
-    graph.sort(
-        (a, b) =>
-            a.speciesId - b.speciesId
+const evolutionGraph =
+    loadJSON(
+        "generated/evolution-graph.json"
     );
 
-    return graph;
+const pokemon =
+    loadJSON(
+        "pokemon.json"
+    );
+
+/* ---------------------------------- */
+/* Helpers                            */
+/* ---------------------------------- */
+
+function getEvolutionNode(
+    speciesId
+) {
+
+    return evolutionGraph.find(
+        node =>
+            node.speciesId === speciesId
+    ) || null;
+
+}
+
+function getPokemonBySpeciesId(
+    speciesId
+) {
+
+    return pokemon.find(
+        entry =>
+            entry.speciesId === speciesId
+    ) || null;
+
+}
+
+/* ---------------------------------- */
+/* Root                               */
+/* ---------------------------------- */
+
+function getEvolutionRoot(
+    speciesId
+) {
+
+    let current =
+        getEvolutionNode(
+            speciesId
+        );
+
+    while (
+        current &&
+        current.evolvesFrom !== null
+    ) {
+
+        current =
+            getEvolutionNode(
+                current.evolvesFrom
+            );
+
+    }
+
+    return current;
+
+}
+
+/* ---------------------------------- */
+/* Chain                              */
+/* ---------------------------------- */
+
+function getEvolutionChain(
+    speciesId
+) {
+
+    const root =
+        getEvolutionRoot(
+            speciesId
+        );
+
+    if (!root) {
+
+        return [];
+
+    }
+
+    const chain = [];
+
+    function walk(
+        node
+    ) {
+
+        const pokemon =
+            getPokemonBySpeciesId(
+                node.speciesId
+            );
+
+        chain.push({
+
+            speciesId:
+                node.speciesId,
+
+            stage:
+                node.stage,
+
+            pokemon
+
+        });
+
+        for (const child of node.evolvesTo) {
+
+            const childNode =
+                getEvolutionNode(
+                    child.speciesId
+                );
+
+            if (childNode) {
+
+                walk(
+                    childNode
+                );
+
+            }
+
+        }
+
+    }
+
+    walk(
+        root
+    );
+
+    return chain;
+
+}
+
+function compact(
+    values = []
+) {
+
+    return values.filter(
+        value => value && value.trim()
+    );
+
+}
+
+function formatEvolutionMethod(
+    method = {}
+) {
+
+    if (!method.trigger) {
+
+        return "Unknown";
+
+    }
+
+    if (method.trigger === "Level Up") {
+
+        const parts = [];
+
+        if (method.minLevel) {
+
+            parts.push(
+                `Lv. ${method.minLevel}`
+            );
+
+        }
+
+        if (method.gender === 1) {
+
+            parts.push(
+                "Female"
+            );
+
+        }
+
+        if (method.gender === 2) {
+
+            parts.push(
+                "Male"
+            );
+
+        }
+
+        parts.push(
+            formatApiName(
+                method.timeOfDay
+            )
+        );
+
+        if (method.minHappiness) {
+
+            parts.push(
+                "High Friendship"
+            );
+
+        }
+
+        if (method.knownMove) {
+
+            parts.push(
+                `Knowing ${formatApiName(method.knownMove)}`
+            );
+
+        }
+
+        if (method.location) {
+
+            parts.push(
+                `At ${formatApiName(method.location)}`
+            );
+
+        }
+
+        const description =
+            compact(
+                parts
+            ).join(
+                " • "
+            );
+
+        return description || "Level Up";
+
+    }
+
+    if (method.trigger === "Trade") {
+
+        if (method.heldItem) {
+
+            return `Trade holding ${formatApiName(method.heldItem)}`;
+
+        }
+
+        return "Trade";
+
+    }
+
+    if (method.trigger === "Use Item") {
+
+        return formatApiName(
+            method.item
+        );
+
+    }
+
+    return method.trigger;
+
+}
+
+function printEvolutionTree(
+    node,
+    indent = ""
+) {
+
+    node.evolvesTo.forEach(
+
+        (
+            child,
+            index
+        ) => {
+
+            const isLast =
+                index === node.evolvesTo.length - 1;
+
+            const branch =
+                isLast
+                    ? "└──"
+                    : "├──";
+
+            const nextIndent =
+                indent +
+                (
+                    isLast
+                        ? "    "
+                        : "│   "
+                );
+
+            const pokemon =
+                getPokemonBySpeciesId(
+                    child.speciesId
+                );
+
+            const name =
+                pokemon
+                    ? pokemon.name
+                    : `#${child.speciesId}`;
+
+            const method =
+                formatEvolutionMethod(
+                    child.methods?.[0] || {}
+                );
+                        
+            const formattedMethod =
+                colour(
+                
+                    COLOURS.YELLOW,
+                
+                    method
+                
+                );
+            
+            const formattedArrow =
+                colour(
+                
+                    COLOURS.DIM,
+                
+                    " → "
+                
+                );
+            
+            const formattedName =
+                colour(
+                
+                    COLOURS.BOLD + COLOURS.WHITE,
+                
+                    name
+                
+                );
+            
+            printTree(
+            
+                `${indent}${branch} `,
+            
+                `${formattedMethod}${formattedArrow}${formattedName}`
+            
+            );
+
+            
+
+            const childNode =
+                getEvolutionNode(
+                    child.speciesId
+                );
+
+            if (childNode) {
+
+                printEvolutionTree(
+
+                    childNode,
+
+                    nextIndent
+
+                );
+
+            }
+
+        }
+
+    );
+
+}
+
+function printEvolution(
+    speciesId
+) {
+
+    const root =
+        getEvolutionRoot(
+            speciesId
+        );
+
+    if (!root) {
+
+        return;
+
+    }
+
+    const rootPokemon =
+        getPokemonBySpeciesId(
+            root.speciesId
+        );
+
+    printSection(
+        "🧬 Evolution"
+    );
+
+    console.log(
+
+        colour(
+
+            COLOURS.BOLD + COLOURS.CYAN,
+
+            rootPokemon
+                ? rootPokemon.name
+                : `#${root.speciesId}`
+
+        )
+
+    );
+
+    printEvolutionTree(
+        root
+    );
+
+    console.log();
 
 }
 
 module.exports = {
 
-    buildEvolutionGraph
+    getEvolutionChain,
+
+    getEvolutionNode,
+
+    getEvolutionRoot,
+
+    getPokemonBySpeciesId,
+
+    formatEvolutionMethod,
+
+    printEvolution
 
 };

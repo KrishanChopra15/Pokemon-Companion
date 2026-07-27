@@ -33,7 +33,7 @@ const {
     createMoveContest,
     createMoveMeta,
     createStatChanges
-} = require("../utils/moves");
+} = require("../utils/build-moves");
 
 const {
     printSuccess,

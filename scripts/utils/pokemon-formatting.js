@@ -246,9 +246,70 @@ function colourType(
 
 }
 
+/**
+ * Prints an ability heading.
+ *
+ * @param {Object} ability
+ */
+function printAbilityHeading(
+    ability
+) {
+
+    printDivider(
+        COLOURS.YELLOW
+    );
+
+    console.log(
+
+        colour(
+
+            COLOURS.BOLD + COLOURS.YELLOW,
+
+            `✨ ${ability.name}`
+
+        )
+
+    );
+
+    printDivider(
+        COLOURS.YELLOW
+    );
+
+}
+
+function printMoveHeading(
+    move
+) {
+
+    printDivider(
+        COLOURS.RED
+    );
+
+    console.log(
+
+        colour(
+
+            COLOURS.BOLD + COLOURS.RED,
+
+            `💥 ${move.name}`
+
+        )
+
+    );
+
+    printDivider(
+        COLOURS.RED
+    );
+
+}
+
 module.exports = {
 
     printPokemonHeading,
+
+    printAbilityHeading,
+
+    printMoveHeading,
 
     colourType
 }

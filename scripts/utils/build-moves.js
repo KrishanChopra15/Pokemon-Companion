@@ -119,7 +119,25 @@ function buildMoveVersions(
 
     const versions = [];
 
+    const moveGenerationId =
+        getIdFromUrl(
+            move.generation?.url
+        );
+
     for (const versionGroup of versionGroups) {
+
+        if (
+
+            moveGenerationId !== null &&
+
+            versionGroup.generationOrder <
+            moveGenerationId
+
+        ) {
+
+            continue;
+
+        }
 
         let power =
             move.power;

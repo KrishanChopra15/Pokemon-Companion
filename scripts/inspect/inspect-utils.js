@@ -14,9 +14,9 @@ const {
 );
 
 /**
- * Prints a section heading.
+- Prints a section heading.
  *
- * @param {string} title
+- @param {string} title
  */
 function printInspectorSection(
     title
@@ -29,10 +29,10 @@ function printInspectorSection(
 }
 
 /**
- * Prints a label/value field.
+- Prints a label/value field.
  *
- * @param {string} label
- * @param {*} value
+- @param {string} label
+- @param {*} value
  */
 function printField(
     label,
@@ -49,14 +49,110 @@ function printField(
 }
 
 /**
- * Prints a list.
+- Prints wrapped paragraph text.
  *
- * @param {Array} values
- * @param {string|null} title
+- @param {string} text
+- @param {number} maximumWidth
+ */
+function printParagraph(
+
+    text,
+
+    maximumWidth = 100
+
+) {
+
+    if (!text) {
+
+        console.log(
+            "  (none)"
+        );
+
+        return;
+
+    }
+
+    const terminalWidth =
+        process.stdout.columns ??
+        maximumWidth;
+
+    const lineWidth =
+
+        Math.min(
+
+            terminalWidth,
+
+            maximumWidth
+
+        ) - 2;
+
+    const words =
+        String(text)
+
+            .trim()
+
+            .split(/\s+/);
+
+    let line =
+        "  ";
+
+    for (const word of words) {
+
+        const nextLine =
+            line === "  "
+
+                ? `  ${word}`
+
+                : `${line} ${word}`;
+
+        if (
+
+            nextLine.length <=
+            lineWidth
+
+        ) {
+
+            line =
+                nextLine;
+
+            continue;
+
+        }
+
+        console.log(
+            line
+        );
+
+        line =
+            `  ${word}`;
+
+    }
+
+    if (line !== "  ") {
+
+        console.log(
+            line
+        );
+
+    }
+
+}
+
+/**
+- Prints a list.
+ *
+- @param {Array} values
+- @param {string|null} title
+- @param {number|null} limit
  */
 function printList(
+
     values = [],
-    title = null
+
+    title = null,
+
+    limit = null
+
 ) {
 
     if (title) {
@@ -79,7 +175,18 @@ function printList(
 
     }
 
-    for (const value of values) {
+    const displayedValues =
+
+        limit === null
+
+            ? values
+
+            : values.slice(
+                0,
+                limit
+            );
+
+    for (const value of displayedValues) {
 
         printBullet(
             value
@@ -87,13 +194,25 @@ function printList(
 
     }
 
+    const remaining =
+        values.length -
+        displayedValues.length;
+
+    if (remaining > 0) {
+
+        printBullet(
+            `… and ${remaining} more`
+        );
+
+    }
+
 }
 
 /**
- * Prints a "not found" message.
+- Prints a "not found" message.
  *
- * @param {string} type
- * @param {string} value
+- @param {string} type
+- @param {string} value
  */
 function printNotFound(
     type,
@@ -134,6 +253,8 @@ module.exports = {
     printList,
 
     printNotFound,
+
+    printParagraph,
 
     printSection:
         printInspectorSection,

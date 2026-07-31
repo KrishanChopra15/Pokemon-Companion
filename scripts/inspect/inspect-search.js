@@ -7,12 +7,6 @@ const {
 const DATABASE_DIRECTORY =
     path.resolve("database");
 
-/**
- * Loads a database file.
- *
- * @param {string} file
- * @returns {Array|Object}
- */
 function loadDatabase(file) {
 
     return loadJSONFile(
@@ -26,19 +20,6 @@ function loadDatabase(file) {
 
 }
 
-/**
- * Normalizes an ID.
- *
- * Supports:
- * 25
- * 025
- * 00025
- * #25
- * #00025
- *
- * @param {string|number} value
- * @returns {number|null}
- */
 function normalizeId(value) {
 
     const text =
@@ -56,16 +37,6 @@ function normalizeId(value) {
 
 }
 
-/**
- * Normalizes a name.
- *
- * Examples:
- * Mr. Mime -> mrmime
- * Farfetch'd -> farfetchd
- *
- * @param {string} value
- * @returns {string}
- */
 function normalizeName(value) {
 
     return String(value)
@@ -78,13 +49,6 @@ function normalizeName(value) {
 
 }
 
-/**
- * Finds an entry by ID.
- *
- * @param {Array<Object>} entries
- * @param {number} id
- * @returns {Object|null}
- */
 function findById(entries, id) {
 
     return (
@@ -101,13 +65,6 @@ function findById(entries, id) {
 
 }
 
-/**
- * Finds an entry by name.
- *
- * @param {Array<Object>} entries
- * @param {string} name
- * @returns {Object|null}
- */
 function findByName(entries, name) {
 
     const normalized =
@@ -131,13 +88,6 @@ function findByName(entries, name) {
 
 }
 
-/**
- * Finds an entry by ID or name.
- *
- * @param {Array<Object>} entries
- * @param {string|number} query
- * @returns {Object|null}
- */
 function findEntry(entries, query) {
 
     const id =
@@ -166,12 +116,6 @@ function findEntry(entries, query) {
 
 }
 
-/**
- * Finds a Pokémon.
- *
- * @param {string|number} query
- * @returns {Object|null}
- */
 function findPokemon(query) {
 
     return findEntry(
@@ -186,7 +130,75 @@ function findPokemon(query) {
 
 }
 
+function findPokemonByAbility(
+    abilityId
+) {
+
+    return getPokemon()
+
+        .filter(
+
+            pokemon =>
+
+                pokemon.abilities.some(
+
+                    ability =>
+
+                        ability.id ===
+                        abilityId
+
+                )
+
+        )
+
+        .sort(
+            (first, second) =>
+
+                first.id -
+                second.id
+        );
+
+}
+
+function findAbility(query) {
+
+    return findEntry(
+
+        loadDatabase(
+            "abilities.json"
+        ),
+
+        query
+
+    );
+
+}
+
+function findMove(query) {
+
+    return findEntry(
+
+        loadDatabase(
+            "moves.json"
+        ),
+
+        query
+
+    );
+
+}
+
+function getPokemon() {
+
+    return loadDatabase(
+        "pokemon.json"
+    );
+
+}
+
 module.exports = {
+
+    findAbility,
 
     findById,
 
@@ -194,7 +206,13 @@ module.exports = {
 
     findEntry,
 
+    findMove,
+
     findPokemon,
+
+    findPokemonByAbility,
+
+    getPokemon,
 
     loadDatabase,
 

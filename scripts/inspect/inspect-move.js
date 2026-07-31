@@ -1,49 +1,385 @@
-const axios = require("axios");
+const {
 
-const MOVE_ID = 86; // Change this when needed
+    findMove
 
-async function inspectMove() {
+} = require("./inspect-search");
 
-    const { data: move } = await axios.get(
-        `https://pokeapi.co/api/v2/move/${MOVE_ID}`
+const {
+
+    colourType,
+    printMoveHeading
+
+} = require(
+    "../utils/pokemon-formatting"
+);
+
+const {
+
+    printField,
+    printList,
+    printNotFound,
+    printParagraph,
+    printSection
+
+} = require("./inspect-utils");
+
+function formatValue(
+    value
+) {
+
+    return value ??
+        "—";
+
+}
+
+function formatFlag(
+    flag
+) {
+
+    return (
+
+        flag.charAt(0).toUpperCase() +
+
+        flag.slice(1)
+
     );
 
-    console.log("================================");
-    console.log("Move:", move.name);
-    console.log("================================");
+}
 
-    console.log("\nCurrent Values:");
-    console.log({
-        power: move.power,
-        accuracy: move.accuracy,
-        pp: move.pp,
-        effectChance: move.effect_chance,
-        type: move.type?.name
-    });
+function getLatestVersion(
+    move
+) {
 
-    console.log("\nPast Values:");
-    console.log(
-        JSON.stringify(
-            move.past_values,
-            null,
-            4
+    return [
+
+        ...move.versions
+
+    ]
+
+        .sort(
+            (first, second) =>
+
+                first.versionGroup.order -
+
+                second.versionGroup.order
+        )
+
+        .at(-1);
+
+}
+
+function inspectMove(
+
+    query,
+
+    {
+
+        limit = null
+
+    } = {}
+
+) {
+
+    const move =
+        findMove(query);
+
+    if (!move) {
+
+        printNotFound(
+            "Move",
+            query
+        );
+
+        return;
+
+    }
+
+    const latestVersion =
+        getLatestVersion(
+            move
+        );
+
+    const activeFlags =
+        Object.entries(
+            move.flags
+        )
+
+            .filter(
+                ([, value]) => value
+            )
+
+            .map(
+                ([flag]) =>
+
+                    formatFlag(
+                        flag
+                    )
+            );
+
+    const versionHistory = [
+
+        ...move.versions
+
+    ].sort(
+
+        (first, second) =>
+
+            first.versionGroup.order -
+
+            second.versionGroup.order
+
+    );
+
+    printMoveHeading(
+        move
+    );
+
+    console.log();
+
+    printSection(
+        "General"
+    );
+
+    printField(
+        "ID",
+        move.id
+    );
+
+    printField(
+        "Generation",
+        move.generation.name
+    );
+
+    printField(
+        "Type",
+        colourType(
+            move.type.name
         )
     );
-    console.log(
-        JSON.stringify(
-            move.effect_entries,
-            null,
-            4
+
+    printField(
+        "Category",
+        move.damageClass.name
+    );
+
+    printField(
+        "Target",
+        move.target.name
+    );
+
+    printField(
+        "Priority",
+        move.priority
+    );
+
+    console.log();
+
+    printSection(
+        "Battle Stats"
+    );
+
+    printField(
+        "Power",
+        formatValue(
+            latestVersion?.power
         )
+    );
+
+    printField(
+        "Accuracy",
+        formatValue(
+            latestVersion?.accuracy
+        )
+    );
+
+    printField(
+        "PP",
+        formatValue(
+            latestVersion?.pp
+        )
+    );
+
+    printField(
+        "Effect Chance",
+        formatValue(
+            latestVersion?.effectChance
+        )
+    );
+
+    console.log();
+
+    printSection(
+        "Effect"
+    );
+
+    printParagraph(
+        move.effect
+    );
+
+    console.log();
+
+    printSection(
+        "Flags"
+    );
+
+    printList(
+        activeFlags
+    );
+
+    console.log();
+
+    printSection(
+        "Metadata"
+    );
+
+    printField(
+        "Ailment",
+        move.meta.ailment.name
+    );
+
+    printField(
+        "Category",
+        move.meta.category.name
+    );
+
+    printField(
+        "Flinch Chance",
+        `${move.meta.flinchChance}%`
+    );
+
+    printField(
+        "Critical Rate",
+        move.meta.critRate
+    );
+
+    console.log();
+
+    printSection(
+        `Version History (${move.versions.length})`
+    );
+    
+    const displayedVersions =
+    
+        limit === null
+    
+            ? versionHistory
+    
+            : versionHistory.slice(
+                0,
+                limit
+            );
+        
+    const versionColumnWidth = 34;
+    const powerColumnWidth = 7;
+    const accuracyColumnWidth = 6;
+    const ppColumnWidth = 4;
+        
+    console.log(
+    
+        "  " +
+    
+        "Version Group".padEnd(
+            versionColumnWidth
+        ) +
+    
+        "Power".padStart(
+            powerColumnWidth
+        ) +
+    
+        "Acc".padStart(
+            accuracyColumnWidth
+        ) +
+    
+        "PP".padStart(
+            ppColumnWidth
+        )
+    
     );
     
     console.log(
-        JSON.stringify(
-            move.flavor_text_entries,
-            null,
-            4
+    
+        "  " +
+    
+        "─".repeat(
+        
+            versionColumnWidth +
+        
+            powerColumnWidth +
+        
+            accuracyColumnWidth +
+        
+            ppColumnWidth
+        
         )
+    
     );
+    
+    displayedVersions.forEach(
+    
+        version => {
+        
+            console.log(
+            
+                "  " +
+            
+                version.versionGroup.name.padEnd(
+                    versionColumnWidth
+                ) +
+            
+                String(
+                    formatValue(
+                        version.power
+                    )
+                ).padStart(
+                    powerColumnWidth
+                ) +
+            
+                String(
+                    formatValue(
+                        version.accuracy
+                    )
+                ).padStart(
+                    accuracyColumnWidth
+                ) +
+            
+                String(
+                    formatValue(
+                        version.pp
+                    )
+                ).padStart(
+                    ppColumnWidth
+                )
+            
+            );
+        
+        }
+    
+    );
+    
+    if (
+    
+        limit !== null &&
+    
+        versionHistory.length > limit
+    
+    ) {
+    
+        console.log();
+    
+        console.log(
+        
+            `  … and ${versionHistory.length - limit} more`
+        
+        );
+    
+    }
+    
+    console.log();
+
 }
 
-inspectMove();
+module.exports = {
+
+    inspectMove
+
+};

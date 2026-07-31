@@ -10,6 +10,91 @@ const {
     inspectPokemon
 } = require("./inspect-pokemon");
 
+const {
+    inspectAbility
+} = require("./inspect-ability");
+
+const {
+    inspectMove
+} = require("./inspect-move");
+
+function parseInspectionArguments(
+    args
+) {
+
+    const query = [];
+
+    let limit = null;
+
+    for (
+
+        let index = 0;
+
+        index < args.length;
+
+        index++
+
+    ) {
+
+        const argument =
+            args[index];
+
+        if (
+
+            argument === "--limit"
+
+        ) {
+
+            const value =
+                Number(
+                    args[index + 1]
+                );
+
+            if (
+
+                !Number.isInteger(
+                    value
+                ) ||
+
+                value < 1
+
+            ) {
+
+                throw new Error(
+                    "--limit must be a positive number."
+                );
+
+            }
+
+            limit =
+                value;
+
+            index++;
+
+            continue;
+
+        }
+
+        query.push(
+            argument
+        );
+
+    }
+
+    return {
+
+        query:
+
+            query.join(
+                " "
+            ),
+
+        limit
+
+    };
+
+}
+
 function inspect() {
 
     const [, , command, ...args] =
@@ -24,26 +109,86 @@ function inspect() {
             break;
 
         case "pokemon":
-            
+
             inspectPokemon(
                 args.join(" ")
             );
-        
+
             break;
 
         case "move":
 
-            console.log(
-                `Inspect Move: ${args.join(" ")}`
-            );
+            try {
+
+                const {
+
+                    query,
+
+                    limit
+
+                } = parseInspectionArguments(
+                    args
+                );
+
+                inspectMove(
+
+                    query,
+
+                    {
+
+                        limit
+
+                    }
+
+                );
+
+            }
+
+            catch (error) {
+
+                console.log(
+                    error.message
+                );
+
+            }
 
             break;
 
         case "ability":
 
-            console.log(
-                `Inspect Ability: ${args.join(" ")}`
-            );
+            try {
+
+                const {
+
+                    query,
+
+                    limit
+
+                } = parseInspectionArguments(
+                    args
+                );
+
+                inspectAbility(
+
+                    query,
+
+                    {
+
+                        limit
+
+                    }
+
+                );
+
+            }
+
+            catch (error) {
+
+                console.log(
+                    error.message
+                );
+
+            }
 
             break;
 
@@ -74,9 +219,9 @@ node scripts/inspect pokemon <name|id>
 
 node scripts/inspect species <name|id>
 
-node scripts/inspect move <name|id>
+node scripts/inspect move <name|id> [--limit <number>]
 
-node scripts/inspect ability <name|id>
+node scripts/inspect ability <name|id> [--limit <number>]
 
 node scripts/inspect files`
             );

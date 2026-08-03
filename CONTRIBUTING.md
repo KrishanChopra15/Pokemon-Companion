@@ -1,50 +1,67 @@
 # Contributing to Pokémon Companion
 
+## Purpose
+
 First of all, thank you for your interest in contributing to Pokémon Companion! 🎉
 
 The goal of this project is to build the ultimate companion application for Pokémon trainers. Whether you're fixing bugs, improving documentation, expanding the database, or adding new features, every contribution is appreciated.
 
 ---
 
+## Scope
+
+This document applies to all repository contributions, including:
+
+- Source code
+- Documentation
+- Datasets
+- Scripts
+- Frontend
+- Backend
+- Testing
+- Tooling
+
+Project collaboration principles and engineering standards are defined separately within `documentation/COLLABORATION_CONTRACT.md`.
+
+---
+
 # Before You Start
 
-Please:
+Before contributing, contributors should:
 
-- Read the project documentation.
-- Review the project roadmap.
-- Follow the existing project architecture.
-- Keep commits focused and descriptive.
-
----
-
-# Development Philosophy
-
-Pokémon Companion follows a few important principles:
-
-- Accuracy over shortcuts.
-- Maintainability over complexity.
-- Consistency across the entire project.
-- Reusable components whenever possible.
-- Database-first development.
-
-Every contribution should support these principles.
+- Read `README.md`.
+- Review `documentation/COLLABORATION_CONTRACT.md`.
+- Read the documentation relevant to the area being modified.
+- Understand the existing project architecture.
+- Keep contributions focused on a single objective whenever practical.
 
 ---
 
-# Project Structure
+# Types of Contributions
 
-```
-database/
-scripts/
-frontend/
-docs/
-```
+Contributions may include:
 
-Please avoid changing the project structure unless absolutely necessary.
+- Documentation
+- Features
+- Bug Fixes
+- User Interface
+- Data
+- APIs
+- Tooling
+- Testing
+- Performance Improvements
 
 ---
 
-# Coding Guidelines
+# Repository Structure
+
+Contributors should preserve the existing repository organization.
+
+Significant structural changes should only be introduced when they improve maintainability and are consistent with the project's documented architecture.
+
+---
+
+# Development Guidelines
 
 ## JavaScript
 
@@ -91,15 +108,11 @@ Database changes should never be committed without passing validation.
 
 # Documentation
 
-Please update documentation whenever:
+Documentation is considered part of every significant contribution.
 
-- Adding a feature
-- Changing architecture
-- Adding datasets
-- Updating APIs
-- Modifying project structure
+When changes affect architecture, features, APIs, data models, or user experience, the relevant documentation should be reviewed and updated accordingly.
 
-Documentation is considered part of the implementation.
+Collaboration standards are defined within `documentation/COLLABORATION_CONTRACT.md`.
 
 ---
 
@@ -111,6 +124,19 @@ When opening a pull request:
 - Keep changes focused.
 - Include screenshots when updating the UI.
 - Update documentation if necessary.
+
+---
+
+# Review Checklist
+
+Before submitting a contribution, verify that:
+
+- Documentation has been updated where necessary.
+- Existing project terminology has been preserved.
+- Shared components and utilities have been reused where appropriate.
+- No duplicate functionality has been introduced.
+- Code follows the established project conventions.
+- The contribution remains consistent with the documented architecture.
 
 ---
 

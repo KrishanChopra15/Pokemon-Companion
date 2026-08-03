@@ -1,12 +1,45 @@
 # UI Guidelines
 
-This document defines the design system and frontend standards used throughout Pokémon Companion.
+## Purpose
 
-Every page, component, and feature should follow these guidelines to ensure a consistent, accessible, scalable, maintainable, and high-performance user experience.
+This document defines the visual design system, interaction standards, and frontend presentation guidelines used throughout Pokémon Companion.
+
+Its purpose is to ensure that every page, component, and user interaction provides a consistent, accessible, maintainable, and scalable experience while remaining aligned with the project's overall design philosophy.
 
 ---
 
-# Design Philosophy
+## Scope
+
+This document defines:
+
+- Visual design principles.
+- Layout standards.
+- Design tokens.
+- Shared UI components.
+- Responsive design.
+- Accessibility requirements.
+- Frontend presentation conventions.
+
+This document does not define backend behavior, API contracts, database architecture, feature specifications, or implementation-specific business logic. Those responsibilities are documented separately within the appropriate project documentation.
+
+---
+
+# Responsibilities
+
+The UI Guidelines are responsible for:
+
+- Defining the project's visual design language.
+- Establishing reusable layout standards.
+- Defining shared user interface components.
+- Promoting consistent interactions across the application.
+- Supporting responsive and accessible design.
+- Encouraging reusable frontend patterns.
+
+The UI Guidelines define how information is presented to trainers but do not determine application behavior or data architecture.
+
+---
+
+# UI Principles
 
 Pokémon Companion follows five core design principles.
 
@@ -32,7 +65,7 @@ Interfaces should remain smooth and responsive even when displaying large datase
 
 ---
 
-# General Principles
+# General Design Guidelines
 
 Every page should be:
 
@@ -384,6 +417,23 @@ Always reuse shared components before creating new ones.
 
 ---
 
+# Page States
+
+Every data-driven page should provide a consistent experience across common application states.
+
+Supported page states include:
+
+- Loading
+- Empty
+- Success
+- Error
+
+Each state should clearly communicate the current application status while maintaining consistent layout and interaction patterns.
+
+Page states should reuse shared components whenever practical.
+
+---
+
 # Pokémon Components
 
 The application should provide reusable Pokémon-specific components.
@@ -406,6 +456,8 @@ These should be shared across the application.
 ---
 
 # Data Presentation
+
+Data presentation should prioritize clarity, consistency, and efficient navigation while remaining independent of backend implementation details.
 
 Database-driven pages should display information consistently.
 
@@ -484,7 +536,7 @@ Accessibility is a requirement—not an enhancement.
 
 ---
 
-# CSS Architecture
+# Frontend Architecture
 
 Stylesheets follow a layered architecture.
 
@@ -507,7 +559,7 @@ Responsibilities:
 
 ---
 
-# JavaScript Guidelines
+# Frontend Development Guidelines
 
 - Keep page logic inside dedicated JavaScript files.
 - Keep reusable functions inside shared utilities.
@@ -550,6 +602,8 @@ big-card
 
 # Performance
 
+Performance optimizations should preserve correctness and user experience rather than sacrificing clarity or maintainability.
+
 Frontend code should prioritize performance.
 
 Recommendations:
@@ -568,6 +622,7 @@ Recommendations:
 
 Before completing any page, verify:
 
+✓ Consistent use of design tokens
 - Responsive layout
 - Shared components reused
 - Consistent spacing

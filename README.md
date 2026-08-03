@@ -1,11 +1,3 @@
-# Pokémon Companion
-
-<p align="center">
-
-<img src="docs/assets/logo.png" alt="Pokémon Companion" width="180">
-
-</p>
-
 <h1 align="center">Pokémon Companion</h1>
 
 <p align="center">
@@ -13,33 +5,26 @@
 </p>
 
 <p align="center">
-
 A modern, open-source Pokémon companion built to provide the most comprehensive Pokémon database, collection tracker, adventure assistant, team builder, and future AI-powered experience across every main-series Pokémon game.
-
 </p>
 
 ---
 
 # 📖 Overview
 
-Pokémon Companion is an ambitious long-term project designed to become the ultimate companion application for Pokémon trainers.
+Pokémon Companion combines Pokémon knowledge, trainer tools, collection management, world exploration, battle assistance, and future AI-powered capabilities into a single platform designed for every main-series Pokémon game.
 
-Instead of focusing only on a Pokédex, Pokémon Companion aims to provide a complete ecosystem where players can:
+For a complete feature overview, see `documentation/FEATURES.md`.
 
-- Explore every Pokémon
-- Build competitive teams
-- Track game progress
-- Complete Living Dexes
-- Manage collections
-- Discover locations
-- View historical mechanics
-- Compare Pokémon across generations
-- Prepare for battles
-- Receive AI-powered recommendations
+---
 
-The project is built around a custom data generation pipeline that transforms official Pokémon datasets into a highly optimized JSON database designed specifically for this application.
+# 🌟 Vision
 
-The architecture has been designed to remain maintainable for future Pokémon generations while requiring minimal updates whenever new games are released.
+Pokémon Companion aims to become the most comprehensive Pokémon companion platform available.
+
+Rather than focusing solely on a Pokédex, the project is designed as a unified ecosystem for Pokémon trainers, combining canonical knowledge, adventure tracking, collection management, team building, world exploration, and intelligent assistance within a single application.
+
+The platform is designed to grow alongside future Pokémon games while maintaining a consistent user experience and a scalable architecture.
 
 ---
 
@@ -47,200 +32,89 @@ The architecture has been designed to remain maintainable for future Pokémon ge
 
 ## 📚 Pokédex
 
-- Complete National Pokédex
-- Regional Pokédex support
-- Pokémon forms
-- Mega Evolutions
-- Gigantamax Forms
-- Regional Variants
-- Gender Forms
-- Alternate Forms
-- Evolution Chains
-- Base Stats
-- Abilities
-- Hidden Abilities
-- Type Matchups
-- Sprites
-- Official Artwork
+Explore comprehensive Pokémon information, forms, evolutions, abilities, moves, historical mechanics, and game-specific data.
+
+See `documentation/FEATURES.md` for the complete feature list.
 
 ---
 
 ## ⚔ Team Builder
 
-- Unlimited Teams
-- Team Statistics
-- Type Coverage
-- Weakness Analysis
-- Resistance Analysis
-- Role Distribution
-- Suggested Improvements
+Build, analyze, and optimize Pokémon teams using comprehensive statistics, type analysis, role distribution, and intelligent recommendations.
+
+See `documentation/FEATURES.md` for the complete feature list.
 
 ---
 
 ## 🎮 Adventure Tracker
 
-- Story Progress
-- Gym Badges
-- Elite Four Progress
-- Champion Completion
-- Pokédex Completion
-- Side Quests
-- Collection Progress
+Track your journey across every main-series Pokémon game, including story progression, badges, Pokédex completion, achievements, and long-term adventure statistics.
+
+See `documentation/FEATURES.md` for the complete feature list.
 
 ---
 
 ## 🌍 World Explorer
 
-- Regions
-- Cities
-- Routes
-- Dungeons
-- Hidden Items
-- Legendary Locations
-- Encounter Tables
+Explore regions, locations, encounters, maps, and world data across every Pokémon game, making it easier to discover Pokémon, items, and important landmarks.
+
+See `documentation/FEATURES.md` for the complete feature list.
 
 ---
 
 ## 🏆 Trainer Legacy
 
-- Achievements
-- Lifetime Statistics
-- Living Dex Progress
-- Shiny Collection
-- Trainer History
+Monitor long-term trainer progress through achievements, collection milestones, lifetime statistics, and completion goals across multiple adventures.
+
+See `documentation/FEATURES.md` for the complete feature list.
 
 ---
 
 ## 🤖 AI Assistant *(Planned)*
 
-- Team Suggestions
-- Pokémon Recommendations
-- Battle Strategy
-- Smart Search
-- Adventure Guidance
-- Move Suggestions
+Receive intelligent assistance for team building, battle preparation, Pokémon recommendations, adventure guidance, and knowledge discovery through future AI-powered features.
+
+See `documentation/FEATURES.md` for the complete feature list.
 
 ---
 
 ## 👥 Community *(Planned)*
 
-- Public Profiles
-- Shared Collections
-- Friend Comparison
-- Leaderboards
+Connect with other trainers by sharing collections, comparing progress, viewing public profiles, and participating in future community-driven features.
+
+See `documentation/FEATURES.md` for the complete feature list.
+
+---
+
+# 📚 Documentation
+
+Detailed project documentation is organized into dedicated documents.
+
+| Document | Purpose |
+|-----------|----------|
+| FEATURES.md | Platform capabilities and functionality |
+| SYSTEM_ARCHITECTURE.md | Overall system architecture |
+| DATA_ARCHITECTURE.md | Data generation and processing pipeline |
+| DATABASE_SCHEMA.md | Database entities and relationships |
+| DATASETS.md | Available datasets and generated resources |
+| KNOWLEDGE_MODEL.md | Canonical Pokémon knowledge model |
+| LEARNSET_SCHEMA.md | Learnset architecture |
+| API_DOCUMENTATION.md | Public REST API |
+| UI_GUIDELINES.md | Design system and UI standards |
+| DEVELOPMENT_ROADMAP.md | Project roadmap and milestones |
+| CHANGELOG.md | Project history and notable changes |
+| CONTRIBUTING.md | Repository contribution guide |
+| COLLABORATION_CONTRACT.md | Collaboration standards |
 
 ---
 
 # 🏗 Architecture
 
-Pokémon Companion uses a modular data pipeline that separates raw Pokémon data from generated application datasets.
+Pokémon Companion follows a modular architecture that separates knowledge, data generation, APIs, frontend presentation, and trainer features into dedicated systems.
 
-```text
-                PokéAPI
-                   │
-                   │
-        Veekun SQLite Database
-                   │
-                   ▼
-        Download Scripts
-        (scripts/download)
-                   │
-                   ▼
-         Raw JSON Database
-            (database/)
-                   │
-                   ▼
-       Dataset Generators
-       (scripts/generate)
-                   │
-                   ▼
-      Generated Datasets
-    (database/generated)
-                   │
-                   ▼
-      Validation Pipeline
-     (scripts/validate)
-                   │
-                   ▼
- Frontend • Backend • AI Features
-```
+This approach improves maintainability, scalability, and long-term support for future Pokémon games.
 
-This layered architecture allows the project to remain scalable while making future updates significantly easier.
-
----
-
-# 🗄 Database
-
-The project uses a custom-generated Pokémon database built from official datasets.
-
-## Core Datasets
-
-- Pokémon
-- Species
-- Moves
-- Abilities
-- Types
-- Damage Classes
-- Move Targets
-- Version Groups
-
-## Generated Datasets
-
-- Pokémon Index
-- Category Indexes
-- Species Forms
-
-## Historical Datasets
-
-- Ability History
-- Move History
-- Move Effect History
-
-## Legacy Datasets
-
-- Legacy Types
-  - ???
-  - Shadow
-
-## Planned Datasets
-
-- Evolutions
-- Learnsets
-- Games
-- Items
-- Locations
-- Encounters
-- Trainers
-- Maps
-
----
-
-# ⚙ Database Generation
-
-The database is generated using a multi-stage pipeline.
-
-```text
-Download
-    │
-    ▼
-History Generation
-    │
-    ▼
-Dataset Generation
-    │
-    ▼
-Validation
-    │
-    ▼
-Application
-```
-
-Data sources include:
-
-- PokéAPI
-- Veekun Pokédex Database
-
-This approach keeps the database normalized, maintainable, and easy to regenerate whenever new Pokémon games are released.
+For detailed information about the project architecture, data model, and APIs, refer to the documentation directory.
 
 ---
 
@@ -257,7 +131,7 @@ This approach keeps the database normalized, maintainable, and easy to regenerat
 - Node.js
 - Express.js
 
-## Database
+## Data Storage
 
 - Custom JSON Database
 - MongoDB (Future User Data)
@@ -275,263 +149,14 @@ This approach keeps the database normalized, maintainable, and easy to regenerat
 
 ```text
 pokemon-companion/
-
+├── backend/
+├── frontend/
 ├── database/
-│
-├── generated/
-│
-├── history/
-│
-├── legacy/
-│
-├── external/
-│
-├── pokemon.json
-├── species.json
-├── moves.json
-├── abilities.json
-├── types.json
-├── version-groups.json
-├── damage-classes.json
-└── move-targets.json
-
-scripts/
-
-├── download/
-│
-├── generate/
-│
-├── inspect/
-│
-├── validate/
-│
-└── utils/
-    ├── api.js
-    ├── database.js
-    ├── formatting.js
-    ├── helpers.js
-    ├── json.js
-    ├── logger.js
-    ├── moves.js
-    ├── pokemon.js
-    └── references.js
-
-frontend/
-
-docs/
-
-README.md
-
-LICENSE
+├── scripts/
+├── documentation/
+├── README.md
+└── LICENSE
 ```
-
-# 🚀 Current Progress
-
-## ✅ Completed
-
-### Project Foundation
-
-- Project architecture
-- Database architecture
-- Modular utility architecture
-- Custom JSON data pipeline
-- Download pipeline
-- Dataset generation pipeline
-- Shared logging utilities
-- Shared API utilities
-- Shared database utilities
-- Shared formatting utilities
-- Shared reference utilities
-
----
-
-### Database
-
-#### Core Datasets
-
-- Pokémon
-- Species
-- Moves
-- Abilities
-- Types
-- Damage Classes
-- Move Targets
-- Version Groups
-
-#### Generated Datasets
-
-- Pokémon Index
-- Category Indexes
-- Species Forms
-
-#### Historical Datasets
-
-- Ability History
-- Move History
-- Move Effect History
-
-#### Legacy Datasets
-
-- Legacy Types
-- ??? Type
-- Shadow Type
-
----
-
-### Data Pipeline
-
-#### Download Scripts
-
-- Pokémon
-- Species
-- Moves
-- Abilities
-- Types
-- Damage Classes
-- Move Targets
-- Version Groups
-- Legacy Types
-
-#### History Generators
-
-- Ability History
-- Move History
-- Move Effect History
-
-#### Dataset Generators
-
-- Pokémon Index
-- Category Indexes
-- Species Forms
-
----
-
-### Utility Modules
-
-- API Client
-- Database Utilities
-- JSON Utilities
-- Logger
-- Formatting Helpers
-- General Helpers
-- Pokémon Helpers
-- Move Helpers
-- Reference Builders
-
----
-
-## 🚧 Currently In Development
-
-- Validation Layer
-- Backend API
-- Pokédex Interface
-- Pokémon Details
-- Dashboard
-
----
-
-## 📅 Planned
-
-### Database
-
-- Evolutions
-- Learnsets
-- Items
-- Locations
-- Games
-- Encounter Tables
-- Trainers
-- Maps
-- Sprites
-
-### Features
-
-- Team Builder
-- World Explorer
-- Adventure Tracker
-- Battle Tools
-- Damage Calculator
-- Collection Tracker
-- AI Assistant
-- Community Features
-
----
-
-# 📈 Project Status
-
-| Component | Status |
-|-----------|--------|
-| Database Pipeline | ✅ Complete |
-| Download Scripts | ✅ Complete |
-| Dataset Generators | ✅ Complete |
-| Utility Modules | ✅ Complete |
-| Generated Datasets | ✅ Complete |
-| Validation Layer | 🚧 In Progress |
-| Backend API | ⏳ Planned |
-| Frontend | 🚧 In Progress |
-| AI Features | ⏳ Planned |
-
----
-
-# 🎯 Roadmap
-
-## Phase 9 — Validation
-
-- Database validator
-- Cross-reference validation
-- Duplicate detection
-- Data integrity checks
-- Historical dataset validation
-- Generated dataset validation
-
----
-
-## Phase 10 — Backend
-
-- REST API
-- Search API
-- Pokémon endpoints
-- Move endpoints
-- Ability endpoints
-- Type endpoints
-- Forms endpoints
-
----
-
-## Phase 11 — Frontend
-
-- Dashboard
-- Pokédex
-- Pokémon Details
-- Search
-- Filters
-- Move Database
-- Ability Database
-- Type Chart
-
----
-
-## Phase 12 — Trainer Tools
-
-- Team Builder
-- Team Analyzer
-- Damage Calculator
-- Collection Tracker
-- Adventure Tracker
-- Living Dex
-
----
-
-## Phase 13 — AI & Community
-
-- AI Assistant
-- Battle Recommendations
-- Team Suggestions
-- Smart Search
-- Trainer Profiles
-- Friends
-- Shared Collections
-- Leaderboards
 
 ---
 
@@ -558,33 +183,20 @@ npm install
 Download datasets.
 
 ```bash
-node scripts/download/download-version-groups.js
-node scripts/download/download-damage-classes.js
-node scripts/download/download-move-targets.js
-node scripts/download/download-types.js
-node scripts/download/download-species.js
-node scripts/download/download-pokemon.js
-node scripts/download/download-abilities.js
-node scripts/download/download-moves.js
+npm start
 ```
 
-Generate datasets.
+Project setup instructions will expand as backend services and automated build tooling are introduced.
 
-```bash
-node scripts/generate/generate-pokemon-index.js
-node scripts/generate/generate-category-index.js
-node scripts/generate/generate-species-forms.js
-```
+Detailed development and setup instructions will be documented separately.
 
-Generate history datasets.
+---
 
-```bash
-node scripts/download/download-ability-history.js
-node scripts/download/download-move-history.js
-node scripts/download/download-move-effect-history.js
-```
+## 📌 Project Status
 
-Validation support is currently under development and will become part of the standard build process.
+Pokémon Companion is currently under active development.
+
+The project architecture and documentation have been established, while backend services, frontend features, and additional datasets continue to be implemented.
 
 ---
 
@@ -592,21 +204,23 @@ Validation support is currently under development and will become part of the st
 
 Contributions are welcome.
 
-Please ensure that:
-
-- Code follows the existing project style.
-- New datasets are documented.
-- Generated files remain deterministic.
-- Utility modules are reused whenever possible.
-- Documentation is updated alongside code changes.
+Please read `CONTRIBUTING.md` before opening an issue or submitting a pull request.
 
 ---
 
 # 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the Apache License 2.0.
 
-See the LICENSE file for details.
+See the `LICENSE` file for the complete license text.
+
+---
+
+# ⚠ Disclaimer
+
+Pokémon Companion is an independent, fan-made project and is not affiliated with, endorsed by, or sponsored by Nintendo, Game Freak, Creatures Inc., or The Pokémon Company.
+
+Pokémon and all related names, characters, images, trademarks, and other intellectual property are the property of their respective owners.
 
 ---
 

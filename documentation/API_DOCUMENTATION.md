@@ -1,10 +1,31 @@
 # API Documentation
 
-This document describes the REST API planned for Pokémon Companion.
+## Purpose
 
-The API provides access to Pokémon data, generated datasets, trainer information, collections, progress tracking, and future AI-powered features.
+This document defines the public REST API exposed by Pokémon Companion.
 
-Although the frontend is currently under active development, the underlying data generation pipeline has already been completed and serves as the foundation for all future API endpoints.
+Its purpose is to describe how clients interact with the platform through standardized endpoints while remaining independent of the underlying implementation, database design, and internal application architecture.
+
+The API provides access to Pokémon Companion's canonical knowledge, trainer data, collections, battles, world information, intelligence services, and other platform capabilities.
+
+---
+
+## Scope
+
+This document defines the public API contract for Pokémon Companion.
+
+It documents:
+
+- Available API resources.
+- Endpoint behavior.
+- Request and response conventions.
+- Authentication.
+- Versioning.
+- Filtering.
+- Pagination.
+- Future API expansion.
+
+This document does not define database schemas, internal architecture, generated datasets, or frontend behavior. Those responsibilities are documented separately within the appropriate project documentation.
 
 ---
 
@@ -16,36 +37,20 @@ Although the frontend is currently under active development, the underlying data
 
 ---
 
-# API Architecture
+# API Principles
 
-The API is built on top of the project's custom-generated Pokémon database.
+The Pokémon Companion API is designed around a consistent, resource-oriented REST architecture.
 
-```text
-           PokéAPI
-               │
-               │
-      Veekun Database
-               │
-               ▼
-     Download Scripts
-               │
-               ▼
-      Raw JSON Database
-               │
-               ▼
-    Dataset Generators
-               │
-               ▼
-   Generated JSON Database
-               │
-               ▼
-        REST API
-               │
-               ▼
-Frontend • Mobile • AI
-```
+The API should:
 
-This layered architecture separates data generation from API delivery, making the project easier to maintain, test, and extend as future Pokémon games are released.
+- Expose canonical Pokémon knowledge through stable endpoints.
+- Provide trainer-specific functionality through authenticated resources.
+- Maintain backward compatibility whenever practical.
+- Return consistent response structures across all endpoints.
+- Support filtering, searching, sorting, and pagination where appropriate.
+- Remain independent of the underlying database implementation.
+
+The API should expose platform capabilities without revealing internal implementation details.
 
 ---
 
@@ -139,9 +144,11 @@ Retrieve the authenticated trainer.
 
 ---
 
-# Pokémon
+# Knowledge APIs
 
-## GET `/pokemon`
+## Pokémon
+
+### GET `/pokemon`
 
 Retrieve a paginated list of Pokémon.
 
@@ -167,7 +174,7 @@ Returns:
 
 ---
 
-## GET `/pokemon/:id`
+### GET `/pokemon/:id`
 
 Retrieve complete information for a single Pokémon.
 
@@ -193,9 +200,9 @@ Returns:
 
 ---
 
-# Species
+## Species
 
-## GET `/species`
+### GET `/species`
 
 Retrieve Pokémon species.
 
@@ -209,7 +216,7 @@ Supports:
 
 ---
 
-## GET `/species/:id`
+### GET `/species/:id`
 
 Retrieve detailed species information.
 
@@ -226,7 +233,7 @@ Returns:
 
 ---
 
-## GET `/species/:id/forms`
+### GET `/species/:id/forms`
 
 Retrieve every generated form for a species.
 
@@ -242,9 +249,9 @@ Returns:
 
 ---
 
-# Moves
+## Moves
 
-## GET `/moves`
+### GET `/moves`
 
 Retrieve every Pokémon move.
 
@@ -261,7 +268,7 @@ Supports:
 
 ---
 
-## GET `/moves/:id`
+### GET `/moves/:id`
 
 Retrieve complete move information.
 
@@ -279,9 +286,9 @@ Returns:
 
 ---
 
-# Abilities
+## Abilities
 
-## GET `/abilities`
+### GET `/abilities`
 
 Retrieve every Pokémon ability.
 
@@ -295,7 +302,7 @@ Supports:
 
 ---
 
-## GET `/abilities/:id`
+### GET `/abilities/:id`
 
 Retrieve detailed ability information.
 
@@ -310,9 +317,9 @@ Returns:
 
 ---
 
-# Types
+## Types
 
-## GET `/types`
+### GET `/types`
 
 Retrieve all Pokémon types.
 
@@ -326,7 +333,7 @@ Returns:
 
 ---
 
-## GET `/types/:id`
+### GET `/types/:id`
 
 Retrieve a specific Pokémon type.
 
@@ -340,9 +347,9 @@ Includes:
 
 ---
 
-# Generated Datasets
+## Generated Resources
 
-## GET `/pokemon-index`
+### GET `/pokemon-index`
 
 Retrieve the optimized Pokémon index generated for the frontend.
 
@@ -350,7 +357,7 @@ Retrieve the optimized Pokémon index generated for the frontend.
 
 ---
 
-## GET `/categories/:category`
+### GET `/categories/:category`
 
 Retrieve Pokémon belonging to a generated category.
 
@@ -369,9 +376,9 @@ Supported categories:
 
 ---
 
-# Items
+## Items
 
-## GET `/items`
+### GET `/items`
 
 Retrieve every item.
 
@@ -385,7 +392,7 @@ Supports:
 
 ---
 
-## GET `/items/:id`
+### GET `/items/:id`
 
 Retrieve detailed item information.
 
@@ -401,9 +408,19 @@ Returns:
 
 ---
 
-# Teams
+## Learnsets
 
-## GET `/teams`
+Learnset-related API resources will be documented as the Learnset API is implemented.
+
+**Status:** Planned
+
+---
+
+# Trainer APIs
+
+## Teams
+
+### GET `/teams`
 
 Retrieve every saved team for the authenticated trainer.
 
@@ -411,7 +428,7 @@ Retrieve every saved team for the authenticated trainer.
 
 ---
 
-## GET `/teams/:id`
+### GET `/teams/:id`
 
 Retrieve a specific team.
 
@@ -419,7 +436,7 @@ Retrieve a specific team.
 
 ---
 
-## POST `/teams`
+### POST `/teams`
 
 Create a new team.
 
@@ -427,7 +444,7 @@ Create a new team.
 
 ---
 
-## PUT `/teams/:id`
+### PUT `/teams/:id`
 
 Update an existing team.
 
@@ -435,7 +452,7 @@ Update an existing team.
 
 ---
 
-## DELETE `/teams/:id`
+### DELETE `/teams/:id`
 
 Delete a saved team.
 
@@ -443,9 +460,9 @@ Delete a saved team.
 
 ---
 
-# Adventure Tracker
+## Adventure Tracker
 
-## GET `/tracker`
+### GET `/tracker`
 
 Retrieve game progress.
 
@@ -463,7 +480,7 @@ Returns:
 
 ---
 
-## POST `/tracker`
+### POST `/tracker`
 
 Create or update game progress.
 
@@ -471,9 +488,9 @@ Create or update game progress.
 
 ---
 
-# Badges
+## Badges
 
-## GET `/badges`
+### GET `/badges`
 
 Retrieve badge progress.
 
@@ -481,7 +498,7 @@ Retrieve badge progress.
 
 ---
 
-## PUT `/badges/:id`
+### PUT `/badges/:id`
 
 Update badge completion.
 
@@ -489,9 +506,27 @@ Update badge completion.
 
 ---
 
-# Collections
+## Achievements
 
-## GET `/collection`
+### GET `/achievements`
+
+Retrieve unlocked achievements.
+
+Returns:
+
+- Achievement list
+- Progress
+- Completion percentage
+
+**Status:** Planned
+
+---
+
+# Collection APIs
+
+## Collections
+
+### GET `/collection`
 
 Retrieve trainer collection progress.
 
@@ -506,7 +541,7 @@ Returns:
 
 ---
 
-## PUT `/collection`
+### PUT `/collection`
 
 Update collection progress.
 
@@ -514,25 +549,11 @@ Update collection progress.
 
 ---
 
-# Achievements
+# Intelligence APIs
 
-## GET `/achievements`
+## Search
 
-Retrieve unlocked achievements.
-
-Returns:
-
-- Achievement list
-- Progress
-- Completion percentage
-
-**Status:** Planned
-
----
-
-# Search
-
-## GET `/search`
+### GET `/search`
 
 Global search across every supported dataset.
 
@@ -557,9 +578,9 @@ Searches:
 
 ---
 
-# AI Assistant
+## AI Assistant
 
-## POST `/ai/chat`
+### POST `/ai/chat`
 
 Interact with the Pokémon AI Assistant.
 
@@ -577,9 +598,11 @@ Planned capabilities include:
 
 ---
 
-# Friends
+# Community APIs
 
-## GET `/friends`
+## Friends
+
+### GET `/friends`
 
 Retrieve the authenticated trainer's friends.
 
@@ -587,7 +610,7 @@ Retrieve the authenticated trainer's friends.
 
 ---
 
-## POST `/friends`
+### POST `/friends`
 
 Send a friend request.
 
@@ -595,7 +618,7 @@ Send a friend request.
 
 ---
 
-## DELETE `/friends/:id`
+### DELETE `/friends/:id`
 
 Remove a friend.
 
@@ -614,61 +637,6 @@ v1
 ```
 
 Future breaking changes will be introduced through new API versions without affecting existing clients.
-
----
-
-# Development Notes
-
-The REST API is powered entirely by the project's custom-generated Pokémon database.
-
-Current available datasets include:
-
-## Core Datasets
-
-- Pokémon
-- Species
-- Moves
-- Abilities
-- Types
-- Damage Classes
-- Move Targets
-- Version Groups
-
-## Generated Datasets
-
-- Pokémon Index
-- Category Indexes
-- Species Forms
-
-## Historical Datasets
-
-- Ability History
-- Move History
-- Move Effect History
-
-## Legacy Datasets
-
-- Legacy Pokémon Types
-  - ???
-  - Shadow
-
-Additional datasets will continue to be added as development progresses, allowing new API endpoints to be introduced without requiring major architectural changes.
-
----
-
-# Current Development Phase
-
-The data generation pipeline has been completed.
-
-Current development focuses on:
-
-1. REST API implementation
-2. Frontend integration
-3. Dashboard development
-4. Pokédex interface
-5. Pokémon detail pages
-6. Validation layer
-7. Team Builder
 
 ---
 
@@ -693,9 +661,10 @@ The API is designed to remain backward compatible wherever possible while suppor
 
 # Summary
 
-The Pokémon Companion API is designed around a modular, generated dataset architecture.
+The Pokémon Companion API provides a consistent and versioned interface to the platform's canonical knowledge, trainer data, collections, and future platform capabilities.
 
-By separating data generation from API delivery, the project provides:
+By exposing standardized REST resources while remaining independent of the underlying implementation, the API provides a stable foundation for web, mobile, desktop, and AI-powered clients.
+The API is designed to be:
 
 - Consistent and validated datasets
 - Fast API responses

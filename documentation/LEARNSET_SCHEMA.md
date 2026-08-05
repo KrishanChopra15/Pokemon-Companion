@@ -218,11 +218,22 @@ Each Learn Entry is conceptually composed of:
 - Move
 - Version Group
 - Learning Method
-- Requirements
+- Learning Requirements
 
-Every Learn Entry represents exactly one learning method within one Version Group.
+Learning Requirements contain any additional information necessary for the selected learning method.
 
-Additional requirements may further qualify how the move is obtained.
+Examples include:
+
+- Level
+- Machine
+- Tutor
+- Evolution Trigger
+- Event Details
+- Transfer Requirements
+
+The exact structure of Learning Requirements depends upon the Learning Method.
+
+Methods that require no additional information may leave this component empty.
 
 ---
 

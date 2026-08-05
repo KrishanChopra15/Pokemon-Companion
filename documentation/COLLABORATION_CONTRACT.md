@@ -83,6 +83,28 @@ Consistency improves maintainability and reduces ambiguity throughout the projec
 
 ---
 
+## Minimal Necessary Change
+
+Contributors should avoid modifying documentation, architecture, or implementation without clear justification.
+
+Existing project decisions should remain unchanged unless a modification materially improves correctness, consistency, maintainability, or long-term scalability.
+
+Stylistic preferences alone are not sufficient justification for changing established project content.
+
+When no meaningful improvement exists, preserving the current design is the preferred decision.
+
+---
+
+## Prefer Extension
+
+Contributors should extend existing architecture, documentation, and implementation whenever practical.
+
+Existing structures should be reused before introducing new patterns, abstractions, or terminology.
+
+Architectural redesign should occur only when the existing design no longer satisfies the project's documented goals.
+
+---
+
 ## Separation of Responsibilities
 
 Each document, module, component, and feature should have a clearly defined responsibility.
@@ -264,6 +286,18 @@ When documentation references information maintained elsewhere, it should refer 
 
 ---
 
+## Respect Document Responsibilities
+
+Each document has a clearly defined responsibility.
+
+Contributors should extend the document that owns a concept rather than duplicating the same information elsewhere.
+
+When information already exists in an authoritative document, contributors should prefer cross references over repeated explanations.
+
+Documents should complement one another rather than compete as independent sources of truth.
+
+---
+
 ## Cross References
 
 Related documents should complement one another rather than repeat the same information.
@@ -315,9 +349,11 @@ Documentation should accurately reflect the current state of the project rather 
 
 # AI Collaboration Standards
 
-AI assistants contribute to Pokémon Companion by assisting with documentation, architecture, implementation, planning, analysis, and review.
+AI assistants should assume that approved project documentation is intentional.
 
-The same collaboration principles apply to AI assistants as to human contributors, with additional expectations that reflect the unique capabilities and limitations of AI systems.
+Existing documentation should not be rewritten unless a clear inconsistency, architectural issue, or documented improvement has been identified.
+
+When no meaningful improvement exists, the assistant should recommend leaving the documentation unchanged.
 
 ---
 

@@ -16,6 +16,22 @@ The schema is designed to support every official Pokémon game while preserving 
 
 ---
 
+# Dependencies
+
+The Database Schema depends upon:
+
+- The Pokémon Knowledge Model
+- The Data Architecture
+- Official Pokémon Sources
+- Naming Standards
+- Validation Standards
+
+The Database Schema defines the canonical structure of Pokémon Companion but does not define how data is extracted, generated, stored, or presented.
+
+Changes to these upstream concepts should be reflected in the schema where appropriate.
+
+---
+
 # Design Principles
 
 The database schema is guided by the following principles.
@@ -247,6 +263,16 @@ Examples include:
 - permanent characteristics
 
 Canonical properties should never duplicate information owned by another entity.
+
+---
+
+### Ownership
+
+Every property belongs to exactly one canonical entity or one relationship entity.
+
+Information should never be duplicated across multiple entities.
+
+When information naturally belongs to a relationship, it should be stored by the relationship rather than either connected entity.
 
 ---
 

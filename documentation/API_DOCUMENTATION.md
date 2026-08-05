@@ -29,6 +29,20 @@ This document does not define database schemas, internal architecture, generated
 
 ---
 
+# Dependencies
+
+The API depends upon:
+
+- Backend Architecture
+- Generated Datasets
+- Canonical Knowledge
+- Validation Framework
+- Authentication System (where applicable)
+
+The API exposes platform capabilities but does not define business logic, canonical knowledge, or storage implementation.
+
+---
+
 # Base URL
 
 ```
@@ -51,6 +65,18 @@ The API should:
 - Remain independent of the underlying database implementation.
 
 The API should expose platform capabilities without revealing internal implementation details.
+
+---
+
+# Game Context
+
+Many API resources may be queried within a selected Game Context.
+
+When supported, requests may specify a context to retrieve historically accurate information for a specific Pokémon game or ruleset.
+
+If no context is specified, the API returns the project's default canonical representation.
+
+Context handling is documented by individual endpoints where applicable.
 
 ---
 

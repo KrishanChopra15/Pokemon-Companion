@@ -15,7 +15,7 @@
     "mongodb"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",

@@ -297,11 +297,19 @@ Support may expand as the platform evolves.
 
 # Source of Truth
 
-Data sources are prioritized according to authority.
+Pokémon Companion derives its canonical knowledge from authoritative sources.
+
+Official Pokémon game data serves as the project's primary source of truth. External databases, community projects, and reverse-engineered resources may be used to verify, supplement, or enrich the generated database, but they do not replace official game data as the authoritative foundation of the platform.
+
+The project architecture should remain independent of any individual external data source. Changes to external providers should affect only the data acquisition layer without requiring changes to the canonical knowledge model or overall system architecture.
+
+Data sources are prioritized according to the following order of authority.
+
+---
 
 ## Priority 1
 
-Official game data.
+Official Pokémon game assets extracted directly from supported game releases.
 
 ---
 
@@ -313,7 +321,7 @@ Official documentation and official publications.
 
 ## Priority 3
 
-Verified extraction from official game assets.
+Verified community research used to interpret or validate official game data when necessary.
 
 ---
 
@@ -451,7 +459,7 @@ Pokémon Companion will be considered successful when it can:
 
 This Constitution is the highest-level document governing Pokémon Companion.
 
-All architectural decisions, documentation, scripts, databases, APIs, and application features should remain consistent with the principles defined here.
+All architectural decisions, documentation, scripts, databases, Data models, Knowledge graph, Generators, Validation rules, APIs, and application features should remain consistent with the principles defined here.
 
 When future decisions conflict with this Constitution, the Constitution should be reviewed and deliberately amended rather than silently ignored.
 

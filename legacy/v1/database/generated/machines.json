@@ -1,0 +1,6500 @@
+{
+  "acrobatics": {
+    "black-white": {
+      "code": "TM62",
+      "number": 62,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM62",
+      "number": 62,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM62",
+      "number": 62,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM62",
+      "number": 62,
+      "kind": "TM"
+    }
+  },
+  "aerialace": {
+    "ruby-sapphire": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    }
+  },
+  "allyswitch": {
+    "black-white": {
+      "code": "TM51",
+      "number": 51,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM51",
+      "number": 51,
+      "kind": "TM"
+    }
+  },
+  "attract": {
+    "gold-silver": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    }
+  },
+  "avalanche": {
+    "diamond-pearl": {
+      "code": "TM72",
+      "number": 72,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM72",
+      "number": 72,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM72",
+      "number": 72,
+      "kind": "TM"
+    }
+  },
+  "bide": {
+    "red-blue": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    }
+  },
+  "blizzard": {
+    "red-blue": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    },
+    "gold-silver": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM14",
+      "number": 14,
+      "kind": "TM"
+    }
+  },
+  "bodyslam": {
+    "red-blue": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    }
+  },
+  "brickbreak": {
+    "ruby-sapphire": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    }
+  },
+  "brine": {
+    "diamond-pearl": {
+      "code": "TM55",
+      "number": 55,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM55",
+      "number": 55,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM55",
+      "number": 55,
+      "kind": "TM"
+    }
+  },
+  "bubblebeam": {
+    "red-blue": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    }
+  },
+  "bulkup": {
+    "ruby-sapphire": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    }
+  },
+  "bulldoze": {
+    "black-white": {
+      "code": "TM78",
+      "number": 78,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM78",
+      "number": 78,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM78",
+      "number": 78,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM78",
+      "number": 78,
+      "kind": "TM"
+    }
+  },
+  "bulletseed": {
+    "ruby-sapphire": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    }
+  },
+  "calmmind": {
+    "ruby-sapphire": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    }
+  },
+  "captivate": {
+    "diamond-pearl": {
+      "code": "TM78",
+      "number": 78,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM78",
+      "number": 78,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM78",
+      "number": 78,
+      "kind": "TM"
+    }
+  },
+  "chargebeam": {
+    "diamond-pearl": {
+      "code": "TM57",
+      "number": 57,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM57",
+      "number": 57,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM57",
+      "number": 57,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM57",
+      "number": 57,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM57",
+      "number": 57,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM57",
+      "number": 57,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM57",
+      "number": 57,
+      "kind": "TM"
+    }
+  },
+  "confide": {
+    "x-y": {
+      "code": "TM100",
+      "number": 100,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "HM100",
+      "number": 100,
+      "kind": "HM"
+    }
+  },
+  "counter": {
+    "red-blue": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    }
+  },
+  "curse": {
+    "gold-silver": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    }
+  },
+  "cut": {
+    "red-blue": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    },
+    "yellow": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    },
+    "gold-silver": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    },
+    "crystal": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    },
+    "ruby-sapphire": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    },
+    "emerald": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    },
+    "firered-leafgreen": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    },
+    "diamond-pearl": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    },
+    "platinum": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    },
+    "heartgold-soulsilver": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    },
+    "black-white": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    },
+    "colosseum": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    },
+    "xd": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    },
+    "black-2-white-2": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    },
+    "x-y": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "HM101",
+      "number": 101,
+      "kind": "HM"
+    }
+  },
+  "darkpulse": {
+    "diamond-pearl": {
+      "code": "TM79",
+      "number": 79,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM79",
+      "number": 79,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM79",
+      "number": 79,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM97",
+      "number": 97,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "HM97",
+      "number": 97,
+      "kind": "HM"
+    }
+  },
+  "dazzlinggleam": {
+    "x-y": {
+      "code": "TM99",
+      "number": 99,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "HM99",
+      "number": 99,
+      "kind": "HM"
+    }
+  },
+  "defensecurl": {
+    "gold-silver": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    }
+  },
+  "defog": {
+    "diamond-pearl": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    },
+    "platinum": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    }
+  },
+  "detect": {
+    "gold-silver": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    }
+  },
+  "dig": {
+    "red-blue": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    },
+    "gold-silver": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM28",
+      "number": 28,
+      "kind": "TM"
+    }
+  },
+  "dive": {
+    "ruby-sapphire": {
+      "code": "HM108",
+      "number": 108,
+      "kind": "HM"
+    },
+    "emerald": {
+      "code": "HM108",
+      "number": 108,
+      "kind": "HM"
+    },
+    "firered-leafgreen": {
+      "code": "HM108",
+      "number": 108,
+      "kind": "HM"
+    },
+    "black-white": {
+      "code": "HM106",
+      "number": 106,
+      "kind": "HM"
+    },
+    "colosseum": {
+      "code": "HM108",
+      "number": 108,
+      "kind": "HM"
+    },
+    "xd": {
+      "code": "HM108",
+      "number": 108,
+      "kind": "HM"
+    },
+    "black-2-white-2": {
+      "code": "HM106",
+      "number": 106,
+      "kind": "HM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "HM107",
+      "number": 107,
+      "kind": "HM"
+    }
+  },
+  "doubleedge": {
+    "red-blue": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    }
+  },
+  "doubleteam": {
+    "red-blue": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    },
+    "gold-silver": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM32",
+      "number": 32,
+      "kind": "TM"
+    }
+  },
+  "dragonbreath": {
+    "gold-silver": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    }
+  },
+  "dragonclaw": {
+    "ruby-sapphire": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    }
+  },
+  "dragonpulse": {
+    "diamond-pearl": {
+      "code": "TM59",
+      "number": 59,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM59",
+      "number": 59,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM59",
+      "number": 59,
+      "kind": "TM"
+    }
+  },
+  "dragonrage": {
+    "red-blue": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    }
+  },
+  "dragontail": {
+    "black-white": {
+      "code": "TM82",
+      "number": 82,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM82",
+      "number": 82,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM82",
+      "number": 82,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM82",
+      "number": 82,
+      "kind": "TM"
+    }
+  },
+  "drainpunch": {
+    "diamond-pearl": {
+      "code": "TM60",
+      "number": 60,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM60",
+      "number": 60,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM60",
+      "number": 60,
+      "kind": "TM"
+    }
+  },
+  "dreameater": {
+    "red-blue": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    },
+    "gold-silver": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM85",
+      "number": 85,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM85",
+      "number": 85,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM85",
+      "number": 85,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM85",
+      "number": 85,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM85",
+      "number": 85,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM85",
+      "number": 85,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM85",
+      "number": 85,
+      "kind": "TM"
+    }
+  },
+  "dynamicpunch": {
+    "gold-silver": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    }
+  },
+  "earthquake": {
+    "red-blue": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    },
+    "gold-silver": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM26",
+      "number": 26,
+      "kind": "TM"
+    }
+  },
+  "echoedvoice": {
+    "black-white": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    }
+  },
+  "eggbomb": {
+    "red-blue": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    }
+  },
+  "embargo": {
+    "diamond-pearl": {
+      "code": "TM63",
+      "number": 63,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM63",
+      "number": 63,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM63",
+      "number": 63,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM63",
+      "number": 63,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM63",
+      "number": 63,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM63",
+      "number": 63,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM63",
+      "number": 63,
+      "kind": "TM"
+    }
+  },
+  "endure": {
+    "gold-silver": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM58",
+      "number": 58,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM58",
+      "number": 58,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM58",
+      "number": 58,
+      "kind": "TM"
+    }
+  },
+  "energyball": {
+    "diamond-pearl": {
+      "code": "TM53",
+      "number": 53,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM53",
+      "number": 53,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM53",
+      "number": 53,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM53",
+      "number": 53,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM53",
+      "number": 53,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM53",
+      "number": 53,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM53",
+      "number": 53,
+      "kind": "TM"
+    }
+  },
+  "explosion": {
+    "red-blue": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM64",
+      "number": 64,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM64",
+      "number": 64,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM64",
+      "number": 64,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM64",
+      "number": 64,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM64",
+      "number": 64,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM64",
+      "number": 64,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM64",
+      "number": 64,
+      "kind": "TM"
+    }
+  },
+  "facade": {
+    "ruby-sapphire": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM42",
+      "number": 42,
+      "kind": "TM"
+    }
+  },
+  "falseswipe": {
+    "diamond-pearl": {
+      "code": "TM54",
+      "number": 54,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM54",
+      "number": 54,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM54",
+      "number": 54,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM54",
+      "number": 54,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM54",
+      "number": 54,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM54",
+      "number": 54,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM54",
+      "number": 54,
+      "kind": "TM"
+    }
+  },
+  "fireblast": {
+    "red-blue": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    },
+    "gold-silver": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM38",
+      "number": 38,
+      "kind": "TM"
+    }
+  },
+  "firepunch": {
+    "gold-silver": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    }
+  },
+  "fissure": {
+    "red-blue": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    }
+  },
+  "flamecharge": {
+    "black-white": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    }
+  },
+  "flamethrower": {
+    "ruby-sapphire": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    }
+  },
+  "flash": {
+    "red-blue": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    },
+    "yellow": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    },
+    "gold-silver": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    },
+    "crystal": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    },
+    "ruby-sapphire": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    },
+    "emerald": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    },
+    "firered-leafgreen": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    },
+    "diamond-pearl": {
+      "code": "TM70",
+      "number": 70,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM70",
+      "number": 70,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM70",
+      "number": 70,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM70",
+      "number": 70,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    },
+    "xd": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    },
+    "black-2-white-2": {
+      "code": "TM70",
+      "number": 70,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM70",
+      "number": 70,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM70",
+      "number": 70,
+      "kind": "TM"
+    }
+  },
+  "flashcannon": {
+    "diamond-pearl": {
+      "code": "TM91",
+      "number": 91,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM91",
+      "number": 91,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM91",
+      "number": 91,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM91",
+      "number": 91,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM91",
+      "number": 91,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM91",
+      "number": 91,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM91",
+      "number": 91,
+      "kind": "TM"
+    }
+  },
+  "fling": {
+    "diamond-pearl": {
+      "code": "TM56",
+      "number": 56,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM56",
+      "number": 56,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM56",
+      "number": 56,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM56",
+      "number": 56,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM56",
+      "number": 56,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM56",
+      "number": 56,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM56",
+      "number": 56,
+      "kind": "TM"
+    }
+  },
+  "fly": {
+    "red-blue": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    },
+    "yellow": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    },
+    "gold-silver": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    },
+    "crystal": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    },
+    "ruby-sapphire": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    },
+    "emerald": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    },
+    "firered-leafgreen": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    },
+    "diamond-pearl": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    },
+    "platinum": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    },
+    "heartgold-soulsilver": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    },
+    "black-white": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    },
+    "colosseum": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    },
+    "xd": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    },
+    "black-2-white-2": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    },
+    "x-y": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "HM102",
+      "number": 102,
+      "kind": "HM"
+    }
+  },
+  "focusblast": {
+    "diamond-pearl": {
+      "code": "TM52",
+      "number": 52,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM52",
+      "number": 52,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM52",
+      "number": 52,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM52",
+      "number": 52,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM52",
+      "number": 52,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM52",
+      "number": 52,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM52",
+      "number": 52,
+      "kind": "TM"
+    }
+  },
+  "focuspunch": {
+    "ruby-sapphire": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    }
+  },
+  "frostbreath": {
+    "black-white": {
+      "code": "TM79",
+      "number": 79,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM79",
+      "number": 79,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM79",
+      "number": 79,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM79",
+      "number": 79,
+      "kind": "TM"
+    }
+  },
+  "frustration": {
+    "gold-silver": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    }
+  },
+  "furycutter": {
+    "gold-silver": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    }
+  },
+  "gigadrain": {
+    "gold-silver": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    }
+  },
+  "gigaimpact": {
+    "diamond-pearl": {
+      "code": "TM68",
+      "number": 68,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM68",
+      "number": 68,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM68",
+      "number": 68,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM68",
+      "number": 68,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM68",
+      "number": 68,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM68",
+      "number": 68,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM68",
+      "number": 68,
+      "kind": "TM"
+    }
+  },
+  "grassknot": {
+    "diamond-pearl": {
+      "code": "TM86",
+      "number": 86,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM86",
+      "number": 86,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM86",
+      "number": 86,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM86",
+      "number": 86,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM86",
+      "number": 86,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM86",
+      "number": 86,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM86",
+      "number": 86,
+      "kind": "TM"
+    }
+  },
+  "gyroball": {
+    "diamond-pearl": {
+      "code": "TM74",
+      "number": 74,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM74",
+      "number": 74,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM74",
+      "number": 74,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM74",
+      "number": 74,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM74",
+      "number": 74,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM74",
+      "number": 74,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM74",
+      "number": 74,
+      "kind": "TM"
+    }
+  },
+  "hail": {
+    "ruby-sapphire": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    }
+  },
+  "headbutt": {
+    "gold-silver": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    }
+  },
+  "hiddenpower": {
+    "gold-silver": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM10",
+      "number": 10,
+      "kind": "TM"
+    }
+  },
+  "honeclaws": {
+    "black-white": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    }
+  },
+  "horndrill": {
+    "red-blue": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    }
+  },
+  "hyperbeam": {
+    "red-blue": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    },
+    "gold-silver": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM15",
+      "number": 15,
+      "kind": "TM"
+    }
+  },
+  "icebeam": {
+    "red-blue": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    }
+  },
+  "icepunch": {
+    "gold-silver": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    }
+  },
+  "icywind": {
+    "gold-silver": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    }
+  },
+  "incinerate": {
+    "black-white": {
+      "code": "TM59",
+      "number": 59,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM59",
+      "number": 59,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM59",
+      "number": 59,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM59",
+      "number": 59,
+      "kind": "TM"
+    }
+  },
+  "infestation": {
+    "x-y": {
+      "code": "TM83",
+      "number": 83,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM83",
+      "number": 83,
+      "kind": "TM"
+    }
+  },
+  "irontail": {
+    "gold-silver": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    }
+  },
+  "lightscreen": {
+    "ruby-sapphire": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    }
+  },
+  "lowsweep": {
+    "black-white": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    }
+  },
+  "megadrain": {
+    "red-blue": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM21",
+      "number": 21,
+      "kind": "TM"
+    }
+  },
+  "megakick": {
+    "red-blue": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    }
+  },
+  "megapunch": {
+    "red-blue": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM01",
+      "number": 1,
+      "kind": "TM"
+    }
+  },
+  "metronome": {
+    "red-blue": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    }
+  },
+  "mimic": {
+    "red-blue": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    }
+  },
+  "mudslap": {
+    "gold-silver": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM31",
+      "number": 31,
+      "kind": "TM"
+    }
+  },
+  "naturalgift": {
+    "diamond-pearl": {
+      "code": "TM83",
+      "number": 83,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM83",
+      "number": 83,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM83",
+      "number": 83,
+      "kind": "TM"
+    }
+  },
+  "naturepower": {
+    "x-y": {
+      "code": "TM96",
+      "number": 96,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "HM96",
+      "number": 96,
+      "kind": "HM"
+    }
+  },
+  "nightmare": {
+    "gold-silver": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    }
+  },
+  "overheat": {
+    "ruby-sapphire": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    }
+  },
+  "payback": {
+    "diamond-pearl": {
+      "code": "TM66",
+      "number": 66,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM66",
+      "number": 66,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM66",
+      "number": 66,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM66",
+      "number": 66,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM66",
+      "number": 66,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM66",
+      "number": 66,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM66",
+      "number": 66,
+      "kind": "TM"
+    }
+  },
+  "payday": {
+    "red-blue": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM16",
+      "number": 16,
+      "kind": "TM"
+    }
+  },
+  "pluck": {
+    "diamond-pearl": {
+      "code": "TM88",
+      "number": 88,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM88",
+      "number": 88,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM88",
+      "number": 88,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM88",
+      "number": 88,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM88",
+      "number": 88,
+      "kind": "TM"
+    }
+  },
+  "poisonjab": {
+    "diamond-pearl": {
+      "code": "TM84",
+      "number": 84,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM84",
+      "number": 84,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM84",
+      "number": 84,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM84",
+      "number": 84,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM84",
+      "number": 84,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM84",
+      "number": 84,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM84",
+      "number": 84,
+      "kind": "TM"
+    }
+  },
+  "poweruppunch": {
+    "x-y": {
+      "code": "TM98",
+      "number": 98,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "HM98",
+      "number": 98,
+      "kind": "HM"
+    }
+  },
+  "protect": {
+    "gold-silver": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    }
+  },
+  "psychic": {
+    "red-blue": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    },
+    "gold-silver": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM29",
+      "number": 29,
+      "kind": "TM"
+    }
+  },
+  "psychup": {
+    "gold-silver": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM77",
+      "number": 77,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM77",
+      "number": 77,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM77",
+      "number": 77,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM77",
+      "number": 77,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM77",
+      "number": 77,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM77",
+      "number": 77,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM77",
+      "number": 77,
+      "kind": "TM"
+    }
+  },
+  "psyshock": {
+    "black-white": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    }
+  },
+  "psywave": {
+    "red-blue": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    }
+  },
+  "quash": {
+    "black-white": {
+      "code": "TM60",
+      "number": 60,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM60",
+      "number": 60,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM60",
+      "number": 60,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM60",
+      "number": 60,
+      "kind": "TM"
+    }
+  },
+  "rage": {
+    "red-blue": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    }
+  },
+  "raindance": {
+    "gold-silver": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM18",
+      "number": 18,
+      "kind": "TM"
+    }
+  },
+  "razorwind": {
+    "red-blue": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM02",
+      "number": 2,
+      "kind": "TM"
+    }
+  },
+  "recycle": {
+    "diamond-pearl": {
+      "code": "TM67",
+      "number": 67,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM67",
+      "number": 67,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM67",
+      "number": 67,
+      "kind": "TM"
+    }
+  },
+  "reflect": {
+    "red-blue": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM33",
+      "number": 33,
+      "kind": "TM"
+    }
+  },
+  "rest": {
+    "red-blue": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    },
+    "gold-silver": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM44",
+      "number": 44,
+      "kind": "TM"
+    }
+  },
+  "retaliate": {
+    "black-white": {
+      "code": "TM67",
+      "number": 67,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM67",
+      "number": 67,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM67",
+      "number": 67,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM67",
+      "number": 67,
+      "kind": "TM"
+    }
+  },
+  "return": {
+    "gold-silver": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM27",
+      "number": 27,
+      "kind": "TM"
+    }
+  },
+  "roar": {
+    "gold-silver": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM05",
+      "number": 5,
+      "kind": "TM"
+    }
+  },
+  "rockclimb": {
+    "diamond-pearl": {
+      "code": "HM108",
+      "number": 108,
+      "kind": "HM"
+    },
+    "platinum": {
+      "code": "HM108",
+      "number": 108,
+      "kind": "HM"
+    },
+    "heartgold-soulsilver": {
+      "code": "HM108",
+      "number": 108,
+      "kind": "HM"
+    }
+  },
+  "rockpolish": {
+    "diamond-pearl": {
+      "code": "TM69",
+      "number": 69,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM69",
+      "number": 69,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM69",
+      "number": 69,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM69",
+      "number": 69,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM69",
+      "number": 69,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM69",
+      "number": 69,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM69",
+      "number": 69,
+      "kind": "TM"
+    }
+  },
+  "rockslide": {
+    "red-blue": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM80",
+      "number": 80,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM80",
+      "number": 80,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM80",
+      "number": 80,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM80",
+      "number": 80,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM80",
+      "number": 80,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM80",
+      "number": 80,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM80",
+      "number": 80,
+      "kind": "TM"
+    }
+  },
+  "rocksmash": {
+    "gold-silver": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM08",
+      "number": 8,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "HM106",
+      "number": 106,
+      "kind": "HM"
+    },
+    "emerald": {
+      "code": "HM106",
+      "number": 106,
+      "kind": "HM"
+    },
+    "firered-leafgreen": {
+      "code": "HM106",
+      "number": 106,
+      "kind": "HM"
+    },
+    "diamond-pearl": {
+      "code": "HM106",
+      "number": 106,
+      "kind": "HM"
+    },
+    "platinum": {
+      "code": "HM106",
+      "number": 106,
+      "kind": "HM"
+    },
+    "heartgold-soulsilver": {
+      "code": "HM106",
+      "number": 106,
+      "kind": "HM"
+    },
+    "black-white": {
+      "code": "TM94",
+      "number": 94,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "HM106",
+      "number": 106,
+      "kind": "HM"
+    },
+    "xd": {
+      "code": "HM106",
+      "number": 106,
+      "kind": "HM"
+    },
+    "black-2-white-2": {
+      "code": "TM94",
+      "number": 94,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM94",
+      "number": 94,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "HM106",
+      "number": 106,
+      "kind": "HM"
+    }
+  },
+  "rocktomb": {
+    "ruby-sapphire": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    }
+  },
+  "rollout": {
+    "gold-silver": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    }
+  },
+  "roost": {
+    "diamond-pearl": {
+      "code": "TM51",
+      "number": 51,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM51",
+      "number": 51,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM51",
+      "number": 51,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    }
+  },
+  "round": {
+    "black-white": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    }
+  },
+  "safeguard": {
+    "ruby-sapphire": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM20",
+      "number": 20,
+      "kind": "TM"
+    }
+  },
+  "sandstorm": {
+    "gold-silver": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM37",
+      "number": 37,
+      "kind": "TM"
+    }
+  },
+  "scald": {
+    "black-white": {
+      "code": "TM55",
+      "number": 55,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM55",
+      "number": 55,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM55",
+      "number": 55,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM55",
+      "number": 55,
+      "kind": "TM"
+    }
+  },
+  "secretpower": {
+    "ruby-sapphire": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "HM94",
+      "number": 94,
+      "kind": "HM"
+    }
+  },
+  "seismictoss": {
+    "red-blue": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    }
+  },
+  "selfdestruct": {
+    "red-blue": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    }
+  },
+  "shadowball": {
+    "gold-silver": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    }
+  },
+  "shadowclaw": {
+    "diamond-pearl": {
+      "code": "TM65",
+      "number": 65,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM65",
+      "number": 65,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM65",
+      "number": 65,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM65",
+      "number": 65,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM65",
+      "number": 65,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM65",
+      "number": 65,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM65",
+      "number": 65,
+      "kind": "TM"
+    }
+  },
+  "shockwave": {
+    "ruby-sapphire": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    }
+  },
+  "silverwind": {
+    "diamond-pearl": {
+      "code": "TM62",
+      "number": 62,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM62",
+      "number": 62,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM62",
+      "number": 62,
+      "kind": "TM"
+    }
+  },
+  "skillswap": {
+    "ruby-sapphire": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM48",
+      "number": 48,
+      "kind": "TM"
+    }
+  },
+  "skullbash": {
+    "red-blue": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM40",
+      "number": 40,
+      "kind": "TM"
+    }
+  },
+  "skyattack": {
+    "red-blue": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM43",
+      "number": 43,
+      "kind": "TM"
+    }
+  },
+  "skydrop": {
+    "black-white": {
+      "code": "TM58",
+      "number": 58,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM58",
+      "number": 58,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM58",
+      "number": 58,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM58",
+      "number": 58,
+      "kind": "TM"
+    }
+  },
+  "sleeptalk": {
+    "gold-silver": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM35",
+      "number": 35,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM82",
+      "number": 82,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM82",
+      "number": 82,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM82",
+      "number": 82,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM88",
+      "number": 88,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM88",
+      "number": 88,
+      "kind": "TM"
+    }
+  },
+  "sludgebomb": {
+    "gold-silver": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM36",
+      "number": 36,
+      "kind": "TM"
+    }
+  },
+  "sludgewave": {
+    "black-white": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    }
+  },
+  "smackdown": {
+    "black-white": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM23",
+      "number": 23,
+      "kind": "TM"
+    }
+  },
+  "snarl": {
+    "black-white": {
+      "code": "TM95",
+      "number": 95,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM95",
+      "number": 95,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM95",
+      "number": 95,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "HM95",
+      "number": 95,
+      "kind": "HM"
+    }
+  },
+  "snatch": {
+    "ruby-sapphire": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    }
+  },
+  "snore": {
+    "gold-silver": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM13",
+      "number": 13,
+      "kind": "TM"
+    }
+  },
+  "softboiled": {
+    "red-blue": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    }
+  },
+  "solarbeam": {
+    "red-blue": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    },
+    "gold-silver": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM22",
+      "number": 22,
+      "kind": "TM"
+    }
+  },
+  "stealthrock": {
+    "diamond-pearl": {
+      "code": "TM76",
+      "number": 76,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM76",
+      "number": 76,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM76",
+      "number": 76,
+      "kind": "TM"
+    }
+  },
+  "steelwing": {
+    "gold-silver": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM47",
+      "number": 47,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM51",
+      "number": 51,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM51",
+      "number": 51,
+      "kind": "TM"
+    }
+  },
+  "stoneedge": {
+    "diamond-pearl": {
+      "code": "TM71",
+      "number": 71,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM71",
+      "number": 71,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM71",
+      "number": 71,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM71",
+      "number": 71,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM71",
+      "number": 71,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM71",
+      "number": 71,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM71",
+      "number": 71,
+      "kind": "TM"
+    }
+  },
+  "strength": {
+    "red-blue": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    },
+    "yellow": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    },
+    "gold-silver": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    },
+    "crystal": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    },
+    "ruby-sapphire": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    },
+    "emerald": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    },
+    "firered-leafgreen": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    },
+    "diamond-pearl": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    },
+    "platinum": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    },
+    "heartgold-soulsilver": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    },
+    "black-white": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    },
+    "colosseum": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    },
+    "xd": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    },
+    "black-2-white-2": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    },
+    "x-y": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "HM104",
+      "number": 104,
+      "kind": "HM"
+    }
+  },
+  "strugglebug": {
+    "black-white": {
+      "code": "TM76",
+      "number": 76,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM76",
+      "number": 76,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM76",
+      "number": 76,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM76",
+      "number": 76,
+      "kind": "TM"
+    }
+  },
+  "submission": {
+    "red-blue": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM17",
+      "number": 17,
+      "kind": "TM"
+    }
+  },
+  "substitute": {
+    "red-blue": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM50",
+      "number": 50,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM90",
+      "number": 90,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM90",
+      "number": 90,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM90",
+      "number": 90,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM90",
+      "number": 90,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM90",
+      "number": 90,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM90",
+      "number": 90,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM90",
+      "number": 90,
+      "kind": "TM"
+    }
+  },
+  "sunnyday": {
+    "gold-silver": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM11",
+      "number": 11,
+      "kind": "TM"
+    }
+  },
+  "surf": {
+    "red-blue": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    },
+    "yellow": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    },
+    "gold-silver": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    },
+    "crystal": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    },
+    "ruby-sapphire": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    },
+    "emerald": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    },
+    "firered-leafgreen": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    },
+    "diamond-pearl": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    },
+    "platinum": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    },
+    "heartgold-soulsilver": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    },
+    "black-white": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    },
+    "colosseum": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    },
+    "xd": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    },
+    "black-2-white-2": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    },
+    "x-y": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "HM103",
+      "number": 103,
+      "kind": "HM"
+    }
+  },
+  "swagger": {
+    "gold-silver": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM34",
+      "number": 34,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM87",
+      "number": 87,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM87",
+      "number": 87,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM87",
+      "number": 87,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM87",
+      "number": 87,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM87",
+      "number": 87,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM87",
+      "number": 87,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM87",
+      "number": 87,
+      "kind": "TM"
+    }
+  },
+  "sweetscent": {
+    "gold-silver": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    }
+  },
+  "swift": {
+    "red-blue": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    },
+    "gold-silver": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM39",
+      "number": 39,
+      "kind": "TM"
+    }
+  },
+  "swordsdance": {
+    "red-blue": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM75",
+      "number": 75,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM75",
+      "number": 75,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM75",
+      "number": 75,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM75",
+      "number": 75,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM75",
+      "number": 75,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM75",
+      "number": 75,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM75",
+      "number": 75,
+      "kind": "TM"
+    }
+  },
+  "takedown": {
+    "red-blue": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    }
+  },
+  "taunt": {
+    "ruby-sapphire": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    }
+  },
+  "telekinesis": {
+    "black-white": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM19",
+      "number": 19,
+      "kind": "TM"
+    }
+  },
+  "teleport": {
+    "red-blue": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM30",
+      "number": 30,
+      "kind": "TM"
+    }
+  },
+  "thief": {
+    "gold-silver": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM46",
+      "number": 46,
+      "kind": "TM"
+    }
+  },
+  "thunder": {
+    "red-blue": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    },
+    "gold-silver": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM25",
+      "number": 25,
+      "kind": "TM"
+    }
+  },
+  "thunderbolt": {
+    "red-blue": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM24",
+      "number": 24,
+      "kind": "TM"
+    }
+  },
+  "thunderpunch": {
+    "gold-silver": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    }
+  },
+  "thunderwave": {
+    "red-blue": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM45",
+      "number": 45,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM73",
+      "number": 73,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM73",
+      "number": 73,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM73",
+      "number": 73,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM73",
+      "number": 73,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM73",
+      "number": 73,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM73",
+      "number": 73,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM73",
+      "number": 73,
+      "kind": "TM"
+    }
+  },
+  "torment": {
+    "ruby-sapphire": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM41",
+      "number": 41,
+      "kind": "TM"
+    }
+  },
+  "toxic": {
+    "red-blue": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    },
+    "gold-silver": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    },
+    "ruby-sapphire": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM06",
+      "number": 6,
+      "kind": "TM"
+    }
+  },
+  "triattack": {
+    "red-blue": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM49",
+      "number": 49,
+      "kind": "TM"
+    }
+  },
+  "trickroom": {
+    "diamond-pearl": {
+      "code": "TM92",
+      "number": 92,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM92",
+      "number": 92,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM92",
+      "number": 92,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM92",
+      "number": 92,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM92",
+      "number": 92,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM92",
+      "number": 92,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM92",
+      "number": 92,
+      "kind": "TM"
+    }
+  },
+  "uturn": {
+    "diamond-pearl": {
+      "code": "TM89",
+      "number": 89,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM89",
+      "number": 89,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM89",
+      "number": 89,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM89",
+      "number": 89,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM89",
+      "number": 89,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM89",
+      "number": 89,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM89",
+      "number": 89,
+      "kind": "TM"
+    }
+  },
+  "venoshock": {
+    "black-white": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM09",
+      "number": 9,
+      "kind": "TM"
+    }
+  },
+  "voltswitch": {
+    "black-white": {
+      "code": "TM72",
+      "number": 72,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM72",
+      "number": 72,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM72",
+      "number": 72,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM72",
+      "number": 72,
+      "kind": "TM"
+    }
+  },
+  "waterfall": {
+    "gold-silver": {
+      "code": "HM107",
+      "number": 107,
+      "kind": "HM"
+    },
+    "crystal": {
+      "code": "HM107",
+      "number": 107,
+      "kind": "HM"
+    },
+    "ruby-sapphire": {
+      "code": "HM107",
+      "number": 107,
+      "kind": "HM"
+    },
+    "emerald": {
+      "code": "HM107",
+      "number": 107,
+      "kind": "HM"
+    },
+    "firered-leafgreen": {
+      "code": "HM107",
+      "number": 107,
+      "kind": "HM"
+    },
+    "diamond-pearl": {
+      "code": "HM107",
+      "number": 107,
+      "kind": "HM"
+    },
+    "platinum": {
+      "code": "HM107",
+      "number": 107,
+      "kind": "HM"
+    },
+    "heartgold-soulsilver": {
+      "code": "HM107",
+      "number": 107,
+      "kind": "HM"
+    },
+    "black-white": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    },
+    "colosseum": {
+      "code": "HM107",
+      "number": 107,
+      "kind": "HM"
+    },
+    "xd": {
+      "code": "HM107",
+      "number": 107,
+      "kind": "HM"
+    },
+    "black-2-white-2": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    },
+    "x-y": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    }
+  },
+  "watergun": {
+    "red-blue": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM12",
+      "number": 12,
+      "kind": "TM"
+    }
+  },
+  "waterpulse": {
+    "ruby-sapphire": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    },
+    "emerald": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    },
+    "firered-leafgreen": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    },
+    "diamond-pearl": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    },
+    "colosseum": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    },
+    "xd": {
+      "code": "TM03",
+      "number": 3,
+      "kind": "TM"
+    }
+  },
+  "whirlpool": {
+    "gold-silver": {
+      "code": "HM106",
+      "number": 106,
+      "kind": "HM"
+    },
+    "crystal": {
+      "code": "HM106",
+      "number": 106,
+      "kind": "HM"
+    },
+    "heartgold-soulsilver": {
+      "code": "HM105",
+      "number": 105,
+      "kind": "HM"
+    }
+  },
+  "whirlwind": {
+    "red-blue": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    },
+    "yellow": {
+      "code": "TM04",
+      "number": 4,
+      "kind": "TM"
+    }
+  },
+  "wildcharge": {
+    "black-white": {
+      "code": "TM93",
+      "number": 93,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM93",
+      "number": 93,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM93",
+      "number": 93,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "HM93",
+      "number": 93,
+      "kind": "HM"
+    }
+  },
+  "willowisp": {
+    "diamond-pearl": {
+      "code": "TM61",
+      "number": 61,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM61",
+      "number": 61,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM61",
+      "number": 61,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM61",
+      "number": 61,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM61",
+      "number": 61,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM61",
+      "number": 61,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM61",
+      "number": 61,
+      "kind": "TM"
+    }
+  },
+  "workup": {
+    "black-white": {
+      "code": "TM83",
+      "number": 83,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM83",
+      "number": 83,
+      "kind": "TM"
+    }
+  },
+  "xscissor": {
+    "diamond-pearl": {
+      "code": "TM81",
+      "number": 81,
+      "kind": "TM"
+    },
+    "platinum": {
+      "code": "TM81",
+      "number": 81,
+      "kind": "TM"
+    },
+    "heartgold-soulsilver": {
+      "code": "TM81",
+      "number": 81,
+      "kind": "TM"
+    },
+    "black-white": {
+      "code": "TM81",
+      "number": 81,
+      "kind": "TM"
+    },
+    "black-2-white-2": {
+      "code": "TM81",
+      "number": 81,
+      "kind": "TM"
+    },
+    "x-y": {
+      "code": "TM81",
+      "number": 81,
+      "kind": "TM"
+    },
+    "omega-ruby-alpha-sapphire": {
+      "code": "TM81",
+      "number": 81,
+      "kind": "TM"
+    }
+  },
+  "zapcannon": {
+    "gold-silver": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    },
+    "crystal": {
+      "code": "TM07",
+      "number": 7,
+      "kind": "TM"
+    }
+  }
+}

@@ -42,3 +42,6 @@ coverage/
 # Optional
 # ==========================
 *.log
+
+
+config/config.local.json

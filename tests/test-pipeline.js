@@ -7,13 +7,14 @@
  * - Source Manager
  * - Reader Factory
  * - Reader lifecycle
+ * - ROM metadata parsing
  */
 
 "use strict";
 
-const ConfigManager = require("./shared/config/config-manager");
-const SourceManager = require("./shared/source-manager/source-manager");
-const ReaderFactory = require("./readers/reader-factory");
+const ConfigManager = require("../scripts/shared/config/config-manager");
+const SourceManager = require("../scripts/shared/source-manager/source-manager");
+const ReaderFactory = require("../scripts/readers/reader-factory");
 
 try {
 
@@ -71,6 +72,17 @@ try {
 
     console.log();
 
+    console.log("Reading Metadata...");
+
+    const metadata = reader.readMetadata();
+
+    console.log();
+
+    console.log("Metadata:");
+    console.log(metadata);
+
+    console.log();
+
     console.log("Closing ROM...");
 
     reader.close();
@@ -84,6 +96,11 @@ try {
 
     console.log("ROM Buffer:");
     console.log(reader.romBuffer);
+
+    console.log();
+
+    console.log("Binary Reader:");
+    console.log(reader.binaryReader);
 
 }
 catch (error) {

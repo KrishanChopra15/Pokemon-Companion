@@ -20,7 +20,12 @@
 
 const fs = require("fs");
 
+const BinaryReader = require("../../shared/binary/binary-reader");
+
 const { Reader, ReaderState } = require("../reader");
+
+const GBAHeader = require("./gba-header");
+const GameBoyAdvanceMetadata = require("./gba-metadata");
 
 class GameBoyAdvanceReader extends Reader {
 
@@ -34,6 +39,7 @@ class GameBoyAdvanceReader extends Reader {
         super(source);
 
         this.romBuffer = null;
+        this.binaryReader = null;
 
     }
 
@@ -50,16 +56,61 @@ class GameBoyAdvanceReader extends Reader {
 
         this.romBuffer = fs.readFileSync(this.source.absolutePath);
 
+        this.binaryReader = new BinaryReader(this.romBuffer);
+
         this.state = ReaderState.OPEN;
 
     }
 
     /**
      * Read ROM metadata.
+     *
+     * @returns {GameBoyAdvanceMetadata}
      */
     readMetadata() {
 
-        throw new Error("Not implemented.");
+        if (this.state !== ReaderState.OPEN) {
+            throw new Error(
+                `Cannot read metadata while in '${this.state}' state.`
+            );
+        }
+
+        return new GameBoyAdvanceMetadata({
+
+            title: this.binaryReader.readString(
+                GBAHeader.TITLE_OFFSET,
+                GBAHeader.TITLE_LENGTH
+            ),
+
+            gameCode: this.binaryReader.readString(
+                GBAHeader.GAME_CODE_OFFSET,
+                GBAHeader.GAME_CODE_LENGTH
+            ),
+
+            makerCode: this.binaryReader.readString(
+                GBAHeader.MAKER_CODE_OFFSET,
+                GBAHeader.MAKER_CODE_LENGTH
+            ),
+
+            unitCode: this.binaryReader.readUInt8(
+                GBAHeader.UNIT_CODE_OFFSET
+            ),
+
+            deviceType: this.binaryReader.readUInt8(
+                GBAHeader.DEVICE_TYPE_OFFSET
+            ),
+
+            version: this.binaryReader.readUInt8(
+                GBAHeader.VERSION_OFFSET
+            ),
+
+            headerChecksum: this.binaryReader.readUInt8(
+                GBAHeader.HEADER_CHECKSUM_OFFSET
+            ),
+
+            romSize: this.romBuffer.length
+
+        });
 
     }
 
@@ -94,6 +145,7 @@ class GameBoyAdvanceReader extends Reader {
             );
         }
 
+        this.binaryReader = null;
         this.romBuffer = null;
 
         this.state = ReaderState.CLOSED;

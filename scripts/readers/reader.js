@@ -59,6 +59,21 @@ class Reader {
     }
 
     /**
+     * Read a range of bytes.
+     *
+     * @param {number} offset
+     * @param {number} length
+     * @returns {Buffer}
+     */
+    readBytes(offset, length) {
+    
+        throw new Error(
+            "readBytes() must be implemented by the platform reader."
+        );
+    
+    }
+
+    /**
      * List files contained in the source.
      */
     listFiles() {

@@ -200,6 +200,56 @@ Every completed contribution should improve the project without reducing its ove
 
 ---
 
+## Implementation Workflow
+
+To maintain consistency and reduce implementation errors, contributors should follow a structured implementation workflow.
+
+Unless there is a clear reason to do otherwise, implementation should proceed using the following sequence.
+
+### Create Before Implementing
+
+When introducing a new file or directory:
+
+- Create the required file or directory first.
+- Confirm its creation before implementation begins.
+- Avoid combining creation and implementation into a single step.
+
+### Review Before Modification
+
+Before modifying an existing file:
+
+- Review the current contents of the file.
+- Base all modifications on the latest implementation rather than assumptions or previous versions.
+- Prefer updating the complete file rather than providing isolated code fragments.
+- When implementation depends on the repository structure, verify the relevant file or directory locations before providing project-specific paths.
+
+### One Step at a Time
+
+Implementation should progress incrementally.
+
+Each step should have a single objective that can be completed, reviewed, and verified before continuing.
+
+Large features should be divided into small, independently verifiable tasks.
+
+### Testing Workflow
+
+When implementation requires verification:
+
+- Clearly identify that a test should be run.
+- Provide the exact command required to execute the test.
+- Request the complete output rather than a summary.
+- Use the output as the basis for further decisions before continuing implementation.
+
+### Temporary Files
+
+When temporary files are created for development or verification purposes:
+
+- Clearly identify their temporary purpose.
+- Explicitly indicate when they are no longer required.
+- Remove temporary artifacts once they have served their intended purpose.
+
+---
+
 # Decision Rules
 
 The following rules govern how contributors make decisions when information is incomplete, documentation conflicts, or new ideas are introduced.

@@ -115,6 +115,117 @@ class GameBoyAdvanceReader extends Reader {
     }
 
     /**
+     * Read a range of bytes.
+     *
+     * @param {number} offset
+     * @param {number} length
+     * @returns {Buffer}
+     */
+    readBytes(offset, length) {
+    
+        if (this.state !== ReaderState.OPEN) {
+            throw new Error(
+                `Cannot read bytes while in '${this.state}' state.`
+            );
+        }
+    
+        return this.binaryReader.readBytes(offset, length);
+    
+    }
+
+    /**
+     * Read an unsigned 8-bit integer.
+     *
+     * @param {number} offset
+     * @returns {number}
+     */
+    readUInt8(offset) {
+
+        if (this.state !== ReaderState.OPEN) {
+            throw new Error(
+                `Cannot read ROM while in '${this.state}' state.`
+            );
+        }
+
+        return this.binaryReader.readUInt8(offset);
+
+    }
+
+    /**
+     * Read an unsigned 16-bit integer.
+     *
+     * @param {number} offset
+     * @returns {number}
+     */
+    readUInt16(offset) {
+
+        if (this.state !== ReaderState.OPEN) {
+            throw new Error(
+                `Cannot read ROM while in '${this.state}' state.`
+            );
+        }
+
+        return this.binaryReader.readUInt16(offset);
+
+    }
+
+    /**
+     * Read an unsigned 32-bit integer.
+     *
+     * @param {number} offset
+     * @returns {number}
+     */
+    readUInt32(offset) {
+
+        if (this.state !== ReaderState.OPEN) {
+            throw new Error(
+                `Cannot read ROM while in '${this.state}' state.`
+            );
+        }
+
+        return this.binaryReader.readUInt32(offset);
+
+    }
+
+    /**
+     * Read bytes from the ROM.
+     *
+     * @param {number} offset
+     * @param {number} length
+     * @returns {Buffer}
+     */
+    readBytes(offset, length) {
+
+        if (this.state !== ReaderState.OPEN) {
+            throw new Error(
+                `Cannot read ROM while in '${this.state}' state.`
+            );
+        }
+
+        return this.binaryReader.readBytes(offset, length);
+
+    }
+
+    /**
+     * Read a string from the ROM.
+     *
+     * @param {number} offset
+     * @param {number} length
+     * @returns {string}
+     */
+    readString(offset, length) {
+
+        if (this.state !== ReaderState.OPEN) {
+            throw new Error(
+                `Cannot read ROM while in '${this.state}' state.`
+            );
+        }
+
+        return this.binaryReader.readString(offset, length);
+
+    }
+
+    /**
      * List files contained in the source.
      */
     listFiles() {

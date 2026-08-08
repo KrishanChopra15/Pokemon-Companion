@@ -43,6 +43,46 @@ class BinaryReader {
     }
 
     /**
+     * Read an unsigned 16-bit integer (Little Endian).
+     *
+     * @param {number} offset
+     * @returns {number}
+     */
+    readUInt16(offset) {
+
+        return this.buffer.readUInt16LE(offset);
+
+    }
+
+    /**
+     * Read an unsigned 32-bit integer (Little Endian).
+     *
+     * @param {number} offset
+     * @returns {number}
+     */
+    readUInt32(offset) {
+
+        return this.buffer.readUInt32LE(offset);
+
+    }
+
+    /**
+     * Read a range of bytes.
+     *
+     * @param {number} offset
+     * @param {number} length
+     * @returns {Buffer}
+     */
+    readBytes(offset, length) {
+
+        return this.buffer.subarray(
+            offset,
+            offset + length
+        );
+
+    }
+
+    /**
      * Read an ASCII string.
      *
      * @param {number} offset

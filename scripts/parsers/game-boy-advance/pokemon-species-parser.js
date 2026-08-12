@@ -27,7 +27,11 @@ class PokemonSpeciesParser {
      * @param {number} offset
      * @returns {PokemonSpecies}
      */
-    parse(reader, offset) {
+    parse(
+        reader,
+        offset,
+        metadata
+    ) {
 
         const evYield = reader.readUInt16(offset + 0x0A);
 
@@ -35,10 +39,16 @@ class PokemonSpeciesParser {
 
         return new PokemonSpecies({
         
-            id: null,
-            nationalDexNumber: null,
+            id: metadata.id,
+
+            nationalDexNumber:
+                metadata.nationalDexNumber,
+
             name: null,
-            generation: null,
+            
+            generation:
+                metadata.generation,
+
         
             baseHP: reader.readUInt8(offset + 0),
             baseAttack: reader.readUInt8(offset + 1),
@@ -80,6 +90,8 @@ class PokemonSpeciesParser {
             noFlip: (bodyColorByte >> 7) & 0x01
 
         });
+
+        return species;
 
     }
 

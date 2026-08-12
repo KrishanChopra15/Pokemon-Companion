@@ -1,0 +1,82 @@
+[
+    {
+        "id": 0,
+        "constant": "EGG_GROUP_NONE",
+        "name": "None"
+    },
+    {
+        "id": 1,
+        "constant": "EGG_GROUP_MONSTER",
+        "name": "Monster"
+    },
+    {
+        "id": 2,
+        "constant": "EGG_GROUP_WATER_1",
+        "name": "Water 1"
+    },
+    {
+        "id": 3,
+        "constant": "EGG_GROUP_BUG",
+        "name": "Bug"
+    },
+    {
+        "id": 4,
+        "constant": "EGG_GROUP_FLYING",
+        "name": "Flying"
+    },
+    {
+        "id": 5,
+        "constant": "EGG_GROUP_FIELD",
+        "name": "Field"
+    },
+    {
+        "id": 6,
+        "constant": "EGG_GROUP_FAIRY",
+        "name": "Fairy"
+    },
+    {
+        "id": 7,
+        "constant": "EGG_GROUP_GRASS",
+        "name": "Grass"
+    },
+    {
+        "id": 8,
+        "constant": "EGG_GROUP_HUMAN_LIKE",
+        "name": "Human Like"
+    },
+    {
+        "id": 9,
+        "constant": "EGG_GROUP_WATER_3",
+        "name": "Water 3"
+    },
+    {
+        "id": 10,
+        "constant": "EGG_GROUP_MINERAL",
+        "name": "Mineral"
+    },
+    {
+        "id": 11,
+        "constant": "EGG_GROUP_AMORPHOUS",
+        "name": "Amorphous"
+    },
+    {
+        "id": 12,
+        "constant": "EGG_GROUP_WATER_2",
+        "name": "Water 2"
+    },
+    {
+        "id": 13,
+        "constant": "EGG_GROUP_DITTO",
+        "name": "Ditto"
+    },
+    {
+        "id": 14,
+        "constant": "EGG_GROUP_DRAGON",
+        "name": "Dragon"
+    },
+    {
+        "id": 15,
+        "constant": "EGG_GROUP_UNDISCOVERED",
+        "name": "Undiscovered"
+    }
+]

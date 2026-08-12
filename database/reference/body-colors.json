@@ -1,0 +1,52 @@
+[
+    {
+        "id": 0,
+        "constant": "BODY_COLOR_RED",
+        "name": "Red"
+    },
+    {
+        "id": 1,
+        "constant": "BODY_COLOR_BLUE",
+        "name": "Blue"
+    },
+    {
+        "id": 2,
+        "constant": "BODY_COLOR_YELLOW",
+        "name": "Yellow"
+    },
+    {
+        "id": 3,
+        "constant": "BODY_COLOR_GREEN",
+        "name": "Green"
+    },
+    {
+        "id": 4,
+        "constant": "BODY_COLOR_BLACK",
+        "name": "Black"
+    },
+    {
+        "id": 5,
+        "constant": "BODY_COLOR_BROWN",
+        "name": "Brown"
+    },
+    {
+        "id": 6,
+        "constant": "BODY_COLOR_PURPLE",
+        "name": "Purple"
+    },
+    {
+        "id": 7,
+        "constant": "BODY_COLOR_GRAY",
+        "name": "Gray"
+    },
+    {
+        "id": 8,
+        "constant": "BODY_COLOR_WHITE",
+        "name": "White"
+    },
+    {
+        "id": 9,
+        "constant": "BODY_COLOR_PINK",
+        "name": "Pink"
+    }
+]

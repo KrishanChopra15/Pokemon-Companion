@@ -17,6 +17,7 @@ const ConfigManager = require("../scripts/shared/config/config-manager");
 const SourceManager = require("../scripts/shared/source-manager/source-manager");
 const ReaderFactory = require("../scripts/readers/reader-factory");
 const ExtractorFactory = require("../scripts/extractors/extractor-factory");
+const PokemonSpeciesGenerator = require("../scripts/generators/raw/pokemon-species-generator");
 
 try {
 
@@ -86,7 +87,21 @@ try {
 
     const species = extractor.extractPokemonSpecies();
 
-    console.log(species);
+    const generator = new PokemonSpeciesGenerator();
+    
+    generator.generate(species);
+
+    console.log(`Extracted ${species.length} Pokémon species.`);
+    
+    console.log();
+    
+    console.log("First species:");
+    console.log(species[0]);
+    
+    console.log();
+    
+    console.log("Last species:");
+    console.log(species[species.length - 1]);
 
     console.log();
 

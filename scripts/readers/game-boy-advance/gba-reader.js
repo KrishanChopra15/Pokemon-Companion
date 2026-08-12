@@ -115,25 +115,6 @@ class GameBoyAdvanceReader extends Reader {
     }
 
     /**
-     * Read a range of bytes.
-     *
-     * @param {number} offset
-     * @param {number} length
-     * @returns {Buffer}
-     */
-    readBytes(offset, length) {
-    
-        if (this.state !== ReaderState.OPEN) {
-            throw new Error(
-                `Cannot read bytes while in '${this.state}' state.`
-            );
-        }
-    
-        return this.binaryReader.readBytes(offset, length);
-    
-    }
-
-    /**
      * Read an unsigned 8-bit integer.
      *
      * @param {number} offset

@@ -2,29 +2,33 @@
  * Pokémon Companion
  * Game Boy Advance Pokémon Species Extractor
  *
- * Extracts Pokémon species from Game Boy Advance games.
+ * Extracts Pokémon species from the pokefirered source.
  *
  * Responsibilities:
- * - Extract the complete Pokémon species dataset.
- * - Produce Pokémon Species domain objects.
+ * - Read species_info.h.
+ * - Parse Pokémon species data.
+ * - Produce Pokémon Species objects.
  *
  * Does NOT:
  * - Open ROMs.
- * - Identify games.
- * - Read platform metadata.
+ * - Read binary data.
  * - Extract unrelated datasets.
  */
 
 "use strict";
 
-const PokemonSpecies = require("../../domain/pokemon-species");
+const fs = require("fs");
+const path = require("path");
 
-const PokemonSpeciesParser = require("../../parsers/game-boy-advance/pokemon-species-parser");
+const PokemonSpeciesParser =
+    require("../../parsers/game-boy-advance/species-info-parser");
+
 
 class PokemonSpeciesExtractor {
 
+
     /**
-     * Create a Pokémon Species Extractor.
+     * Create Pokémon Species Extractor.
      *
      * @param {GameBoyAdvanceReader} reader
      * @param {Game} game
@@ -38,60 +42,53 @@ class PokemonSpeciesExtractor {
 
     }
 
+
     /**
      * Extract all Pokémon species.
      *
-     * @returns {Buffer[]}
+     * @returns {Object[]}
      */
     extractAll() {
 
-        const species = [];
 
-        species.push(
-            this.readSpecies(0)
+        const sourceFile = path.join(
+
+            process.cwd(),
+
+            "..",
+
+            "References",
+
+            "pokefirered",
+
+            "src",
+
+            "data",
+
+            "pokemon",
+
+            "species_info.h"
+
         );
 
-        return species;
+
+        const source =
+            fs.readFileSync(
+                sourceFile,
+                "utf8"
+            );
+
+
+        const parser =
+            new PokemonSpeciesParser();
+
+
+        return parser.parse(source);
 
     }
 
-    /**
-     * Read a single Pokémon species.
-     *
-     * @param {number} index
-     * @returns {PokemonSpecies}
-     */
-    readSpecies(index) {
-    
-        const tableOffset = this.layout.pokemonSpecies.offset;
-    
-        const entrySize = this.layout.pokemonSpecies.entrySize;
-    
-        const offset = tableOffset + (index * entrySize);
-    
-        const parser = new PokemonSpeciesParser();
-    
-        return parser.parse(
-            this.reader.binaryReader,
-            offset
-        );
-    
-    }
-
-    /**
-     * Parse Pokémon species data.
-     *
-     * @param {Buffer} data
-     * @returns {PokemonSpecies}
-     */
-    parseSpecies(data) {
-
-        throw new Error(
-            "Pokémon species parsing has not yet been implemented."
-        );
-
-    }
 
 }
+
 
 module.exports = PokemonSpeciesExtractor;

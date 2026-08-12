@@ -1,0 +1,77 @@
+[
+    {
+        "id": 1,
+        "constant": "EVO_FRIENDSHIP",
+        "name": "Friendship"
+    },
+    {
+        "id": 2,
+        "constant": "EVO_FRIENDSHIP_DAY",
+        "name": "Friendship Day"
+    },
+    {
+        "id": 3,
+        "constant": "EVO_FRIENDSHIP_NIGHT",
+        "name": "Friendship Night"
+    },
+    {
+        "id": 4,
+        "constant": "EVO_LEVEL",
+        "name": "Level"
+    },
+    {
+        "id": 5,
+        "constant": "EVO_TRADE",
+        "name": "Trade"
+    },
+    {
+        "id": 6,
+        "constant": "EVO_TRADE_ITEM",
+        "name": "Trade Item"
+    },
+    {
+        "id": 7,
+        "constant": "EVO_ITEM",
+        "name": "Item"
+    },
+    {
+        "id": 8,
+        "constant": "EVO_LEVEL_ATK_GT_DEF",
+        "name": "Level Atk Gt Def"
+    },
+    {
+        "id": 9,
+        "constant": "EVO_LEVEL_ATK_EQ_DEF",
+        "name": "Level Atk Eq Def"
+    },
+    {
+        "id": 10,
+        "constant": "EVO_LEVEL_ATK_LT_DEF",
+        "name": "Level Atk Lt Def"
+    },
+    {
+        "id": 11,
+        "constant": "EVO_LEVEL_SILCOON",
+        "name": "Level Silcoon"
+    },
+    {
+        "id": 12,
+        "constant": "EVO_LEVEL_CASCOON",
+        "name": "Level Cascoon"
+    },
+    {
+        "id": 13,
+        "constant": "EVO_LEVEL_NINJASK",
+        "name": "Level Ninjask"
+    },
+    {
+        "id": 14,
+        "constant": "EVO_LEVEL_SHEDINJA",
+        "name": "Level Shedinja"
+    },
+    {
+        "id": 15,
+        "constant": "EVO_BEAUTY",
+        "name": "Beauty"
+    }
+]

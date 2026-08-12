@@ -1,0 +1,470 @@
+[
+    {
+        "id": 0,
+        "constant": "ABILITY_NONE",
+        "name": "-------",
+        "description": "No special ability."
+    },
+    {
+        "id": 1,
+        "constant": "ABILITY_STENCH",
+        "name": "STENCH",
+        "description": "Helps repel wild POKéMON."
+    },
+    {
+        "id": 2,
+        "constant": "ABILITY_DRIZZLE",
+        "name": "DRIZZLE",
+        "description": "Summons rain in battle."
+    },
+    {
+        "id": 3,
+        "constant": "ABILITY_SPEED_BOOST",
+        "name": "SPEED BOOST",
+        "description": "Gradually boosts SPEED."
+    },
+    {
+        "id": 4,
+        "constant": "ABILITY_BATTLE_ARMOR",
+        "name": "BATTLE ARMOR",
+        "description": "Blocks critical hits."
+    },
+    {
+        "id": 5,
+        "constant": "ABILITY_STURDY",
+        "name": "STURDY",
+        "description": "Negates 1-hit KO attacks."
+    },
+    {
+        "id": 6,
+        "constant": "ABILITY_DAMP",
+        "name": "DAMP",
+        "description": "Prevents self-destruction."
+    },
+    {
+        "id": 7,
+        "constant": "ABILITY_LIMBER",
+        "name": "LIMBER",
+        "description": "Prevents paralysis."
+    },
+    {
+        "id": 8,
+        "constant": "ABILITY_SAND_VEIL",
+        "name": "SAND VEIL",
+        "description": "Ups evasion in a sandstorm."
+    },
+    {
+        "id": 9,
+        "constant": "ABILITY_STATIC",
+        "name": "STATIC",
+        "description": "Paralyzes on contact."
+    },
+    {
+        "id": 10,
+        "constant": "ABILITY_VOLT_ABSORB",
+        "name": "VOLT ABSORB",
+        "description": "Turns electricity into HP."
+    },
+    {
+        "id": 11,
+        "constant": "ABILITY_WATER_ABSORB",
+        "name": "WATER ABSORB",
+        "description": "Changes water into HP."
+    },
+    {
+        "id": 12,
+        "constant": "ABILITY_OBLIVIOUS",
+        "name": "OBLIVIOUS",
+        "description": "Prevents attraction."
+    },
+    {
+        "id": 13,
+        "constant": "ABILITY_CLOUD_NINE",
+        "name": "CLOUD NINE",
+        "description": "Negates weather effects."
+    },
+    {
+        "id": 14,
+        "constant": "ABILITY_COMPOUND_EYES",
+        "name": "COMPOUNDEYES",
+        "description": "Raises accuracy."
+    },
+    {
+        "id": 15,
+        "constant": "ABILITY_INSOMNIA",
+        "name": "INSOMNIA",
+        "description": "Prevents sleep."
+    },
+    {
+        "id": 16,
+        "constant": "ABILITY_COLOR_CHANGE",
+        "name": "COLOR CHANGE",
+        "description": "Changes type to foe's move."
+    },
+    {
+        "id": 17,
+        "constant": "ABILITY_IMMUNITY",
+        "name": "IMMUNITY",
+        "description": "Prevents poisoning."
+    },
+    {
+        "id": 18,
+        "constant": "ABILITY_FLASH_FIRE",
+        "name": "FLASH FIRE",
+        "description": "Powers up if hit by fire."
+    },
+    {
+        "id": 19,
+        "constant": "ABILITY_SHIELD_DUST",
+        "name": "SHIELD DUST",
+        "description": "Prevents added effects."
+    },
+    {
+        "id": 20,
+        "constant": "ABILITY_OWN_TEMPO",
+        "name": "OWN TEMPO",
+        "description": "Prevents confusion."
+    },
+    {
+        "id": 21,
+        "constant": "ABILITY_SUCTION_CUPS",
+        "name": "SUCTION CUPS",
+        "description": "Firmly anchors the body."
+    },
+    {
+        "id": 22,
+        "constant": "ABILITY_INTIMIDATE",
+        "name": "INTIMIDATE",
+        "description": "Lowers the foe's ATTACK."
+    },
+    {
+        "id": 23,
+        "constant": "ABILITY_SHADOW_TAG",
+        "name": "SHADOW TAG",
+        "description": "Prevents the foe's escape."
+    },
+    {
+        "id": 24,
+        "constant": "ABILITY_ROUGH_SKIN",
+        "name": "ROUGH SKIN",
+        "description": "Hurts to touch."
+    },
+    {
+        "id": 25,
+        "constant": "ABILITY_WONDER_GUARD",
+        "name": "WONDER GUARD",
+        "description": "“Super effective” hits."
+    },
+    {
+        "id": 26,
+        "constant": "ABILITY_LEVITATE",
+        "name": "LEVITATE",
+        "description": "Not hit by GROUND attacks."
+    },
+    {
+        "id": 27,
+        "constant": "ABILITY_EFFECT_SPORE",
+        "name": "EFFECT SPORE",
+        "description": "Leaves spores on contact."
+    },
+    {
+        "id": 28,
+        "constant": "ABILITY_SYNCHRONIZE",
+        "name": "SYNCHRONIZE",
+        "description": "Passes on status problems."
+    },
+    {
+        "id": 29,
+        "constant": "ABILITY_CLEAR_BODY",
+        "name": "CLEAR BODY",
+        "description": "Prevents ability reduction."
+    },
+    {
+        "id": 30,
+        "constant": "ABILITY_NATURAL_CURE",
+        "name": "NATURAL CURE",
+        "description": "Heals upon switching out."
+    },
+    {
+        "id": 31,
+        "constant": "ABILITY_LIGHTNING_ROD",
+        "name": "LIGHTNINGROD",
+        "description": "Draws electrical moves."
+    },
+    {
+        "id": 32,
+        "constant": "ABILITY_SERENE_GRACE",
+        "name": "SERENE GRACE",
+        "description": "Promotes added effects."
+    },
+    {
+        "id": 33,
+        "constant": "ABILITY_SWIFT_SWIM",
+        "name": "SWIFT SWIM",
+        "description": "Raises SPEED in rain."
+    },
+    {
+        "id": 34,
+        "constant": "ABILITY_CHLOROPHYLL",
+        "name": "CHLOROPHYLL",
+        "description": "Raises SPEED in sunshine."
+    },
+    {
+        "id": 35,
+        "constant": "ABILITY_ILLUMINATE",
+        "name": "ILLUMINATE",
+        "description": "Encounter rate increases."
+    },
+    {
+        "id": 36,
+        "constant": "ABILITY_TRACE",
+        "name": "TRACE",
+        "description": "Copies special ability."
+    },
+    {
+        "id": 37,
+        "constant": "ABILITY_HUGE_POWER",
+        "name": "HUGE POWER",
+        "description": "Raises ATTACK."
+    },
+    {
+        "id": 38,
+        "constant": "ABILITY_POISON_POINT",
+        "name": "POISON POINT",
+        "description": "Poisons foe on contact."
+    },
+    {
+        "id": 39,
+        "constant": "ABILITY_INNER_FOCUS",
+        "name": "INNER FOCUS",
+        "description": "Prevents flinching."
+    },
+    {
+        "id": 40,
+        "constant": "ABILITY_MAGMA_ARMOR",
+        "name": "MAGMA ARMOR",
+        "description": "Prevents freezing."
+    },
+    {
+        "id": 41,
+        "constant": "ABILITY_WATER_VEIL",
+        "name": "WATER VEIL",
+        "description": "Prevents burns."
+    },
+    {
+        "id": 42,
+        "constant": "ABILITY_MAGNET_PULL",
+        "name": "MAGNET PULL",
+        "description": "Traps STEEL-type POKéMON."
+    },
+    {
+        "id": 43,
+        "constant": "ABILITY_SOUNDPROOF",
+        "name": "SOUNDPROOF",
+        "description": "Avoids sound-based moves."
+    },
+    {
+        "id": 44,
+        "constant": "ABILITY_RAIN_DISH",
+        "name": "RAIN DISH",
+        "description": "Slight HP recovery in rain."
+    },
+    {
+        "id": 45,
+        "constant": "ABILITY_SAND_STREAM",
+        "name": "SAND STREAM",
+        "description": "Summons a sandstorm."
+    },
+    {
+        "id": 46,
+        "constant": "ABILITY_PRESSURE",
+        "name": "PRESSURE",
+        "description": "Raises foe's PP usage."
+    },
+    {
+        "id": 47,
+        "constant": "ABILITY_THICK_FAT",
+        "name": "THICK FAT",
+        "description": "Heat-and-cold protection."
+    },
+    {
+        "id": 48,
+        "constant": "ABILITY_EARLY_BIRD",
+        "name": "EARLY BIRD",
+        "description": "Awakens quickly from sleep."
+    },
+    {
+        "id": 49,
+        "constant": "ABILITY_FLAME_BODY",
+        "name": "FLAME BODY",
+        "description": "Burns the foe on contact."
+    },
+    {
+        "id": 50,
+        "constant": "ABILITY_RUN_AWAY",
+        "name": "RUN AWAY",
+        "description": "Makes escaping easier."
+    },
+    {
+        "id": 51,
+        "constant": "ABILITY_KEEN_EYE",
+        "name": "KEEN EYE",
+        "description": "Prevents loss of accuracy."
+    },
+    {
+        "id": 52,
+        "constant": "ABILITY_HYPER_CUTTER",
+        "name": "HYPER CUTTER",
+        "description": "Prevents ATTACK reduction."
+    },
+    {
+        "id": 53,
+        "constant": "ABILITY_PICKUP",
+        "name": "PICKUP",
+        "description": "May pick up items."
+    },
+    {
+        "id": 54,
+        "constant": "ABILITY_TRUANT",
+        "name": "TRUANT",
+        "description": "Moves only every two turns."
+    },
+    {
+        "id": 55,
+        "constant": "ABILITY_HUSTLE",
+        "name": "HUSTLE",
+        "description": "Trades accuracy for power."
+    },
+    {
+        "id": 56,
+        "constant": "ABILITY_CUTE_CHARM",
+        "name": "CUTE CHARM",
+        "description": "Infatuates on contact."
+    },
+    {
+        "id": 57,
+        "constant": "ABILITY_PLUS",
+        "name": "PLUS",
+        "description": "Powers up with MINUS."
+    },
+    {
+        "id": 58,
+        "constant": "ABILITY_MINUS",
+        "name": "MINUS",
+        "description": "Powers up with PLUS."
+    },
+    {
+        "id": 59,
+        "constant": "ABILITY_FORECAST",
+        "name": "FORECAST",
+        "description": "Changes with the weather."
+    },
+    {
+        "id": 60,
+        "constant": "ABILITY_STICKY_HOLD",
+        "name": "STICKY HOLD",
+        "description": "Prevents item theft."
+    },
+    {
+        "id": 61,
+        "constant": "ABILITY_SHED_SKIN",
+        "name": "SHED SKIN",
+        "description": "Heals the body by shedding."
+    },
+    {
+        "id": 62,
+        "constant": "ABILITY_GUTS",
+        "name": "GUTS",
+        "description": "Ups ATTACK if suffering."
+    },
+    {
+        "id": 63,
+        "constant": "ABILITY_MARVEL_SCALE",
+        "name": "MARVEL SCALE",
+        "description": "Ups DEFENSE if suffering."
+    },
+    {
+        "id": 64,
+        "constant": "ABILITY_LIQUID_OOZE",
+        "name": "LIQUID OOZE",
+        "description": "Draining causes injury."
+    },
+    {
+        "id": 65,
+        "constant": "ABILITY_OVERGROW",
+        "name": "OVERGROW",
+        "description": "Ups GRASS moves in a pinch."
+    },
+    {
+        "id": 66,
+        "constant": "ABILITY_BLAZE",
+        "name": "BLAZE",
+        "description": "Ups FIRE moves in a pinch."
+    },
+    {
+        "id": 67,
+        "constant": "ABILITY_TORRENT",
+        "name": "TORRENT",
+        "description": "Ups WATER moves in a pinch."
+    },
+    {
+        "id": 68,
+        "constant": "ABILITY_SWARM",
+        "name": "SWARM",
+        "description": "Ups BUG moves in a pinch."
+    },
+    {
+        "id": 69,
+        "constant": "ABILITY_ROCK_HEAD",
+        "name": "ROCK HEAD",
+        "description": "Prevents recoil damage."
+    },
+    {
+        "id": 70,
+        "constant": "ABILITY_DROUGHT",
+        "name": "DROUGHT",
+        "description": "Summons sunlight in battle."
+    },
+    {
+        "id": 71,
+        "constant": "ABILITY_ARENA_TRAP",
+        "name": "ARENA TRAP",
+        "description": "Prevents fleeing."
+    },
+    {
+        "id": 72,
+        "constant": "ABILITY_VITAL_SPIRIT",
+        "name": "VITAL SPIRIT",
+        "description": "Prevents sleep."
+    },
+    {
+        "id": 73,
+        "constant": "ABILITY_WHITE_SMOKE",
+        "name": "WHITE SMOKE",
+        "description": "Prevents ability reduction."
+    },
+    {
+        "id": 74,
+        "constant": "ABILITY_PURE_POWER",
+        "name": "PURE POWER",
+        "description": "Raises ATTACK."
+    },
+    {
+        "id": 75,
+        "constant": "ABILITY_SHELL_ARMOR",
+        "name": "SHELL ARMOR",
+        "description": "Blocks critical hits."
+    },
+    {
+        "id": 76,
+        "constant": "ABILITY_CACOPHONY",
+        "name": "CACOPHONY",
+        "description": "Avoids sound-based moves."
+    },
+    {
+        "id": 77,
+        "constant": "ABILITY_AIR_LOCK",
+        "name": "AIR LOCK",
+        "description": "Negates weather effects."
+    }
+]

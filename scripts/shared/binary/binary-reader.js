@@ -37,9 +37,15 @@ class BinaryReader {
      * @returns {number}
      */
     readUInt8(offset) {
-
+    
         return this.buffer.readUInt8(offset);
-
+    
+    }
+    
+    readInt8(offset) {
+    
+        return this.buffer.readInt8(offset);
+    
     }
 
     /**

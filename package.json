@@ -8,17 +8,13 @@
     "doc": "docs"
   },
   "scripts": {
-    "clean": "node scripts/pipeline/clean.js",
-    "download": "node scripts/pipeline/download.js",
-    "generate": "node scripts/pipeline/generate.js",
-    "validate": "node scripts/pipeline/validate.js",
-    "build": "node scripts/pipeline/build.js",
+    "build": "node -e \"const FireRedBuildPipeline = require('./scripts/pipelines/build-firered'); new FireRedBuildPipeline().run();\"",
     "test": "echo \"No tests configured yet.\""
   },
   "dependencies": {
     "axios": "^1.18.1",
     "better-sqlite3": "^13.0.1",
-    "pngjs": "^7.0.0"
+    "pngjs": "^7.0.1"
   },
   "repository": {
     "type": "git",

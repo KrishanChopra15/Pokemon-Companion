@@ -25,6 +25,8 @@ const BinaryLayoutResolver = require("../../binary-layouts/binary-layout-resolve
 
 const PokemonSpeciesExtractor = require("./pokemon-species-extractor");
 
+const PokemonMoveExtractor = require("./pokemon-move-extractor");
+
 class GameBoyAdvanceExtractor extends Extractor {
     
     /**
@@ -62,14 +64,10 @@ class GameBoyAdvanceExtractor extends Extractor {
      */
     extractPokemonSpecies() {
 
-        const game = this.extractGame();
-
-        const layout = BinaryLayoutResolver.resolve(game);
-
         const speciesExtractor = new PokemonSpeciesExtractor(
             this.reader,
-            game,
-            layout
+            this.game,
+            this.layout
         );
 
         return speciesExtractor.extractAll();
@@ -81,7 +79,13 @@ class GameBoyAdvanceExtractor extends Extractor {
      */
     extractMoves() {
 
-        throw new Error("Not implemented.");
+        const moveExtractor = new PokemonMoveExtractor(
+            this.reader,
+            this.game,
+            this.layout
+        );
+
+        return moveExtractor.extractAll();
 
     }
 

@@ -1,0 +1,32 @@
+[
+    {
+        "id": 0,
+        "name": "Medium Fast",
+        "constant": "GROWTH_MEDIUM_FAST"
+    },
+    {
+        "id": 1,
+        "name": "Erratic",
+        "constant": "GROWTH_ERRATIC"
+    },
+    {
+        "id": 2,
+        "name": "Fluctuating",
+        "constant": "GROWTH_FLUCTUATING"
+    },
+    {
+        "id": 3,
+        "name": "Medium Slow",
+        "constant": "GROWTH_MEDIUM_SLOW"
+    },
+    {
+        "id": 4,
+        "name": "Fast",
+        "constant": "GROWTH_FAST"
+    },
+    {
+        "id": 5,
+        "name": "Slow",
+        "constant": "GROWTH_SLOW"
+    }
+]

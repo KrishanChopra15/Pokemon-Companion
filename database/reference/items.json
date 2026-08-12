@@ -1,0 +1,1877 @@
+[
+    {
+        "id": 0,
+        "constant": "ITEM_NONE",
+        "name": "None"
+    },
+    {
+        "id": 1,
+        "constant": "ITEM_MASTER_BALL",
+        "name": "Master Ball"
+    },
+    {
+        "id": 2,
+        "constant": "ITEM_ULTRA_BALL",
+        "name": "Ultra Ball"
+    },
+    {
+        "id": 3,
+        "constant": "ITEM_GREAT_BALL",
+        "name": "Great Ball"
+    },
+    {
+        "id": 4,
+        "constant": "ITEM_POKE_BALL",
+        "name": "Poke Ball"
+    },
+    {
+        "id": 5,
+        "constant": "ITEM_SAFARI_BALL",
+        "name": "Safari Ball"
+    },
+    {
+        "id": 6,
+        "constant": "ITEM_NET_BALL",
+        "name": "Net Ball"
+    },
+    {
+        "id": 7,
+        "constant": "ITEM_DIVE_BALL",
+        "name": "Dive Ball"
+    },
+    {
+        "id": 8,
+        "constant": "ITEM_NEST_BALL",
+        "name": "Nest Ball"
+    },
+    {
+        "id": 9,
+        "constant": "ITEM_REPEAT_BALL",
+        "name": "Repeat Ball"
+    },
+    {
+        "id": 10,
+        "constant": "ITEM_TIMER_BALL",
+        "name": "Timer Ball"
+    },
+    {
+        "id": 11,
+        "constant": "ITEM_LUXURY_BALL",
+        "name": "Luxury Ball"
+    },
+    {
+        "id": 12,
+        "constant": "ITEM_PREMIER_BALL",
+        "name": "Premier Ball"
+    },
+    {
+        "id": 13,
+        "constant": "ITEM_POTION",
+        "name": "Potion"
+    },
+    {
+        "id": 14,
+        "constant": "ITEM_ANTIDOTE",
+        "name": "Antidote"
+    },
+    {
+        "id": 15,
+        "constant": "ITEM_BURN_HEAL",
+        "name": "Burn Heal"
+    },
+    {
+        "id": 16,
+        "constant": "ITEM_ICE_HEAL",
+        "name": "Ice Heal"
+    },
+    {
+        "id": 17,
+        "constant": "ITEM_AWAKENING",
+        "name": "Awakening"
+    },
+    {
+        "id": 18,
+        "constant": "ITEM_PARALYZE_HEAL",
+        "name": "Paralyze Heal"
+    },
+    {
+        "id": 19,
+        "constant": "ITEM_FULL_RESTORE",
+        "name": "Full Restore"
+    },
+    {
+        "id": 20,
+        "constant": "ITEM_MAX_POTION",
+        "name": "Max Potion"
+    },
+    {
+        "id": 21,
+        "constant": "ITEM_HYPER_POTION",
+        "name": "Hyper Potion"
+    },
+    {
+        "id": 22,
+        "constant": "ITEM_SUPER_POTION",
+        "name": "Super Potion"
+    },
+    {
+        "id": 23,
+        "constant": "ITEM_FULL_HEAL",
+        "name": "Full Heal"
+    },
+    {
+        "id": 24,
+        "constant": "ITEM_REVIVE",
+        "name": "Revive"
+    },
+    {
+        "id": 25,
+        "constant": "ITEM_MAX_REVIVE",
+        "name": "Max Revive"
+    },
+    {
+        "id": 26,
+        "constant": "ITEM_FRESH_WATER",
+        "name": "Fresh Water"
+    },
+    {
+        "id": 27,
+        "constant": "ITEM_SODA_POP",
+        "name": "Soda Pop"
+    },
+    {
+        "id": 28,
+        "constant": "ITEM_LEMONADE",
+        "name": "Lemonade"
+    },
+    {
+        "id": 29,
+        "constant": "ITEM_MOOMOO_MILK",
+        "name": "Moomoo Milk"
+    },
+    {
+        "id": 30,
+        "constant": "ITEM_ENERGY_POWDER",
+        "name": "Energy Powder"
+    },
+    {
+        "id": 31,
+        "constant": "ITEM_ENERGY_ROOT",
+        "name": "Energy Root"
+    },
+    {
+        "id": 32,
+        "constant": "ITEM_HEAL_POWDER",
+        "name": "Heal Powder"
+    },
+    {
+        "id": 33,
+        "constant": "ITEM_REVIVAL_HERB",
+        "name": "Revival Herb"
+    },
+    {
+        "id": 34,
+        "constant": "ITEM_ETHER",
+        "name": "Ether"
+    },
+    {
+        "id": 35,
+        "constant": "ITEM_MAX_ETHER",
+        "name": "Max Ether"
+    },
+    {
+        "id": 36,
+        "constant": "ITEM_ELIXIR",
+        "name": "Elixir"
+    },
+    {
+        "id": 37,
+        "constant": "ITEM_MAX_ELIXIR",
+        "name": "Max Elixir"
+    },
+    {
+        "id": 38,
+        "constant": "ITEM_LAVA_COOKIE",
+        "name": "Lava Cookie"
+    },
+    {
+        "id": 39,
+        "constant": "ITEM_BLUE_FLUTE",
+        "name": "Blue Flute"
+    },
+    {
+        "id": 40,
+        "constant": "ITEM_YELLOW_FLUTE",
+        "name": "Yellow Flute"
+    },
+    {
+        "id": 41,
+        "constant": "ITEM_RED_FLUTE",
+        "name": "Red Flute"
+    },
+    {
+        "id": 42,
+        "constant": "ITEM_BLACK_FLUTE",
+        "name": "Black Flute"
+    },
+    {
+        "id": 43,
+        "constant": "ITEM_WHITE_FLUTE",
+        "name": "White Flute"
+    },
+    {
+        "id": 44,
+        "constant": "ITEM_BERRY_JUICE",
+        "name": "Berry Juice"
+    },
+    {
+        "id": 45,
+        "constant": "ITEM_SACRED_ASH",
+        "name": "Sacred Ash"
+    },
+    {
+        "id": 46,
+        "constant": "ITEM_SHOAL_SALT",
+        "name": "Shoal Salt"
+    },
+    {
+        "id": 47,
+        "constant": "ITEM_SHOAL_SHELL",
+        "name": "Shoal Shell"
+    },
+    {
+        "id": 48,
+        "constant": "ITEM_RED_SHARD",
+        "name": "Red Shard"
+    },
+    {
+        "id": 49,
+        "constant": "ITEM_BLUE_SHARD",
+        "name": "Blue Shard"
+    },
+    {
+        "id": 50,
+        "constant": "ITEM_YELLOW_SHARD",
+        "name": "Yellow Shard"
+    },
+    {
+        "id": 51,
+        "constant": "ITEM_GREEN_SHARD",
+        "name": "Green Shard"
+    },
+    {
+        "id": 52,
+        "constant": "ITEM_034",
+        "name": "034"
+    },
+    {
+        "id": 53,
+        "constant": "ITEM_035",
+        "name": "035"
+    },
+    {
+        "id": 54,
+        "constant": "ITEM_036",
+        "name": "036"
+    },
+    {
+        "id": 55,
+        "constant": "ITEM_037",
+        "name": "037"
+    },
+    {
+        "id": 56,
+        "constant": "ITEM_038",
+        "name": "038"
+    },
+    {
+        "id": 57,
+        "constant": "ITEM_039",
+        "name": "039"
+    },
+    {
+        "id": 58,
+        "constant": "ITEM_03A",
+        "name": "03a"
+    },
+    {
+        "id": 59,
+        "constant": "ITEM_03B",
+        "name": "03b"
+    },
+    {
+        "id": 60,
+        "constant": "ITEM_03C",
+        "name": "03c"
+    },
+    {
+        "id": 61,
+        "constant": "ITEM_03D",
+        "name": "03d"
+    },
+    {
+        "id": 62,
+        "constant": "ITEM_03E",
+        "name": "03e"
+    },
+    {
+        "id": 63,
+        "constant": "ITEM_HP_UP",
+        "name": "Hp Up"
+    },
+    {
+        "id": 64,
+        "constant": "ITEM_PROTEIN",
+        "name": "Protein"
+    },
+    {
+        "id": 65,
+        "constant": "ITEM_IRON",
+        "name": "Iron"
+    },
+    {
+        "id": 66,
+        "constant": "ITEM_CARBOS",
+        "name": "Carbos"
+    },
+    {
+        "id": 67,
+        "constant": "ITEM_CALCIUM",
+        "name": "Calcium"
+    },
+    {
+        "id": 68,
+        "constant": "ITEM_RARE_CANDY",
+        "name": "Rare Candy"
+    },
+    {
+        "id": 69,
+        "constant": "ITEM_PP_UP",
+        "name": "Pp Up"
+    },
+    {
+        "id": 70,
+        "constant": "ITEM_ZINC",
+        "name": "Zinc"
+    },
+    {
+        "id": 71,
+        "constant": "ITEM_PP_MAX",
+        "name": "Pp Max"
+    },
+    {
+        "id": 72,
+        "constant": "ITEM_048",
+        "name": "048"
+    },
+    {
+        "id": 73,
+        "constant": "ITEM_GUARD_SPEC",
+        "name": "Guard Spec"
+    },
+    {
+        "id": 74,
+        "constant": "ITEM_DIRE_HIT",
+        "name": "Dire Hit"
+    },
+    {
+        "id": 75,
+        "constant": "ITEM_X_ATTACK",
+        "name": "X Attack"
+    },
+    {
+        "id": 76,
+        "constant": "ITEM_X_DEFEND",
+        "name": "X Defend"
+    },
+    {
+        "id": 77,
+        "constant": "ITEM_X_SPEED",
+        "name": "X Speed"
+    },
+    {
+        "id": 78,
+        "constant": "ITEM_X_ACCURACY",
+        "name": "X Accuracy"
+    },
+    {
+        "id": 79,
+        "constant": "ITEM_X_SPECIAL",
+        "name": "X Special"
+    },
+    {
+        "id": 80,
+        "constant": "ITEM_POKE_DOLL",
+        "name": "Poke Doll"
+    },
+    {
+        "id": 81,
+        "constant": "ITEM_FLUFFY_TAIL",
+        "name": "Fluffy Tail"
+    },
+    {
+        "id": 82,
+        "constant": "ITEM_052",
+        "name": "052"
+    },
+    {
+        "id": 83,
+        "constant": "ITEM_SUPER_REPEL",
+        "name": "Super Repel"
+    },
+    {
+        "id": 84,
+        "constant": "ITEM_MAX_REPEL",
+        "name": "Max Repel"
+    },
+    {
+        "id": 85,
+        "constant": "ITEM_ESCAPE_ROPE",
+        "name": "Escape Rope"
+    },
+    {
+        "id": 86,
+        "constant": "ITEM_REPEL",
+        "name": "Repel"
+    },
+    {
+        "id": 87,
+        "constant": "ITEM_057",
+        "name": "057"
+    },
+    {
+        "id": 88,
+        "constant": "ITEM_058",
+        "name": "058"
+    },
+    {
+        "id": 89,
+        "constant": "ITEM_059",
+        "name": "059"
+    },
+    {
+        "id": 90,
+        "constant": "ITEM_05A",
+        "name": "05a"
+    },
+    {
+        "id": 91,
+        "constant": "ITEM_05B",
+        "name": "05b"
+    },
+    {
+        "id": 92,
+        "constant": "ITEM_05C",
+        "name": "05c"
+    },
+    {
+        "id": 93,
+        "constant": "ITEM_SUN_STONE",
+        "name": "Sun Stone"
+    },
+    {
+        "id": 94,
+        "constant": "ITEM_MOON_STONE",
+        "name": "Moon Stone"
+    },
+    {
+        "id": 95,
+        "constant": "ITEM_FIRE_STONE",
+        "name": "Fire Stone"
+    },
+    {
+        "id": 96,
+        "constant": "ITEM_THUNDER_STONE",
+        "name": "Thunder Stone"
+    },
+    {
+        "id": 97,
+        "constant": "ITEM_WATER_STONE",
+        "name": "Water Stone"
+    },
+    {
+        "id": 98,
+        "constant": "ITEM_LEAF_STONE",
+        "name": "Leaf Stone"
+    },
+    {
+        "id": 99,
+        "constant": "ITEM_063",
+        "name": "063"
+    },
+    {
+        "id": 100,
+        "constant": "ITEM_064",
+        "name": "064"
+    },
+    {
+        "id": 101,
+        "constant": "ITEM_065",
+        "name": "065"
+    },
+    {
+        "id": 102,
+        "constant": "ITEM_066",
+        "name": "066"
+    },
+    {
+        "id": 103,
+        "constant": "ITEM_TINY_MUSHROOM",
+        "name": "Tiny Mushroom"
+    },
+    {
+        "id": 104,
+        "constant": "ITEM_BIG_MUSHROOM",
+        "name": "Big Mushroom"
+    },
+    {
+        "id": 105,
+        "constant": "ITEM_069",
+        "name": "069"
+    },
+    {
+        "id": 106,
+        "constant": "ITEM_PEARL",
+        "name": "Pearl"
+    },
+    {
+        "id": 107,
+        "constant": "ITEM_BIG_PEARL",
+        "name": "Big Pearl"
+    },
+    {
+        "id": 108,
+        "constant": "ITEM_STARDUST",
+        "name": "Stardust"
+    },
+    {
+        "id": 109,
+        "constant": "ITEM_STAR_PIECE",
+        "name": "Star Piece"
+    },
+    {
+        "id": 110,
+        "constant": "ITEM_NUGGET",
+        "name": "Nugget"
+    },
+    {
+        "id": 111,
+        "constant": "ITEM_HEART_SCALE",
+        "name": "Heart Scale"
+    },
+    {
+        "id": 112,
+        "constant": "ITEM_070",
+        "name": "070"
+    },
+    {
+        "id": 113,
+        "constant": "ITEM_071",
+        "name": "071"
+    },
+    {
+        "id": 114,
+        "constant": "ITEM_072",
+        "name": "072"
+    },
+    {
+        "id": 115,
+        "constant": "ITEM_073",
+        "name": "073"
+    },
+    {
+        "id": 116,
+        "constant": "ITEM_074",
+        "name": "074"
+    },
+    {
+        "id": 117,
+        "constant": "ITEM_075",
+        "name": "075"
+    },
+    {
+        "id": 118,
+        "constant": "ITEM_076",
+        "name": "076"
+    },
+    {
+        "id": 119,
+        "constant": "ITEM_077",
+        "name": "077"
+    },
+    {
+        "id": 120,
+        "constant": "ITEM_078",
+        "name": "078"
+    },
+    {
+        "id": 121,
+        "constant": "ITEM_ORANGE_MAIL",
+        "name": "Orange Mail"
+    },
+    {
+        "id": 122,
+        "constant": "ITEM_HARBOR_MAIL",
+        "name": "Harbor Mail"
+    },
+    {
+        "id": 123,
+        "constant": "ITEM_GLITTER_MAIL",
+        "name": "Glitter Mail"
+    },
+    {
+        "id": 124,
+        "constant": "ITEM_MECH_MAIL",
+        "name": "Mech Mail"
+    },
+    {
+        "id": 125,
+        "constant": "ITEM_WOOD_MAIL",
+        "name": "Wood Mail"
+    },
+    {
+        "id": 126,
+        "constant": "ITEM_WAVE_MAIL",
+        "name": "Wave Mail"
+    },
+    {
+        "id": 127,
+        "constant": "ITEM_BEAD_MAIL",
+        "name": "Bead Mail"
+    },
+    {
+        "id": 128,
+        "constant": "ITEM_SHADOW_MAIL",
+        "name": "Shadow Mail"
+    },
+    {
+        "id": 129,
+        "constant": "ITEM_TROPIC_MAIL",
+        "name": "Tropic Mail"
+    },
+    {
+        "id": 130,
+        "constant": "ITEM_DREAM_MAIL",
+        "name": "Dream Mail"
+    },
+    {
+        "id": 131,
+        "constant": "ITEM_FAB_MAIL",
+        "name": "Fab Mail"
+    },
+    {
+        "id": 132,
+        "constant": "ITEM_RETRO_MAIL",
+        "name": "Retro Mail"
+    },
+    {
+        "id": 133,
+        "constant": "ITEM_CHERI_BERRY",
+        "name": "Cheri Berry"
+    },
+    {
+        "id": 134,
+        "constant": "ITEM_CHESTO_BERRY",
+        "name": "Chesto Berry"
+    },
+    {
+        "id": 135,
+        "constant": "ITEM_PECHA_BERRY",
+        "name": "Pecha Berry"
+    },
+    {
+        "id": 136,
+        "constant": "ITEM_RAWST_BERRY",
+        "name": "Rawst Berry"
+    },
+    {
+        "id": 137,
+        "constant": "ITEM_ASPEAR_BERRY",
+        "name": "Aspear Berry"
+    },
+    {
+        "id": 138,
+        "constant": "ITEM_LEPPA_BERRY",
+        "name": "Leppa Berry"
+    },
+    {
+        "id": 139,
+        "constant": "ITEM_ORAN_BERRY",
+        "name": "Oran Berry"
+    },
+    {
+        "id": 140,
+        "constant": "ITEM_PERSIM_BERRY",
+        "name": "Persim Berry"
+    },
+    {
+        "id": 141,
+        "constant": "ITEM_LUM_BERRY",
+        "name": "Lum Berry"
+    },
+    {
+        "id": 142,
+        "constant": "ITEM_SITRUS_BERRY",
+        "name": "Sitrus Berry"
+    },
+    {
+        "id": 143,
+        "constant": "ITEM_FIGY_BERRY",
+        "name": "Figy Berry"
+    },
+    {
+        "id": 144,
+        "constant": "ITEM_WIKI_BERRY",
+        "name": "Wiki Berry"
+    },
+    {
+        "id": 145,
+        "constant": "ITEM_MAGO_BERRY",
+        "name": "Mago Berry"
+    },
+    {
+        "id": 146,
+        "constant": "ITEM_AGUAV_BERRY",
+        "name": "Aguav Berry"
+    },
+    {
+        "id": 147,
+        "constant": "ITEM_IAPAPA_BERRY",
+        "name": "Iapapa Berry"
+    },
+    {
+        "id": 148,
+        "constant": "ITEM_RAZZ_BERRY",
+        "name": "Razz Berry"
+    },
+    {
+        "id": 149,
+        "constant": "ITEM_BLUK_BERRY",
+        "name": "Bluk Berry"
+    },
+    {
+        "id": 150,
+        "constant": "ITEM_NANAB_BERRY",
+        "name": "Nanab Berry"
+    },
+    {
+        "id": 151,
+        "constant": "ITEM_WEPEAR_BERRY",
+        "name": "Wepear Berry"
+    },
+    {
+        "id": 152,
+        "constant": "ITEM_PINAP_BERRY",
+        "name": "Pinap Berry"
+    },
+    {
+        "id": 153,
+        "constant": "ITEM_POMEG_BERRY",
+        "name": "Pomeg Berry"
+    },
+    {
+        "id": 154,
+        "constant": "ITEM_KELPSY_BERRY",
+        "name": "Kelpsy Berry"
+    },
+    {
+        "id": 155,
+        "constant": "ITEM_QUALOT_BERRY",
+        "name": "Qualot Berry"
+    },
+    {
+        "id": 156,
+        "constant": "ITEM_HONDEW_BERRY",
+        "name": "Hondew Berry"
+    },
+    {
+        "id": 157,
+        "constant": "ITEM_GREPA_BERRY",
+        "name": "Grepa Berry"
+    },
+    {
+        "id": 158,
+        "constant": "ITEM_TAMATO_BERRY",
+        "name": "Tamato Berry"
+    },
+    {
+        "id": 159,
+        "constant": "ITEM_CORNN_BERRY",
+        "name": "Cornn Berry"
+    },
+    {
+        "id": 160,
+        "constant": "ITEM_MAGOST_BERRY",
+        "name": "Magost Berry"
+    },
+    {
+        "id": 161,
+        "constant": "ITEM_RABUTA_BERRY",
+        "name": "Rabuta Berry"
+    },
+    {
+        "id": 162,
+        "constant": "ITEM_NOMEL_BERRY",
+        "name": "Nomel Berry"
+    },
+    {
+        "id": 163,
+        "constant": "ITEM_SPELON_BERRY",
+        "name": "Spelon Berry"
+    },
+    {
+        "id": 164,
+        "constant": "ITEM_PAMTRE_BERRY",
+        "name": "Pamtre Berry"
+    },
+    {
+        "id": 165,
+        "constant": "ITEM_WATMEL_BERRY",
+        "name": "Watmel Berry"
+    },
+    {
+        "id": 166,
+        "constant": "ITEM_DURIN_BERRY",
+        "name": "Durin Berry"
+    },
+    {
+        "id": 167,
+        "constant": "ITEM_BELUE_BERRY",
+        "name": "Belue Berry"
+    },
+    {
+        "id": 168,
+        "constant": "ITEM_LIECHI_BERRY",
+        "name": "Liechi Berry"
+    },
+    {
+        "id": 169,
+        "constant": "ITEM_GANLON_BERRY",
+        "name": "Ganlon Berry"
+    },
+    {
+        "id": 170,
+        "constant": "ITEM_SALAC_BERRY",
+        "name": "Salac Berry"
+    },
+    {
+        "id": 171,
+        "constant": "ITEM_PETAYA_BERRY",
+        "name": "Petaya Berry"
+    },
+    {
+        "id": 172,
+        "constant": "ITEM_APICOT_BERRY",
+        "name": "Apicot Berry"
+    },
+    {
+        "id": 173,
+        "constant": "ITEM_LANSAT_BERRY",
+        "name": "Lansat Berry"
+    },
+    {
+        "id": 174,
+        "constant": "ITEM_STARF_BERRY",
+        "name": "Starf Berry"
+    },
+    {
+        "id": 175,
+        "constant": "ITEM_ENIGMA_BERRY",
+        "name": "Enigma Berry"
+    },
+    {
+        "id": 176,
+        "constant": "ITEM_UNUSED_BERRY_1",
+        "name": "Unused Berry 1"
+    },
+    {
+        "id": 177,
+        "constant": "ITEM_UNUSED_BERRY_2",
+        "name": "Unused Berry 2"
+    },
+    {
+        "id": 178,
+        "constant": "ITEM_UNUSED_BERRY_3",
+        "name": "Unused Berry 3"
+    },
+    {
+        "id": 179,
+        "constant": "ITEM_BRIGHT_POWDER",
+        "name": "Bright Powder"
+    },
+    {
+        "id": 180,
+        "constant": "ITEM_WHITE_HERB",
+        "name": "White Herb"
+    },
+    {
+        "id": 181,
+        "constant": "ITEM_MACHO_BRACE",
+        "name": "Macho Brace"
+    },
+    {
+        "id": 182,
+        "constant": "ITEM_EXP_SHARE",
+        "name": "Exp Share"
+    },
+    {
+        "id": 183,
+        "constant": "ITEM_QUICK_CLAW",
+        "name": "Quick Claw"
+    },
+    {
+        "id": 184,
+        "constant": "ITEM_SOOTHE_BELL",
+        "name": "Soothe Bell"
+    },
+    {
+        "id": 185,
+        "constant": "ITEM_MENTAL_HERB",
+        "name": "Mental Herb"
+    },
+    {
+        "id": 186,
+        "constant": "ITEM_CHOICE_BAND",
+        "name": "Choice Band"
+    },
+    {
+        "id": 187,
+        "constant": "ITEM_KINGS_ROCK",
+        "name": "Kings Rock"
+    },
+    {
+        "id": 188,
+        "constant": "ITEM_SILVER_POWDER",
+        "name": "Silver Powder"
+    },
+    {
+        "id": 189,
+        "constant": "ITEM_AMULET_COIN",
+        "name": "Amulet Coin"
+    },
+    {
+        "id": 190,
+        "constant": "ITEM_CLEANSE_TAG",
+        "name": "Cleanse Tag"
+    },
+    {
+        "id": 191,
+        "constant": "ITEM_SOUL_DEW",
+        "name": "Soul Dew"
+    },
+    {
+        "id": 192,
+        "constant": "ITEM_DEEP_SEA_TOOTH",
+        "name": "Deep Sea Tooth"
+    },
+    {
+        "id": 193,
+        "constant": "ITEM_DEEP_SEA_SCALE",
+        "name": "Deep Sea Scale"
+    },
+    {
+        "id": 194,
+        "constant": "ITEM_SMOKE_BALL",
+        "name": "Smoke Ball"
+    },
+    {
+        "id": 195,
+        "constant": "ITEM_EVERSTONE",
+        "name": "Everstone"
+    },
+    {
+        "id": 196,
+        "constant": "ITEM_FOCUS_BAND",
+        "name": "Focus Band"
+    },
+    {
+        "id": 197,
+        "constant": "ITEM_LUCKY_EGG",
+        "name": "Lucky Egg"
+    },
+    {
+        "id": 198,
+        "constant": "ITEM_SCOPE_LENS",
+        "name": "Scope Lens"
+    },
+    {
+        "id": 199,
+        "constant": "ITEM_METAL_COAT",
+        "name": "Metal Coat"
+    },
+    {
+        "id": 200,
+        "constant": "ITEM_LEFTOVERS",
+        "name": "Leftovers"
+    },
+    {
+        "id": 201,
+        "constant": "ITEM_DRAGON_SCALE",
+        "name": "Dragon Scale"
+    },
+    {
+        "id": 202,
+        "constant": "ITEM_LIGHT_BALL",
+        "name": "Light Ball"
+    },
+    {
+        "id": 203,
+        "constant": "ITEM_SOFT_SAND",
+        "name": "Soft Sand"
+    },
+    {
+        "id": 204,
+        "constant": "ITEM_HARD_STONE",
+        "name": "Hard Stone"
+    },
+    {
+        "id": 205,
+        "constant": "ITEM_MIRACLE_SEED",
+        "name": "Miracle Seed"
+    },
+    {
+        "id": 206,
+        "constant": "ITEM_BLACK_GLASSES",
+        "name": "Black Glasses"
+    },
+    {
+        "id": 207,
+        "constant": "ITEM_BLACK_BELT",
+        "name": "Black Belt"
+    },
+    {
+        "id": 208,
+        "constant": "ITEM_MAGNET",
+        "name": "Magnet"
+    },
+    {
+        "id": 209,
+        "constant": "ITEM_MYSTIC_WATER",
+        "name": "Mystic Water"
+    },
+    {
+        "id": 210,
+        "constant": "ITEM_SHARP_BEAK",
+        "name": "Sharp Beak"
+    },
+    {
+        "id": 211,
+        "constant": "ITEM_POISON_BARB",
+        "name": "Poison Barb"
+    },
+    {
+        "id": 212,
+        "constant": "ITEM_NEVER_MELT_ICE",
+        "name": "Never Melt Ice"
+    },
+    {
+        "id": 213,
+        "constant": "ITEM_SPELL_TAG",
+        "name": "Spell Tag"
+    },
+    {
+        "id": 214,
+        "constant": "ITEM_TWISTED_SPOON",
+        "name": "Twisted Spoon"
+    },
+    {
+        "id": 215,
+        "constant": "ITEM_CHARCOAL",
+        "name": "Charcoal"
+    },
+    {
+        "id": 216,
+        "constant": "ITEM_DRAGON_FANG",
+        "name": "Dragon Fang"
+    },
+    {
+        "id": 217,
+        "constant": "ITEM_SILK_SCARF",
+        "name": "Silk Scarf"
+    },
+    {
+        "id": 218,
+        "constant": "ITEM_UP_GRADE",
+        "name": "Up Grade"
+    },
+    {
+        "id": 219,
+        "constant": "ITEM_SHELL_BELL",
+        "name": "Shell Bell"
+    },
+    {
+        "id": 220,
+        "constant": "ITEM_SEA_INCENSE",
+        "name": "Sea Incense"
+    },
+    {
+        "id": 221,
+        "constant": "ITEM_LAX_INCENSE",
+        "name": "Lax Incense"
+    },
+    {
+        "id": 222,
+        "constant": "ITEM_LUCKY_PUNCH",
+        "name": "Lucky Punch"
+    },
+    {
+        "id": 223,
+        "constant": "ITEM_METAL_POWDER",
+        "name": "Metal Powder"
+    },
+    {
+        "id": 224,
+        "constant": "ITEM_THICK_CLUB",
+        "name": "Thick Club"
+    },
+    {
+        "id": 225,
+        "constant": "ITEM_STICK",
+        "name": "Stick"
+    },
+    {
+        "id": 226,
+        "constant": "ITEM_0E2",
+        "name": "0e2"
+    },
+    {
+        "id": 227,
+        "constant": "ITEM_0E3",
+        "name": "0e3"
+    },
+    {
+        "id": 228,
+        "constant": "ITEM_0E4",
+        "name": "0e4"
+    },
+    {
+        "id": 229,
+        "constant": "ITEM_0E5",
+        "name": "0e5"
+    },
+    {
+        "id": 230,
+        "constant": "ITEM_0E6",
+        "name": "0e6"
+    },
+    {
+        "id": 231,
+        "constant": "ITEM_0E7",
+        "name": "0e7"
+    },
+    {
+        "id": 232,
+        "constant": "ITEM_0E8",
+        "name": "0e8"
+    },
+    {
+        "id": 233,
+        "constant": "ITEM_0E9",
+        "name": "0e9"
+    },
+    {
+        "id": 234,
+        "constant": "ITEM_0EA",
+        "name": "0ea"
+    },
+    {
+        "id": 235,
+        "constant": "ITEM_0EB",
+        "name": "0eb"
+    },
+    {
+        "id": 236,
+        "constant": "ITEM_0EC",
+        "name": "0ec"
+    },
+    {
+        "id": 237,
+        "constant": "ITEM_0ED",
+        "name": "0ed"
+    },
+    {
+        "id": 238,
+        "constant": "ITEM_0EE",
+        "name": "0ee"
+    },
+    {
+        "id": 239,
+        "constant": "ITEM_0EF",
+        "name": "0ef"
+    },
+    {
+        "id": 240,
+        "constant": "ITEM_0F0",
+        "name": "0f0"
+    },
+    {
+        "id": 241,
+        "constant": "ITEM_0F1",
+        "name": "0f1"
+    },
+    {
+        "id": 242,
+        "constant": "ITEM_0F2",
+        "name": "0f2"
+    },
+    {
+        "id": 243,
+        "constant": "ITEM_0F3",
+        "name": "0f3"
+    },
+    {
+        "id": 244,
+        "constant": "ITEM_0F4",
+        "name": "0f4"
+    },
+    {
+        "id": 245,
+        "constant": "ITEM_0F5",
+        "name": "0f5"
+    },
+    {
+        "id": 246,
+        "constant": "ITEM_0F6",
+        "name": "0f6"
+    },
+    {
+        "id": 247,
+        "constant": "ITEM_0F7",
+        "name": "0f7"
+    },
+    {
+        "id": 248,
+        "constant": "ITEM_0F8",
+        "name": "0f8"
+    },
+    {
+        "id": 249,
+        "constant": "ITEM_0F9",
+        "name": "0f9"
+    },
+    {
+        "id": 250,
+        "constant": "ITEM_0FA",
+        "name": "0fa"
+    },
+    {
+        "id": 251,
+        "constant": "ITEM_0FB",
+        "name": "0fb"
+    },
+    {
+        "id": 252,
+        "constant": "ITEM_0FC",
+        "name": "0fc"
+    },
+    {
+        "id": 253,
+        "constant": "ITEM_0FD",
+        "name": "0fd"
+    },
+    {
+        "id": 254,
+        "constant": "ITEM_RED_SCARF",
+        "name": "Red Scarf"
+    },
+    {
+        "id": 255,
+        "constant": "ITEM_BLUE_SCARF",
+        "name": "Blue Scarf"
+    },
+    {
+        "id": 256,
+        "constant": "ITEM_PINK_SCARF",
+        "name": "Pink Scarf"
+    },
+    {
+        "id": 257,
+        "constant": "ITEM_GREEN_SCARF",
+        "name": "Green Scarf"
+    },
+    {
+        "id": 258,
+        "constant": "ITEM_YELLOW_SCARF",
+        "name": "Yellow Scarf"
+    },
+    {
+        "id": 259,
+        "constant": "ITEM_MACH_BIKE",
+        "name": "Mach Bike"
+    },
+    {
+        "id": 260,
+        "constant": "ITEM_COIN_CASE",
+        "name": "Coin Case"
+    },
+    {
+        "id": 261,
+        "constant": "ITEM_ITEMFINDER",
+        "name": "Itemfinder"
+    },
+    {
+        "id": 262,
+        "constant": "ITEM_OLD_ROD",
+        "name": "Old Rod"
+    },
+    {
+        "id": 263,
+        "constant": "ITEM_GOOD_ROD",
+        "name": "Good Rod"
+    },
+    {
+        "id": 264,
+        "constant": "ITEM_SUPER_ROD",
+        "name": "Super Rod"
+    },
+    {
+        "id": 265,
+        "constant": "ITEM_SS_TICKET",
+        "name": "Ss Ticket"
+    },
+    {
+        "id": 266,
+        "constant": "ITEM_CONTEST_PASS",
+        "name": "Contest Pass"
+    },
+    {
+        "id": 267,
+        "constant": "ITEM_10B",
+        "name": "10b"
+    },
+    {
+        "id": 268,
+        "constant": "ITEM_WAILMER_PAIL",
+        "name": "Wailmer Pail"
+    },
+    {
+        "id": 269,
+        "constant": "ITEM_DEVON_GOODS",
+        "name": "Devon Goods"
+    },
+    {
+        "id": 270,
+        "constant": "ITEM_SOOT_SACK",
+        "name": "Soot Sack"
+    },
+    {
+        "id": 271,
+        "constant": "ITEM_BASEMENT_KEY",
+        "name": "Basement Key"
+    },
+    {
+        "id": 272,
+        "constant": "ITEM_ACRO_BIKE",
+        "name": "Acro Bike"
+    },
+    {
+        "id": 273,
+        "constant": "ITEM_POKEBLOCK_CASE",
+        "name": "Pokeblock Case"
+    },
+    {
+        "id": 274,
+        "constant": "ITEM_LETTER",
+        "name": "Letter"
+    },
+    {
+        "id": 275,
+        "constant": "ITEM_EON_TICKET",
+        "name": "Eon Ticket"
+    },
+    {
+        "id": 276,
+        "constant": "ITEM_RED_ORB",
+        "name": "Red Orb"
+    },
+    {
+        "id": 277,
+        "constant": "ITEM_BLUE_ORB",
+        "name": "Blue Orb"
+    },
+    {
+        "id": 278,
+        "constant": "ITEM_SCANNER",
+        "name": "Scanner"
+    },
+    {
+        "id": 279,
+        "constant": "ITEM_GO_GOGGLES",
+        "name": "Go Goggles"
+    },
+    {
+        "id": 280,
+        "constant": "ITEM_METEORITE",
+        "name": "Meteorite"
+    },
+    {
+        "id": 281,
+        "constant": "ITEM_ROOM_1_KEY",
+        "name": "Room 1 Key"
+    },
+    {
+        "id": 282,
+        "constant": "ITEM_ROOM_2_KEY",
+        "name": "Room 2 Key"
+    },
+    {
+        "id": 283,
+        "constant": "ITEM_ROOM_4_KEY",
+        "name": "Room 4 Key"
+    },
+    {
+        "id": 284,
+        "constant": "ITEM_ROOM_6_KEY",
+        "name": "Room 6 Key"
+    },
+    {
+        "id": 285,
+        "constant": "ITEM_STORAGE_KEY",
+        "name": "Storage Key"
+    },
+    {
+        "id": 286,
+        "constant": "ITEM_ROOT_FOSSIL",
+        "name": "Root Fossil"
+    },
+    {
+        "id": 287,
+        "constant": "ITEM_CLAW_FOSSIL",
+        "name": "Claw Fossil"
+    },
+    {
+        "id": 288,
+        "constant": "ITEM_DEVON_SCOPE",
+        "name": "Devon Scope"
+    },
+    {
+        "id": 289,
+        "constant": "ITEM_TM01",
+        "name": "Tm01"
+    },
+    {
+        "id": 290,
+        "constant": "ITEM_TM02",
+        "name": "Tm02"
+    },
+    {
+        "id": 291,
+        "constant": "ITEM_TM03",
+        "name": "Tm03"
+    },
+    {
+        "id": 292,
+        "constant": "ITEM_TM04",
+        "name": "Tm04"
+    },
+    {
+        "id": 293,
+        "constant": "ITEM_TM05",
+        "name": "Tm05"
+    },
+    {
+        "id": 294,
+        "constant": "ITEM_TM06",
+        "name": "Tm06"
+    },
+    {
+        "id": 295,
+        "constant": "ITEM_TM07",
+        "name": "Tm07"
+    },
+    {
+        "id": 296,
+        "constant": "ITEM_TM08",
+        "name": "Tm08"
+    },
+    {
+        "id": 297,
+        "constant": "ITEM_TM09",
+        "name": "Tm09"
+    },
+    {
+        "id": 298,
+        "constant": "ITEM_TM10",
+        "name": "Tm10"
+    },
+    {
+        "id": 299,
+        "constant": "ITEM_TM11",
+        "name": "Tm11"
+    },
+    {
+        "id": 300,
+        "constant": "ITEM_TM12",
+        "name": "Tm12"
+    },
+    {
+        "id": 301,
+        "constant": "ITEM_TM13",
+        "name": "Tm13"
+    },
+    {
+        "id": 302,
+        "constant": "ITEM_TM14",
+        "name": "Tm14"
+    },
+    {
+        "id": 303,
+        "constant": "ITEM_TM15",
+        "name": "Tm15"
+    },
+    {
+        "id": 304,
+        "constant": "ITEM_TM16",
+        "name": "Tm16"
+    },
+    {
+        "id": 305,
+        "constant": "ITEM_TM17",
+        "name": "Tm17"
+    },
+    {
+        "id": 306,
+        "constant": "ITEM_TM18",
+        "name": "Tm18"
+    },
+    {
+        "id": 307,
+        "constant": "ITEM_TM19",
+        "name": "Tm19"
+    },
+    {
+        "id": 308,
+        "constant": "ITEM_TM20",
+        "name": "Tm20"
+    },
+    {
+        "id": 309,
+        "constant": "ITEM_TM21",
+        "name": "Tm21"
+    },
+    {
+        "id": 310,
+        "constant": "ITEM_TM22",
+        "name": "Tm22"
+    },
+    {
+        "id": 311,
+        "constant": "ITEM_TM23",
+        "name": "Tm23"
+    },
+    {
+        "id": 312,
+        "constant": "ITEM_TM24",
+        "name": "Tm24"
+    },
+    {
+        "id": 313,
+        "constant": "ITEM_TM25",
+        "name": "Tm25"
+    },
+    {
+        "id": 314,
+        "constant": "ITEM_TM26",
+        "name": "Tm26"
+    },
+    {
+        "id": 315,
+        "constant": "ITEM_TM27",
+        "name": "Tm27"
+    },
+    {
+        "id": 316,
+        "constant": "ITEM_TM28",
+        "name": "Tm28"
+    },
+    {
+        "id": 317,
+        "constant": "ITEM_TM29",
+        "name": "Tm29"
+    },
+    {
+        "id": 318,
+        "constant": "ITEM_TM30",
+        "name": "Tm30"
+    },
+    {
+        "id": 319,
+        "constant": "ITEM_TM31",
+        "name": "Tm31"
+    },
+    {
+        "id": 320,
+        "constant": "ITEM_TM32",
+        "name": "Tm32"
+    },
+    {
+        "id": 321,
+        "constant": "ITEM_TM33",
+        "name": "Tm33"
+    },
+    {
+        "id": 322,
+        "constant": "ITEM_TM34",
+        "name": "Tm34"
+    },
+    {
+        "id": 323,
+        "constant": "ITEM_TM35",
+        "name": "Tm35"
+    },
+    {
+        "id": 324,
+        "constant": "ITEM_TM36",
+        "name": "Tm36"
+    },
+    {
+        "id": 325,
+        "constant": "ITEM_TM37",
+        "name": "Tm37"
+    },
+    {
+        "id": 326,
+        "constant": "ITEM_TM38",
+        "name": "Tm38"
+    },
+    {
+        "id": 327,
+        "constant": "ITEM_TM39",
+        "name": "Tm39"
+    },
+    {
+        "id": 328,
+        "constant": "ITEM_TM40",
+        "name": "Tm40"
+    },
+    {
+        "id": 329,
+        "constant": "ITEM_TM41",
+        "name": "Tm41"
+    },
+    {
+        "id": 330,
+        "constant": "ITEM_TM42",
+        "name": "Tm42"
+    },
+    {
+        "id": 331,
+        "constant": "ITEM_TM43",
+        "name": "Tm43"
+    },
+    {
+        "id": 332,
+        "constant": "ITEM_TM44",
+        "name": "Tm44"
+    },
+    {
+        "id": 333,
+        "constant": "ITEM_TM45",
+        "name": "Tm45"
+    },
+    {
+        "id": 334,
+        "constant": "ITEM_TM46",
+        "name": "Tm46"
+    },
+    {
+        "id": 335,
+        "constant": "ITEM_TM47",
+        "name": "Tm47"
+    },
+    {
+        "id": 336,
+        "constant": "ITEM_TM48",
+        "name": "Tm48"
+    },
+    {
+        "id": 337,
+        "constant": "ITEM_TM49",
+        "name": "Tm49"
+    },
+    {
+        "id": 338,
+        "constant": "ITEM_TM50",
+        "name": "Tm50"
+    },
+    {
+        "id": 339,
+        "constant": "ITEM_HM01",
+        "name": "Hm01"
+    },
+    {
+        "id": 340,
+        "constant": "ITEM_HM02",
+        "name": "Hm02"
+    },
+    {
+        "id": 341,
+        "constant": "ITEM_HM03",
+        "name": "Hm03"
+    },
+    {
+        "id": 342,
+        "constant": "ITEM_HM04",
+        "name": "Hm04"
+    },
+    {
+        "id": 343,
+        "constant": "ITEM_HM05",
+        "name": "Hm05"
+    },
+    {
+        "id": 344,
+        "constant": "ITEM_HM06",
+        "name": "Hm06"
+    },
+    {
+        "id": 345,
+        "constant": "ITEM_HM07",
+        "name": "Hm07"
+    },
+    {
+        "id": 346,
+        "constant": "ITEM_HM08",
+        "name": "Hm08"
+    },
+    {
+        "id": 347,
+        "constant": "ITEM_15B",
+        "name": "15b"
+    },
+    {
+        "id": 348,
+        "constant": "ITEM_15C",
+        "name": "15c"
+    },
+    {
+        "id": 349,
+        "constant": "ITEM_OAKS_PARCEL",
+        "name": "Oaks Parcel"
+    },
+    {
+        "id": 350,
+        "constant": "ITEM_POKE_FLUTE",
+        "name": "Poke Flute"
+    },
+    {
+        "id": 351,
+        "constant": "ITEM_SECRET_KEY",
+        "name": "Secret Key"
+    },
+    {
+        "id": 352,
+        "constant": "ITEM_BIKE_VOUCHER",
+        "name": "Bike Voucher"
+    },
+    {
+        "id": 353,
+        "constant": "ITEM_GOLD_TEETH",
+        "name": "Gold Teeth"
+    },
+    {
+        "id": 354,
+        "constant": "ITEM_OLD_AMBER",
+        "name": "Old Amber"
+    },
+    {
+        "id": 355,
+        "constant": "ITEM_CARD_KEY",
+        "name": "Card Key"
+    },
+    {
+        "id": 356,
+        "constant": "ITEM_LIFT_KEY",
+        "name": "Lift Key"
+    },
+    {
+        "id": 357,
+        "constant": "ITEM_HELIX_FOSSIL",
+        "name": "Helix Fossil"
+    },
+    {
+        "id": 358,
+        "constant": "ITEM_DOME_FOSSIL",
+        "name": "Dome Fossil"
+    },
+    {
+        "id": 359,
+        "constant": "ITEM_SILPH_SCOPE",
+        "name": "Silph Scope"
+    },
+    {
+        "id": 360,
+        "constant": "ITEM_BICYCLE",
+        "name": "Bicycle"
+    },
+    {
+        "id": 361,
+        "constant": "ITEM_TOWN_MAP",
+        "name": "Town Map"
+    },
+    {
+        "id": 362,
+        "constant": "ITEM_VS_SEEKER",
+        "name": "Vs Seeker"
+    },
+    {
+        "id": 363,
+        "constant": "ITEM_FAME_CHECKER",
+        "name": "Fame Checker"
+    },
+    {
+        "id": 364,
+        "constant": "ITEM_TM_CASE",
+        "name": "Tm Case"
+    },
+    {
+        "id": 365,
+        "constant": "ITEM_BERRY_POUCH",
+        "name": "Berry Pouch"
+    },
+    {
+        "id": 366,
+        "constant": "ITEM_TEACHY_TV",
+        "name": "Teachy Tv"
+    },
+    {
+        "id": 367,
+        "constant": "ITEM_TRI_PASS",
+        "name": "Tri Pass"
+    },
+    {
+        "id": 368,
+        "constant": "ITEM_RAINBOW_PASS",
+        "name": "Rainbow Pass"
+    },
+    {
+        "id": 369,
+        "constant": "ITEM_TEA",
+        "name": "Tea"
+    },
+    {
+        "id": 370,
+        "constant": "ITEM_MYSTIC_TICKET",
+        "name": "Mystic Ticket"
+    },
+    {
+        "id": 371,
+        "constant": "ITEM_AURORA_TICKET",
+        "name": "Aurora Ticket"
+    },
+    {
+        "id": 372,
+        "constant": "ITEM_POWDER_JAR",
+        "name": "Powder Jar"
+    },
+    {
+        "id": 373,
+        "constant": "ITEM_RUBY",
+        "name": "Ruby"
+    },
+    {
+        "id": 374,
+        "constant": "ITEM_SAPPHIRE",
+        "name": "Sapphire"
+    }
+]

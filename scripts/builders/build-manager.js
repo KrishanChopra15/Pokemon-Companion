@@ -20,6 +20,10 @@
 const PokemonSpeciesGenerator = require("../generators/raw/pokemon-species-generator");
 const PokemonMoveGenerator = require("../generators/raw/pokemon-move-generator");
 const PokemonEvolutionGenerator = require("../generators/raw/pokemon-evolution-generator");
+const PokemonLearnsetGenerator =
+require("../generators/raw/pokemon-learnset-generator");
+const PokemonEncounterGenerator =
+require("../generators/raw/pokemon-encounter-generator");
 
 const SpeciesNameGenerator = require("../generators/reference/species-name-generator");
 const TypeGenerator = require("../generators/reference/type-generator");
@@ -31,11 +35,10 @@ const BodyColorGenerator = require("../generators/reference/body-color-generator
 const ItemGenerator = require("../generators/reference/item-generator");
 const EvolutionMethodGenerator =
 require("../generators/reference/evolution-method-generator");
-const PokemonLearnsetGenerator =
-require("../generators/raw/pokemon-learnset-generator");
 
 const PokemonSpeciesBuilder = require("./pokemon-species-builder");
 const PokemonMoveBuilder = require("./pokemon-move-builder");
+const PokemonEncounterBuilder = require("./pokemon-encounter-builder");
 
 class BuildManager {
 
@@ -70,8 +73,13 @@ class BuildManager {
         new PokemonEvolutionGenerator().generate(
             game
         );
+
         new PokemonLearnsetGenerator().generate(
             game
+        );
+
+        new PokemonEncounterGenerator().generate(
+            data.encounters
         );
 
         //----------------------------------------
@@ -113,6 +121,10 @@ class BuildManager {
         );
 
         new PokemonMoveBuilder().build(
+            game
+        );
+
+        new PokemonEncounterBuilder().build(
             game
         );
 

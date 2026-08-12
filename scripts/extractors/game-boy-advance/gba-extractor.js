@@ -25,7 +25,7 @@ const BinaryLayoutResolver = require("../../binary-layouts/binary-layout-resolve
 
 const PokemonSpeciesExtractor = require("./pokemon-species-extractor");
 
-const PokemonMoveExtractor = require("./pokemon-move-extractor");
+const PokemonMoveExtractor = require("./pokemon-move-extractor"); 
 
 class GameBoyAdvanceExtractor extends Extractor {
     

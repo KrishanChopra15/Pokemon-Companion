@@ -20,43 +20,55 @@ const ReferenceDatabase = require("./reference-database");
 class ReferenceRegistry {
 
     constructor() {
-
+    
         this.speciesNames = this.load(
             "species-names"
         );
-
+    
         this.moveNames = this.load(
             "move-names"
         );
-
+    
+        this.moveEffects = this.load(
+            "move-effects"
+        );
+    
+        this.moveTargets = this.load(
+            "move-targets"
+        );
+    
         this.types = this.load(
             "types"
         );
-
+    
         this.abilities = this.load(
             "abilities"
         );
-
+    
         this.growthRates = this.load(
             "growth-rates"
         );
-
+    
         this.eggGroups = this.load(
             "egg-groups"
         );
-
+    
         this.bodyColors = this.load(
             "body-colors"
         );
-
+    
         this.evolutionMethods = this.load(
             "evolution-methods"
         );
-
+    
         this.items = this.load(
             "items"
         );
-
+    
+        this.machines = this.load(
+            "machines"
+        );
+    
     }
 
     /**

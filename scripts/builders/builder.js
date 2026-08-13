@@ -72,6 +72,33 @@ class Builder {
     }
 
     /**
+     * Load a generated database.
+     *
+     * @param {string} game
+     * @param {string} database
+     * @returns {*}
+     */
+    loadGeneratedDatabase(game, database) {
+    
+        const file = path.join(
+            process.cwd(),
+            "database",
+            "generated",
+            game,
+            `${database}.json`
+        );
+    
+    
+        return JSON.parse(
+            fs.readFileSync(
+                file,
+                "utf8"
+            )
+        );
+    
+    }
+
+    /**
      * Save a generated database.
      *
      * @param {string} database

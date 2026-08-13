@@ -43,19 +43,53 @@ class PokemonMoveBuilder extends Builder {
             const reference = references.moveNames.get(
                 move.id
             );
-
+            
+            
+            const effect =
+                references.moveEffects.get(
+                    move.effect
+                );
+            
+            
+            const target =
+                references.moveTargets.get(
+                    move.target
+                );
+            
+            
             return {
-
+            
                 ...move,
-
-                name: reference
+            
+            
+                name:
+                    reference
                     ? reference.name
                     : null,
-
-                constant: reference
+            
+            
+                constant:
+                    reference
                     ? reference.constant
-                    : null
-
+                    : null,
+            
+            
+                type:
+                    references.types.get(
+                        move.type
+                    )
+                    || null,
+                
+                
+                effect:
+                    effect
+                    || null,
+                
+                
+                target:
+                    target
+                    || null
+                
             };
 
         });

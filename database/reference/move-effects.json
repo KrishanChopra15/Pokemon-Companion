@@ -1,0 +1,1072 @@
+[
+    {
+        "id": 0,
+        "constant": "EFFECT_HIT",
+        "name": "Hit"
+    },
+    {
+        "id": 1,
+        "constant": "EFFECT_SLEEP",
+        "name": "Sleep"
+    },
+    {
+        "id": 2,
+        "constant": "EFFECT_POISON_HIT",
+        "name": "Poison Hit"
+    },
+    {
+        "id": 3,
+        "constant": "EFFECT_ABSORB",
+        "name": "Absorb"
+    },
+    {
+        "id": 4,
+        "constant": "EFFECT_BURN_HIT",
+        "name": "Burn Hit"
+    },
+    {
+        "id": 5,
+        "constant": "EFFECT_FREEZE_HIT",
+        "name": "Freeze Hit"
+    },
+    {
+        "id": 6,
+        "constant": "EFFECT_PARALYZE_HIT",
+        "name": "Paralyze Hit"
+    },
+    {
+        "id": 7,
+        "constant": "EFFECT_EXPLOSION",
+        "name": "Explosion"
+    },
+    {
+        "id": 8,
+        "constant": "EFFECT_DREAM_EATER",
+        "name": "Dream Eater"
+    },
+    {
+        "id": 9,
+        "constant": "EFFECT_MIRROR_MOVE",
+        "name": "Mirror Move"
+    },
+    {
+        "id": 10,
+        "constant": "EFFECT_ATTACK_UP",
+        "name": "Attack Up"
+    },
+    {
+        "id": 11,
+        "constant": "EFFECT_DEFENSE_UP",
+        "name": "Defense Up"
+    },
+    {
+        "id": 12,
+        "constant": "EFFECT_SPEED_UP",
+        "name": "Speed Up"
+    },
+    {
+        "id": 13,
+        "constant": "EFFECT_SPECIAL_ATTACK_UP",
+        "name": "Special Attack Up"
+    },
+    {
+        "id": 14,
+        "constant": "EFFECT_SPECIAL_DEFENSE_UP",
+        "name": "Special Defense Up"
+    },
+    {
+        "id": 15,
+        "constant": "EFFECT_ACCURACY_UP",
+        "name": "Accuracy Up"
+    },
+    {
+        "id": 16,
+        "constant": "EFFECT_EVASION_UP",
+        "name": "Evasion Up"
+    },
+    {
+        "id": 17,
+        "constant": "EFFECT_ALWAYS_HIT",
+        "name": "Always Hit"
+    },
+    {
+        "id": 18,
+        "constant": "EFFECT_ATTACK_DOWN",
+        "name": "Attack Down"
+    },
+    {
+        "id": 19,
+        "constant": "EFFECT_DEFENSE_DOWN",
+        "name": "Defense Down"
+    },
+    {
+        "id": 20,
+        "constant": "EFFECT_SPEED_DOWN",
+        "name": "Speed Down"
+    },
+    {
+        "id": 21,
+        "constant": "EFFECT_SPECIAL_ATTACK_DOWN",
+        "name": "Special Attack Down"
+    },
+    {
+        "id": 22,
+        "constant": "EFFECT_SPECIAL_DEFENSE_DOWN",
+        "name": "Special Defense Down"
+    },
+    {
+        "id": 23,
+        "constant": "EFFECT_ACCURACY_DOWN",
+        "name": "Accuracy Down"
+    },
+    {
+        "id": 24,
+        "constant": "EFFECT_EVASION_DOWN",
+        "name": "Evasion Down"
+    },
+    {
+        "id": 25,
+        "constant": "EFFECT_HAZE",
+        "name": "Haze"
+    },
+    {
+        "id": 26,
+        "constant": "EFFECT_BIDE",
+        "name": "Bide"
+    },
+    {
+        "id": 27,
+        "constant": "EFFECT_RAMPAGE",
+        "name": "Rampage"
+    },
+    {
+        "id": 28,
+        "constant": "EFFECT_ROAR",
+        "name": "Roar"
+    },
+    {
+        "id": 29,
+        "constant": "EFFECT_MULTI_HIT",
+        "name": "Multi Hit"
+    },
+    {
+        "id": 30,
+        "constant": "EFFECT_CONVERSION",
+        "name": "Conversion"
+    },
+    {
+        "id": 31,
+        "constant": "EFFECT_FLINCH_HIT",
+        "name": "Flinch Hit"
+    },
+    {
+        "id": 32,
+        "constant": "EFFECT_RESTORE_HP",
+        "name": "Restore Hp"
+    },
+    {
+        "id": 33,
+        "constant": "EFFECT_TOXIC",
+        "name": "Toxic"
+    },
+    {
+        "id": 34,
+        "constant": "EFFECT_PAY_DAY",
+        "name": "Pay Day"
+    },
+    {
+        "id": 35,
+        "constant": "EFFECT_LIGHT_SCREEN",
+        "name": "Light Screen"
+    },
+    {
+        "id": 36,
+        "constant": "EFFECT_TRI_ATTACK",
+        "name": "Tri Attack"
+    },
+    {
+        "id": 37,
+        "constant": "EFFECT_REST",
+        "name": "Rest"
+    },
+    {
+        "id": 38,
+        "constant": "EFFECT_OHKO",
+        "name": "Ohko"
+    },
+    {
+        "id": 39,
+        "constant": "EFFECT_RAZOR_WIND",
+        "name": "Razor Wind"
+    },
+    {
+        "id": 40,
+        "constant": "EFFECT_SUPER_FANG",
+        "name": "Super Fang"
+    },
+    {
+        "id": 41,
+        "constant": "EFFECT_DRAGON_RAGE",
+        "name": "Dragon Rage"
+    },
+    {
+        "id": 42,
+        "constant": "EFFECT_TRAP",
+        "name": "Trap"
+    },
+    {
+        "id": 43,
+        "constant": "EFFECT_HIGH_CRITICAL",
+        "name": "High Critical"
+    },
+    {
+        "id": 44,
+        "constant": "EFFECT_DOUBLE_HIT",
+        "name": "Double Hit"
+    },
+    {
+        "id": 45,
+        "constant": "EFFECT_RECOIL_IF_MISS",
+        "name": "Recoil If Miss"
+    },
+    {
+        "id": 46,
+        "constant": "EFFECT_MIST",
+        "name": "Mist"
+    },
+    {
+        "id": 47,
+        "constant": "EFFECT_FOCUS_ENERGY",
+        "name": "Focus Energy"
+    },
+    {
+        "id": 48,
+        "constant": "EFFECT_RECOIL",
+        "name": "Recoil"
+    },
+    {
+        "id": 49,
+        "constant": "EFFECT_CONFUSE",
+        "name": "Confuse"
+    },
+    {
+        "id": 50,
+        "constant": "EFFECT_ATTACK_UP_2",
+        "name": "Attack Up 2"
+    },
+    {
+        "id": 51,
+        "constant": "EFFECT_DEFENSE_UP_2",
+        "name": "Defense Up 2"
+    },
+    {
+        "id": 52,
+        "constant": "EFFECT_SPEED_UP_2",
+        "name": "Speed Up 2"
+    },
+    {
+        "id": 53,
+        "constant": "EFFECT_SPECIAL_ATTACK_UP_2",
+        "name": "Special Attack Up 2"
+    },
+    {
+        "id": 54,
+        "constant": "EFFECT_SPECIAL_DEFENSE_UP_2",
+        "name": "Special Defense Up 2"
+    },
+    {
+        "id": 55,
+        "constant": "EFFECT_ACCURACY_UP_2",
+        "name": "Accuracy Up 2"
+    },
+    {
+        "id": 56,
+        "constant": "EFFECT_EVASION_UP_2",
+        "name": "Evasion Up 2"
+    },
+    {
+        "id": 57,
+        "constant": "EFFECT_TRANSFORM",
+        "name": "Transform"
+    },
+    {
+        "id": 58,
+        "constant": "EFFECT_ATTACK_DOWN_2",
+        "name": "Attack Down 2"
+    },
+    {
+        "id": 59,
+        "constant": "EFFECT_DEFENSE_DOWN_2",
+        "name": "Defense Down 2"
+    },
+    {
+        "id": 60,
+        "constant": "EFFECT_SPEED_DOWN_2",
+        "name": "Speed Down 2"
+    },
+    {
+        "id": 61,
+        "constant": "EFFECT_SPECIAL_ATTACK_DOWN_2",
+        "name": "Special Attack Down 2"
+    },
+    {
+        "id": 62,
+        "constant": "EFFECT_SPECIAL_DEFENSE_DOWN_2",
+        "name": "Special Defense Down 2"
+    },
+    {
+        "id": 63,
+        "constant": "EFFECT_ACCURACY_DOWN_2",
+        "name": "Accuracy Down 2"
+    },
+    {
+        "id": 64,
+        "constant": "EFFECT_EVASION_DOWN_2",
+        "name": "Evasion Down 2"
+    },
+    {
+        "id": 65,
+        "constant": "EFFECT_REFLECT",
+        "name": "Reflect"
+    },
+    {
+        "id": 66,
+        "constant": "EFFECT_POISON",
+        "name": "Poison"
+    },
+    {
+        "id": 67,
+        "constant": "EFFECT_PARALYZE",
+        "name": "Paralyze"
+    },
+    {
+        "id": 68,
+        "constant": "EFFECT_ATTACK_DOWN_HIT",
+        "name": "Attack Down Hit"
+    },
+    {
+        "id": 69,
+        "constant": "EFFECT_DEFENSE_DOWN_HIT",
+        "name": "Defense Down Hit"
+    },
+    {
+        "id": 70,
+        "constant": "EFFECT_SPEED_DOWN_HIT",
+        "name": "Speed Down Hit"
+    },
+    {
+        "id": 71,
+        "constant": "EFFECT_SPECIAL_ATTACK_DOWN_HIT",
+        "name": "Special Attack Down Hit"
+    },
+    {
+        "id": 72,
+        "constant": "EFFECT_SPECIAL_DEFENSE_DOWN_HIT",
+        "name": "Special Defense Down Hit"
+    },
+    {
+        "id": 73,
+        "constant": "EFFECT_ACCURACY_DOWN_HIT",
+        "name": "Accuracy Down Hit"
+    },
+    {
+        "id": 74,
+        "constant": "EFFECT_EVASION_DOWN_HIT",
+        "name": "Evasion Down Hit"
+    },
+    {
+        "id": 75,
+        "constant": "EFFECT_SKY_ATTACK",
+        "name": "Sky Attack"
+    },
+    {
+        "id": 76,
+        "constant": "EFFECT_CONFUSE_HIT",
+        "name": "Confuse Hit"
+    },
+    {
+        "id": 77,
+        "constant": "EFFECT_TWINEEDLE",
+        "name": "Twineedle"
+    },
+    {
+        "id": 78,
+        "constant": "EFFECT_VITAL_THROW",
+        "name": "Vital Throw"
+    },
+    {
+        "id": 79,
+        "constant": "EFFECT_SUBSTITUTE",
+        "name": "Substitute"
+    },
+    {
+        "id": 80,
+        "constant": "EFFECT_RECHARGE",
+        "name": "Recharge"
+    },
+    {
+        "id": 81,
+        "constant": "EFFECT_RAGE",
+        "name": "Rage"
+    },
+    {
+        "id": 82,
+        "constant": "EFFECT_MIMIC",
+        "name": "Mimic"
+    },
+    {
+        "id": 83,
+        "constant": "EFFECT_METRONOME",
+        "name": "Metronome"
+    },
+    {
+        "id": 84,
+        "constant": "EFFECT_LEECH_SEED",
+        "name": "Leech Seed"
+    },
+    {
+        "id": 85,
+        "constant": "EFFECT_SPLASH",
+        "name": "Splash"
+    },
+    {
+        "id": 86,
+        "constant": "EFFECT_DISABLE",
+        "name": "Disable"
+    },
+    {
+        "id": 87,
+        "constant": "EFFECT_LEVEL_DAMAGE",
+        "name": "Level Damage"
+    },
+    {
+        "id": 88,
+        "constant": "EFFECT_PSYWAVE",
+        "name": "Psywave"
+    },
+    {
+        "id": 89,
+        "constant": "EFFECT_COUNTER",
+        "name": "Counter"
+    },
+    {
+        "id": 90,
+        "constant": "EFFECT_ENCORE",
+        "name": "Encore"
+    },
+    {
+        "id": 91,
+        "constant": "EFFECT_PAIN_SPLIT",
+        "name": "Pain Split"
+    },
+    {
+        "id": 92,
+        "constant": "EFFECT_SNORE",
+        "name": "Snore"
+    },
+    {
+        "id": 93,
+        "constant": "EFFECT_CONVERSION_2",
+        "name": "Conversion 2"
+    },
+    {
+        "id": 94,
+        "constant": "EFFECT_LOCK_ON",
+        "name": "Lock On"
+    },
+    {
+        "id": 95,
+        "constant": "EFFECT_SKETCH",
+        "name": "Sketch"
+    },
+    {
+        "id": 96,
+        "constant": "EFFECT_UNUSED_60",
+        "name": "Unused 60"
+    },
+    {
+        "id": 97,
+        "constant": "EFFECT_SLEEP_TALK",
+        "name": "Sleep Talk"
+    },
+    {
+        "id": 98,
+        "constant": "EFFECT_DESTINY_BOND",
+        "name": "Destiny Bond"
+    },
+    {
+        "id": 99,
+        "constant": "EFFECT_FLAIL",
+        "name": "Flail"
+    },
+    {
+        "id": 100,
+        "constant": "EFFECT_SPITE",
+        "name": "Spite"
+    },
+    {
+        "id": 101,
+        "constant": "EFFECT_FALSE_SWIPE",
+        "name": "False Swipe"
+    },
+    {
+        "id": 102,
+        "constant": "EFFECT_HEAL_BELL",
+        "name": "Heal Bell"
+    },
+    {
+        "id": 103,
+        "constant": "EFFECT_QUICK_ATTACK",
+        "name": "Quick Attack"
+    },
+    {
+        "id": 104,
+        "constant": "EFFECT_TRIPLE_KICK",
+        "name": "Triple Kick"
+    },
+    {
+        "id": 105,
+        "constant": "EFFECT_THIEF",
+        "name": "Thief"
+    },
+    {
+        "id": 106,
+        "constant": "EFFECT_MEAN_LOOK",
+        "name": "Mean Look"
+    },
+    {
+        "id": 107,
+        "constant": "EFFECT_NIGHTMARE",
+        "name": "Nightmare"
+    },
+    {
+        "id": 108,
+        "constant": "EFFECT_MINIMIZE",
+        "name": "Minimize"
+    },
+    {
+        "id": 109,
+        "constant": "EFFECT_CURSE",
+        "name": "Curse"
+    },
+    {
+        "id": 110,
+        "constant": "EFFECT_UNUSED_6E",
+        "name": "Unused 6e"
+    },
+    {
+        "id": 111,
+        "constant": "EFFECT_PROTECT",
+        "name": "Protect"
+    },
+    {
+        "id": 112,
+        "constant": "EFFECT_SPIKES",
+        "name": "Spikes"
+    },
+    {
+        "id": 113,
+        "constant": "EFFECT_FORESIGHT",
+        "name": "Foresight"
+    },
+    {
+        "id": 114,
+        "constant": "EFFECT_PERISH_SONG",
+        "name": "Perish Song"
+    },
+    {
+        "id": 115,
+        "constant": "EFFECT_SANDSTORM",
+        "name": "Sandstorm"
+    },
+    {
+        "id": 116,
+        "constant": "EFFECT_ENDURE",
+        "name": "Endure"
+    },
+    {
+        "id": 117,
+        "constant": "EFFECT_ROLLOUT",
+        "name": "Rollout"
+    },
+    {
+        "id": 118,
+        "constant": "EFFECT_SWAGGER",
+        "name": "Swagger"
+    },
+    {
+        "id": 119,
+        "constant": "EFFECT_FURY_CUTTER",
+        "name": "Fury Cutter"
+    },
+    {
+        "id": 120,
+        "constant": "EFFECT_ATTRACT",
+        "name": "Attract"
+    },
+    {
+        "id": 121,
+        "constant": "EFFECT_RETURN",
+        "name": "Return"
+    },
+    {
+        "id": 122,
+        "constant": "EFFECT_PRESENT",
+        "name": "Present"
+    },
+    {
+        "id": 123,
+        "constant": "EFFECT_FRUSTRATION",
+        "name": "Frustration"
+    },
+    {
+        "id": 124,
+        "constant": "EFFECT_SAFEGUARD",
+        "name": "Safeguard"
+    },
+    {
+        "id": 125,
+        "constant": "EFFECT_THAW_HIT",
+        "name": "Thaw Hit"
+    },
+    {
+        "id": 126,
+        "constant": "EFFECT_MAGNITUDE",
+        "name": "Magnitude"
+    },
+    {
+        "id": 127,
+        "constant": "EFFECT_BATON_PASS",
+        "name": "Baton Pass"
+    },
+    {
+        "id": 128,
+        "constant": "EFFECT_PURSUIT",
+        "name": "Pursuit"
+    },
+    {
+        "id": 129,
+        "constant": "EFFECT_RAPID_SPIN",
+        "name": "Rapid Spin"
+    },
+    {
+        "id": 130,
+        "constant": "EFFECT_SONICBOOM",
+        "name": "Sonicboom"
+    },
+    {
+        "id": 131,
+        "constant": "EFFECT_UNUSED_83",
+        "name": "Unused 83"
+    },
+    {
+        "id": 132,
+        "constant": "EFFECT_MORNING_SUN",
+        "name": "Morning Sun"
+    },
+    {
+        "id": 133,
+        "constant": "EFFECT_SYNTHESIS",
+        "name": "Synthesis"
+    },
+    {
+        "id": 134,
+        "constant": "EFFECT_MOONLIGHT",
+        "name": "Moonlight"
+    },
+    {
+        "id": 135,
+        "constant": "EFFECT_HIDDEN_POWER",
+        "name": "Hidden Power"
+    },
+    {
+        "id": 136,
+        "constant": "EFFECT_RAIN_DANCE",
+        "name": "Rain Dance"
+    },
+    {
+        "id": 137,
+        "constant": "EFFECT_SUNNY_DAY",
+        "name": "Sunny Day"
+    },
+    {
+        "id": 138,
+        "constant": "EFFECT_DEFENSE_UP_HIT",
+        "name": "Defense Up Hit"
+    },
+    {
+        "id": 139,
+        "constant": "EFFECT_ATTACK_UP_HIT",
+        "name": "Attack Up Hit"
+    },
+    {
+        "id": 140,
+        "constant": "EFFECT_ALL_STATS_UP_HIT",
+        "name": "All Stats Up Hit"
+    },
+    {
+        "id": 141,
+        "constant": "EFFECT_UNUSED_8D",
+        "name": "Unused 8d"
+    },
+    {
+        "id": 142,
+        "constant": "EFFECT_BELLY_DRUM",
+        "name": "Belly Drum"
+    },
+    {
+        "id": 143,
+        "constant": "EFFECT_PSYCH_UP",
+        "name": "Psych Up"
+    },
+    {
+        "id": 144,
+        "constant": "EFFECT_MIRROR_COAT",
+        "name": "Mirror Coat"
+    },
+    {
+        "id": 145,
+        "constant": "EFFECT_SKULL_BASH",
+        "name": "Skull Bash"
+    },
+    {
+        "id": 146,
+        "constant": "EFFECT_TWISTER",
+        "name": "Twister"
+    },
+    {
+        "id": 147,
+        "constant": "EFFECT_EARTHQUAKE",
+        "name": "Earthquake"
+    },
+    {
+        "id": 148,
+        "constant": "EFFECT_FUTURE_SIGHT",
+        "name": "Future Sight"
+    },
+    {
+        "id": 149,
+        "constant": "EFFECT_GUST",
+        "name": "Gust"
+    },
+    {
+        "id": 150,
+        "constant": "EFFECT_FLINCH_MINIMIZE_HIT",
+        "name": "Flinch Minimize Hit"
+    },
+    {
+        "id": 151,
+        "constant": "EFFECT_SOLAR_BEAM",
+        "name": "Solar Beam"
+    },
+    {
+        "id": 152,
+        "constant": "EFFECT_THUNDER",
+        "name": "Thunder"
+    },
+    {
+        "id": 153,
+        "constant": "EFFECT_TELEPORT",
+        "name": "Teleport"
+    },
+    {
+        "id": 154,
+        "constant": "EFFECT_BEAT_UP",
+        "name": "Beat Up"
+    },
+    {
+        "id": 155,
+        "constant": "EFFECT_SEMI_INVULNERABLE",
+        "name": "Semi Invulnerable"
+    },
+    {
+        "id": 156,
+        "constant": "EFFECT_DEFENSE_CURL",
+        "name": "Defense Curl"
+    },
+    {
+        "id": 157,
+        "constant": "EFFECT_SOFTBOILED",
+        "name": "Softboiled"
+    },
+    {
+        "id": 158,
+        "constant": "EFFECT_FAKE_OUT",
+        "name": "Fake Out"
+    },
+    {
+        "id": 159,
+        "constant": "EFFECT_UPROAR",
+        "name": "Uproar"
+    },
+    {
+        "id": 160,
+        "constant": "EFFECT_STOCKPILE",
+        "name": "Stockpile"
+    },
+    {
+        "id": 161,
+        "constant": "EFFECT_SPIT_UP",
+        "name": "Spit Up"
+    },
+    {
+        "id": 162,
+        "constant": "EFFECT_SWALLOW",
+        "name": "Swallow"
+    },
+    {
+        "id": 163,
+        "constant": "EFFECT_UNUSED_A3",
+        "name": "Unused A3"
+    },
+    {
+        "id": 164,
+        "constant": "EFFECT_HAIL",
+        "name": "Hail"
+    },
+    {
+        "id": 165,
+        "constant": "EFFECT_TORMENT",
+        "name": "Torment"
+    },
+    {
+        "id": 166,
+        "constant": "EFFECT_FLATTER",
+        "name": "Flatter"
+    },
+    {
+        "id": 167,
+        "constant": "EFFECT_WILL_O_WISP",
+        "name": "Will O Wisp"
+    },
+    {
+        "id": 168,
+        "constant": "EFFECT_MEMENTO",
+        "name": "Memento"
+    },
+    {
+        "id": 169,
+        "constant": "EFFECT_FACADE",
+        "name": "Facade"
+    },
+    {
+        "id": 170,
+        "constant": "EFFECT_FOCUS_PUNCH",
+        "name": "Focus Punch"
+    },
+    {
+        "id": 171,
+        "constant": "EFFECT_SMELLINGSALT",
+        "name": "Smellingsalt"
+    },
+    {
+        "id": 172,
+        "constant": "EFFECT_FOLLOW_ME",
+        "name": "Follow Me"
+    },
+    {
+        "id": 173,
+        "constant": "EFFECT_NATURE_POWER",
+        "name": "Nature Power"
+    },
+    {
+        "id": 174,
+        "constant": "EFFECT_CHARGE",
+        "name": "Charge"
+    },
+    {
+        "id": 175,
+        "constant": "EFFECT_TAUNT",
+        "name": "Taunt"
+    },
+    {
+        "id": 176,
+        "constant": "EFFECT_HELPING_HAND",
+        "name": "Helping Hand"
+    },
+    {
+        "id": 177,
+        "constant": "EFFECT_TRICK",
+        "name": "Trick"
+    },
+    {
+        "id": 178,
+        "constant": "EFFECT_ROLE_PLAY",
+        "name": "Role Play"
+    },
+    {
+        "id": 179,
+        "constant": "EFFECT_WISH",
+        "name": "Wish"
+    },
+    {
+        "id": 180,
+        "constant": "EFFECT_ASSIST",
+        "name": "Assist"
+    },
+    {
+        "id": 181,
+        "constant": "EFFECT_INGRAIN",
+        "name": "Ingrain"
+    },
+    {
+        "id": 182,
+        "constant": "EFFECT_SUPERPOWER",
+        "name": "Superpower"
+    },
+    {
+        "id": 183,
+        "constant": "EFFECT_MAGIC_COAT",
+        "name": "Magic Coat"
+    },
+    {
+        "id": 184,
+        "constant": "EFFECT_RECYCLE",
+        "name": "Recycle"
+    },
+    {
+        "id": 185,
+        "constant": "EFFECT_REVENGE",
+        "name": "Revenge"
+    },
+    {
+        "id": 186,
+        "constant": "EFFECT_BRICK_BREAK",
+        "name": "Brick Break"
+    },
+    {
+        "id": 187,
+        "constant": "EFFECT_YAWN",
+        "name": "Yawn"
+    },
+    {
+        "id": 188,
+        "constant": "EFFECT_KNOCK_OFF",
+        "name": "Knock Off"
+    },
+    {
+        "id": 189,
+        "constant": "EFFECT_ENDEAVOR",
+        "name": "Endeavor"
+    },
+    {
+        "id": 190,
+        "constant": "EFFECT_ERUPTION",
+        "name": "Eruption"
+    },
+    {
+        "id": 191,
+        "constant": "EFFECT_SKILL_SWAP",
+        "name": "Skill Swap"
+    },
+    {
+        "id": 192,
+        "constant": "EFFECT_IMPRISON",
+        "name": "Imprison"
+    },
+    {
+        "id": 193,
+        "constant": "EFFECT_REFRESH",
+        "name": "Refresh"
+    },
+    {
+        "id": 194,
+        "constant": "EFFECT_GRUDGE",
+        "name": "Grudge"
+    },
+    {
+        "id": 195,
+        "constant": "EFFECT_SNATCH",
+        "name": "Snatch"
+    },
+    {
+        "id": 196,
+        "constant": "EFFECT_LOW_KICK",
+        "name": "Low Kick"
+    },
+    {
+        "id": 197,
+        "constant": "EFFECT_SECRET_POWER",
+        "name": "Secret Power"
+    },
+    {
+        "id": 198,
+        "constant": "EFFECT_DOUBLE_EDGE",
+        "name": "Double Edge"
+    },
+    {
+        "id": 199,
+        "constant": "EFFECT_TEETER_DANCE",
+        "name": "Teeter Dance"
+    },
+    {
+        "id": 200,
+        "constant": "EFFECT_BLAZE_KICK",
+        "name": "Blaze Kick"
+    },
+    {
+        "id": 201,
+        "constant": "EFFECT_MUD_SPORT",
+        "name": "Mud Sport"
+    },
+    {
+        "id": 202,
+        "constant": "EFFECT_POISON_FANG",
+        "name": "Poison Fang"
+    },
+    {
+        "id": 203,
+        "constant": "EFFECT_WEATHER_BALL",
+        "name": "Weather Ball"
+    },
+    {
+        "id": 204,
+        "constant": "EFFECT_OVERHEAT",
+        "name": "Overheat"
+    },
+    {
+        "id": 205,
+        "constant": "EFFECT_TICKLE",
+        "name": "Tickle"
+    },
+    {
+        "id": 206,
+        "constant": "EFFECT_COSMIC_POWER",
+        "name": "Cosmic Power"
+    },
+    {
+        "id": 207,
+        "constant": "EFFECT_SKY_UPPERCUT",
+        "name": "Sky Uppercut"
+    },
+    {
+        "id": 208,
+        "constant": "EFFECT_BULK_UP",
+        "name": "Bulk Up"
+    },
+    {
+        "id": 209,
+        "constant": "EFFECT_POISON_TAIL",
+        "name": "Poison Tail"
+    },
+    {
+        "id": 210,
+        "constant": "EFFECT_WATER_SPORT",
+        "name": "Water Sport"
+    },
+    {
+        "id": 211,
+        "constant": "EFFECT_CALM_MIND",
+        "name": "Calm Mind"
+    },
+    {
+        "id": 212,
+        "constant": "EFFECT_DRAGON_DANCE",
+        "name": "Dragon Dance"
+    },
+    {
+        "id": 213,
+        "constant": "EFFECT_CAMOUFLAGE",
+        "name": "Camouflage"
+    }
+]

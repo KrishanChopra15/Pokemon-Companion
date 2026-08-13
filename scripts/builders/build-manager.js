@@ -20,10 +20,10 @@
 const PokemonSpeciesGenerator = require("../generators/raw/pokemon-species-generator");
 const PokemonMoveGenerator = require("../generators/raw/pokemon-move-generator");
 const PokemonEvolutionGenerator = require("../generators/raw/pokemon-evolution-generator");
-const PokemonLearnsetGenerator =
-require("../generators/raw/pokemon-learnset-generator");
-const PokemonEncounterGenerator =
-require("../generators/raw/pokemon-encounter-generator");
+const PokemonLearnsetGenerator = require("../generators/raw/pokemon-learnset-generator");
+const PokemonEncounterGenerator = require("../generators/raw/pokemon-encounter-generator");
+const PokemonMachineGenerator = require("../generators/raw/pokemon-machine-generator");
+const PokemonEggMoveGenerator = require("../generators/raw/pokemon-egg-move-generator");
 
 const SpeciesNameGenerator = require("../generators/reference/species-name-generator");
 const TypeGenerator = require("../generators/reference/type-generator");
@@ -33,12 +33,17 @@ const MoveNameGenerator = require("../generators/reference/move-name-generator")
 const EggGroupGenerator = require("../generators/reference/egg-group-generator");
 const BodyColorGenerator = require("../generators/reference/body-color-generator");
 const ItemGenerator = require("../generators/reference/item-generator");
-const EvolutionMethodGenerator =
-require("../generators/reference/evolution-method-generator");
+const EvolutionMethodGenerator = require("../generators/reference/evolution-method-generator");
+const MachineGenerator = require("../generators/reference/machine-generator");
+const MoveEffectGenerator = require("../generators/reference/move-effects-generator");
+const MoveTargetGenerator = require("../generators/reference/move-targets-generator");
+
+const MoveLearnerGenerator = require("../generators/generated/move-learner-generator");
 
 const PokemonSpeciesBuilder = require("./pokemon-species-builder");
 const PokemonMoveBuilder = require("./pokemon-move-builder");
 const PokemonEncounterBuilder = require("./pokemon-encounter-builder");
+const MoveLearnerBuilder = require("./move-learner-builder");
 
 class BuildManager {
 
@@ -82,6 +87,14 @@ class BuildManager {
             data.encounters
         );
 
+        new PokemonMachineGenerator().generate(
+            game
+        );
+
+        new PokemonEggMoveGenerator().generate(
+            game
+        );
+
         //----------------------------------------
         // Reference databases
         //----------------------------------------
@@ -108,6 +121,12 @@ class BuildManager {
 
         new EvolutionMethodGenerator().generate();
 
+        new MachineGenerator().generate();
+
+        new MoveEffectGenerator().generate();
+
+        new MoveTargetGenerator().generate();
+
         //----------------------------------------
         // Generated databases
         //----------------------------------------
@@ -125,6 +144,15 @@ class BuildManager {
         );
 
         new PokemonEncounterBuilder().build(
+            game
+        );
+
+        new MoveLearnerGenerator().generate(
+            game
+        );
+        
+        
+        new MoveLearnerBuilder().build(
             game
         );
 

@@ -21,6 +21,7 @@
 
 const Builder = require("./builder");
 const ReferenceRegistry = require("./reference-registry");
+const EvolutionMoveBuilder = require("./evolution-move-builder");
 
 class PokemonSpeciesBuilder extends Builder {
 
@@ -50,11 +51,27 @@ class PokemonSpeciesBuilder extends Builder {
             "pokemon-learnsets"
         );
 
+        const rawMachines = this.loadRawDatabase(
+            game,
+            "pokemon-machines"
+        );
+
+        const rawEggMoves = this.loadRawDatabase(
+            game,
+            "pokemon-egg-moves"
+        );
+
         const references = new ReferenceRegistry();
+
+        const evolutionMoveBuilder = new EvolutionMoveBuilder();
 
         const evolutionsBySpecies = new Map();
 
         const learnsetsBySpecies = new Map();
+
+        const machinesBySpecies = new Map();
+
+        const eggMovesBySpecies = new Map();
 
         for (const evolution of rawEvolutions) {
         
@@ -74,6 +91,24 @@ class PokemonSpeciesBuilder extends Builder {
         
         }
 
+        for (const machine of rawMachines) {
+        
+            machinesBySpecies.set(
+                machine.species,
+                machine
+            );
+        
+        }
+
+        for (const eggMove of rawEggMoves) {
+        
+            eggMovesBySpecies.set(
+                eggMove.species,
+                eggMove
+            );
+        
+        }
+
         //------------------------------------------------------
         // Merge
         //------------------------------------------------------
@@ -87,6 +122,14 @@ class PokemonSpeciesBuilder extends Builder {
             );
 
             const learnsetData = learnsetsBySpecies.get(
+                reference.constant
+            );
+
+            const machineData = machinesBySpecies.get(
+                reference.constant
+            );
+
+            const eggMoveData = eggMovesBySpecies.get(
                 reference.constant
             );
 
@@ -164,7 +207,50 @@ class PokemonSpeciesBuilder extends Builder {
                         )
                     
                     }))
-                    : []
+                    : [],
+
+                machines: machineData
+                    ? machineData.machines.map(machine => {
+                    
+                        const reference =
+                        references.machines.getByConstant(
+                            machine
+                        );
+                    
+                        if (!reference) {
+                            return null;
+                        }
+                    
+                        return {
+                        
+                            constant:
+                            reference.constant,
+                        
+                            name:
+                            reference.name,
+                        
+                            itemConstant:
+                            reference.itemConstant,
+                        
+                            move:
+                            references.moveNames.getByConstant(
+                                reference.move.constant
+                            )
+                        
+                        };
+                    
+                    }).filter(Boolean)
+                    : [],
+
+                eggMoves: eggMoveData
+                    ? eggMoveData.moves.map(move =>
+                        references.moveNames.getByConstant(
+                            move
+                        )
+                    )
+                    : [],
+
+                evolutionLostMoves: []
 
             };
 
@@ -214,6 +300,22 @@ class PokemonSpeciesBuilder extends Builder {
                 };
             
             }
+        
+        }
+
+        //------------------------------------------------------
+        // Build evolution exclusive moves
+        //------------------------------------------------------
+
+        for (const species of generatedSpecies) {
+        
+        
+            species.evolutionLostMoves =
+            evolutionMoveBuilder.build(
+                species,
+                generatedSpecies
+            );
+        
         
         }
 

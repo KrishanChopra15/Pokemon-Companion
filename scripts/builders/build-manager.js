@@ -117,6 +117,9 @@ const MoveLearnerBuilder =
 const TrainerBuilder =
     require("./trainer-builder");
 
+const LocationBuilder =
+    require("./location-builder");
+
 
 
 class BuildManager {
@@ -258,6 +261,10 @@ class BuildManager {
 
 
         new PokemonEncounterBuilder()
+            .build(game);
+
+            
+        new LocationBuilder()
             .build(game);
 
 

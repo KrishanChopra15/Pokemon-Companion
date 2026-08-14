@@ -9,6 +9,15 @@ const FireRedBuildPipeline = require(
     "../scripts/pipelines/build-firered"
 );
 
+const locations =
+require("../database/generated/firered/locations.json");
+
+
+console.log(
+    "Locations:",
+    Object.keys(locations).length
+);
+
 try {
 
     const pipeline = new FireRedBuildPipeline();

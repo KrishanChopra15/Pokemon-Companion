@@ -43,6 +43,11 @@ const PokemonMachineGenerator =
 const PokemonEggMoveGenerator =
     require("../generators/raw/pokemon-egg-move-generator");
 
+const TrainerGenerator =
+    require("../generators/raw/trainer-generator");
+
+const TrainerPartyGenerator =
+    require("../generators/raw/trainer-party-generator");
 
 //----------------------------------------
 // Reference Generators
@@ -165,6 +170,14 @@ class BuildManager {
 
 
         new PokemonEggMoveGenerator()
+            .generate(game);
+            
+            
+        new TrainerGenerator()
+            .generate(game);
+            
+            
+        new TrainerPartyGenerator()
             .generate(game);
 
 

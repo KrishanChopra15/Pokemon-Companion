@@ -1,9 +1,19 @@
+/**
+ * Pokémon Companion
+ * Trainer Domain Object
+ *
+ * Represents a trainer in a Pokémon game.
+ */
+
 "use strict";
+
 
 class Trainer {
 
+
     constructor(
         id,
+        trainerType,
         trainerClass,
         trainerPic,
         encounterMusic,
@@ -13,7 +23,10 @@ class Trainer {
         party
     ) {
 
+
         this.id = id;
+
+        this.trainerType = trainerType;
 
         this.trainerClass = trainerClass;
 
@@ -25,12 +38,36 @@ class Trainer {
 
         this.doubleBattle = doubleBattle;
 
+        this.doubleBattle = doubleBattle;
+
         this.aiFlags = aiFlags;
 
         this.party = party;
 
     }
 
+
+
+    getPartySize() {
+
+        return this.party
+            ? this.party.getSize()
+            : 0;
+
+    }
+
+
+
+    getHighestPokemonLevel() {
+
+        return this.party
+            ? this.party.getHighestLevel()
+            : 0;
+
+    }
+
+
 }
+
 
 module.exports = Trainer;

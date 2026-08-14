@@ -7,6 +7,8 @@
  * Responsibilities:
  * - Combine trainer definitions.
  * - Attach trainer parties.
+ * - Classify trainers.
+ * - Create trainer domain objects.
  * - Write full-trainers.json.
  *
  * Does NOT:
@@ -19,10 +21,29 @@
 const fs = require("fs");
 const path = require("path");
 
+const Trainer =
+    require("../domain/trainer");
+
+const TrainerParty =
+    require("../domain/trainer-party");
+
+const TrainerPokemon =
+    require("../domain/trainer-pokemon");
+
+const TrainerClassifier =
+    require("../domain/trainer-classifier");
+
 
 class TrainerBuilder {
 
+
     build(game) {
+
+
+        const classifier =
+            new TrainerClassifier();
+
+
 
         const rawPath = path.join(
             __dirname,
@@ -39,12 +60,14 @@ class TrainerBuilder {
         );
 
 
+
         const trainers = JSON.parse(
             fs.readFileSync(
                 path.join(rawPath, "trainers.json"),
                 "utf8"
             )
         );
+
 
 
         const parties = JSON.parse(
@@ -55,54 +78,132 @@ class TrainerBuilder {
         );
 
 
+
+        const createParty = (partyData) => {
+
+
+            if (!partyData) {
+
+                return null;
+
+            }
+
+
+
+            const pokemon =
+                partyData.pokemon.map(
+                    mon =>
+                        new TrainerPokemon(
+
+                            mon.species,
+
+                            mon.level,
+
+                            mon.iv
+
+                        )
+                );
+
+
+
+            return new TrainerParty(
+                pokemon
+            );
+
+        };
+
+
+
         const fullTrainers = {};
+
 
 
         for (const id in trainers) {
 
-            const trainer = trainers[id];
+
+            const trainer =
+                trainers[id];
+
 
             let party = null;
 
 
-            if (trainer.party && parties[trainer.party]) {
-                party = parties[trainer.party].pokemon;
+
+            if (
+                trainer.party &&
+                parties[trainer.party]
+            ) {
+
+                party =
+                    createParty(
+                        parties[trainer.party]
+                    );
+
             }
 
 
-            fullTrainers[id] = {
 
-                trainerClass: trainer.trainerClass,
+            const trainerType =
+                classifier.classify({
 
-                trainerPic: trainer.trainerPic,
+                    id,
 
-                encounterMusic: trainer.encounterMusic,
+                    ...trainer
 
-                trainerName: trainer.trainerName,
+                });
 
-                doubleBattle: trainer.doubleBattle,
 
-                aiFlags: trainer.aiFlags,
 
-                party
+            const trainerObject =
+                new Trainer(
 
-            };
+                    id,
+
+                    trainerType,
+
+                    trainer.trainerClass,
+
+                    trainer.trainerPic,
+
+                    trainer.encounterMusic,
+
+                    trainer.trainerName,
+
+                    trainer.doubleBattle,
+
+                    trainer.aiFlags,
+
+                    party
+
+                );
+
+
+
+            fullTrainers[id] =
+                trainerObject;
 
         }
+
 
 
         fs.mkdirSync(
             path.dirname(outputPath),
             {
-                recursive: true
+                recursive:true
             }
         );
 
 
+
         fs.writeFileSync(
             outputPath,
-            JSON.stringify(fullTrainers, null, 2)
+            JSON.stringify(
+                fullTrainers,
+                null,
+                2
+            )
         );
+
 
 
         console.log(

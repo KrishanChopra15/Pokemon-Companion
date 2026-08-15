@@ -37,6 +37,10 @@ const RewardService =
     require("./reward-service");
 
 
+const WorldStateService =
+    require("./world-state-service");
+
+
 
 
 
@@ -82,6 +86,11 @@ class EventService {
 
         this.rewardService =
             new RewardService();
+
+
+
+        this.worldStateService =
+            new WorldStateService();
 
 
     }
@@ -192,6 +201,44 @@ class EventService {
     {
 
 
+        //--------------------------------
+        // World visibility check
+        //--------------------------------
+
+
+        const visibility =
+            this.worldStateService.canShowEvent(
+                event,
+                trainerState
+            );
+
+
+
+        if(
+            !visibility.visible
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    visibility.reason
+
+            };
+
+        }
+
+
+
+
+
+        //--------------------------------
+        // Requirement check
+        //--------------------------------
+
+
         const check =
             this.canTrigger(
                 event,
@@ -244,12 +291,16 @@ class EventService {
 
 
         //--------------------------------
-        // Apply effects flags
+        // Apply effects
         //--------------------------------
 
 
         const effects =
-            event.effects || {};
+            event.effects
+            ||
+            {};
+
+
 
 
 
@@ -258,13 +309,13 @@ class EventService {
         )
         {
 
-
             trainerState.addStoryFlag(
                 flag
             );
 
-
         }
+
+
 
 
 
@@ -273,13 +324,9 @@ class EventService {
         )
         {
 
-
-            trainerState.storyFlags =
-                trainerState.storyFlags.filter(
-                    value =>
-                        value !== flag
-                );
-
+            trainerState.removeStoryFlag(
+                flag
+            );
 
         }
 
@@ -288,7 +335,7 @@ class EventService {
 
 
         //--------------------------------
-        // Completed
+        // Complete event
         //--------------------------------
 
 
@@ -358,7 +405,9 @@ class EventService {
 
 
         return (
-            event.choices || []
+            event.choices
+            ||
+            []
         )
         .map(
             choice =>
@@ -382,7 +431,9 @@ class EventService {
 
 
         const effects =
-            choice.effects || {};
+            choice.effects
+            ||
+            {};
 
 
 
@@ -411,7 +462,7 @@ class EventService {
 
 
         //--------------------------------
-        // Completed event check
+        // Completed event
         //--------------------------------
 
 
@@ -442,10 +493,17 @@ class EventService {
 
 
         const requirements =
-            event.requirements || {};
+            event.requirements
+            ||
+            {};
 
 
 
+
+
+        //--------------------------------
+        // Story Flags
+        //--------------------------------
 
 
         for(
@@ -465,7 +523,7 @@ class EventService {
                     allowed:false,
 
                     reason:
-                    `Requires story flag ${flag}`
+                        `Requires story flag ${flag}`
 
                 };
 
@@ -475,6 +533,44 @@ class EventService {
 
 
 
+
+
+        //--------------------------------
+        // Items
+        //--------------------------------
+
+
+        for(
+            const item of requirements.items || []
+        )
+        {
+
+
+            if(
+                !trainerState.hasItem(item)
+            )
+            {
+
+                return {
+
+                    allowed:false,
+
+                    reason:
+                        `Requires item ${item}`
+
+                };
+
+            }
+
+        }
+
+
+
+
+
+        //--------------------------------
+        // Key Items
+        //--------------------------------
 
 
         for(
@@ -494,7 +590,7 @@ class EventService {
                     allowed:false,
 
                     reason:
-                    `Requires key item ${item}`
+                        `Requires key item ${item}`
 
                 };
 
@@ -506,10 +602,16 @@ class EventService {
 
 
 
+        //--------------------------------
+        // Badges
+        //--------------------------------
+
+
         for(
             const badge of requirements.badges || []
         )
         {
+
 
             if(
                 !trainerState.hasBadge(
@@ -523,13 +625,15 @@ class EventService {
                     allowed:false,
 
                     reason:
-                    `Requires badge ${badge}`
+                        `Requires badge ${badge}`
 
                 };
 
             }
 
         }
+
+
 
 
 
@@ -547,7 +651,7 @@ class EventService {
 
 
     //--------------------------------
-    // Visibility
+    // Visibility Proxy
     //--------------------------------
 
 
@@ -558,78 +662,17 @@ class EventService {
     {
 
 
-        const conditions =
-            event.conditions || {};
-
-
-
-        for(
-            const flag of conditions.requireStoryFlags || []
-        )
-        {
-
-            if(
-                !trainerState.hasStoryFlag(
-                    flag
-                )
-            )
-            {
-
-                return {
-
-                    visible:false,
-
-                    reason:
-                    `Missing ${flag}`
-
-                };
-
-            }
-
-        }
-
-
-
-
-
-        for(
-            const flag of conditions.excludeStoryFlags || []
-        )
-        {
-
-            if(
-                trainerState.hasStoryFlag(
-                    flag
-                )
-            )
-            {
-
-                return {
-
-                    visible:false,
-
-                    reason:
-                    `Blocked by ${flag}`
-
-                };
-
-            }
-
-        }
-
-
-
-        return {
-
-            visible:true
-
-        };
+        return this.worldStateService.canShowEvent(
+            event,
+            trainerState
+        );
 
 
     }
 
 
 }
+
 
 
 module.exports =

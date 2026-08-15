@@ -7,9 +7,11 @@
  * Responsibilities:
  * - Store event information.
  * - Store requirements.
+ * - Store conditions.
  * - Store dialogues.
  * - Store rewards/effects.
  * - Store choices.
+ * - Store world state information.
  *
  * Does NOT:
  * - Execute events.
@@ -51,6 +53,7 @@ class GameEvent {
 
 
 
+
         //--------------------------------
         // Location / NPC
         //--------------------------------
@@ -63,10 +66,26 @@ class GameEvent {
 
 
 
+        this.npcData =
+            data.npcData
+            ||
+            null;
+
+
+
         this.location =
             data.location
             ||
             null;
+
+
+
+        this.position =
+            data.position
+            ||
+            null;
+
+
 
 
 
@@ -112,6 +131,31 @@ class GameEvent {
 
 
 
+        //--------------------------------
+        // World State
+        //--------------------------------
+
+
+        this.state =
+            data.state
+            ||
+            "active";
+
+
+
+        this.hiddenWhenCompleted =
+            data.hiddenWhenCompleted
+            ||
+            false;
+
+
+
+        this.oneTime =
+            !this.repeatable;
+
+
+
+
 
         //--------------------------------
         // Content
@@ -146,9 +190,19 @@ class GameEvent {
 
                 addItems: [],
 
+                removeItems: [],
+
                 addPokemon: [],
 
+                addEggs: [],
+
+                addTMs: [],
+
+                addKeyItems: [],
+
                 addMoney: 0,
+
+                removeMoney: 0,
 
                 addStoryFlags: [],
 
@@ -160,6 +214,13 @@ class GameEvent {
 
 
 
+
+
+        //--------------------------------
+        // Rewards
+        //--------------------------------
+
+
         this.rewards =
             data.rewards
             ||
@@ -167,10 +228,82 @@ class GameEvent {
 
 
 
+
+
+        //--------------------------------
+        // Helpers
+        //--------------------------------
+
+
+        this.completed =
+            false;
+
+
     }
 
 
+
+
+
+    //--------------------------------
+    // Event State Helpers
+    //--------------------------------
+
+
+    isCompleted()
+    {
+
+        return this.completed;
+
+    }
+
+
+
+
+
+    complete()
+    {
+
+        this.completed = true;
+
+
+        if(
+            this.hiddenWhenCompleted
+        )
+        {
+
+            this.state =
+                "hidden";
+
+        }
+        else
+        {
+
+            this.state =
+                "completed";
+
+        }
+
+
+    }
+
+
+
+
+
+    isVisible()
+    {
+
+        return (
+            this.state !== "hidden"
+        );
+
+    }
+
+
+
 }
+
 
 
 module.exports =

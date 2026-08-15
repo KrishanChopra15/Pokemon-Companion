@@ -13,6 +13,7 @@
  * - Store received Pokémon.
  * - Store money.
  * - Store completed battles/events.
+ * - Store world event states.
  *
  * Does NOT:
  * - Decide progression.
@@ -26,7 +27,8 @@
 class TrainerState {
 
 
-    constructor() {
+    constructor()
+    {
 
 
         //--------------------------------
@@ -48,12 +50,14 @@ class TrainerState {
 
 
 
+
         //--------------------------------
         // Inventory
         //--------------------------------
 
 
         this.items = {};
+
 
 
 
@@ -68,12 +72,14 @@ class TrainerState {
 
 
 
+
         //--------------------------------
         // Economy
         //--------------------------------
 
 
         this.money = 3000;
+
 
 
 
@@ -89,6 +95,17 @@ class TrainerState {
         this.completedEvents = [];
 
 
+
+
+
+        //--------------------------------
+        // World State
+        //--------------------------------
+
+
+        this.eventStates = {};
+
+
     }
 
 
@@ -102,14 +119,15 @@ class TrainerState {
 
     addBadge(
         badge
-    ) {
-
+    )
+    {
 
         if(
             !this.badges.includes(
                 badge
             )
-        ) {
+        )
+        {
 
             this.badges.push(
                 badge
@@ -117,20 +135,18 @@ class TrainerState {
 
         }
 
-
     }
 
 
 
     hasBadge(
         badge
-    ) {
-
+    )
+    {
 
         return this.badges.includes(
             badge
         );
-
 
     }
 
@@ -145,14 +161,15 @@ class TrainerState {
 
     addHM(
         hm
-    ) {
-
+    )
+    {
 
         if(
             !this.hms.includes(
                 hm
             )
-        ) {
+        )
+        {
 
             this.hms.push(
                 hm
@@ -160,20 +177,18 @@ class TrainerState {
 
         }
 
-
     }
 
 
 
     hasHM(
         hm
-    ) {
-
+    )
+    {
 
         return this.hms.includes(
             hm
         );
-
 
     }
 
@@ -188,14 +203,15 @@ class TrainerState {
 
     addKeyItem(
         item
-    ) {
-
+    )
+    {
 
         if(
             !this.keyItems.includes(
                 item
             )
-        ) {
+        )
+        {
 
             this.keyItems.push(
                 item
@@ -203,20 +219,18 @@ class TrainerState {
 
         }
 
-
     }
 
 
 
     hasKeyItem(
         item
-    ) {
-
+    )
+    {
 
         return this.keyItems.includes(
             item
         );
-
 
     }
 
@@ -232,12 +246,13 @@ class TrainerState {
     addItem(
         item,
         quantity = 1
-    ) {
-
+    )
+    {
 
         if(
             !this.items[item]
-        ) {
+        )
+        {
 
             this.items[item] = 0;
 
@@ -252,17 +267,16 @@ class TrainerState {
 
 
 
-
-
     removeItem(
         item,
         quantity = 1
-    ) {
-
+    )
+    {
 
         if(
             !this.items[item]
-        ) {
+        )
+        {
 
             return false;
 
@@ -276,7 +290,8 @@ class TrainerState {
 
         if(
             this.items[item] <= 0
-        ) {
+        )
+        {
 
             delete this.items[item];
 
@@ -286,37 +301,31 @@ class TrainerState {
 
         return true;
 
-
     }
-
-
 
 
 
     hasItem(
         item
-    ) {
-
+    )
+    {
 
         return (
-            this.items[item] &&
+            this.items[item]
+            &&
             this.items[item] > 0
         );
-
 
     }
 
 
 
-
-
     getItemCount(
         item
-    ) {
-
+    )
+    {
 
         return this.items[item] || 0;
-
 
     }
 
@@ -331,13 +340,12 @@ class TrainerState {
 
     addPokemon(
         pokemon
-    ) {
-
+    )
+    {
 
         this.pokemon.push(
             pokemon
         );
-
 
     }
 
@@ -345,14 +353,13 @@ class TrainerState {
 
     hasPokemon(
         species
-    ) {
-
+    )
+    {
 
         return this.pokemon.some(
             pokemon =>
                 pokemon.species === species
         );
-
 
     }
 
@@ -367,11 +374,10 @@ class TrainerState {
 
     addMoney(
         amount
-    ) {
-
+    )
+    {
 
         this.money += amount;
-
 
     }
 
@@ -379,12 +385,13 @@ class TrainerState {
 
     removeMoney(
         amount
-    ) {
-
+    )
+    {
 
         if(
             this.money < amount
-        ) {
+        )
+        {
 
             return false;
 
@@ -396,7 +403,6 @@ class TrainerState {
 
 
         return true;
-
 
     }
 
@@ -420,14 +426,15 @@ class TrainerState {
 
     addStoryFlag(
         flag
-    ) {
-
+    )
+    {
 
         if(
             !this.storyFlags.includes(
                 flag
             )
-        ) {
+        )
+        {
 
             this.storyFlags.push(
                 flag
@@ -435,17 +442,14 @@ class TrainerState {
 
         }
 
-
     }
-
-
 
 
 
     removeStoryFlag(
         flag
-    ) {
-
+    )
+    {
 
         this.storyFlags =
             this.storyFlags.filter(
@@ -453,22 +457,18 @@ class TrainerState {
                     value !== flag
             );
 
-
     }
-
-
 
 
 
     hasStoryFlag(
         flag
-    ) {
-
+    )
+    {
 
         return this.storyFlags.includes(
             flag
         );
-
 
     }
 
@@ -483,14 +483,15 @@ class TrainerState {
 
     completeBattle(
         battle
-    ) {
-
+    )
+    {
 
         if(
             !this.completedBattles.includes(
                 battle
             )
-        ) {
+        )
+        {
 
             this.completedBattles.push(
                 battle
@@ -498,20 +499,18 @@ class TrainerState {
 
         }
 
-
     }
 
 
 
     hasCompletedBattle(
         battle
-    ) {
-
+    )
+    {
 
         return this.completedBattles.includes(
             battle
         );
-
 
     }
 
@@ -526,14 +525,16 @@ class TrainerState {
 
     completeEvent(
         event
-    ) {
+    )
+    {
 
 
         if(
             !this.completedEvents.includes(
                 event
             )
-        ) {
+        )
+        {
 
             this.completedEvents.push(
                 event
@@ -542,18 +543,78 @@ class TrainerState {
         }
 
 
+
+        this.eventStates[event] =
+        {
+
+            state:
+                "completed",
+
+
+            completed:
+                true
+
+        };
+
+
     }
+
+
 
 
 
     hasCompletedEvent(
         event
-    ) {
-
+    )
+    {
 
         return this.completedEvents.includes(
             event
         );
+
+    }
+
+
+
+
+
+    getEventState(
+        event
+    )
+    {
+
+
+        return (
+            this.eventStates[event]
+            ||
+            {
+
+                state:
+                    "active",
+
+
+                completed:
+                    false
+
+            }
+        );
+
+
+    }
+
+
+
+
+
+    setEventState(
+        event,
+        state
+    )
+    {
+
+
+        this.eventStates[event] =
+            state;
 
 
     }
@@ -567,11 +628,10 @@ class TrainerState {
     //--------------------------------
 
 
-    getState() {
-
+    getState()
+    {
 
         return {
-
 
             badges:
                 this.badges,
@@ -606,8 +666,11 @@ class TrainerState {
 
 
             completedEvents:
-                this.completedEvents
+                this.completedEvents,
 
+
+            eventStates:
+                this.eventStates
 
         };
 
@@ -618,4 +681,5 @@ class TrainerState {
 }
 
 
-module.exports = TrainerState;
+module.exports =
+    TrainerState;

@@ -162,12 +162,22 @@ class EventGenerator {
 
 
                 requirements:
-                {},
-
+                    script.requirements
+                    ||
+                    {
+                        storyFlags: [],
+                        items: [],
+                        badges: []
+                    },
 
 
                 conditions:
-                {},
+                    script.conditions
+                    ||
+                    {
+                        requireStoryFlags: [],
+                        excludeStoryFlags: []
+                    },
 
 
 

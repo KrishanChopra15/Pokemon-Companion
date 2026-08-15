@@ -8,6 +8,8 @@
  * - TMs
  * - HMs
  * - Story events
+ * - Requirements
+ * - Conditions
  */
 
 "use strict";
@@ -30,6 +32,7 @@ const events =
 
 
 
+
 function printEvent(
     event
 )
@@ -43,9 +46,19 @@ function printEvent(
     );
 
 
+
     console.log(
         JSON.stringify(
-            event.effects,
+            {
+                effects:
+                    event.effects,
+
+                requirements:
+                    event.requirements,
+
+                conditions:
+                    event.conditions
+            },
             null,
             2
         )
@@ -58,8 +71,11 @@ function printEvent(
 
 
 
+
+
 const checks =
 [
+
 
     {
         name:"EEVEE",
@@ -171,7 +187,11 @@ const checks =
             )
     }
 
+
 ];
+
+
+
 
 
 
@@ -212,6 +232,7 @@ for(
     )
     {
 
+
         console.log(
             "No events found."
         );
@@ -219,7 +240,9 @@ for(
 
         continue;
 
+
     }
+
 
 
 

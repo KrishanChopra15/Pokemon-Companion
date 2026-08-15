@@ -84,6 +84,10 @@ const ObjectEventExtractor =
     require("../extractors/game-boy-advance/object-event-extractor");
 
 
+const EventRequirementExtractor =
+    require("../extractors/game-boy-advance/event-requirement-extractor");
+
+
 
 //----------------------------------------
 // Generators
@@ -502,12 +506,15 @@ class FireRedBuildPipeline {
             new EventScriptExtractor();
 
 
-
         const eventScripts =
             eventScriptExtractor.extract(
                 referencePath
             );
         
+
+        const requirementExtractor =
+            new EventRequirementExtractor();
+
         
         console.log(
             `Event scripts: ${Object.keys(eventScripts).length}`

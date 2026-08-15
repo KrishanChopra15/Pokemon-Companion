@@ -14,6 +14,8 @@
  * - Trainer battles
  * - Story flags
  * - Variables
+ * - Requirements
+ * - Conditions
  */
 
 "use strict";
@@ -27,8 +29,24 @@ const path =
     require("path");
 
 
+const EventRequirementExtractor =
+    require("./event-requirement-extractor");
+
+
 
 class EventScriptExtractor {
+
+
+
+    constructor()
+    {
+
+        this.requirementExtractor =
+            new EventRequirementExtractor();
+
+    }
+
+
 
 
 
@@ -137,14 +155,28 @@ class EventScriptExtractor {
 
 
 
-            const variables =
-                {};
+
+            //--------------------------------
+            // Requirements / Conditions
+            //--------------------------------
+
+
+            const requirementData =
+                this.requirementExtractor.extract(
+                    body
+                );
+
 
 
 
             //--------------------------------
             // Variables
             //--------------------------------
+
+
+            const variables =
+                {};
+
 
 
             for(
@@ -309,7 +341,7 @@ class EventScriptExtractor {
 
 
             //--------------------------------
-            // Pokémon direct gifts
+            // Pokémon gifts
             //--------------------------------
 
 
@@ -593,7 +625,15 @@ class EventScriptExtractor {
 
                     dialogues,
 
-                    effects
+                    effects,
+
+
+                    requirements:
+                        requirementData.requirements,
+
+
+                    conditions:
+                        requirementData.conditions
 
                 };
 
@@ -614,5 +654,6 @@ class EventScriptExtractor {
 }
 
 
+
 module.exports =
-EventScriptExtractor;
+    EventScriptExtractor;

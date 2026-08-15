@@ -220,6 +220,7 @@ class MoveLearnerBuilder extends Builder {
                     source:
                     learner.source,
 
+                    
                     inheritedFrom:
                     learner.inheritedFrom || null
 

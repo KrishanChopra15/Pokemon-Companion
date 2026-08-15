@@ -2,13 +2,12 @@
  * Pokémon Companion
  * Location Builder
  *
- * Builds location databases.
+ * Builds final location database.
  *
  * Responsibilities:
- * - Convert encounter data into locations.
- * - Group Pokémon encounters.
- * - Remove duplicate encounter slots.
- * - Add readable encounter methods.
+ * - Merge location metadata.
+ * - Add location gates.
+ * - Add Pokémon encounters.
  * - Create Pokémon location index.
  *
  * Does NOT:
@@ -21,9 +20,6 @@
 const fs = require("fs");
 const path = require("path");
 
-const LocationMethods =
-    require("../shared/location/location-methods");
-
 
 class LocationBuilder {
 
@@ -34,22 +30,55 @@ class LocationBuilder {
         const databasePath =
             path.join(
                 __dirname,
-                "../../database/generated",
+                "../../database",
+                "generated",
                 game
             );
 
 
-        const encounterPath =
+        const rawPath =
             path.join(
-                databasePath,
-                "pokemon-encounters.json"
+                __dirname,
+                "../../database",
+                "raw",
+                game
             );
+
+
+
+        const metadata =
+            JSON.parse(
+                fs.readFileSync(
+                    path.join(
+                        rawPath,
+                        "location-metadata.json"
+                    ),
+                    "utf8"
+                )
+            );
+
+
+
+        const gates =
+            JSON.parse(
+                fs.readFileSync(
+                    path.join(
+                        rawPath,
+                        "location-gates.json"
+                    ),
+                    "utf8"
+                )
+            );
+
 
 
         const encounters =
             JSON.parse(
                 fs.readFileSync(
-                    encounterPath,
+                    path.join(
+                        rawPath,
+                        "pokemon-encounters.json"
+                    ),
                     "utf8"
                 )
             );
@@ -62,6 +91,37 @@ class LocationBuilder {
 
 
 
+        //--------------------------------
+        // Create locations from metadata
+        //--------------------------------
+
+        for (const id of Object.keys(metadata)) {
+
+            locations[id] = {
+
+                ...metadata[id],
+
+                gates:
+                    gates[id] || {
+
+                        soft: [],
+
+                        hard: []
+
+                    },
+
+                encounters: []
+
+            };
+
+        }
+
+
+
+        //--------------------------------
+        // Add encounter data
+        //--------------------------------
+
         for (const encounter of encounters) {
 
 
@@ -72,13 +132,7 @@ class LocationBuilder {
 
             if (!locations[locationId]) {
 
-                locations[locationId] = {
-
-                    id: locationId,
-
-                    encounters: []
-
-                };
+                continue;
 
             }
 
@@ -88,35 +142,10 @@ class LocationBuilder {
 
 
                 const pokemon =
-                    mon.species.name;
+                    resolvePokemonName(
+                        mon.species
+                    );
 
-
-
-                const slot = {
-
-                    encounterRate:
-                        encounter.encounterRate,
-
-                    minLevel:
-                        mon.minLevel,
-
-                    maxLevel:
-                        mon.maxLevel
-
-                };
-
-
-
-                const displayMethod =
-                    LocationMethods[encounter.method]
-                        ? LocationMethods[encounter.method].name
-                        : encounter.method;
-
-
-
-                //--------------------------------
-                // Location database
-                //--------------------------------
 
 
                 let locationPokemon =
@@ -139,7 +168,10 @@ class LocationBuilder {
                         method:
                             encounter.method,
 
-                        displayMethod,
+                        displayMethod:
+                            getDisplayMethod(
+                                encounter.method
+                            ),
 
                         slots: []
 
@@ -154,10 +186,25 @@ class LocationBuilder {
 
 
 
-                const existingLocationSlot =
+                const slot = {
+
+                    encounterRate:
+                        encounter.encounterRate,
+
+                    minLevel:
+                        mon.minLevel,
+
+                    maxLevel:
+                        mon.maxLevel
+
+                };
+
+
+
+                const duplicate =
                     locationPokemon
                     .slots
-                    .find(
+                    .some(
                         existing =>
                             existing.encounterRate === slot.encounterRate &&
                             existing.minLevel === slot.minLevel &&
@@ -166,7 +213,7 @@ class LocationBuilder {
 
 
 
-                if (!existingLocationSlot) {
+                if (!duplicate) {
 
                     locationPokemon
                         .slots
@@ -209,7 +256,10 @@ class LocationBuilder {
                         method:
                             encounter.method,
 
-                        displayMethod,
+                        displayMethod:
+                            getDisplayMethod(
+                                encounter.method
+                            ),
 
                         slots: []
 
@@ -223,10 +273,10 @@ class LocationBuilder {
 
 
 
-                const existingPokemonSlot =
+                const reverseDuplicate =
                     pokemonLocation
                     .slots
-                    .find(
+                    .some(
                         existing =>
                             existing.encounterRate === slot.encounterRate &&
                             existing.minLevel === slot.minLevel &&
@@ -235,7 +285,7 @@ class LocationBuilder {
 
 
 
-                if (!existingPokemonSlot) {
+                if (!reverseDuplicate) {
 
                     pokemonLocation
                         .slots
@@ -249,30 +299,41 @@ class LocationBuilder {
 
 
 
+        //--------------------------------
+        // Save databases
+        //--------------------------------
+
+
         fs.writeFileSync(
+
             path.join(
                 databasePath,
                 "locations.json"
             ),
+
             JSON.stringify(
                 locations,
                 null,
                 2
             )
+
         );
 
 
 
         fs.writeFileSync(
+
             path.join(
                 databasePath,
                 "pokemon-locations.json"
             ),
+
             JSON.stringify(
                 pokemonLocations,
                 null,
                 2
             )
+
         );
 
 
@@ -290,6 +351,76 @@ class LocationBuilder {
 
 
 }
+
+
+
+function resolvePokemonName(species) {
+
+
+    if (!species) {
+
+        return null;
+
+    }
+
+
+    if (typeof species === "string") {
+
+        return species.replace(
+            "SPECIES_",
+            ""
+        );
+
+    }
+
+
+    if (species.name) {
+
+        return species.name;
+
+    }
+
+
+    return null;
+
+}
+
+
+
+function getDisplayMethod(method) {
+
+
+    switch(method) {
+
+
+        case "land_mons":
+
+            return "Grass";
+
+
+        case "water_mons":
+
+            return "Surf";
+
+
+        case "fishing_mons":
+
+            return "Fishing";
+
+
+        case "rock_smash_mons":
+
+            return "Rock Smash";
+
+
+        default:
+
+            return method;
+
+    }
+
+}
+
 
 
 module.exports = LocationBuilder;

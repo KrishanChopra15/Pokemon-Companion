@@ -8,6 +8,7 @@
  * - Load location database.
  * - Query locations.
  * - Query Pokémon locations.
+ * - Query Pokémon available in a location.
  *
  * Does NOT:
  * - Build databases.
@@ -77,6 +78,35 @@ class LocationDatabaseService {
         return Object.values(
             this.locations
         );
+
+    }
+
+
+
+    getPokemonInLocation(id) {
+
+
+        const location =
+            this.getLocation(id);
+
+
+
+        if (!location) {
+
+            return [];
+
+        }
+
+
+
+        return [
+            ...new Set(
+                location.encounters.map(
+                    encounter =>
+                        encounter.pokemon
+                )
+            )
+        ];
 
     }
 

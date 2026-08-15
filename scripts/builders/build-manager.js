@@ -49,6 +49,11 @@ const TrainerGenerator =
 const TrainerPartyGenerator =
     require("../generators/raw/trainer-party-generator");
 
+const LocationGenerator =
+    require("../generators/raw/location-generator");
+
+
+
 //----------------------------------------
 // Reference Generators
 //----------------------------------------
@@ -90,12 +95,14 @@ const MoveTargetGenerator =
     require("../generators/reference/move-targets-generator");
 
 
+
 //----------------------------------------
 // Generated Database Generators
 //----------------------------------------
 
 const MoveLearnerGenerator =
     require("../generators/generated/move-learner-generator");
+
 
 
 //----------------------------------------
@@ -120,18 +127,21 @@ const TrainerBuilder =
 const LocationBuilder =
     require("./location-builder");
 
+const DialogueBuilder =
+    require("./dialogue-builder");
+
+
+
 
 
 class BuildManager {
 
 
-    /**
-     * Build all databases for a game.
-     *
-     * @param {string} game
-     * @param {Object} data
-     */
-    buildGame(game, data) {
+
+    buildGame(
+        game,
+        data
+    ) {
 
 
         console.log();
@@ -141,47 +151,87 @@ class BuildManager {
         console.log();
 
 
+
+
         //----------------------------------------
         // Raw databases
         //----------------------------------------
 
-        console.log("Generating raw databases...");
+        console.log(
+            "Generating raw databases..."
+        );
+
 
 
         new PokemonSpeciesGenerator()
-            .generate(data.species);
+            .generate(
+                data.species
+            );
+
 
 
         new PokemonMoveGenerator()
-            .generate(data.moves);
+            .generate(
+                data.moves
+            );
+
 
 
         new PokemonEvolutionGenerator()
-            .generate(game);
+            .generate(
+                game
+            );
+
 
 
         new PokemonLearnsetGenerator()
-            .generate(game);
+            .generate(
+                game
+            );
+
 
 
         new PokemonEncounterGenerator()
-            .generate(data.encounters);
+            .generate(
+                data.encounters
+            );
+
 
 
         new PokemonMachineGenerator()
-            .generate(game);
+            .generate(
+                game
+            );
+
 
 
         new PokemonEggMoveGenerator()
-            .generate(game);
-            
-            
+            .generate(
+                game
+            );
+
+
+
         new TrainerGenerator()
-            .generate(game);
-            
-            
+            .generate(
+                game
+            );
+
+
+
         new TrainerPartyGenerator()
-            .generate(game);
+            .generate(
+                game
+            );
+
+
+
+        new LocationGenerator()
+            .generate(
+                data.locations
+            );
+
+
 
 
 
@@ -191,55 +241,71 @@ class BuildManager {
 
         console.log();
 
-        console.log("Generating reference databases...");
+        console.log(
+            "Generating reference databases..."
+        );
+
 
 
         new SpeciesNameGenerator()
             .generate();
 
 
+
         new MoveNameGenerator()
             .generate();
+
 
 
         new TypeGenerator()
             .generate();
 
 
+
         new AbilityGenerator()
             .generate();
+
 
 
         new GrowthRateGenerator()
             .generate();
 
 
+
         new EggGroupGenerator()
             .generate();
+
 
 
         new BodyColorGenerator()
             .generate();
 
 
+
         new ItemGenerator()
             .generate();
+
 
 
         new EvolutionMethodGenerator()
             .generate();
 
 
+
         new MachineGenerator()
             .generate();
+
 
 
         new MoveEffectGenerator()
             .generate();
 
 
+
         new MoveTargetGenerator()
             .generate();
+
+
 
 
 
@@ -249,49 +315,96 @@ class BuildManager {
 
         console.log();
 
-        console.log("Generating generated databases...");
+        console.log(
+            "Generating generated databases..."
+        );
+
 
 
         new PokemonSpeciesBuilder()
-            .build(game);
+            .build(
+                game
+            );
+
 
 
         new PokemonMoveBuilder()
-            .build(game);
+            .build(
+                game
+            );
+
 
 
         new PokemonEncounterBuilder()
-            .build(game);
+            .build(
+                game
+            );
 
-            
+
+
         new LocationBuilder()
-            .build(game);
+            .build(
+                game
+            );
+
 
 
         new MoveLearnerGenerator()
-            .generate(game);
+            .generate(
+                game
+            );
+
 
 
         new MoveLearnerBuilder()
-            .build(game);
+            .build(
+                game
+            );
+
 
 
         new TrainerBuilder()
-            .build(game);
+            .build(
+                game
+            );
+
+
 
 
 
         //----------------------------------------
-        // Complete
+        // Dialogue database
         //----------------------------------------
 
+        if(
+            data.dialogues
+        ) {
+
+
+            new DialogueBuilder()
+                .build(
+                    data.dialogues,
+                    game
+                );
+
+
+        }
+
+
+
+
+
         console.log();
 
-        console.log("Build Manager completed.");
+        console.log(
+            "Build Manager completed."
+        );
 
         console.log();
+
 
     }
+
 
 }
 

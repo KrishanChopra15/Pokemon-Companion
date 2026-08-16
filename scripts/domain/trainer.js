@@ -11,38 +11,44 @@
 class Trainer {
 
 
-    constructor(
-        id,
-        trainerType,
-        trainerClass,
-        trainerPic,
-        encounterMusic,
-        trainerName,
-        doubleBattle,
-        aiFlags,
-        party
-    ) {
+    constructor(data = {}) {
 
 
-        this.id = id;
+        this.id =
+            data.id || null;
 
-        this.trainerType = trainerType;
 
-        this.trainerClass = trainerClass;
+        this.trainerType =
+            data.trainerType || null;
 
-        this.trainerPic = trainerPic;
 
-        this.encounterMusic = encounterMusic;
+        this.trainerClass =
+            data.trainerClass || null;
 
-        this.trainerName = trainerName;
 
-        this.doubleBattle = doubleBattle;
+        this.trainerPic =
+            data.trainerPic || null;
 
-        this.doubleBattle = doubleBattle;
 
-        this.aiFlags = aiFlags;
+        this.encounterMusic =
+            data.encounterMusic || null;
 
-        this.party = party;
+
+        this.trainerName =
+            data.trainerName || null;
+
+
+        this.doubleBattle =
+            data.doubleBattle || false;
+
+
+        this.aiFlags =
+            data.aiFlags || [];
+
+
+        this.party =
+            data.party || null;
+
 
     }
 
@@ -50,9 +56,11 @@ class Trainer {
 
     getPartySize() {
 
+
         return this.party
             ? this.party.getSize()
             : 0;
+
 
     }
 
@@ -60,9 +68,21 @@ class Trainer {
 
     getHighestPokemonLevel() {
 
+
         return this.party
             ? this.party.getHighestLevel()
             : 0;
+
+
+    }
+
+
+
+    hasParty() {
+
+
+        return this.party !== null;
+
 
     }
 

@@ -3,23 +3,14 @@
  * Trainer Builder
  *
  * Builds complete trainer databases.
- *
- * Responsibilities:
- * - Combine trainer definitions.
- * - Attach trainer parties.
- * - Classify trainers.
- * - Create trainer domain objects.
- * - Write full-trainers.json.
- *
- * Does NOT:
- * - Parse source files.
- * - Extract trainer data.
  */
 
 "use strict";
 
+
 const fs = require("fs");
 const path = require("path");
+
 
 const Trainer =
     require("../domain/trainer");
@@ -33,11 +24,17 @@ const TrainerPokemon =
 const TrainerClassifier =
     require("../domain/trainer-classifier");
 
+const ReferenceRegistry =
+    require("./reference-registry");
+
+
 
 class TrainerBuilder {
 
 
+
     build(game) {
+
 
 
         const classifier =
@@ -45,44 +42,163 @@ class TrainerBuilder {
 
 
 
-        const rawPath = path.join(
-            __dirname,
-            "../../database/raw",
-            game
-        );
-
-
-        const outputPath = path.join(
-            __dirname,
-            "../../database/generated",
-            game,
-            "full-trainers.json"
-        );
+        const references =
+            new ReferenceRegistry();
 
 
 
-        const trainers = JSON.parse(
-            fs.readFileSync(
-                path.join(rawPath, "trainers.json"),
-                "utf8"
-            )
-        );
+
+        const rawPath =
+            path.join(
+                __dirname,
+                "../../database/raw",
+                game
+            );
 
 
 
-        const parties = JSON.parse(
-            fs.readFileSync(
-                path.join(rawPath, "trainer-parties.json"),
-                "utf8"
-            )
-        );
+        const outputPath =
+            path.join(
+                __dirname,
+                "../../database/generated",
+                game,
+                "full-trainers.json"
+            );
+
+
+
+
+
+        const trainers =
+            JSON.parse(
+
+                fs.readFileSync(
+
+                    path.join(
+                        rawPath,
+                        "trainers.json"
+                    ),
+
+                    "utf8"
+
+                )
+
+            );
+
+
+
+
+
+        const parties =
+            JSON.parse(
+
+                fs.readFileSync(
+
+                    path.join(
+                        rawPath,
+                        "trainer-parties.json"
+                    ),
+
+                    "utf8"
+
+                )
+
+            );
+
+
+
+
+
+
+        function resolveSpecies(species) {
+
+
+            const result =
+                references.speciesNames
+                    .getByConstant(
+                        species
+                    );
+
+
+            if(!result) {
+
+                return {
+
+                    id:null,
+
+                    name:species
+
+                };
+
+            }
+
+
+            return {
+
+                id:
+                    result.id,
+
+                name:
+                    result.name
+
+            };
+
+
+        }
+
+
+
+
+
+
+
+        function resolveMove(move) {
+
+
+            const result =
+                references.moveNames
+                    .getByConstant(
+                        move
+                    );
+
+
+            if(!result) {
+
+                return {
+
+                    id:null,
+
+                    name:move
+
+                };
+
+            }
+
+
+            return {
+
+                id:
+                    result.id,
+
+                name:
+                    result.name
+
+            };
+
+
+        }
+
+
+
+
+
 
 
 
         const createParty = (partyData) => {
 
 
-            if (!partyData) {
+            if(!partyData) {
 
                 return null;
 
@@ -91,18 +207,58 @@ class TrainerBuilder {
 
 
             const pokemon =
-                partyData.pokemon.map(
-                    mon =>
-                        new TrainerPokemon(
 
-                            mon.species,
+                partyData.pokemon.map(mon => {
 
+
+
+                    const species =
+                        resolveSpecies(
+                            mon.species
+                        );
+
+
+
+                    const moves =
+
+                        (mon.moves || [])
+                            .map(
+                                resolveMove
+                            );
+
+
+
+
+                    return new TrainerPokemon({
+
+                        species:
+                            species.name,
+
+
+                        speciesId:
+                            species.id,
+
+
+                        level:
                             mon.level,
 
-                            mon.iv
 
-                        )
-                );
+                        iv:
+                            mon.iv || 0,
+
+
+                        heldItem:
+                            mon.heldItem || null,
+
+
+                        moves
+
+                    });
+
+
+                });
+
+
 
 
 
@@ -110,7 +266,12 @@ class TrainerBuilder {
                 pokemon
             );
 
+
         };
+
+
+
+
 
 
 
@@ -118,28 +279,37 @@ class TrainerBuilder {
 
 
 
-        for (const id in trainers) {
+
+
+
+        for(const id in trainers) {
+
 
 
             const trainer =
                 trainers[id];
 
 
+
             let party = null;
 
 
 
-            if (
+            if(
                 trainer.party &&
                 parties[trainer.party]
             ) {
+
 
                 party =
                     createParty(
                         parties[trainer.party]
                     );
 
+
             }
+
+
 
 
 
@@ -154,55 +324,90 @@ class TrainerBuilder {
 
 
 
-            const trainerObject =
-                new Trainer(
-
-                    id,
-
-                    trainerType,
-
-                    trainer.trainerClass,
-
-                    trainer.trainerPic,
-
-                    trainer.encounterMusic,
-
-                    trainer.trainerName,
-
-                    trainer.doubleBattle,
-
-                    trainer.aiFlags,
-
-                    party
-
-                );
 
 
 
             fullTrainers[id] =
-                trainerObject;
+
+                new Trainer({
+
+                    id,
+
+
+                    trainerType,
+
+
+                    trainerClass:
+                        trainer.trainerClass,
+
+
+                    trainerPic:
+                        trainer.trainerPic,
+
+
+                    encounterMusic:
+                        trainer.encounterMusic,
+
+
+                    trainerName:
+                        trainer.trainerName,
+
+
+                    doubleBattle:
+                        trainer.doubleBattle,
+
+
+                    aiFlags:
+                        trainer.aiFlags,
+
+
+                    party
+
+                });
+
 
         }
 
 
 
+
+
+
         fs.mkdirSync(
+
             path.dirname(outputPath),
+
             {
                 recursive:true
             }
+
         );
+
+
+
 
 
 
         fs.writeFileSync(
+
             outputPath,
+
             JSON.stringify(
+
                 fullTrainers,
+
                 null,
+
                 2
-            )
+
+            ),
+
+            "utf8"
+
         );
+
+
+
 
 
 
@@ -210,9 +415,13 @@ class TrainerBuilder {
             `Generated ${Object.keys(fullTrainers).length} complete trainers`
         );
 
+
     }
+
 
 }
 
 
-module.exports = TrainerBuilder;
+
+module.exports =
+    TrainerBuilder;

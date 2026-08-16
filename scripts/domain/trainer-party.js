@@ -11,41 +11,74 @@
 class TrainerParty {
 
 
-    constructor(
-        pokemon = []
-    ) {
+    constructor(pokemon = []) {
 
-        this.pokemon = pokemon;
+
+        this.pokemon =
+            pokemon;
+
 
     }
+
+
+
+
+
+    addPokemon(pokemon) {
+
+
+        this.pokemon.push(
+            pokemon
+        );
+
+
+    }
+
+
 
 
 
     getSize() {
 
+
         return this.pokemon.length;
 
+
     }
+
+
 
 
 
     getHighestLevel() {
 
 
-        if (this.pokemon.length === 0) {
+        if(
+            this.pokemon.length === 0
+        ) {
 
             return 0;
 
         }
 
 
+
         return Math.max(
+
             ...this.pokemon.map(
-                pokemon => pokemon.level
+
+                pokemon =>
+                    pokemon.level
+
             )
+
         );
 
+
     }
+
+
+
 
 
 }

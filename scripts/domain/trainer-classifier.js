@@ -18,41 +18,34 @@
 class TrainerClassifier {
 
 
+
     classify(trainer) {
 
 
+
         const id =
-            (trainer.id || "").toUpperCase();
+            String(trainer.id || "")
+                .toUpperCase();
+
 
 
         const trainerClass =
-            (trainer.trainerClass || "").toUpperCase();
+            String(trainer.trainerClass || "")
+                .toUpperCase();
+
 
 
         const trainerPic =
-            (trainer.trainerPic || "").toUpperCase();
+            String(trainer.trainerPic || "")
+                .toUpperCase();
+
 
 
         const trainerName =
-            (trainer.trainerName || "").toUpperCase();
+            String(trainer.trainerName || "")
+                .toUpperCase();
 
 
-
-        //----------------------------------------
-        // Elite Four
-        //----------------------------------------
-
-        if (
-
-            trainerClass.includes("ELITE") ||
-
-            trainerPic.includes("ELITE")
-
-        ) {
-
-            return "ELITE_FOUR";
-
-        }
 
 
 
@@ -76,6 +69,48 @@ class TrainerClassifier {
 
 
 
+
+
+        //----------------------------------------
+        // Elite Four
+        //----------------------------------------
+
+        if (
+
+            trainerClass.includes("ELITE") ||
+
+            trainerPic.includes("ELITE")
+
+        ) {
+
+            return "ELITE_FOUR";
+
+        }
+
+
+
+
+
+        //----------------------------------------
+        // Gym Leaders
+        //----------------------------------------
+
+        if (
+
+            trainerClass.includes("LEADER") ||
+
+            trainerPic.includes("LEADER")
+
+        ) {
+
+            return "GYM_LEADER";
+
+        }
+
+
+
+
+
         //----------------------------------------
         // Rival
         //----------------------------------------
@@ -94,8 +129,10 @@ class TrainerClassifier {
 
 
 
+
+
         //----------------------------------------
-        // Team Villains
+        // Villain Team
         //----------------------------------------
 
         if (
@@ -118,29 +155,14 @@ class TrainerClassifier {
 
 
 
-        //----------------------------------------
-        // Gym Leaders
-        //----------------------------------------
-
-        if (
-
-            trainerClass.includes("LEADER") ||
-
-            trainerPic.includes("LEADER")
-
-        ) {
-
-            return "GYM_LEADER";
-
-        }
 
 
-        
         //----------------------------------------
         // Default
         //----------------------------------------
 
         return "TRAINER";
+
 
     }
 
@@ -148,4 +170,6 @@ class TrainerClassifier {
 }
 
 
-module.exports = TrainerClassifier;
+
+module.exports =
+    TrainerClassifier;

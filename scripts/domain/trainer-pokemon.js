@@ -3,6 +3,17 @@
  * Trainer Pokémon Domain Object
  *
  * Represents a Pokémon used by a trainer.
+ *
+ * Responsibilities:
+ * - Store Pokémon species reference.
+ * - Store level and IV data.
+ * - Store held item.
+ * - Store moves.
+ *
+ * Does NOT:
+ * - Resolve references.
+ * - Read JSON.
+ * - Parse ROM data.
  */
 
 "use strict";
@@ -11,47 +22,97 @@
 class TrainerPokemon {
 
 
-    constructor(
-        species,
-        level,
-        iv = 0,
-        heldItem = null,
-        moves = []
-    ) {
+    constructor(data = {}) {
 
-        this.species = species;
 
-        this.level = level;
+        this.speciesId =
+            data.speciesId || null;
 
-        this.iv = iv;
 
-        this.heldItem = heldItem;
 
-        this.moves = moves;
+        this.species =
+            data.species || null;
+
+
+
+        this.level =
+            data.level || 0;
+
+
+
+        this.iv =
+            data.iv || 0;
+
+
+
+        this.heldItem =
+            data.heldItem || null;
+
+
+
+        this.moves =
+            data.moves || [];
+
 
     }
+
+
 
 
 
     hasHeldItem() {
 
+
         return this.heldItem !== null;
 
+
     }
+
+
 
 
 
     hasMoves() {
 
+
         return this.moves.length > 0;
+
 
     }
 
 
 
+
+
     getLevel() {
 
+
         return this.level;
+
+
+    }
+
+
+
+
+
+    getMoveCount() {
+
+
+        return this.moves.length;
+
+
+    }
+
+
+
+
+
+    getSpecies() {
+
+
+        return this.species;
+
 
     }
 
@@ -59,4 +120,5 @@ class TrainerPokemon {
 }
 
 
-module.exports = TrainerPokemon;
+module.exports =
+    TrainerPokemon;

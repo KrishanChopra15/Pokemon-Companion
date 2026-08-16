@@ -7,7 +7,9 @@
 
 "use strict";
 
+
 class ReferenceDatabase {
+
 
     /**
      * Create a Reference Database.
@@ -16,31 +18,56 @@ class ReferenceDatabase {
      */
     constructor(records = []) {
 
+
         this.records = records;
+
 
         this.byId = new Map();
 
+
         this.byConstant = new Map();
+
+
 
         for (const record of records) {
 
-            this.byId.set(
-                record.id,
-                record
-            );
 
-            if (record.constant) {
 
-                this.byConstant.set(
-                    record.constant,
+            if (record.id !== undefined) {
+
+
+                this.byId.set(
+                    String(record.id),
                     record
                 );
 
+
             }
+
+
+
+            if (record.constant) {
+
+
+                this.byConstant.set(
+
+                    record.constant,
+
+                    record
+
+                );
+
+
+            }
+
 
         }
 
+
     }
+
+
+
 
     /**
      * Get all records.
@@ -53,17 +80,12 @@ class ReferenceDatabase {
 
     }
 
+
+
+
+
     /**
      * Get a record by ID or constant.
-     *
-     * Supports:
-     * - numeric IDs
-     * - string constants
-     *
-     * Examples:
-     *
-     * get(10)
-     * get("TYPE_GRASS")
      *
      * @param {number|string} value
      * @returns {Object|null}
@@ -71,100 +93,173 @@ class ReferenceDatabase {
     get(value) {
 
 
-        if (value === null || value === undefined) {
+
+        if (
+            value === null ||
+            value === undefined
+        ) {
 
             return null;
 
         }
 
 
-        //----------------------------------------
-        // Numeric lookup
-        //----------------------------------------
-
-        if (
-            typeof value === "number" ||
-            /^\d+$/.test(value)
-        ) {
-
-            return (
-                this.byId.get(
-                    Number(value)
-                )
-                ||
-                null
-            );
-
-        }
 
 
         //----------------------------------------
         // Constant lookup
         //----------------------------------------
 
-        if (typeof value === "string") {
+        if (
+            typeof value === "string" &&
+            value.includes("_")
+        ) {
+
 
             return (
+
                 this.byConstant.get(value)
+
                 ||
+
                 null
+
             );
+
 
         }
 
 
-        return null;
+
+
+        //----------------------------------------
+        // ID lookup
+        //----------------------------------------
+
+        const id =
+            String(value).padStart(
+                4,
+                "0"
+            );
+
+
+
+        return (
+
+            this.byId.get(id)
+
+            ||
+
+            this.byId.get(
+                String(value)
+            )
+
+            ||
+
+            null
+
+        );
+
 
     }
 
+
+
+
+
     /**
-     * Get a record by constant.
+     * Get by constant.
      *
      * @param {string} constant
      * @returns {Object|null}
      */
     getByConstant(constant) {
-    
-        return this.get(constant);
-    
+
+
+        return (
+
+            this.byConstant.get(
+                constant
+            )
+
+            ||
+
+            null
+
+        );
+
+
     }
 
+
+
+
+
     /**
-     * Check whether a record exists.
+     * Check whether ID or constant exists.
      *
-     * @param {number|string} id
+     * @param {number|string} value
      * @returns {boolean}
      */
-    has(id) {
+    has(value) {
 
-        return this.byId.has(id);
+
+        return this.get(value) !== null;
+
 
     }
 
+
+
+
+
     /**
-     * Check whether a constant exists.
+     * Check constant exists.
      *
      * @param {string} constant
      * @returns {boolean}
      */
     hasConstant(constant) {
 
-        return this.byConstant.has(constant);
+
+        return this.byConstant.has(
+            constant
+        );
+
 
     }
 
+
+
+
+
     /**
-     * Find a record.
+     * Find record.
      *
      * @param {Function} predicate
      * @returns {Object|null}
      */
     find(predicate) {
 
-        return this.records.find(predicate) || null;
+
+        return (
+
+            this.records.find(
+                predicate
+            )
+
+            ||
+
+            null
+
+        );
+
 
     }
 
+
 }
+
+
 
 module.exports = ReferenceDatabase;

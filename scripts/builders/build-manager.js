@@ -53,7 +53,6 @@ const LocationGenerator =
     require("../generators/raw/location-generator");
 
 
-
 //----------------------------------------
 // Reference Generators
 //----------------------------------------
@@ -95,14 +94,12 @@ const MoveTargetGenerator =
     require("../generators/reference/move-targets-generator");
 
 
-
 //----------------------------------------
 // Generated Database Generators
 //----------------------------------------
 
 const MoveLearnerGenerator =
     require("../generators/generated/move-learner-generator");
-
 
 
 //----------------------------------------
@@ -133,7 +130,6 @@ const DialogueBuilder =
 
 
 
-
 class BuildManager {
 
 
@@ -149,7 +145,6 @@ class BuildManager {
         console.log("Build Manager");
         console.log("========================================");
         console.log();
-
 
 
 
@@ -191,10 +186,23 @@ class BuildManager {
 
 
 
-        new PokemonEncounterGenerator()
-            .generate(
-                data.encounters
-            );
+        //----------------------------------------
+        // Encounter database
+        //----------------------------------------
+
+        if (
+            data.encounters
+        ) {
+
+
+            new PokemonEncounterGenerator()
+                .generate(
+                    data.encounters,
+                    game
+                );
+
+
+        }
 
 
 
@@ -335,10 +343,18 @@ class BuildManager {
 
 
 
-        new PokemonEncounterBuilder()
-            .build(
-                game
-            );
+        if (
+            data.encounters
+        ) {
+
+
+            new PokemonEncounterBuilder()
+                .build(
+                    game
+                );
+
+
+        }
 
 
 
@@ -376,7 +392,7 @@ class BuildManager {
         // Dialogue database
         //----------------------------------------
 
-        if(
+        if (
             data.dialogues
         ) {
 

@@ -7,6 +7,7 @@
  * Responsibilities:
  * - Load raw encounter database.
  * - Resolve Pokémon species.
+ * - Normalize encounter data.
  * - Save generated encounter database.
  *
  * Does NOT:
@@ -16,11 +17,82 @@
 
 "use strict";
 
-const Builder = require("./builder");
-const ReferenceRegistry = require("./reference-registry");
+
+const Builder =
+    require("./builder");
+
+
+const ReferenceRegistry =
+    require("./reference-registry");
+
+
+
 
 
 class PokemonEncounterBuilder extends Builder {
+
+
+
+    /**
+     * Remove duplicate encounter slots.
+     *
+     * @param {Array} mons
+     * @returns {Array}
+     */
+    normalizeMons(mons = []) {
+
+
+        const unique =
+            new Map();
+
+
+
+        for (const mon of mons) {
+
+
+
+            if(
+                !mon.species
+            ){
+
+                continue;
+
+            }
+
+
+
+            const key =
+                `${mon.species}-${mon.minLevel}-${mon.maxLevel}`;
+
+
+
+            if(
+                !unique.has(key)
+            ){
+
+
+                unique.set(
+                    key,
+                    mon
+                );
+
+
+            }
+
+
+        }
+
+
+
+        return [
+            ...unique.values()
+        ];
+
+
+    }
+
+
+
 
 
     /**
@@ -31,9 +103,11 @@ class PokemonEncounterBuilder extends Builder {
     build(game) {
 
 
-        //------------------------------------------------------
+
+        //----------------------------------------
         // Load databases
-        //------------------------------------------------------
+        //----------------------------------------
+
 
         const rawEncounters =
             this.loadRawDatabase(
@@ -42,57 +116,127 @@ class PokemonEncounterBuilder extends Builder {
             );
 
 
+
         const references =
             new ReferenceRegistry();
 
 
 
-        //------------------------------------------------------
+
+
+        //----------------------------------------
         // Build
-        //------------------------------------------------------
+        //----------------------------------------
+
 
         const generatedEncounters =
+
             rawEncounters.map(encounter => {
 
 
+
+                const mons =
+                    this.normalizeMons(
+                        encounter.mons
+                    );
+
+
+
                 return {
+
 
 
                     map:
                         encounter.map,
 
 
+
                     baseLabel:
                         encounter.baseLabel,
+
 
 
                     method:
                         encounter.method,
 
 
+
                     encounterRate:
                         encounter.encounterRate,
 
 
+
                     mons:
-                        encounter.mons.map(mon => ({
+
+                        mons.map(mon => {
 
 
-                            species:
-                                references.speciesNames.getByConstant(
-                                    mon.species
-                                ),
+
+                            const species =
+
+                                references.speciesNames
+                                    .getByConstant(
+                                        mon.species
+                                    );
 
 
-                            minLevel:
-                                mon.minLevel,
+
+                            if(!species){
 
 
-                            maxLevel:
-                                mon.maxLevel
+                                console.warn(
+
+                                    `Unknown species: ${mon.species}`
+
+                                );
 
 
-                        }))
+                                return null;
+
+
+                            }
+
+
+
+
+                            return {
+
+
+
+                                species:{
+
+
+                                    id:
+                                        species.id,
+
+
+                                    name:
+                                        species.name,
+
+
+                                    constant:
+                                        species.constant
+
+
+                                },
+
+
+
+                                minLevel:
+                                    mon.minLevel,
+
+
+
+                                maxLevel:
+                                    mon.maxLevel
+
+
+
+                            };
+
+
+                        })
+                        .filter(Boolean)
 
 
                 };
@@ -102,9 +246,14 @@ class PokemonEncounterBuilder extends Builder {
 
 
 
-        //------------------------------------------------------
+
+
+
+
+        //----------------------------------------
         // Save
-        //------------------------------------------------------
+        //----------------------------------------
+
 
         this.saveGeneratedDatabase(
 
@@ -117,15 +266,20 @@ class PokemonEncounterBuilder extends Builder {
         );
 
 
+
+
+
         console.log();
 
         console.log(
             "Generated Pokémon encounter database."
         );
 
+
         console.log(
             `Encounters: ${generatedEncounters.length}`
         );
+
 
         console.log();
 
@@ -135,4 +289,8 @@ class PokemonEncounterBuilder extends Builder {
 }
 
 
-module.exports = PokemonEncounterBuilder;
+
+
+
+module.exports =
+    PokemonEncounterBuilder;

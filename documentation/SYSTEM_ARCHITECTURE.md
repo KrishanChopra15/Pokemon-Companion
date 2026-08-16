@@ -2,115 +2,163 @@
 
 > **System Architecture Specification**
 >
-> Defines the major systems, responsibilities, and interactions that make up Pokémon Companion.
+> Defines the major systems, boundaries, responsibilities, and interactions that compose Pokémon Companion.
 
 ---
 
-# Purpose
+## 1. Purpose
 
-This document defines the high-level architecture of Pokémon Companion.
+Pokémon Companion is an offline-first Pokémon exploration ecosystem that combines:
 
-Rather than focusing on programming languages, frameworks, or implementation details, this document describes the major systems that compose the platform, the responsibilities of each system, and how they communicate with one another.
+- A historical Pokémon encyclopedia
+- A version-aware game database
+- Interactive and dynamic world maps
+- Multi-game adventure trackers
+- Progression simulation
+- Collection and completion tracking
+- Research tooling
+- Future AI and community features
 
-It serves as the architectural blueprint for all future development.
-
----
-
-# Design Philosophy
-
-Pokémon Companion is designed around several long-term architectural principles.
-
-## Database-First Development
-
-The application is built upon a comprehensive Pokémon Knowledge System rather than relying on live API requests.
-
-All Pokémon information is extracted, validated, normalized, and generated before the application consumes it.
+This document defines the platform architecture at a system level. It describes responsibilities and boundaries rather than prescribing a specific programming language, framework, database engine, or hosting provider.
 
 ---
 
-## Official Data First
+## 2. Architectural Principles
 
-Official Pokémon game data is the primary source of truth.
+### 2.1 Database-First Development
 
-Community resources may be used only to supplement information that is unavailable from official sources and must never override official data.
+Pokémon Companion is built around a Pokémon Knowledge System.
 
----
+The runtime application consumes validated local datasets rather than depending on external APIs for canonical Pokémon information.
 
-## Historical Accuracy
-
-Every supported game represents its own historical snapshot.
-
-A Pokémon, move, item, ability, encounter, or mechanic should appear exactly as it existed in that specific game.
-
-No information should be rewritten using newer mechanics.
-
----
-
-## Offline First
-
-The Pokémon encyclopedia should function completely offline.
-
-Internet connectivity should only be required for user synchronization and optional online features.
-
----
-
-## Modular Systems
-
-Every major responsibility belongs to a dedicated system.
-
-Each system should have clearly defined ownership and communicate through stable interfaces.
-
----
-
-## Long-Term Scalability
-
-The architecture should allow new Pokémon generations, games, mechanics, and platforms to be added without requiring major redesigns.
-
----
-
-# High-Level Architecture
-
-```
-                          Pokémon Companion
-
-      ┌───────────────────────────────────────────────────┐
-      │                                                   │
-      │            Pokémon Companion Platform             │
-      │                                                   │
-      └───────────────────────────────────────────────────┘
-
-                    │
-    ┌───────────────┼────────────────┬─────────────────┐
-    ▼               ▼                ▼                 ▼
-Knowledge      Build System    Application      User Platform
- System                           System
-
-                    │
-                    ▼
-             Infrastructure
+```text
+Official Sources
+        ↓
+Raw Extraction
+        ↓
+Raw Sources
+        ↓
+Normalization
+        ↓
+Canonical Knowledge Database
+        ↓
+Relationship Generation
+        ↓
+Generated Datasets
+        ↓
+Validation
+        ↓
+Runtime Application
 ```
 
-Each system owns a distinct responsibility and should remain as independent as possible.
+### 2.2 Official Data First
+
+Source priority is:
+
+1. Official game data, game assets, game text, encounter tables, and event data
+2. Verified technical references, ROM research, reverse-engineering projects, and technical documentation
+3. Supporting community research
+
+Community sources may supplement gaps but must never override confirmed official information.
+
+### 2.3 Historical Accuracy
+
+Every supported game is an independent historical context.
+
+FireRed data must remain FireRed data. Emerald data must remain Emerald data. Later mechanics must never overwrite earlier mechanics.
+
+Historical differences include:
+
+- Pokémon availability
+- Forms
+- Types
+- Abilities
+- Moves
+- Learnsets
+- Evolution methods
+- Encounters
+- Trainers
+- Items
+- World events
+- Progression rules
+- Map accessibility
+
+### 2.4 Offline First
+
+The encyclopedia, maps, canonical data, and local tracker functionality should remain available without internet access.
+
+Network access is required only for optional services such as:
+
+- Authentication
+- Cloud synchronization
+- Community features
+- AI features
+- Dataset updates
+- Remote backups
+
+### 2.5 Separation of Systems
+
+Canonical Pokémon knowledge and personal user progress are separate systems.
+
+Canonical data describes the Pokémon world. User data describes a trainer's interaction with that world.
+
+User data may reference canonical records but must never modify them.
 
 ---
 
-# Core Systems
+## 3. High-Level Architecture
 
-## 1. Pokémon Knowledge System (PKS)
+```mermaid
+flowchart TD
+    Sources["Official and Verified Sources"] --> Build["Build System"]
+    Build --> Canonical["Canonical Knowledge Database"]
+    Canonical --> Relationships["Relationship Generation"]
+    Relationships --> Generated["Generated Runtime Datasets"]
+    Generated --> Runtime["Application Runtime"]
 
-The Pokémon Knowledge System is the canonical source of Pokémon information.
+    Runtime --> Encyclopedia["Encyclopedia and Search"]
+    Runtime --> Maps["Dynamic Map System"]
+    Runtime --> Progression["Progression Simulation"]
+    Runtime --> Adventure["Adventure Tracker System"]
 
-It owns every official Pokémon entity and every relationship between those entities.
+    User["User Database"] --> Adventure
+    User --> Sync["Cloud Synchronization"]
+    Adventure --> Sync
+```
 
-The Knowledge System is completely independent from user accounts and gameplay progress.
+The platform is composed of the following primary systems:
 
-### Responsibilities
+1. Pokémon Knowledge System
+2. Build System
+3. Application Runtime
+4. Adventure Tracker System
+5. Dynamic Map System
+6. Progression Simulation System
+7. User Platform and Cloud Synchronization
+8. Asset and Exploration System
+9. Developer and Glitch Mode System
 
-- Games
+---
+
+## 4. Pokémon Knowledge System
+
+The Pokémon Knowledge System is the canonical source of official Pokémon information.
+
+It is immutable at runtime and shared by every user.
+
+### 4.1 Responsibilities
+
+The system owns canonical entities including:
+
+- Generations
 - Version Groups
+- Versions
+- Game Contexts
 - Regions
 - Locations
 - Location Areas
+- Maps
+- Map Tiles
 - Species
 - Forms
 - Pokémon
@@ -125,326 +173,799 @@ The Knowledge System is completely independent from user accounts and gameplay p
 - Encounters
 - Trainers
 - Trainer Parties
+- Events
 - Pokédex Entries
 - Sprites
 - Models
 - Ribbons
 - Marks
 
-The Knowledge System also owns the Pokémon Knowledge Graph.
+### 4.2 Knowledge Graph
+
+Canonical entities are connected through first-class relationships.
+
+```text
+Species
+ ├── has form → Form
+ ├── evolves into → Species
+ ├── has type → Type
+ └── has ability → Ability
+
+Pokémon
+ ├── learns → Move
+ ├── appears in → Encounter
+ └── belongs to → Game Context
+
+Trainer
+ ├── uses → Pokémon
+ └── appears in → Map Event
+
+Machine
+ ├── teaches → Move
+ └── is available in → Game Context
+
+Location
+ ├── contains → Encounter
+ ├── contains → Map
+ ├── contains → Item Event
+ └── connects to → Location
+```
+
+Relationships store historical metadata where required, including:
+
+- Context
+- Version
+- Version Group
+- Method
+- Level
+- Probability
+- Availability
+- Conditions
+- Restrictions
+- Notes
+- Source provenance
 
 ---
 
-## Pokémon Knowledge Graph (PKG)
+## 5. Build System
 
-The Pokémon Knowledge Graph is the interconnected representation of every entity within the Pokémon universe.
+The Build System transforms source material into validated runtime datasets.
 
-Every entity is connected through explicit relationships.
+It is a development and release tool, not a runtime dependency for ordinary application use.
+
+### 5.1 Responsibilities
+
+- Source extraction
+- Asset extraction
+- Data parsing
+- Normalization
+- Canonical record generation
+- Relationship generation
+- Search index generation
+- Asset manifest generation
+- Validation
+- Build reporting
+- Dataset publishing
+
+### 5.2 Build Pipeline
+
+```mermaid
+flowchart LR
+    A["Official Sources"] --> B["Extract"]
+    B --> C["Parse"]
+    C --> D["Normalize"]
+    D --> E["Canonical Records"]
+    E --> F["Generate Relationships"]
+    F --> G["Generate Runtime Datasets"]
+    G --> H["Validate"]
+    H --> I["Publish Application Database"]
+```
+
+### 5.3 Generated Datasets
+
+Generated datasets are optimized views of canonical data. They are never the source of truth.
 
 Examples include:
 
-- Pokémon learns Move
-- Pokémon evolves into Pokémon
-- Pokémon appears in Game
-- Item evolves Pokémon
-- Move belongs to Type
-- Ability belongs to Pokémon
-- Encounter occurs at Location
-- Trainer owns Pokémon
-- Machine teaches Move
+- Pokémon lookup tables
+- Move lookup tables
+- Search indexes
+- Autocomplete indexes
+- Evolution graphs
+- Encounter tables
+- Map connection graphs
+- Progression requirement indexes
+- Relationship indexes
+- Completion statistics
+- Asset manifests
 
-The Knowledge Graph enables deep navigation throughout the application.
-
-No information should exist in isolation.
-
----
-
-## 2. Build System
-
-The Build System transforms raw official data into optimized application datasets.
-
-This system exists only during development and is never distributed with the application.
-
-### Responsibilities
-
-- Source extraction
-- Parsing
-- Data normalization
-- Relationship generation
-- Validation
-- Dataset generation
-- Search index generation
-- Manifest generation
-- Build reports
-
-The Build System produces all generated assets consumed by the application.
+Generated data must be deterministic, reproducible, and safe to delete and rebuild.
 
 ---
 
-## 3. Application System
+## 6. Application Runtime
 
-The Application System provides runtime functionality.
+The Application Runtime provides read-only access to canonical knowledge and controlled access to user data.
 
-It consumes generated datasets produced by the Build System.
-
-### Responsibilities
+### 6.1 Responsibilities
 
 - Search
 - Filtering
 - Sorting
-- Navigation
-- Team analysis
-- Evolution calculations
+- Entity navigation
+- Context resolution
+- Map rendering
 - Encounter lookup
+- Evolution lookup
+- Team analysis
 - Damage calculations
-- Cross-reference queries
-- API endpoints
+- Progression calculations
+- User tracker updates
+- Local caching
+- Offline support
 
-The Application System never modifies Pokémon knowledge.
+### 6.2 Runtime Services
+
+| Service | Responsibility |
+|---|---|
+| Pokémon Service | Pokémon, species, forms, moves, abilities, evolutions, and locations |
+| World Service | Regions, locations, routes, dungeons, maps, and connections |
+| Encounter Service | Wild encounters, fishing, gifts, trades, and version differences |
+| Event Service | NPCs, trainers, story events, gifts, hidden items, and world interactions |
+| Progression Service | Reachability, objectives, barriers, required conditions, and alternate paths |
+| Adventure Service | Tracker state, collection progress, teams, notes, and completion data |
+| Asset Service | Sprite, tile, model, icon, badge, and map asset resolution |
+| Sync Service | Offline queueing, conflict detection, cloud synchronization, and backup |
 
 ---
 
-## 4. User Platform
+## 7. Game Context System
 
-The User Platform manages all trainer-specific information.
+A Game Context determines how canonical data is interpreted for a specific game.
 
-Unlike the Knowledge System, every piece of information here belongs to individual users.
+```text
+Generation
+    ↓
+Version Group
+    ↓
+Version
+    ↓
+Game Context
+```
 
-### Responsibilities
+A context controls:
+
+- Available Pokémon and forms
+- Available moves and abilities
+- Available items and machines
+- Encounter tables
+- Trainers
+- Maps
+- Story events
+- Progression requirements
+- Mechanics
+- Evolution rules
+
+A FireRed context and a LeafGreen context may share map geometry while retaining separate version-exclusive encounters, items, trainers, and events.
+
+---
+
+## 8. Adventure Tracker System
+
+The Adventure Tracker System represents a user's personal journey through one game context.
+
+A user may own any number of trackers, including multiple trackers for the same game.
+
+Examples:
+
+```text
+My Adventures
+ ├── FireRed 100%
+ ├── FireRed Nuzlocke
+ ├── FireRed Speedrun Route
+ ├── Emerald Living Dex
+ └── LeafGreen Casual Playthrough
+```
+
+### 8.1 Tracker Isolation
+
+Every tracker is completely independent.
+
+Trackers must never share:
+
+- Badges
+- HM permissions
+- Key items
+- Party Pokémon
+- Box Pokémon
+- Caught Pokémon
+- Map exploration
+- Collected items
+- Defeated trainers
+- Event completion
+- Notes
+- Achievements
+- Settings
+
+A FireRed tracker cannot affect a LeafGreen tracker. Two FireRed trackers cannot affect one another.
+
+### 8.2 Adventure State
+
+```json
+{
+    "id": "tracker:firered-100",
+    "userId": "user:krishan",
+    "gameContextId": "context:firered",
+    "name": "FireRed 100%",
+    "mode": "normal",
+    "trainerState": {},
+    "worldState": {},
+    "mapState": {},
+    "eventState": {},
+    "collectionState": {},
+    "achievementState": {},
+    "settings": {},
+    "createdAt": "2026-08-16T00:00:00Z",
+    "updatedAt": "2026-08-16T00:00:00Z"
+}
+```
+
+### 8.3 Trainer State
+
+Trainer state includes:
+
+- Badges
+- HM moves and field permissions
+- Key items
+- Inventory
+- Money
+- Party Pokémon
+- Box Pokémon
+- Completed battles
+- Completed events
+- Seen, caught, and owned Pokémon
+- Ribbons, marks, and collection metadata
+
+### 8.4 World State
+
+World state records changes to the selected game world.
+
+Examples:
+
+- Snorlax defeated or captured
+- A Cut tree removed
+- A route obstacle cleared
+- A hidden item collected
+- An NPC interaction completed
+- A legendary Pokémon captured
+- A story flag completed
+- A gym leader defeated
+
+---
+
+## 9. Dynamic Map System
+
+The Dynamic Map System provides an interactive, tile-based representation of a selected game world.
+
+It is designed for map exploration, completion tracking, research, and progression simulation.
+
+### 9.1 Map Capabilities
+
+- Zoom and pan
+- Layer visibility
+- Tile interaction
+- Route and location navigation
+- NPC display
+- Trainer display
+- Item display
+- Hidden item display
+- Encounter display
+- Event display
+- Obstacle display
+- Completion state display
+- Reachability display
+- Sprite-based interaction
+
+### 9.2 Map Layers
+
+```text
+Map
+ ├── Terrain Layer
+ ├── Building Layer
+ ├── Collision Layer
+ ├── Connection Layer
+ ├── NPC Layer
+ ├── Trainer Layer
+ ├── Item Layer
+ ├── Hidden Item Layer
+ ├── Event Layer
+ ├── Obstacle Layer
+ └── Tracker Progress Layer
+```
+
+### 9.3 Map Object Model
+
+Every interactive object requires a stable canonical identifier.
+
+```json
+{
+    "id": "event:firered-celadon-eevee",
+    "type": "gift-pokemon",
+    "gameContextId": "context:firered",
+    "mapId": "map:celadon-mansion-roof",
+    "position": {
+        "x": 12,
+        "y": 7
+    },
+    "requirements": [
+        {
+            "type": "event",
+            "id": "event:firered-meet-evee-owner"
+        }
+    ],
+    "assetId": "sprite:eevee",
+    "statusRules": {
+        "available": true,
+        "completable": true
+    }
+}
+```
+
+### 9.4 Interactive Objects
+
+Users can select map objects to inspect information and update tracker progress.
+
+| Object | Example Actions |
+|---|---|
+| Pokémon encounter | Mark seen, caught, shiny, or researched |
+| Item | Mark collected or ignored |
+| Hidden item | Mark discovered or collected |
+| Trainer | Mark defeated, rematch available, or incomplete |
+| NPC | Mark spoken to or event completed |
+| Obstacle | View blocking requirement |
+| Gift Pokémon | Mark available, received, or declined |
+| Story event | View requirements and completion status |
+
+---
+
+## 10. Progression Simulation System
+
+The Progression Simulation System determines what is reachable in a selected Game Context.
+
+It must model a dependency graph, not a fixed walkthrough.
+
+### 10.1 Core Principle
+
+The system should answer:
+
+> Given this game context and this tracker state, what can the player currently access?
+
+It must support:
+
+- Intended routes
+- Legitimate alternate routes
+- Optional areas
+- Player-selected gym order
+- Sequence breaks available through normal gameplay
+- Hypothetical progress previews
+- Developer-mode glitch routes
+
+### 10.2 Progression Inputs
+
+- Game Context
+- Badge ownership
+- HM possession
+- HM field permissions
+- Key items
+- Story flags
+- Event completion
+- Captured or defeated world Pokémon
+- Developer-mode settings
+- Enabled glitches
+
+### 10.3 Progression Graph
+
+```mermaid
+flowchart LR
+    State["Adventure State"] --> Rules["Context Progression Rules"]
+    Rules --> Reachability["Reachability Evaluation"]
+    Reachability --> Locations["Accessible Locations"]
+    Reachability --> Events["Available Events"]
+    Reachability --> Objectives["Available Objectives"]
+    Reachability --> Map["Dynamic Map Overlay"]
+```
+
+Each map connection, obstacle, event, and objective has explicit requirements.
+
+```json
+{
+    "id": "connection:firered-route-7-saffron-gate",
+    "fromLocationId": "location:route-7",
+    "toLocationId": "location:saffron-city",
+    "requirements": [
+        {
+            "type": "key-item",
+            "id": "item:tea"
+        }
+    ]
+}
+```
+
+### 10.4 FireRed Example
+
+FireRed progression must not be represented as a mandatory numeric gym sequence.
+
+The application should evaluate conditions such as:
+
+- Badge requirements for field move use
+- Cut trees
+- Surf routes
+- Snorlax obstacles
+- Poké Flute access
+- Saffron gate access through Tea
+- Silph Co. story progression
+- Gym-specific access rules
+- Optional paths through Rock Tunnel, Lavender Town, Celadon City, and Fuchsia City
+
+The interface may show recommended routes, but recommendations must never replace the underlying dependency graph.
+
+### 10.5 Progress Preview Mode
+
+Progress Preview Mode allows users to simulate a hypothetical state without changing a tracker.
+
+```text
+Game: FireRed
+Badges: Boulder, Cascade
+Field Moves: Cut
+Key Items: Tea
+Story Events: Bill rescued
+
+Result:
+- Newly reachable locations
+- Newly available encounters
+- Newly available trainers
+- Newly available items
+- Newly available objectives
+```
+
+Simulation state and saved tracker state must remain separate.
+
+---
+
+## 11. Normal Mode and Developer Mode
+
+### 11.1 Normal Mode
+
+Normal Mode is the default experience.
+
+It supports:
+
+- Intended game mechanics
+- Legitimate alternate progression
+- Optional areas
+- Standard sequence breaks possible without glitches
+- Context-accurate restrictions
+
+### 11.2 Developer Mode
+
+Developer Mode is an opt-in advanced system.
+
+It supports:
+
+- Verified glitches
+- Glitch-assisted routes
+- Debug world states
+- Forced event states
+- Test HM permissions
+- Full map previews
+- Experimental route planning
+
+Developer Mode must visibly distinguish glitch-assisted results from normal progression results.
+
+### 11.3 Glitch Records
+
+```json
+{
+    "id": "glitch:firered-cut-tree-phase",
+    "gameContextId": "context:firered",
+    "name": "Cut Tree Phase",
+    "description": "A verified glitch route that bypasses a normal map barrier.",
+    "difficulty": "advanced",
+    "risk": "medium",
+    "affectedMapIds": [],
+    "requirements": [],
+    "instructions": [],
+    "verificationStatus": "verified"
+}
+```
+
+Glitch routes must never be enabled automatically.
+
+---
+
+## 12. User Platform and Cloud Synchronization
+
+The User Platform owns mutable personal information.
+
+### 12.1 Responsibilities
 
 - Accounts
 - Authentication
-- Adventure Tracker
-- Pokédex Progress
-- Living Dex
-- Shiny Dex
+- Profiles
+- Adventure trackers
 - Teams
 - Collections
+- Notes
 - Achievements
 - Preferences
-- Bookmarks
-- Notes
-- Cloud Synchronization
-
-The User Platform never stores Pokémon knowledge itself.
-
-Instead, it references entities owned by the Knowledge System.
-
----
-
-## 5. Infrastructure
-
-Infrastructure provides the technical foundation required by the platform.
-
-### Responsibilities
-
-- Storage
-- Cloud Services
-- Authentication Services
-- Deployment
-- Content Delivery
-- Logging
-- Monitoring
-- Backups
-- Continuous Integration
-- Continuous Deployment
-
-Infrastructure should remain independent from application logic whenever possible.
-
----
-
-# System Layers
-
-Pokémon Companion is organized into six architectural layers.
-
-```
-Official Sources
-        │
-        ▼
-Source Layer
-        │
-        ▼
-Build Layer
-        │
-        ▼
-Knowledge Layer
-        │
-        ▼
-Application Layer
-        │
-        ▼
-Presentation Layer
-        │
-        ▼
-User Layer
-```
-
-Each layer communicates only with adjacent layers.
-
-This minimizes coupling throughout the platform.
-
----
-
-# Data Flow
-
-Official Pokémon information follows a fixed pipeline.
-
-```
-Official Game Data
-        │
-        ▼
-Extraction
-        │
-        ▼
-Parsing
-        │
-        ▼
-Normalization
-        │
-        ▼
-Knowledge Graph Construction
-        │
-        ▼
-Validation
-        │
-        ▼
-Generated Datasets
-        │
-        ▼
-Application Runtime
-        │
-        ▼
-Frontend
-```
-
-Every generated dataset originates from validated source data.
-
----
-
-# User Flow
-
-Trainer information follows a separate architecture.
-
-```
-User
-  │
-  ▼
-Frontend
-  │
-  ▼
-Application
-  │
-  ▼
-User Platform
-  │
-  ▼
-Cloud Storage
-```
-
-Pokémon knowledge and user progress remain independent systems.
-
----
-
-# Offline Architecture
-
-Pokémon Companion is designed as an offline-first application.
-
-The following features should function without an internet connection:
-
-- Pokémon encyclopedia
-- Search
-- Filtering
-- Team Builder
-- Type calculator
-- Evolution explorer
-- Encounter lookup
-- Location explorer
-- Game databases
-
-Internet connectivity is only required for:
-
-- Account authentication
+- Local storage
 - Cloud synchronization
-- Community features
-- AI services
-- Optional online updates
+- Backup and recovery
+
+### 12.2 Offline Synchronization
+
+```text
+Offline Device
+    ↓
+Local Tracker Changes
+    ↓
+Persistent Sync Queue
+    ↓
+Internet Restored
+    ↓
+Authenticated Synchronization
+    ↓
+Cloud Backup Updated
+```
+
+### 12.3 Conflict Handling
+
+Sync must merge independent changes when possible.
+
+Examples:
+
+- One device marks an item collected
+- Another device marks a trainer defeated
+
+Both changes can be merged.
+
+Conflicts involving the same field should use:
+
+1. Deterministic merge rules
+2. Timestamps and version metadata
+3. User confirmation when automatic resolution is unsafe
+
+Tracker isolation remains mandatory during synchronization.
 
 ---
 
-# Cross-Platform Strategy
+## 13. Asset System
 
-The platform should provide a consistent experience across all supported devices.
+The Asset System provides context-aware references to visual resources.
 
-Target platforms include:
+Assets include:
 
-- Windows
-- macOS
-- Linux
-- Android
-- iOS
-- Web Browsers
+- Pokémon sprites
+- Form sprites
+- Item sprites
+- NPC sprites
+- Trainer sprites
+- Map tiles
+- Map objects
+- Badges
+- Medals
+- Icons
+- Models
+- Animations
 
-All platforms should share the same Pokémon Knowledge System and synchronize user progress through cloud services.
+Assets must be referenced by stable identifiers rather than hard-coded file paths.
 
----
+```text
+asset:pokemon:charizard:front-default
+asset:item:master-ball
+asset:trainer:firered-brock
+asset:map-tile:firered-pallet-town-grass
+```
 
-# Scalability Strategy
-
-The architecture is designed to support future expansion without structural redesign.
-
-Examples include:
-
-- New Pokémon generations
-- New official games
-- New battle mechanics
-- New forms
-- New items
-- New regions
-- Additional languages
-- Future Nintendo platforms
-
-New content should primarily require extending datasets rather than modifying architecture.
+The Asset System must support offline packaging and context-specific variants.
 
 ---
 
-# Future Systems
+## 14. Exploration and Achievement System
 
-The architecture reserves space for future expansion.
+The exploration system provides DexNav-inspired discovery and completion tracking.
 
-Potential future systems include:
+### 14.1 Exploration Categories
 
-- AI Assistant
-- Save File Import
-- OCR Recognition
-- Battle Simulator
-- Trading Tools
-- Community Platform
-- Event Database
-- Pokémon HOME Integration (where technically and legally feasible)
+- Routes
+- Cities
+- Caves
+- Buildings
+- Map areas
+- Pokémon encounters
+- Trainers
+- Items
+- Hidden items
+- NPC interactions
+- Story events
 
-These systems should integrate without requiring changes to the core architecture.
+### 14.2 Achievement Categories
 
----
+| Category | Examples |
+|---|---|
+| Exploration | Visit every route, city, cave, or map area |
+| Collection | Complete a Pokédex, collect items, earn ribbons |
+| Trainer | Defeat trainers, complete gyms, become Champion |
+| Research | Discover encounters, document hidden items, complete data |
+| Adventure | Complete story milestones and optional quests |
 
-# Architectural Principles
-
-Every architectural decision should follow these rules.
-
-1. Official game data is the primary source of truth.
-2. Pokémon knowledge is immutable at runtime.
-3. User data is separate from Pokémon knowledge.
-4. Every entity has a stable identifier.
-5. Every entity should be reachable through relationships.
-6. Validation is mandatory before release.
-7. Generated datasets are preferred over live API requests.
-8. Systems communicate through well-defined interfaces.
-9. New games should extend the architecture rather than replace it.
-10. Long-term maintainability is prioritized over short-term convenience.
+Achievements reference tracker state and canonical requirements. They do not modify canonical data.
 
 ---
 
-# Summary
+## 15. Frontend Architecture
 
-Pokémon Companion is designed as a long-term, database-first platform centered around a comprehensive Pokémon Knowledge System.
+The frontend is the interaction layer of Pokémon Companion.
 
-By separating Pokémon knowledge, application logic, user data, and infrastructure into independent systems, the platform remains scalable, maintainable, historically accurate, and capable of supporting every official Pokémon title for many years to come.
+### 15.1 Main Areas
+
+- Pokédex
+- Move Dex
+- Ability Dex
+- Item Dex
+- Location Explorer
+- Encounter Explorer
+- Evolution Explorer
+- Dynamic Map
+- Adventure Dashboard
+- Tracker Manager
+- Collection Manager
+- Achievement Center
+- Settings
+- Developer Mode
+
+### 15.2 Adventure Dashboard
+
+A dashboard should show the current state of one selected tracker.
+
+```text
+FireRed 100%
+
+Current Location: Celadon City
+Badges: Boulder, Cascade
+Current Team: Charizard, Pikachu, Lapras
+Available Objectives: Explore Celadon Gym, obtain Tea
+Map Completion: 42%
+Collection Completion: 118 / 151
+```
+
+### 15.3 Tracker Manager
+
+The tracker manager must allow a user to create, rename, archive, duplicate, export, and switch between trackers without any shared progression state.
+
+---
+
+## 16. Security and Data Integrity
+
+### 16.1 Rules
+
+1. Users may access only their own trackers and personal data.
+2. Canonical knowledge data is read-only at runtime.
+3. User data references canonical identifiers.
+4. Cloud synchronization requires authentication.
+5. Tracker records must remain isolated.
+6. Deleted user data should support recovery where practical.
+7. Generated datasets must pass validation before publication.
+
+### 16.2 Reference-Based User Data
+
+User records should reference canonical entities rather than duplicate them.
+
+```json
+{
+    "speciesId": "species:pikachu",
+    "nickname": "Spark",
+    "level": 25,
+    "natureId": "nature:timid",
+    "abilityId": "ability:static",
+    "shiny": false
+}
+```
+
+This keeps user data small, stable, and compatible with canonical dataset updates.
+
+---
+
+## 17. Future Systems
+
+The architecture reserves space for future capabilities.
+
+### 17.1 AI Companion System
+
+Potential features:
+
+- Team recommendations
+- Context-aware progression guidance
+- Location suggestions
+- Collection planning
+- Battle analysis
+- Research assistance
+
+AI features must consume validated canonical data and respect tracker isolation.
+
+### 17.2 Save Import System
+
+Potential features:
+
+- Emulator save import
+- Progress detection
+- Party detection
+- Item detection
+- Tracker reconciliation
+- Optional auto-completion suggestions
+
+### 17.3 OCR Recognition System
+
+Potential features:
+
+- Screenshot scanning
+- Pokémon recognition
+- Menu recognition
+- Progress recognition
+- Encounter recognition
+
+### 17.4 Community System
+
+Potential features:
+
+- Shared routes
+- Challenges
+- Completion rankings
+- Research contributions
+- Speedrun strategies
+
+Community content must remain separate from official canonical data.
+
+---
+
+## 18. Development Rules
+
+Every system must follow these rules:
+
+- Prefer data-driven behavior over hard-coded logic.
+- Use stable identifiers for every entity and relationship.
+- Keep canonical data separate from user data.
+- Preserve historical contexts.
+- Validate references and requirements.
+- Support offline use where possible.
+- Add new games through datasets, contexts, assets, and rules rather than architectural rewrites.
+- Treat maps, events, progression rules, and relationships as first-class data.
+
+---
+
+## 19. Final Architecture Summary
+
+```text
+Official and Verified Sources
+            ↓
+        Build System
+            ↓
+Canonical Knowledge Database
+            ↓
+Relationship Generation and Validation
+            ↓
+Generated Offline Runtime Datasets
+            ↓
+Application Runtime
+      ┌─────┼─────┐
+      ↓     ↓     ↓
+Pokédex  Maps  Progression Simulation
+                    ↓
+             Adventure Tracker System
+                    ↓
+          User Database and Cloud Sync
+```
+
+Pokémon Companion is designed as a scalable, historically accurate, offline-capable Pokémon platform.
+
+It provides a foundation for encyclopedic research, dynamic map exploration, multiple independent adventures, version-aware progression simulation, personal collection tracking, and future intelligent companion features.

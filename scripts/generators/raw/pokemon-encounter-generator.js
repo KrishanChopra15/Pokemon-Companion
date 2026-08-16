@@ -12,81 +12,108 @@
  * Does NOT:
  * - Parse source files.
  * - Resolve references.
+ * - Modify encounter data.
  */
 
 "use strict";
+
 
 const fs = require("fs");
 const path = require("path");
 
 
+
 class PokemonEncounterGenerator {
+
 
 
     /**
      * Generate encounter database.
      *
      * @param {Array} encounters
+     * @param {string} game
      */
-    generate(encounters) {
+    generate(
+        encounters = [],
+        game = "firered"
+    ) {
+
 
 
         const output =
+
             encounters.map(encounter => ({
 
 
+
                 map:
-                    encounter.map,
+                    encounter.map || null,
+
 
 
                 baseLabel:
-                    encounter.baseLabel,
+                    encounter.baseLabel || null,
+
 
 
                 method:
-                    encounter.method,
+                    encounter.method || null,
+
 
 
                 encounterRate:
-                    encounter.encounterRate,
+                    encounter.encounterRate ?? 0,
+
 
 
                 mons:
-                    encounter.mons.map(mon => ({
+
+                    (encounter.mons || [])
+                        .map(mon => ({
 
 
-                        species:
-                            mon.species,
+
+                            species:
+                                mon.species || null,
 
 
-                        minLevel:
-                            mon.minLevel,
+
+                            minLevel:
+                                mon.minLevel ?? 0,
 
 
-                        maxLevel:
-                            mon.maxLevel
+
+                            maxLevel:
+                                mon.maxLevel ?? 0
 
 
-                    }))
+
+                        }))
+
 
 
             }));
 
 
 
-        const file = path.join(
 
-            process.cwd(),
 
-            "database",
+        const file =
+            path.join(
 
-            "raw",
+                process.cwd(),
 
-            "firered",
+                "database",
 
-            "pokemon-encounters.json"
+                "raw",
 
-        );
+                game,
+
+                "pokemon-encounters.json"
+
+            );
+
+
 
 
 
@@ -95,10 +122,12 @@ class PokemonEncounterGenerator {
             path.dirname(file),
 
             {
-                recursive: true
+                recursive:true
             }
 
         );
+
+
 
 
 
@@ -110,9 +139,13 @@ class PokemonEncounterGenerator {
                 output,
                 null,
                 4
-            )
+            ),
+
+            "utf8"
 
         );
+
+
 
 
 
@@ -122,9 +155,16 @@ class PokemonEncounterGenerator {
             "Generated pokemon encounters database."
         );
 
+
         console.log(
-            `Encounters: ${output.length}`
+            `Game: ${game}`
         );
+
+
+        console.log(
+            `Encounter groups: ${output.length}`
+        );
+
 
         console.log();
 
@@ -134,4 +174,6 @@ class PokemonEncounterGenerator {
 }
 
 
-module.exports = PokemonEncounterGenerator;
+
+module.exports =
+    PokemonEncounterGenerator;

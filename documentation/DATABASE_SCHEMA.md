@@ -1,770 +1,171 @@
 # Pokémon Companion Database Schema
 
-> Defines every canonical entity, relationship, identifier, and structural rule used throughout the Pokémon Companion knowledge graph.
+> **Canonical Knowledge Graph and User Data Schema**
+>
+> Defines the entities, relationships, contexts, identifiers, and state boundaries used by Pokémon Companion.
 
 ---
 
-# Purpose
+## 1. Purpose
 
-The Database Schema defines the canonical structure of Pokémon Companion's knowledge graph.
+The Pokémon Companion database is a version-aware knowledge graph designed to represent official Pokémon games accurately while supporting interactive maps, progression simulation, adventure trackers, and future platform features.
 
-While the Data Architecture explains how data flows through the system, this document defines what the data is.
+This document defines:
 
-Every entity, relationship, identifier, and generated dataset must conform to the schema described here.
+- Canonical entities
+- Relationship entities
+- Game and rule contexts
+- Dynamic map and progression records
+- User-owned tracker records
+- Identifier rules
+- Ownership boundaries
+- Generated dataset rules
 
-The schema is designed to support every official Pokémon game while preserving historical accuracy, minimizing duplication, and allowing future expansion without structural redesign.
-
----
-
-# Dependencies
-
-The Database Schema depends upon:
-
-- The Pokémon Knowledge Model
-- The Data Architecture
-- Official Pokémon Sources
-- Naming Standards
-- Validation Standards
-
-The Database Schema defines the canonical structure of Pokémon Companion but does not define how data is extracted, generated, stored, or presented.
-
-Changes to these upstream concepts should be reflected in the schema where appropriate.
+The schema defines **what the data represents**. The Data Architecture document defines how that data is extracted, normalized, validated, generated, and delivered to the application.
 
 ---
 
-# Design Principles
+## 2. Schema Principles
 
-The database schema is guided by the following principles.
+### 2.1 Canonical First
 
-## Canonical First
+Every real-world Pokémon concept has one canonical record.
 
-Every real-world Pokémon concept should have exactly one canonical representation.
-
-Examples include:
+Examples:
 
 - One Species record for Pikachu
 - One Move record for Thunderbolt
+- One Ability record for Static
 - One Item record for Potion
-- One Ability record for Levitate
+- One Location record for Cerulean City
 
-Canonical entities should never be duplicated across games.
+Canonical entities must not be duplicated for each game.
 
-Historical differences are represented through relationships and context rather than duplicate entities.
+Historical differences are represented through contexts and relationships.
 
----
+### 2.2 Relationship Driven
 
-## Relationship Driven
+Relationships are first-class records.
 
-Entities should not directly contain large amounts of duplicated information.
+A relationship may contain:
 
-Instead, relationships describe how entities interact.
-
-Examples include:
-
-- Pokémon learns Move
-- Pokémon has Ability
-- Pokémon appears in Encounter
-- Machine teaches Move
-- Trainer owns Pokémon
-
-Relationships are first-class records within the schema and may contain their own properties, such as game, version, level, conditions, or method.
-
----
-
-## Context Aware
-
-Every piece of information is interpreted within an appropriate context.
-
-A context defines the rules under which entities and relationships are valid.
-
-Examples include:
-
-- Pokémon Red
-- Pokémon Emerald
-- Pokémon Platinum
-- Pokémon Scarlet
-- Pokémon HOME
-- Pokémon GO
-
-Rather than creating separate copies of entities for every game, contexts determine which entities and relationships are available at any point in time.
-
----
-
-## Version Aware
-
-Historical changes are never overwritten.
-
-Instead, relationships and properties record the versions in which they apply.
-
-This allows Pokémon Companion to accurately represent every supported title while maintaining a single unified knowledge graph.
-
----
-
-## Extensible
-
-New mechanics, games, entities, and relationships should be introduced without requiring existing entities to be redesigned.
-
-Future Pokémon titles should integrate into the schema by adding new canonical records and relationships rather than replacing existing ones.
-
----
-
-# Canonical Entity Hierarchy
-
-Pokémon Companion organizes its database into three complementary categories.
-
-```text
-Knowledge Graph
-│
-├── Canonical Entities
-│       │
-│       ├── Game
-│       ├── Generation
-│       ├── Version
-│       ├── Region
-│       ├── Location
-│       ├── Species
-│       ├── Form
-│       ├── Pokémon
-│       ├── Move
-│       ├── Ability
-│       ├── Item
-│       ├── Type
-│       ├── Nature
-│       ├── Egg Group
-│       ├── Evolution Method
-│       ├── Machine
-│       ├── Encounter
-│       ├── Trainer
-│       ├── Pokédex Entry
-│       ├── Sprite
-│       ├── Model
-│       ├── Ribbon
-│       └── Mark
-│
-├── Relationship Entities
-│       │
-│       ├── Pokémon Learns Move
-│       ├── Pokémon Has Ability
-│       ├── Pokémon Has Type
-│       ├── Pokémon Evolves Into Pokémon
-│       ├── Species Has Form
-│       ├── Encounter Contains Pokémon
-│       ├── Trainer Uses Pokémon
-│       ├── Machine Teaches Move
-│       ├── Location Contains Encounter
-│       ├── Game Contains Region
-│       └── ...
-│
-└── Context Entities
-        │
-        ├── Game Context
-        ├── Version Context
-        ├── Version Group Context
-        └── Rule Set Context
-```
-
----
-
-# Entity Categories
-
-Every record within the database belongs to exactly one of these categories.
-
-## Canonical Entities
-
-Canonical entities describe concepts that exist independently within the Pokémon universe.
-
-They possess stable identities and may be referenced by any number of relationships.
-
-Canonical entities never contain duplicated historical information.
-
----
-
-## Relationship Entities
-
-Relationship entities connect canonical entities together.
-
-Unlike traditional foreign-key links, relationships are treated as independent records capable of storing additional information such as:
-
-- Version
+- Source and target identifiers
+- Game context
+- Version applicability
 - Method
-- Level
 - Conditions
 - Probability
+- Level
+- Availability
 - Restrictions
 - Notes
+- Provenance
 
-This allows the database to accurately model historical differences without duplicating canonical entities.
+For example, a Pokémon learning a move is not an anonymous nested object. It is a version-aware `pokemon-learns-move` relationship.
 
----
+### 2.3 Context Aware
 
-## Context Entities
+All historical information is interpreted through a Game Context.
 
-Context entities determine how the knowledge graph should be interpreted.
+A context determines which entities, relationships, mechanics, maps, events, encounters, and progression rules apply.
 
-Contexts define which entities and relationships are active for a particular game, version, or ruleset.
+### 2.4 User Data Is Separate
 
-Every user interaction with Pokémon Companion occurs within a context, whether explicitly selected by the user or inferred by the application.
+Canonical data describes official Pokémon knowledge.
 
----
+User data describes an individual's adventure, collection, progress, and preferences.
 
-# Common Entity Template
+User data references canonical records but never modifies them.
 
-Every canonical entity within Pokémon Companion follows a common structural template.
+### 2.5 Generated Data Is Replaceable
 
-Using a consistent schema makes the database easier to understand, validate, extend, and generate.
+Search indexes, lookup maps, encounter tables, map reachability indexes, and evolution graphs are generated views.
 
-Although individual entity types contain different properties, they all follow the same architectural pattern.
-
----
-
-## Entity Definition
-
-Every entity should define the following information.
-
-### Purpose
-
-Describes what real-world Pokémon concept the entity represents.
-
-The purpose explains why the entity exists and what responsibilities belong to it.
-
-Every entity should have one clearly defined responsibility.
+They are not source-of-truth records and must be reproducible from canonical data.
 
 ---
 
-### Identifier
+## 3. Database Domains
 
-Every canonical entity has one permanent identifier.
+```mermaid
+flowchart TD
+    Canonical["Canonical Knowledge Database"]
+    Relationships["Canonical Relationship Database"]
+    Contexts["Game Context Database"]
+    Generated["Generated Runtime Datasets"]
+    User["User Database"]
+
+    Canonical --> Relationships
+    Contexts --> Relationships
+    Canonical --> Generated
+    Relationships --> Generated
+    Contexts --> Generated
+
+    User -->|"references only"| Canonical
+    User -->|"references only"| Contexts
+```
+
+| Domain | Purpose | Mutable at Runtime |
+|---|---|---|
+| Canonical Knowledge | Official Pokémon entities | No |
+| Canonical Relationships | Official version-aware relationships | No |
+| Game Contexts | Rules for specific games and modes | No |
+| Generated Datasets | Optimized runtime views | No |
+| User Database | Accounts, trackers, progress, collections, settings | Yes |
+
+---
+
+## 4. Identifier Standards
+
+Every record has a permanent canonical identifier.
 
 Identifiers must:
 
-- be globally unique
-- never change once assigned
-- never be reused
-- remain independent of display names
-- be suitable for long-term references
-
-Identifiers are the primary way entities reference one another throughout the knowledge graph.
-
----
-
-### Canonical Properties
-
-Canonical properties describe information that belongs directly to the entity itself.
-
-These properties should remain independent of any specific game whenever possible.
-
-Examples include:
-
-- name
-- internal identifier
-- category
-- description
-- classification
-- permanent characteristics
-
-Canonical properties should never duplicate information owned by another entity.
-
----
-
-### Ownership
-
-Every property belongs to exactly one canonical entity or one relationship entity.
-
-Information should never be duplicated across multiple entities.
-
-When information naturally belongs to a relationship, it should be stored by the relationship rather than either connected entity.
-
----
-
-### Relationships
-
-Relationships describe how an entity connects to other canonical entities.
-
-Rather than embedding large collections directly inside records, entities are connected through explicit relationship entities.
-
-Examples include:
-
-- Species has Form
-- Pokémon learns Move
-- Move belongs to Machine
-- Trainer owns Pokémon
-- Encounter occurs at Location
-
-Relationships define the structure of the knowledge graph.
-
----
-
-### Contextual Data
-
-Some information is only valid within a particular game, version, or ruleset.
-
-Such information should not replace canonical properties.
-
-Instead, contextual information is associated through version-aware relationships.
-
-Examples include:
-
-- learnsets
-- encounter availability
-- move compatibility
-- trainer parties
-- evolution methods
-- location availability
-
----
-
-### Historical Behaviour
-
-Whenever an entity changes across Pokémon games, previous versions must be preserved.
-
-Historical information should never overwrite earlier data.
-
-Instead, the database records which games, versions, or contexts each variation applies to.
-
----
-
-### Validation Rules
-
-Every entity should define the validation requirements necessary to ensure its correctness.
-
-Examples include:
-
-- required properties
-- valid references
-- allowed value ranges
-- uniqueness constraints
-- version consistency
-- historical consistency
-
-Validation rules are defined as part of the schema rather than individual scripts.
-
----
-
-### Generated Views
-
-Canonical entities may produce one or more generated datasets used by the application.
-
-Generated views never become the source of truth.
-
-Examples include:
-
-- lookup tables
-- search indexes
-- navigation indexes
-- autocomplete indexes
-- relationship indexes
-- statistics
-
-Generated datasets exist solely for performance and usability.
-
----
-
-### Future Expansion
-
-Each entity definition should describe how it may evolve without breaking compatibility.
-
-New mechanics should extend existing entities whenever appropriate rather than replacing them.
-
-This ensures long-term stability as new Pokémon games introduce additional features.
-
----
-
-# Reference Standards
-
-Reference Standards define how entities identify themselves and how they reference one another throughout Pokémon Companion.
-
-A consistent reference system is essential for maintaining a stable, scalable, and interconnected knowledge graph.
-
-Every canonical entity, relationship entity, generated dataset, backend service, frontend component, and validation script must follow these standards.
-
-No alternative reference formats should be introduced.
-
----
-
-# Design Goals
-
-The reference system is designed to satisfy the following goals.
-
-- Global uniqueness
-- Human readability
-- Long-term stability
-- Version independence
-- Efficient lookups
-- Cross-platform compatibility
-- Deterministic generation
-- Easy validation
-
-References should remain stable even if display names, translations, or internal implementations change.
-
----
-
-# Canonical Entity IDs
-
-Every canonical entity owns exactly one permanent identifier.
-
-A canonical identifier:
-
-- never changes
-- is never reused
-- uniquely identifies one entity
-- remains valid across all Pokémon games
-- is independent of localized names
+- Be globally unique
+- Be stable
+- Never be reused
+- Be independent of display names
+- Use lowercase kebab-case where text is required
+- Be suitable for references, APIs, validation, and generated datasets
+
+### 4.1 Identifier Format
+
+```text
+entity-type:entity-key
+```
 
 Examples:
 
 ```text
-species:25
+generation:1
+version-group:firered-leafgreen
+version:firered
+context:firered
 
-pokemon:25-default
+species:pikachu
+form:charizard-mega-x
+pokemon:pikachu-default
 
-pokemon:25-gmax
+move:thunderbolt
+ability:static
+item:tea
 
-move:85
+region:kanto
+location:celadon-city
+map:firered-celadon-city
+map-object:firered-celadon-eevee
 
-ability:31
+trainer:firered-brock
+event:firered-obtain-poke-flute
+encounter:firered-route-1-grass
 
-item:4
-
-game:emerald
-
-region:hoenn
-
-location:petalburg-woods
-
-trainer:emerald-brawly
+relationship:pokemon-learns-move:000001
+tracker:firered-100
 ```
 
-Applications should always reference entities by their canonical identifiers rather than display names.
+### 4.2 Display Names
 
----
-
-# Relationship IDs
-
-Relationship entities also receive permanent identifiers.
-
-Relationships should never be represented as anonymous objects embedded inside other entities.
-
-Instead, every relationship is treated as an independent record.
-
-Examples:
-
-```text
-pokemon-learns-move:000001
-
-pokemon-has-ability:000842
-
-pokemon-has-type:000315
-
-encounter:014523
-
-trainer-party:002315
-```
-
-This allows relationships to contain their own metadata, history, validation rules, and contextual information.
-
----
-
-# Context IDs
-
-Context entities define the rules under which data is interpreted.
-
-Examples include:
-
-```text
-context:red
-
-context:emerald
-
-context:platinum
-
-context:black-2
-
-context:scarlet
-
-context:go
-
-context:home
-```
-
-Contexts may reference one or more games, versions, or rulesets depending on their purpose.
-
----
-
-# References
-
-Relationships should reference entities only through canonical identifiers.
-
-Example:
-
-```text
-Pokemon
---------
-id:
-pokemon:25-default
-
-Relationship
-------------
-pokemon:
-pokemon:25-default
-
-move:
-move:85
-```
-
-Entity names should never be used as foreign keys.
-
----
-
-# Display Names
-
-Display names exist solely for presentation.
-
-Examples:
-
-```text
-Display Name
-
-Pikachu
-
-Thunderbolt
-
-Levitate
-
-Potion
-```
-
-Display names may vary by:
-
-- language
-- localization
-- capitalization
-- formatting
-
-Display names must never be used as identifiers.
-
----
-
-# Generated References
-
-Generated datasets may contain additional lookup structures for performance.
-
-Examples include:
-
-- numeric indexes
-- search indexes
-- autocomplete indexes
-- hash maps
-
-These generated references are implementation details.
-
-They do not replace canonical identifiers.
-
----
-
-# Validation Rules
-
-Every reference must satisfy the following requirements.
-
-- Target entity exists
-- Identifier is unique
-- Identifier format is valid
-- Reference type is correct
-- Circular references are permitted only where explicitly defined
-- Broken references are not allowed
-
-Every build should verify all references before generated datasets are produced.
-
----
-
-# Future Compatibility
-
-The reference system is designed to support future Pokémon games, mechanics, entities, and generated datasets without changing existing identifiers.
-
-Once assigned, canonical identifiers remain valid permanently.
-
-Backward compatibility is considered a core architectural requirement.
-
----
-
-# Naming Standards
-
-Naming standards define how entities, properties, files, directories, scripts, generated datasets, and APIs should be named throughout Pokémon Companion.
-
-A consistent naming convention improves readability, reduces ambiguity, simplifies validation, and makes the project easier to maintain as it grows.
-
-Every part of the project should follow these standards.
-
----
-
-# Goals
-
-The naming system is designed to be:
-
-- Consistent
-- Predictable
-- Human-readable
-- Machine-friendly
-- Easy to search
-- Easy to validate
-- Stable over time
-
-Names should clearly describe their purpose without relying on abbreviations whenever possible.
-
----
-
-# Entity Names
-
-Canonical entity names should use singular nouns.
-
-Examples:
-
-- Game
-- Generation
-- Version
-- Region
-- Location
-- Species
-- Form
-- Pokémon
-- Move
-- Ability
-- Item
-- Trainer
-- Encounter
-- Machine
-
-Entity names represent a single conceptual object.
-
----
-
-# Relationship Names
-
-Relationship entities should describe the connection between two canonical entities.
-
-Relationships should follow a verb-based naming pattern.
-
-Examples:
-
-- Pokémon Learns Move
-- Pokémon Has Ability
-- Pokémon Has Type
-- Species Has Form
-- Pokémon Evolves Into Pokémon
-- Machine Teaches Move
-- Trainer Uses Pokémon
-- Encounter Contains Pokémon
-- Game Contains Region
-- Region Contains Location
-
-Relationship names should read naturally as sentences.
-
----
-
-# Property Names
-
-All property names should use **camelCase**.
-
-Examples:
-
-```text
-speciesId
-pokemonId
-moveId
-abilityId
-versionGroupId
-locationAreaId
-displayName
-baseExperience
-captureRate
-isLegendary
-```
-
-Property names should:
-
-- begin with a lowercase letter
-- avoid abbreviations unless universally understood
-- clearly describe their purpose
-- remain consistent across every entity
-
----
-
-# File Names
-
-Data files should use **kebab-case**.
-
-Examples:
-
-```text
-species.json
-pokemon.json
-moves.json
-abilities.json
-version-groups.json
-encounter-tables.json
-trainer-parties.json
-```
-
-Generated datasets should also use kebab-case.
-
-Examples:
-
-```text
-pokemon-index.json
-move-lookup.json
-search-index.json
-relationship-index.json
-```
-
----
-
-# Directory Names
-
-Directories should also use **kebab-case**.
-
-Examples:
-
-```text
-database-v2/
-generated/
-relationships/
-validation/
-canonical/
-contexts/
-```
-
-Directory names should represent logical groups rather than implementation details.
-
----
-
-# Script Names
-
-Scripts should begin with an action describing their responsibility.
-
-Examples:
-
-```text
-extract-games.js
-normalize-species.js
-build-relationships.js
-generate-search-index.js
-validate-references.js
-inspect-pokemon.js
-```
-
-Each script should perform one primary task.
-
----
-
-# Display Names
-
-Display names are intended for user interfaces.
-
-They may include:
-
-- Spaces
-- Accented characters
-- Punctuation
-- Localized translations
+Display names are presentation data and must never be used as foreign keys.
 
 Examples:
 
@@ -776,404 +177,131 @@ Pokémon HOME
 Pokémon GO
 ```
 
-Display names must never be used as identifiers.
+---
+
+## 5. Entity Categories
+
+Every record belongs to one primary category.
+
+```text
+Knowledge Graph
+├── Canonical Entities
+├── Relationship Entities
+├── Context Entities
+├── Map and Progression Entities
+├── Asset Entities
+├── Generated Datasets
+└── User Entities
+```
 
 ---
 
-# Internal Names
+## 6. Common Record Metadata
 
-Internal names should be lowercase, language-independent, and stable.
+All canonical and relationship records should support the following metadata.
+
+```json
+{
+    "id": "entity-type:entity-key",
+    "schemaVersion": 1,
+    "source": {
+        "sourceId": "source:official-game-data",
+        "extractionMethod": "structured-extraction",
+        "verificationStatus": "verified",
+        "verifiedAt": "2026-08-16T00:00:00Z"
+    },
+    "createdAt": "2026-08-16T00:00:00Z",
+    "updatedAt": "2026-08-16T00:00:00Z"
+}
+```
+
+Required provenance fields:
+
+| Field | Purpose |
+|---|---|
+| `sourceId` | Identifies the original source |
+| `extractionMethod` | Describes how the data was obtained |
+| `verificationStatus` | Indicates confidence and review status |
+| `buildVersion` | Identifies the build that generated the record |
+| `verifiedAt` | Records the latest validation or review date |
+
+---
+
+## 7. Game Context Entities
+
+### 7.1 Generation
+
+A Generation represents a major era of mechanics.
+
+```json
+{
+    "id": "generation:3",
+    "number": 3,
+    "name": "Generation III",
+    "releasePeriod": {
+        "startYear": 2002,
+        "endYear": 2006
+    }
+}
+```
+
+### 7.2 Version Group
+
+A Version Group represents games that share most mechanics and data.
 
 Examples:
 
-```text
-mr-mime
-farfetchd
-type-null
-pokemon-home
-pokemon-go
-```
-
-Internal names are intended for identifiers, file names, URLs, and references.
-
----
-
-# Reserved Words
-
-Certain words have specific meanings within Pokémon Companion and should not be reused for unrelated purposes.
-
-Examples include:
-
-- Entity
-- Relationship
-- Context
-- Canonical
-- Generated
-- Validation
-- Reference
-- Identifier
-- Schema
-
-Using consistent terminology improves documentation and reduces ambiguity across the project.
-
----
-
-# Naming Consistency
-
-Whenever a concept appears in multiple parts of the project, it should retain the same name.
-
-For example:
-
-- The database field
-- The backend API
-- The frontend model
-- The validation rules
-- The documentation
-
-should all refer to the same concept using identical terminology.
-
-Consistency takes priority over brevity.
-
----
-
-# Future Compatibility
-
-New entities, relationships, mechanics, and datasets should follow these naming standards without introducing alternative conventions.
-
-A single, consistent naming system ensures Pokémon Companion remains understandable and maintainable as it expands to support future Pokémon games.
-
----
-
-# Versioning Strategy
-
-## Purpose
-
-One of the primary goals of Pokémon Companion is to accurately represent every official Pokémon game exactly as it existed at release.
-
-Rather than replacing older data with newer information, Pokémon Companion preserves the complete historical evolution of the Pokémon franchise.
-
-Versioning is therefore a fundamental architectural feature rather than a simple metadata field.
-
-Every canonical entity, relationship, and generated dataset must be capable of representing historical changes without losing previous information.
-
----
-
-# Core Philosophy
-
-The database stores one canonical knowledge graph.
-
-Historical differences are represented through contexts and relationships rather than duplicate canonical entities.
-
-For example:
-
-- Pikachu remains one Species.
-- Thunderbolt remains one Move.
-- Levitate remains one Ability.
-
-Only their relationships and properties may vary between games.
-
-This minimizes duplication while preserving historical accuracy.
-
----
-
-# Version Hierarchy
-
-Pokémon Companion represents official releases using a hierarchical structure.
-
-```text
-Generation
-        │
-        ▼
-Version Group
-        │
-        ▼
-Version
-        │
-        ▼
-Context
-```
-
-Each level has a distinct responsibility.
-
----
-
-## Generation
-
-Represents a major era of Pokémon mechanics.
-
-Examples include:
-
-- Generation I
-- Generation II
-- Generation III
-- ...
-- Generation X
-
-Generations introduce new mechanics, Pokémon, battle systems, abilities, and gameplay features.
-
----
-
-## Version Group
-
-A Version Group represents games that share almost identical mechanics and data.
-
-Examples include:
-
 - Red / Blue
 - Gold / Silver
 - Ruby / Sapphire
-- Diamond / Pearl
+- FireRed / LeafGreen
 - Scarlet / Violet
 
-Version Groups reduce unnecessary duplication by grouping games with nearly identical gameplay systems.
-
----
-
-## Version
-
-A Version represents one specific official release.
-
-Examples include:
-
-- Pokémon Red
-- Pokémon Blue
-- Pokémon Yellow
-- Pokémon Emerald
-- Pokémon Platinum
-- Pokémon Scarlet
-- Pokémon Violet
-
-Version-specific differences should always be preserved.
-
----
-
-## Context
-
-A Context represents the exact rules under which the knowledge graph should be interpreted.
-
-Contexts determine:
-
-- available Pokémon
-- available forms
-- available moves
-- available abilities
-- available encounters
-- available trainers
-- available items
-- available mechanics
-
-The same canonical database may therefore produce different results depending on the selected context.
-
----
-
-# Historical Changes
-
-Historical changes should never overwrite previous information.
-
-Instead, every change is represented by version-aware relationships.
-
-Examples include:
-
-- Learnset changes
-- Ability changes
-- Type changes
-- Base stat changes
-- Encounter changes
-- Evolution method changes
-- Item availability
-- Machine compatibility
-- Trainer party changes
-
-Older games remain permanently reproducible.
-
----
-
-# Version Inheritance
-
-Where possible, Pokémon Companion should reuse inherited data rather than duplicate identical information.
-
-For example:
-
-```text
-Generation III
-        │
-        ▼
-Ruby / Sapphire
-        │
-        ▼
-Emerald
+```json
+{
+    "id": "version-group:firered-leafgreen",
+    "generationId": "generation:3",
+    "name": "FireRed / LeafGreen",
+    "versionIds": [
+        "version:firered",
+        "version:leafgreen"
+    ]
+}
 ```
 
-If Emerald does not modify a particular relationship, it should inherit the relationship from its parent version where appropriate.
+### 7.3 Version
 
-Inheritance should reduce duplication without sacrificing historical accuracy.
+A Version represents one official release.
 
----
-
-# Future Compatibility
-
-The versioning system is designed to support future official Pokémon games without requiring structural redesign.
-
-When a new game releases, Pokémon Companion should primarily add new contexts and relationships while preserving every historical version already stored.
-
-Backward compatibility is considered a permanent architectural requirement.
-
----
-
-# Game Family
-
-The Game Family defines the official Pokémon releases and the hierarchical structure used to organize them.
-
-Every other canonical entity within Pokémon Companion is interpreted through the Game Family.
-
-Rather than representing games as simple metadata, Pokémon Companion treats them as first-class canonical entities within the knowledge graph.
-
-The Game Family provides the historical framework that allows the database to accurately represent every official Pokémon title while minimizing duplication.
-
----
-
-# Entity Hierarchy
-
-```text
-Generation
-        │
-        ▼
-Version Group
-        │
-        ▼
-Version
-        │
-        ▼
-Game Context
+```json
+{
+    "id": "version:firered",
+    "versionGroupId": "version-group:firered-leafgreen",
+    "generationId": "generation:3",
+    "name": "Pokémon FireRed",
+    "platform": "Game Boy Advance",
+    "releaseDate": "2004-09-09"
+}
 ```
 
-Each entity has a distinct responsibility.
+### 7.4 Game Context
 
----
+A Game Context defines the rules used to interpret the knowledge graph.
 
-# Generation
-
-## Purpose
-
-A Generation represents a major era of Pokémon game mechanics.
-
-Generations introduce new Pokémon, battle systems, mechanics, abilities, moves, items, regions, and gameplay features.
-
-A Generation groups together games that share the same overall mechanical foundation.
-
----
-
-## Responsibilities
-
-A Generation is responsible for defining:
-
-- Generation number
-- Generation name
-- Release period
-- Core mechanics introduced
-- Available Pokémon range
-- Battle system characteristics
-- Parent generation relationships
-
-A Generation does not directly store Pokémon, moves, items, or locations.
-
-Those entities remain independent and are connected through relationships.
-
----
-
-# Version Group
-
-## Purpose
-
-A Version Group represents a collection of games that share nearly identical game mechanics and data.
-
-Examples include:
-
-- Red / Blue
-- Gold / Silver
-- Ruby / Sapphire
-- Diamond / Pearl
-- Scarlet / Violet
-
-Version Groups reduce duplication by allowing common mechanics and relationships to be shared across multiple games.
-
----
-
-## Responsibilities
-
-A Version Group defines:
-
-- Shared mechanics
-- Shared learnsets
-- Shared encounters (where applicable)
-- Shared TM compatibility
-- Shared move availability
-- Shared item availability
-- Shared evolution rules
-
-Individual games may override inherited information when official differences exist.
-
----
-
-# Version
-
-## Purpose
-
-A Version represents one specific official game release.
-
-Examples include:
-
-- Pokémon Red
-- Pokémon Blue
-- Pokémon Yellow
-- Pokémon Emerald
-- Pokémon Platinum
-- Pokémon Scarlet
-- Pokémon Violet
-
-Every officially released game supported by Pokémon Companion has one Version record.
-
----
-
-## Responsibilities
-
-A Version defines:
-
-- Official title
-- Internal identifier
-- Release date
-- Platform
-- Region availability
-- Supported languages
-- Parent Version Group
-- Generation
-- Available game features
-
-Version records should contain only information unique to that specific release.
-
----
-
-# Game Context
-
-## Purpose
-
-A Game Context represents the exact rules under which Pokémon Companion interprets the knowledge graph.
-
-Every page, search result, relationship, and generated dataset is evaluated within a selected Game Context.
-
-Examples include:
-
-- Pokémon Emerald
-- Pokémon Platinum
-- Pokémon Scarlet
-- Pokémon GO
-- Pokémon HOME
-
-Changing the active context changes the interpretation of the database without changing the canonical entities themselves.
-
----
-
-## Responsibilities
+```json
+{
+    "id": "context:firered",
+    "versionId": "version:firered",
+    "versionGroupId": "version-group:firered-leafgreen",
+    "generationId": "generation:3",
+    "ruleSetId": "rule-set:firered-standard",
+    "enabledFeatures": [
+        "feature:field-moves",
+        "feature:trainer-battles",
+        "feature:story-events"
+    ]
+}
+```
 
 A Game Context determines:
 
@@ -1182,986 +310,797 @@ A Game Context determines:
 - Available moves
 - Available abilities
 - Available items
-- Available locations
 - Available encounters
 - Available trainers
+- Available maps
+- Available events
 - Available mechanics
-- Available evolutions
-
-Game Contexts are the primary mechanism that enables historical accuracy throughout Pokémon Companion.
+- Available progression rules
 
 ---
 
-# Relationships
-
-The Game Family connects to nearly every other canonical entity.
-
-Examples include:
-
-- Generation contains Version Groups
-- Version Group contains Versions
-- Version defines Game Context
-- Game Context enables Mechanics
-- Game Context enables Encounters
-- Game Context enables Trainers
-- Game Context enables Learnsets
-- Game Context enables Machines
-- Game Context enables Pokédex entries
-
-These relationships allow the same canonical knowledge graph to be interpreted differently depending on the selected game.
-
----
-
-# Design Principles
-
-The Game Family follows several architectural principles.
-
-- Every official game has one canonical Version.
-- Version Groups reduce duplication.
-- Historical changes are preserved rather than overwritten.
-- Canonical entities remain independent of games.
-- Game Context controls interpretation instead of duplication.
-- Future Pokémon games should integrate without requiring structural redesign.
-
----
-
-# Validation Standards
-
-Validation ensures that every entity, relationship, and generated dataset within Pokémon Companion is internally consistent before it is used by any part of the application.
-
-Validation is a mandatory stage of the build pipeline.
-
-No dataset should be considered valid until every applicable validation rule has passed successfully.
-
-Validation protects the integrity of the knowledge graph and prevents invalid or incomplete data from reaching the backend, frontend, AI systems, or user database.
-
----
-
-# Validation Philosophy
-
-Validation follows four fundamental principles.
-
-## Correctness
-
-Every record should accurately represent the official source data from which it was derived.
-
----
-
-## Completeness
-
-Required information should never be missing.
-
-Every mandatory field, relationship, and reference must exist.
-
----
-
-## Consistency
-
-Equivalent information should be represented identically throughout the database.
-
-The same entity should never appear with conflicting identifiers, properties, or relationships.
-
----
-
-## Reproducibility
-
-Running the complete build pipeline using identical source data should always produce identical validation results.
-
-Validation must be deterministic.
-
----
-
-# Entity Validation
-
-Every canonical entity should be validated independently.
-
-Examples include:
-
-- Identifier uniqueness
-- Required properties
-- Property data types
-- Enumeration values
-- Value ranges
-- Duplicate detection
-- Canonical ownership
-
-Entities should never contain information owned by another canonical entity.
-
----
-
-# Relationship Validation
-
-Every relationship must satisfy the following requirements.
-
-- Both referenced entities exist.
-- Relationship identifiers are unique.
-- Relationship type is valid.
-- Context references exist.
-- Duplicate relationships are not created.
-- Relationship metadata is complete.
-
-Relationships should never reference deleted or unknown entities.
-
----
-
-# Context Validation
-
-Every context should be validated independently.
-
-Validation includes:
-
-- Valid game reference
-- Valid version reference
-- Valid version group reference
-- Supported mechanics
-- Historical consistency
-- Context inheritance rules
-
-Contexts should never activate relationships that are impossible within the selected game.
-
----
-
-# Cross-Reference Validation
-
-Every reference throughout the knowledge graph must resolve successfully.
-
-Examples include:
-
-- Species references
-- Form references
-- Pokémon references
-- Move references
-- Ability references
-- Item references
-- Trainer references
-- Encounter references
-- Machine references
-
-Broken references are never permitted.
-
----
-
-# Historical Validation
-
-Historical information should remain internally consistent.
-
-Validation includes:
-
-- Version ordering
-- Version inheritance
-- Historical overrides
-- Timeline consistency
-- Context compatibility
-
-Older games should remain reproducible without being affected by later generations.
-
----
-
-# Generated Dataset Validation
-
-Generated datasets should be validated separately from canonical data.
-
-Validation includes:
-
-- Search indexes
-- Lookup tables
-- Navigation indexes
-- Statistics
-- Autocomplete indexes
-- Relationship indexes
-
-Generated datasets should always be reproducible from canonical data.
-
----
-
-# Build Validation
-
-The complete build process should fail whenever a critical validation error is detected.
-
-Examples include:
-
-- Missing entity
-- Broken relationship
-- Duplicate identifier
-- Invalid context
-- Corrupted generated dataset
-- Circular dependency where prohibited
-
-Validation failures should prevent publication of the generated database.
-
----
-
-# Validation Reports
-
-Every build should generate validation reports describing:
-
-- Total entities
-- Total relationships
-- Validation duration
-- Passed checks
-- Failed checks
-- Warnings
-- Build status
-
-Validation reports should assist debugging without modifying the database.
-
----
-
-# Future Expansion
-
-As Pokémon Companion grows, additional validation rules may be introduced for new mechanics, entities, relationships, and official game releases.
-
-New validation rules should strengthen data integrity without breaking compatibility with existing canonical records.
-
----
-
-# Generated Dataset Standards
-
-Generated datasets are derived representations of the canonical knowledge graph.
-
-They exist solely to improve application performance, simplify queries, and reduce runtime computation.
-
-Generated datasets are never considered the source of truth.
-
-Every generated dataset must be reproducible from the canonical database and its relationships.
-
-If a generated dataset is deleted, it should be possible to recreate it entirely through the build pipeline without any loss of information.
-
----
-
-# Purpose
-
-Generated datasets exist to:
-
-- Improve application performance
-- Reduce frontend processing
-- Reduce backend query complexity
-- Support fast searching
-- Support navigation
-- Support AI features
-- Support analytics
-- Support offline usage
-
-Generation is an optimization step rather than a data creation step.
-
----
-
-# Source of Truth
-
-Generated datasets must never contain information that does not exist within the canonical database or its relationships.
-
-Every generated value should be traceable back to one or more canonical records.
-
-If canonical data changes, generated datasets must be regenerated.
-
-Manual editing of generated datasets is prohibited.
-
----
-
-# Types of Generated Datasets
-
-Generated datasets may include, but are not limited to:
-
-## Lookup Datasets
-
-Designed for direct identifier-based access.
-
-Examples include:
-
-- Pokémon Lookup
-- Move Lookup
-- Item Lookup
-- Ability Lookup
-- Species Lookup
-
----
-
-## Search Datasets
-
-Optimized for searching.
-
-Examples include:
-
-- Search Index
-- Autocomplete Index
-- Name Index
-- Alias Index
-
----
-
-## Navigation Datasets
-
-Support fast navigation throughout the application.
-
-Examples include:
-
-- Pokémon by Type
-- Pokémon by Ability
-- Pokémon by Region
-- Pokémon by Generation
-- Moves by Type
-- Items by Category
-
----
-
-## Relationship Datasets
-
-Pre-computed relationship structures.
-
-Examples include:
-
-- Evolution Graph
-- Species Forms
-- Pokémon Learnsets
-- Machine Compatibility
-- Encounter Tables
-
----
-
-## Statistical Datasets
-
-Pre-calculated information used for analysis.
-
-Examples include:
-
-- Type Statistics
-- Collection Statistics
-- Completion Statistics
-- Coverage Statistics
-
----
-
-# Generation Rules
-
-Every generated dataset should:
-
-- be deterministic
-- be reproducible
-- contain no duplicated canonical information
-- contain no manually edited records
-- reference canonical identifiers
-- preserve historical accuracy
-
-Generation should never alter canonical data.
-
----
-
-# Performance Goals
-
-Generated datasets should be optimized for:
-
-- Fast loading
-- Minimal memory usage
-- Efficient searching
-- Efficient filtering
-- Efficient sorting
-- Offline availability
-
-Optimization should never sacrifice correctness.
-
----
-
-# Version Awareness
-
-Generated datasets should respect the currently selected Game Context.
-
-Where appropriate, generation may produce:
-
-- global datasets
-- game-specific datasets
-- version-specific datasets
-- context-specific datasets
-
-The generation process should preserve historical accuracy across every supported Pokémon title.
-
----
-
-# Validation
-
-Every generated dataset should undergo independent validation before publication.
-
-Validation includes:
-
-- Schema validation
-- Identifier validation
-- Reference validation
-- Duplicate detection
-- Relationship verification
-- Context verification
-
-Generated datasets should never bypass the validation pipeline.
-
----
-
-# Future Expansion
-
-Additional generated datasets may be introduced to support new application features, future Pokémon games, AI capabilities, analytics, or performance improvements.
-
-The generated layer should remain completely replaceable without affecting the canonical database.
-
----
-
-# User Data Integration
-
-The canonical database represents the official Pokémon knowledge graph.
-
-The User Database represents each trainer's personal journey through that knowledge graph.
-
-These two systems serve different purposes and must remain completely independent.
-
-The canonical database describes the Pokémon world.
-
-The User Database describes a trainer's interaction with that world.
-
-User data must never modify canonical records.
-
-Likewise, canonical records must never depend upon user-generated information.
-
----
-
-# Separation of Responsibilities
-
-The database is divided into two independent domains.
-
-## Canonical Database
-
-The Canonical Database stores official Pokémon knowledge.
-
-Examples include:
-
-- Species
-- Forms
-- Pokémon
-- Moves
-- Abilities
-- Items
-- Types
-- Games
-- Regions
-- Locations
-- Trainers
-- Encounters
-
-This information is shared by every user.
-
----
-
-## User Database
-
-The User Database stores trainer-specific information.
-
-Examples include:
-
-- User accounts
-- Adventure progress
-- Pokédex completion
-- Living Dex
-- Shiny collections
-- Teams
-- Pokémon instances
-- Notes
-- Settings
-- Achievements
-
-This information belongs only to the individual trainer.
-
----
-
-# User References
-
-User records should never duplicate canonical information.
-
-Instead, they reference canonical entities using their permanent identifiers.
-
-Example:
-
-```text
-Pokemon Instance
-
-speciesId:
-species:6
-
-pokemonId:
-pokemon:6-default
-
-contextId:
-context:scarlet
+## 8. Canonical Pokémon Entities
+
+### 8.1 Species
+
+A Species represents a biological Pokémon species independent of form or game.
+
+```json
+{
+    "id": "species:pikachu",
+    "nationalDexNumber": 25,
+    "name": "Pikachu",
+    "introducedGenerationId": "generation:1"
+}
 ```
 
-The canonical database provides the official information.
+Species-level information may include:
 
-The User Database provides the trainer's personal information.
+- National Dex number
+- Name
+- Introduced generation
+- Evolution family reference
+- Form family reference
+- Canonical classification
 
----
+### 8.2 Form
 
-# Pokémon Instances
+A Form represents a recognized variation of a species.
 
-A Pokémon Instance represents one specific Pokémon owned by a trainer.
+Examples:
 
-Unlike canonical Pokémon entities, Pokémon Instances contain user-specific information.
+- Charizard Mega X
+- Alolan Rattata
+- Hisuian Samurott
+- Gigantamax Charizard
+- Unown B
 
-Examples include:
+```json
+{
+    "id": "form:charizard-mega-x",
+    "speciesId": "species:charizard",
+    "name": "Charizard Mega X",
+    "formKind": "mega",
+    "introducedGenerationId": "generation:6"
+}
+```
 
-- Nickname
-- Level
+Form kinds include:
+
+- `regional`
+- `mega`
+- `primal`
+- `gigantamax`
+- `battle-only`
+- `cosmetic`
+- `alternate`
+- `special`
+
+### 8.3 Pokémon
+
+A Pokémon record represents a battle-capable default or specific form representation.
+
+```json
+{
+    "id": "pokemon:pikachu-default",
+    "speciesId": "species:pikachu",
+    "formId": null,
+    "defaultForm": true
+}
+```
+
+Pokémon properties that vary by context, including types, base stats, and abilities, are stored through contextual relationships or snapshots.
+
+### 8.4 Type
+
+```json
+{
+    "id": "type:electric",
+    "name": "Electric",
+    "introducedGenerationId": "generation:1"
+}
+```
+
+### 8.5 Move
+
+```json
+{
+    "id": "move:thunderbolt",
+    "name": "Thunderbolt",
+    "introducedGenerationId": "generation:1"
+}
+```
+
+### 8.6 Ability
+
+```json
+{
+    "id": "ability:static",
+    "name": "Static",
+    "introducedGenerationId": "generation:3"
+}
+```
+
+### 8.7 Item
+
+```json
+{
+    "id": "item:tea",
+    "name": "Tea",
+    "introducedGenerationId": "generation:3",
+    "itemKind": "key-item"
+}
+```
+
+### 8.8 Supporting Entities
+
+Additional canonical Pokémon entities include:
+
 - Nature
-- Ability
-- Individual Values (IVs)
-- Effort Values (EVs)
-- Moves
-- Original Trainer
-- Trainer ID
-- Held Item
-- Poké Ball
-- Ribbons
-- Marks
-- Date Met
-- Met Location
-- Shiny status
-
-Multiple Pokémon Instances may reference the same canonical Pokémon.
-
-Each remains completely independent.
+- Egg Group
+- Evolution Method
+- Machine
+- Pokédex Entry
+- Ribbon
+- Mark
+- Move Target
+- Damage Class
+- Contest Type
 
 ---
 
-# Synchronization
+## 9. World Entities
 
-Cloud synchronization should synchronize only user-generated information.
+### 9.1 Region
 
-Canonical Pokémon data should be distributed as part of the application's official database updates.
-
-This approach reduces synchronization traffic and guarantees consistency across all supported devices.
-
----
-
-# Offline Support
-
-Pokémon Companion is designed to function offline.
-
-Each device stores a local copy of the canonical database.
-
-Only user-generated information requires synchronization between devices.
-
-This architecture enables:
-
-- Fast loading
-- Reliable offline access
-- Reduced bandwidth usage
-- Consistent gameplay tracking
-
-Changes made while offline should synchronize automatically once connectivity is restored.
-
----
-
-# Future Expansion
-
-The User Database should support future features without requiring changes to the canonical database.
-
-Examples include:
-
-- Cloud backups
-- Cross-device synchronization
-- Shared collections
-- Trading history
-- Team sharing
-- Multiplayer features
-- AI personalization
-- Future official integrations
-
-All future user features should remain isolated from the canonical knowledge graph.
-
----
-
-# Database Lifecycle
-
-The Pokémon Companion database follows a deterministic lifecycle that transforms official Pokémon game data into a validated knowledge graph used by the application.
-
-Every stage has a single responsibility.
-
-Data always flows in one direction.
-
-No stage may directly modify a previous stage.
-
-This architecture ensures reproducibility, maintainability, and long-term scalability.
-
----
-
-# Lifecycle Overview
-
-```text
-Official Sources
-        │
-        ▼
-Raw Extraction
-        │
-        ▼
-Raw Sources
-        │
-        ▼
-Normalization
-        │
-        ▼
-Canonical Database
-        │
-        ▼
-Relationship Generation
-        │
-        ▼
-Generated Database
-        │
-        ▼
-Validation
-        │
-        ▼
-Application Database
-        │
-        ▼
-Backend Services
-        │
-        ▼
-Frontend Applications
-        │
-        ▼
-User Database
+```json
+{
+    "id": "region:kanto",
+    "name": "Kanto"
+}
 ```
 
-Each stage is independent and produces output consumed by the following stage.
+### 9.2 Location
+
+A Location is a named in-world place.
+
+```json
+{
+    "id": "location:celadon-city",
+    "regionId": "region:kanto",
+    "name": "Celadon City",
+    "locationKind": "city"
+}
+```
+
+Location kinds include:
+
+- `city`
+- `town`
+- `route`
+- `cave`
+- `forest`
+- `tower`
+- `building`
+- `island`
+- `sea-route`
+- `special-area`
+
+### 9.3 Location Area
+
+A Location Area is a logical sub-area used for encounters, events, or map connections.
+
+```json
+{
+    "id": "location-area:celadon-city-west",
+    "locationId": "location:celadon-city",
+    "name": "Celadon City West"
+}
+```
+
+### 9.4 Map
+
+A Map is a context-specific tile representation.
+
+```json
+{
+    "id": "map:firered-celadon-city",
+    "gameContextId": "context:firered",
+    "locationId": "location:celadon-city",
+    "width": 40,
+    "height": 36,
+    "tileSetId": "tile-set:firered-overworld"
+}
+```
+
+Maps may be shared by related games only when geometry and behavior are confirmed equivalent.
+
+### 9.5 Map Tile
+
+A Map Tile represents a tile coordinate and its properties.
+
+```json
+{
+    "id": "map-tile:firered-celadon-city-12-7",
+    "mapId": "map:firered-celadon-city",
+    "x": 12,
+    "y": 7,
+    "terrainType": "grass",
+    "collision": false,
+    "layers": [
+        "terrain",
+        "object"
+    ]
+}
+```
 
 ---
 
-# Stage 1 — Official Sources
+## 10. Dynamic Map Entities
 
-The lifecycle begins with official Pokémon resources.
+### 10.1 Map Object
 
-Examples include:
+Every interactable map object is a canonical, version-aware record.
 
-- Official Pokémon game data
-- Official game assets
-- Official game text
-- Official battle data
-- Official encounter tables
-- Official evolution data
-- Official item data
-- Official move data
+```json
+{
+    "id": "map-object:firered-celadon-eevee",
+    "gameContextId": "context:firered",
+    "mapId": "map:firered-celadon-mansion-roof",
+    "objectType": "gift-pokemon",
+    "position": {
+        "x": 12,
+        "y": 7
+    },
+    "assetId": "asset:sprite:eevee",
+    "eventId": "event:firered-receive-eevee"
+}
+```
 
-Where official data is unavailable or incomplete, external resources may be used for verification or research, but never replace confirmed official information.
+Object types include:
 
-Official game data remains the primary source of truth.
+- `npc`
+- `trainer`
+- `visible-item`
+- `hidden-item`
+- `gift-pokemon`
+- `static-encounter`
+- `obstacle`
+- `warp`
+- `sign`
+- `story-event`
+- `map-connection`
 
----
+### 10.2 Map Connection
 
-# Stage 2 — Raw Extraction
+A Map Connection links maps or locations.
 
-Extraction converts official resources into machine-readable formats.
+```json
+{
+    "id": "map-connection:firered-route-7-saffron-gate",
+    "gameContextId": "context:firered",
+    "fromMapId": "map:firered-route-7",
+    "toMapId": "map:firered-saffron-city",
+    "connectionType": "gate",
+    "requirementSetId": "requirement-set:firered-saffron-tea"
+}
+```
 
-Extraction should preserve the original information as faithfully as possible.
+### 10.3 Obstacle
 
-No interpretation, normalization, or optimization should occur during extraction.
+An Obstacle represents a physical or story-based barrier.
 
-Raw Extraction should be reproducible using the same source material.
+```json
+{
+    "id": "obstacle:firered-route-12-snorlax",
+    "gameContextId": "context:firered",
+    "mapId": "map:firered-route-12",
+    "obstacleType": "static-pokemon",
+    "requirementSetId": "requirement-set:firered-poke-flute",
+    "eventId": "event:firered-route-12-snorlax"
+}
+```
 
----
+Obstacle types include:
 
-# Stage 3 — Raw Sources
-
-Raw Sources store extracted data before normalization.
-
-Characteristics include:
-
-- Closely mirrors official data
-- Read-only after extraction
-- Game-specific organization
-- No generated relationships
-- No calculated values
-
-Raw Sources act as an archival layer that allows future improvements to extraction without affecting higher layers.
-
----
-
-# Stage 4 — Normalization
-
-Normalization converts game-specific structures into Pokémon Companion's canonical schema.
-
-Normalization is responsible for:
-
-- Standardizing formats
-- Assigning canonical identifiers
-- Resolving naming differences
-- Preserving historical information
-- Preparing data for relationship generation
-
-Normalization never changes the meaning of official data.
-
----
-
-# Stage 5 — Canonical Database
-
-The Canonical Database stores the permanent knowledge graph.
-
-Each canonical entity exists exactly once.
-
-Examples include:
-
-- Species
-- Forms
-- Pokémon
-- Moves
-- Abilities
-- Items
-- Types
-- Games
-- Regions
-- Locations
-- Trainers
-
-Canonical entities remain independent of individual games whenever possible.
+- `cut-tree`
+- `surf-water`
+- `strength-boulder`
+- `rock-smash-rock`
+- `static-pokemon`
+- `guard`
+- `story-lock`
+- `event-lock`
+- `one-way-barrier`
 
 ---
 
-# Stage 6 — Relationship Generation
+## 11. Progression Entities
 
-Relationship Generation creates explicit connections between canonical entities.
+### 11.1 Requirement Set
 
-Examples include:
+A Requirement Set defines the conditions required to access a map connection, event, objective, or object.
 
-- Pokémon learns Move
-- Pokémon has Ability
-- Species has Form
-- Machine teaches Move
-- Encounter contains Pokémon
-- Trainer uses Pokémon
+```json
+{
+    "id": "requirement-set:firered-saffron-tea",
+    "operator": "all",
+    "requirements": [
+        {
+            "type": "key-item",
+            "entityId": "item:tea"
+        }
+    ]
+}
+```
 
-Relationships preserve context, historical changes, and version-specific behaviour without duplicating canonical entities.
+Supported requirement types include:
 
----
+- `badge`
+- `field-move`
+- `move`
+- `key-item`
+- `item`
+- `story-flag`
+- `event`
+- `trainer-defeat`
+- `pokemon-state`
+- `location-visit`
+- `developer-setting`
+- `glitch-enabled`
 
-# Stage 7 — Generated Database
+### 11.2 Progression Rule
 
-Generated datasets are optimized for application performance.
+A Progression Rule describes one context-specific rule.
 
-Examples include:
+```json
+{
+    "id": "progression-rule:firered-use-cut",
+    "gameContextId": "context:firered",
+    "ruleType": "field-move-permission",
+    "subjectId": "move:cut",
+    "requirementSetId": "requirement-set:firered-cascade-badge"
+}
+```
 
-- Search indexes
-- Lookup tables
-- Navigation datasets
-- Statistics
-- Relationship indexes
-- Autocomplete indexes
+### 11.3 Objective
 
-Generated datasets may always be deleted and regenerated.
+An Objective is a discoverable or recommended action, not a forced linear step.
 
-They never become the source of truth.
+```json
+{
+    "id": "objective:firered-obtain-tea",
+    "gameContextId": "context:firered",
+    "objectiveType": "key-item",
+    "entityId": "item:tea",
+    "requirementSetId": "requirement-set:firered-reach-celadon",
+    "locationId": "location:celadon-city"
+}
+```
 
----
+### 11.4 Progression Mode
 
-# Stage 8 — Validation
+Progression modes are explicit rule sets.
 
-Validation verifies the integrity of the complete knowledge graph.
+```text
+rule-set:firered-standard
+rule-set:firered-developer
+```
 
-Validation includes:
+| Mode | Purpose |
+|---|---|
+| Normal Mode | Intended rules and legitimate non-glitch alternatives |
+| Developer Mode | Verified glitches, debug states, testing, and advanced route planning |
 
-- Entity validation
-- Relationship validation
-- Reference validation
-- Historical validation
-- Context validation
-- Generated dataset validation
-
-The build process should fail if critical validation errors are detected.
-
----
-
-# Stage 9 — Application Database
-
-The validated generated database becomes the application's read-only Pokémon knowledge base.
-
-All backend services, frontend applications, search systems, AI features, and supporting tools should consume this database rather than the canonical records directly.
-
-This layer provides a stable interface between the build pipeline and the application.
-
----
-
-# Stage 10 — User Database
-
-The User Database stores trainer-specific information independently of the official knowledge graph.
-
-Examples include:
-
-- User accounts
-- Pokémon instances
-- Adventure progress
-- Teams
-- Collections
-- Achievements
-- Preferences
-
-User data references canonical entities but never modifies them.
-
----
-
-# Lifecycle Principles
-
-The complete lifecycle follows several core principles.
-
-- Official data is the source of truth.
-- Every stage has one responsibility.
-- Data flows in one direction.
-- Canonical entities remain immutable between builds.
-- Generated datasets are disposable.
-- Validation is mandatory.
-- User data remains separate from official Pokémon knowledge.
-- Every build should be reproducible.
+Developer-mode routes must remain separate from normal progression results.
 
 ---
 
-# Future Expansion
+## 12. Gameplay Relationship Entities
 
-Additional lifecycle stages may be introduced to support future tooling, official Pokémon games, AI capabilities, or build optimizations.
+### 12.1 Pokémon Has Type
 
-Any future additions should preserve the existing lifecycle principles and maintain backward compatibility with the canonical knowledge graph.
+```json
+{
+    "id": "relationship:pokemon-has-type:pikachu-electric",
+    "pokemonId": "pokemon:pikachu-default",
+    "typeId": "type:electric",
+    "gameContextId": "context:firered",
+    "slot": 1
+}
+```
 
----
+### 12.2 Pokémon Has Ability
 
-# Source Attribution & Data Provenance
+```json
+{
+    "id": "relationship:pokemon-has-ability:pikachu-static",
+    "pokemonId": "pokemon:pikachu-default",
+    "abilityId": "ability:static",
+    "gameContextId": "context:firered",
+    "slot": 1,
+    "hidden": false
+}
+```
 
-Data Provenance defines how Pokémon Companion tracks the origin, verification, and history of every piece of canonical information.
+### 12.3 Pokémon Learns Move
 
-Every canonical record should be traceable back to the official source from which it was obtained.
+```json
+{
+    "id": "relationship:pokemon-learns-move:000001",
+    "pokemonId": "pokemon:pikachu-default",
+    "moveId": "move:thunderbolt",
+    "gameContextId": "context:firered",
+    "method": "machine",
+    "machineId": "machine:tm24",
+    "requirements": []
+}
+```
 
-This ensures that the database remains transparent, auditable, reproducible, and maintainable throughout its lifetime.
+### 12.4 Evolution Relationship
 
-Whenever possible, every fact within the knowledge graph should answer the following questions:
+```json
+{
+    "id": "relationship:pokemon-evolves:pikachu-raichu",
+    "fromPokemonId": "pokemon:pikachu-default",
+    "toPokemonId": "pokemon:raichu-default",
+    "gameContextId": "context:firered",
+    "methodId": "evolution-method:use-item",
+    "itemId": "item:thunder-stone",
+    "requirements": []
+}
+```
 
-- Where did this information originate?
-- How was it obtained?
-- When was it verified?
-- Which official game or resource does it represent?
-- How confident are we that it is correct?
+### 12.5 Encounter Relationship
 
-Data provenance is considered a core architectural requirement rather than optional metadata.
+```json
+{
+    "id": "encounter:firered-route-1-grass-pidgey",
+    "gameContextId": "context:firered",
+    "locationAreaId": "location-area:route-1-grass",
+    "pokemonId": "pokemon:pidgey-default",
+    "method": "walk",
+    "levelRange": {
+        "minimum": 2,
+        "maximum": 5
+    },
+    "probability": 50
+}
+```
 
----
+### 12.6 Trainer Party Relationship
 
-# Source Hierarchy
-
-Pokémon Companion recognizes different categories of data sources.
-
-Sources are prioritized according to the following hierarchy.
-
-## Tier 1 — Official Sources
-
-Official sources are considered the canonical source of truth.
-
-Examples include:
-
-- Official Pokémon game data
-- Official game assets
-- Official text resources
-- Official encounter tables
-- Official battle data
-- Official event data
-- Official Pokémon HOME data (where legally and technically appropriate)
-
-Whenever official information is available, it always takes precedence.
-
----
-
-## Tier 2 — Verified Reference Sources
-
-Verified reference sources may be used to validate, compare, or fill documented gaps in official data.
-
-Examples include:
-
-- Community-maintained research projects
-- ROM disassembly projects
-- Technical documentation
-- Verified data extraction research
-
-These sources must never override confirmed official data.
-
----
-
-## Tier 3 — Supporting Sources
-
-Supporting sources may provide additional context or assist during development.
-
-Examples include:
-
-- Public databases
-- Community documentation
-- Research notes
-- Historical archives
-
-Supporting sources should only be used when higher-priority sources are unavailable or incomplete.
-
----
-
-# Provenance Metadata
-
-Canonical records may store provenance metadata describing how the information was obtained.
-
-Examples include:
-
-- Source category
-- Source identifier
-- Source game
-- Extraction method
-- Extraction tool
-- Extraction date
-- Verification date
-- Verification status
-- Supporting references
-- Developer notes
-
-This metadata supports auditing and long-term maintenance without changing the canonical meaning of the data.
+```json
+{
+    "id": "trainer-party:firered-brock",
+    "trainerId": "trainer:firered-brock",
+    "gameContextId": "context:firered",
+    "members": [
+        {
+            "pokemonId": "pokemon:geodude-default",
+            "level": 12
+        },
+        {
+            "pokemonId": "pokemon:onix-default",
+            "level": 14
+        }
+    ]
+}
+```
 
 ---
 
-# Verification
+## 13. Asset Entities
 
-Every imported record should progress through a verification process.
+Assets are canonical references to visual resources.
 
-Typical stages include:
+```json
+{
+    "id": "asset:sprite:pikachu-front-default",
+    "assetType": "pokemon-sprite",
+    "subjectId": "pokemon:pikachu-default",
+    "variant": "front-default",
+    "gameContextId": "context:firered",
+    "filePath": "assets/sprites/pokemon/pikachu/front-default.png"
+}
+```
 
-- Extracted
-- Normalized
-- Verified
-- Validated
-- Published
+Asset types include:
 
-Verification confirms that the canonical representation accurately reflects the original source.
-
----
-
-# Reproducibility
-
-Given the same official sources and the same build pipeline, Pokémon Companion should always produce identical canonical records.
-
-Every transformation should be deterministic.
-
-No manual editing should be required after the extraction process.
-
----
-
-# Auditing
-
-The database should support future auditing of every canonical record.
-
-Auditing should make it possible to determine:
-
-- Which source produced the record
-- Which build generated it
-- Which relationships were created
-- Which validation rules were applied
-- When the record was last verified
-
-Auditing improves long-term maintainability and simplifies future corrections when new official information becomes available.
+- `pokemon-sprite`
+- `trainer-sprite`
+- `npc-sprite`
+- `item-sprite`
+- `map-tile`
+- `map-object`
+- `badge`
+- `medal`
+- `icon`
+- `model`
+- `animation`
 
 ---
 
-# Future Expansion
+## 14. User Database Schema
 
-As Pokémon Companion expands to support additional games, mechanics, and official resources, the provenance system should continue providing a complete history of every canonical record without affecting the stability of existing identifiers or relationships.
+The User Database contains mutable personal information.
 
-Maintaining transparent data provenance is essential to preserving Pokémon Companion as a reliable and historically accurate knowledge platform.
+It must remain separate from canonical and generated knowledge data.
+
+### 14.1 User
+
+```json
+{
+    "id": "user:krishan",
+    "username": "Krishan",
+    "settings": {
+        "theme": "system",
+        "offlineModeEnabled": true
+    }
+}
+```
+
+### 14.2 Adventure Tracker
+
+```json
+{
+    "id": "tracker:firered-100",
+    "userId": "user:krishan",
+    "gameContextId": "context:firered",
+    "name": "FireRed 100%",
+    "mode": "normal",
+    "createdAt": "2026-08-16T00:00:00Z",
+    "updatedAt": "2026-08-16T00:00:00Z"
+}
+```
+
+A user may create unlimited trackers, including multiple trackers for the same game context.
+
+### 14.3 Tracker State
+
+```json
+{
+    "trackerId": "tracker:firered-100",
+    "currentLocationId": "location:celadon-city",
+    "badges": [
+        "badge:boulder",
+        "badge:cascade"
+    ],
+    "fieldMoves": [
+        "move:cut"
+    ],
+    "keyItems": [
+        "item:tea"
+    ],
+    "completedEventIds": [
+        "event:firered-rescue-bill"
+    ],
+    "settings": {
+        "developerMode": false,
+        "glitchRoutesEnabled": false
+    }
+}
+```
+
+### 14.4 Tracker Map State
+
+```json
+{
+    "trackerId": "tracker:firered-100",
+    "visitedLocationIds": [
+        "location:pallet-town",
+        "location:viridian-city"
+    ],
+    "collectedMapObjectIds": [
+        "map-object:firered-route-1-potion"
+    ],
+    "defeatedTrainerIds": [
+        "trainer:firered-brock"
+    ],
+    "clearedObstacleIds": [],
+    "discoveredEncounterIds": []
+}
+```
+
+### 14.5 Pokémon Instance
+
+A Pokémon Instance represents a Pokémon owned by a user.
+
+```json
+{
+    "id": "pokemon-instance:001",
+    "trackerId": "tracker:firered-100",
+    "pokemonId": "pokemon:pikachu-default",
+    "nickname": "Spark",
+    "level": 25,
+    "natureId": "nature:timid",
+    "abilityId": "ability:static",
+    "ivs": {},
+    "evs": {},
+    "moveIds": [
+        "move:thunderbolt"
+    ],
+    "originalTrainer": "Krishan",
+    "pokeballItemId": "item:poke-ball",
+    "shiny": false,
+    "ribbonIds": [],
+    "markIds": []
+}
+```
+
+### 14.6 Collection State
+
+Collection state records user progress without changing canonical records.
+
+Examples:
+
+- Seen Pokémon
+- Caught Pokémon
+- Owned Pokémon
+- Shiny Pokémon
+- Collected items
+- Defeated trainers
+- Completed locations
+- Discovered encounters
+
+### 14.7 Achievement State
+
+```json
+{
+    "trackerId": "tracker:firered-100",
+    "achievementId": "achievement:route-explorer",
+    "progress": 12,
+    "target": 50,
+    "status": "in-progress"
+}
+```
+
+---
+
+## 15. Tracker Isolation Rules
+
+The following rule is mandatory:
+
+> No tracker may read, inherit, modify, or display progress from another tracker unless the user explicitly performs an export, import, clone, or comparison action.
+
+This applies even when trackers use:
+
+- The same game
+- The same game context
+- The same user account
+- The same device
+- The same cloud account
+
+Examples:
+
+```text
+FireRed 100%      → Separate state
+FireRed Nuzlocke  → Separate state
+LeafGreen Casual  → Separate state
+Emerald Living Dex → Separate state
+```
+
+---
+
+## 16. Generated Dataset Rules
+
+Generated datasets may include:
+
+- `pokemon-index.json`
+- `move-lookup.json`
+- `ability-lookup.json`
+- `item-lookup.json`
+- `evolution-graph.json`
+- `encounter-tables.json`
+- `map-connection-index.json`
+- `progression-rule-index.json`
+- `search-index.json`
+- `autocomplete-index.json`
+
+Every generated dataset must:
+
+- Be deterministic
+- Be reproducible
+- Reference canonical identifiers
+- Preserve game context
+- Pass validation
+- Contain no manual edits
+- Be replaceable without data loss
+
+---
+
+## 17. Validation Requirements
+
+### 17.1 Entity Validation
+
+- Identifier format is valid
+- Identifier is unique
+- Required fields exist
+- Property types are valid
+- Enumerations are valid
+- Source metadata exists
+- Context references resolve
+
+### 17.2 Relationship Validation
+
+- Both endpoints exist
+- Relationship type is valid
+- Context exists
+- Requirements resolve
+- Duplicate relationships are prohibited
+- Historical applicability is valid
+
+### 17.3 Map Validation
+
+- Map coordinates are valid
+- Object positions are inside map bounds
+- Connections reference existing maps
+- Requirement sets resolve
+- Obstacles reference valid events or requirements
+- Asset references resolve
+
+### 17.4 Progression Validation
+
+- Every requirement references an existing canonical record
+- Context rules do not activate impossible mechanics
+- Normal Mode excludes glitch-only routes
+- Developer Mode routes are explicitly marked
+- Reachability graphs contain no invalid dead references
+
+### 17.5 User Data Validation
+
+- Tracker owner exists
+- Tracker context exists
+- Pokémon instances belong to the tracker
+- Map progress references valid map objects
+- Collection references valid canonical entities
+- Tracker state cannot reference another tracker's records
+
+---
+
+## 18. Future Expansion
+
+The schema is designed to support future additions without redesigning existing records.
+
+Planned expansion areas include:
+
+- Additional official Pokémon games
+- New regions and map systems
+- DLC and event contexts
+- More detailed tile and collision data
+- Save-file import
+- OCR-assisted progress detection
+- AI companion features
+- Community routes and challenges
+- Research contributions
+- Pokémon HOME integration where technically and legally feasible
+
+New features should add canonical entities, relationships, contexts, or generated datasets while preserving existing identifiers and historical records.
+
+---
+
+## 19. Final Schema Summary
+
+```text
+Canonical Entities
+    ↓
+Version-Aware Relationships
+    ↓
+Game Contexts
+    ↓
+Maps, Events, and Progression Rules
+    ↓
+Generated Runtime Datasets
+    ↓
+Application Runtime
+
+User Accounts
+    ↓
+Independent Adventure Trackers
+    ↓
+Tracker State, Map State, Collections, Teams, Achievements
+    ↓
+Optional Cloud Synchronization
+```
+
+The Pokémon Companion schema provides a stable foundation for a historically accurate Pokémon knowledge graph, dynamic map exploration, non-linear progression simulation, and completely isolated multi-adventure user tracking.

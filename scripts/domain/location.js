@@ -11,23 +11,120 @@
 class Location {
 
 
-    constructor(
+    constructor({
+
         id,
+
+        name = null,
+
+        region = null,
+
+        map = null,
+
+        connections = [],
+
+        gates = {
+            soft: [],
+            hard: []
+        },
+
         encounters = []
-    ) {
+
+    } = {}) {
 
 
-        this.id = id;
+        this.id =
+            id;
 
-        this.encounters = encounters;
+
+        this.name =
+            name;
+
+
+        this.region =
+            region;
+
+
+        this.map =
+            map;
+
+
+
+        this.connections =
+            connections;
+
+
+
+        this.gates =
+            gates;
+
+
+
+        this.encounters =
+            encounters;
+
 
     }
 
 
 
+
+
+    addEncounter(encounter) {
+
+
+        this.encounters.push(
+            encounter
+        );
+
+
+    }
+
+
+
+
+
+    hasEncounters() {
+
+
+        return (
+            this.encounters.length > 0
+        );
+
+
+    }
+
+
+
+
+
     getEncounterCount() {
 
-        return this.encounters.length;
+
+        return (
+            this.encounters.length
+        );
+
+
+    }
+
+
+
+
+
+    hasGate() {
+
+
+        return (
+
+            this.gates.soft.length > 0
+
+            ||
+
+            this.gates.hard.length > 0
+
+        );
+
 
     }
 

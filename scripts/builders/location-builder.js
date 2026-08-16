@@ -21,6 +21,7 @@ const fs = require("fs");
 const path = require("path");
 
 
+
 class LocationBuilder {
 
 
@@ -30,8 +31,7 @@ class LocationBuilder {
         const databasePath =
             path.join(
                 __dirname,
-                "../../database",
-                "generated",
+                "../../database/generated",
                 game
             );
 
@@ -39,48 +39,41 @@ class LocationBuilder {
         const rawPath =
             path.join(
                 __dirname,
-                "../../database",
-                "raw",
+                "../../database/raw",
                 game
             );
 
 
 
-        const metadata =
-            JSON.parse(
-                fs.readFileSync(
-                    path.join(
-                        rawPath,
-                        "location-metadata.json"
-                    ),
-                    "utf8"
-                )
-            );
+        fs.mkdirSync(
+            databasePath,
+            {
+                recursive:true
+            }
+        );
 
+
+
+        const metadata =
+            this.load(
+                rawPath,
+                "location-metadata.json"
+            );
 
 
         const gates =
-            JSON.parse(
-                fs.readFileSync(
-                    path.join(
-                        rawPath,
-                        "location-gates.json"
-                    ),
-                    "utf8"
-                )
+            this.load(
+                rawPath,
+                "location-gates.json",
+                {}
             );
 
 
-
         const encounters =
-            JSON.parse(
-                fs.readFileSync(
-                    path.join(
-                        rawPath,
-                        "pokemon-encounters.json"
-                    ),
-                    "utf8"
-                )
+            this.load(
+                rawPath,
+                "pokemon-encounters.json",
+                []
             );
 
 
@@ -91,36 +84,45 @@ class LocationBuilder {
 
 
 
+
         //--------------------------------
-        // Create locations from metadata
+        // Create locations
         //--------------------------------
+
 
         for (const id of Object.keys(metadata)) {
 
+
             locations[id] = {
+
 
                 ...metadata[id],
 
+
                 gates:
-                    gates[id] || {
-
-                        soft: [],
-
-                        hard: []
-
+                    gates[id] ||
+                    {
+                        soft:[],
+                        hard:[]
                     },
 
-                encounters: []
+
+                encounters:[]
+
 
             };
+
 
         }
 
 
 
+
+
         //--------------------------------
-        // Add encounter data
+        // Add encounters
         //--------------------------------
+
 
         for (const encounter of encounters) {
 
@@ -148,159 +150,43 @@ class LocationBuilder {
 
 
 
-                let locationPokemon =
-                    locations[locationId]
-                    .encounters
-                    .find(
-                        entry =>
-                            entry.pokemon === pokemon &&
-                            entry.method === encounter.method
-                    );
+                if (!pokemon) {
 
-
-
-                if (!locationPokemon) {
-
-                    locationPokemon = {
-
-                        pokemon,
-
-                        method:
-                            encounter.method,
-
-                        displayMethod:
-                            getDisplayMethod(
-                                encounter.method
-                            ),
-
-                        slots: []
-
-                    };
-
-
-                    locations[locationId]
-                        .encounters
-                        .push(locationPokemon);
+                    continue;
 
                 }
 
 
 
-                const slot = {
-
-                    encounterRate:
-                        encounter.encounterRate,
-
-                    minLevel:
-                        mon.minLevel,
-
-                    maxLevel:
-                        mon.maxLevel
-
-                };
+                this.addLocationEncounter(
+                    locations[locationId],
+                    pokemon,
+                    encounter,
+                    mon
+                );
 
 
 
-                const duplicate =
-                    locationPokemon
-                    .slots
-                    .some(
-                        existing =>
-                            existing.encounterRate === slot.encounterRate &&
-                            existing.minLevel === slot.minLevel &&
-                            existing.maxLevel === slot.maxLevel
-                    );
+                this.addPokemonLocation(
+                    pokemonLocations,
+                    pokemon,
+                    locationId,
+                    encounter,
+                    mon
+                );
 
-
-
-                if (!duplicate) {
-
-                    locationPokemon
-                        .slots
-                        .push(slot);
-
-                }
-
-
-
-                //--------------------------------
-                // Pokémon reverse index
-                //--------------------------------
-
-
-                if (!pokemonLocations[pokemon]) {
-
-                    pokemonLocations[pokemon] = [];
-
-                }
-
-
-
-                let pokemonLocation =
-                    pokemonLocations[pokemon]
-                    .find(
-                        entry =>
-                            entry.location === locationId &&
-                            entry.method === encounter.method
-                    );
-
-
-
-                if (!pokemonLocation) {
-
-                    pokemonLocation = {
-
-                        location:
-                            locationId,
-
-                        method:
-                            encounter.method,
-
-                        displayMethod:
-                            getDisplayMethod(
-                                encounter.method
-                            ),
-
-                        slots: []
-
-                    };
-
-
-                    pokemonLocations[pokemon]
-                        .push(pokemonLocation);
-
-                }
-
-
-
-                const reverseDuplicate =
-                    pokemonLocation
-                    .slots
-                    .some(
-                        existing =>
-                            existing.encounterRate === slot.encounterRate &&
-                            existing.minLevel === slot.minLevel &&
-                            existing.maxLevel === slot.maxLevel
-                    );
-
-
-
-                if (!reverseDuplicate) {
-
-                    pokemonLocation
-                        .slots
-                        .push(slot);
-
-                }
 
             }
+
 
         }
 
 
 
+
+
         //--------------------------------
-        // Save databases
+        // Save
         //--------------------------------
 
 
@@ -347,6 +233,175 @@ class LocationBuilder {
             `Generated ${Object.keys(pokemonLocations).length} Pokémon location records`
         );
 
+
+    }
+
+
+
+
+
+    load(folder,file,defaultValue=null){
+
+
+        const location =
+            path.join(
+                folder,
+                file
+            );
+
+
+        if(!fs.existsSync(location)){
+
+            return defaultValue;
+
+        }
+
+
+        return JSON.parse(
+            fs.readFileSync(
+                location,
+                "utf8"
+            )
+        );
+
+
+    }
+
+
+
+
+
+
+    addLocationEncounter(
+        location,
+        pokemon,
+        encounter,
+        mon
+    ){
+
+
+        let entry =
+            location.encounters.find(
+                e =>
+                    e.pokemon === pokemon &&
+                    e.method === encounter.method
+            );
+
+
+
+        if(!entry){
+
+
+            entry = {
+
+
+                pokemon,
+
+
+                method:
+                    encounter.method,
+
+
+                displayMethod:
+                    getDisplayMethod(
+                        encounter.method
+                    ),
+
+
+                slots:[]
+
+
+            };
+
+
+            location.encounters.push(entry);
+
+
+        }
+
+
+
+        addSlot(
+            entry.slots,
+            encounter,
+            mon
+        );
+
+
+    }
+
+
+
+
+
+
+
+    addPokemonLocation(
+        index,
+        pokemon,
+        locationId,
+        encounter,
+        mon
+    ){
+
+
+        if(!index[pokemon]){
+
+            index[pokemon] = [];
+
+        }
+
+
+
+        let entry =
+            index[pokemon].find(
+                e =>
+                    e.location === locationId &&
+                    e.method === encounter.method
+            );
+
+
+
+        if(!entry){
+
+
+            entry = {
+
+
+                location:
+                    locationId,
+
+
+                method:
+                    encounter.method,
+
+
+                displayMethod:
+                    getDisplayMethod(
+                        encounter.method
+                    ),
+
+
+                slots:[]
+
+
+            };
+
+
+            index[pokemon].push(entry);
+
+
+        }
+
+
+
+        addSlot(
+            entry.slots,
+            encounter,
+            mon
+        );
+
+
     }
 
 
@@ -354,73 +409,156 @@ class LocationBuilder {
 
 
 
-function resolvePokemonName(species) {
+
+function addSlot(
+    slots,
+    encounter,
+    mon
+){
 
 
-    if (!species) {
+    const slot = {
+
+
+        encounterRate:
+            encounter.encounterRate,
+
+
+        minLevel:
+            mon.minLevel,
+
+
+        maxLevel:
+            mon.maxLevel
+
+
+    };
+
+
+
+    const exists =
+        slots.some(
+            s =>
+                s.encounterRate === slot.encounterRate &&
+                s.minLevel === slot.minLevel &&
+                s.maxLevel === slot.maxLevel
+        );
+
+
+
+    if(!exists){
+
+        slots.push(slot);
+
+    }
+
+
+}
+
+
+
+
+
+
+function resolvePokemonName(species){
+
+
+    if(!species){
 
         return null;
 
     }
 
 
-    if (typeof species === "string") {
+
+    //--------------------------------
+    // Generated database format
+    //--------------------------------
+
+    if(typeof species === "object") {
+
+
+        return (
+
+            species.name ||
+
+            species.constant
+                ?.replace(
+                    "SPECIES_",
+                    ""
+                )
+
+            ||
+
+            null
+
+        );
+
+
+    }
+
+
+
+    //--------------------------------
+    // Raw database format
+    //--------------------------------
+
+    if(typeof species === "string"){
+
 
         return species.replace(
             "SPECIES_",
             ""
         );
 
-    }
-
-
-    if (species.name) {
-
-        return species.name;
 
     }
+
 
 
     return null;
 
-}
-
-
-
-function getDisplayMethod(method) {
-
-
-    switch(method) {
-
-
-        case "land_mons":
-
-            return "Grass";
-
-
-        case "water_mons":
-
-            return "Surf";
-
-
-        case "fishing_mons":
-
-            return "Fishing";
-
-
-        case "rock_smash_mons":
-
-            return "Rock Smash";
-
-
-        default:
-
-            return method;
-
-    }
 
 }
 
 
 
-module.exports = LocationBuilder;
+
+
+
+function getDisplayMethod(method){
+
+
+    const methods = {
+
+
+        land_mons:
+            "Grass",
+
+
+        water_mons:
+            "Surf",
+
+
+        fishing_mons:
+            "Fishing",
+
+
+        rock_smash_mons:
+            "Rock Smash"
+
+
+    };
+
+
+    return methods[method] || method;
+
+
+}
+
+
+
+
+
+module.exports =
+    LocationBuilder;

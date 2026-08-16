@@ -23,20 +23,13 @@
 class GymRewardService {
 
 
-
     constructor() {
 
 
         this.rewards = {
 
 
-            //--------------------------------
-            // Brock
-            // Boulder Badge
-            //--------------------------------
-
             TRAINER_LEADER_BROCK: {
-
 
                 badge:
                     "BOULDER_BADGE",
@@ -46,10 +39,10 @@ class GymRewardService {
                     "TM39_ROCK_TOMB",
 
 
-                abilityUnlocks: [
+                abilityUnlocks:
+                [
 
                     {
-
                         type:
                             "HM_USAGE",
 
@@ -63,20 +56,13 @@ class GymRewardService {
 
                 ]
 
-
             },
 
 
 
 
 
-            //--------------------------------
-            // Misty
-            // Cascade Badge
-            //--------------------------------
-
             TRAINER_LEADER_MISTY: {
-
 
                 badge:
                     "CASCADE_BADGE",
@@ -86,10 +72,10 @@ class GymRewardService {
                     "TM03_WATER_PULSE",
 
 
-                abilityUnlocks: [
+                abilityUnlocks:
+                [
 
                     {
-
                         type:
                             "HM_USAGE",
 
@@ -103,22 +89,13 @@ class GymRewardService {
 
                 ]
 
-
             },
 
 
 
 
 
-
-
-            //--------------------------------
-            // Lt. Surge
-            // Thunder Badge
-            //--------------------------------
-
             TRAINER_LEADER_LT_SURGE: {
-
 
                 badge:
                     "THUNDER_BADGE",
@@ -128,10 +105,10 @@ class GymRewardService {
                     "TM34_SHOCK_WAVE",
 
 
-                abilityUnlocks: [
+                abilityUnlocks:
+                [
 
                     {
-
                         type:
                             "HM_USAGE",
 
@@ -145,22 +122,13 @@ class GymRewardService {
 
                 ]
 
-
             },
 
 
 
 
 
-
-
-            //--------------------------------
-            // Erika
-            // Rainbow Badge
-            //--------------------------------
-
             TRAINER_LEADER_ERIKA: {
-
 
                 badge:
                     "RAINBOW_BADGE",
@@ -170,10 +138,10 @@ class GymRewardService {
                     "TM19_GIGA_DRAIN",
 
 
-                abilityUnlocks: [
+                abilityUnlocks:
+                [
 
                     {
-
                         type:
                             "HM_USAGE",
 
@@ -187,22 +155,13 @@ class GymRewardService {
 
                 ]
 
-
             },
 
 
 
 
 
-
-
-            //--------------------------------
-            // Koga
-            // Soul Badge
-            //--------------------------------
-
             TRAINER_LEADER_KOGA: {
-
 
                 badge:
                     "SOUL_BADGE",
@@ -212,10 +171,10 @@ class GymRewardService {
                     "TM06_TOXIC",
 
 
-                abilityUnlocks: [
+                abilityUnlocks:
+                [
 
                     {
-
                         type:
                             "HM_USAGE",
 
@@ -229,22 +188,13 @@ class GymRewardService {
 
                 ]
 
-
             },
 
 
 
 
 
-
-
-            //--------------------------------
-            // Sabrina
-            // Marsh Badge
-            //--------------------------------
-
             TRAINER_LEADER_SABRINA: {
-
 
                 badge:
                     "MARSH_BADGE",
@@ -254,8 +204,7 @@ class GymRewardService {
                     "TM04_CALM_MIND",
 
 
-                abilityUnlocks: []
-
+                abilityUnlocks:[]
 
             },
 
@@ -263,15 +212,7 @@ class GymRewardService {
 
 
 
-
-
-            //--------------------------------
-            // Blaine
-            // Volcano Badge
-            //--------------------------------
-
             TRAINER_LEADER_BLAINE: {
-
 
                 badge:
                     "VOLCANO_BADGE",
@@ -281,8 +222,7 @@ class GymRewardService {
                     "TM38_FIRE_BLAST",
 
 
-                abilityUnlocks: []
-
+                abilityUnlocks:[]
 
             },
 
@@ -290,15 +230,7 @@ class GymRewardService {
 
 
 
-
-
-            //--------------------------------
-            // Giovanni
-            // Earth Badge
-            //--------------------------------
-
             TRAINER_LEADER_GIOVANNI: {
-
 
                 badge:
                     "EARTH_BADGE",
@@ -308,8 +240,7 @@ class GymRewardService {
                     "TM26_EARTHQUAKE",
 
 
-                abilityUnlocks: []
-
+                abilityUnlocks:[]
 
             }
 
@@ -325,17 +256,8 @@ class GymRewardService {
 
 
 
-
-
-    //--------------------------------
-    // Get reward data
-    //--------------------------------
-
-
-    getReward(
-        gymId
-    ) {
-
+    getReward(gymId)
+    {
 
         return (
 
@@ -347,7 +269,6 @@ class GymRewardService {
 
         );
 
-
     }
 
 
@@ -357,16 +278,11 @@ class GymRewardService {
 
 
 
-
-    //--------------------------------
-    // Give rewards
-    //--------------------------------
-
-
     giveRewards(
         gymId,
         trainerState
-    ) {
+    )
+    {
 
 
         const reward =
@@ -376,23 +292,17 @@ class GymRewardService {
 
 
 
-        if(
-            !reward
-        ) {
-
+        if(!reward)
+        {
 
             return {
 
-
                 success:false,
-
 
                 reason:
                     "Unknown gym"
 
-
             };
-
 
         }
 
@@ -402,22 +312,16 @@ class GymRewardService {
 
 
 
-        //--------------------------------
         // Badge
-        //--------------------------------
-
 
         if(
             reward.badge
-        ) {
-
+        )
+        {
 
             trainerState.addBadge(
-
                 reward.badge
-
             );
-
 
         }
 
@@ -427,21 +331,32 @@ class GymRewardService {
 
 
 
-        //--------------------------------
         // TM
-        //--------------------------------
-
 
         if(
             reward.tm
-        ) {
+        )
+        {
 
+            if(
+                trainerState.addItem
+            )
+            {
 
-            trainerState.addKeyItem(
+                trainerState.addItem(
+                    reward.tm
+                );
 
-                reward.tm
+            }
 
-            );
+            else
+            {
+
+                trainerState.addKeyItem(
+                    reward.tm
+                );
+
+            }
 
 
         }
@@ -452,25 +367,23 @@ class GymRewardService {
 
 
 
-        //--------------------------------
-        // Field move permissions
-        //--------------------------------
 
+        // HM field abilities
 
         for(
             const ability of reward.abilityUnlocks
-        ) {
+        )
+        {
 
 
             if(
                 ability.type === "HM_USAGE"
-            ) {
+            )
+            {
 
 
                 trainerState.addHMAbility(
-
                     ability.move
-
                 );
 
 
@@ -485,15 +398,11 @@ class GymRewardService {
 
 
 
-        //--------------------------------
-        // Mark gym defeated
-        //--------------------------------
 
+        // Mark gym defeated
 
         trainerState.completeBattle(
-
             gymId
-
         );
 
 
@@ -504,17 +413,13 @@ class GymRewardService {
 
         return {
 
-
             success:true,
-
 
             gym:
                 gymId,
 
-
             rewards:
                 reward
-
 
         };
 
@@ -528,14 +433,8 @@ class GymRewardService {
 
 
 
-    //--------------------------------
-    // Check reward exists
-    //--------------------------------
-
-
-    hasReward(
-        gymId
-    ) {
+    hasReward(gymId)
+    {
 
 
         return (
@@ -550,7 +449,6 @@ class GymRewardService {
 
 
     }
-
 
 
 }

@@ -2,17 +2,16 @@
  * Pokémon Companion
  * Progression Service
  *
- * Evaluates trainer progression rules.
+ * Evaluates progression database rules.
  *
  * Responsibilities:
- * - Check badge requirements.
- * - Check HM requirements.
- * - Check key items.
- * - Check story requirements.
  * - Load progression database.
- * - Evaluate progression unlocks.
+ * - Check requirements.
+ * - Evaluate unlocks.
+ * - Check trainer state.
  *
  * Does NOT:
+ * - Know game specific rules.
  * - Traverse maps.
  * - Parse source files.
  * - Handle obstacles.
@@ -23,7 +22,6 @@
 
 const fs =
     require("fs");
-
 
 const path =
     require("path");
@@ -43,72 +41,8 @@ class ProgressionService {
             game;
 
 
-
         this.progression =
             this.loadProgression();
-
-
-
-
-
-        this.hmRules = {
-
-
-
-            CUT: {
-
-                badge:
-                    "BOULDER_BADGE"
-
-            },
-
-
-
-            FLASH: {
-
-                badge:
-                    "BOULDER_BADGE"
-
-            },
-
-
-
-            SURF: {
-
-                badge:
-                    "SOUL_BADGE"
-
-            },
-
-
-
-            STRENGTH: {
-
-                badge:
-                    "RAINBOW_BADGE"
-
-            },
-
-
-
-            FLY: {
-
-                badge:
-                    "THUNDER_BADGE"
-
-            },
-
-
-
-            ROCK_SMASH: {
-
-                storyFlag:
-                    "ROCK_SMASH_UNLOCKED"
-
-            }
-
-
-        };
 
 
     }
@@ -117,9 +51,8 @@ class ProgressionService {
 
 
 
-
     //--------------------------------
-    // Progression Database
+    // Database
     //--------------------------------
 
 
@@ -147,7 +80,6 @@ class ProgressionService {
             !fs.existsSync(file)
         ) {
 
-
             return {};
 
         }
@@ -157,11 +89,8 @@ class ProgressionService {
         return JSON.parse(
 
             fs.readFileSync(
-
                 file,
-
                 "utf8"
-
             )
 
         );
@@ -193,6 +122,11 @@ class ProgressionService {
 
 
 
+    //--------------------------------
+    // Main Evaluation
+    //--------------------------------
+
+
     canUnlock(
         id,
         trainerState
@@ -209,14 +143,11 @@ class ProgressionService {
 
             return {
 
-
                 allowed:false,
-
 
                 reason:
                     "Unknown progression"
 
-
             };
 
 
@@ -225,20 +156,35 @@ class ProgressionService {
 
 
 
+        return this.checkRequirement(
 
-        const requirement =
-            progression.requirement;
+            progression.requirement,
+
+            trainerState
+
+        );
+
+
+    }
 
 
 
-        if(!requirement) {
+
+
+    checkRequirement(
+        requirement,
+        trainerState
+    ) {
+
+
+        if(
+            !requirement
+        ) {
 
 
             return {
 
-
                 allowed:true
-
 
             };
 
@@ -247,6 +193,51 @@ class ProgressionService {
 
 
 
+
+
+        //--------------------------------
+        // Badge requirement
+        //--------------------------------
+
+
+        if(
+            requirement.badges
+        ) {
+
+
+            if(
+                !this.hasBadges(
+
+                    requirement.badges,
+
+                    trainerState
+
+                )
+            ) {
+
+
+                return {
+
+                    allowed:false,
+
+                    reason:
+                        "Missing required badges"
+
+                };
+
+
+            }
+
+
+        }
+
+
+
+
+
+        //--------------------------------
+        // Single badge
+        //--------------------------------
 
 
         if(
@@ -267,13 +258,10 @@ class ProgressionService {
 
                 return {
 
-
                     allowed:false,
-
 
                     reason:
                         `Requires ${requirement.badge}`
-
 
                 };
 
@@ -288,19 +276,38 @@ class ProgressionService {
 
 
 
+        //--------------------------------
+        // HM
+        //--------------------------------
+
 
         if(
             requirement.hm
         ) {
 
 
-            return this.canUseHM(
+            if(
+                !this.hasHM(
 
-                requirement.hm,
+                    requirement.hm,
 
-                trainerState
+                    trainerState
 
-            );
+                )
+            ) {
+
+
+                return {
+
+                    allowed:false,
+
+                    reason:
+                        `Requires HM ${requirement.hm}`
+
+                };
+
+
+            }
 
 
         }
@@ -310,6 +317,51 @@ class ProgressionService {
 
 
 
+        //--------------------------------
+        // Key Item
+        //--------------------------------
+
+
+        if(
+            requirement.keyItem
+        ) {
+
+
+            if(
+                !this.hasKeyItem(
+
+                    requirement.keyItem,
+
+                    trainerState
+
+                )
+            ) {
+
+
+                return {
+
+                    allowed:false,
+
+                    reason:
+                        `Requires ${requirement.keyItem}`
+
+                };
+
+
+            }
+
+
+        }
+
+
+
+
+
+
+        //--------------------------------
+        // Story Flag
+        //--------------------------------
+
 
         if(
             requirement.storyFlag
@@ -317,7 +369,7 @@ class ProgressionService {
 
 
             if(
-                !this.hasStoryRequirement(
+                !this.hasStoryFlag(
 
                     requirement.storyFlag,
 
@@ -329,13 +381,10 @@ class ProgressionService {
 
                 return {
 
-
                     allowed:false,
-
 
                     reason:
                         `Requires ${requirement.storyFlag}`
-
 
                 };
 
@@ -351,9 +400,7 @@ class ProgressionService {
 
         return {
 
-
             allowed:true
-
 
         };
 
@@ -367,144 +414,63 @@ class ProgressionService {
 
 
     //--------------------------------
-    // HM Checks
+    // Badges
     //--------------------------------
 
 
-    canUseHM(
-        hm,
+    hasBadge(
+        badge,
         trainerState
     ) {
 
 
-        const rule =
-            this.hmRules[hm];
-
-
-
-        if(!rule) {
-
-
-            return {
-
-
-                allowed:false,
-
-
-                reason:
-                    "Unknown HM"
-
-
-            };
-
-
-        }
-
-
-
-
-
         if(
-            !this.hasHM(
-
-                hm,
-
-                trainerState
-
-            )
+            trainerState.hasBadge
         ) {
 
-
-            return {
-
-
-                allowed:false,
-
-
-                reason:
-                    "HM not obtained"
-
-
-            };
-
+            return trainerState.hasBadge(
+                badge
+            );
 
         }
 
 
 
+        return (
+
+            trainerState.badges
+
+            ||
+
+            []
+
+        )
+        .includes(
+            badge
+        );
 
 
-        if(
-            rule.badge
-            &&
-            !this.hasBadge(
-
-                rule.badge,
-
-                trainerState
-
-            )
-        ) {
-
-
-            return {
-
-
-                allowed:false,
-
-
-                reason:
-                    `Requires ${rule.badge}`
-
-
-            };
-
-
-        }
+    }
 
 
 
 
 
-        if(
-            rule.storyFlag
-            &&
-            !this.hasStoryRequirement(
-
-                rule.storyFlag,
-
-                trainerState
-
-            )
-        ) {
+    hasBadges(
+        badges,
+        trainerState
+    ) {
 
 
-            return {
+        return badges.every(
 
+            badge =>
+                this.hasBadge(
+                    badge,
+                    trainerState
+                )
 
-                allowed:false,
-
-
-                reason:
-                    `Requires ${rule.storyFlag}`
-
-
-            };
-
-
-        }
-
-
-
-
-
-        return {
-
-
-            allowed:true
-
-
-        };
+        );
 
 
     }
@@ -515,9 +481,8 @@ class ProgressionService {
 
 
 
-
     //--------------------------------
-    // HM Ownership
+    // HM
     //--------------------------------
 
 
@@ -563,99 +528,8 @@ class ProgressionService {
 
 
 
-
     //--------------------------------
-    // Badge Checks
-    //--------------------------------
-
-
-    hasBadge(
-        badge,
-        trainerState
-    ) {
-
-
-        if(
-            trainerState.hasBadge
-        ) {
-
-
-            return trainerState.hasBadge(
-                badge
-            );
-
-
-        }
-
-
-
-        return (
-
-            trainerState.badges
-
-            ||
-
-            []
-
-        )
-        .includes(
-            badge
-        );
-
-
-    }
-
-
-
-
-
-
-
-    hasBadges(
-        badges,
-        trainerState
-    ) {
-
-
-        for(
-            const badge of badges
-        ) {
-
-
-            if(
-                !this.hasBadge(
-
-                    badge,
-
-                    trainerState
-
-                )
-            ) {
-
-
-                return false;
-
-
-            }
-
-
-        }
-
-
-
-        return true;
-
-
-    }
-
-
-
-
-
-
-
-    //--------------------------------
-    // Key Items
+    // Items
     //--------------------------------
 
 
@@ -701,13 +575,12 @@ class ProgressionService {
 
 
 
-
     //--------------------------------
-    // Story Checks
+    // Story
     //--------------------------------
 
 
-    hasStoryRequirement(
+    hasStoryFlag(
         flag,
         trainerState
     ) {
@@ -744,168 +617,6 @@ class ProgressionService {
     }
 
 
-
-
-
-    isBeforeEvent(
-        flag,
-        trainerState
-    ) {
-
-
-        return !this.hasStoryRequirement(
-
-            flag,
-
-            trainerState
-
-        );
-
-
-    }
-
-
-
-
-
-
-
-    //--------------------------------
-    // Location Progression
-    //--------------------------------
-
-
-    canAccessLocation(
-        location,
-        trainerState
-    ) {
-
-
-
-        switch(location) {
-
-
-
-            case "MAP_SSANNE_EXTERIOR":
-
-
-                if(
-                    !this.hasKeyItem(
-
-                        "SS_TICKET",
-
-                        trainerState
-
-                    )
-                ) {
-
-
-                    return {
-
-
-                        allowed:false,
-
-
-                        reason:
-                            "Requires SS_TICKET"
-
-
-                    };
-
-
-                }
-
-
-
-
-
-                if(
-                    this.hasStoryRequirement(
-
-                        "SS_ANNE_DEPARTED",
-
-                        trainerState
-
-                    )
-                ) {
-
-
-                    return {
-
-
-                        allowed:false,
-
-
-                        reason:
-                            "SS Anne has departed"
-
-
-                    };
-
-
-                }
-
-
-                break;
-
-
-
-
-
-
-            case "MAP_VICTORY_ROAD_1F":
-
-
-                if(
-
-                    (
-                        trainerState.badges
-
-                        ||
-
-                        []
-
-                    )
-                    .length < 8
-
-                ) {
-
-
-                    return {
-
-
-                        allowed:false,
-
-
-                        reason:
-                            "Requires all 8 badges"
-
-
-                    };
-
-
-                }
-
-
-                break;
-
-
-        }
-
-
-
-
-
-        return {
-
-
-            allowed:true
-
-
-        };
-
-
-    }
 
 
 

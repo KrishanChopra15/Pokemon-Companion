@@ -20,6 +20,7 @@
 class LocationAccessService {
 
 
+
     constructor(
         locationGraphService,
         fieldObstacleService,
@@ -58,10 +59,6 @@ class LocationAccessService {
 
 
 
-        //--------------------------------
-        // Physical graph reachability
-        //--------------------------------
-
         const reachable =
             this.locationGraph
                 .isReachable(
@@ -73,10 +70,6 @@ class LocationAccessService {
 
 
 
-        //--------------------------------
-        // Gate checks
-        //--------------------------------
-
         const gate =
             this.checkLocationGate(
                 location,
@@ -85,10 +78,6 @@ class LocationAccessService {
 
 
 
-
-        //--------------------------------
-        // Progression checks
-        //--------------------------------
 
         const progression =
             this.checkProgression(
@@ -99,10 +88,6 @@ class LocationAccessService {
 
 
 
-        //--------------------------------
-        // Internal obstacles
-        //--------------------------------
-
         const obstacles =
             this.getObstacleStatus(
                 location,
@@ -112,33 +97,40 @@ class LocationAccessService {
 
 
 
-        //--------------------------------
-        // Final accessibility
-        //--------------------------------
-
         const accessible =
-            reachable
-            &&
-            gate.allowed
-            &&
-            progression.allowed;
 
+            reachable
+
+            &&
+
+            gate.allowed
+
+            &&
+
+            progression.allowed;
 
 
 
         return {
 
+
             location,
+
 
             reachable,
 
+
             accessible,
+
 
             gate,
 
+
             progression,
 
+
             obstacles
+
 
         };
 
@@ -147,6 +139,13 @@ class LocationAccessService {
 
 
 
+
+
+
+
+    //--------------------------------
+    // Gates
+    //--------------------------------
 
 
     checkLocationGate(
@@ -162,7 +161,9 @@ class LocationAccessService {
 
             return {
 
-                allowed:true
+                allowed:true,
+
+                reason:null
 
             };
 
@@ -184,6 +185,13 @@ class LocationAccessService {
 
 
 
+
+
+    //--------------------------------
+    // Progression
+    //--------------------------------
+
+
     checkProgression(
         location,
         playerState
@@ -197,9 +205,12 @@ class LocationAccessService {
 
             return {
 
+
                 allowed:true,
 
+
                 reason:null
+
 
             };
 
@@ -208,17 +219,94 @@ class LocationAccessService {
 
 
 
-        return this.progression
-            .canAccessLocation(
-                location,
-                playerState
-            );
+        const rules =
+            this.progression
+                .getLocationProgression(
+                    location
+                );
+
+
+
+        if(
+            !rules ||
+            rules.length === 0
+        ) {
+
+
+            return {
+
+
+                allowed:true,
+
+
+                reason:null
+
+
+            };
+
+
+        }
+
+
+
+
+
+        for(
+            const rule of rules
+        ) {
+
+
+
+            const result =
+                this.progression
+                    .canUnlock(
+                        rule,
+                        playerState
+                    );
+
+
+
+            if(
+                result.allowed
+            ) {
+
+
+                return result;
+
+
+            }
+
+
+        }
+
+
+
+
+
+        return {
+
+
+            allowed:false,
+
+
+            reason:
+                "Progression requirement not met"
+
+
+        };
 
 
     }
 
 
 
+
+
+
+
+    //--------------------------------
+    // Obstacles
+    //--------------------------------
 
 
     getObstacleStatus(
@@ -232,6 +320,7 @@ class LocationAccessService {
                 location
             )
             .map(
+
                 obstacle => {
 
 
@@ -246,6 +335,7 @@ class LocationAccessService {
 
 
                     return {
+
 
                         type:
                             obstacle.type,
@@ -273,10 +363,13 @@ class LocationAccessService {
 
 
                 }
+
             );
 
 
     }
+
+
 
 
 
@@ -293,6 +386,7 @@ class LocationAccessService {
                 location
             )
             .filter(
+
                 obstacle => {
 
 
@@ -305,17 +399,22 @@ class LocationAccessService {
                             );
 
 
+
                     return !result.clearable;
 
 
                 }
+
             );
 
 
     }
 
 
+
 }
 
 
-module.exports = LocationAccessService;
+
+module.exports =
+    LocationAccessService;

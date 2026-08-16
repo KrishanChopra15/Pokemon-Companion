@@ -6,6 +6,7 @@
  *
  * Responsibilities:
  * - Load progression database.
+ * - Find progression rules.
  * - Check requirements.
  * - Evaluate unlocks.
  * - Check trainer state.
@@ -51,6 +52,8 @@ class ProgressionService {
 
 
 
+
+
     //--------------------------------
     // Database
     //--------------------------------
@@ -80,7 +83,9 @@ class ProgressionService {
             !fs.existsSync(file)
         ) {
 
+
             return {};
+
 
         }
 
@@ -89,14 +94,19 @@ class ProgressionService {
         return JSON.parse(
 
             fs.readFileSync(
+
                 file,
+
                 "utf8"
+
             )
 
         );
 
 
     }
+
+
 
 
 
@@ -122,6 +132,53 @@ class ProgressionService {
 
 
 
+    getAllProgression() {
+
+
+        return this.progression;
+
+
+    }
+
+
+
+
+
+    /**
+     * Get progression IDs connected
+     * to a location.
+     *
+     * @param {string} location
+     * @returns {Array}
+     */
+    getLocationProgression(
+        location
+    ) {
+
+
+        return Object.keys(
+            this.progression
+        )
+        .filter(
+
+            id =>
+
+                this.progression[id]
+                    .location === location
+
+        );
+
+
+    }
+
+
+
+
+
+
+
+
+
     //--------------------------------
     // Main Evaluation
     //--------------------------------
@@ -138,20 +195,26 @@ class ProgressionService {
 
 
 
-        if(!progression) {
+        if(
+            !progression
+        ) {
 
 
             return {
 
+
                 allowed:false,
+
 
                 reason:
                     "Unknown progression"
+
 
             };
 
 
         }
+
 
 
 
@@ -171,6 +234,8 @@ class ProgressionService {
 
 
 
+
+
     checkRequirement(
         requirement,
         trainerState
@@ -184,7 +249,9 @@ class ProgressionService {
 
             return {
 
+
                 allowed:true
+
 
             };
 
@@ -195,8 +262,10 @@ class ProgressionService {
 
 
 
+
+
         //--------------------------------
-        // Badge requirement
+        // Multiple badges
         //--------------------------------
 
 
@@ -218,10 +287,13 @@ class ProgressionService {
 
                 return {
 
+
                     allowed:false,
+
 
                     reason:
                         "Missing required badges"
+
 
                 };
 
@@ -230,6 +302,8 @@ class ProgressionService {
 
 
         }
+
+
 
 
 
@@ -258,10 +332,13 @@ class ProgressionService {
 
                 return {
 
+
                     allowed:false,
+
 
                     reason:
                         `Requires ${requirement.badge}`
+
 
                 };
 
@@ -270,6 +347,8 @@ class ProgressionService {
 
 
         }
+
+
 
 
 
@@ -299,10 +378,13 @@ class ProgressionService {
 
                 return {
 
+
                     allowed:false,
+
 
                     reason:
                         `Requires HM ${requirement.hm}`
+
 
                 };
 
@@ -311,6 +393,8 @@ class ProgressionService {
 
 
         }
+
+
 
 
 
@@ -340,10 +424,13 @@ class ProgressionService {
 
                 return {
 
+
                     allowed:false,
+
 
                     reason:
                         `Requires ${requirement.keyItem}`
+
 
                 };
 
@@ -352,6 +439,8 @@ class ProgressionService {
 
 
         }
+
+
 
 
 
@@ -381,10 +470,13 @@ class ProgressionService {
 
                 return {
 
+
                     allowed:false,
+
 
                     reason:
                         `Requires ${requirement.storyFlag}`
+
 
                 };
 
@@ -400,12 +492,16 @@ class ProgressionService {
 
         return {
 
+
             allowed:true
+
 
         };
 
 
     }
+
+
 
 
 
@@ -428,9 +524,11 @@ class ProgressionService {
             trainerState.hasBadge
         ) {
 
+
             return trainerState.hasBadge(
                 badge
             );
+
 
         }
 
@@ -456,6 +554,7 @@ class ProgressionService {
 
 
 
+
     hasBadges(
         badges,
         trainerState
@@ -465,6 +564,7 @@ class ProgressionService {
         return badges.every(
 
             badge =>
+
                 this.hasBadge(
                     badge,
                     trainerState
@@ -474,6 +574,8 @@ class ProgressionService {
 
 
     }
+
+
 
 
 
@@ -528,6 +630,8 @@ class ProgressionService {
 
 
 
+
+
     //--------------------------------
     // Items
     //--------------------------------
@@ -575,8 +679,10 @@ class ProgressionService {
 
 
 
+
+
     //--------------------------------
-    // Story
+    // Story Flags
     //--------------------------------
 
 

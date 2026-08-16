@@ -6,7 +6,8 @@
  *
  * Responsibilities:
  * - Store badges.
- * - Store HM abilities.
+ * - Store HM items.
+ * - Store HM usage permissions.
  * - Store key items.
  * - Store story flags.
  * - Store inventory items.
@@ -57,8 +58,23 @@ class TrainerState {
             data.badges || [];
 
 
+
+        //--------------------------------
+        // HM Items
+        //--------------------------------
+
         this.hms =
             data.hms || [];
+
+
+
+        //--------------------------------
+        // HM usage permissions
+        //--------------------------------
+
+        this.hmAbilities =
+            data.hmAbilities || [];
+
 
 
         this.keyItems =
@@ -237,7 +253,7 @@ class TrainerState {
 
 
     //--------------------------------
-    // HM abilities
+    // HM Items
     //--------------------------------
 
 
@@ -264,6 +280,46 @@ class TrainerState {
 
         return this.hms.includes(
             hm
+        );
+
+    }
+
+
+
+
+
+
+
+    //--------------------------------
+    // HM Usage Permissions
+    //--------------------------------
+
+
+    addHMAbility(move)
+    {
+
+        if(
+            !this.hasHMAbility(move)
+        )
+        {
+
+            this.hmAbilities.push(
+                move
+            );
+
+        }
+
+    }
+
+
+
+
+
+    hasHMAbility(move)
+    {
+
+        return this.hmAbilities.includes(
+            move
         );
 
     }
@@ -599,9 +655,12 @@ class TrainerState {
         this.eventStates[event] =
         {
 
-            state:"completed",
+            state:
+                "completed",
 
-            completed:true
+
+            completed:
+                true
 
         };
 
@@ -688,6 +747,10 @@ class TrainerState {
 
             hms:
                 this.hms,
+
+
+            hmAbilities:
+                this.hmAbilities,
 
 
             keyItems:

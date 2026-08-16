@@ -54,6 +54,7 @@ console.log(
 
 
 
+
 console.log();
 
 console.log(
@@ -63,11 +64,15 @@ console.log(
 
 console.log(
     JSON.stringify(
+
         obstacles.getObstacles(
             "MAP_PEWTER_CITY"
         ),
+
         null,
+
         4
+
     )
 );
 
@@ -86,13 +91,18 @@ console.log(
 
 console.log(
     JSON.stringify(
+
         obstacles.getObstacles(
             "MAP_ROUTE10"
         ),
+
         null,
+
         4
+
     )
 );
+
 
 
 
@@ -108,10 +118,12 @@ console.log(
 
 
 console.log(
+
     obstacles.hasObstacle(
         "MAP_PEWTER_CITY",
         "CUT"
     )
+
 );
 
 
@@ -120,9 +132,12 @@ console.log(
 
 
 
+
+
 //--------------------------------
-// No CUT
+// No CUT ability
 //--------------------------------
+
 
 const noCutState =
     new TrainerState();
@@ -134,16 +149,22 @@ const noCutState =
 console.log();
 
 console.log(
-    "=== Can clear Pewter CUT without CUT ==="
+    "=== Can clear Pewter CUT without ability ==="
 );
 
 
 console.log(
+
     obstacles.canClearObstacleType(
+
         "MAP_PEWTER_CITY",
+
         "CUT",
+
         noCutState
+
     )
+
 );
 
 
@@ -152,16 +173,20 @@ console.log(
 
 
 
+
+
 //--------------------------------
-// CUT without badge
+// Own HM item only
 //--------------------------------
 
-const cutNoBadgeState =
+
+const hmOnlyState =
     new TrainerState();
 
 
-cutNoBadgeState.addHM(
-    "CUT"
+
+hmOnlyState.addHM(
+    "HM01_CUT"
 );
 
 
@@ -171,16 +196,22 @@ cutNoBadgeState.addHM(
 console.log();
 
 console.log(
-    "=== Can clear Pewter CUT with CUT but no Boulder Badge ==="
+    "=== Has HM01 but no CUT field ability ==="
 );
 
 
 console.log(
+
     obstacles.canClearObstacleType(
+
         "MAP_PEWTER_CITY",
+
         "CUT",
-        cutNoBadgeState
+
+        hmOnlyState
+
     )
+
 );
 
 
@@ -189,17 +220,22 @@ console.log(
 
 
 
+
+
 //--------------------------------
-// CUT with badge
+// CUT ability unlocked
 //--------------------------------
+
 
 const cutState =
     new TrainerState();
 
 
+
 cutState.addHM(
-    "CUT"
+    "HM01_CUT"
 );
+
 
 
 cutState.addBadge(
@@ -208,22 +244,36 @@ cutState.addBadge(
 
 
 
+cutState.addHMAbility(
+    "CUT"
+);
+
+
+
 
 
 console.log();
 
 console.log(
-    "=== Can clear Pewter CUT with CUT and Boulder Badge ==="
+    "=== Has CUT field ability ==="
 );
 
 
 console.log(
+
     obstacles.canClearObstacleType(
+
         "MAP_PEWTER_CITY",
+
         "CUT",
+
         cutState
+
     )
+
 );
+
+
 
 
 
@@ -235,19 +285,26 @@ console.log(
 // Rock Smash
 //--------------------------------
 
+
 console.log();
 
 console.log(
-    "=== Rock Smash without HM ==="
+    "=== Rock Smash without ability ==="
 );
 
 
 console.log(
+
     obstacles.canClearObstacleType(
+
         "MAP_ROCK_TUNNEL_B1F",
+
         "ROCK_SMASH",
+
         noCutState
+
     )
+
 );
 
 
@@ -260,13 +317,21 @@ const rockSmashState =
     new TrainerState();
 
 
+
 rockSmashState.addHM(
-    "ROCK_SMASH"
+    "HM06_ROCK_SMASH"
 );
+
 
 
 rockSmashState.addBadge(
     "BOULDER_BADGE"
+);
+
+
+
+rockSmashState.addHMAbility(
+    "ROCK_SMASH"
 );
 
 
@@ -276,17 +341,24 @@ rockSmashState.addBadge(
 console.log();
 
 console.log(
-    "=== Rock Smash with HM ==="
+    "=== Rock Smash with ability ==="
 );
 
 
 console.log(
+
     obstacles.canClearObstacleType(
+
         "MAP_ROCK_TUNNEL_B1F",
+
         "ROCK_SMASH",
+
         rockSmashState
+
     )
+
 );
+
 
 
 
@@ -298,6 +370,7 @@ console.log(
 // Direct obstacle object
 //--------------------------------
 
+
 console.log();
 
 console.log(
@@ -306,11 +379,29 @@ console.log(
 
 
 console.log(
+
     obstacles.canClearObstacle(
+
         "MAP_ROUTE10",
+
         {
             type:"CUT"
         },
+
         cutState
+
     )
+
+);
+
+
+
+
+
+
+
+console.log();
+
+console.log(
+    "Field obstacle tests completed."
 );

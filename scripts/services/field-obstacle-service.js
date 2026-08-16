@@ -18,55 +18,94 @@
 
 "use strict";
 
-const fs = require("fs");
-const path = require("path");
+
+const fs =
+    require("fs");
+
+
+const path =
+    require("path");
+
 
 
 class FieldObstacleService {
 
 
-    constructor(game, progressionService = null) {
+
+    constructor(
+        game,
+        progressionService = null
+    ) {
+
 
 
         const file =
             path.join(
+
                 __dirname,
+
                 "../../database/raw",
+
                 game,
+
                 "field-obstacles.json"
+
             );
+
 
 
         this.obstacles =
             JSON.parse(
+
                 fs.readFileSync(
+
                     file,
+
                     "utf8"
+
                 )
+
             );
+
 
 
         this.progression =
             progressionService;
 
 
+
     }
 
 
 
 
 
-    getObstacles(location) {
+
+
+    //--------------------------------
+    // Database access
+    //--------------------------------
+
+
+    getObstacles(
+        location
+    ) {
 
 
         return (
+
             this.obstacles[location]
+
             ||
+
             []
+
         );
 
 
     }
+
+
 
 
 
@@ -81,8 +120,11 @@ class FieldObstacleService {
         return this
             .getObstacles(location)
             .some(
+
                 obstacle =>
+
                     obstacle.type === type
+
             );
 
 
@@ -92,16 +134,14 @@ class FieldObstacleService {
 
 
 
-    /**
-     * Checks if obstacle can be cleared.
-     *
-     * Requires:
-     *
-     * HM
-     * +
-     * Badge permission
-     *
-     */
+
+
+
+    //--------------------------------
+    // Clear obstacle
+    //--------------------------------
+
+
     canClearObstacle(
         location,
         obstacle,
@@ -109,10 +149,18 @@ class FieldObstacleService {
     ) {
 
 
+
         const required =
+
             typeof obstacle === "string"
-                ? obstacle
-                : obstacle?.type;
+
+            ?
+
+            obstacle
+
+            :
+
+            obstacle?.type;
 
 
 
@@ -127,15 +175,25 @@ class FieldObstacleService {
 
             };
 
+
         }
 
 
 
+
+
+
         const exists =
+
             this.hasObstacle(
+
                 location,
+
                 required
+
             );
+
+
 
 
 
@@ -150,34 +208,44 @@ class FieldObstacleService {
 
             };
 
+
         }
 
 
 
 
+
+
+
         //--------------------------------
-        // Use progression rules
+        // Field ability check
         //--------------------------------
 
-        if(this.progression)
+
+        if(
+            playerState.hasHMAbility
+        )
         {
 
 
-            const result =
-                this.progression
-                    .canUseHM(
-                        required,
-                        playerState
-                    );
+            const allowed =
+
+                playerState.hasHMAbility(
+
+                    required
+
+                );
 
 
 
             return {
 
+
                 exists:true,
 
+
                 clearable:
-                    result.allowed,
+                    allowed,
 
 
                 requirement:
@@ -185,7 +253,18 @@ class FieldObstacleService {
 
 
                 reason:
-                    result.reason || null
+
+                    allowed
+
+                    ?
+
+                    null
+
+                    :
+
+                    `Requires ${required} field ability`
+
+
 
             };
 
@@ -195,36 +274,55 @@ class FieldObstacleService {
 
 
 
+
+
+
+
         //--------------------------------
         // Fallback
         //--------------------------------
 
-        const hms =
-            playerState.hms
+
+        const abilities =
+
+            playerState.hmAbilities
+
             ||
-            playerState.moves
-            ||
+
             [];
+
 
 
 
         return {
 
+
             exists:true,
 
+
             clearable:
-                hms.includes(
+
+                abilities.includes(
+
                     required
+
                 ),
+
 
 
             requirement:
                 required
 
+
+
         };
 
 
+
     }
+
+
+
 
 
 
@@ -238,9 +336,13 @@ class FieldObstacleService {
 
 
         return this.canClearObstacle(
+
             location,
+
             type,
+
             playerState
+
         );
 
 
@@ -250,6 +352,14 @@ class FieldObstacleService {
 
 
 
+
+
+
+    //--------------------------------
+    // Blocked obstacles
+    //--------------------------------
+
+
     getBlockedObstacles(
         location,
         playerState = {}
@@ -257,17 +367,30 @@ class FieldObstacleService {
 
 
         return this
+
             .getObstacles(
+
                 location
+
             )
+
             .filter(
+
                 obstacle =>
+
+
                     !this.canClearObstacle(
+
                         location,
+
                         obstacle,
+
                         playerState
+
                     )
                     .clearable
+
+
             );
 
 
@@ -277,7 +400,15 @@ class FieldObstacleService {
 
 
 
-    getAllObstacles() {
+
+
+    //--------------------------------
+    // Debug
+    //--------------------------------
+
+
+    getAllObstacles()
+    {
 
 
         return this.obstacles;
@@ -286,7 +417,10 @@ class FieldObstacleService {
     }
 
 
+
 }
 
 
-module.exports = FieldObstacleService;
+
+module.exports =
+    FieldObstacleService;

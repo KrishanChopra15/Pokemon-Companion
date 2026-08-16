@@ -52,6 +52,9 @@ const TrainerPartyGenerator =
 const LocationGenerator =
     require("../generators/raw/location-generator");
 
+const ProgressionGenerator =
+    require("../generators/raw/progression-generator");
+
 
 //----------------------------------------
 // Reference Generators
@@ -103,6 +106,21 @@ const MoveLearnerGenerator =
 
 
 //----------------------------------------
+// Progression Rules
+//----------------------------------------
+
+const ProgressionRules = {
+
+
+    firered:
+        require("../rules/firered-progression-rules")
+
+
+};
+
+
+
+//----------------------------------------
 // Builders
 //----------------------------------------
 
@@ -127,6 +145,10 @@ const LocationBuilder =
 const DialogueBuilder =
     require("./dialogue-builder");
 
+const ProgressionBuilder =
+    require("./progression-builder");
+
+
 
 
 
@@ -140,11 +162,14 @@ class BuildManager {
     ) {
 
 
+
         console.log();
         console.log("========================================");
         console.log("Build Manager");
         console.log("========================================");
         console.log();
+
+
 
 
 
@@ -186,21 +211,15 @@ class BuildManager {
 
 
 
-        //----------------------------------------
-        // Encounter database
-        //----------------------------------------
-
-        if (
+        if(
             data.encounters
-        ) {
-
+        ){
 
             new PokemonEncounterGenerator()
                 .generate(
                     data.encounters,
                     game
                 );
-
 
         }
 
@@ -238,6 +257,32 @@ class BuildManager {
             .generate(
                 data.locations
             );
+
+
+
+
+
+        //----------------------------------------
+        // Progression raw database
+        //----------------------------------------
+
+        const rules =
+            ProgressionRules[game];
+
+
+
+        if(
+            rules
+        ){
+
+            new ProgressionGenerator()
+                .generate(
+                    rules,
+                    game
+                );
+
+        }
+
 
 
 
@@ -317,6 +362,7 @@ class BuildManager {
 
 
 
+
         //----------------------------------------
         // Generated databases
         //----------------------------------------
@@ -343,16 +389,14 @@ class BuildManager {
 
 
 
-        if (
+        if(
             data.encounters
-        ) {
-
+        ){
 
             new PokemonEncounterBuilder()
                 .build(
                     game
                 );
-
 
         }
 
@@ -386,16 +430,29 @@ class BuildManager {
 
 
 
+        if(
+            rules
+        ){
+
+            new ProgressionBuilder()
+                .build(
+                    game
+                );
+
+        }
+
+
+
+
 
 
         //----------------------------------------
         // Dialogue database
         //----------------------------------------
 
-        if (
+        if(
             data.dialogues
-        ) {
-
+        ){
 
             new DialogueBuilder()
                 .build(
@@ -403,8 +460,8 @@ class BuildManager {
                     game
                 );
 
-
         }
+
 
 
 
@@ -425,4 +482,6 @@ class BuildManager {
 }
 
 
-module.exports = BuildManager;
+
+module.exports =
+    BuildManager;

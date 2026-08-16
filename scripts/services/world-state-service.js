@@ -9,6 +9,7 @@
  * - Check object visibility.
  * - Check completed events.
  * - Check story flag conditions.
+ * - Check progression requirements.
  *
  * Does NOT:
  * - Execute events.
@@ -18,7 +19,28 @@
 "use strict";
 
 
+const ProgressionService =
+    require("./progression-service");
+
+
+
 class WorldStateService {
+
+
+
+    constructor(game = "firered") {
+
+
+        this.progressionService =
+            new ProgressionService(
+                game
+            );
+
+
+    }
+
+
+
 
 
 
@@ -30,8 +52,29 @@ class WorldStateService {
     canShowEvent(
         event,
         trainerState
-    )
-    {
+    ) {
+
+
+
+        if(
+            !event
+        ) {
+
+
+            return {
+
+                visible:false,
+
+                reason:
+                    "No event data"
+
+            };
+
+
+        }
+
+
+
 
 
         //--------------------------------
@@ -45,8 +88,8 @@ class WorldStateService {
             trainerState.hasCompletedEvent(
                 event.id
             )
-        )
-        {
+        ) {
+
 
             return {
 
@@ -57,15 +100,11 @@ class WorldStateService {
 
             };
 
+
         }
 
 
 
-
-
-        //--------------------------------
-        // Story flag requirements
-        //--------------------------------
 
 
         const conditions =
@@ -75,28 +114,43 @@ class WorldStateService {
 
 
 
+
+
+
+
+        //--------------------------------
+        // Required story flags
+        //--------------------------------
+
+
         for(
-            const flag of conditions.requireStoryFlags || []
-        )
-        {
+            const flag of
+            conditions.requireStoryFlags || []
+        ) {
+
 
             if(
                 !trainerState.hasStoryFlag(
                     flag
                 )
-            )
-            {
+            ) {
+
 
                 return {
 
+
                     visible:false,
+
 
                     reason:
                         `Missing ${flag}`
 
+
                 };
 
+
             }
+
 
         }
 
@@ -104,35 +158,94 @@ class WorldStateService {
 
 
 
+
+
         //--------------------------------
-        // Excluded flags
+        // Excluded story flags
         //--------------------------------
 
 
         for(
-            const flag of conditions.excludeStoryFlags || []
-        )
-        {
+            const flag of
+            conditions.excludeStoryFlags || []
+        ) {
+
 
             if(
                 trainerState.hasStoryFlag(
                     flag
                 )
-            )
-            {
+            ) {
+
 
                 return {
 
+
                     visible:false,
+
 
                     reason:
                         `Blocked by ${flag}`
 
+
                 };
+
 
             }
 
+
         }
+
+
+
+
+
+
+
+        //--------------------------------
+        // Progression requirement
+        //--------------------------------
+
+
+        if(
+            conditions.progression
+        ) {
+
+
+            const result =
+                this.progressionService.canUnlock(
+
+                    conditions.progression,
+
+                    trainerState
+
+                );
+
+
+
+            if(
+                !result.allowed
+            ) {
+
+
+                return {
+
+
+                    visible:false,
+
+
+                    reason:
+                        result.reason
+
+
+                };
+
+
+            }
+
+
+        }
+
 
 
 
@@ -140,12 +253,18 @@ class WorldStateService {
 
         return {
 
+
             visible:true
+
 
         };
 
 
     }
+
+
+
+
 
 
 
@@ -159,25 +278,31 @@ class WorldStateService {
     canShowNPC(
         npc,
         trainerState
-    )
-    {
+    ) {
 
 
         if(
             !npc
-        )
-        {
+        ) {
+
 
             return {
 
+
                 visible:false,
+
 
                 reason:
                     "No NPC data"
 
+
             };
 
+
         }
+
+
+
 
 
 
@@ -185,32 +310,65 @@ class WorldStateService {
             npc.hiddenAfterEvent
             &&
             trainerState.hasCompletedEvent(
+
                 npc.hiddenAfterEvent
+
             )
-        )
-        {
+        ) {
+
 
             return {
 
+
                 visible:false,
+
 
                 reason:
                     "NPC removed after event"
 
+
             };
+
 
         }
 
 
 
+
+
+        if(
+            npc.conditions
+        ) {
+
+
+            return this.checkConditions(
+
+                npc.conditions,
+
+                trainerState
+
+            );
+
+
+        }
+
+
+
+
+
         return {
 
+
             visible:true
+
 
         };
 
 
     }
+
+
+
 
 
 
@@ -224,23 +382,26 @@ class WorldStateService {
     canShowObject(
         object,
         trainerState
-    )
-    {
+    ) {
 
 
         if(
             !object
-        )
-        {
+        ) {
+
 
             return {
 
+
                 visible:false,
+
 
                 reason:
                     "No object data"
 
+
             };
+
 
         }
 
@@ -252,19 +413,45 @@ class WorldStateService {
             object.hiddenAfterEvent
             &&
             trainerState.hasCompletedEvent(
+
                 object.hiddenAfterEvent
+
             )
-        )
-        {
+        ) {
+
 
             return {
 
+
                 visible:false,
+
 
                 reason:
                     "Object removed after event"
 
+
             };
+
+
+        }
+
+
+
+
+
+        if(
+            object.conditions
+        ) {
+
+
+            return this.checkConditions(
+
+                object.conditions,
+
+                trainerState
+
+            );
+
 
         }
 
@@ -274,12 +461,119 @@ class WorldStateService {
 
         return {
 
+
             visible:true
+
 
         };
 
 
     }
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Generic condition checker
+    //--------------------------------
+
+
+    checkConditions(
+        conditions,
+        trainerState
+    ) {
+
+
+
+        for(
+            const flag of
+            conditions.requireStoryFlags || []
+        ) {
+
+
+            if(
+                !trainerState.hasStoryFlag(
+                    flag
+                )
+            ) {
+
+
+                return {
+
+
+                    visible:false,
+
+
+                    reason:
+                        `Missing ${flag}`
+
+
+                };
+
+
+            }
+
+
+        }
+
+
+
+
+
+
+        for(
+            const flag of
+            conditions.excludeStoryFlags || []
+        ) {
+
+
+            if(
+                trainerState.hasStoryFlag(
+                    flag
+                )
+            ) {
+
+
+                return {
+
+
+                    visible:false,
+
+
+                    reason:
+                        `Blocked by ${flag}`
+
+
+                };
+
+
+            }
+
+
+        }
+
+
+
+
+
+
+        return {
+
+
+            visible:true
+
+
+        };
+
+
+    }
+
+
+
 
 
 
@@ -292,28 +586,35 @@ class WorldStateService {
 
     getWorldState(
         trainerState
-    )
-    {
+    ) {
 
 
         return {
 
+
             completedEvents:
-                trainerState.completedEvents,
+
+                trainerState.completedEvents || [],
+
 
 
             storyFlags:
-                trainerState.storyFlags,
+
+                trainerState.storyFlags || [],
+
 
 
             eventStates:
-                trainerState.eventStates
+
+                trainerState.eventStates || {}
+
 
 
         };
 
 
     }
+
 
 
 }

@@ -9,6 +9,8 @@
  * - Check HM requirements.
  * - Check key items.
  * - Check story requirements.
+ * - Load progression database.
+ * - Evaluate progression unlocks.
  *
  * Does NOT:
  * - Traverse maps.
@@ -19,13 +21,38 @@
 "use strict";
 
 
+const fs =
+    require("fs");
+
+
+const path =
+    require("path");
+
+
+
 class ProgressionService {
 
 
-    constructor() {
+
+    constructor(
+        game = "firered"
+    ) {
+
+
+        this.game =
+            game;
+
+
+
+        this.progression =
+            this.loadProgression();
+
+
+
 
 
         this.hmRules = {
+
 
 
             CUT: {
@@ -36,12 +63,14 @@ class ProgressionService {
             },
 
 
+
             FLASH: {
 
                 badge:
                     "BOULDER_BADGE"
 
             },
+
 
 
             SURF: {
@@ -52,12 +81,14 @@ class ProgressionService {
             },
 
 
+
             STRENGTH: {
 
                 badge:
                     "RAINBOW_BADGE"
 
             },
+
 
 
             FLY: {
@@ -68,9 +99,6 @@ class ProgressionService {
             },
 
 
-            //--------------------------------
-            // Sevii Islands mechanic
-            //--------------------------------
 
             ROCK_SMASH: {
 
@@ -89,8 +117,257 @@ class ProgressionService {
 
 
 
+
     //--------------------------------
-    // HM checks
+    // Progression Database
+    //--------------------------------
+
+
+    loadProgression() {
+
+
+        const file =
+            path.join(
+
+                process.cwd(),
+
+                "database",
+
+                "generated",
+
+                this.game,
+
+                "progression.json"
+
+            );
+
+
+
+        if(
+            !fs.existsSync(file)
+        ) {
+
+
+            return {};
+
+        }
+
+
+
+        return JSON.parse(
+
+            fs.readFileSync(
+
+                file,
+
+                "utf8"
+
+            )
+
+        );
+
+
+    }
+
+
+
+
+
+    getProgression(id) {
+
+
+        return (
+
+            this.progression[id]
+
+            ||
+
+            null
+
+        );
+
+
+    }
+
+
+
+
+
+    canUnlock(
+        id,
+        trainerState
+    ) {
+
+
+        const progression =
+            this.getProgression(id);
+
+
+
+        if(!progression) {
+
+
+            return {
+
+
+                allowed:false,
+
+
+                reason:
+                    "Unknown progression"
+
+
+            };
+
+
+        }
+
+
+
+
+
+        const requirement =
+            progression.requirement;
+
+
+
+        if(!requirement) {
+
+
+            return {
+
+
+                allowed:true
+
+
+            };
+
+
+        }
+
+
+
+
+
+        if(
+            requirement.badge
+        ) {
+
+
+            if(
+                !this.hasBadge(
+
+                    requirement.badge,
+
+                    trainerState
+
+                )
+            ) {
+
+
+                return {
+
+
+                    allowed:false,
+
+
+                    reason:
+                        `Requires ${requirement.badge}`
+
+
+                };
+
+
+            }
+
+
+        }
+
+
+
+
+
+
+
+        if(
+            requirement.hm
+        ) {
+
+
+            return this.canUseHM(
+
+                requirement.hm,
+
+                trainerState
+
+            );
+
+
+        }
+
+
+
+
+
+
+
+        if(
+            requirement.storyFlag
+        ) {
+
+
+            if(
+                !this.hasStoryRequirement(
+
+                    requirement.storyFlag,
+
+                    trainerState
+
+                )
+            ) {
+
+
+                return {
+
+
+                    allowed:false,
+
+
+                    reason:
+                        `Requires ${requirement.storyFlag}`
+
+
+                };
+
+
+            }
+
+
+        }
+
+
+
+
+
+        return {
+
+
+            allowed:true
+
+
+        };
+
+
+    }
+
+
+
+
+
+
+
+    //--------------------------------
+    // HM Checks
     //--------------------------------
 
 
@@ -105,16 +382,19 @@ class ProgressionService {
 
 
 
-        if (!rule) {
+        if(!rule) {
 
 
             return {
 
+
                 allowed:false,
+
 
                 reason:
                     "Unknown HM"
 
+
             };
 
 
@@ -122,25 +402,29 @@ class ProgressionService {
 
 
 
-        //--------------------------------
-        // HM obtained
-        //--------------------------------
 
-        if (
+
+        if(
             !this.hasHM(
+
                 hm,
+
                 trainerState
+
             )
         ) {
 
 
             return {
 
+
                 allowed:false,
+
 
                 reason:
                     "HM not obtained"
 
+
             };
 
 
@@ -148,27 +432,31 @@ class ProgressionService {
 
 
 
-        //--------------------------------
-        // Badge requirement
-        //--------------------------------
 
-        if (
+
+        if(
             rule.badge
             &&
             !this.hasBadge(
+
                 rule.badge,
+
                 trainerState
+
             )
         ) {
 
 
             return {
 
+
                 allowed:false,
+
 
                 reason:
                     `Requires ${rule.badge}`
 
+
             };
 
 
@@ -176,37 +464,45 @@ class ProgressionService {
 
 
 
-        //--------------------------------
-        // Story requirement
-        //--------------------------------
 
-        if (
+
+        if(
             rule.storyFlag
             &&
             !this.hasStoryRequirement(
+
                 rule.storyFlag,
+
                 trainerState
+
             )
         ) {
 
 
             return {
 
+
                 allowed:false,
+
 
                 reason:
                     `Requires ${rule.storyFlag}`
+
 
             };
 
 
         }
+
+
 
 
 
         return {
 
+
             allowed:true
+
 
         };
 
@@ -217,8 +513,11 @@ class ProgressionService {
 
 
 
+
+
+
     //--------------------------------
-    // HM ownership
+    // HM Ownership
     //--------------------------------
 
 
@@ -228,7 +527,7 @@ class ProgressionService {
     ) {
 
 
-        if (
+        if(
             trainerState.hasHM
         ) {
 
@@ -243,9 +542,13 @@ class ProgressionService {
 
 
         return (
+
             trainerState.hms
+
             ||
+
             []
+
         )
         .includes(
             hm
@@ -258,8 +561,11 @@ class ProgressionService {
 
 
 
+
+
+
     //--------------------------------
-    // Badge checks
+    // Badge Checks
     //--------------------------------
 
 
@@ -269,7 +575,7 @@ class ProgressionService {
     ) {
 
 
-        if (
+        if(
             trainerState.hasBadge
         ) {
 
@@ -284,9 +590,13 @@ class ProgressionService {
 
 
         return (
+
             trainerState.badges
+
             ||
+
             []
+
         )
         .includes(
             badge
@@ -299,21 +609,26 @@ class ProgressionService {
 
 
 
+
+
     hasBadges(
         badges,
         trainerState
     ) {
 
 
-        for (
+        for(
             const badge of badges
         ) {
 
 
-            if (
+            if(
                 !this.hasBadge(
+
                     badge,
+
                     trainerState
+
                 )
             ) {
 
@@ -327,6 +642,7 @@ class ProgressionService {
         }
 
 
+
         return true;
 
 
@@ -336,8 +652,10 @@ class ProgressionService {
 
 
 
+
+
     //--------------------------------
-    // Key item checks
+    // Key Items
     //--------------------------------
 
 
@@ -347,7 +665,7 @@ class ProgressionService {
     ) {
 
 
-        if (
+        if(
             trainerState.hasKeyItem
         ) {
 
@@ -362,9 +680,13 @@ class ProgressionService {
 
 
         return (
+
             trainerState.keyItems
+
             ||
+
             []
+
         )
         .includes(
             item
@@ -377,8 +699,11 @@ class ProgressionService {
 
 
 
+
+
+
     //--------------------------------
-    // Story checks
+    // Story Checks
     //--------------------------------
 
 
@@ -388,7 +713,7 @@ class ProgressionService {
     ) {
 
 
-        if (
+        if(
             trainerState.hasStoryFlag
         ) {
 
@@ -403,9 +728,13 @@ class ProgressionService {
 
 
         return (
+
             trainerState.storyFlags
+
             ||
+
             []
+
         )
         .includes(
             flag
@@ -416,6 +745,8 @@ class ProgressionService {
 
 
 
+
+
     isBeforeEvent(
         flag,
         trainerState
@@ -423,8 +754,11 @@ class ProgressionService {
 
 
         return !this.hasStoryRequirement(
+
             flag,
+
             trainerState
+
         );
 
 
@@ -434,8 +768,10 @@ class ProgressionService {
 
 
 
+
+
     //--------------------------------
-    // Location progression
+    // Location Progression
     //--------------------------------
 
 
@@ -445,31 +781,34 @@ class ProgressionService {
     ) {
 
 
+
         switch(location) {
 
 
 
-            //--------------------------------
-            // S.S Anne
-            //--------------------------------
-
             case "MAP_SSANNE_EXTERIOR":
 
 
-                if (
+                if(
                     !this.hasKeyItem(
+
                         "SS_TICKET",
+
                         trainerState
+
                     )
                 ) {
 
 
                     return {
 
+
                         allowed:false,
+
 
                         reason:
                             "Requires SS_TICKET"
+
 
                     };
 
@@ -478,20 +817,28 @@ class ProgressionService {
 
 
 
-                if (
+
+
+                if(
                     this.hasStoryRequirement(
+
                         "SS_ANNE_DEPARTED",
+
                         trainerState
+
                     )
                 ) {
 
 
                     return {
 
+
                         allowed:false,
+
 
                         reason:
                             "SS Anne has departed"
+
 
                     };
 
@@ -504,29 +851,35 @@ class ProgressionService {
 
 
 
-            //--------------------------------
-            // Victory Road
-            //--------------------------------
+
 
             case "MAP_VICTORY_ROAD_1F":
 
 
-                if (
+                if(
+
                     (
                         trainerState.badges
+
                         ||
+
                         []
+
                     )
                     .length < 8
+
                 ) {
 
 
                     return {
 
+
                         allowed:false,
+
 
                         reason:
                             "Requires all 8 badges"
+
 
                     };
 
@@ -541,9 +894,13 @@ class ProgressionService {
 
 
 
+
+
         return {
 
+
             allowed:true
+
 
         };
 
@@ -551,7 +908,10 @@ class ProgressionService {
     }
 
 
+
 }
 
 
-module.exports = ProgressionService;
+
+module.exports =
+    ProgressionService;

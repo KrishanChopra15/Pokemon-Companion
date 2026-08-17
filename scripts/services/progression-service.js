@@ -29,13 +29,16 @@ const path =
 
 
 
+
+
 class ProgressionService {
 
 
 
     constructor(
         game = "firered"
-    ) {
+    )
+    {
 
 
         this.game =
@@ -54,12 +57,15 @@ class ProgressionService {
 
 
 
+
+
     //--------------------------------
     // Database
     //--------------------------------
 
 
-    loadProgression() {
+    loadProgression()
+    {
 
 
         const file =
@@ -81,11 +87,10 @@ class ProgressionService {
 
         if(
             !fs.existsSync(file)
-        ) {
-
+        )
+        {
 
             return {};
-
 
         }
 
@@ -112,8 +117,12 @@ class ProgressionService {
 
 
 
-    getProgression(id) {
 
+
+    getProgression(
+        id
+    )
+    {
 
         return (
 
@@ -125,39 +134,41 @@ class ProgressionService {
 
         );
 
-
     }
 
 
 
 
 
-    getAllProgression() {
 
+
+
+
+    getAllProgression()
+    {
 
         return this.progression;
 
-
     }
 
 
 
 
 
-    /**
-     * Get progression IDs connected
-     * to a location.
-     *
-     * @param {string} location
-     * @returns {Array}
-     */
+
+
+
+
     getLocationProgression(
         location
-    ) {
+    )
+    {
 
 
         return Object.keys(
+
             this.progression
+
         )
         .filter(
 
@@ -187,7 +198,8 @@ class ProgressionService {
     canUnlock(
         id,
         trainerState
-    ) {
+    )
+    {
 
 
         const progression =
@@ -197,25 +209,19 @@ class ProgressionService {
 
         if(
             !progression
-        ) {
-
+        )
+        {
 
             return {
 
-
                 allowed:false,
-
 
                 reason:
                     "Unknown progression"
 
-
             };
 
-
         }
-
-
 
 
 
@@ -236,25 +242,25 @@ class ProgressionService {
 
 
 
+
+
     checkRequirement(
         requirement,
         trainerState
-    ) {
+    )
+    {
 
 
         if(
             !requirement
-        ) {
-
+        )
+        {
 
             return {
 
-
                 allowed:true
 
-
             };
-
 
         }
 
@@ -265,13 +271,14 @@ class ProgressionService {
 
 
         //--------------------------------
-        // Multiple badges
+        // Badges
         //--------------------------------
 
 
         if(
             requirement.badges
-        ) {
+        )
+        {
 
 
             if(
@@ -282,26 +289,22 @@ class ProgressionService {
                     trainerState
 
                 )
-            ) {
-
+            )
+            {
 
                 return {
 
-
                     allowed:false,
-
 
                     reason:
                         "Missing required badges"
 
-
                 };
-
 
             }
 
-
         }
+
 
 
 
@@ -316,7 +319,8 @@ class ProgressionService {
 
         if(
             requirement.badge
-        ) {
+        )
+        {
 
 
             if(
@@ -327,20 +331,69 @@ class ProgressionService {
                     trainerState
 
                 )
-            ) {
-
+            )
+            {
 
                 return {
 
-
                     allowed:false,
-
 
                     reason:
                         `Requires ${requirement.badge}`
 
-
                 };
+
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Multiple HMs
+        //--------------------------------
+
+
+        if(
+            requirement.hms
+        )
+        {
+
+
+            for(
+                const hm of requirement.hms
+            )
+            {
+
+
+                if(
+                    !this.hasHM(
+
+                        hm,
+
+                        trainerState
+
+                    )
+                )
+                {
+
+                    return {
+
+                        allowed:false,
+
+                        reason:
+                            `Requires HM ${hm}`
+
+                    };
+
+                }
 
 
             }
@@ -355,14 +408,16 @@ class ProgressionService {
 
 
 
+
         //--------------------------------
-        // HM
+        // Single HM
         //--------------------------------
 
 
         if(
             requirement.hm
-        ) {
+        )
+        {
 
 
             if(
@@ -373,20 +428,69 @@ class ProgressionService {
                     trainerState
 
                 )
-            ) {
-
+            )
+            {
 
                 return {
 
-
                     allowed:false,
-
 
                     reason:
                         `Requires HM ${requirement.hm}`
 
-
                 };
+
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Multiple Key Items
+        //--------------------------------
+
+
+        if(
+            requirement.keyItems
+        )
+        {
+
+
+            for(
+                const item of requirement.keyItems
+            )
+            {
+
+
+                if(
+                    !this.hasKeyItem(
+
+                        item,
+
+                        trainerState
+
+                    )
+                )
+                {
+
+                    return {
+
+                        allowed:false,
+
+                        reason:
+                            `Requires key item ${item}`
+
+                    };
+
+                }
 
 
             }
@@ -401,14 +505,16 @@ class ProgressionService {
 
 
 
+
         //--------------------------------
-        // Key Item
+        // Single Key Item
         //--------------------------------
 
 
         if(
             requirement.keyItem
-        ) {
+        )
+        {
 
 
             if(
@@ -419,20 +525,69 @@ class ProgressionService {
                     trainerState
 
                 )
-            ) {
-
+            )
+            {
 
                 return {
 
-
                     allowed:false,
-
 
                     reason:
                         `Requires ${requirement.keyItem}`
 
-
                 };
+
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Multiple Story Flags
+        //--------------------------------
+
+
+        if(
+            requirement.storyFlags
+        )
+        {
+
+
+            for(
+                const flag of requirement.storyFlags
+            )
+            {
+
+
+                if(
+                    !this.hasStoryFlag(
+
+                        flag,
+
+                        trainerState
+
+                    )
+                )
+                {
+
+                    return {
+
+                        allowed:false,
+
+                        reason:
+                            `Requires story flag ${flag}`
+
+                    };
+
+                }
 
 
             }
@@ -447,14 +602,16 @@ class ProgressionService {
 
 
 
+
         //--------------------------------
-        // Story Flag
+        // Single Story Flag
         //--------------------------------
 
 
         if(
             requirement.storyFlag
-        ) {
+        )
+        {
 
 
             if(
@@ -465,21 +622,17 @@ class ProgressionService {
                     trainerState
 
                 )
-            ) {
-
+            )
+            {
 
                 return {
 
-
                     allowed:false,
-
 
                     reason:
                         `Requires ${requirement.storyFlag}`
 
-
                 };
-
 
             }
 
@@ -490,11 +643,13 @@ class ProgressionService {
 
 
 
+
+
+
+
         return {
 
-
             allowed:true
-
 
         };
 
@@ -510,25 +665,25 @@ class ProgressionService {
 
 
     //--------------------------------
-    // Badges
+    // Badge helpers
     //--------------------------------
 
 
     hasBadge(
         badge,
         trainerState
-    ) {
+    )
+    {
 
 
         if(
             trainerState.hasBadge
-        ) {
-
+        )
+        {
 
             return trainerState.hasBadge(
                 badge
             );
-
 
         }
 
@@ -558,20 +713,22 @@ class ProgressionService {
     hasBadges(
         badges,
         trainerState
-    ) {
-
+    )
+    {
 
         return badges.every(
 
             badge =>
 
                 this.hasBadge(
+
                     badge,
+
                     trainerState
+
                 )
 
         );
-
 
     }
 
@@ -584,42 +741,60 @@ class ProgressionService {
 
 
     //--------------------------------
-    // HM
+    // HM helpers
     //--------------------------------
 
 
     hasHM(
         hm,
         trainerState
-    ) {
+    )
+    {
 
 
         if(
             trainerState.hasHM
-        ) {
+            &&
+            trainerState.hasHM(hm)
+        )
+        {
 
-
-            return trainerState.hasHM(
-                hm
-            );
-
+            return true;
 
         }
 
 
 
-        return (
 
+        if(
             trainerState.hms
-
-            ||
-
-            []
-
+            &&
+            trainerState.hms.includes(hm)
         )
-        .includes(
-            hm
-        );
+        {
+
+            return true;
+
+        }
+
+
+
+
+
+        if(
+            trainerState.hmAbilities
+            &&
+            trainerState.hmAbilities.includes(hm)
+        )
+        {
+
+            return true;
+
+        }
+
+
+
+        return false;
 
 
     }
@@ -633,25 +808,25 @@ class ProgressionService {
 
 
     //--------------------------------
-    // Items
+    // Key item helpers
     //--------------------------------
 
 
     hasKeyItem(
         item,
         trainerState
-    ) {
+    )
+    {
 
 
         if(
             trainerState.hasKeyItem
-        ) {
-
+        )
+        {
 
             return trainerState.hasKeyItem(
                 item
             );
-
 
         }
 
@@ -682,25 +857,25 @@ class ProgressionService {
 
 
     //--------------------------------
-    // Story Flags
+    // Story helpers
     //--------------------------------
 
 
     hasStoryFlag(
         flag,
         trainerState
-    ) {
+    )
+    {
 
 
         if(
             trainerState.hasStoryFlag
-        ) {
-
+        )
+        {
 
             return trainerState.hasStoryFlag(
                 flag
             );
-
 
         }
 
@@ -724,9 +899,9 @@ class ProgressionService {
 
 
 
-
-
 }
+
+
 
 
 

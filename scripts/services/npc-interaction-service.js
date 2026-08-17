@@ -6,13 +6,22 @@
  *
  * Responsibilities:
  * - Find NPC event.
+ * - Resolve story aliases.
  * - Check visibility.
+ * - Check completion state.
  * - Load dialogue.
  * - Execute event.
- * - Return rewards and choices.
+ * - Complete story events.
+ * - Return choices.
+ *
+ * Does NOT:
+ * - Parse ROM data.
+ * - Create events.
+ * - Decide progression.
  */
 
 "use strict";
+
 
 
 class NPCInteractionService {
@@ -22,7 +31,8 @@ class NPCInteractionService {
     constructor(
         npcService,
         eventService,
-        dialogueService
+        dialogueService,
+        storyEventService = null
     )
     {
 
@@ -39,14 +49,22 @@ class NPCInteractionService {
             dialogueService;
 
 
+        this.storyEventService =
+            storyEventService;
+
+
     }
 
 
 
 
 
+
+
+
+
     //--------------------------------
-    // Interact with NPC
+    // Interact
     //--------------------------------
 
 
@@ -58,14 +76,66 @@ class NPCInteractionService {
 
 
         //--------------------------------
-        // Find event
+        // Find NPC
         //--------------------------------
 
 
-        const event =
+        const npc =
+            this.npcService
+            ?
+            this.npcService.getNPC(
+                npcId
+            )
+            :
+            null;
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Find direct ROM event
+        //--------------------------------
+
+
+        let event =
             this.eventService.getEvent(
                 npcId
             );
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Resolve story alias
+        //--------------------------------
+
+
+        if(
+            !event
+            &&
+            this.storyEventService
+        )
+        {
+
+            event =
+                this.storyEventService.getEvent(
+                    npcId
+                );
+
+        }
+
+
+
+
+
 
 
 
@@ -73,7 +143,6 @@ class NPCInteractionService {
             !event
         )
         {
-
 
             return {
 
@@ -84,8 +153,54 @@ class NPCInteractionService {
 
             };
 
+        }
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Completed check
+        //--------------------------------
+
+
+        if(
+
+            event.oneTime
+
+            &&
+
+            trainerState.hasCompletedEvent
+
+            &&
+
+            trainerState.hasCompletedEvent(
+                event.id
+            )
+
+        )
+        {
+
+            return {
+
+                success:false,
+
+                event:
+                    event.id,
+
+                reason:
+                    "Event already completed"
+
+            };
 
         }
+
+
+
 
 
 
@@ -109,7 +224,6 @@ class NPCInteractionService {
         )
         {
 
-
             return {
 
                 success:false,
@@ -119,29 +233,37 @@ class NPCInteractionService {
 
             };
 
-
         }
 
 
 
 
 
+
+
+
         //--------------------------------
-        // Load dialogues
+        // Dialogue
         //--------------------------------
 
 
         const dialogues =
             (event.dialogues || [])
             .map(
+
                 id =>
                     this.dialogueService.getDialogue(
                         id
                     )
+
             )
             .filter(
                 Boolean
             );
+
+
+
+
 
 
 
@@ -162,27 +284,61 @@ class NPCInteractionService {
 
 
 
+
+
+
+
         //--------------------------------
-        // Execute automatic events
+        // Execute
         //--------------------------------
 
 
-        let result =
-        null;
+        let execution =
+            null;
 
 
 
         if(
-            !choices.length
+            choices.length === 0
         )
         {
 
-
-            result =
+            execution =
                 this.eventService.executeEvent(
                     event,
                     trainerState
                 );
+
+
+
+
+
+
+
+
+            //--------------------------------
+            // Complete companion story
+            //--------------------------------
+
+
+            if(
+                execution.success
+                &&
+                this.storyEventService
+            )
+            {
+
+
+                this.storyEventService.completeStoryEvent(
+
+                    npcId,
+
+                    trainerState
+
+                );
+
+
+            }
 
 
         }
@@ -191,39 +347,51 @@ class NPCInteractionService {
 
 
 
+
+
+
+
         //--------------------------------
-        // Return interaction
+        // Response
         //--------------------------------
 
 
         return {
 
-            success:true,
+
+            success:
+                execution
+                ?
+                execution.success
+                :
+                true,
+
 
 
             npc:
-                npcId,
+                npc || npcId,
+
+
+
+            event:
+                event.id,
+
 
 
             dialogues,
 
 
+
             choices,
 
 
+
             rewards:
-                event.rewards
-                ||
-                [],
+                event.rewards || [],
 
 
-            effects:
-                event.effects
-                ||
-                {},
 
-
-            result
+            execution
 
 
         };
@@ -232,7 +400,9 @@ class NPCInteractionService {
     }
 
 
+
 }
+
 
 
 module.exports =

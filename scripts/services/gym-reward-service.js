@@ -11,7 +11,7 @@
  * - Update completed gyms.
  *
  * Does NOT:
- * - Give HM items.
+ * - Load gym database.
  * - Handle battles.
  * - Decide gym order.
  * - Check map traversal.
@@ -20,229 +20,73 @@
 "use strict";
 
 
+
+
+
 class GymRewardService {
 
 
-    constructor() {
 
+    constructor(
+        gymDatabaseService
+    )
+    {
 
-        this.rewards = {
+        this.database =
+            gymDatabaseService;
 
 
-            TRAINER_LEADER_BROCK: {
+    }
 
-                badge:
-                    "BOULDER_BADGE",
 
 
-                tm:
-                    "TM39_ROCK_TOMB",
 
 
-                abilityUnlocks:
-                [
 
-                    {
-                        type:
-                            "HM_USAGE",
 
-                        move:
-                            "FLASH",
 
-                        description:
-                            "Allows Flash to be used outside battle."
 
-                    }
+    //--------------------------------
+    // Get reward
+    //--------------------------------
 
-                ]
 
-            },
+    getReward(
+        gymId
+    )
+    {
 
 
+        const gym =
+            this.database.getGym(
+                gymId
+            );
 
 
 
-            TRAINER_LEADER_MISTY: {
+        if(
+            !gym
+        )
+        {
 
-                badge:
-                    "CASCADE_BADGE",
+            return null;
 
+        }
 
-                tm:
-                    "TM03_WATER_PULSE",
 
 
-                abilityUnlocks:
-                [
 
-                    {
-                        type:
-                            "HM_USAGE",
+        return {
 
-                        move:
-                            "CUT",
 
-                        description:
-                            "Allows Cut to be used outside battle."
+            badge:
 
-                    }
+                gym.badge,
 
-                ]
 
-            },
+            rewards:
 
-
-
-
-
-            TRAINER_LEADER_LT_SURGE: {
-
-                badge:
-                    "THUNDER_BADGE",
-
-
-                tm:
-                    "TM34_SHOCK_WAVE",
-
-
-                abilityUnlocks:
-                [
-
-                    {
-                        type:
-                            "HM_USAGE",
-
-                        move:
-                            "FLY",
-
-                        description:
-                            "Allows Fly to be used outside battle."
-
-                    }
-
-                ]
-
-            },
-
-
-
-
-
-            TRAINER_LEADER_ERIKA: {
-
-                badge:
-                    "RAINBOW_BADGE",
-
-
-                tm:
-                    "TM19_GIGA_DRAIN",
-
-
-                abilityUnlocks:
-                [
-
-                    {
-                        type:
-                            "HM_USAGE",
-
-                        move:
-                            "STRENGTH",
-
-                        description:
-                            "Allows Strength to be used outside battle."
-
-                    }
-
-                ]
-
-            },
-
-
-
-
-
-            TRAINER_LEADER_KOGA: {
-
-                badge:
-                    "SOUL_BADGE",
-
-
-                tm:
-                    "TM06_TOXIC",
-
-
-                abilityUnlocks:
-                [
-
-                    {
-                        type:
-                            "HM_USAGE",
-
-                        move:
-                            "SURF",
-
-                        description:
-                            "Allows Surf to be used outside battle."
-
-                    }
-
-                ]
-
-            },
-
-
-
-
-
-            TRAINER_LEADER_SABRINA: {
-
-                badge:
-                    "MARSH_BADGE",
-
-
-                tm:
-                    "TM04_CALM_MIND",
-
-
-                abilityUnlocks:[]
-
-            },
-
-
-
-
-
-            TRAINER_LEADER_BLAINE: {
-
-                badge:
-                    "VOLCANO_BADGE",
-
-
-                tm:
-                    "TM38_FIRE_BLAST",
-
-
-                abilityUnlocks:[]
-
-            },
-
-
-
-
-
-            TRAINER_LEADER_GIOVANNI: {
-
-                badge:
-                    "EARTH_BADGE",
-
-
-                tm:
-                    "TM26_EARTHQUAKE",
-
-
-                abilityUnlocks:[]
-
-            }
+                gym.rewards || {}
 
 
         };
@@ -256,26 +100,11 @@ class GymRewardService {
 
 
 
-    getReward(gymId)
-    {
-
-        return (
-
-            this.rewards[gymId]
-
-            ||
-
-            null
-
-        );
-
-    }
 
 
-
-
-
-
+    //--------------------------------
+    // Give rewards
+    //--------------------------------
 
 
     giveRewards(
@@ -292,15 +121,20 @@ class GymRewardService {
 
 
 
-        if(!reward)
+        if(
+            !reward
+        )
         {
 
             return {
 
+
                 success:false,
+
 
                 reason:
                     "Unknown gym"
+
 
             };
 
@@ -312,7 +146,12 @@ class GymRewardService {
 
 
 
+
+
+        //--------------------------------
         // Badge
+        //--------------------------------
+
 
         if(
             reward.badge
@@ -320,7 +159,9 @@ class GymRewardService {
         {
 
             trainerState.addBadge(
+
                 reward.badge
+
             );
 
         }
@@ -331,64 +172,30 @@ class GymRewardService {
 
 
 
-        // TM
-
-        if(
-            reward.tm
-        )
-        {
-
-            if(
-                trainerState.addItem
-            )
-            {
-
-                trainerState.addItem(
-                    reward.tm
-                );
-
-            }
-
-            else
-            {
-
-                trainerState.addKeyItem(
-                    reward.tm
-                );
-
-            }
 
 
-        }
+        //--------------------------------
+        // Items / TM
+        //--------------------------------
 
 
+        const items =
+            reward.rewards.items
+            ||
+            [];
 
 
-
-
-
-
-        // HM field abilities
 
         for(
-            const ability of reward.abilityUnlocks
+            const item of items
         )
         {
 
+            trainerState.addItem(
 
-            if(
-                ability.type === "HM_USAGE"
-            )
-            {
+                item
 
-
-                trainerState.addHMAbility(
-                    ability.move
-                );
-
-
-            }
-
+            );
 
         }
 
@@ -399,11 +206,52 @@ class GymRewardService {
 
 
 
-        // Mark gym defeated
+
+        //--------------------------------
+        // HM abilities
+        //--------------------------------
+
+
+        const abilities =
+            reward.rewards.hmAbilities
+            ||
+            [];
+
+
+
+        for(
+            const ability of abilities
+        )
+        {
+
+            trainerState.addHMAbility(
+
+                ability
+
+            );
+
+        }
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Complete gym
+        //--------------------------------
+
 
         trainerState.completeBattle(
+
             gymId
+
         );
+
+
 
 
 
@@ -413,13 +261,22 @@ class GymRewardService {
 
         return {
 
+
             success:true,
+
 
             gym:
                 gymId,
 
+
+            badge:
+                reward.badge,
+
+
             rewards:
-                reward
+                reward.rewards
+
+
 
         };
 
@@ -433,17 +290,21 @@ class GymRewardService {
 
 
 
-    hasReward(gymId)
+
+    //--------------------------------
+    // Check reward exists
+    //--------------------------------
+
+
+    hasReward(
+        gymId
+    )
     {
 
 
-        return (
+        return this.database.hasGym(
 
-            this.rewards[gymId]
-
-            !==
-
-            undefined
+            gymId
 
         );
 
@@ -451,7 +312,54 @@ class GymRewardService {
     }
 
 
+
+
+
+
+
+
+
+    //--------------------------------
+    // Get all rewards
+    //--------------------------------
+
+
+    getAllRewards()
+    {
+
+
+        return this.database
+            .getAllGyms()
+            .map(
+
+                gym =>
+
+                ({
+
+                    id:
+                        gym.id,
+
+
+                    badge:
+                        gym.badge,
+
+
+                    rewards:
+                        gym.rewards
+
+
+                })
+
+            );
+
+
+    }
+
+
+
 }
+
+
 
 
 

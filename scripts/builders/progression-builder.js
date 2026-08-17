@@ -7,6 +7,7 @@
  * Responsibilities:
  * - Load raw progression data.
  * - Normalize progression records.
+ * - Validate progression records.
  * - Save generated progression database.
  *
  * Does NOT:
@@ -18,8 +19,11 @@
 "use strict";
 
 
-const fs = require("fs");
-const path = require("path");
+const fs =
+    require("fs");
+
+const path =
+    require("path");
 
 
 const Progression =
@@ -33,33 +37,55 @@ class ProgressionBuilder {
 
 
 
-    build(game) {
+    build(
+        game
+    )
+    {
 
 
 
         const rawPath =
             path.join(
+
                 __dirname,
+
                 "../../database/raw",
+
                 game
+
             );
+
+
 
 
 
         const generatedPath =
             path.join(
+
                 __dirname,
+
                 "../../database/generated",
+
                 game
+
             );
+
+
 
 
 
         const input =
             path.join(
+
                 rawPath,
+
                 "progression.json"
+
             );
+
+
+
+
 
 
 
@@ -90,6 +116,8 @@ class ProgressionBuilder {
 
 
 
+
+
         //--------------------------------
         // Load raw data
         //--------------------------------
@@ -99,11 +127,16 @@ class ProgressionBuilder {
             JSON.parse(
 
                 fs.readFileSync(
+
                     input,
+
                     "utf8"
+
                 )
 
             );
+
+
 
 
 
@@ -113,9 +146,13 @@ class ProgressionBuilder {
 
             Array.isArray(raw)
 
-                ? raw
+                ?
 
-                : Object.values(raw);
+                raw
+
+                :
+
+                Object.values(raw);
 
 
 
@@ -134,6 +171,11 @@ class ProgressionBuilder {
 
 
 
+        let skipped =
+            0;
+
+
+
 
 
         for(
@@ -143,10 +185,27 @@ class ProgressionBuilder {
 
 
 
+
+
+            //--------------------------------
+            // Validate ID
+            //--------------------------------
+
+
             if(
                 !record.id
             )
             {
+
+                console.warn(
+
+                    "Skipping progression without ID:",
+                    record
+
+                );
+
+
+                skipped++;
 
                 continue;
 
@@ -154,6 +213,45 @@ class ProgressionBuilder {
 
 
 
+
+
+
+
+
+            //--------------------------------
+            // Duplicate protection
+            //--------------------------------
+
+
+            if(
+                progression[record.id]
+            )
+            {
+
+                console.warn(
+
+                    `Duplicate progression id detected: ${record.id}`
+
+                );
+
+
+                skipped++;
+
+                continue;
+
+            }
+
+
+
+
+
+
+
+
+
+            //--------------------------------
+            // Create domain object
+            //--------------------------------
 
 
             const entry =
@@ -173,7 +271,9 @@ class ProgressionBuilder {
 
                     requirement:
                         this.normalizeRequirement(
+
                             record.requirement
+
                         ),
 
 
@@ -188,6 +288,12 @@ class ProgressionBuilder {
 
 
 
+
+
+
+            //--------------------------------
+            // Store generated record
+            //--------------------------------
 
 
             progression[entry.id] =
@@ -231,8 +337,9 @@ class ProgressionBuilder {
 
 
 
+
         //--------------------------------
-        // Save
+        // Create output folder
         //--------------------------------
 
 
@@ -250,11 +357,23 @@ class ProgressionBuilder {
 
 
 
+
+
+
+
+        //--------------------------------
+        // Save database
+        //--------------------------------
+
+
         fs.writeFileSync(
 
             path.join(
+
                 generatedPath,
+
                 "progression.json"
+
             ),
 
 
@@ -278,9 +397,34 @@ class ProgressionBuilder {
 
 
 
+
+
+
+        //--------------------------------
+        // Build report
+        //--------------------------------
+
+
         console.log(
+
             `Generated ${Object.keys(progression).length} progression records`
+
         );
+
+
+
+        if(
+            skipped > 0
+        )
+        {
+
+            console.log(
+
+                `Skipped ${skipped} invalid records`
+
+            );
+
+        }
 
 
     }
@@ -291,12 +435,16 @@ class ProgressionBuilder {
 
 
 
+
+
     //--------------------------------
-    // Future mechanic support
+    // Normalize requirements
     //--------------------------------
 
 
-    normalizeRequirement(requirement)
+    normalizeRequirement(
+        requirement
+    )
     {
 
 
@@ -308,6 +456,9 @@ class ProgressionBuilder {
             return null;
 
         }
+
+
+
 
 
 
@@ -325,6 +476,9 @@ class ProgressionBuilder {
             };
 
         }
+
+
+
 
 
 

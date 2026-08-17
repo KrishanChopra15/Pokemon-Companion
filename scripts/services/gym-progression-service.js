@@ -2,15 +2,16 @@
  * Pokémon Companion
  * Gym Progression Service
  *
- * Provides FireRed gym progression data.
+ * Provides gym progression logic.
  *
  * Responsibilities:
- * - Provide gym order.
- * - Provide gym unlock progression.
  * - Check gym availability.
  * - Check badge ownership.
+ * - Check story requirements.
+ * - Provide recommended progression.
  *
  * Does NOT:
+ * - Load database files.
  * - Read ROM data.
  * - Handle map traversal.
  * - Analyze Pokémon.
@@ -20,146 +21,27 @@
 "use strict";
 
 
+
+
+
 class GymProgressionService {
 
 
 
-    constructor() {
+    constructor(
+        gymDatabaseService,
+        mapAccessService = null
+    )
+    {
 
 
-        this.gyms = [
+        this.database =
+            gymDatabaseService;
 
 
-            {
-                id: "TRAINER_LEADER_BROCK",
-                name: "Brock",
-                city: "PEWTER_CITY",
-                badge: "BOULDER_BADGE",
-                order: 1,
-                requirement: null
-            },
 
-
-            {
-                id: "TRAINER_LEADER_MISTY",
-                name: "Misty",
-                city: "CERULEAN_CITY",
-                badge: "CASCADE_BADGE",
-                order: 2,
-
-                requirement: {
-
-                    badges: [
-                        "BOULDER_BADGE"
-                    ]
-
-                }
-            },
-
-
-            {
-                id: "TRAINER_LEADER_LT_SURGE",
-                name: "Lt. Surge",
-                city: "VERMILION_CITY",
-                badge: "THUNDER_BADGE",
-                order: 3,
-
-                requirement: {
-
-                    badges: [
-                        "CASCADE_BADGE"
-                    ]
-
-                }
-            },
-
-
-            {
-                id: "TRAINER_LEADER_ERIKA",
-                name: "Erika",
-                city: "CELADON_CITY",
-                badge: "RAINBOW_BADGE",
-                order: 4,
-
-                requirement: {
-
-                    badges: [
-                        "THUNDER_BADGE"
-                    ]
-
-                }
-            },
-
-
-            {
-                id: "TRAINER_LEADER_KOGA",
-                name: "Koga",
-                city: "FUCHSIA_CITY",
-                badge: "SOUL_BADGE",
-                order: 5,
-
-                requirement: {
-
-                    badges: [
-                        "RAINBOW_BADGE"
-                    ]
-
-                }
-            },
-
-
-            {
-                id: "TRAINER_LEADER_SABRINA",
-                name: "Sabrina",
-                city: "SAFFRON_CITY",
-                badge: "MARSH_BADGE",
-                order: 6,
-
-                requirement: {
-
-                    badges: [
-                        "SOUL_BADGE"
-                    ]
-
-                }
-            },
-
-
-            {
-                id: "TRAINER_LEADER_BLAINE",
-                name: "Blaine",
-                city: "CINNABAR_ISLAND",
-                badge: "VOLCANO_BADGE",
-                order: 7,
-
-                requirement: {
-
-                    badges: [
-                        "MARSH_BADGE"
-                    ]
-
-                }
-            },
-
-
-            {
-                id: "TRAINER_LEADER_BLUE",
-                name: "Blue",
-                city: "VIRIDIAN_CITY",
-                badge: "EARTH_BADGE",
-                order: 8,
-
-                requirement: {
-
-                    badges: [
-                        "VOLCANO_BADGE"
-                    ]
-
-                }
-            }
-
-
-        ];
+        this.mapAccess =
+            mapAccessService;
 
 
     }
@@ -168,16 +50,29 @@ class GymProgressionService {
 
 
 
+
+
+
+
     //--------------------------------
-    // Gym lookup
+    // Lookup
     //--------------------------------
 
 
-    getAllGyms() {
+    getAllGyms()
+    {
+
+        if(
+            !this.database
+        )
+        {
+
+            return [];
+
+        }
 
 
-        return this.gyms;
-
+        return this.database.getAllGyms();
 
     }
 
@@ -185,24 +80,54 @@ class GymProgressionService {
 
 
 
-    getGym(id) {
 
 
-        return (
+    getGym(
+        id
+    )
+    {
 
-            this.gyms.find(
+        if(
+            !this.database
+        )
+        {
+
+            return null;
+
+        }
+
+
+        return this.database.getGym(
+            id
+        );
+
+    }
+
+
+
+
+
+
+
+
+
+    getGymByOrder(
+        order
+    )
+    {
+
+        return this.getAllGyms()
+            .find(
 
                 gym =>
-                    gym.id === id
+
+                    gym.order === order
 
             )
 
             ||
 
-            null
-
-        );
-
+            null;
 
     }
 
@@ -210,19 +135,51 @@ class GymProgressionService {
 
 
 
-    getPreviousGyms(id) {
+
+
+
+
+    getNextGym(
+        order
+    )
+    {
+
+        return this.getGymByOrder(
+
+            order + 1
+
+        );
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Previous gyms
+    //--------------------------------
+
+
+    getPreviousGyms(
+        id
+    )
+    {
 
 
         const gym =
-            this.getGym(
-                id
-            );
+            this.getGym(id);
 
 
 
         if(
             !gym
-        ) {
+        )
+        {
 
             return [];
 
@@ -230,12 +187,15 @@ class GymProgressionService {
 
 
 
-        return this.gyms.filter(
 
-            entry =>
-                entry.order < gym.order
+        return this.getAllGyms()
+            .filter(
 
-        );
+                entry =>
+
+                    entry.order < gym.order
+
+            );
 
 
     }
@@ -244,28 +204,31 @@ class GymProgressionService {
 
 
 
+
+
+
+
     //--------------------------------
-    // Gym availability
+    // Challenge check
     //--------------------------------
 
 
     canChallengeGym(
         id,
         trainerState
-    ) {
+    )
+    {
 
 
         const gym =
-            this.getGym(
-                id
-            );
+            this.getGym(id);
 
 
 
         if(
             !gym
-        ) {
-
+        )
+        {
 
             return {
 
@@ -276,8 +239,10 @@ class GymProgressionService {
 
             };
 
-
         }
+
+
+
 
 
 
@@ -286,13 +251,13 @@ class GymProgressionService {
         if(
 
             trainerState.hasCompletedBattle
+
             &&
-            trainerState.hasCompletedBattle(
-                id
-            )
 
-        ) {
+            trainerState.hasCompletedBattle(id)
 
+        )
+        {
 
             return {
 
@@ -303,53 +268,157 @@ class GymProgressionService {
 
             };
 
-
         }
+
+
+
+
+
+
+
+
+        const requirement =
+            gym.requirements;
 
 
 
 
 
         if(
-            gym.requirement
-            &&
-            gym.requirement.badges
-        ) {
-
-
-            const hasRequirements =
-                gym.requirement.badges.every(
-
-                    badge =>
-
-                        this.playerHasBadge(
-                            badge,
-                            trainerState
-                        )
-
-                );
-
+            requirement
+        )
+        {
 
 
             if(
-                !hasRequirements
-            ) {
-
+                !this.checkStoryFlags(
+                    requirement,
+                    trainerState
+                )
+            )
+            {
 
                 return {
 
                     allowed:false,
 
                     reason:
-                        "Missing required badges"
+                        "Missing story requirement"
 
                 };
 
+            }
+
+
+
+
+
+
+            if(
+                !this.checkBadges(
+                    requirement,
+                    trainerState
+                )
+            )
+            {
+
+                return {
+
+                    allowed:false,
+
+                    reason:
+                        "Missing badge requirement"
+
+                };
+
+            }
+
+
+
+
+
+
+            if(
+                !this.checkHMs(
+                    requirement,
+                    trainerState
+                )
+            )
+            {
+
+                return {
+
+                    allowed:false,
+
+                    reason:
+                        "Missing HM requirement"
+
+                };
+
+            }
+
+
+
+
+
+
+            if(
+                !this.checkKeyItems(
+                    requirement,
+                    trainerState
+                )
+            )
+            {
+
+                return {
+
+                    allowed:false,
+
+                    reason:
+                        "Missing key item requirement"
+
+                };
+
+            }
+
+
+
+
+
+
+
+            if(
+                requirement.access
+            )
+            {
+
+
+                const access =
+                    this.checkAccess(
+
+                        requirement.access,
+
+                        trainerState
+
+                    );
+
+
+
+                if(
+                    !access.allowed
+                )
+                {
+
+                    return access;
+
+                }
 
             }
 
 
         }
+
+
 
 
 
@@ -368,28 +437,41 @@ class GymProgressionService {
 
 
 
+
+
+
+
     //--------------------------------
-    // Available gyms
+    // Requirement checks
     //--------------------------------
 
 
-    getAvailableGyms(
+    checkStoryFlags(
+        requirement,
         trainerState
-    ) {
+    )
+    {
+
+        if(
+            !requirement.storyFlags
+        )
+        {
+
+            return true;
+
+        }
 
 
-        return this.gyms.filter(
 
-            gym =>
 
-                this.canChallengeGym(
+        return requirement.storyFlags.every(
 
-                    gym.id,
+            flag =>
 
+                this.hasStoryFlag(
+                    flag,
                     trainerState
-
                 )
-                .allowed
 
         );
 
@@ -400,26 +482,312 @@ class GymProgressionService {
 
 
 
+
+
+    checkBadges(
+        requirement,
+        trainerState
+    )
+    {
+
+        if(
+            !requirement.badges
+        )
+        {
+
+            return true;
+
+        }
+
+
+
+
+        return requirement.badges.every(
+
+            badge =>
+
+                this.playerHasBadge(
+                    badge,
+                    trainerState
+                )
+
+        );
+
+
+    }
+
+
+
+
+
+
+
+    checkHMs(
+        requirement,
+        trainerState
+    )
+    {
+
+        if(
+            !requirement.hms
+        )
+        {
+
+            return true;
+
+        }
+
+
+
+
+        return requirement.hms.every(
+
+            hm =>
+
+                this.hasHM(
+                    hm,
+                    trainerState
+                )
+
+        );
+
+
+    }
+
+
+
+
+
+
+
+    checkKeyItems(
+        requirement,
+        trainerState
+    )
+    {
+
+        if(
+            !requirement.keyItems
+        )
+        {
+
+            return true;
+
+        }
+
+
+
+
+        return requirement.keyItems.every(
+
+            item =>
+
+                this.hasKeyItem(
+                    item,
+                    trainerState
+                )
+
+        );
+
+
+    }
+
+
+
+
+
+
+
+
+
     //--------------------------------
-    // Badge checks
+    // Map access
     //--------------------------------
+
+
+    checkAccess(
+        location,
+        trainerState
+    )
+    {
+
+
+        if(
+            this.mapAccess
+        )
+        {
+
+            return this.mapAccess.canAccess(
+
+                location,
+
+                trainerState
+
+            );
+
+        }
+
+
+
+
+
+        const visited =
+            trainerState.visitedLocations
+            ||
+            [];
+
+
+
+        return {
+
+            allowed:
+
+                visited.includes(
+                    location
+                )
+
+        };
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Helpers
+    //--------------------------------
+
+
+    hasHM(
+        hm,
+        trainerState
+    )
+    {
+
+        return (
+
+            trainerState.hmAbilities
+
+            ||
+            []
+
+        )
+        .includes(hm)
+
+        ||
+
+        (
+
+            trainerState.hms
+
+            ||
+            []
+
+        )
+        .includes(hm);
+
+
+    }
+
+
+
+
+
+
+
+    hasKeyItem(
+        item,
+        trainerState
+    )
+    {
+
+
+        if(
+            trainerState.hasKeyItem
+        )
+        {
+
+            return trainerState.hasKeyItem(item);
+
+        }
+
+
+
+        return (
+
+            trainerState.keyItems
+
+            ||
+            []
+
+        )
+        .includes(item);
+
+
+    }
+
+
+
+
+
+
+
+    hasStoryFlag(
+        flag,
+        trainerState
+    )
+    {
+
+
+        if(
+            trainerState.hasStoryFlag
+        )
+        {
+
+            return trainerState.hasStoryFlag(flag);
+
+        }
+
+
+
+        return (
+
+            trainerState.storyFlags
+
+            ||
+            []
+
+        )
+        .includes(flag);
+
+
+    }
+
+
+
+
+
 
 
     playerHasBadge(
         badge,
         trainerState
-    ) {
+    )
+    {
 
 
         if(
             trainerState.hasBadge
-        ) {
+        )
+        {
 
-
-            return trainerState.hasBadge(
-                badge
-            );
-
+            return trainerState.hasBadge(badge);
 
         }
 
@@ -430,12 +798,110 @@ class GymProgressionService {
             trainerState.badges
 
             ||
-
             []
 
         )
-        .includes(
-            badge
+        .includes(badge);
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Available gyms
+    //--------------------------------
+
+
+    getAvailableGyms(
+        trainerState
+    )
+    {
+
+        return this.getAllGyms()
+            .filter(
+
+                gym =>
+
+                    this.canChallengeGym(
+                        gym.id,
+                        trainerState
+                    )
+                    .allowed
+
+            );
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Recommended progression
+    //--------------------------------
+
+
+    getRecommendedNextGyms(
+        trainerState
+    )
+    {
+
+
+        const available =
+            this.getAvailableGyms(
+                trainerState
+            );
+
+
+
+        if(
+            available.length === 0
+        )
+        {
+
+            return [];
+
+        }
+
+
+
+
+        const nextOrder =
+            Math.min(
+
+                ...
+
+                available.map(
+
+                    gym =>
+
+                        gym.order
+
+                )
+
+            );
+
+
+
+
+        return available.filter(
+
+            gym =>
+
+                gym.order === nextOrder
+
         );
 
 
@@ -445,10 +911,71 @@ class GymProgressionService {
 
 
 
+
+
+
+
+    //--------------------------------
+    // Next unfinished gym
+    //--------------------------------
+
+
+    getNextUncompletedGym(
+        trainerState
+    )
+    {
+
+
+        return this.getAllGyms()
+            .sort(
+
+                (a,b)=>
+
+                    a.order - b.order
+
+            )
+            .find(
+
+                gym =>
+
+                !(
+                    trainerState.hasCompletedBattle
+
+                    &&
+
+                    trainerState.hasCompletedBattle(
+                        gym.id
+                    )
+
+                )
+
+            )
+
+            ||
+
+            null;
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Badge
+    //--------------------------------
+
+
     hasBadge(
         gymId,
         trainerState
-    ) {
+    )
+    {
 
 
         const gym =
@@ -460,7 +987,8 @@ class GymProgressionService {
 
         if(
             !gym
-        ) {
+        )
+        {
 
             return false;
 
@@ -469,8 +997,11 @@ class GymProgressionService {
 
 
         return this.playerHasBadge(
+
             gym.badge,
+
             trainerState
+
         );
 
 
@@ -480,13 +1011,24 @@ class GymProgressionService {
 
 
 
-    getGymCount() {
 
 
-        return this.gyms.length;
 
+
+    //--------------------------------
+    // Statistics
+    //--------------------------------
+
+
+    getGymCount()
+    {
+
+        return this.getAllGyms()
+            .length;
 
     }
+
+
 
 
 
@@ -494,21 +1036,24 @@ class GymProgressionService {
 
     getCompletedGymCount(
         trainerState
-    ) {
+    )
+    {
 
+        return this.getAllGyms()
+            .filter(
 
-        return this.gyms.filter(
+                gym =>
 
-            gym =>
+                    trainerState.hasCompletedBattle
 
-                trainerState.hasCompletedBattle
-                &&
-                trainerState.hasCompletedBattle(
-                    gym.id
-                )
+                    &&
 
-        )
-        .length;
+                    trainerState.hasCompletedBattle(
+                        gym.id
+                    )
+
+            )
+            .length;
 
 
     }
@@ -516,6 +1061,8 @@ class GymProgressionService {
 
 
 }
+
+
 
 
 

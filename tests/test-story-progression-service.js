@@ -7,6 +7,7 @@
  * - Objective availability
  * - Requirement checks
  * - Story flag progression
+ * - Completed event detection
  */
 
 "use strict";
@@ -53,21 +54,23 @@ console.log(
 
 
 
+
 //--------------------------------
-// All rules
+// Rules
 //--------------------------------
 
 
 console.log();
 
 console.log(
-    "All story rules:"
+    "Total story rules:"
 );
 
 
 console.log(
-    story.getAllRules()
+    story.getAllRules().length
 );
+
 
 
 
@@ -76,7 +79,7 @@ console.log(
 
 
 //--------------------------------
-// New game objectives
+// New game
 //--------------------------------
 
 
@@ -92,8 +95,8 @@ console.log(
     story.getNextObjectives(
         player
     )
-
 );
+
 
 
 
@@ -109,18 +112,15 @@ console.log(
 console.log();
 
 console.log(
-    "Can complete Oak Parcel:"
+    "Oak Parcel requirement:"
 );
 
 
 console.log(
 
     story.canComplete(
-
         "GET_OAK_PARCEL",
-
         player
-
     )
 
 );
@@ -146,10 +146,11 @@ player.addStoryFlag(
 
 
 
+
 console.log();
 
 console.log(
-    "Next objectives after Oak Parcel:"
+    "Objectives after Oak Parcel:"
 );
 
 
@@ -168,39 +169,28 @@ console.log(
 
 
 
+
 //--------------------------------
-// Pokedex
+// Pokédex
 //--------------------------------
 
 
 console.log();
 
 console.log(
-    "Can receive Pokedex:"
+    "Receiving Pokédex:"
 );
 
 
 console.log(
 
     story.canComplete(
-
         "RECEIVE_POKEDEX",
-
         player
-
     )
 
 );
 
-
-
-
-
-console.log();
-
-console.log(
-    "Receiving Pokedex..."
-);
 
 
 player.addStoryFlag(
@@ -213,9 +203,8 @@ player.addStoryFlag(
 
 
 
-
 //--------------------------------
-// Brock + Mt Moon
+// Brock
 //--------------------------------
 
 
@@ -234,25 +223,22 @@ player.addBadge(
 
 
 
+
 console.log();
 
 console.log(
-    "Can complete Mt Moon:"
+    "Mt Moon requirement:"
 );
 
 
 console.log(
 
     story.canComplete(
-
         "COMPLETE_MT_MOON",
-
         player
-
     )
 
 );
-
 
 
 
@@ -276,10 +262,12 @@ player.addStoryFlag(
 
 
 
+
+
 console.log();
 
 console.log(
-    "Next objectives after Mt Moon:"
+    "Objectives after Mt Moon:"
 );
 
 
@@ -298,8 +286,57 @@ console.log(
 
 
 
+
 //--------------------------------
-// Elite Four test
+// Event completion test
+//--------------------------------
+
+
+console.log();
+
+console.log(
+    "Testing completed event detection:"
+);
+
+
+
+player.completeEvent(
+    "BILL_EVENT_COMPLETED"
+);
+
+
+
+
+
+console.log(
+
+    story.isCompleted(
+
+        {
+            id:
+                "HELP_BILL",
+
+            completionFlag:
+                "BILL_EVENT_COMPLETED"
+
+        },
+
+        player
+
+    )
+
+);
+
+
+
+
+
+
+
+
+
+//--------------------------------
+// Elite Four
 //--------------------------------
 
 
@@ -313,11 +350,8 @@ console.log(
 console.log(
 
     story.canComplete(
-
         "UNLOCK_ELITE_FOUR",
-
         player
-
     )
 
 );
@@ -372,7 +406,6 @@ for(
 
 
 
-
 console.log();
 
 console.log(
@@ -383,11 +416,8 @@ console.log(
 console.log(
 
     story.canComplete(
-
         "UNLOCK_ELITE_FOUR",
-
         player
-
     )
 
 );
@@ -396,6 +426,12 @@ console.log(
 
 
 
+
+
+
+//--------------------------------
+// Final
+//--------------------------------
 
 
 console.log();

@@ -724,69 +724,83 @@ class TrainerState {
 
 
     //--------------------------------
+    // State getter
+    //--------------------------------
+    
+    getState()
+    {
+    
+        return this.serialize();
+    
+    }
+    
+    
+    
+    
+    
+    //--------------------------------
     // Save serialization
     //--------------------------------
-
-
+    
+    
     serialize()
     {
-
+    
         return {
-
+        
             currentLocation:
                 this.currentLocation,
-
-
+        
+        
             visitedLocations:
                 this.visitedLocations,
-
-
+        
+        
             badges:
                 this.badges,
-
-
+        
+        
             hms:
                 this.hms,
-
-
+        
+        
             hmAbilities:
                 this.hmAbilities,
-
-
+        
+        
             keyItems:
                 this.keyItems,
-
-
+        
+        
             storyFlags:
                 this.storyFlags,
-
-
+        
+        
             items:
                 this.items,
-
-
+        
+        
             pokemon:
                 this.pokemon,
-
-
+        
+        
             money:
                 this.money,
-
-
+        
+        
             completedBattles:
                 this.completedBattles,
-
-
+        
+        
             completedEvents:
                 this.completedEvents,
-
-
+        
+        
             eventStates:
                 this.eventStates
-
-
+        
         };
-
+    
     }
 
 

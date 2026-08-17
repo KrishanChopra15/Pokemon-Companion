@@ -6,12 +6,18 @@
  *
  * Responsibilities:
  * - Load event database.
+ * - Load story event mappings.
  * - Find events.
  * - Validate requirements.
  * - Execute events.
  * - Execute choices.
  * - Apply rewards.
  * - Update trainer state.
+ *
+ * Does NOT:
+ * - Parse ROM data.
+ * - Extract events.
+ * - Create events.
  */
 
 "use strict";
@@ -49,39 +55,137 @@ class EventService {
 
 
     constructor(
-        game
+        game = "firered"
     )
     {
 
 
-        const file =
+        //--------------------------------
+        // Events database
+        //--------------------------------
+
+
+        const eventFile =
             path.join(
-                __dirname,
-                "../../database/generated",
+
+                process.cwd(),
+
+                "database",
+
+                "generated",
+
                 game,
+
                 "events.json"
+
             );
+
+
+
+        if(
+            !fs.existsSync(eventFile)
+        )
+        {
+
+            throw new Error(
+                `Event database missing: ${eventFile}`
+            );
+
+        }
+
+
 
 
 
         const data =
             JSON.parse(
+
                 fs.readFileSync(
-                    file,
+
+                    eventFile,
+
                     "utf8"
+
                 )
+
             );
+
+
 
 
 
         this.events =
             data.map(
+
                 event =>
+
                     this.createEvent(
                         event
                     )
+
             );
 
+
+
+
+
+
+
+        //--------------------------------
+        // Story Event Mapping
+        //--------------------------------
+
+
+        const mappingFile =
+            path.join(
+
+                process.cwd(),
+
+                "database",
+
+                "generated",
+
+                game,
+
+                "story-event-map.json"
+
+            );
+
+
+
+
+
+        this.storyEventMap =
+            fs.existsSync(mappingFile)
+
+            ?
+
+            JSON.parse(
+
+                fs.readFileSync(
+
+                    mappingFile,
+
+                    "utf8"
+
+                )
+
+            )
+
+            :
+
+            {};
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Services
+        //--------------------------------
 
 
         this.rewardService =
@@ -99,8 +203,12 @@ class EventService {
 
 
 
+
+
+
+
     //--------------------------------
-    // Create domain object
+    // Create domain objects
     //--------------------------------
 
 
@@ -134,8 +242,12 @@ class EventService {
 
 
 
+
+
+
+
     //--------------------------------
-    // Find event
+    // Find events
     //--------------------------------
 
 
@@ -144,14 +256,75 @@ class EventService {
     )
     {
 
-        return this.events.find(
-            event =>
-                event.id === id
+
+        //--------------------------------
+        // Story alias lookup
+        //--------------------------------
+
+
+        const mapped =
+            this.storyEventMap[id];
+
+
+
+        if(
+            mapped
         )
-        ||
-        null;
+        {
+
+
+            return (
+
+                this.events.find(
+
+                    event =>
+
+                        event.id === mapped.eventId
+
+                )
+
+                ||
+
+                null
+
+            );
+
+
+        }
+
+
+
+
+
+
+
+        //--------------------------------
+        // Direct ROM event lookup
+        //--------------------------------
+
+
+        return (
+
+            this.events.find(
+
+                event =>
+
+                    event.id === id
+
+            )
+
+            ||
+
+            null
+
+        );
+
 
     }
+
+
+
+
 
 
 
@@ -163,11 +336,16 @@ class EventService {
     {
 
         return this.events.filter(
+
             event =>
+
                 event.location === location
+
         );
 
     }
+
+
 
 
 
@@ -179,8 +357,11 @@ class EventService {
     {
 
         return this.events.filter(
+
             event =>
+
                 event.npc === npc
+
         );
 
     }
@@ -189,8 +370,12 @@ class EventService {
 
 
 
+
+
+
+
     //--------------------------------
-    // Execute Event
+    // Execute event
     //--------------------------------
 
 
@@ -201,15 +386,13 @@ class EventService {
     {
 
 
-        //--------------------------------
-        // World visibility check
-        //--------------------------------
-
-
         const visibility =
             this.worldStateService.canShowEvent(
+
                 event,
+
                 trainerState
+
             );
 
 
@@ -234,15 +417,15 @@ class EventService {
 
 
 
-        //--------------------------------
-        // Requirement check
-        //--------------------------------
 
 
         const check =
             this.canTrigger(
+
                 event,
+
                 trainerState
+
             );
 
 
@@ -267,8 +450,11 @@ class EventService {
 
 
 
+
+
+
         //--------------------------------
-        // Apply rewards
+        // Rewards
         //--------------------------------
 
 
@@ -279,8 +465,11 @@ class EventService {
 
 
             this.rewardService.execute(
+
                 reward,
+
                 trainerState
+
             );
 
 
@@ -290,15 +479,16 @@ class EventService {
 
 
 
+
+
+
         //--------------------------------
-        // Apply effects
+        // Effects
         //--------------------------------
 
 
         const effects =
-            event.effects
-            ||
-            {};
+            event.effects || {};
 
 
 
@@ -334,21 +524,28 @@ class EventService {
 
 
 
+
+
+
         //--------------------------------
         // Complete event
         //--------------------------------
 
 
         if(
-            typeof trainerState.completeEvent === "function"
+            trainerState.completeEvent
         )
         {
 
             trainerState.completeEvent(
+
                 event.id
+
             );
 
         }
+
+
 
 
 
@@ -361,13 +558,28 @@ class EventService {
             event:
                 event.id,
 
+
             state:
-                trainerState.getState()
+
+                trainerState.serialize
+
+                ?
+
+                trainerState.serialize()
+
+                :
+
+                trainerState
+
 
         };
 
 
     }
+
+
+
+
 
 
 
@@ -387,8 +599,11 @@ class EventService {
 
         const check =
             this.canTrigger(
+
                 event,
+
                 trainerState
+
             );
 
 
@@ -404,20 +619,27 @@ class EventService {
 
 
 
+
+
         return (
-            event.choices
-            ||
-            []
+
+            event.choices || []
+
         )
         .map(
+
             choice =>
+
                 this.createChoice(
                     choice
                 )
+
         );
 
 
     }
+
+
 
 
 
@@ -429,21 +651,20 @@ class EventService {
     )
     {
 
-
-        const effects =
-            choice.effects
-            ||
-            {};
-
-
-
         return this.rewardService.execute(
-            effects,
+
+            choice.effects || {},
+
             trainerState
+
         );
 
 
     }
+
+
+
+
 
 
 
@@ -461,19 +682,20 @@ class EventService {
     {
 
 
-        //--------------------------------
-        // Completed event
-        //--------------------------------
-
-
         if(
+
             event.repeatable === false
+
             &&
+
             trainerState.hasCompletedEvent
+
             &&
+
             trainerState.hasCompletedEvent(
                 event.id
             )
+
         )
         {
 
@@ -492,18 +714,16 @@ class EventService {
 
 
 
+
+
         const requirements =
-            event.requirements
-            ||
-            {};
+            event.requirements || {};
 
 
 
 
 
-        //--------------------------------
-        // Story Flags
-        //--------------------------------
+
 
 
         for(
@@ -512,9 +732,7 @@ class EventService {
         {
 
             if(
-                !trainerState.hasStoryFlag(
-                    flag
-                )
+                !trainerState.hasStoryFlag(flag)
             )
             {
 
@@ -535,16 +753,13 @@ class EventService {
 
 
 
-        //--------------------------------
-        // Items
-        //--------------------------------
+
 
 
         for(
             const item of requirements.items || []
         )
         {
-
 
             if(
                 !trainerState.hasItem(item)
@@ -568,9 +783,7 @@ class EventService {
 
 
 
-        //--------------------------------
-        // Key Items
-        //--------------------------------
+
 
 
         for(
@@ -579,9 +792,7 @@ class EventService {
         {
 
             if(
-                !trainerState.hasKeyItem(
-                    item
-                )
+                !trainerState.hasKeyItem(item)
             )
             {
 
@@ -602,9 +813,7 @@ class EventService {
 
 
 
-        //--------------------------------
-        // Badges
-        //--------------------------------
+
 
 
         for(
@@ -612,11 +821,8 @@ class EventService {
         )
         {
 
-
             if(
-                !trainerState.hasBadge(
-                    badge
-                )
+                !trainerState.hasBadge(badge)
             )
             {
 
@@ -637,6 +843,8 @@ class EventService {
 
 
 
+
+
         return {
 
             allowed:true
@@ -650,8 +858,12 @@ class EventService {
 
 
 
+
+
+
+
     //--------------------------------
-    // Visibility Proxy
+    // Visibility
     //--------------------------------
 
 
@@ -661,14 +873,16 @@ class EventService {
     )
     {
 
-
         return this.worldStateService.canShowEvent(
+
             event,
+
             trainerState
+
         );
 
-
     }
+
 
 
 }
@@ -676,4 +890,4 @@ class EventService {
 
 
 module.exports =
-EventService;
+    EventService;

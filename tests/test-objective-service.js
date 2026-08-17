@@ -8,6 +8,8 @@
  * - Gym objectives
  * - Objective filtering
  * - Next objective selection
+ * - Gym unlock progression
+ * - Objective summary
  */
 
 "use strict";
@@ -25,20 +27,18 @@ const GymProgressionService =
     require("../scripts/services/gym-progression-service");
 
 
-const GymRewardService =
-    require("../scripts/services/gym-reward-service");
-
-
 const GymService =
     require("../scripts/services/gym-service");
 
 
-const ProgressionService =
-    require("../scripts/services/progression-service");
+const GymRewardService =
+    require("../scripts/services/gym-reward-service");
 
 
 const TrainerState =
     require("../scripts/domain/trainer-state");
+
+
 
 
 
@@ -61,7 +61,7 @@ const gymProgression =
 
 
 
-const gymRewards =
+const gymReward =
     new GymRewardService();
 
 
@@ -71,14 +71,9 @@ const gym =
 
         gymProgression,
 
-        gymRewards
+        gymReward
 
     );
-
-
-
-const progression =
-    new ProgressionService();
 
 
 
@@ -91,9 +86,10 @@ const objectives =
 
         gym,
 
-        progression
+        null
 
     );
+
 
 
 
@@ -165,6 +161,8 @@ console.log(
 
 
 
+
+
 console.log();
 
 console.log(
@@ -184,6 +182,13 @@ console.log(
 
 
 
+
+
+
+
+//--------------------------------
+// Story objectives
+//--------------------------------
 
 
 console.log();
@@ -211,10 +216,17 @@ console.log(
 
 
 
+
+
+//--------------------------------
+// Gym objectives
+//--------------------------------
+
+
 console.log();
 
 console.log(
-    "Gym objectives only:"
+    "Initial gym objectives:"
 );
 
 
@@ -239,7 +251,7 @@ console.log(
 
 
 //--------------------------------
-// Progress story
+// Oak Parcel
 //--------------------------------
 
 
@@ -282,8 +294,76 @@ console.log(
 
 
 //--------------------------------
-// Defeat Brock
+// Receive Pokedex
 //--------------------------------
+
+
+console.log();
+
+console.log(
+    "Receiving Pokedex..."
+);
+
+
+player.addStoryFlag(
+    "POKEDEX_RECEIVED"
+);
+
+
+
+
+
+console.log();
+
+console.log(
+    "Objectives after Pokedex:"
+);
+
+
+console.log(
+
+    objectives.getObjectives(
+        player
+    )
+
+);
+
+
+
+
+
+
+
+
+
+//--------------------------------
+// Brock
+//--------------------------------
+
+
+console.log();
+
+console.log(
+    "Available gyms before Brock:"
+);
+
+
+console.log(
+
+    objectives.getObjectivesByType(
+
+        "GYM",
+
+        player
+
+    )
+
+);
+
+
+
+
+
 
 
 console.log();
@@ -293,8 +373,7 @@ console.log(
 );
 
 
-
-const brockResult =
+const brock =
     gym.completeGym(
 
         "TRAINER_LEADER_BROCK",
@@ -306,8 +385,26 @@ const brockResult =
 
 
 console.log(
-    brockResult
+    brock
 );
+
+
+
+
+
+
+
+console.log();
+
+console.log(
+    "State after Brock:"
+);
+
+
+console.log(
+    player.serialize()
+);
+
 
 
 
@@ -339,7 +436,39 @@ console.log(
 
 
 //--------------------------------
-// Complete Mt Moon
+// Boulder badge progression
+//--------------------------------
+
+
+console.log();
+
+console.log(
+    "Checking Misty availability:"
+);
+
+
+console.log(
+
+    objectives.getObjectivesByType(
+
+        "GYM",
+
+        player
+
+    )
+
+);
+
+
+
+
+
+
+
+
+
+//--------------------------------
+// Mt Moon
 //--------------------------------
 
 
@@ -353,6 +482,8 @@ console.log(
 player.addStoryFlag(
     "MT_MOON_COMPLETED"
 );
+
+
 
 
 
@@ -411,8 +542,6 @@ console.log(
 
 
 
-
-
 console.log();
 
 console.log(
@@ -424,9 +553,11 @@ console.log(
 
     objectives.hasObjectives(
         player
+
     )
 
 );
+
 
 
 

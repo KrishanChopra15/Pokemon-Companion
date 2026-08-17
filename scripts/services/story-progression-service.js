@@ -6,6 +6,7 @@
  *
  * Responsibilities:
  * - Check story flags.
+ * - Check completed events.
  * - Check story unlocks.
  * - Provide next objectives.
  * - Evaluate important events.
@@ -33,6 +34,7 @@ class StoryProgressionService {
             //--------------------------------
             // Beginning
             //--------------------------------
+
 
             {
                 id:
@@ -78,7 +80,6 @@ class StoryProgressionService {
 
 
 
-
             //--------------------------------
             // Mt Moon
             //--------------------------------
@@ -108,9 +109,6 @@ class StoryProgressionService {
 
 
 
-
-
-
             //--------------------------------
             // Bill
             //--------------------------------
@@ -136,9 +134,6 @@ class StoryProgressionService {
                     "BILL_EVENT_COMPLETED"
 
             },
-
-
-
 
 
 
@@ -195,10 +190,6 @@ class StoryProgressionService {
 
 
 
-
-
-
-
             //--------------------------------
             // Silph Co
             //--------------------------------
@@ -228,9 +219,6 @@ class StoryProgressionService {
 
 
 
-
-
-
             //--------------------------------
             // Elite Four
             //--------------------------------
@@ -248,7 +236,7 @@ class StoryProgressionService {
 
                 requirement:
                     {
-                        badges: [
+                        badges:[
 
                             "BOULDER_BADGE",
                             "CASCADE_BADGE",
@@ -281,16 +269,14 @@ class StoryProgressionService {
 
 
     //--------------------------------
-    // Get all rules
+    // Get rules
     //--------------------------------
 
 
     getAllRules()
     {
 
-
         return this.storyRules;
-
 
     }
 
@@ -301,15 +287,15 @@ class StoryProgressionService {
 
 
 
-
     //--------------------------------
-    // Find rule
+    // Get rule
     //--------------------------------
 
 
-    getRule(id)
+    getRule(
+        id
+    )
     {
-
 
         return (
 
@@ -326,7 +312,6 @@ class StoryProgressionService {
 
         );
 
-
     }
 
 
@@ -336,9 +321,8 @@ class StoryProgressionService {
 
 
 
-
     //--------------------------------
-    // Check requirement
+    // Can objective start?
     //--------------------------------
 
 
@@ -350,17 +334,12 @@ class StoryProgressionService {
 
 
         const rule =
-            this.getRule(
-                id
-            );
+            this.getRule(id);
 
 
 
-        if(
-            !rule
-        )
+        if(!rule)
         {
-
 
             return {
 
@@ -371,29 +350,7 @@ class StoryProgressionService {
 
             };
 
-
         }
-
-
-
-
-
-
-        if(
-            !rule.requirement
-        )
-        {
-
-
-            return {
-
-                allowed:true
-
-            };
-
-
-        }
-
 
 
 
@@ -404,6 +361,18 @@ class StoryProgressionService {
 
 
 
+        if(!requirement)
+        {
+
+            return {
+
+                allowed:true
+
+            };
+
+        }
+
+
 
 
 
@@ -412,15 +381,11 @@ class StoryProgressionService {
             requirement.badge
             &&
             !this.hasBadge(
-
                 requirement.badge,
-
                 trainerState
-
             )
         )
         {
-
 
             return {
 
@@ -430,7 +395,6 @@ class StoryProgressionService {
                     `Requires ${requirement.badge}`
 
             };
-
 
         }
 
@@ -445,12 +409,10 @@ class StoryProgressionService {
         )
         {
 
-
             for(
                 const badge of requirement.badges
             )
             {
-
 
                 if(
                     !this.hasBadge(
@@ -459,7 +421,6 @@ class StoryProgressionService {
                     )
                 )
                 {
-
 
                     return {
 
@@ -470,12 +431,9 @@ class StoryProgressionService {
 
                     };
 
-
                 }
 
-
             }
-
 
         }
 
@@ -489,15 +447,11 @@ class StoryProgressionService {
             requirement.keyItem
             &&
             !this.hasKeyItem(
-
                 requirement.keyItem,
-
                 trainerState
-
             )
         )
         {
-
 
             return {
 
@@ -507,7 +461,6 @@ class StoryProgressionService {
                     `Requires ${requirement.keyItem}`
 
             };
-
 
         }
 
@@ -522,15 +475,11 @@ class StoryProgressionService {
             requirement.storyFlag
             &&
             !this.hasStoryFlag(
-
                 requirement.storyFlag,
-
                 trainerState
-
             )
         )
         {
-
 
             return {
 
@@ -541,11 +490,7 @@ class StoryProgressionService {
 
             };
 
-
         }
-
-
-
 
 
 
@@ -584,8 +529,9 @@ class StoryProgressionService {
 
 
                 if(
-                    trainerState.hasStoryFlag(
-                        rule.completionFlag
+                    this.isCompleted(
+                        rule,
+                        trainerState
                     )
                 )
                 {
@@ -593,6 +539,8 @@ class StoryProgressionService {
                     return false;
 
                 }
+
+
 
 
 
@@ -622,7 +570,93 @@ class StoryProgressionService {
 
 
     //--------------------------------
-    // State checks
+    // Completion check
+    //--------------------------------
+
+
+    isCompleted(
+        rule,
+        trainerState
+    )
+    {
+    
+    
+        //--------------------------------
+        // Story flag completed
+        //--------------------------------
+    
+        if(
+            this.hasStoryFlag(
+                rule.completionFlag,
+                trainerState
+            )
+        )
+        {
+        
+            return true;
+        
+        }
+    
+    
+    
+    
+    
+    
+        //--------------------------------
+        // Event completed
+        //--------------------------------
+    
+        if(
+            trainerState.completedEvents
+        )
+        {
+        
+            if(
+                trainerState.completedEvents.includes(
+                    rule.id
+                )
+            )
+            {
+            
+                return true;
+            
+            }
+        
+        
+        
+            if(
+                trainerState.completedEvents.includes(
+                    rule.completionFlag
+                )
+            )
+            {
+            
+                return true;
+            
+            }
+        
+        
+        }
+    
+    
+    
+    
+    
+        return false;
+    
+    
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // State helpers
     //--------------------------------
 
 
@@ -631,7 +665,6 @@ class StoryProgressionService {
         trainerState
     )
     {
-
 
         return (
 
@@ -644,9 +677,7 @@ class StoryProgressionService {
             badge
         );
 
-
     }
-
 
 
 
@@ -657,7 +688,6 @@ class StoryProgressionService {
         trainerState
     )
     {
-
 
         return (
 
@@ -670,9 +700,7 @@ class StoryProgressionService {
             item
         );
 
-
     }
-
 
 
 
@@ -683,7 +711,6 @@ class StoryProgressionService {
         trainerState
     )
     {
-
 
         return (
 
@@ -696,10 +723,7 @@ class StoryProgressionService {
             flag
         );
 
-
     }
-
-
 
 
 

@@ -10,20 +10,24 @@
  * - Extract Pokémon data
  * - Extract source encounter data
  * - Extract location data
- * - Extract location graph
- * - Extract location gates
- * - Extract field obstacles
- * - Extract NPC events
- * - Extract dialogue data
- * - Generate databases
- * - Build generated databases
+ * - Extract events
+ * - Generate raw databases
+ * - Delegate database building to BuildManager
+ *
+ * Does NOT:
+ * - Build generated databases directly.
+ * - Build progression directly.
+ * - Handle application services.
  */
 
 "use strict";
 
 
-const fs = require("fs");
-const path = require("path");
+const fs =
+    require("fs");
+
+const path =
+    require("path");
 
 
 
@@ -41,6 +45,7 @@ const ReaderFactory =
 
 const ExtractorFactory =
     require("../extractors/extractor-factory");
+
 
 
 
@@ -84,8 +89,7 @@ const ObjectEventExtractor =
     require("../extractors/game-boy-advance/object-event-extractor");
 
 
-const EventRequirementExtractor =
-    require("../extractors/game-boy-advance/event-requirement-extractor");
+
 
 
 
@@ -105,10 +109,6 @@ const FieldObstacleGenerator =
     require("../generators/raw/field-obstacle-generator");
 
 
-const NPCEventGenerator =
-    require("../generators/raw/npc-event-generator");
-
-
 const EventGenerator =
     require("../generators/raw/event-generator");
 
@@ -119,6 +119,8 @@ const DialogueGenerator =
 
 const NPCDialogueGenerator =
     require("../generators/raw/npc-dialogue-generator");
+
+
 
 
 
@@ -133,26 +135,36 @@ const BuildManager =
 
 
 
+
+
+
+
 class FireRedBuildPipeline {
 
 
 
-    run() {
+    run()
+    {
 
 
         console.log(
             "========================================"
         );
+
 
         console.log(
             "Pokémon FireRed Build Pipeline"
         );
 
+
         console.log(
             "========================================"
         );
 
+
         console.log();
+
+
 
 
 
@@ -174,8 +186,10 @@ class FireRedBuildPipeline {
 
 
 
+
+
         //----------------------------------------
-        // Discover source
+        // Discover ROM
         //----------------------------------------
 
         console.log(
@@ -193,21 +207,11 @@ class FireRedBuildPipeline {
             sourceManager.discover();
 
 
-
-        if(
-            sources.length === 0
-        ) {
-
-            throw new Error(
-                "No ROM sources were discovered."
-            );
-
-        }
-
-
-
         const source =
             sources[0];
+
+
+
 
 
 
@@ -234,6 +238,8 @@ class FireRedBuildPipeline {
 
 
 
+
+
         //----------------------------------------
         // Extract game
         //----------------------------------------
@@ -250,6 +256,9 @@ class FireRedBuildPipeline {
 
 
         extractor.extractGame();
+
+
+
 
 
 
@@ -276,6 +285,9 @@ class FireRedBuildPipeline {
 
         const moves =
             extractor.extractMoves();
+
+
+
 
 
 
@@ -308,22 +320,21 @@ class FireRedBuildPipeline {
 
 
 
-        const encounterExtractor =
-            new PokemonEncounterExtractor();
-
-
-
         const encounters =
-            encounterExtractor.extract(
-                encounterData
-            );
+            new PokemonEncounterExtractor()
+                .extract(
+                    encounterData
+                );
+
+
+
 
 
 
 
 
         //----------------------------------------
-        // Reference source
+        // Reference path
         //----------------------------------------
 
         const referencePath =
@@ -331,6 +342,9 @@ class FireRedBuildPipeline {
                 __dirname,
                 "../../../References/pokefirered"
             );
+
+
+
 
 
 
@@ -345,22 +359,21 @@ class FireRedBuildPipeline {
         );
 
 
-        const locationExtractor =
-            new LocationExtractor();
-
-
-
         const locations =
-            locationExtractor.extract(
-                referencePath
-            );
+            new LocationExtractor()
+                .extract(
+                    referencePath
+                );
+
+
+
 
 
 
 
 
         //----------------------------------------
-        // Location Graph
+        // Location graph
         //----------------------------------------
 
         console.log(
@@ -368,15 +381,11 @@ class FireRedBuildPipeline {
         );
 
 
-        const locationGraphExtractor =
-            new LocationGraphExtractor();
-
-
-
         const locationGraph =
-            locationGraphExtractor.extract(
-                referencePath
-            );
+            new LocationGraphExtractor()
+                .extract(
+                    referencePath
+                );
 
 
         console.log(
@@ -387,8 +396,11 @@ class FireRedBuildPipeline {
 
 
 
+
+
+
         //----------------------------------------
-        // Location Gates
+        // Gates
         //----------------------------------------
 
         console.log(
@@ -396,22 +408,21 @@ class FireRedBuildPipeline {
         );
 
 
-        const locationGateExtractor =
-            new LocationGateExtractor();
-
-
-
         const locationGates =
-            locationGateExtractor.extract(
-                referencePath
-            );
+            new LocationGateExtractor()
+                .extract(
+                    referencePath
+                );
+
+
+
 
 
 
 
 
         //----------------------------------------
-        // Field Obstacles
+        // Obstacles
         //----------------------------------------
 
         console.log(
@@ -419,20 +430,19 @@ class FireRedBuildPipeline {
         );
 
 
-        const fieldObstacleExtractor =
-            new FieldObstacleExtractor();
-
-
-
         const fieldObstacles =
-            fieldObstacleExtractor.extract(
-                referencePath
-            );
+            new FieldObstacleExtractor()
+                .extract(
+                    referencePath
+                );
 
 
         console.log(
             `Field obstacle locations: ${Object.keys(fieldObstacles).length}`
         );
+
+
+
 
 
 
@@ -447,15 +457,11 @@ class FireRedBuildPipeline {
         );
 
 
-        const npcEventExtractor =
-            new NPCEventExtractor();
-
-
-
         const npcs =
-            npcEventExtractor.extract(
-                referencePath
-            );
+            new NPCEventExtractor()
+                .extract(
+                    referencePath
+                );
 
 
         console.log(
@@ -466,66 +472,65 @@ class FireRedBuildPipeline {
 
 
 
+
+
+
         //----------------------------------------
         // Dialogues
         //----------------------------------------
-            
+
         console.log(
             "Extracting dialogues..."
         );
-        
-        
-        const dialogueExtractor =
-            new DialogueExtractor();
-        
-        
-        
+
+
         const dialogues =
-            dialogueExtractor.extract(
-                referencePath
-            );
-        
-        
+            new DialogueExtractor()
+                .extract(
+                    referencePath
+                );
+
+
         console.log(
             `Dialogues: ${Object.keys(dialogues).length}`
         );
-        
-        
 
 
-        //--------------------------------
-        // Event Scripts
-        //--------------------------------
+
+
+
+
+
+
+        //----------------------------------------
+        // Event scripts
+        //----------------------------------------
 
         console.log(
             "Extracting event scripts..."
         );
 
 
-        const eventScriptExtractor =
-            new EventScriptExtractor();
+        const events =
+            new EventScriptExtractor()
+                .extract(
+                    referencePath
+                );
 
 
-        const eventScripts =
-            eventScriptExtractor.extract(
-                referencePath
-            );
-        
-
-        const requirementExtractor =
-            new EventRequirementExtractor();
-
-        
         console.log(
-            `Event scripts: ${Object.keys(eventScripts).length}`
+            `Event scripts: ${Object.keys(events).length}`
         );
 
 
 
 
 
+
+
+
         //----------------------------------------
-        // Object Events
+        // Object events
         //----------------------------------------
 
         console.log(
@@ -533,20 +538,19 @@ class FireRedBuildPipeline {
         );
 
 
-        const objectEventExtractor =
-            new ObjectEventExtractor();
-
-
-
         const objects =
-            objectEventExtractor.extract(
-                referencePath
-            );
-        
-        
+            new ObjectEventExtractor()
+                .extract(
+                    referencePath
+                );
+
+
         console.log(
             `Object events: ${objects.length}`
         );
+
+
+
 
 
 
@@ -567,97 +571,107 @@ class FireRedBuildPipeline {
                 locationGraph,
                 "firered"
             );
-        
-        
-        
+
+
+
         new LocationGateGenerator()
             .generate(
                 locationGates,
                 "firered"
             );
-        
-        
-        
+
+
+
         new FieldObstacleGenerator()
             .generate(
                 fieldObstacles,
                 "firered"
             );
-        
-        
-        
-        
-        
-        // Events
-        
+
+
+
         new EventGenerator()
             .generate(
-                eventScripts,
+                events,
                 npcs,
                 objects,
                 "firered"
             );
-        
-        
-        
-        
-        
-        // Dialogues
-        
+
+
+
         new DialogueGenerator()
             .generate(
                 dialogues,
                 "firered"
             );
-        
-        
-        
-        
-        
-        // NPC + Object dialogues
-        
+
+
+
         new NPCDialogueGenerator()
             .generate(
-                eventScripts,
+                events,
                 dialogues,
                 npcs,
                 objects,
                 "firered"
             );
-        
-        
-        
-        
+
+
+
+
+
+
+
 
         //----------------------------------------
         // Build databases
         //----------------------------------------
-                
+
+        console.log(
+            "Building databases..."
+        );
+
+
         const buildManager =
             new BuildManager();
-                
-                
-                
+
+
+
         buildManager.buildGame(
             "firered",
             {
-            
+
                 species,
-            
+
                 moves,
-            
+
                 encounters,
-            
+
                 locations,
-            
+
                 npcs,
-            
+
                 objects,
-            
+
                 dialogues,
-            
-                eventScripts
-            
+
+                events,
+
+
+                //----------------------------------------
+                // Pokemon availability data
+                //----------------------------------------
+
+                availability:
+                {
+
+                    encounters,
+
+                    locations
+
+                }
+
             }
         );
 
@@ -665,23 +679,34 @@ class FireRedBuildPipeline {
 
 
 
+
+
+
         //----------------------------------------
-        // Close
+        // Close ROM
         //----------------------------------------
 
         reader.close();
 
 
 
+
+
+
+
+
         console.log();
+
 
         console.log(
             "========================================"
         );
 
+
         console.log(
             "FireRed build completed successfully."
         );
+
 
         console.log(
             "========================================"
@@ -691,7 +716,10 @@ class FireRedBuildPipeline {
     }
 
 
+
 }
+
+
 
 
 

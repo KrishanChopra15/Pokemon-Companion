@@ -2,7 +2,10 @@
  * Pokémon Companion
  * Event Generator
  *
- * Generates event database from extracted scripts.
+ * Generates generated event database from extracted scripts.
+ *
+ * Output:
+ * database/generated/{game}/events.json
  */
 
 "use strict";

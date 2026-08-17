@@ -7,22 +7,32 @@
  * Responsibilities:
  * - Resolve trainer Pokémon.
  * - Calculate trainer information.
+ * - Analyze trainer strengths.
+ * - Compare trainer against player teams.
  *
  * Does NOT:
  * - Load databases directly.
  * - Build databases.
+ * - Execute battles.
+ * - Calculate damage.
  */
 
 "use strict";
 
 
+
+
+
 class TrainerAnalysisService {
+
 
 
     constructor(
         trainerDatabase,
         pokemonDatabase
-    ) {
+    )
+    {
+
 
         this.trainerDatabase =
             trainerDatabase;
@@ -31,19 +41,40 @@ class TrainerAnalysisService {
         this.pokemonDatabase =
             pokemonDatabase;
 
+
     }
 
 
 
-    analyzeTrainer(id) {
+
+
+
+
+
+
+    //--------------------------------
+    // Analyze trainer
+    //--------------------------------
+
+
+    analyzeTrainer(
+        id,
+        playerTeam = []
+    )
+    {
 
 
         const trainer =
-            this.trainerDatabase.getTrainer(id);
+            this.trainerDatabase.getTrainer(
+                id
+            );
 
 
 
-        if (!trainer) {
+        if(
+            !trainer
+        )
+        {
 
             return null;
 
@@ -51,28 +82,56 @@ class TrainerAnalysisService {
 
 
 
+
+
+
+
+
         const team =
             trainer.party
-                ? trainer.party.pokemon.map(
-                    pokemon => ({
 
-                        species:
-                            pokemon.species,
+            ?
 
-                        level:
-                            pokemon.level,
+            trainer.party.pokemon.map(
 
-                        iv:
-                            pokemon.iv,
+                pokemon =>
 
-                        pokemon:
-                            this.pokemonDatabase.getPokemon(
-                                pokemon.species
-                            )
+                ({
 
-                    })
-                )
-                : [];
+                    species:
+                        pokemon.species,
+
+
+                    level:
+                        pokemon.level,
+
+
+                    iv:
+                        pokemon.iv,
+
+
+                    pokemon:
+
+                        this.pokemonDatabase.getPokemon(
+
+                            pokemon.species
+
+                        )
+
+
+                })
+
+            )
+
+            :
+
+            [];
+
+
+
+
+
+
 
 
 
@@ -95,31 +154,88 @@ class TrainerAnalysisService {
 
 
             teamSize:
-                this.getTeamSize(team),
+
+                this.getTeamSize(
+                    team
+                ),
 
 
             highestLevel:
-                this.getHighestLevel(team),
+
+                this.getHighestLevel(
+                    team
+                ),
 
 
             averageLevel:
-                this.getAverageLevel(team),
+
+                this.getAverageLevel(
+                    team
+                ),
 
 
             types:
-                this.getTypes(team),
+
+                this.getTypes(
+                    team
+                ),
 
 
             teamPower:
-                this.getTeamPower(team)
+
+                this.getTeamPower(
+                    team
+                ),
+
+
+            weaknesses:
+
+                this.getWeaknesses(
+                    team
+                ),
+
+
+            matchup:
+
+                playerTeam.length
+
+                ?
+
+                this.analyzeMatchup(
+
+                    playerTeam,
+
+                    team
+
+                )
+
+                :
+
+                null
+
 
         };
+
 
     }
 
 
 
-    getTeamSize(team) {
+
+
+
+
+
+
+    //--------------------------------
+    // Team size
+    //--------------------------------
+
+
+    getTeamSize(
+        team
+    )
+    {
 
         return team.length;
 
@@ -127,54 +243,119 @@ class TrainerAnalysisService {
 
 
 
-    getHighestLevel(team) {
 
 
-        if (team.length === 0) {
+
+
+
+
+    //--------------------------------
+    // Highest level
+    //--------------------------------
+
+
+    getHighestLevel(
+        team
+    )
+    {
+
+
+        if(
+            team.length === 0
+        )
+        {
 
             return 0;
 
         }
+
 
 
         return Math.max(
+
             ...team.map(
+
                 pokemon =>
+
                     pokemon.level
+
             )
+
         );
+
 
     }
 
 
 
-    getAverageLevel(team) {
 
 
-        if (team.length === 0) {
+
+
+
+
+    //--------------------------------
+    // Average level
+    //--------------------------------
+
+
+    getAverageLevel(
+        team
+    )
+    {
+
+
+        if(
+            team.length === 0
+        )
+        {
 
             return 0;
 
         }
 
 
+
         const total =
+
             team.reduce(
-                (sum, pokemon) =>
+
+                (sum,pokemon)=>
+
                     sum + pokemon.level,
+
                 0
+
             );
 
 
+
         return Math.round(
+
             total / team.length
+
         );
+
 
     }
 
 
 
-    getTypes(team) {
+
+
+
+
+
+
+    //--------------------------------
+    // Types
+    //--------------------------------
+
+
+    getTypes(
+        team
+    )
+    {
 
 
         const types =
@@ -183,6 +364,7 @@ class TrainerAnalysisService {
 
 
         team.forEach(
+
             member => {
 
 
@@ -191,7 +373,10 @@ class TrainerAnalysisService {
 
 
 
-                if (!pokemon) {
+                if(
+                    !pokemon
+                )
+                {
 
                     return;
 
@@ -199,43 +384,72 @@ class TrainerAnalysisService {
 
 
 
-                if (pokemon.type1) {
+                if(
+                    pokemon.type1
+                )
+                {
 
                     types.add(
+
                         pokemon.type1.name
+
                     );
 
                 }
 
 
 
-                if (pokemon.type2) {
+                if(
+                    pokemon.type2
+                )
+                {
 
                     types.add(
+
                         pokemon.type2.name
+
                     );
 
                 }
 
 
             }
+
         );
 
 
 
         return [
+
             ...types
+
         ];
+
 
     }
 
 
 
-    getTeamPower(team) {
+
+
+
+
+
+
+    //--------------------------------
+    // Team power
+    //--------------------------------
+
+
+    getTeamPower(
+        team
+    )
+    {
 
 
         return team.reduce(
-            (total, member) => {
+
+            (total,member)=>{
 
 
                 const pokemon =
@@ -243,7 +457,10 @@ class TrainerAnalysisService {
 
 
 
-                if (!pokemon) {
+                if(
+                    !pokemon
+                )
+                {
 
                     return total;
 
@@ -267,13 +484,138 @@ class TrainerAnalysisService {
 
 
             },
+
             0
+
         );
 
+
     }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Weakness analysis
+    //--------------------------------
+
+
+    getWeaknesses(
+        team
+    )
+    {
+
+
+        const weaknesses =
+            [];
+
+
+
+        team.forEach(
+
+            member=>{
+
+
+                if(
+                    !member.pokemon
+                )
+                {
+
+                    return;
+
+                }
+
+
+
+                weaknesses.push({
+
+                    pokemon:
+
+                        member.species,
+
+
+                    types:
+
+                        [
+
+                            member.pokemon.type1?.name,
+
+                            member.pokemon.type2?.name
+
+                        ]
+
+                });
+
+
+            }
+
+        );
+
+
+
+        return weaknesses;
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Matchup analysis
+    //--------------------------------
+
+
+    analyzeMatchup(
+        playerTeam,
+        trainerTeam
+    )
+    {
+
+
+        return {
+
+
+            playerCount:
+
+                playerTeam.length,
+
+
+            trainerCount:
+
+                trainerTeam.length,
+
+
+            trainerPower:
+
+                this.getTeamPower(
+
+                    trainerTeam
+
+                )
+
+        };
+
+
+    }
+
 
 
 }
 
 
-module.exports = TrainerAnalysisService;
+
+
+
+module.exports =
+    TrainerAnalysisService;

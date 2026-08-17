@@ -15,11 +15,25 @@ class RewardService {
     execute(
         rewards,
         trainerState
-    ) {
+    )
+    {
 
 
         if(!rewards)
-            return;
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "No rewards"
+
+            };
+
+        }
+
+
 
 
 
@@ -27,14 +41,18 @@ class RewardService {
         // Items
         //--------------------------------
 
+
         for(
             const item of rewards.addItems || []
-        ) {
-
+        )
+        {
 
             trainerState.addItem(
+
                 item.name,
+
                 item.quantity || 1
+
             );
 
 
@@ -44,16 +62,21 @@ class RewardService {
 
 
 
+
+
         //--------------------------------
         // Pokémon
         //--------------------------------
 
+
         for(
             const pokemon of rewards.addPokemon || []
-        ) {
+        )
+        {
 
 
             trainerState.addPokemon(
+
                 {
 
                     species:
@@ -64,10 +87,13 @@ class RewardService {
                         pokemon.level || 1
 
                 }
+
             );
 
 
         }
+
+
 
 
 
@@ -77,17 +103,23 @@ class RewardService {
         // Money
         //--------------------------------
 
-        for(
-            const money of rewards.addMoney || []
-        ) {
+
+        if(
+            rewards.addMoney
+        )
+        {
 
 
             trainerState.addMoney(
-                money
+
+                rewards.addMoney
+
             );
 
 
         }
+
+
 
 
 
@@ -97,17 +129,23 @@ class RewardService {
         // Story flags
         //--------------------------------
 
+
         for(
             const flag of rewards.addStoryFlags || []
-        ) {
+        )
+        {
 
 
             trainerState.addStoryFlag(
+
                 flag
+
             );
 
 
         }
+
+
 
 
 
@@ -117,17 +155,23 @@ class RewardService {
         // Remove flags
         //--------------------------------
 
+
         for(
             const flag of rewards.removeStoryFlags || []
-        ) {
+        )
+        {
 
 
             trainerState.removeStoryFlag(
+
                 flag
+
             );
 
 
         }
+
+
 
 
 
@@ -137,17 +181,23 @@ class RewardService {
         // Battles
         //--------------------------------
 
+
         for(
             const battle of rewards.battles || []
-        ) {
+        )
+        {
 
 
             trainerState.completeBattle(
+
                 battle
+
             );
 
 
         }
+
+
 
 
 
@@ -160,7 +210,23 @@ class RewardService {
 
 
             state:
+
+                trainerState.getState
+
+                ?
+
                 trainerState.getState()
+
+                :
+
+                trainerState.serialize
+                ?
+
+                trainerState.serialize()
+
+                :
+
+                trainerState
 
 
         };

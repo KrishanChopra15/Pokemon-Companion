@@ -7,47 +7,119 @@
  * Responsibilities:
  * - Analyze trainer weaknesses.
  * - Suggest counters.
+ * - Rank available Pokémon.
  *
  * Does NOT:
  * - Load databases directly.
  * - Parse source files.
+ * - Execute battles.
  */
 
 "use strict";
 
 
+
+
+
 class TrainerRecommendationService {
+
 
 
     constructor(
         pokemonDatabase
-    ) {
+    )
+    {
+
 
         this.pokemonDatabase =
             pokemonDatabase;
+
 
     }
 
 
 
-    recommend(analysis) {
+
+
+
+
+
+
+    //--------------------------------
+    // Recommend against trainer
+    //--------------------------------
+
+
+    recommend(
+        analysis,
+        playerPokemon = []
+    )
+    {
+
+
+        if(
+            !analysis
+        )
+        {
+
+            return null;
+
+        }
+
+
+
+
+
+
 
 
         const weaknesses =
             this.getWeaknesses(
+
                 analysis.types
+
             );
+
+
+
+
+
+
 
 
         const recommendations =
-            this.findPokemon(
+            playerPokemon.length
+
+            ?
+
+            this.rankPlayerPokemon(
+
+                playerPokemon,
+
                 weaknesses
+
+            )
+
+            :
+
+            this.findPokemon(
+
+                weaknesses
+
             );
+
+
+
+
+
+
 
 
         return {
 
+
             trainer:
+
                 analysis.name,
 
 
@@ -56,13 +128,29 @@ class TrainerRecommendationService {
 
             recommendations
 
+
         };
+
 
     }
 
 
 
-    getWeaknesses(types) {
+
+
+
+
+
+
+    //--------------------------------
+    // Type weaknesses
+    //--------------------------------
+
+
+    getWeaknesses(
+        types
+    )
+    {
 
 
         const weaknesses =
@@ -70,86 +158,337 @@ class TrainerRecommendationService {
 
 
 
+
+
         types.forEach(
+
             type => {
 
 
-                if (type === "Rock") {
-
-                    weaknesses.add("Water");
-
-                    weaknesses.add("Grass");
-
-                    weaknesses.add("Fighting");
-
-                    weaknesses.add("Ground");
-
-                    weaknesses.add("Steel");
-
-                }
+                switch(
+                    type
+                )
+                {
 
 
+                    case "Rock":
 
-                if (type === "Ground") {
+                        weaknesses.add(
+                            "Water"
+                        );
 
-                    weaknesses.add("Water");
+                        weaknesses.add(
+                            "Grass"
+                        );
 
-                    weaknesses.add("Grass");
+                        weaknesses.add(
+                            "Fighting"
+                        );
 
-                    weaknesses.add("Ice");
+                        weaknesses.add(
+                            "Ground"
+                        );
+
+                        weaknesses.add(
+                            "Steel"
+                        );
+
+                        break;
+
+
+
+
+                    case "Ground":
+
+                        weaknesses.add(
+                            "Water"
+                        );
+
+                        weaknesses.add(
+                            "Grass"
+                        );
+
+                        weaknesses.add(
+                            "Ice"
+                        );
+
+                        break;
+
+
+
+
+                    case "Water":
+
+                        weaknesses.add(
+                            "Electric"
+                        );
+
+                        weaknesses.add(
+                            "Grass"
+                        );
+
+                        break;
+
+
+
+                    case "Fire":
+
+                        weaknesses.add(
+                            "Water"
+                        );
+
+                        weaknesses.add(
+                            "Ground"
+                        );
+
+                        weaknesses.add(
+                            "Rock"
+                        );
+
+                        break;
+
+
 
                 }
 
 
             }
+
         );
 
 
+
+
+
         return [
+
             ...weaknesses
+
         ];
+
 
     }
 
 
 
-    findPokemon(types) {
+
+
+
+
+
+
+    //--------------------------------
+    // Find database counters
+    //--------------------------------
+
+
+    findPokemon(
+        types
+    )
+    {
 
 
         return this.pokemonDatabase
+
             .getAllPokemon()
+
             .filter(
+
+                pokemon =>
+
+
+                    (
+
+                        pokemon.type1 &&
+
+                        types.includes(
+
+                            pokemon.type1.name
+
+                        )
+
+                    )
+
+                    ||
+
+                    (
+
+                        pokemon.type2 &&
+
+                        types.includes(
+
+                            pokemon.type2.name
+
+                        )
+
+                    )
+
+
+            )
+
+            .slice(
+
+                0,
+
+                10
+
+            )
+
+            .map(
+
+                pokemon =>
+
+                    pokemon.name
+
+            );
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Rank player's Pokemon
+    //--------------------------------
+
+
+    rankPlayerPokemon(
+        team,
+        weaknesses
+    )
+    {
+
+
+        return team
+
+            .map(
+
                 pokemon => {
 
 
-                    return (
+                    const data =
+                        this.pokemonDatabase.getPokemon(
 
-                        (pokemon.type1 &&
-                        types.includes(
-                            pokemon.type1.name
-                        ))
+                            pokemon.species
 
-                        ||
+                        );
 
-                        (pokemon.type2 &&
-                        types.includes(
-                            pokemon.type2.name
-                        ))
 
-                    );
+
+                    if(
+                        !data
+                    )
+                    {
+
+                        return null;
+
+                    }
+
+
+
+                    let score =
+                        0;
+
+
+
+
+                    if(
+
+                        data.type1 &&
+
+                        weaknesses.includes(
+
+                            data.type1.name
+
+                        )
+
+                    )
+                    {
+
+                        score += 50;
+
+                    }
+
+
+
+                    if(
+
+                        data.type2 &&
+
+                        weaknesses.includes(
+
+                            data.type2.name
+
+                        )
+
+                    )
+                    {
+
+                        score += 50;
+
+                    }
+
+
+
+                    score +=
+
+                        pokemon.level || 0;
+
+
+
+                    return {
+
+
+                        pokemon:
+
+                            pokemon.species,
+
+
+                        level:
+
+                            pokemon.level,
+
+
+                        score
+
+
+                    };
+
 
                 }
+
             )
-            .slice(0,10)
-            .map(
-                pokemon =>
-                    pokemon.name
+
+            .filter(
+
+                Boolean
+
+            )
+
+            .sort(
+
+                (a,b)=>
+
+                    b.score - a.score
+
             );
 
+
     }
+
 
 
 }
 
 
-module.exports = TrainerRecommendationService;
+
+
+
+module.exports =
+    TrainerRecommendationService;

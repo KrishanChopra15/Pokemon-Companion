@@ -26,9 +26,10 @@ class ObjectiveService {
 
     constructor(
         storyProgressionService,
-        gymService,
+        gymService = null,
         progressionService = null
-    ) {
+    )
+    {
 
 
         this.story =
@@ -51,14 +52,146 @@ class ObjectiveService {
 
 
 
+
     //--------------------------------
-    // Get all current objectives
+    // Get story objectives
+    //--------------------------------
+
+
+    getStoryObjectives(
+        trainerState
+    )
+    {
+
+
+        if(
+            !this.story
+        )
+        {
+
+            return [];
+
+        }
+
+
+
+        return this.story
+            .getNextObjectives(
+                trainerState
+            )
+            .map(
+
+                objective =>
+
+                ({
+
+                    type:
+                        "STORY",
+
+
+                    id:
+                        objective.id,
+
+
+                    title:
+                        objective.description,
+
+
+                    location:
+                        objective.location
+
+
+                })
+
+            );
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Get gym objectives
+    //--------------------------------
+
+
+    getGymObjectives(
+        trainerState
+    )
+    {
+
+
+        if(
+            !this.gym
+            ||
+            typeof this.gym.getAvailableGyms !== "function"
+        )
+        {
+
+            return [];
+
+        }
+
+
+
+
+
+        return this.gym
+            .getAvailableGyms(
+                trainerState
+            )
+            .map(
+
+                gym =>
+
+                ({
+
+                    type:
+                        "GYM",
+
+
+                    id:
+                        gym.id,
+
+
+                    title:
+                        `Defeat ${gym.name}.`,
+
+
+                    location:
+                        gym.city
+
+
+                })
+
+            );
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Get all objectives
     //--------------------------------
 
 
     getObjectives(
         trainerState
-    ) {
+    )
+    {
 
 
         const objectives = [];
@@ -68,60 +201,17 @@ class ObjectiveService {
 
 
         //--------------------------------
-        // Story objectives
+        // Story priority
         //--------------------------------
 
 
-        if(
-            this.story
-        ) {
+        objectives.push(
 
+            ...this.getStoryObjectives(
+                trainerState
+            )
 
-            const storyObjectives =
-                this.story
-                    .getNextObjectives(
-                        trainerState
-                    );
-
-
-
-            for(
-                const objective of storyObjectives
-            ) {
-
-
-                objectives.push(
-
-                    {
-
-                        type:
-                            "STORY",
-
-
-                        id:
-                            objective.id,
-
-
-                        title:
-                            objective.description,
-
-
-                        location:
-                            objective.location
-
-
-                    }
-
-                );
-
-
-            }
-
-
-        }
-
-
-
+        );
 
 
 
@@ -133,54 +223,42 @@ class ObjectiveService {
         //--------------------------------
 
 
+        objectives.push(
+
+            ...this.getGymObjectives(
+                trainerState
+            )
+
+        );
+
+
+
+
+
+
+        //--------------------------------
+        // Future progression systems
+        //--------------------------------
+
+
         if(
-            this.gym
-        ) {
+            this.progression
+            &&
+            typeof this.progression.getObjectives === "function"
+        )
+        {
 
 
-            const gyms =
-                this.gym
-                    .getAvailableGyms(
-                        trainerState
-                    );
+            objectives.push(
 
+                ...this.progression.getObjectives(
+                    trainerState
+                )
 
-
-            for(
-                const gym of gyms
-            ) {
-
-
-                objectives.push(
-
-                    {
-
-                        type:
-                            "GYM",
-
-
-                        id:
-                            gym.id,
-
-
-                        title:
-                            `Defeat ${gym.name}.`,
-
-
-                        location:
-                            gym.city
-
-
-                    }
-
-                );
-
-
-            }
+            );
 
 
         }
-
 
 
 
@@ -201,13 +279,14 @@ class ObjectiveService {
 
 
     //--------------------------------
-    // Find next objective
+    // Get next objective
     //--------------------------------
 
 
     getNextObjective(
         trainerState
-    ) {
+    )
+    {
 
 
         const objectives =
@@ -239,14 +318,15 @@ class ObjectiveService {
 
 
     //--------------------------------
-    // Filter objectives
+    // Filter by type
     //--------------------------------
 
 
     getObjectivesByType(
         type,
         trainerState
-    ) {
+    )
+    {
 
 
         return this.getObjectives(
@@ -272,13 +352,14 @@ class ObjectiveService {
 
 
     //--------------------------------
-    // Objective summary
+    // Summary
     //--------------------------------
 
 
     getSummary(
         trainerState
-    ) {
+    )
+    {
 
 
         const objectives =
@@ -295,8 +376,7 @@ class ObjectiveService {
                 objectives.length,
 
 
-            objectives:
-                objectives
+            objectives
 
 
         };
@@ -313,13 +393,14 @@ class ObjectiveService {
 
 
     //--------------------------------
-    // Check if objective exists
+    // Has objectives
     //--------------------------------
 
 
     hasObjectives(
         trainerState
-    ) {
+    )
+    {
 
 
         return (
@@ -333,8 +414,6 @@ class ObjectiveService {
 
 
     }
-
-
 
 
 

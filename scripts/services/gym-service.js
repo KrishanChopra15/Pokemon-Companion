@@ -2,13 +2,15 @@
  * Pokémon Companion
  * Gym Service
  *
- * Coordinates gym battles and rewards.
+ * Coordinates gym progression.
  *
  * Responsibilities:
  * - Check gym availability.
- * - Complete gym battles.
+ * - Resolve gym data.
+ * - Resolve gym trainers.
+ * - Resolve gym events.
  * - Apply gym rewards.
- * - Update trainer progression.
+ * - Complete gym progression.
  *
  * Does NOT:
  * - Execute battles.
@@ -19,14 +21,20 @@
 "use strict";
 
 
+
+
+
 class GymService {
 
 
 
     constructor(
         gymProgressionService,
-        gymRewardService
-    ) {
+        gymEventService,
+        gymRewardService,
+        trainerDatabaseService = null
+    )
+    {
 
 
         this.progression =
@@ -34,8 +42,18 @@ class GymService {
 
 
 
+        this.events =
+            gymEventService;
+
+
+
         this.rewards =
             gymRewardService;
+
+
+
+        this.trainers =
+            trainerDatabaseService;
 
 
     }
@@ -47,16 +65,157 @@ class GymService {
 
 
 
+
     //--------------------------------
-    // Check gym challenge
+    // Gym lookup
+    //--------------------------------
+
+
+    getGym(
+        gymId
+    )
+    {
+
+        return this.progression
+            .getGym(
+                gymId
+            );
+
+    }
+
+
+
+
+
+
+
+
+
+    getAllGyms()
+    {
+
+        return this.progression
+            .getAllGyms();
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Trainer lookup
+    //--------------------------------
+
+
+    hasTrainerDatabase()
+    {
+
+        return this.trainers !== null;
+
+    }
+
+
+
+
+
+
+
+
+    getGymTrainerId(
+        gymId
+    )
+    {
+
+        const gym =
+            this.getGym(
+                gymId
+            );
+
+
+        return gym
+            ?
+            gym.trainer
+            :
+            null;
+
+
+    }
+
+
+
+
+
+
+
+
+
+    getGymTrainer(
+        gymId
+    )
+    {
+
+
+        if(
+            !this.hasTrainerDatabase()
+        )
+        {
+
+            return null;
+
+        }
+
+
+
+        const trainerId =
+            this.getGymTrainerId(
+                gymId
+            );
+
+
+
+        if(
+            !trainerId
+        )
+        {
+
+            return null;
+
+        }
+
+
+
+        return this.trainers.getTrainer(
+
+            trainerId
+
+        );
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Challenge
     //--------------------------------
 
 
     canChallenge(
         gymId,
         trainerState
-    ) {
-
+    )
+    {
 
         return this.progression
             .canChallengeGym(
@@ -67,6 +226,30 @@ class GymService {
 
             );
 
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Event
+    //--------------------------------
+
+
+    getGymEvent(
+        gymId
+    )
+    {
+
+        return this.events
+            .getGymEvent(
+                gymId
+            );
 
     }
 
@@ -79,22 +262,91 @@ class GymService {
 
 
     //--------------------------------
-    // Complete gym battle
+    // Battle data
+    //--------------------------------
+
+
+    getBattleData(
+        gymId
+    )
+    {
+
+
+        const gym =
+            this.getGym(
+                gymId
+            );
+
+
+
+        if(
+            !gym
+        )
+        {
+
+            return null;
+
+        }
+
+
+
+
+
+        return {
+
+            gymId,
+
+
+            gym,
+
+
+            trainerId:
+
+                this.getGymTrainerId(
+                    gymId
+                ),
+
+
+            trainer:
+
+                this.getGymTrainer(
+                    gymId
+                ),
+
+
+            event:
+
+                this.getGymEvent(
+                    gymId
+                )
+
+
+        };
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Complete gym
     //--------------------------------
 
 
     completeGym(
         gymId,
         trainerState
-    ) {
+    )
+    {
 
 
-        //--------------------------------
-        // Check availability
-        //--------------------------------
-
-
-        const available =
+        const check =
             this.canChallenge(
 
                 gymId,
@@ -106,22 +358,47 @@ class GymService {
 
 
         if(
-            !available.allowed
-        ) {
-
+            !check.allowed
+        )
+        {
 
             return {
 
-
                 success:false,
 
-
                 reason:
-                    available.reason
-
+                    check.reason
 
             };
 
+        }
+
+
+
+
+
+
+
+        const event =
+            this.getGymEvent(
+                gymId
+            );
+
+
+
+        if(
+            !event
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Missing gym event"
+
+            };
 
         }
 
@@ -133,13 +410,28 @@ class GymService {
 
 
         //--------------------------------
-        // Give rewards
+        // Apply rewards
         //--------------------------------
 
 
-        const rewardResult =
+        let rewardResult =
+        {
+
+            success:true,
+
+            rewards:{}
+
+        };
+
+
+
+        if(
             this.rewards
-                .giveRewards(
+        )
+        {
+
+            rewardResult =
+                this.rewards.giveRewards(
 
                     gymId,
 
@@ -147,30 +439,41 @@ class GymService {
 
                 );
 
-
-
-
-
+        }
 
 
 
         if(
             !rewardResult.success
-        ) {
+        )
+        {
+
+            return rewardResult;
+
+        }
 
 
-            return {
 
 
-                success:false,
 
 
-                reason:
-                    rewardResult.reason
 
 
-            };
+        //--------------------------------
+        // Complete event
+        //--------------------------------
 
+
+        if(
+            trainerState.completeEvent
+        )
+        {
+
+            trainerState.completeEvent(
+
+                event.battleEvent
+
+            );
 
         }
 
@@ -183,17 +486,27 @@ class GymService {
 
         return {
 
-
             success:true,
 
 
             gym:
+
                 gymId,
 
 
-            rewards:
-                rewardResult.rewards
+            event:
 
+                event.battleEvent,
+
+
+            badge:
+
+                event.badge,
+
+
+            rewards:
+
+                rewardResult.rewards
 
 
         };
@@ -210,37 +523,34 @@ class GymService {
 
 
     //--------------------------------
-    // Gym status
+    // Status
     //--------------------------------
 
 
     getGymStatus(
         gymId,
         trainerState
-    ) {
+    )
+    {
 
 
         const gym =
-            this.progression
-                .getGym(
-                    gymId
-                );
+            this.getGym(
+                gymId
+            );
 
 
 
         if(
             !gym
-        ) {
-
+        )
+        {
 
             return {
 
-
                 exists:false
 
-
             };
-
 
         }
 
@@ -248,8 +558,10 @@ class GymService {
 
 
 
-        return {
 
+
+
+        return {
 
             exists:true,
 
@@ -257,17 +569,32 @@ class GymService {
             gym,
 
 
-            completed:
+            trainer:
 
-                trainerState.hasCompletedBattle(
-
+                this.getGymTrainer(
                     gymId
-
                 ),
 
 
+            event:
 
-            canChallenge:
+                this.getGymEvent(
+                    gymId
+                ),
+
+
+            completed:
+
+                trainerState.hasCompletedBattle
+
+                &&
+
+                trainerState.hasCompletedBattle(
+                    gymId
+                ),
+
+
+            availability:
 
                 this.canChallenge(
 
@@ -278,7 +605,6 @@ class GymService {
                 )
 
 
-
         };
 
 
@@ -290,27 +616,85 @@ class GymService {
 
 
 
+
+
     //--------------------------------
-    // Available gyms
+    // Progression
     //--------------------------------
 
 
     getAvailableGyms(
         trainerState
-    ) {
-
+    )
+    {
 
         return this.progression
             .getAvailableGyms(
+
                 trainerState
+
             );
 
+    }
+
+
+
+
+
+
+
+
+    getRecommendedNextGym(
+        trainerState
+    )
+    {
+
+        return this.progression
+            .getRecommendedNextGyms(
+
+                trainerState
+
+            );
+
+    }
+
+
+
+
+
+
+
+
+    getProgressionStats(
+        trainerState
+    )
+    {
+
+        return {
+
+            total:
+
+                this.progression.getGymCount(),
+
+
+            completed:
+
+                this.progression
+                    .getCompletedGymCount(
+
+                        trainerState
+
+                    )
+
+        };
 
     }
 
 
 
 }
+
+
 
 
 

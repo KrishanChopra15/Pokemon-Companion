@@ -7,6 +7,7 @@
  * Responsibilities:
  * - Load Pokémon database.
  * - Query Pokémon data.
+ * - Query evolution data.
  *
  * Does NOT:
  * - Parse source files.
@@ -16,68 +17,161 @@
 
 "use strict";
 
-const fs = require("fs");
-const path = require("path");
+
+const fs =
+    require("fs");
+
+
+const path =
+    require("path");
+
+
+
 
 
 class PokemonDatabaseService {
 
 
-    constructor(game) {
+
+    constructor(
+        game
+    )
+    {
 
 
         const databasePath =
             path.join(
+
                 __dirname,
+
                 "../../database/generated",
+
                 game,
+
                 "pokemon-species.json"
+
             );
+
+
+
 
 
         this.pokemon =
             JSON.parse(
+
                 fs.readFileSync(
+
                     databasePath,
+
                     "utf8"
+
                 )
+
             );
+
 
     }
 
 
 
-    getPokemon(name) {
+
+
+
+
+
+
+    //--------------------------------
+    // Get Pokemon
+    //--------------------------------
+
+
+    getPokemon(
+        name
+    )
+    {
 
 
         return this.pokemon.find(
+
             pokemon =>
-                pokemon.name === name.toUpperCase()
-        ) || null;
+
+                pokemon.name ===
+
+                name.toUpperCase()
+
+        )
+
+        ||
+
+        null;
 
 
     }
 
 
 
-    getPokemonById(id) {
+
+
+
+
+
+
+    //--------------------------------
+    // Get Pokemon by ID
+    //--------------------------------
+
+
+    getPokemonById(
+        id
+    )
+    {
 
 
         const formattedId =
-            String(id).padStart(4, "0");
+            String(id)
+
+            .padStart(
+
+                4,
+
+                "0"
+
+            );
+
+
+
 
 
         return this.pokemon.find(
+
             pokemon =>
+
                 pokemon.id === formattedId
-        ) || null;
+
+        )
+
+        ||
+
+        null;
 
 
     }
 
 
 
-    getAllPokemon() {
+
+
+
+
+
+
+    //--------------------------------
+    // Get all Pokemon
+    //--------------------------------
+
+
+    getAllPokemon()
+    {
 
         return this.pokemon;
 
@@ -85,54 +179,287 @@ class PokemonDatabaseService {
 
 
 
-    getByType(type) {
+
+
+
+
+
+
+    //--------------------------------
+    // Get evolution data
+    //--------------------------------
+
+
+    getEvolution(
+        species
+    )
+    {
+
+
+        const pokemon =
+            this.getPokemon(
+
+                species
+
+            );
+
+
+
+
+
+
+
+
+        if(
+            !pokemon
+            ||
+            !pokemon.evolutions
+            ||
+            pokemon.evolutions.length === 0
+        )
+        {
+
+            return null;
+
+        }
+
+
+
+
+
+
+
+
+        const evolution =
+            pokemon.evolutions[0];
+
+
+
+
+
+
+
+
+        let method =
+            null;
+
+
+
+
+
+
+
+
+        switch(
+            evolution.method.constant
+        )
+        {
+
+
+            case "EVO_LEVEL":
+
+                method =
+                    "LEVEL";
+
+                break;
+
+
+
+
+            case "EVO_ITEM":
+
+                method =
+                    "ITEM";
+
+                break;
+
+
+
+
+            case "EVO_TRADE":
+
+                method =
+                    "TRADE";
+
+                break;
+
+
+
+
+            default:
+
+                return null;
+
+
+        }
+
+
+
+
+
+
+
+
+        return {
+
+
+            method,
+
+
+            value:
+
+                evolution.level
+
+                ||
+
+                null,
+
+
+
+            target:
+
+                evolution.targetSpecies.name
+
+        };
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Type search
+    //--------------------------------
+
+
+    getByType(
+        type
+    )
+    {
 
 
         const searchType =
             type.toLowerCase();
 
 
+
+
+
         return this.getAllPokemon()
+
             .filter(
+
                 pokemon =>
 
-                    pokemon.type1 &&
-                    pokemon.type1.name.toLowerCase() === searchType
+
+                    (
+
+                        pokemon.type1 &&
+
+                        pokemon.type1.name
+
+                        .toLowerCase()
+
+                        ===
+
+                        searchType
+
+                    )
+
 
                     ||
 
-                    pokemon.type2 &&
-                    pokemon.type2.name.toLowerCase() === searchType
+                    (
+
+                        pokemon.type2 &&
+
+                        pokemon.type2.name
+
+                        .toLowerCase()
+
+                        ===
+
+                        searchType
+
+                    )
+
 
             );
+
 
     }
 
 
 
-    getByAbility(ability) {
+
+
+
+
+
+
+    //--------------------------------
+    // Ability search
+    //--------------------------------
+
+
+    getByAbility(
+        ability
+    )
+    {
 
 
         const searchAbility =
             ability.toUpperCase();
 
 
+
+
+
         return this.getAllPokemon()
+
             .filter(
+
                 pokemon =>
 
-                    pokemon.abilities &&
-                    pokemon.abilities.some(
-                        item =>
-                            item.name === searchAbility
+
+                    (
+
+                        pokemon.ability1 &&
+
+                        pokemon.ability1.name === searchAbility
+
                     )
+
+
+                    ||
+
+                    (
+
+                        pokemon.ability2 &&
+
+                        pokemon.ability2.name === searchAbility
+
+                    )
+
 
             );
 
+
     }
+
 
 
 }
 
 
-module.exports = PokemonDatabaseService;
+
+
+
+module.exports =
+    PokemonDatabaseService;

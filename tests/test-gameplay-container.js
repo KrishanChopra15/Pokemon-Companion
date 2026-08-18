@@ -41,3 +41,21 @@ console.log(
     "Battle Engine:",
     !!app.get("battleEngine")
 );
+
+
+console.log(
+    "Evolution:",
+    !!app.get("evolution")
+);
+
+
+console.log(
+    "Experience:",
+    !!app.get("experience")
+);
+
+
+console.log(
+    "Level Up:",
+    !!app.get("levelUp")
+);

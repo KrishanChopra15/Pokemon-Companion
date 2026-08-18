@@ -124,6 +124,22 @@ const BattleAIService =
     require("./services/battle-ai-service");
 
 
+//--------------------------------
+// Pokémon Progression Services
+//--------------------------------
+
+const EvolutionService =
+    require("./services/evolution-service");
+
+
+const ExperienceService =
+    require("./services/experience-service");
+
+
+const LevelUpService =
+    require("./services/level-up-service");
+
+
 
 
 
@@ -514,6 +530,37 @@ class AppContainer {
 
 
 
+        const evolution =
+            new EvolutionService(
+            
+                this.get("pokemonDatabase")
+            
+            );
+        
+        
+        
+        const experience =
+            new ExperienceService(
+            
+                this.get("pokemonDatabase")
+            
+            );
+        
+        
+        
+        const levelUp =
+            new LevelUpService(
+            
+                this.get("pokemonDatabase"),
+            
+                experience,
+            
+                evolution
+            
+            );
+
+
+
 
 
 
@@ -554,14 +601,44 @@ class AppContainer {
             battleAI
         
         );
-        
-        
-        
+
+
+
         this.container.register(
         
             "battleEngine",
         
             battleEngine
+        
+        );
+
+
+            
+        this.container.register(
+        
+            "evolution",
+        
+            evolution
+        
+        );
+        
+        
+        
+        this.container.register(
+        
+            "experience",
+        
+            experience
+        
+        );
+        
+        
+        
+        this.container.register(
+        
+            "levelUp",
+        
+            levelUp
         
         );
 

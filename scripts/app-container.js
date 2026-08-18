@@ -335,6 +335,17 @@ const TeamFlow =
 
 
 //================================
+// Inventory Services
+//================================
+
+const InventoryManager =
+    require("./inventory/inventory-manager");
+
+const InventoryFlow =
+    require("./inventory/inventory-flow");
+
+
+//================================
 // Save Services
 //================================
 
@@ -381,6 +392,8 @@ class AppContainer {
         this.registerPokemonInformationServices();
 
         this.registerActionServices();
+
+        this.registerInventoryServices();
 
         this.registerCaptureServices();
 
@@ -1395,52 +1408,52 @@ class AppContainer {
     //================================
     // Team Layer
     //================================
-    
-    
+
+
     registerTeamServices()
     {
-    
-    
+
+
         const teamManager =
             new TeamManager();
-    
-    
-    
-    
+
+
+
+
         const teamFlow =
             new TeamFlow(
-            
+
                 teamManager
-            
+
             );
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
         this.container.register(
-        
+
             "teamManager",
-        
+
             teamManager
-        
+
         );
-    
-    
-    
-    
-    
+
+
+
+
+
         this.container.register(
-        
+
             "teamFlow",
-        
+
             teamFlow
-        
+
         );
-    
-    
+
+
     }
 
 
@@ -1859,6 +1872,55 @@ class AppContainer {
         );
 
 
+    }
+
+
+
+
+
+    //================================
+    // Inventory Layer
+    //================================
+    
+    
+    registerInventoryServices()
+    {
+    
+    
+        const inventoryManager =
+            new InventoryManager();
+    
+    
+    
+        const inventoryFlow =
+            new InventoryFlow(
+                inventoryManager
+            );
+        
+        
+        
+        
+        this.container.register(
+        
+            "inventoryManager",
+        
+            inventoryManager
+        
+        );
+    
+    
+    
+    
+    
+        this.container.register(
+        
+            "inventoryFlow",
+        
+            inventoryFlow
+        
+        );
+    
+    
     }
 
 

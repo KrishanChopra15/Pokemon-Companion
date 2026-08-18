@@ -140,6 +140,22 @@ const LevelUpService =
     require("./services/level-up-service");
 
 
+//--------------------------------
+// Pokémon Analysis Services
+//--------------------------------
+
+const PokemonAvailabilityService =
+    require("./services/pokemon-availability-service");
+
+
+const PokemonObtainabilityService =
+    require("./services/pokemon-obtainability-service");
+
+
+const TeamRecommendationService =
+    require("./services/team-recommendation-service");
+
+
 
 
 
@@ -561,6 +577,43 @@ class AppContainer {
 
 
 
+        const pokemonAvailability =
+            new PokemonAvailabilityService(
+            
+                this.get("pokemonDatabase"),
+            
+                this.get("locationDatabase"),
+            
+                this.get("evolution"),
+            
+                null,
+            
+                null,
+            
+                null
+            
+            );
+        
+        
+        
+        const pokemonObtainability =
+            new PokemonObtainabilityService(
+            
+                pokemonAvailability
+            
+            );
+        
+        
+        
+        const teamRecommendation =
+            new TeamRecommendationService(
+            
+                pokemonAvailability
+            
+            );
+
+
+
 
 
 
@@ -613,7 +666,7 @@ class AppContainer {
         );
 
 
-            
+
         this.container.register(
         
             "evolution",
@@ -621,9 +674,9 @@ class AppContainer {
             evolution
         
         );
-        
-        
-        
+
+
+
         this.container.register(
         
             "experience",
@@ -631,14 +684,44 @@ class AppContainer {
             experience
         
         );
-        
-        
-        
+
+
+
         this.container.register(
         
             "levelUp",
         
             levelUp
+        
+        );
+
+
+
+        this.container.register(
+        
+            "pokemonAvailability",
+        
+            pokemonAvailability
+        
+        );
+        
+        
+        
+        this.container.register(
+        
+            "pokemonObtainability",
+        
+            pokemonObtainability
+        
+        );
+        
+        
+        
+        this.container.register(
+        
+            "teamRecommendation",
+        
+            teamRecommendation
         
         );
 

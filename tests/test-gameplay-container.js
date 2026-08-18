@@ -59,3 +59,21 @@ console.log(
     "Level Up:",
     !!app.get("levelUp")
 );
+
+
+console.log(
+    "Pokemon Availability:",
+    !!app.get("pokemonAvailability")
+);
+
+
+console.log(
+    "Pokemon Obtainability:",
+    !!app.get("pokemonObtainability")
+);
+
+
+console.log(
+    "Team Recommendation:",
+    !!app.get("teamRecommendation")
+);

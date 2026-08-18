@@ -160,6 +160,18 @@ const WildBattleService =
     require("./services/wild-battle-service");
 
 
+//================================
+// Encounter Services
+//================================
+
+const EncounterManager =
+    require("./encounter/encounter-manager");
+
+
+const EncounterFlow =
+    require("./encounter/encounter-flow");
+
+
 //--------------------------------
 // NPC Services
 //--------------------------------
@@ -358,6 +370,8 @@ class AppContainer {
         this.registerEventServices();
 
         this.registerCaptureServices();
+
+        this.registerEncounterServices();
 
         this.registerPokemonInformationServices();
 
@@ -1187,6 +1201,68 @@ class AppContainer {
 
 
     //================================
+    // Encounter Layer
+    //================================
+    
+    
+    registerEncounterServices()
+    {
+    
+    
+        const encounterManager =
+            new EncounterManager();
+    
+    
+    
+        const encounterFlow =
+            new EncounterFlow(
+            
+                encounterManager,
+            
+            
+                this.get(
+                    "locationDatabase"
+                ),
+            
+            
+                this.get(
+                    "pokemonAvailability"
+                )
+            
+            );
+        
+        
+        
+        
+        
+        this.container.register(
+        
+            "encounterManager",
+        
+            encounterManager
+        
+        );
+    
+    
+    
+    
+    
+        this.container.register(
+        
+            "encounterFlow",
+        
+            encounterFlow
+        
+        );
+    
+    
+    }
+
+
+
+
+
+    //================================
     // Pokémon Information Layer
     //================================
 
@@ -1537,67 +1613,67 @@ class AppContainer {
     //================================
     // World Runtime Layer
     //================================
-    
-    
+
+
     registerWorldRuntimeServices()
     {
-    
-    
+
+
         const worldManager =
             new WorldManager(
-            
+
                 this.get(
                     "session"
                 )
-            
+
             );
-        
-        
-        
-        
+
+
+
+
         const worldFlow =
             new WorldFlow(
-            
+
                 worldManager,
-            
-            
+
+
                 this.get(
                     "locationAccess"
                 ),
-            
-            
+
+
                 this.get(
                     "mapAccess"
                 )
-            
+
             );
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
         this.container.register(
-        
+
             "worldManager",
-        
+
             worldManager
-        
+
         );
-    
-    
-    
-    
-    
+
+
+
+
+
         this.container.register(
-        
+
             "worldFlow",
-        
+
             worldFlow
-        
+
         );
-    
-    
+
+
     }
 
 

@@ -48,6 +48,26 @@ const GymDatabaseService =
     require("./services/gym-database-service");
 
 
+//--------------------------------
+// Progression Services
+//--------------------------------
+
+const ProgressionService =
+    require("./services/progression-service");
+
+
+const ProgressionRequirementService =
+    require("./services/progression-requirement-service");
+
+
+const GymProgressionService =
+    require("./services/gym-progression-service");
+
+
+const StoryProgressionService =
+    require("./services/story-progression-service");
+
+
 
 
 
@@ -72,6 +92,9 @@ class AppContainer {
 
 
         this.registerDatabaseServices();
+            
+    
+        this.registerProgressionServices();
 
 
     }
@@ -152,6 +175,89 @@ class AppContainer {
             "gymDatabase",
 
             gymDatabase
+
+        );
+
+
+    }
+
+
+
+
+
+    
+    //--------------------------------
+    // Register progression layer
+    //--------------------------------
+
+    registerProgressionServices()
+    {
+
+
+        const progressionRequirement =
+            new ProgressionRequirementService();
+
+
+
+        const progression =
+            new ProgressionService(
+                this.game
+            );
+
+
+
+        const gymProgression =
+            new GymProgressionService(
+                this.get("gymDatabase")
+            );
+
+
+
+        const storyProgression =
+            new StoryProgressionService(
+                this.game
+            );
+
+
+
+
+
+
+        this.container.register(
+
+            "progressionRequirement",
+
+            progressionRequirement
+
+        );
+
+
+
+        this.container.register(
+
+            "progression",
+
+            progression
+
+        );
+
+
+
+        this.container.register(
+
+            "gymProgression",
+
+            gymProgression
+
+        );
+
+
+
+        this.container.register(
+
+            "storyProgression",
+
+            storyProgression
 
         );
 

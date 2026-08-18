@@ -18,34 +18,81 @@
 "use strict";
 
 
-const fs = require("fs");
-const path = require("path");
+const fs =
+    require("fs");
+
+
+const path =
+    require("path");
+
+
 
 
 
 class NPCService {
 
 
-    constructor(game) {
+
+    constructor(
+        game = "firered"
+    )
+    {
 
 
         const file =
             path.join(
+
                 __dirname,
+
                 "../../database/generated",
+
                 game,
+
                 "npcs.json"
+
             );
+
+
+
+
+
+        if(
+            !fs.existsSync(file)
+        )
+        {
+
+            throw new Error(
+
+                `NPC database missing: ${file}`
+
+            );
+
+        }
+
+
+
+
+
 
 
 
         const data =
             JSON.parse(
+
                 fs.readFileSync(
+
                     file,
+
                     "utf8"
+
                 )
+
             );
+
+
+
+
+
 
 
 
@@ -53,21 +100,40 @@ class NPCService {
 
 
 
+
+
+
+
+
+        //--------------------------------
+        // Flatten location NPC data
+        //--------------------------------
+
+
         for(
             const location of Object.keys(data)
-        ) {
+        )
+        {
+
+
+            const locationNPCs =
+                data[location];
+
 
 
             for(
-                const npc of data[location]
-            ) {
+                const npc of locationNPCs
+            )
+            {
 
 
                 this.npcs.push({
 
                     ...npc,
 
+
                     location
+
 
                 });
 
@@ -84,37 +150,28 @@ class NPCService {
 
 
 
-    /**
-     * Get all NPCs in a location.
-     */
-    getNPCs(location) {
-
-
-        return this.npcs
-            .filter(
-                npc =>
-                    npc.location === location
-            );
-
-
-    }
 
 
 
 
-
-    /**
-     * Get NPC by id.
-     */
-    getNPC(id) {
+    //--------------------------------
+    // Get NPCs in location
+    //--------------------------------
 
 
-        return this.npcs.find(
+    getNPCs(
+        location
+    )
+    {
+
+
+        return this.npcs.filter(
+
             npc =>
-                npc.id === id
-        )
-        ||
-        null;
+
+                npc.location === location
+
+        );
 
 
     }
@@ -123,10 +180,55 @@ class NPCService {
 
 
 
-    /**
-     * Get all NPCs.
-     */
-    getAllNPCs() {
+
+
+
+
+    //--------------------------------
+    // Get NPC by ID
+    //--------------------------------
+
+
+    getNPC(
+        id
+    )
+    {
+
+
+        return (
+
+            this.npcs.find(
+
+                npc =>
+
+                    npc.id === id
+
+            )
+
+            ||
+
+            null
+
+        );
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Get all NPCs
+    //--------------------------------
+
+
+    getAllNPCs()
+    {
 
 
         return this.npcs;
@@ -135,7 +237,32 @@ class NPCService {
     }
 
 
+
+
+
+
+
+    //--------------------------------
+    // Count NPCs
+    //--------------------------------
+
+
+    count()
+    {
+
+
+        return this.npcs.length;
+
+
+    }
+
+
+
 }
 
 
-module.exports = NPCService;
+
+
+
+module.exports =
+    NPCService;

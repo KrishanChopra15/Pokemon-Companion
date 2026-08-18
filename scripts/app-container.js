@@ -180,6 +180,26 @@ const DialogueService =
     require("./services/dialogue-service");
 
 
+//================================
+// Gym Services
+//================================
+
+const GymService =
+    require("./services/gym-service");
+
+
+const GymLocationService =
+    require("./services/gym-location-service");
+
+
+const GymRewardService =
+    require("./services/gym-reward-service");
+
+
+const GymEventService =
+    require("./services/gym-event-service");
+
+
 
 
 
@@ -205,6 +225,8 @@ class AppContainer {
         this.registerProgressionServices();
 
         this.registerWorldServices();
+
+        this.registerGymServices();
 
         this.registerGameplayServices();
 
@@ -441,6 +463,128 @@ class AppContainer {
 
     }
 
+
+
+
+
+
+    //================================
+    // Gym Layer
+    //================================
+
+
+    registerGymServices()
+    {
+
+
+        const gymReward =
+            new GymRewardService(
+
+                this.get(
+                    "gymDatabase"
+                )
+
+            );
+
+
+
+        const gymLocation =
+            new GymLocationService(
+
+                this.get(
+                    "gymProgression"
+                ),
+
+
+                this.get(
+                    "locationGraph"
+                ),
+
+
+                this.get(
+                    "locationGate"
+                ),
+
+
+                this.get(
+                    "fieldObstacle"
+                )
+
+            );
+
+
+
+        const gym =
+            new GymService(
+
+                this.get(
+                    "gymProgression"
+                ),
+
+
+                this.get(
+                    "gymEventService"
+                ),
+
+
+                gymReward,
+
+
+                this.get(
+                    "trainerDatabase"
+                )
+
+            );
+
+
+
+
+        this.container.register(
+        
+            "gymEventService",
+        
+            new GymEventService(
+            
+                this.get(
+                    "gymDatabase"
+                )
+            
+            )
+        
+        );
+
+
+
+        this.container.register(
+
+            "gymReward",
+
+            gymReward
+
+        );
+
+
+
+        this.container.register(
+
+            "gymLocation",
+
+            gymLocation
+
+        );
+
+
+
+        this.container.register(
+
+            "gym",
+
+            gym
+
+        );
+
+
+    }
 
 
 
@@ -730,77 +874,77 @@ class AppContainer {
     //================================
     // NPC Layer
     //================================
-    
-    
+
+
     registerNPCServices()
     {
-    
-    
+
+
         const npcService =
             new NPCService(
                 this.game
             );
-        
-        
-        
+
+
+
         const npcAvailability =
             new NPCAvailabilityService();
-        
-        
-        
+
+
+
         const npcInteraction =
             new NPCInteractionService();
-        
-        
-        
+
+
+
         const dialogue =
             new DialogueService(
                 this.game
             );
-        
-        
-        
-        
-        
+
+
+
+
+
         this.container.register(
-        
+
             "npcService",
-        
+
             npcService
-        
+
         );
-    
-    
-    
+
+
+
         this.container.register(
-        
+
             "npcAvailability",
-        
+
             npcAvailability
-        
+
         );
-    
-    
-    
+
+
+
         this.container.register(
-        
+
             "npcInteraction",
-        
+
             npcInteraction
-        
+
         );
-    
-    
-    
+
+
+
         this.container.register(
-        
+
             "dialogue",
-        
+
             dialogue
-        
+
         );
-    
-    
+
+
     }
 
 

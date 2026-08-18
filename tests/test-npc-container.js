@@ -25,7 +25,7 @@ console.log(
 console.log(
     "NPC Availability:",
     !!app.get(
-        "npcAvailabilityService"
+        "npcAvailability"
     )
 );
 
@@ -34,7 +34,7 @@ console.log(
 console.log(
     "NPC Interaction:",
     !!app.get(
-        "npcInteractionService"
+        "npcInteraction"
     )
 );
 
@@ -43,6 +43,6 @@ console.log(
 console.log(
     "Dialogue:",
     !!app.get(
-        "dialogueService"
+        "dialogue"
     )
 );

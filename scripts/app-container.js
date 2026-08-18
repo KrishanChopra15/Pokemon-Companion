@@ -67,6 +67,33 @@ const GymProgressionService =
 const StoryProgressionService =
     require("./services/story-progression-service");
 
+//--------------------------------
+// World Services
+//--------------------------------
+
+const LocationGraphService =
+    require("./services/location-graph-service");
+
+
+const LocationGateService =
+    require("./services/location-gate-service");
+
+
+const FieldObstacleService =
+    require("./services/field-obstacle-service");
+
+
+const WorldStateService =
+    require("./services/world-state-service");
+
+
+const WorldProgressionService =
+    require("./services/world-progression-service");
+
+
+const ObjectiveService =
+    require("./services/objective-service");
+
 
 
 
@@ -95,6 +122,9 @@ class AppContainer {
             
     
         this.registerProgressionServices();
+
+
+        this.registerWorldServices();
 
 
     }
@@ -185,7 +215,7 @@ class AppContainer {
 
 
 
-    
+
     //--------------------------------
     // Register progression layer
     //--------------------------------
@@ -262,6 +292,140 @@ class AppContainer {
         );
 
 
+    }
+
+
+
+
+
+
+    //--------------------------------
+    // Register world layer
+    //--------------------------------
+    
+    registerWorldServices()
+    {
+    
+    
+        const locationGraph =
+            new LocationGraphService(
+                this.game
+            );
+        
+        
+        
+        const locationGate =
+            new LocationGateService(
+                this.game,
+            
+                this.get("progression")
+            );
+        
+        
+        
+        const fieldObstacle =
+            new FieldObstacleService(
+                this.game,
+            
+                this.get("progression")
+            );
+        
+        
+        
+        const worldState =
+            new WorldStateService(
+                this.game
+            );
+        
+        
+        
+        const worldProgression =
+            new WorldProgressionService(
+            
+                this.get("storyProgression"),
+            
+                this.get("gymProgression"),
+            
+                this.get("progression")
+            
+            );
+        
+        
+        
+        const objective =
+            new ObjectiveService(
+            
+                this.get("storyProgression"),
+            
+                this.get("gymProgression"),
+            
+                this.get("progression")
+            
+            );
+        
+        
+        
+        
+        
+        this.container.register(
+        
+            "locationGraph",
+        
+            locationGraph
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "locationGate",
+        
+            locationGate
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "fieldObstacle",
+        
+            fieldObstacle
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "worldState",
+        
+            worldState
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "worldProgression",
+        
+            worldProgression
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "objective",
+        
+            objective
+        
+        );
+    
+    
     }
 
 

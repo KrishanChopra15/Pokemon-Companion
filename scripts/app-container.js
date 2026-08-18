@@ -293,6 +293,14 @@ const PokemonProgressionService =
     require("./services/pokemon-progression-service");
 
 
+//================================
+// Session
+//================================
+
+const GameSession =
+    require("./session/game-session");
+
+
 
 
 
@@ -340,6 +348,8 @@ class AppContainer {
         this.registerNPCServices();
 
         this.registerTrainerAnalysisServices();
+
+        this.registerSessionServices();
 
     }
 
@@ -1463,6 +1473,37 @@ class AppContainer {
         );
 
 
+    }
+
+
+
+
+
+    //================================
+    // Session Layer
+    //================================
+    
+    
+    registerSessionServices()
+    {
+    
+    
+        const session =
+            new GameSession(
+                this.game
+            );
+        
+        
+        
+        this.container.register(
+        
+            "session",
+        
+            session
+        
+        );
+    
+    
     }
 
 

@@ -176,6 +176,18 @@ const StoryEventService =
     require("./services/story-event-service");
 
 
+//--------------------------------
+// Capture / Wild Battle Services
+//--------------------------------
+
+const CaptureService =
+    require("./services/capture-service");
+
+
+const WildBattleService =
+    require("./services/wild-battle-service");
+
+
 
 
 
@@ -212,6 +224,9 @@ class AppContainer {
 
 
         this.registerEventServices();
+
+
+        this.registerCaptureServices();
 
         
     }
@@ -821,6 +836,47 @@ class AppContainer {
 
         );
 
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Register Capture Services
+    //--------------------------------
+
+    registerCaptureServices()
+    {
+
+        const captureService =
+            new CaptureService();
+
+
+
+        const wildBattleService =
+            new WildBattleService();
+
+
+
+        this.container.register(
+
+            "captureService",
+
+            captureService
+
+        );
+
+
+
+        this.container.register(
+
+            "wildBattleService",
+
+            wildBattleService
+
+        );
 
     }
 

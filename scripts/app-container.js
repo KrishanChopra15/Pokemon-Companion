@@ -159,6 +159,9 @@ const CaptureService =
 const WildBattleService =
     require("./services/wild-battle-service");
 
+const CaptureFlow =
+    require("./capture/capture-flow");
+
 
 //================================
 // Action Services
@@ -364,13 +367,13 @@ class AppContainer {
 
         this.registerEventServices();
 
+        this.registerPokemonInformationServices();
+
+        this.registerActionServices();
+        
         this.registerCaptureServices();
 
         this.registerEncounterServices();
-
-        this.registerActionServices();
-
-        this.registerPokemonInformationServices();
 
         this.registerStarterServices();
 
@@ -1155,42 +1158,77 @@ class AppContainer {
     // Capture Layer
     //================================
 
-
+    
     registerCaptureServices()
     {
-
-
+    
+    
         const captureService =
             new CaptureService();
-
-
-
+    
+    
+    
         const wildBattleService =
             new WildBattleService();
-
-
-
-
-
+    
+    
+    
+    
+        const captureFlow =
+            new CaptureFlow(
+            
+                captureService,
+            
+            
+                this.get(
+                    "pokemonTracker"
+                ),
+            
+            
+                this.get(
+                    "actionFlow"
+                )
+            
+            );
+        
+        
+        
+        
+        
+        
         this.container.register(
-
+        
             "captureService",
-
+        
             captureService
-
+        
         );
-
-
-
+    
+    
+    
+    
+    
         this.container.register(
-
+        
             "wildBattleService",
-
+        
             wildBattleService
-
+        
         );
-
-
+    
+    
+    
+    
+    
+        this.container.register(
+        
+            "captureFlow",
+        
+            captureFlow
+        
+        );
+    
+    
     }
 
 

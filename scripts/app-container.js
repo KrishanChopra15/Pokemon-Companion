@@ -302,6 +302,18 @@ const GameSession =
 
 
 //================================
+// World Runtime
+//================================
+
+const WorldManager =
+    require("./world/world-manager");
+
+
+const WorldFlow =
+    require("./world/world-flow");
+
+
+//================================
 // Save Services
 //================================
 
@@ -358,6 +370,8 @@ class AppContainer {
         this.registerTrainerAnalysisServices();
 
         this.registerSessionServices();
+
+        this.registerWorldRuntimeServices();
 
         this.registerSaveServices();
 
@@ -1521,28 +1535,98 @@ class AppContainer {
 
 
     //================================
-    // Save Layer
+    // World Runtime Layer
     //================================
     
     
-    registerSaveServices()
+    registerWorldRuntimeServices()
     {
     
     
-        const saveManager =
-            new SaveManager();
+        const worldManager =
+            new WorldManager(
+            
+                this.get(
+                    "session"
+                )
+            
+            );
+        
+        
+        
+        
+        const worldFlow =
+            new WorldFlow(
+            
+                worldManager,
+            
+            
+                this.get(
+                    "locationAccess"
+                ),
+            
+            
+                this.get(
+                    "mapAccess"
+                )
+            
+            );
+        
+        
+        
+        
+        
+        
+        this.container.register(
+        
+            "worldManager",
+        
+            worldManager
+        
+        );
+    
+    
     
     
     
         this.container.register(
         
-            "saveManager",
+            "worldFlow",
         
-            saveManager
+            worldFlow
         
         );
     
     
+    }
+
+
+
+
+
+    //================================
+    // Save Layer
+    //================================
+
+
+    registerSaveServices()
+    {
+
+
+        const saveManager =
+            new SaveManager();
+
+
+
+        this.container.register(
+
+            "saveManager",
+
+            saveManager
+
+        );
+
+
     }
 
 

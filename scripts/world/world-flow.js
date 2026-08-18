@@ -67,6 +67,11 @@ class WorldFlow {
     {
 
 
+        //--------------------------------
+        // Access validation
+        //--------------------------------
+
+
         if(
             this.locationAccess
         )
@@ -76,9 +81,14 @@ class WorldFlow {
             const access =
                 this.locationAccess
                     .analyzeLocation(
+
                         location,
-                        this.world.getCurrentLocation(),
+
+                        this.world
+                            .getCurrentLocation(),
+
                         playerState
+
                     );
 
 
@@ -112,9 +122,60 @@ class WorldFlow {
 
 
 
-        this.world.setLocation(
-            location
-        );
+        //--------------------------------
+        // Update world state
+        //--------------------------------
+
+
+        const result =
+            this.world
+                .setLocation(
+                    location
+                );
+
+
+
+        if(
+            !result.success
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Failed to move",
+
+                details:
+                    result
+
+            };
+
+        }
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Ensure visited tracking
+        //--------------------------------
+
+
+        if(
+            this.world.markVisited
+        )
+        {
+
+            this.world.markVisited(
+                location
+            );
+
+        }
 
 
 

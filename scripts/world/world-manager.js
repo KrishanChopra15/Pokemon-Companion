@@ -83,9 +83,16 @@ class WorldManager {
 
 
 
-        this.markVisited(
-            location
-        );
+        if(
+            result.success
+        )
+        {
+
+            this.markVisited(
+                location
+            );
+
+        }
 
 
 
@@ -111,6 +118,18 @@ class WorldManager {
     {
 
 
+        if(
+            this.session.getVisitedLocations
+        )
+        {
+
+            return this.session
+                .getVisitedLocations();
+
+        }
+
+
+
         const state =
             this.session
                 .getState();
@@ -130,10 +149,30 @@ class WorldManager {
 
 
 
+    //--------------------------------
+    // Mark visited
+    //--------------------------------
+
+
     markVisited(
         location
     )
     {
+
+
+        if(
+            this.session.markVisited
+        )
+        {
+
+            return this.session
+                .markVisited(
+                    location
+                );
+
+        }
+
+
 
 
         const state =
@@ -168,6 +207,10 @@ class WorldManager {
         }
 
 
+
+        return true;
+
+
     }
 
 
@@ -176,6 +219,11 @@ class WorldManager {
 
 
 
+
+
+    //--------------------------------
+    // Has visited
+    //--------------------------------
 
 
     hasVisited(

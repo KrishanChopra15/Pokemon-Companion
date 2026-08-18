@@ -8,6 +8,7 @@
  * - Store current game.
  * - Store player state.
  * - Store current location.
+ * - Store visited locations.
  * - Store session metadata.
  * - Provide session access.
  *
@@ -51,7 +52,11 @@ class GameSession {
 
 
             currentLocation:
-                "PALLET_TOWN",
+                "MAP_PALLET_TOWN",
+
+
+            visitedLocations:
+                [],
 
 
             badges:
@@ -98,6 +103,12 @@ class GameSession {
 
         this.state.started =
             true;
+
+
+
+        this.markVisited(
+            this.state.currentLocation
+        );
 
 
 
@@ -187,6 +198,12 @@ class GameSession {
 
 
 
+        this.markVisited(
+            location
+        );
+
+
+
         return {
 
             success:true,
@@ -210,6 +227,92 @@ class GameSession {
     {
 
         return this.state.currentLocation;
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Visited Locations
+    //--------------------------------
+
+
+    markVisited(
+        location
+    )
+    {
+
+
+        if(
+            !location
+        )
+        {
+
+            return false;
+
+        }
+
+
+
+        if(
+            !this.state.visitedLocations.includes(
+                location
+            )
+        )
+        {
+
+            this.state.visitedLocations.push(
+                location
+            );
+
+        }
+
+
+
+        return true;
+
+
+    }
+
+
+
+
+
+
+
+
+
+    hasVisited(
+        location
+    )
+    {
+
+
+        return this.state.visitedLocations.includes(
+            location
+        );
+
+
+    }
+
+
+
+
+
+
+
+
+
+    getVisitedLocations()
+    {
+
+        return this.state.visitedLocations;
 
     }
 
@@ -291,22 +394,31 @@ class GameSession {
 
 
             currentLocation:
-                "PALLET_TOWN",
+                "MAP_PALLET_TOWN",
 
 
-            badges:[],
+            visitedLocations:
+                [],
 
 
-            team:[],
+            badges:
+                [],
 
 
-            inventory:[],
+            team:
+                [],
 
 
-            storyFlags:[],
+            inventory:
+                [],
 
 
-            playTime:0
+            storyFlags:
+                [],
+
+
+            playTime:
+                0
 
 
         };

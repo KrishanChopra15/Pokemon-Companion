@@ -9,6 +9,7 @@
  * - Access active session.
  * - Access application services.
  * - Provide high-level game operations.
+ * - Coordinate world movement.
  *
  * Does NOT:
  * - Execute battles.
@@ -37,15 +38,24 @@ class GameRuntime {
             appContainer;
 
 
+
         this.session =
             this.container.get(
                 "session"
             );
 
 
+
         this.saveManager =
             this.container.get(
                 "saveManager"
+            );
+
+
+
+        this.worldFlow =
+            this.container.get(
+                "worldFlow"
             );
 
 
@@ -67,9 +77,7 @@ class GameRuntime {
     start()
     {
 
-
         return this.session.start();
-
 
     }
 
@@ -111,18 +119,12 @@ class GameRuntime {
     )
     {
 
-
         return this.session
             .setPlayer(
                 player
             );
 
-
     }
-
-
-
-
 
 
 
@@ -145,7 +147,7 @@ class GameRuntime {
 
 
     //--------------------------------
-    // Location
+    // World Location
     //--------------------------------
 
 
@@ -171,10 +173,49 @@ class GameRuntime {
     {
 
 
-        return this.session
-            .setLocation(
+        const result =
+            this.worldFlow
+                .moveTo(
+                    location,
+                    this.session.getState()
+                );
+
+
+
+        if(
+            result.success
+        )
+        {
+
+
+            this.session.setLocation(
                 location
             );
+
+
+        }
+
+
+
+        return result;
+
+
+    }
+
+
+
+
+
+
+
+
+
+    getVisitedLocations()
+    {
+
+
+        return this.session
+            .getVisitedLocations();
 
 
     }
@@ -197,12 +238,10 @@ class GameRuntime {
     )
     {
 
-
         return this.container
             .get(
                 name
             );
-
 
     }
 
@@ -234,6 +273,11 @@ class GameRuntime {
             location:
 
                 this.session.getLocation(),
+
+
+            visited:
+
+                this.session.getVisitedLocations(),
 
 
             started:
@@ -269,6 +313,12 @@ class GameRuntime {
             );
 
     }
+
+
+
+
+
+
 
 
 

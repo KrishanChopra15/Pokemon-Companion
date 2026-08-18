@@ -220,6 +220,23 @@ const MapAccessService =
     require("./services/map-access-service");
 
 
+//================================
+// Battle Support Services
+//================================
+
+
+const MoveExecutionService =
+    require("./services/move-execution-service");
+
+
+const StatusEffectService =
+    require("./services/status-effect-service");
+
+
+const PokemonSwitchService =
+    require("./services/pokemon-switch-service");
+
+
 
 
 
@@ -249,6 +266,8 @@ class AppContainer {
         this.registerGymServices();
 
         this.registerLocationServices();
+
+        this.registerBattleSupportServices();
 
         this.registerGameplayServices();
 
@@ -716,6 +735,69 @@ class AppContainer {
             "mapAccess",
         
             mapAccess
+        
+        );
+    
+    
+    }
+
+
+
+
+
+
+    //================================
+    // Battle Support Layer
+    //================================
+    
+    
+    registerBattleSupportServices()
+    {
+    
+    
+        const moveExecution =
+            new MoveExecutionService();
+    
+    
+    
+        const statusEffect =
+            new StatusEffectService();
+    
+    
+    
+        const pokemonSwitch =
+            new PokemonSwitchService();
+    
+    
+    
+    
+    
+    
+        this.container.register(
+        
+            "moveExecution",
+        
+            moveExecution
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "statusEffect",
+        
+            statusEffect
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "pokemonSwitch",
+        
+            pokemonSwitch
         
         );
     

@@ -160,6 +160,26 @@ const WildBattleService =
     require("./services/wild-battle-service");
 
 
+//--------------------------------
+// NPC Services
+//--------------------------------
+
+const NPCService =
+    require("./services/npc-service");
+
+
+const NPCAvailabilityService =
+    require("./services/npc-availability-service");
+
+
+const NPCInteractionService =
+    require("./services/npc-interaction-service");
+
+
+const DialogueService =
+    require("./services/dialogue-service");
+
+
 
 
 
@@ -191,6 +211,8 @@ class AppContainer {
         this.registerEventServices();
 
         this.registerCaptureServices();
+
+        this.registerNPCServices();
 
     }
 
@@ -667,26 +689,119 @@ class AppContainer {
     {
 
 
+        const captureService =
+            new CaptureService();
+
+
+
+        const wildBattleService =
+            new WildBattleService();
+
+
+
+
+
         this.container.register(
 
             "captureService",
 
-            new CaptureService()
+            captureService
 
         );
+
 
 
         this.container.register(
 
             "wildBattleService",
 
-            new WildBattleService()
+            wildBattleService
 
         );
 
 
     }
 
+
+
+
+
+
+    //================================
+    // NPC Layer
+    //================================
+    
+    
+    registerNPCServices()
+    {
+    
+    
+        const npcService =
+            new NPCService(
+                this.game
+            );
+        
+        
+        
+        const npcAvailability =
+            new NPCAvailabilityService();
+        
+        
+        
+        const npcInteraction =
+            new NPCInteractionService();
+        
+        
+        
+        const dialogue =
+            new DialogueService(
+                this.game
+            );
+        
+        
+        
+        
+        
+        this.container.register(
+        
+            "npcService",
+        
+            npcService
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "npcAvailability",
+        
+            npcAvailability
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "npcInteraction",
+        
+            npcInteraction
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "dialogue",
+        
+            dialogue
+        
+        );
+    
+    
+    }
 
 
 

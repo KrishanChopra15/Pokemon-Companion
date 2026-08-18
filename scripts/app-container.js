@@ -237,6 +237,22 @@ const PokemonSwitchService =
     require("./services/pokemon-switch-service");
 
 
+//================================
+// Trainer Analysis Services
+//================================
+
+const TrainerAnalysisService =
+    require("./services/trainer-analysis-service");
+
+
+const TrainerDifficultyService =
+    require("./services/trainer-difficulty-service");
+
+
+const TrainerRecommendationService =
+    require("./services/trainer-recommendation-service");
+
+
 
 
 
@@ -276,6 +292,8 @@ class AppContainer {
         this.registerCaptureServices();
 
         this.registerNPCServices();
+
+        this.registerTrainerAnalysisServices();
 
     }
 
@@ -749,59 +767,59 @@ class AppContainer {
     //================================
     // Battle Support Layer
     //================================
-    
-    
+
+
     registerBattleSupportServices()
     {
-    
-    
+
+
         const moveExecution =
             new MoveExecutionService();
-    
-    
-    
+
+
+
         const statusEffect =
             new StatusEffectService();
-    
-    
-    
+
+
+
         const pokemonSwitch =
             new PokemonSwitchService();
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
         this.container.register(
-        
+
             "moveExecution",
-        
+
             moveExecution
-        
+
         );
-    
-    
-    
+
+
+
         this.container.register(
-        
+
             "statusEffect",
-        
+
             statusEffect
-        
+
         );
-    
-    
-    
+
+
+
         this.container.register(
-        
+
             "pokemonSwitch",
-        
+
             pokemonSwitch
-        
+
         );
-    
-    
+
+
     }
 
 
@@ -1165,6 +1183,82 @@ class AppContainer {
 
     }
 
+
+
+
+
+    //================================
+    // Trainer Analysis Layer
+    //================================
+    
+    
+    registerTrainerAnalysisServices()
+    {
+    
+    
+        const trainerAnalysis =
+            new TrainerAnalysisService(
+            
+                this.get(
+                    "trainerDatabase"
+                ),
+            
+                this.get(
+                    "pokemonDatabase"
+                )
+            
+            );
+        
+        
+        
+        const trainerDifficulty =
+            new TrainerDifficultyService();
+        
+        
+        
+        const trainerRecommendation =
+            new TrainerRecommendationService(
+            
+                this.get(
+                    "pokemonDatabase"
+                )
+            
+            );
+        
+        
+        
+        
+        
+        this.container.register(
+        
+            "trainerAnalysis",
+        
+            trainerAnalysis
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "trainerDifficulty",
+        
+            trainerDifficulty
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "trainerRecommendation",
+        
+            trainerRecommendation
+        
+        );
+    
+    
+    }
 
 
 

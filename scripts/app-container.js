@@ -324,6 +324,17 @@ const WorldFlow =
 
 
 //================================
+// Team Services
+//================================
+
+const TeamManager =
+    require("./team/team-manager");
+
+const TeamFlow =
+    require("./team/team-flow");
+
+
+//================================
 // Save Services
 //================================
 
@@ -370,10 +381,12 @@ class AppContainer {
         this.registerPokemonInformationServices();
 
         this.registerActionServices();
-        
+
         this.registerCaptureServices();
 
         this.registerEncounterServices();
+
+        this.registerTeamServices();
 
         this.registerStarterServices();
 
@@ -1158,77 +1171,77 @@ class AppContainer {
     // Capture Layer
     //================================
 
-    
+
     registerCaptureServices()
     {
-    
-    
+
+
         const captureService =
             new CaptureService();
-    
-    
-    
+
+
+
         const wildBattleService =
             new WildBattleService();
-    
-    
-    
-    
+
+
+
+
         const captureFlow =
             new CaptureFlow(
-            
+
                 captureService,
-            
-            
+
+
                 this.get(
                     "pokemonTracker"
                 ),
-            
-            
+
+
                 this.get(
                     "actionFlow"
                 )
-            
+
             );
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
         this.container.register(
-        
+
             "captureService",
-        
+
             captureService
-        
+
         );
-    
-    
-    
-    
-    
+
+
+
+
+
         this.container.register(
-        
+
             "wildBattleService",
-        
+
             wildBattleService
-        
+
         );
-    
-    
-    
-    
-    
+
+
+
+
+
         this.container.register(
-        
+
             "captureFlow",
-        
+
             captureFlow
-        
+
         );
-    
-    
+
+
     }
 
 
@@ -1369,6 +1382,61 @@ class AppContainer {
             "actionFlow",
         
             actionFlow
+        
+        );
+    
+    
+    }
+
+
+
+
+
+    //================================
+    // Team Layer
+    //================================
+    
+    
+    registerTeamServices()
+    {
+    
+    
+        const teamManager =
+            new TeamManager();
+    
+    
+    
+    
+        const teamFlow =
+            new TeamFlow(
+            
+                teamManager
+            
+            );
+        
+        
+        
+        
+        
+        
+        
+        this.container.register(
+        
+            "teamManager",
+        
+            teamManager
+        
+        );
+    
+    
+    
+    
+    
+        this.container.register(
+        
+            "teamFlow",
+        
+            teamFlow
         
         );
     

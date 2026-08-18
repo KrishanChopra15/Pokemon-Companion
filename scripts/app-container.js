@@ -200,6 +200,26 @@ const GymEventService =
     require("./services/gym-event-service");
 
 
+//================================
+// Location Services
+//================================
+
+const LocationAccessService =
+    require("./services/location-access-service");
+
+
+const LocationAnalysisService =
+    require("./services/location-analysis-service");
+
+
+const LocationAvailabilityService =
+    require("./services/location-availability-service");
+
+
+const MapAccessService =
+    require("./services/map-access-service");
+
+
 
 
 
@@ -227,6 +247,8 @@ class AppContainer {
         this.registerWorldServices();
 
         this.registerGymServices();
+
+        this.registerLocationServices();
 
         this.registerGameplayServices();
 
@@ -584,6 +606,120 @@ class AppContainer {
         );
 
 
+    }
+
+
+
+
+
+
+    //================================
+    // Location Layer
+    //================================
+    
+    
+    registerLocationServices()
+    {
+    
+    
+        const locationAccess =
+            new LocationAccessService(
+            
+                this.get(
+                    "locationGraph"
+                ),
+            
+                this.get(
+                    "fieldObstacle"
+                ),
+            
+                this.get(
+                    "locationGate"
+                ),
+            
+                this.get(
+                    "progression"
+                )
+            
+            );
+        
+        
+        
+        
+        const locationAnalysis =
+            new LocationAnalysisService(
+            
+                this.get(
+                    "locationDatabase"
+                )
+            
+            );
+        
+        
+        
+        
+        const locationAvailability =
+            new LocationAvailabilityService(
+            
+                this.get(
+                    "locationDatabase"
+                )
+            
+            );
+        
+        
+        
+        
+        const mapAccess =
+            new MapAccessService();
+        
+        
+        
+        
+        
+        
+        this.container.register(
+        
+            "locationAccess",
+        
+            locationAccess
+        
+        );
+    
+    
+    
+    
+        this.container.register(
+        
+            "locationAnalysis",
+        
+            locationAnalysis
+        
+        );
+    
+    
+    
+    
+        this.container.register(
+        
+            "locationAvailability",
+        
+            locationAvailability
+        
+        );
+    
+    
+    
+    
+        this.container.register(
+        
+            "mapAccess",
+        
+            mapAccess
+        
+        );
+    
+    
     }
 
 

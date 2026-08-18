@@ -277,6 +277,22 @@ const StarterSelectionService =
     require("./services/starter-selection-service");
 
 
+//================================
+// Pokémon Utility Services
+//================================
+
+const EvolutionRequirementService =
+    require("./services/evolution-requirement-service");
+
+
+const GrowthRateService =
+    require("./services/growth-rate-service");
+
+
+const PokemonProgressionService =
+    require("./services/pokemon-progression-service");
+
+
 
 
 
@@ -318,6 +334,8 @@ class AppContainer {
         this.registerPokemonInformationServices();
 
         this.registerStarterServices();
+
+        this.registerPokemonUtilityServices();
 
         this.registerNPCServices();
 
@@ -1206,23 +1224,84 @@ class AppContainer {
     //================================
     // Starter Layer
     //================================
-    
-    
+
+
     registerStarterServices()
+    {
+
+
+        const starterSelection =
+            new StarterSelectionService();
+
+
+
+
+        this.container.register(
+
+            "starterSelection",
+
+            starterSelection
+
+        );
+
+
+    }
+
+
+
+
+
+    //================================
+    // Pokémon Utility Layer
+    //================================
+    
+    
+    registerPokemonUtilityServices()
     {
     
     
-        const starterSelection =
-            new StarterSelectionService();
+        const evolutionRequirement =
+            new EvolutionRequirementService();
+    
+    
+    
+        const growthRate =
+            new GrowthRateService();
+    
+    
+    
+        const pokemonProgression =
+            new PokemonProgressionService();
+    
     
     
     
     
         this.container.register(
         
-            "starterSelection",
+            "evolutionRequirement",
         
-            starterSelection
+            evolutionRequirement
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "growthRate",
+        
+            growthRate
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "pokemonProgression",
+        
+            pokemonProgression
         
         );
     

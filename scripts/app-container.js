@@ -301,6 +301,14 @@ const GameSession =
     require("./session/game-session");
 
 
+//================================
+// Save Services
+//================================
+
+const SaveManager =
+    require("./save/save-manager");
+
+
 
 
 
@@ -350,6 +358,8 @@ class AppContainer {
         this.registerTrainerAnalysisServices();
 
         this.registerSessionServices();
+
+        this.registerSaveServices();
 
     }
 
@@ -1500,6 +1510,35 @@ class AppContainer {
             "session",
         
             session
+        
+        );
+    
+    
+    }
+
+
+
+
+
+    //================================
+    // Save Layer
+    //================================
+    
+    
+    registerSaveServices()
+    {
+    
+    
+        const saveManager =
+            new SaveManager();
+    
+    
+    
+        this.container.register(
+        
+            "saveManager",
+        
+            saveManager
         
         );
     

@@ -37,10 +37,15 @@ class GameRuntime {
             appContainer;
 
 
-
         this.session =
             this.container.get(
                 "session"
+            );
+
+
+        this.saveManager =
+            this.container.get(
+                "saveManager"
             );
 
 
@@ -239,6 +244,44 @@ class GameRuntime {
 
         };
 
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Save
+    //--------------------------------
+
+
+    saveGame()
+    {
+
+        return this.saveManager
+            .createSave(
+                this.session
+            );
+
+    }
+
+
+
+    loadGame(
+        id
+    )
+    {
+
+        return this.saveManager
+            .loadSave(
+                id,
+                this.session
+            );
 
     }
 

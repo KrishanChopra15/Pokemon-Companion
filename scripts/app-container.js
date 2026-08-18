@@ -112,6 +112,18 @@ const BattleService =
     require("./services/battle-service");
 
 
+//--------------------------------
+// Battle Services
+//--------------------------------
+
+const BattleEngineService =
+    require("./services/battle-engine-service");
+
+
+const BattleAIService =
+    require("./services/battle-ai-service");
+
+
 
 
 
@@ -479,11 +491,25 @@ class AppContainer {
 
 
 
+        const battleAI =
+            new BattleAIService();
+                
+                
+                
+        const battleEngine =
+            new BattleEngineService(
+            
+                battleAI
+            
+            );
+        
+        
+        
         const battle =
             new BattleService(
-
+            
                 battlePreparation
-
+            
             );
 
 
@@ -517,6 +543,26 @@ class AppContainer {
 
             battle
 
+        );
+
+
+
+        this.container.register(
+        
+            "battleAI",
+        
+            battleAI
+        
+        );
+        
+        
+        
+        this.container.register(
+        
+            "battleEngine",
+        
+            battleEngine
+        
         );
 
 

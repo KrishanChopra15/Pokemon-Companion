@@ -29,3 +29,15 @@ console.log(
     "Battle Service:",
     !!app.get("battle")
 );
+
+
+console.log(
+    "Battle AI:",
+    !!app.get("battleAI")
+);
+
+
+console.log(
+    "Battle Engine:",
+    !!app.get("battleEngine")
+);

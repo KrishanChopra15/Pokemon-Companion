@@ -156,6 +156,26 @@ const TeamRecommendationService =
     require("./services/team-recommendation-service");
 
 
+//--------------------------------
+// Event Services
+//--------------------------------
+
+const EventService =
+    require("./services/event-service");
+
+
+const EventRewardService =
+    require("./services/event-reward-service");
+
+
+const RewardService =
+    require("./services/reward-service");
+
+
+const StoryEventService =
+    require("./services/story-event-service");
+
+
 
 
 
@@ -191,6 +211,9 @@ class AppContainer {
         this.registerGameplayServices();
 
 
+        this.registerEventServices();
+
+        
     }
 
 
@@ -704,9 +727,9 @@ class AppContainer {
             pokemonAvailability
         
         );
-        
-        
-        
+
+
+
         this.container.register(
         
             "pokemonObtainability",
@@ -714,9 +737,9 @@ class AppContainer {
             pokemonObtainability
         
         );
-        
-        
-        
+
+
+
         this.container.register(
         
             "teamRecommendation",
@@ -728,6 +751,79 @@ class AppContainer {
 
     }
     
+
+
+
+
+    //--------------------------------
+    // Register Event Services
+    //--------------------------------
+
+    registerEventServices()
+    {
+
+        const rewardService =
+            new RewardService();
+
+
+        const eventRewardService =
+            new EventRewardService();
+
+
+        const eventService =
+            new EventService(
+                this.game
+            );
+
+
+        const storyEventService =
+            new StoryEventService(
+                this.game
+            );
+
+
+
+        this.container.register(
+
+            "rewardService",
+
+            rewardService
+
+        );
+
+
+
+        this.container.register(
+
+            "eventRewardService",
+
+            eventRewardService
+
+        );
+
+
+
+        this.container.register(
+
+            "eventService",
+
+            eventService
+
+        );
+
+
+
+        this.container.register(
+
+            "storyEventService",
+
+            storyEventService
+
+        );
+
+
+    }
+
 
 
 

@@ -269,6 +269,14 @@ const PokemonTrackerService =
     require("./services/pokemon-tracker-service");
 
 
+//================================
+// Starter Services
+//================================
+
+const StarterSelectionService =
+    require("./services/starter-selection-service");
+
+
 
 
 
@@ -308,6 +316,8 @@ class AppContainer {
         this.registerCaptureServices();
 
         this.registerPokemonInformationServices();
+
+        this.registerStarterServices();
 
         this.registerNPCServices();
 
@@ -1123,71 +1133,102 @@ class AppContainer {
 
 
 
-    
+
     //================================
     // Pokémon Information Layer
     //================================
-    
-    
+
+
     registerPokemonInformationServices()
     {
-    
-    
+
+
         const explanation =
             new PokemonExplanationService();
-    
-    
-    
+
+
+
         const sourceResolver =
             new PokemonSourceResolverService(
-            
+
                 [],
-            
+
                 this.get(
                     "evolution"
                 )
-            
+
             );
-        
-        
-        
+
+
+
         const tracker =
             new PokemonTrackerService();
-        
-        
-        
-        
-        
+
+
+
+
+
         this.container.register(
-        
+
             "pokemonExplanation",
-        
+
             explanation
-        
+
         );
-    
-    
-    
+
+
+
         this.container.register(
-        
+
             "pokemonSourceResolver",
-        
+
             sourceResolver
-        
+
         );
+
+
+
+        this.container.register(
+
+            "pokemonTracker",
+
+            tracker
+
+        );
+
+
+    }
+
+
+
+
+
+    //================================
+    // Starter Layer
+    //================================
+    
+    
+    registerStarterServices()
+    {
+    
+    
+        const starterSelection =
+            new StarterSelectionService();
+    
     
     
     
         this.container.register(
         
-            "pokemonTracker",
+            "starterSelection",
         
-            tracker
+            starterSelection
         
         );
     
     
     }
+
 
 
 

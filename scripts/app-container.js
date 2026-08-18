@@ -67,6 +67,7 @@ const GymProgressionService =
 const StoryProgressionService =
     require("./services/story-progression-service");
 
+
 //--------------------------------
 // World Services
 //--------------------------------
@@ -93,6 +94,22 @@ const WorldProgressionService =
 
 const ObjectiveService =
     require("./services/objective-service");
+
+
+//--------------------------------
+// Gameplay Services
+//--------------------------------
+
+const TrainerService =
+    require("./services/trainer-service");
+
+
+const BattlePreparationService =
+    require("./services/battle-preparation-service");
+
+
+const BattleService =
+    require("./services/battle-service");
 
 
 
@@ -125,6 +142,9 @@ class AppContainer {
 
 
         this.registerWorldServices();
+
+        
+        this.registerGameplayServices();
 
 
     }
@@ -302,132 +322,206 @@ class AppContainer {
     //--------------------------------
     // Register world layer
     //--------------------------------
-    
+
     registerWorldServices()
     {
-    
-    
+
+
         const locationGraph =
             new LocationGraphService(
                 this.game
             );
-        
-        
-        
+
+
+
         const locationGate =
             new LocationGateService(
                 this.game,
-            
+
                 this.get("progression")
             );
-        
-        
-        
+
+
+
         const fieldObstacle =
             new FieldObstacleService(
                 this.game,
-            
+
                 this.get("progression")
             );
-        
-        
-        
+
+
+
         const worldState =
             new WorldStateService(
                 this.game
             );
-        
-        
-        
+
+
+
         const worldProgression =
             new WorldProgressionService(
-            
+
                 this.get("storyProgression"),
-            
+
                 this.get("gymProgression"),
-            
+
                 this.get("progression")
-            
+
             );
-        
-        
-        
+
+
+
         const objective =
             new ObjectiveService(
-            
+
                 this.get("storyProgression"),
-            
+
                 this.get("gymProgression"),
-            
+
                 this.get("progression")
-            
+
             );
-        
-        
-        
-        
-        
+
+
+
+
+
         this.container.register(
-        
+
             "locationGraph",
-        
+
             locationGraph
-        
+
         );
-    
-    
-    
+
+
+
         this.container.register(
-        
+
             "locationGate",
-        
+
             locationGate
-        
+
         );
-    
-    
-    
+
+
+
         this.container.register(
-        
+
             "fieldObstacle",
-        
+
             fieldObstacle
-        
+
         );
-    
-    
-    
+
+
+
         this.container.register(
-        
+
             "worldState",
-        
+
             worldState
-        
+
         );
-    
-    
-    
+
+
+
         this.container.register(
-        
+
             "worldProgression",
-        
+
             worldProgression
-        
+
         );
-    
-    
-    
+
+
+
         this.container.register(
-        
+
             "objective",
-        
+
             objective
-        
+
         );
-    
-    
+
+
     }
 
+
+
+
+
+
+    //--------------------------------
+    // Register gameplay layer
+    //--------------------------------
+
+    registerGameplayServices()
+    {
+
+
+        const trainerService =
+            new TrainerService(
+
+                this.get("trainerDatabase")
+
+            );
+
+
+
+        const battlePreparation =
+            new BattlePreparationService(
+
+                trainerService
+
+            );
+
+
+
+        const battle =
+            new BattleService(
+
+                battlePreparation
+
+            );
+
+
+
+
+
+
+        this.container.register(
+
+            "trainerService",
+
+            trainerService
+
+        );
+
+
+
+        this.container.register(
+
+            "battlePreparation",
+
+            battlePreparation
+
+        );
+
+
+
+        this.container.register(
+
+            "battle",
+
+            battle
+
+        );
+
+
+    }
+    
 
 
 

@@ -253,6 +253,22 @@ const TrainerRecommendationService =
     require("./services/trainer-recommendation-service");
 
 
+//================================
+// Pokémon Information Services
+//================================
+
+const PokemonExplanationService =
+    require("./services/pokemon-explanation-service");
+
+
+const PokemonSourceResolverService =
+    require("./services/pokemon-source-resolver-service");
+
+
+const PokemonTrackerService =
+    require("./services/pokemon-tracker-service");
+
+
 
 
 
@@ -290,6 +306,8 @@ class AppContainer {
         this.registerEventServices();
 
         this.registerCaptureServices();
+
+        this.registerPokemonInformationServices();
 
         this.registerNPCServices();
 
@@ -1105,6 +1123,73 @@ class AppContainer {
 
 
 
+    
+    //================================
+    // Pokémon Information Layer
+    //================================
+    
+    
+    registerPokemonInformationServices()
+    {
+    
+    
+        const explanation =
+            new PokemonExplanationService();
+    
+    
+    
+        const sourceResolver =
+            new PokemonSourceResolverService(
+            
+                [],
+            
+                this.get(
+                    "evolution"
+                )
+            
+            );
+        
+        
+        
+        const tracker =
+            new PokemonTrackerService();
+        
+        
+        
+        
+        
+        this.container.register(
+        
+            "pokemonExplanation",
+        
+            explanation
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "pokemonSourceResolver",
+        
+            sourceResolver
+        
+        );
+    
+    
+    
+        this.container.register(
+        
+            "pokemonTracker",
+        
+            tracker
+        
+        );
+    
+    
+    }
+
+
 
 
     //================================
@@ -1190,74 +1275,74 @@ class AppContainer {
     //================================
     // Trainer Analysis Layer
     //================================
-    
-    
+
+
     registerTrainerAnalysisServices()
     {
-    
-    
+
+
         const trainerAnalysis =
             new TrainerAnalysisService(
-            
+
                 this.get(
                     "trainerDatabase"
                 ),
-            
+
                 this.get(
                     "pokemonDatabase"
                 )
-            
+
             );
-        
-        
-        
+
+
+
         const trainerDifficulty =
             new TrainerDifficultyService();
-        
-        
-        
+
+
+
         const trainerRecommendation =
             new TrainerRecommendationService(
-            
+
                 this.get(
                     "pokemonDatabase"
                 )
-            
+
             );
-        
-        
-        
-        
-        
+
+
+
+
+
         this.container.register(
-        
+
             "trainerAnalysis",
-        
+
             trainerAnalysis
-        
+
         );
-    
-    
-    
+
+
+
         this.container.register(
-        
+
             "trainerDifficulty",
-        
+
             trainerDifficulty
-        
+
         );
-    
-    
-    
+
+
+
         this.container.register(
-        
+
             "trainerRecommendation",
-        
+
             trainerRecommendation
-        
+
         );
-    
-    
+
+
     }
 
 

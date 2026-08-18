@@ -167,9 +167,11 @@ const WildBattleService =
 const EncounterManager =
     require("./encounter/encounter-manager");
 
-
 const EncounterFlow =
     require("./encounter/encounter-flow");
+
+const EncounterBattleFlow =
+    require("./encounter/encounter-battle-flow");
 
 
 //--------------------------------
@@ -179,14 +181,11 @@ const EncounterFlow =
 const NPCService =
     require("./services/npc-service");
 
-
 const NPCAvailabilityService =
     require("./services/npc-availability-service");
 
-
 const NPCInteractionService =
     require("./services/npc-interaction-service");
-
 
 const DialogueService =
     require("./services/dialogue-service");
@@ -199,14 +198,11 @@ const DialogueService =
 const GymService =
     require("./services/gym-service");
 
-
 const GymLocationService =
     require("./services/gym-location-service");
 
-
 const GymRewardService =
     require("./services/gym-reward-service");
-
 
 const GymEventService =
     require("./services/gym-event-service");
@@ -219,14 +215,11 @@ const GymEventService =
 const LocationAccessService =
     require("./services/location-access-service");
 
-
 const LocationAnalysisService =
     require("./services/location-analysis-service");
 
-
 const LocationAvailabilityService =
     require("./services/location-availability-service");
-
 
 const MapAccessService =
     require("./services/map-access-service");
@@ -240,10 +233,8 @@ const MapAccessService =
 const MoveExecutionService =
     require("./services/move-execution-service");
 
-
 const StatusEffectService =
     require("./services/status-effect-service");
-
 
 const PokemonSwitchService =
     require("./services/pokemon-switch-service");
@@ -256,10 +247,8 @@ const PokemonSwitchService =
 const TrainerAnalysisService =
     require("./services/trainer-analysis-service");
 
-
 const TrainerDifficultyService =
     require("./services/trainer-difficulty-service");
-
 
 const TrainerRecommendationService =
     require("./services/trainer-recommendation-service");
@@ -272,10 +261,8 @@ const TrainerRecommendationService =
 const PokemonExplanationService =
     require("./services/pokemon-explanation-service");
 
-
 const PokemonSourceResolverService =
     require("./services/pokemon-source-resolver-service");
-
 
 const PokemonTrackerService =
     require("./services/pokemon-tracker-service");
@@ -296,10 +283,8 @@ const StarterSelectionService =
 const EvolutionRequirementService =
     require("./services/evolution-requirement-service");
 
-
 const GrowthRateService =
     require("./services/growth-rate-service");
-
 
 const PokemonProgressionService =
     require("./services/pokemon-progression-service");
@@ -319,7 +304,6 @@ const GameSession =
 
 const WorldManager =
     require("./world/world-manager");
-
 
 const WorldFlow =
     require("./world/world-flow");
@@ -1214,6 +1198,7 @@ class AppContainer {
     
     
     
+    
         const encounterFlow =
             new EncounterFlow(
             
@@ -1222,14 +1207,28 @@ class AppContainer {
             
                 this.get(
                     "locationDatabase"
-                ),
-            
-            
-                this.get(
-                    "pokemonAvailability"
                 )
             
             );
+        
+        
+        
+        
+        
+        const encounterBattleFlow =
+            new EncounterBattleFlow(
+            
+                encounterFlow,
+            
+            
+                this.get(
+                    "wildBattleService"
+                )
+            
+            );
+        
+        
+        
         
         
         
@@ -1252,6 +1251,18 @@ class AppContainer {
             "encounterFlow",
         
             encounterFlow
+        
+        );
+    
+    
+    
+    
+    
+        this.container.register(
+        
+            "encounterBattleFlow",
+        
+            encounterBattleFlow
         
         );
     

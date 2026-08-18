@@ -161,6 +161,17 @@ const WildBattleService =
 
 
 //================================
+// Action Services
+//================================
+
+const ActionManager =
+    require("./action/action-manager");
+
+const ActionFlow =
+    require("./action/action-flow");
+
+
+//================================
 // Encounter Services
 //================================
 
@@ -356,6 +367,8 @@ class AppContainer {
         this.registerCaptureServices();
 
         this.registerEncounterServices();
+
+        this.registerActionServices();
 
         this.registerPokemonInformationServices();
 
@@ -1187,43 +1200,111 @@ class AppContainer {
     //================================
     // Encounter Layer
     //================================
-    
-    
+
+
     registerEncounterServices()
     {
-    
-    
+
+
         const encounterManager =
             new EncounterManager();
-    
-    
-    
-    
+
+
+
+
         const encounterFlow =
             new EncounterFlow(
-            
+
                 encounterManager,
-            
-            
+
+
                 this.get(
                     "locationDatabase"
                 )
-            
+
             );
-        
-        
-        
-        
-        
+
+
+
+
+
         const encounterBattleFlow =
             new EncounterBattleFlow(
-            
+
                 encounterFlow,
-            
-            
+
+
                 this.get(
                     "wildBattleService"
                 )
+
+            );
+
+
+
+
+
+
+
+
+        this.container.register(
+
+            "encounterManager",
+
+            encounterManager
+
+        );
+
+
+
+
+
+        this.container.register(
+
+            "encounterFlow",
+
+            encounterFlow
+
+        );
+
+
+
+
+
+        this.container.register(
+
+            "encounterBattleFlow",
+
+            encounterBattleFlow
+
+        );
+
+
+    }
+
+
+
+
+
+    //================================
+    // Action Layer
+    //================================
+    
+    
+    registerActionServices()
+    {
+    
+    
+        const actionManager =
+            new ActionManager();
+    
+    
+    
+    
+        const actionFlow =
+            new ActionFlow(
+            
+                actionManager
             
             );
         
@@ -1233,12 +1314,11 @@ class AppContainer {
         
         
         
-        
         this.container.register(
         
-            "encounterManager",
+            "actionManager",
         
-            encounterManager
+            actionManager
         
         );
     
@@ -1248,21 +1328,9 @@ class AppContainer {
     
         this.container.register(
         
-            "encounterFlow",
+            "actionFlow",
         
-            encounterFlow
-        
-        );
-    
-    
-    
-    
-    
-        this.container.register(
-        
-            "encounterBattleFlow",
-        
-            encounterBattleFlow
+            actionFlow
         
         );
     

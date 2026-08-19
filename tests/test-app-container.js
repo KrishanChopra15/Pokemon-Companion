@@ -58,3 +58,9 @@ console.log(
     "Move Replacement:",
     !!app.get("moveReplacement")
 );
+
+
+console.log(
+    "Move Replacement Selection:",
+    !!app.get("moveReplacementSelection")
+);

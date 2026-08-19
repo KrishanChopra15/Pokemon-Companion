@@ -273,6 +273,9 @@ const MoveLearningService =
 const MoveReplacementService =
     require("./services/move-replacement-service");
 
+const MoveReplacementSelectionService =
+    require("./services/move-replacement-selection-service");
+
 const StatusEffectService =
     require("./services/status-effect-service");
 
@@ -1037,19 +1040,17 @@ class AppContainer {
 
 
 
+        const moveReplacementSelection =
+            new MoveReplacementSelectionService();
+
+
+
         const moveLearning =
             new MoveLearningService(
-            
                 this.game,
-            
-                this.get(
-                    "moveDatabase"
-                ),
-            
-                this.get(
-                    "moveReplacement"
-                )
-            
+                this.get("moveDatabase"),
+                this.get("moveReplacement"),
+                this.get("moveReplacementSelection")
             );
 
 
@@ -1093,6 +1094,16 @@ class AppContainer {
         
             moveReplacement
         
+        );
+
+
+
+        this.container.register(
+
+            "moveReplacementSelection",
+
+            moveReplacementSelection
+
         );
 
 

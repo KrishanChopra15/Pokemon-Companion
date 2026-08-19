@@ -10,6 +10,7 @@
  * - Create runtime move slots.
  * - Add newly learned moves.
  * - Request move replacement when needed.
+ * - Execute selected move replacement.
  *
  * Does NOT:
  * - Teach TM/HM moves.
@@ -42,7 +43,8 @@ class MoveLearningService {
     constructor(
         game = "firered",
         moveDatabase = null,
-        moveReplacement = null
+        moveReplacement = null,
+        moveReplacementSelection = null
     )
     {
 
@@ -56,6 +58,10 @@ class MoveLearningService {
 
         this.moveReplacement =
             moveReplacement;
+
+
+        this.moveReplacementSelection =
+            moveReplacementSelection;
 
 
 
@@ -140,7 +146,7 @@ class MoveLearningService {
 
 
     //--------------------------------
-    // Get level available moves
+    // Get available level moves
     //--------------------------------
 
 
@@ -183,7 +189,7 @@ class MoveLearningService {
 
 
     //--------------------------------
-    // Get newly learned moves
+    // Get new moves
     //--------------------------------
 
 
@@ -219,7 +225,6 @@ class MoveLearningService {
                     move =>
 
                         move.constant ===
-
                         entry.move.constant
 
                 );
@@ -242,7 +247,7 @@ class MoveLearningService {
 
 
     //--------------------------------
-    // Create move slot
+    // Create runtime move slot
     //--------------------------------
 
 
@@ -255,17 +260,14 @@ class MoveLearningService {
         return new PokemonMoveSlot({
 
             constant:
-
                 move.constant,
 
 
             currentPP:
-
                 move.pp,
 
 
             maxPP:
-
                 move.pp
 
 
@@ -301,8 +303,6 @@ class MoveLearningService {
 
 
 
-
-
         const slot =
             this.createMoveSlot(
                 move
@@ -313,7 +313,7 @@ class MoveLearningService {
 
 
         //--------------------------------
-        // Duplicate check
+        // Duplicate
         //--------------------------------
 
 
@@ -351,7 +351,7 @@ class MoveLearningService {
 
 
         //--------------------------------
-        // Empty slot available
+        // Empty slot
         //--------------------------------
 
 
@@ -364,7 +364,6 @@ class MoveLearningService {
             currentMoves.push(
                 slot
             );
-
 
 
             pokemon.moves =
@@ -391,7 +390,7 @@ class MoveLearningService {
 
 
         //--------------------------------
-        // Need replacement
+        // Replacement required
         //--------------------------------
 
 
@@ -399,16 +398,16 @@ class MoveLearningService {
             !this.moveReplacement
         )
         {
-        
+
             return {
-            
+
                 success:false,
-            
+
                 reason:
                     "Move replacement service unavailable"
-            
+
             };
-        
+
         }
 
 
@@ -416,32 +415,86 @@ class MoveLearningService {
 
 
         return {
-        
+
             success:false,
-        
+
             reason:
                 "Needs replacement",
-        
+
+
             options:
-        
+
                 this.moveReplacement.getReplacementOptions(
-                
+
                     currentMoves,
-                
+
+
                     {
-                    
+
                         constant:
                             move.constant,
-                    
-                    
+
+
                         pp:
                             move.pp
-                    
+
                     }
-                
+
                 )
-            
+
         };
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Execute chosen replacement
+    //--------------------------------
+
+
+    replaceLearnedMove(
+        pokemon,
+        forgottenMove,
+        newMove
+    )
+    {
+
+
+        if(
+            !this.moveReplacementSelection
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Move replacement selection service unavailable"
+
+            };
+
+        }
+
+
+
+        return this.moveReplacementSelection.replaceMove(
+
+            pokemon,
+
+            forgottenMove,
+
+            newMove
+
+        );
 
 
     }
@@ -463,61 +516,65 @@ class MoveLearningService {
         pokemon
     )
     {
-    
-    
+
+
         const newMoves =
             this.getNewMoves(
                 pokemon
             );
-        
-        
-        
+
+
+
         const results = [];
-        
-        
-        
+
+
+
         for(
             const entry of newMoves
         )
         {
-        
-        
+
+
             const result =
                 this.learnMove(
-                
+
                     pokemon,
-                
+
                     entry.move
-                
+
                 );
-            
-            
-            
+
+
+
             results.push(
                 result
             );
-        
-        
-        
+
+
+
             if(
+
                 result.success === false
+
                 &&
+
                 result.reason === "Needs replacement"
+
             )
             {
-            
+
                 break;
-            
+
             }
-        
-        
+
+
         }
-    
-    
-    
+
+
+
         return results;
-    
-    
+
+
     }
 
 
@@ -550,13 +607,11 @@ class MoveLearningService {
 
             entry =>
 
-
                 this.createMoveSlot(
 
                     entry.move
 
                 )
-
 
         );
 

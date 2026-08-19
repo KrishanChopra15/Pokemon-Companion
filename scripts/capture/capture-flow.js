@@ -5,14 +5,17 @@
  * Handles player-confirmed Pokémon captures.
  *
  * Responsibilities:
- * - Record captured Pokémon.
- * - Update Pokémon tracker.
- * - Create capture actions.
+ * - Validate capture.
+ * - Consume capture items.
+ * - Store captured Pokémon.
+ * - Update tracker.
+ * - Add Pokémon to team.
+ * - Send overflow Pokémon to PC storage.
+ * - Create actions.
  *
  * Does NOT:
- * - Detect captures automatically.
- * - Execute capture mechanics.
- * - Handle battles.
+ * - Detect wild encounters.
+ * - Execute battle mechanics.
  */
 
 "use strict";
@@ -27,6 +30,10 @@ class CaptureFlow {
 
     constructor(
         captureService,
+        captureManager,
+        teamFlow,
+        storageFlow,
+        inventoryFlow,
         pokemonTracker,
         actionFlow
     )
@@ -35,6 +42,22 @@ class CaptureFlow {
 
         this.captureService =
             captureService;
+
+
+        this.captures =
+            captureManager;
+
+
+        this.team =
+            teamFlow;
+
+
+        this.storage =
+            storageFlow;
+
+
+        this.inventory =
+            inventoryFlow;
 
 
         this.tracker =
@@ -56,7 +79,7 @@ class CaptureFlow {
 
 
     //--------------------------------
-    // Confirm capture
+    // Confirm Capture
     //--------------------------------
 
 
@@ -90,41 +113,28 @@ class CaptureFlow {
 
 
 
-        const tracked =
-            this.tracker
-                .addPokemon({
 
-                    species:
-                        pokemon.species,
-
-
-                    nickname:
-                        pokemon.nickname || null,
-
-
-                    level:
-                        pokemon.level || 1,
-
-
-                    location:
-                        pokemon.location || null
-
-
-                });
-
-
-
-
-
-
+        //--------------------------------
+        // Check Pokeball
+        //--------------------------------
 
 
         if(
-            !tracked.success
+            !this.inventory
+                .hasItem(
+                    "POKE_BALL"
+                )
         )
         {
 
-            return tracked;
+            return {
+
+                success:false,
+
+                reason:
+                    "No Poke Balls available"
+
+            };
 
         }
 
@@ -135,15 +145,245 @@ class CaptureFlow {
 
 
 
+
+        //--------------------------------
+        // Consume Pokeball
+        //--------------------------------
+
+
+        const usedBall =
+            this.inventory
+                .useItem(
+                    "POKE_BALL"
+                );
+
+
+
+        if(
+            !usedBall.success
+        )
+        {
+
+            return usedBall;
+
+        }
+
+
+
+
+
+
+
+
+
+        const pokemonData =
+        {
+
+            species:
+                pokemon.species,
+
+
+            level:
+                pokemon.level || 1,
+
+
+            location:
+                pokemon.location || null
+
+
+        };
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Store Capture History
+        //--------------------------------
+
+
+        const captured =
+            this.captures
+                .addCapture(
+                    pokemonData
+                );
+
+
+
+        if(
+            !captured.success
+        )
+        {
+
+            return captured;
+
+        }
+
+
+
+
+
+
+
+
+        const storedPokemon =
+            captured.capture ||
+            captured.pokemon ||
+            pokemonData;
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Update Tracker
+        //--------------------------------
+
+
+        const tracked =
+            this.tracker
+                .addPokemon(
+                    pokemonData
+                );
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Add To Team
+        //--------------------------------
+
+
+        let teamResult =
+        {
+
+            success:false,
+
+            reason:
+                "Team Full"
+
+        };
+
+
+
+        if(
+            this.team
+            &&
+            this.team.addToTeam
+        )
+        {
+
+            teamResult =
+                this.team
+                    .addToTeam({
+
+                        species:
+                            pokemon.species,
+
+
+                        level:
+                            pokemon.level || 1
+
+                    });
+
+        }
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Overflow Storage
+        //--------------------------------
+
+
+        let storageResult =
+        {
+
+            success:false,
+
+            reason:
+                "Added To Team"
+
+        };
+
+
+
+        if(
+            !teamResult.success
+        )
+        {
+
+
+            if(
+                this.storage
+                &&
+                this.storage.storePokemon
+            )
+            {
+
+                storageResult =
+                    this.storage
+                        .storePokemon(
+                            pokemonData
+                        );
+
+            }
+            else
+            {
+
+                storageResult =
+                {
+
+                    success:false,
+
+                    reason:
+                        "Storage unavailable"
+
+                };
+
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Action History
+        //--------------------------------
+
+
         const action =
             this.actions
                 .capturePokemon(
 
                     pokemon.species,
 
-
                     pokemon.level || 1,
-
 
                     pokemon.location || null
 
@@ -156,18 +396,34 @@ class CaptureFlow {
 
 
 
+
         return {
+
 
             success:true,
 
 
-            pokemon:
+            capture:
+                storedPokemon,
 
-                tracked.pokemon,
+
+            tracked:
+                tracked.success,
+
+
+            team:
+                teamResult.success,
+
+
+            stored:
+                storageResult.success,
+
+
+            storage:
+                storageResult,
 
 
             action:
-
                 action.action
 
 
@@ -185,7 +441,7 @@ class CaptureFlow {
 
 
     //--------------------------------
-    // Remove capture
+    // Remove Capture
     //--------------------------------
 
 
@@ -194,12 +450,10 @@ class CaptureFlow {
     )
     {
 
-
         return this.tracker
             .removePokemon(
                 id
             );
-
 
     }
 
@@ -212,17 +466,15 @@ class CaptureFlow {
 
 
     //--------------------------------
-    // Captured list
+    // Captured Pokémon List
     //--------------------------------
 
 
     getCapturedPokemon()
     {
 
-
-        return this.tracker
-            .getAll();
-
+        return this.captures
+            .getCaptures();
 
     }
 

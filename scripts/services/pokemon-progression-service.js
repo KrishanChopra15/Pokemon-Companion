@@ -319,33 +319,33 @@ class PokemonProgressionService {
 
 
     getSummary(
-        pokemon
+     pokemon
     )
     {
 
 
         return {
 
-
             species:
-
                 pokemon.species,
 
 
             level:
-
                 pokemon.level,
 
 
             exp:
-
                 pokemon.exp,
 
 
+            progress:
+                this.experience.getExpProgress(
+                    pokemon
+                ),
+
+
             evolution:
-
-                pokemon.evolution || null
-
+                pokemon.evolutionHistory || []
 
         };
 

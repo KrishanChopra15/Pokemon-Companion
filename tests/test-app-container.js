@@ -35,3 +35,26 @@ console.log(
     "Gym DB:",
     !!app.get("gymDatabase")
 );
+
+console.log(
+    "Move DB:",
+    !!app.get("moveDatabase")
+);
+
+
+console.log(
+    "Move Machine:",
+    !!app.get("moveMachine")
+);
+
+
+console.log(
+    "Move Learning:",
+    !!app.get("moveLearning")
+);
+
+
+console.log(
+    "Move Replacement:",
+    !!app.get("moveReplacement")
+);

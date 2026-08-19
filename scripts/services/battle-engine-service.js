@@ -33,7 +33,12 @@ class BattleEngineService {
 
     constructor(
         moveExecutionService,
-        pokemonSwitchService
+        pokemonSwitchService,
+        battleStateFlow,
+        battleActiveFlow,
+        battleOpponentFlow,
+        battleAIService,
+        pokemonProgressionService
     )
     {
 
@@ -42,10 +47,28 @@ class BattleEngineService {
             moveExecutionService;
 
 
-
         this.switches =
             pokemonSwitchService;
 
+
+        this.state =
+            battleStateFlow;
+
+
+        this.active =
+            battleActiveFlow;
+
+
+        this.opponent =
+            battleOpponentFlow;
+
+
+        this.ai =
+            battleAIService;
+
+            
+        this.progression =
+            pokemonProgressionService;
 
 
         this.battles =
@@ -59,11 +82,6 @@ class BattleEngineService {
 
 
 
-
-
-    //--------------------------------
-    // Initialize battle
-    //--------------------------------
 
 
     initializeBattle(
@@ -83,37 +101,30 @@ class BattleEngineService {
                 "ACTIVE",
 
 
-
             player:
             {
 
                 party:
-                    this.cloneParty(
-                        battle.player.party
-                    ),
+                    battle.player.party,
 
 
                 active:
                     0
 
             },
-
 
 
             opponent:
             {
 
                 party:
-                    this.cloneParty(
-                        battle.opponent.party
-                    ),
+                    battle.opponent.party,
 
 
                 active:
                     0
 
             },
-
 
 
             turn:
@@ -133,6 +144,52 @@ class BattleEngineService {
 
 
 
+        if(this.state)
+        {
+
+            this.state.setPlayer(
+                state.player.party[
+                    state.player.active
+                ]
+            );
+
+
+            this.state.setEnemy(
+                state.opponent.party[
+                    state.opponent.active
+                ]
+            );
+
+        }
+
+
+
+        if(this.active)
+        {
+
+            this.active.sendOut(
+                state.player.party[
+                    state.player.active
+                ]
+            );
+
+        }
+
+
+
+        if(this.opponent)
+        {
+
+            this.opponent.sendOut(
+                state.opponent.party[
+                    state.opponent.active
+                ]
+            );
+
+        }
+
+
+
         return state;
 
 
@@ -146,25 +203,12 @@ class BattleEngineService {
 
 
 
-    //--------------------------------
-    // Get battle
-    //--------------------------------
-
-
     getBattle(
         battleId
     )
     {
 
-        return (
-
-            this.battles[battleId]
-
-            ||
-
-            null
-
-        );
+        return this.battles[battleId] || null;
 
     }
 
@@ -176,15 +220,9 @@ class BattleEngineService {
 
 
 
-    //--------------------------------
-    // Process turn
-    //--------------------------------
-
-
     processTurn(
         battleId,
-        playerMove,
-        opponentMove
+        playerMove
     )
     {
 
@@ -196,24 +234,18 @@ class BattleEngineService {
 
 
 
-        if(
-            !battle
-        )
+        if(!battle)
         {
 
             return {
 
                 success:false,
 
-                reason:
-                    "Unknown battle"
+                reason:"Unknown battle"
 
             };
 
         }
-
-
-
 
 
 
@@ -226,17 +258,11 @@ class BattleEngineService {
 
                 success:false,
 
-                reason:
-                    "Battle already finished"
+                reason:"Battle finished"
 
             };
 
         }
-
-
-
-
-
 
 
 
@@ -248,7 +274,7 @@ class BattleEngineService {
 
 
             actions:
-            []
+                []
 
         };
 
@@ -258,12 +284,7 @@ class BattleEngineService {
 
 
 
-
-
-        //--------------------------------
-        // Player turn
-        //--------------------------------
-
+        // PLAYER TURN
 
         this.executeTurnMove(
 
@@ -276,12 +297,6 @@ class BattleEngineService {
             result
 
         );
-
-
-
-
-
-
 
 
 
@@ -299,14 +314,10 @@ class BattleEngineService {
 
 
 
-
-
-        //--------------------------------
-        // Opponent turn
-        //--------------------------------
-
+        // OPPONENT TURN
 
         if(
+
             battle.status === "ACTIVE"
 
             &&
@@ -319,6 +330,40 @@ class BattleEngineService {
 
         )
         {
+
+
+            const enemy =
+                this.getActivePokemon(
+                    battle.opponent
+                );
+
+
+            const player =
+                this.getActivePokemon(
+                    battle.player
+                );
+
+
+
+            const enemyMoves =
+                enemy.moves
+                ||
+                [];
+
+
+
+            const opponentMove =
+                this.ai
+                ?
+                this.ai.chooseMove(
+                    enemy,
+                    player,
+                    enemyMoves
+                )
+                :
+                enemyMoves[0];
+
+
 
 
             this.executeTurnMove(
@@ -352,20 +397,31 @@ class BattleEngineService {
 
 
 
-
         battle.turn++;
 
 
 
 
+
+        if(this.state)
+        {
+
+            this.state.startTurn();
+
+
+            this.state.record(
+                result
+            );
+
+        }
+
+
+
+
+
         this.checkBattleEnd(
-
             battle
-
         );
-
-
-
 
 
 
@@ -390,11 +446,6 @@ class BattleEngineService {
 
 
 
-    //--------------------------------
-    // Execute move wrapper
-    //--------------------------------
-
-
     executeTurnMove(
         attackerSide,
         defenderSide,
@@ -402,6 +453,13 @@ class BattleEngineService {
         result
     )
     {
+
+
+        if(!move)
+        {
+            return;
+        }
+
 
 
         const attacker =
@@ -414,6 +472,20 @@ class BattleEngineService {
             this.getActivePokemon(
                 defenderSide
             );
+
+
+
+        if(
+            !attacker ||
+            !defender
+        )
+        {
+
+            return;
+
+        }
+
+
 
 
 
@@ -439,11 +511,15 @@ class BattleEngineService {
 
 
                 move:
-                    moveResult.move,
+                    moveResult.move
+                    ||
+                    move.name,
 
 
                 damage:
-                    moveResult.damage,
+                    moveResult.damage
+                    ||
+                    0,
 
 
                 target:
@@ -466,11 +542,6 @@ class BattleEngineService {
 
 
 
-
-
-    //--------------------------------
-    // Handle faint
-    //--------------------------------
 
 
     handleFaint(
@@ -500,26 +571,19 @@ class BattleEngineService {
 
 
 
-
-
-
-        if(
-            this.switches
-        )
+        if(this.switches)
         {
 
 
-            const switchResult =
+            const switched =
                 this.switches.autoSwitch(
-
                     side
-
                 );
 
 
 
             if(
-                switchResult.success
+                switched.success
             )
             {
 
@@ -532,20 +596,17 @@ class BattleEngineService {
 
 
                         pokemon:
-                            switchResult.pokemon.species
+                            switched.pokemon.species
 
                     }
 
                 );
 
 
-                return;
-
             }
 
 
         }
-
 
 
     }
@@ -558,20 +619,13 @@ class BattleEngineService {
 
 
 
-    //--------------------------------
-    // Active pokemon
-    //--------------------------------
-
-
     getActivePokemon(
         side
     )
     {
 
         return side.party[
-
             side.active
-
         ];
 
     }
@@ -584,24 +638,14 @@ class BattleEngineService {
 
 
 
-    //--------------------------------
-    // Fainted
-    //--------------------------------
-
-
     isFainted(
         pokemon
     )
     {
 
         return (
-
-            !pokemon
-
-            ||
-
+            !pokemon ||
             pokemon.hp <= 0
-
         );
 
     }
@@ -614,11 +658,6 @@ class BattleEngineService {
 
 
 
-    //--------------------------------
-    // Battle end
-    //--------------------------------
-
-
     checkBattleEnd(
         battle
     )
@@ -629,7 +668,6 @@ class BattleEngineService {
             battle.player.party.some(
 
                 pokemon =>
-
                     pokemon.hp > 0
 
             );
@@ -640,20 +678,13 @@ class BattleEngineService {
             battle.opponent.party.some(
 
                 pokemon =>
-
                     pokemon.hp > 0
 
             );
 
 
 
-
-
-
-
-        if(
-            !opponentAlive
-        )
+        if(!opponentAlive)
         {
 
             battle.status =
@@ -667,13 +698,7 @@ class BattleEngineService {
 
 
 
-
-
-
-
-        if(
-            !playerAlive
-        )
+        if(!playerAlive)
         {
 
             battle.status =
@@ -682,6 +707,17 @@ class BattleEngineService {
 
             battle.winner =
                 "OPPONENT";
+
+        }
+
+
+
+        if(this.state)
+        {
+
+            this.state.updateStatus(
+                battle.status
+            );
 
         }
 
@@ -696,24 +732,15 @@ class BattleEngineService {
 
 
 
-    //--------------------------------
-    // Clone
-    //--------------------------------
-
-
     cloneParty(
         party
     )
     {
 
         return JSON.parse(
-
             JSON.stringify(
-
                 party
-
             )
-
         );
 
     }

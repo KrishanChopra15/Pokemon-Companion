@@ -325,7 +325,7 @@ class ExperienceService {
 
             currentLevel:
 
-                oldLevel,
+                checkLevel,
 
 
             levels

@@ -11,6 +11,7 @@
  * - Resolve battle participants.
  * - Track battle results.
  * - Complete battles.
+ * - Initialize battle engine state.
  *
  * Does NOT:
  * - Calculate damage.
@@ -30,16 +31,42 @@ class BattleService {
 
 
     constructor(
-        battlePreparationService
+        battlePreparationService,
+        battleEngineService,
+        pokemonProgressionService,
+        experienceService,
+        rewardService
     )
     {
+
 
         this.preparation =
             battlePreparationService;
 
 
+
+        this.engine =
+            battleEngineService;
+
+
+
+        this.progression =
+            pokemonProgressionService;
+
+
+        this.experience =
+            experienceService;
+
+
+        this.rewards =
+            rewardService;
+
+
+
         this.activeBattles =
         {};
+
+
 
         this.nextBattleId =
             1;
@@ -109,6 +136,9 @@ class BattleService {
 
 
 
+
+
+
         const battle =
         {
 
@@ -154,6 +184,29 @@ class BattleService {
 
         this.activeBattles[battleId] =
             battle;
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Initialize Engine
+        //--------------------------------
+
+
+        if(
+            this.engine
+        )
+        {
+
+            this.engine.initializeBattle(
+                battle
+            );
+
+        }
 
 
 
@@ -295,6 +348,29 @@ class BattleService {
 
         this.activeBattles[battleId] =
             battle;
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Initialize Engine
+        //--------------------------------
+
+
+        if(
+            this.engine
+        )
+        {
+
+            this.engine.initializeBattle(
+                battle
+            );
+
+        }
 
 
 
@@ -470,10 +546,6 @@ class BattleService {
 
 
 
-
-
-
-
         battle.status =
             "COMPLETED";
 
@@ -481,6 +553,70 @@ class BattleService {
 
         battle.result =
             result;
+
+
+
+
+
+        //--------------------------------
+        // Give EXP reward
+        //--------------------------------
+
+
+        if(
+            result.winner === "PLAYER"
+            &&
+            this.progression
+        )
+        {
+
+
+            const defeated =
+                battle.opponent.party[
+                    0
+                ];
+
+
+
+            const playerPokemon =
+                battle.player.party.filter(
+                
+                    pokemon =>
+                        pokemon.hp > 0
+                
+                )[0];
+
+
+
+
+            const exp =
+                this.experience.calculateExp(
+
+                    defeated,
+
+                    battle.type === "WILD"
+                    ?
+                    "WILD"
+                    :
+                    "TRAINER"
+
+                );
+
+
+
+
+
+            result.exp =
+                this.progression.processProgression(
+
+                    playerPokemon,
+
+                    exp
+
+                );
+
+
+        }
 
 
 
@@ -503,6 +639,7 @@ class BattleService {
 
 
         };
+
 
     }
 

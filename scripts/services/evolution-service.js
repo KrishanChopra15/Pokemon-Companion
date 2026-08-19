@@ -468,14 +468,49 @@ class EvolutionService {
             pokemon.species;
 
 
-
-
-
-
-
-
         pokemon.species =
             evolution.target;
+
+
+
+        if(
+            !pokemon.evolutionHistory
+        )
+        {
+        
+            pokemon.evolutionHistory =
+                [];
+        
+        }
+
+
+
+        pokemon.evolutionHistory.push(
+        
+            {
+            
+                from:
+                    oldSpecies,
+            
+            
+                to:
+                    pokemon.species,
+            
+            
+                method:
+                    evolution.method,
+            
+            
+                level:
+                    pokemon.level || null,
+            
+            
+                date:
+                    new Date().toISOString()
+            
+            }
+        
+        );
 
 
 

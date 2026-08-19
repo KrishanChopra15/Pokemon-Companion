@@ -34,6 +34,9 @@ const ServiceContainer =
 const PokemonDatabaseService =
     require("./services/pokemon-database-service");
 
+const MoveDatabaseService =
+    require("./services/move-database-service");
+
 const TrainerDatabaseService =
     require("./services/trainer-database-service");
 
@@ -162,6 +165,20 @@ const WildBattleService =
 const CaptureFlow =
     require("./capture/capture-flow");
 
+const CaptureManager =
+    require("./capture/capture-manager");
+
+
+//================================
+// Storage Services
+//================================
+
+const StorageManager =
+    require("./storage/storage-manager");
+
+const StorageFlow =
+    require("./storage/storage-flow");
+
 
 //================================
 // Action Services
@@ -247,11 +264,31 @@ const MapAccessService =
 const MoveExecutionService =
     require("./services/move-execution-service");
 
+const MoveMachineService =
+    require("./services/move-machine-service");
+
+const MoveLearningService =
+    require("./services/move-learning-service");
+
+const MoveReplacementService =
+    require("./services/move-replacement-service");
+
 const StatusEffectService =
     require("./services/status-effect-service");
 
 const PokemonSwitchService =
     require("./services/pokemon-switch-service");
+
+
+//================================
+// Battle Active Services
+//================================
+
+const BattleActiveManager =
+    require("./battle-active/battle-active-manager");
+
+const BattleActiveFlow =
+    require("./battle-active/battle-active-flow");
 
 
 //================================
@@ -335,6 +372,39 @@ const TeamFlow =
 
 
 //================================
+// Active Pokémon Services
+//================================
+
+const ActivePokemonManager =
+    require("./team-active/active-pokemon-manager");
+
+const ActivePokemonFlow =
+    require("./team-active/active-pokemon-flow");
+
+
+//================================
+// Battle Opponent Services
+//================================
+
+const BattleOpponentManager =
+    require("./battle-opponent/battle-opponent-manager");
+
+const BattleOpponentFlow =
+    require("./battle-opponent/battle-opponent-flow");
+
+
+//================================
+// Battle State Services
+//================================
+
+const BattleStateManager =
+    require("./battle-state/battle-state-manager");
+
+const BattleStateFlow =
+    require("./battle-state/battle-state-flow");
+
+
+//================================
 // Inventory Services
 //================================
 
@@ -383,11 +453,53 @@ class AppContainer {
 
         this.registerLocationServices();
 
+
+        //================================
+        // Battle Dependencies
+        //================================
+
         this.registerBattleSupportServices();
 
-        this.registerGameplayServices();
 
+        //================================
+        // Team Dependencies
+        //================================
+
+        this.registerTeamServices();
+
+        this.registerActivePokemonServices();
+
+
+        //================================
+        // Battle State Dependencies
+        //================================
+
+        this.registerBattleActiveServices();
+
+        this.registerBattleOpponentServices();
+
+        this.registerBattleStateServices();
+
+
+        //================================
+        // Pokémon Utility Dependencies
+        //================================
+            
+        this.registerPokemonUtilityServices();
+            
+            
+        //================================
+        // Core Gameplay
+        //================================
+            
         this.registerEventServices();
+
+        this.registerGameplayServices();
+            
+            
+        //================================
+        // Remaining Systems
+        //================================
 
         this.registerPokemonInformationServices();
 
@@ -395,15 +507,13 @@ class AppContainer {
 
         this.registerInventoryServices();
 
+        this.registerStorageServices();
+
         this.registerCaptureServices();
 
         this.registerEncounterServices();
 
-        this.registerTeamServices();
-
         this.registerStarterServices();
-
-        this.registerPokemonUtilityServices();
 
         this.registerNPCServices();
 
@@ -439,6 +549,17 @@ class AppContainer {
                 this.game
             )
 
+        );
+
+
+        this.container.register(
+        
+            "moveDatabase",
+        
+            new MoveDatabaseService(
+                this.game
+            )
+        
         );
 
 
@@ -898,6 +1019,41 @@ class AppContainer {
 
 
 
+        const moveMachine =
+            new MoveMachineService(
+            
+                this.game,
+            
+                this.get(
+                    "moveDatabase"
+                )
+            
+            );
+
+
+
+        const moveReplacement =
+            new MoveReplacementService();
+
+
+
+        const moveLearning =
+            new MoveLearningService(
+            
+                this.game,
+            
+                this.get(
+                    "moveDatabase"
+                ),
+            
+                this.get(
+                    "moveReplacement"
+                )
+            
+            );
+
+
+
         const statusEffect =
             new StatusEffectService();
 
@@ -922,6 +1078,36 @@ class AppContainer {
 
 
         this.container.register(
+        
+            "moveMachine",
+        
+            moveMachine
+        
+        );
+
+
+
+        this.container.register(
+        
+            "moveReplacement",
+        
+            moveReplacement
+        
+        );
+
+
+
+        this.container.register(
+        
+            "moveLearning",
+        
+            moveLearning
+        
+        );
+
+
+
+        this.container.register(
 
             "statusEffect",
 
@@ -936,6 +1122,172 @@ class AppContainer {
             "pokemonSwitch",
 
             pokemonSwitch
+
+        );
+
+
+    }
+
+
+
+
+
+
+    //================================
+    // Battle Active Layer
+    //================================
+
+
+    registerBattleActiveServices()
+    {
+
+
+        const battleActiveManager =
+            new BattleActiveManager();
+
+
+
+
+        const battleActiveFlow =
+            new BattleActiveFlow(
+            
+                battleActiveManager,
+            
+            
+                this.get(
+                    "teamFlow"
+                )
+            
+            );
+
+
+
+
+
+        this.container.register(
+
+            "battleActiveManager",
+
+            battleActiveManager
+
+        );
+
+
+
+
+
+        this.container.register(
+
+            "battleActiveFlow",
+
+            battleActiveFlow
+
+        );
+
+
+    }
+
+
+
+
+
+
+    //================================
+    // Battle Opponent Layer
+    //================================
+
+
+    registerBattleOpponentServices()
+    {
+
+
+        const battleOpponentManager =
+            new BattleOpponentManager();
+
+
+
+        const battleOpponentFlow =
+            new BattleOpponentFlow(
+
+                battleOpponentManager
+
+            );
+
+
+
+
+
+        this.container.register(
+
+            "battleOpponentManager",
+
+            battleOpponentManager
+
+        );
+
+
+
+
+
+        this.container.register(
+
+            "battleOpponentFlow",
+
+            battleOpponentFlow
+
+        );
+
+
+    }
+
+
+
+
+
+
+    //================================
+    // Battle State Layer
+    //================================
+
+
+    registerBattleStateServices()
+    {
+
+
+        const battleStateManager =
+            new BattleStateManager();
+
+
+
+
+        const battleStateFlow =
+            new BattleStateFlow(
+
+                battleStateManager
+
+            );
+
+
+
+
+
+        this.container.register(
+
+            "battleStateManager",
+
+            battleStateManager
+
+        );
+
+
+
+
+
+        this.container.register(
+
+            "battleStateFlow",
+
+            battleStateFlow
 
         );
 
@@ -977,60 +1329,71 @@ class AppContainer {
 
         const battleEngine =
             new BattleEngineService(
-                battleAI
+            
+                this.get(
+                    "moveExecution"
+                ),
+
+                this.get(
+                    "pokemonSwitch"
+                ),
+
+                this.get(
+                    "battleStateFlow"
+                ),
+            
+                this.get(
+                    "battleActiveFlow"
+                ),
+            
+                this.get(
+                    "battleOpponentFlow"
+                ),
+            
+                battleAI,
+            
             );
 
 
 
         const battle =
             new BattleService(
-                battlePreparation
-            );
-
-
-
-        const evolution =
-            new EvolutionService(
+            
+                battlePreparation,
+            
+                battleEngine,
+            
                 this.get(
-                    "pokemonDatabase"
-                )
-            );
-
-
-
-        const experience =
-            new ExperienceService(
-                this.get(
-                    "pokemonDatabase"
-                )
-            );
-
-
-
-        const levelUp =
-            new LevelUpService(
-                this.get(
-                    "pokemonDatabase"
+                    "pokemonProgression"
                 ),
-                experience,
-                evolution
+            
+                this.get(
+                    "experience"
+                ),
+            
+                this.get(
+                    "rewardService"
+                )
+            
             );
 
 
 
         const availability =
             new PokemonAvailabilityService(
-
+            
                 this.get(
                     "pokemonDatabase"
                 ),
-
+            
                 this.get(
                     "locationDatabase"
                 ),
-
-                evolution
-
+            
+                this.get(
+                    "evolution"
+                )
+            
             );
 
 
@@ -1076,24 +1439,6 @@ class AppContainer {
         this.container.register(
             "battle",
             battle
-        );
-
-
-        this.container.register(
-            "evolution",
-            evolution
-        );
-
-
-        this.container.register(
-            "experience",
-            experience
-        );
-
-
-        this.container.register(
-            "levelUp",
-            levelUp
         );
 
 
@@ -1189,6 +1534,11 @@ class AppContainer {
     {
 
 
+        const captureManager =
+            new CaptureManager();
+
+
+
         const captureService =
             new CaptureService();
 
@@ -1200,23 +1550,56 @@ class AppContainer {
 
 
 
+
         const captureFlow =
             new CaptureFlow(
 
                 captureService,
-
-
+            
+            
+                captureManager,
+            
+            
+                this.get(
+                    "teamFlow"
+                ),
+            
+            
+                this.get(
+                    "storageFlow"
+                ),
+            
+            
+                this.get(
+                    "inventoryFlow"
+                ),
+            
+            
                 this.get(
                     "pokemonTracker"
                 ),
-
-
+            
+            
                 this.get(
                     "actionFlow"
                 )
-
+            
             );
 
+
+
+
+
+
+
+
+        this.container.register(
+
+            "captureManager",
+
+            captureManager
+
+        );
 
 
 
@@ -1461,6 +1844,63 @@ class AppContainer {
 
 
     //================================
+    // Active Pokémon Layer
+    //================================
+    
+    
+    registerActivePokemonServices()
+    {
+    
+    
+        const activePokemonManager =
+            new ActivePokemonManager();
+    
+    
+    
+        const activePokemonFlow =
+            new ActivePokemonFlow(
+            
+                activePokemonManager,
+            
+            
+                this.get(
+                    "teamFlow"
+                )
+            
+            );
+        
+        
+        
+        
+        
+        this.container.register(
+        
+            "activePokemonManager",
+        
+            activePokemonManager
+        
+        );
+    
+    
+    
+    
+    
+        this.container.register(
+        
+            "activePokemonFlow",
+        
+            activePokemonFlow
+        
+        );
+    
+    
+    }
+
+
+
+
+
+    //================================
     // Pokémon Information Layer
     //================================
 
@@ -1530,6 +1970,62 @@ class AppContainer {
 
 
     //================================
+    // Storage Layer
+    //================================
+
+
+    registerStorageServices()
+    {
+
+
+        const storageManager =
+            new StorageManager();
+
+
+
+        const storageFlow =
+            new StorageFlow(
+            
+                storageManager,
+            
+                this.get(
+                    "teamFlow"
+                )
+            
+            );
+
+
+
+
+
+        this.container.register(
+
+            "storageManager",
+
+            storageManager
+
+        );
+
+
+
+
+
+        this.container.register(
+
+            "storageFlow",
+
+            storageFlow
+
+        );
+
+
+    }
+
+
+
+
+
+    //================================
     // Starter Layer
     //================================
 
@@ -1566,54 +2062,119 @@ class AppContainer {
     
     registerPokemonUtilityServices()
     {
-    
-    
-        const evolutionRequirement =
-            new EvolutionRequirementService();
-    
-    
-    
+
+
+        const evolution =
+            new EvolutionService(
+
+                this.get(
+                    "pokemonDatabase"
+                )
+
+            );
+
+
+
         const growthRate =
             new GrowthRateService();
-    
-    
-    
+
+
+
+        const experience =
+            new ExperienceService(
+            
+                this.get(
+                    "growthRate"
+                )
+            
+            );
+
+
+
+        const levelUp =
+            new LevelUpService();
+
+
+
+        const evolutionRequirement =
+            new EvolutionRequirementService();
+
+
+
         const pokemonProgression =
-            new PokemonProgressionService();
-    
-    
-    
-    
-    
+            new PokemonProgressionService(
+
+                experience,
+
+                levelUp,
+
+                evolution
+
+            );
+
+
+
+
+
         this.container.register(
-        
+
             "evolutionRequirement",
-        
+
             evolutionRequirement
-        
+
         );
-    
-    
-    
+
+
+
         this.container.register(
-        
+
             "growthRate",
-        
+
             growthRate
-        
+
         );
-    
-    
-    
+
+
+
         this.container.register(
-        
-            "pokemonProgression",
-        
-            pokemonProgression
-        
+
+            "evolution",
+
+            evolution
+
         );
-    
-    
+
+
+
+        this.container.register(
+
+            "experience",
+
+            experience
+
+        );
+
+
+
+        this.container.register(
+
+            "levelUp",
+
+            levelUp
+
+        );
+
+
+
+        this.container.register(
+
+            "pokemonProgression",
+
+            pokemonProgression
+
+        );
+
+
     }
 
 

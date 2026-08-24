@@ -3,11 +3,11 @@
  * Battle Service Test
  *
  * Tests:
- * - Battle creation
- * - Battle preparation connection
- * - Active battle tracking
- * - Battle completion
- * - Victory result
+ * - Trainer battle creation
+ * - Battle storage
+ * - Active tracking
+ * - Victory completion
+ * - Battle removal
  */
 
 "use strict";
@@ -17,18 +17,6 @@ const BattleService =
     require("../scripts/services/battle-service");
 
 
-const BattlePreparationService =
-    require("../scripts/services/battle-preparation-service");
-
-
-const TrainerDatabaseService =
-    require("../scripts/services/trainer-database-service");
-
-
-const TrainerState =
-    require("../scripts/domain/trainer-state");
-
-
 
 
 
@@ -37,87 +25,235 @@ const TrainerState =
 
 
 //--------------------------------
-// Services
+// Mock preparation
 //--------------------------------
-
-
-const trainerDatabase =
-    new TrainerDatabaseService();
-
-
-
-console.log(
-    "Loaded trainers:",
-    trainerDatabase.getAllTrainers().length
-);
-
-
-
 
 
 const battlePreparation =
-    new BattlePreparationService(
+{
 
-        trainerDatabase
+    prepareTrainerBattle(
+        trainerId,
+        playerState
+    )
+    {
 
-    );
+
+        return {
+
+            success:true,
+
+
+            battleType:
+                "TRAINER",
+
+
+            trainer:
+            {
+
+                id:
+                    trainerId,
+
+
+                name:
+                    trainerId
+
+            },
+
+
+            player:
+            {
+
+                party:
+                    playerState.party
+
+            },
+
+
+            opponent:
+            {
+
+                party:
+                [
+
+                    {
+
+                        species:
+                            "GEODUDE",
+
+
+                        level:
+                            12,
+
+
+                        hp:
+                            40,
+
+
+                        maxHP:
+                            40
+
+                    }
+
+                ]
+
+            }
+
+        };
+
+
+    }
+
+};
 
 
 
+
+
+
+
+
+
+//--------------------------------
+// Mock engine
+//--------------------------------
+
+
+const battleEngine =
+{
+
+    initializeBattle(
+        battle
+    )
+    {
+
+        console.log(
+
+            "Engine initialized:",
+            battle.id
+
+        );
+
+    }
+
+};
+
+
+
+
+
+
+
+
+
+//--------------------------------
+// Mock progression
+//--------------------------------
+
+
+const progression =
+{
+
+    processProgression()
+    {
+
+        return {};
+
+    }
+
+};
+
+
+
+
+
+
+
+
+
+const experience =
+{
+
+    calculateExp()
+    {
+
+        return 100;
+
+    }
+
+};
+
+
+
+
+
+
+
+
+
+const rewards =
+{};
+
+
+
+
+
+
+
+
+
+//--------------------------------
+// Service
+//--------------------------------
 
 
 const battleService =
     new BattleService(
 
-        battlePreparation
+        battlePreparation,
+
+        battleEngine,
+
+        progression,
+
+        experience,
+
+        rewards
 
     );
+
+
+
+
 
 
 
 
 
 const player =
-    new TrainerState();
+{
+
+    party:
+    [
+
+        {
+
+            species:
+                "CHARMANDER",
 
 
+            level:
+                10,
 
 
+            hp:
+                39
 
+        }
 
+    ]
 
-
-
-//--------------------------------
-// Add player Pokémon
-//--------------------------------
-
-
-player.pokemon.push(
-
-    {
-
-        species:
-            "CHARMANDER",
-
-        level:
-            10,
-
-        hp:
-            30,
-
-        moves:
-        [
-
-            "SCRATCH",
-
-            "EMBER"
-
-        ]
-
-    }
-
-);
+};
 
 
 
@@ -130,15 +266,15 @@ player.pokemon.push(
 console.log();
 
 console.log(
-    "================================"
+"================================"
 );
 
 console.log(
-    "Battle Service Tests"
+"Battle Service Tests"
 );
 
 console.log(
-    "================================"
+"================================"
 );
 
 
@@ -157,11 +293,12 @@ console.log(
 console.log();
 
 console.log(
-    "Starting Brock battle:"
+"Starting trainer battle:"
 );
 
 
-const battleResult =
+
+const result =
     battleService.startTrainerBattle(
 
         "BROCK",
@@ -172,11 +309,7 @@ const battleResult =
 
 
 
-console.log(
-
-    battleResult
-
-);
+console.log(result);
 
 
 
@@ -184,30 +317,27 @@ console.log(
 
 
 
-
-
-//--------------------------------
-// Battle ID
-//--------------------------------
 
 
 const battleId =
-    battleResult.battleId;
+    result.battleId;
+
+
+
+
+
+
 
 
 
 console.log();
 
 console.log(
-    "Battle ID:"
+"Battle ID:"
 );
 
 
-console.log(
-
-    battleId
-
-);
+console.log(battleId);
 
 
 
@@ -225,7 +355,7 @@ console.log(
 console.log();
 
 console.log(
-    "Loaded battle:"
+"Loaded battle:"
 );
 
 
@@ -248,14 +378,14 @@ console.log(
 
 
 //--------------------------------
-// Active check
+// Active
 //--------------------------------
 
 
 console.log();
 
 console.log(
-    "Battle active:"
+"Battle active:"
 );
 
 
@@ -285,7 +415,7 @@ console.log(
 console.log();
 
 console.log(
-    "Active battles:"
+"Active battles:"
 );
 
 
@@ -304,29 +434,25 @@ console.log(
 
 
 //--------------------------------
-// Win battle
+// Win
 //--------------------------------
 
 
 console.log();
 
 console.log(
-    "Winning battle:"
+"Winning battle:"
 );
 
 
-const victory =
+
+console.log(
+
     battleService.winBattle(
 
         battleId
 
-    );
-
-
-
-console.log(
-
-    victory
+    )
 
 );
 
@@ -339,14 +465,14 @@ console.log(
 
 
 //--------------------------------
-// After completion
+// Completed state
 //--------------------------------
 
 
 console.log();
 
 console.log(
-    "Battle after victory:"
+"After victory:"
 );
 
 
@@ -368,16 +494,12 @@ console.log(
 
 
 
-//--------------------------------
-// Active check after win
-//--------------------------------
-
-
 console.log();
 
 console.log(
-    "Battle active after victory:"
+"Active after victory:"
 );
+
 
 
 console.log(
@@ -399,14 +521,14 @@ console.log(
 
 
 //--------------------------------
-// Statistics
+// Count
 //--------------------------------
 
 
 console.log();
 
 console.log(
-    "Battle count:"
+"Battle count:"
 );
 
 
@@ -432,8 +554,9 @@ console.log(
 console.log();
 
 console.log(
-    "Clearing battle:"
+"Clear battle:"
 );
+
 
 
 console.log(
@@ -457,8 +580,9 @@ console.log(
 console.log();
 
 console.log(
-    "Battle count after clear:"
+"Battle count after clear:"
 );
+
 
 
 console.log(
@@ -478,7 +602,15 @@ console.log(
 console.log();
 
 console.log(
-    "Battle Service Tests Completed."
+"================================"
+);
+
+console.log(
+"Battle Service Tests Completed."
+);
+
+console.log(
+"================================"
 );
 
 console.log();

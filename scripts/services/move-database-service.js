@@ -7,6 +7,7 @@
  * Responsibilities:
  * - Load move database.
  * - Query move information.
+ * - Normalize move data for battle systems.
  *
  * Does NOT:
  * - Execute moves.
@@ -80,6 +81,129 @@ class MoveDatabaseService {
 
 
     //--------------------------------
+    // Normalize move data
+    //--------------------------------
+    //
+    // Converts database format
+    // into battle format
+    //
+    //--------------------------------
+
+
+    normalizeMove(
+        move
+    )
+    {
+
+
+        if(
+            !move
+        )
+        {
+
+            return null;
+
+        }
+
+
+
+
+
+
+        const normalized =
+        {
+
+            ...move
+
+        };
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Normalize type
+        //--------------------------------
+
+
+        if(
+            typeof normalized.type === "object"
+
+            &&
+
+            normalized.type.constant
+        )
+        {
+
+
+            normalized.type =
+
+                normalized.type.constant
+
+                .replace(
+
+                    "TYPE_",
+
+                    ""
+
+                );
+
+
+        }
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Normalize effect
+        //--------------------------------
+
+
+        if(
+            typeof normalized.effect === "object"
+
+            &&
+
+            normalized.effect.constant
+        )
+        {
+
+
+            normalized.effect =
+
+                normalized.effect.constant;
+
+
+        }
+
+
+
+
+
+
+
+
+        return normalized;
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
     // Get move by ID
     //--------------------------------
 
@@ -90,17 +214,22 @@ class MoveDatabaseService {
     {
 
 
-        return this.moves.find(
+        const move =
+            this.moves.find(
 
-            move =>
+                move =>
 
-                move.id === id
+                    move.id === id
 
-        )
+            );
 
-        ||
 
-        null;
+
+        return this.normalizeMove(
+
+            move
+
+        );
 
 
     }
@@ -124,17 +253,50 @@ class MoveDatabaseService {
     {
 
 
-        return this.moves.find(
+        const move =
+            this.moves.find(
 
-            move =>
+                move =>
 
-                move.constant === constant
+                    move.constant === constant
 
-        )
+            );
 
-        ||
 
-        null;
+
+        return this.normalizeMove(
+
+            move
+
+        );
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Generic move lookup
+    //--------------------------------
+
+
+    getMove(
+        constant
+    )
+    {
+
+
+        return this.getMoveByConstant(
+
+            constant
+
+        );
 
 
     }
@@ -164,23 +326,28 @@ class MoveDatabaseService {
 
 
 
-        return this.moves.find(
+        const move =
+            this.moves.find(
 
-            move =>
+                move =>
 
-                move.name &&
+                    move.name &&
 
-                move.name.toLowerCase()
+                    move.name.toLowerCase()
 
-                ===
+                    ===
 
-                search
+                    search
 
-        )
+            );
 
-        ||
 
-        null;
+
+        return this.normalizeMove(
+
+            move
+
+        );
 
 
     }
@@ -201,7 +368,19 @@ class MoveDatabaseService {
     getAllMoves()
     {
 
-        return this.moves;
+
+        return this.moves.map(
+
+            move =>
+
+                this.normalizeMove(
+
+                    move
+
+                )
+
+        );
+
 
     }
 

@@ -53,9 +53,7 @@ const rewards =
 
 
     addMoney:
-    [
-        5000
-    ],
+        5000,
 
 
 
@@ -82,5 +80,9 @@ const result =
 
 
 console.log(
-    result
+    JSON.stringify(
+        result,
+        null,
+        4
+    )
 );

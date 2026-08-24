@@ -10,6 +10,7 @@
  * - Choose switches.
  * - Evaluate matchups.
  * - Predict battle outcomes.
+ * - Select opponent moves.
  *
  * Does NOT:
  * - Execute moves.
@@ -70,7 +71,7 @@ class BattleAIService {
 
 
     //--------------------------------
-    // Choose move
+    // Choose AI move
     //--------------------------------
 
 
@@ -97,9 +98,6 @@ class BattleAIService {
 
 
 
-
-
-
         const settings =
             this.getDifficulty(
 
@@ -112,6 +110,12 @@ class BattleAIService {
 
 
 
+
+
+
+        //--------------------------------
+        // Random move selection
+        //--------------------------------
 
 
         if(
@@ -144,6 +148,12 @@ class BattleAIService {
 
 
 
+
+        //--------------------------------
+        // Best move selection
+        //--------------------------------
+
+
         return this.getBestMove(
 
             pokemon,
@@ -151,6 +161,106 @@ class BattleAIService {
             opponent,
 
             moves
+
+        );
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Choose enemy move
+    //--------------------------------
+
+
+    chooseEnemyMove(
+        pokemon,
+        opponent,
+        difficulty = "NORMAL"
+    )
+    {
+
+
+        if(
+            !pokemon
+        )
+        {
+
+            return null;
+
+        }
+
+
+
+
+
+        const moves =
+            pokemon.moves || [];
+
+
+
+
+
+        const usableMoves =
+            moves.filter(
+
+                move =>
+
+                    typeof move.pp !== "number"
+
+                    ||
+
+                    move.pp > 0
+
+            );
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // No usable moves
+        // Use STRUGGLE
+        //--------------------------------
+
+
+        if(
+            usableMoves.length === 0
+        )
+        {
+
+            return this.getStruggleMove();
+
+        }
+
+
+
+
+
+
+
+
+
+        return this.chooseMove(
+
+            pokemon,
+
+            opponent,
+
+            usableMoves,
+
+            difficulty
 
         );
 
@@ -182,8 +292,9 @@ class BattleAIService {
             moves[0];
 
 
-        let score =
+        let bestScore =
             -1;
+
 
 
 
@@ -198,7 +309,8 @@ class BattleAIService {
         {
 
 
-            const value =
+            const score =
+
                 this.evaluateMove(
 
                     pokemon,
@@ -213,16 +325,14 @@ class BattleAIService {
 
 
 
-
-
-
             if(
-                value > score
+                score >
+                bestScore
             )
             {
 
-                score =
-                    value;
+                bestScore =
+                    score;
 
 
                 best =
@@ -232,9 +342,6 @@ class BattleAIService {
 
 
         }
-
-
-
 
 
 
@@ -279,11 +386,9 @@ class BattleAIService {
 
 
 
-
-
-
         let score =
             0;
+
 
 
 
@@ -299,6 +404,7 @@ class BattleAIService {
             ||
 
             0;
+
 
 
 
@@ -325,6 +431,7 @@ class BattleAIService {
 
 
 
+
         if(
             move.effectiveness
         )
@@ -335,9 +442,6 @@ class BattleAIService {
                 move.effectiveness;
 
         }
-
-
-
 
 
 
@@ -378,6 +482,7 @@ class BattleAIService {
 
 
 
+
         if(
             attacker.level >
             defender.level
@@ -387,7 +492,6 @@ class BattleAIService {
             score += 10;
 
         }
-
 
         else
         {
@@ -403,14 +507,17 @@ class BattleAIService {
 
 
 
+
         if(
-            attacker.type &&
+            attacker.type
+            &&
             defender.type
         )
         {
 
 
-            const result =
+            score +=
+
                 this.typeAdvantage(
 
                     attacker.type,
@@ -420,14 +527,7 @@ class BattleAIService {
                 );
 
 
-
-            score += result;
-
-
         }
-
-
-
 
 
 
@@ -461,12 +561,14 @@ class BattleAIService {
         const advantages =
         {
 
+
             FIRE:
             [
                 "GRASS",
                 "ICE",
                 "BUG"
             ],
+
 
 
             WATER:
@@ -477,11 +579,13 @@ class BattleAIService {
             ],
 
 
+
             ELECTRIC:
             [
                 "WATER",
                 "FLYING"
             ],
+
 
 
             GRASS:
@@ -492,6 +596,7 @@ class BattleAIService {
             ]
 
         };
+
 
 
 
@@ -519,9 +624,6 @@ class BattleAIService {
 
 
 
-
-
-
         return 0;
 
 
@@ -536,7 +638,7 @@ class BattleAIService {
 
 
     //--------------------------------
-    // Predict winner
+    // Predict battle
     //--------------------------------
 
 
@@ -561,6 +663,7 @@ class BattleAIService {
 
 
 
+
         for(
             const player of playerTeam
         )
@@ -574,6 +677,7 @@ class BattleAIService {
 
 
                 const result =
+
                     this.evaluateMatchup(
 
                         player,
@@ -581,6 +685,8 @@ class BattleAIService {
                         opponent
 
                     );
+
+
 
 
 
@@ -596,7 +702,13 @@ class BattleAIService {
                 else
                 {
 
-                    opponentScore += Math.abs(result);
+                    opponentScore +=
+
+                        Math.abs(
+
+                            result
+
+                        );
 
                 }
 
@@ -605,6 +717,7 @@ class BattleAIService {
 
 
         }
+
 
 
 
@@ -629,6 +742,7 @@ class BattleAIService {
                 "OPPONENT",
 
 
+
             playerScore,
 
 
@@ -649,7 +763,7 @@ class BattleAIService {
 
 
     //--------------------------------
-    // Switch logic
+    // Switch decision
     //--------------------------------
 
 
@@ -667,9 +781,6 @@ class BattleAIService {
             return false;
 
         }
-
-
-
 
 
 
@@ -693,7 +804,7 @@ class BattleAIService {
 
 
     //--------------------------------
-    // Choose switch Pokemon
+    // Choose switch Pokémon
     //--------------------------------
 
 
@@ -701,6 +812,19 @@ class BattleAIService {
         team
     )
     {
+
+
+        if(
+            !team
+        )
+        {
+
+            return null;
+
+        }
+
+
+
 
 
         return team.find(
@@ -714,6 +838,65 @@ class BattleAIService {
         ||
 
         null;
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // STRUGGLE fallback
+    //--------------------------------
+
+
+    getStruggleMove()
+    {
+
+
+        return {
+
+            name:
+                "STRUGGLE",
+
+
+            constant:
+                "MOVE_STRUGGLE",
+
+
+            type:
+                "NORMAL",
+
+
+            category:
+                "PHYSICAL",
+
+
+            power:
+                50,
+
+
+            accuracy:
+                100,
+
+
+            priority:
+                0,
+
+
+            pp:
+                1,
+
+
+            maxPP:
+                1
+
+        };
 
 
     }

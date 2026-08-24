@@ -44,9 +44,11 @@ class MoveLearningService {
         game = "firered",
         moveDatabase = null,
         moveReplacement = null,
-        moveReplacementSelection = null
+        moveReplacementSelection = null,
+        moveForget = null
     )
     {
+
 
         this.game =
             game;
@@ -62,6 +64,10 @@ class MoveLearningService {
 
         this.moveReplacementSelection =
             moveReplacementSelection;
+
+
+        this.moveForget =
+            moveForget;
 
 
 
@@ -104,16 +110,10 @@ class MoveLearningService {
 
 
 
-    //--------------------------------
-    // Get learnset
-    //--------------------------------
-
-
     getLearnset(
         pokemonId
     )
     {
-
 
         const id =
             String(pokemonId)
@@ -123,17 +123,7 @@ class MoveLearningService {
             );
 
 
-
-        return (
-
-            this.learners[id]
-
-            ||
-
-            []
-
-        );
-
+        return this.learners[id] || [];
 
     }
 
@@ -143,11 +133,6 @@ class MoveLearningService {
 
 
 
-
-
-    //--------------------------------
-    // Get available level moves
-    //--------------------------------
 
 
     getAvailableMoves(
@@ -155,18 +140,15 @@ class MoveLearningService {
     )
     {
 
-
         const learnset =
             this.getLearnset(
                 pokemon.id
             );
 
 
-
         return learnset.filter(
 
             entry =>
-
 
                 entry.method === "LEVEL"
 
@@ -174,9 +156,7 @@ class MoveLearningService {
 
                 entry.level <= pokemon.level
 
-
         );
-
 
     }
 
@@ -186,11 +166,6 @@ class MoveLearningService {
 
 
 
-
-
-    //--------------------------------
-    // Get new moves
-    //--------------------------------
 
 
     getNewMoves(
@@ -198,43 +173,31 @@ class MoveLearningService {
     )
     {
 
-
         const available =
             this.getAvailableMoves(
                 pokemon
             );
 
 
-
         const currentMoves =
-            pokemon.moves
-            ||
-            [];
-
-
+            pokemon.moves || [];
 
 
 
         return available.filter(
 
-            entry => {
+            entry =>
 
-
-                return !currentMoves.some(
+                !currentMoves.some(
 
                     move =>
 
                         move.constant ===
                         entry.move.constant
 
-                );
-
-
-            }
-
+                )
 
         );
-
 
     }
 
@@ -244,11 +207,6 @@ class MoveLearningService {
 
 
 
-
-
-    //--------------------------------
-    // Create runtime move slot
-    //--------------------------------
 
 
     createMoveSlot(
@@ -256,23 +214,18 @@ class MoveLearningService {
     )
     {
 
-
         return new PokemonMoveSlot({
 
             constant:
                 move.constant,
 
-
             currentPP:
                 move.pp,
-
 
             maxPP:
                 move.pp
 
-
         });
-
 
     }
 
@@ -282,11 +235,6 @@ class MoveLearningService {
 
 
 
-
-
-    //--------------------------------
-    // Learn single move
-    //--------------------------------
 
 
     learnMove(
@@ -297,24 +245,8 @@ class MoveLearningService {
 
 
         const currentMoves =
-            pokemon.moves
-            ||
-            [];
+            pokemon.moves || [];
 
-
-
-        const slot =
-            this.createMoveSlot(
-                move
-            );
-
-
-
-
-
-        //--------------------------------
-        // Duplicate
-        //--------------------------------
 
 
         const exists =
@@ -348,11 +280,13 @@ class MoveLearningService {
 
 
 
+        const slot =
+            this.createMoveSlot(
+                move
+            );
 
 
-        //--------------------------------
-        // Empty slot
-        //--------------------------------
+
 
 
         if(
@@ -375,40 +309,15 @@ class MoveLearningService {
 
                 success:true,
 
+                learned:
+                    move.constant,
+
                 move:slot
 
             };
 
-
         }
 
-
-
-
-
-
-
-
-        //--------------------------------
-        // Replacement required
-        //--------------------------------
-
-
-        if(
-            !this.moveReplacement
-        )
-        {
-
-            return {
-
-                success:false,
-
-                reason:
-                    "Move replacement service unavailable"
-
-            };
-
-        }
 
 
 
@@ -424,10 +333,13 @@ class MoveLearningService {
 
             options:
 
+                this.moveReplacement
+
+                ?
+
                 this.moveReplacement.getReplacementOptions(
 
                     currentMoves,
-
 
                     {
 
@@ -441,6 +353,10 @@ class MoveLearningService {
                     }
 
                 )
+
+                :
+
+                null
 
         };
 
@@ -456,8 +372,97 @@ class MoveLearningService {
 
 
     //--------------------------------
-    // Execute chosen replacement
+    // Automatic replacement flow
     //--------------------------------
+
+
+    learnMoveWithReplacement(
+        pokemon,
+        move,
+        forgottenMove
+    )
+    {
+
+
+        const result =
+            this.learnMove(
+                pokemon,
+                move
+            );
+
+
+
+        if(
+            result.success
+        )
+        {
+
+            return result;
+
+        }
+
+
+
+        if(
+            result.reason !==
+            "Needs replacement"
+        )
+        {
+
+            return result;
+
+        }
+
+
+
+        if(
+            !this.moveReplacementSelection
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Replacement selection unavailable"
+
+            };
+
+        }
+
+
+
+
+
+        return this.moveReplacementSelection.replaceMove(
+
+            pokemon.moves,
+
+            forgottenMove,
+
+            {
+
+                constant:
+                    move.constant,
+
+
+                pp:
+                    move.pp
+
+            }
+
+        );
+
+
+    }
+
+
+
+
+
+
+
 
 
     replaceLearnedMove(
@@ -466,7 +471,6 @@ class MoveLearningService {
         newMove
     )
     {
-
 
         if(
             !this.moveReplacementSelection
@@ -488,14 +492,13 @@ class MoveLearningService {
 
         return this.moveReplacementSelection.replaceMove(
 
-            pokemon,
+            pokemon.moves,
 
             forgottenMove,
 
             newMove
 
         );
-
 
     }
 
@@ -507,13 +510,51 @@ class MoveLearningService {
 
 
 
-    //--------------------------------
-    // Learn all available moves
-    //--------------------------------
+    forgetMove(
+        pokemon,
+        move
+    )
+    {
+
+        if(
+            !this.moveForget
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Move forget service unavailable"
+
+            };
+
+        }
+
+
+
+        return this.moveForget.forgetMove(
+
+            pokemon.moves,
+
+            move
+
+        );
+
+    }
+
+
+
+
+
+
+
 
 
     learnAvailableMoves(
-        pokemon
+        pokemon,
+        replacementChoice = null
     )
     {
 
@@ -522,7 +563,6 @@ class MoveLearningService {
             this.getNewMoves(
                 pokemon
             );
-
 
 
         const results = [];
@@ -535,14 +575,45 @@ class MoveLearningService {
         {
 
 
-            const result =
-                this.learnMove(
+            let result;
 
-                    pokemon,
 
-                    entry.move
 
-                );
+            if(
+                replacementChoice
+            )
+            {
+
+
+                result =
+                    this.learnMoveWithReplacement(
+
+                        pokemon,
+
+                        entry.move,
+
+                        replacementChoice
+
+                    );
+
+
+            }
+            else
+            {
+
+
+                result =
+                    this.learnMove(
+
+                        pokemon,
+
+                        entry.move
+
+                    );
+
+
+            }
+
 
 
 
@@ -550,22 +621,6 @@ class MoveLearningService {
                 result
             );
 
-
-
-            if(
-
-                result.success === false
-
-                &&
-
-                result.reason === "Needs replacement"
-
-            )
-            {
-
-                break;
-
-            }
 
 
         }
@@ -583,11 +638,6 @@ class MoveLearningService {
 
 
 
-
-
-    //--------------------------------
-    // Prepare learned moves
-    //--------------------------------
 
 
     prepareNewMoves(
@@ -608,13 +658,10 @@ class MoveLearningService {
             entry =>
 
                 this.createMoveSlot(
-
                     entry.move
-
                 )
 
         );
-
 
     }
 

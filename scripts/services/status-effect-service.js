@@ -11,12 +11,12 @@
  * - Handle turn based effects.
  * - Apply status damage.
  * - Handle status counters.
+ * - Provide battle modifiers.
  *
  * Does NOT:
  * - Execute moves.
  * - Calculate battle damage.
  * - Manage battles.
- * - Handle rewards.
  */
 
 "use strict";
@@ -49,7 +49,7 @@ class StatusEffectService {
 
 
 
-            BADLY_POISONED:
+            BAD_POISON:
             {
 
                 toxic:
@@ -69,7 +69,11 @@ class StatusEffectService {
             {
 
                 damageFraction:
-                    1 / 16
+                    1 / 8,
+
+
+                attackMultiplier:
+                    0.5
 
             },
 
@@ -80,8 +84,8 @@ class StatusEffectService {
             PARALYSIS:
             {
 
-                speedReduction:
-                    0.5,
+                speedMultiplier:
+                    0.25,
 
 
                 immobilizeChance:
@@ -101,7 +105,7 @@ class StatusEffectService {
 
 
                 maxTurns:
-                    3
+                    7
 
             },
 
@@ -137,6 +141,32 @@ class StatusEffectService {
     //--------------------------------
 
 
+    inflict(
+        pokemon,
+        status
+    )
+    {
+
+
+        return this.applyStatus(
+
+            pokemon,
+
+            status
+
+        );
+
+
+    }
+
+
+
+
+
+
+
+
+
     applyStatus(
         pokemon,
         status
@@ -162,6 +192,26 @@ class StatusEffectService {
 
 
 
+        //--------------------------------
+        // Major status cannot overwrite
+        //--------------------------------
+
+
+        if(
+            pokemon.status
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Already has status"
+
+            };
+
+        }
 
 
 
@@ -169,8 +219,6 @@ class StatusEffectService {
 
         pokemon.status =
             status;
-
-
 
 
 
@@ -189,17 +237,13 @@ class StatusEffectService {
 
 
 
-        //--------------------------------
-        // Sleep duration
-        //--------------------------------
-
-
         if(
             status === "SLEEP"
         )
         {
 
             pokemon.statusTurns =
+
                 this.randomNumber(
 
                     this.effects.SLEEP.minTurns,
@@ -209,7 +253,6 @@ class StatusEffectService {
                 );
 
         }
-
 
 
 
@@ -251,21 +294,12 @@ class StatusEffectService {
             null;
 
 
-
         pokemon.statusTurns =
             0;
 
 
-
         pokemon.statusData =
-        {
-
-            toxicCounter:
-                0
-
-        };
-
-
+            null;
 
 
 
@@ -297,11 +331,8 @@ class StatusEffectService {
     )
     {
 
-        return (
 
-            pokemon.status === status
-
-        );
+        return pokemon.status === status;
 
 
     }
@@ -312,11 +343,6 @@ class StatusEffectService {
 
 
 
-
-
-    //--------------------------------
-    // Get status
-    //--------------------------------
 
 
     getStatus(
@@ -324,15 +350,8 @@ class StatusEffectService {
     )
     {
 
-        return (
 
-            pokemon.status
-
-            ||
-
-            null
-
-        );
+        return pokemon.status || null;
 
 
     }
@@ -346,7 +365,7 @@ class StatusEffectService {
 
 
     //--------------------------------
-    // Process end turn effects
+    // End turn damage
     //--------------------------------
 
 
@@ -365,9 +384,7 @@ class StatusEffectService {
 
                 success:true,
 
-                damage:0,
-
-                status:null
+                damage:0
 
             };
 
@@ -377,11 +394,7 @@ class StatusEffectService {
 
 
 
-
-
-
-        let damage =
-            0;
+        let damage = 0;
 
 
 
@@ -390,15 +403,6 @@ class StatusEffectService {
 
 
 
-
-
-
-
-
-
-        //--------------------------------
-        // Poison / Burn damage
-        //--------------------------------
 
 
         if(
@@ -414,35 +418,18 @@ class StatusEffectService {
 
 
 
-
-
-
-            //--------------------------------
-            // Toxic scaling
-            //--------------------------------
-
-
             if(
-                pokemon.status === "BADLY_POISONED"
+                pokemon.status === "BAD_POISON"
             )
             {
 
 
-                if(
-                    !pokemon.statusData
-                )
+                pokemon.statusData ??=
                 {
 
-                    pokemon.statusData =
-                    {
+                    toxicCounter:0
 
-                        toxicCounter:
-                            0
-
-                    };
-
-                }
-
+                };
 
 
 
@@ -450,10 +437,7 @@ class StatusEffectService {
 
 
 
-
-                fraction =
-
-                    effect.damageFraction *
+                fraction *=
 
                     pokemon.statusData.toxicCounter;
 
@@ -465,34 +449,21 @@ class StatusEffectService {
 
 
 
-
-
             damage =
-
+                    
                 Math.max(
-
+                
                     1,
-
+                
                     Math.floor(
-
-                        pokemon.maxHP
-
-                        ?
-
-                        pokemon.maxHP * fraction
-
-                        :
-
-                        pokemon.hp * fraction
-
+                    
+                        (pokemon.maxHP || pokemon.hp) *
+                    
+                        fraction
+                    
                     )
-
+                
                 );
-
-
-
-
-
 
 
 
@@ -519,94 +490,14 @@ class StatusEffectService {
 
 
 
-        //--------------------------------
-        // Sleep countdown
-        //--------------------------------
-
-
-        if(
-            pokemon.status === "SLEEP"
-        )
-        {
-
-
-            pokemon.statusTurns--;
-
-
-
-            if(
-                pokemon.statusTurns <= 0
-            )
-            {
-
-                this.removeStatus(
-                    pokemon
-                );
-
-            }
-
-
-        }
-
-
-
-
-
-
-
-
-        //--------------------------------
-        // Freeze thaw check
-        //--------------------------------
-
-
-        if(
-            pokemon.status === "FREEZE"
-        )
-        {
-
-
-            if(
-                Math.random()
-
-                <=
-
-                this.effects.FREEZE.thawChance
-
-            )
-            {
-
-                this.removeStatus(
-
-                    pokemon
-
-                );
-
-            }
-
-
-        }
-
-
-
-
-
-
-
-
-
         return {
 
             success:true,
 
-
             status:
-
                 pokemon.status,
 
-
             damage
-
 
 
         };
@@ -623,7 +514,7 @@ class StatusEffectService {
 
 
     //--------------------------------
-    // Can act
+    // Can move
     //--------------------------------
 
 
@@ -633,66 +524,92 @@ class StatusEffectService {
     {
 
 
-
-        if(
-            pokemon.status === "SLEEP"
-        )
-        {
-
-            return false;
-
-        }
-
-
-
-
-
-
-        if(
-            pokemon.status === "FREEZE"
+        switch(
+            pokemon.status
         )
         {
 
 
-            return Math.random()
+            case "SLEEP":
 
-                <=
 
-                this.effects.FREEZE.thawChance;
+                pokemon.statusTurns--;
+
+
+
+                if(
+                    pokemon.statusTurns <= 0
+                )
+                {
+
+                    this.removeStatus(
+                        pokemon
+                    );
+
+
+                    return true;
+
+                }
+
+
+                return false;
+
+
+
+
+
+            case "FREEZE":
+
+
+                if(
+                    Math.random()
+
+                    <=
+
+                    this.effects.FREEZE.thawChance
+
+                )
+                {
+
+                    this.removeStatus(
+                        pokemon
+                    );
+
+
+                    return true;
+
+                }
+
+
+                return false;
+
+
+
+
+
+            case "PARALYSIS":
+
+
+                return (
+
+                    Math.random()
+
+                    >
+
+                    this.effects.PARALYSIS.immobilizeChance
+
+                );
+
+
+
+
+
+            default:
+
+                return true;
 
 
         }
-
-
-
-
-
-
-
-
-        if(
-            pokemon.status === "PARALYSIS"
-        )
-        {
-
-
-            return Math.random()
-
-                >
-
-                this.effects.PARALYSIS.immobilizeChance;
-
-
-        }
-
-
-
-
-
-
-
-
-        return true;
 
 
     }
@@ -706,7 +623,72 @@ class StatusEffectService {
 
 
     //--------------------------------
-    // Random number
+    // Battle modifiers
+    //--------------------------------
+
+
+    getSpeedMultiplier(
+        pokemon
+    )
+    {
+
+
+        if(
+            pokemon.status === "PARALYSIS"
+        )
+        {
+
+            return 0.25;
+
+        }
+
+
+
+        return 1;
+
+
+    }
+
+
+
+
+
+
+
+
+
+    getAttackMultiplier(
+        pokemon
+    )
+    {
+
+
+        if(
+            pokemon.status === "BURN"
+        )
+        {
+
+            return 0.5;
+
+        }
+
+
+
+        return 1;
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Random
     //--------------------------------
 
 
@@ -715,6 +697,7 @@ class StatusEffectService {
         max
     )
     {
+
 
         return Math.floor(
 

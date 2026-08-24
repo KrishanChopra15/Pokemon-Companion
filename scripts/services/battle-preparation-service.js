@@ -10,6 +10,7 @@
  * - Prepare trainer battle metadata.
  * - Prepare AI configuration.
  * - Validate battle participants.
+ * - Calculate battle stats.
  *
  * Does NOT:
  * - Execute battles.
@@ -29,12 +30,28 @@ class BattlePreparationService {
 
 
     constructor(
-        trainerDatabaseService = null
+        trainerDatabaseService = null,
+        pokemonDatabaseService = null,
+        statCalculationService = null,
+        pokemonStatProviderService = null
     )
     {
 
+
         this.trainers =
             trainerDatabaseService;
+
+
+        this.pokemon =
+            pokemonDatabaseService;
+
+
+        this.statCalculation =
+            statCalculationService;
+
+
+        this.statProvider =
+            pokemonStatProviderService;
 
 
     }
@@ -60,6 +77,7 @@ class BattlePreparationService {
 
 
         const trainer =
+
             this.getTrainer(
                 trainerId
             );
@@ -90,9 +108,27 @@ class BattlePreparationService {
 
 
         const playerParty =
+
             this.getPlayerParty(
                 playerState
-            );
+            )
+
+            .map(
+
+                pokemon =>
+
+                    this.preparePokemon(
+                        pokemon
+                    )
+
+            )
+
+            .filter(Boolean);
+
+
+
+
+
 
 
 
@@ -120,9 +156,27 @@ class BattlePreparationService {
 
 
         const opponentParty =
+
             this.getTrainerParty(
                 trainerId
-            );
+            )
+
+            .map(
+
+                pokemon =>
+
+                    this.preparePokemon(
+                        pokemon
+                    )
+
+            )
+
+            .filter(Boolean);
+
+
+
+
+
 
 
 
@@ -151,10 +205,12 @@ class BattlePreparationService {
 
         return {
 
+
             success:true,
 
 
             battleType:
+
                 "TRAINER",
 
 
@@ -164,42 +220,53 @@ class BattlePreparationService {
             trainer,
 
 
+
             player:
             {
+
                 party:
+
                     playerParty,
 
-            
+
                 active:
+
                     0
-                    
+
             },
 
 
 
             opponent:
             {
+
                 party:
+
                     opponentParty,
-            
+
 
                 active:
+
                     0,
 
 
                 trainerClass:
+
                     trainer.trainerClass,
 
 
                 trainerPic:
+
                     trainer.trainerPic,
 
 
                 aiFlags:
+
                     trainer.aiFlags,
 
 
                 encounterMusic:
+
                     trainer.encounterMusic
 
             }
@@ -228,22 +295,17 @@ class BattlePreparationService {
     )
     {
 
-
         if(
             !this.trainers
         )
         {
-
             return null;
-
         }
 
 
 
         return this.trainers.getTrainer(
-
             trainerId
-
         );
 
 
@@ -269,6 +331,7 @@ class BattlePreparationService {
 
 
         const trainer =
+
             this.getTrainer(
                 trainerId
             );
@@ -279,9 +342,7 @@ class BattlePreparationService {
             !trainer
         )
         {
-
             return [];
-
         }
 
 
@@ -292,9 +353,7 @@ class BattlePreparationService {
             )
         )
         {
-
             return trainer.party;
-
         }
 
 
@@ -307,9 +366,7 @@ class BattlePreparationService {
             )
         )
         {
-
             return trainer.party.pokemon;
-
         }
 
 
@@ -341,36 +398,652 @@ class BattlePreparationService {
             !playerState
         )
         {
-
             return [];
-
         }
 
 
 
         if(
-            playerState.pokemon
+            Array.isArray(
+                playerState.pokemon
+            )
         )
         {
-
             return playerState.pokemon;
-
         }
 
 
 
         if(
-            playerState.team
+            Array.isArray(
+                playerState.team
+            )
         )
         {
-
             return playerState.team;
-
         }
 
 
 
         return [];
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Prepare Pokémon
+    //--------------------------------
+
+
+    preparePokemon(
+        pokemon
+    )
+    {
+
+
+        if(
+            !pokemon
+        )
+        {
+            return null;
+        }
+
+
+
+
+
+
+        let basePokemon = null;
+
+
+
+        if(
+            this.pokemon
+            &&
+            pokemon.species
+        )
+        {
+
+            basePokemon =
+
+                this.pokemon.getPokemon(
+
+                    pokemon.species
+
+                );
+
+        }
+
+
+
+
+
+
+
+
+        const level =
+
+            pokemon.level
+
+            ||
+
+            1;
+
+
+
+
+
+
+
+
+        let types = [];
+
+
+
+        if(
+            pokemon.types
+        )
+        {
+
+            types =
+                pokemon.types;
+
+        }
+
+        else if(
+            pokemon.type
+        )
+        {
+
+
+            types =
+
+                Array.isArray(
+                    pokemon.type
+                )
+
+                ?
+
+                pokemon.type
+
+                :
+
+                [
+
+                    pokemon.type
+
+                ];
+
+
+        }
+
+        else if(
+            basePokemon
+        )
+        {
+
+
+            types =
+
+            [
+
+                basePokemon.type1?.name?.toUpperCase(),
+
+                basePokemon.type2?.name?.toUpperCase()
+
+            ]
+
+            .filter(Boolean);
+
+
+        }
+
+
+
+
+
+
+
+
+        const cleanPokemon =
+
+        {
+
+            ...(basePokemon || {}),
+
+            ...pokemon
+
+        };
+
+
+
+
+
+        delete cleanPokemon.type;
+
+
+
+
+
+
+
+
+        let prepared =
+
+        {
+
+
+            ...cleanPokemon,
+
+
+
+            species:
+
+                pokemon.species
+
+                ||
+
+                basePokemon?.name
+
+                ||
+
+                "UNKNOWN",
+
+
+
+            level,
+
+
+
+            types,
+
+
+
+            status:
+
+                pokemon.status
+
+                ||
+
+                null,
+
+
+
+            statStages:
+
+            {
+
+                attack:0,
+
+                defense:0,
+
+                speed:0,
+
+                spAttack:0,
+
+                spDefense:0,
+
+                accuracy:0,
+
+                evasion:0
+
+            }
+
+        };
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Calculate battle stats
+        //--------------------------------
+
+
+        if(
+            this.statProvider
+        )
+        {
+
+
+            const stats =
+
+                this.statProvider.getBattleStats(
+
+                    prepared,
+
+                    "EXACT"
+
+                );
+
+
+
+
+
+            prepared =
+
+            {
+
+
+                ...prepared,
+
+
+
+                hp:
+
+                    pokemon.hp
+
+                    ||
+
+                    stats.hp
+
+                    ||
+
+                    1,
+
+
+
+                maxHP:
+
+                    pokemon.maxHP
+
+                    ||
+
+                    stats.hp
+
+                    ||
+
+                    1,
+
+
+
+                attack:
+
+                    stats.attack
+
+                    ||
+
+                    1,
+
+
+
+                defense:
+
+                    stats.defense
+
+                    ||
+
+                    1,
+
+
+
+                spAttack:
+
+                    stats.spAttack
+
+                    ||
+
+                    1,
+
+
+
+                spDefense:
+
+                    stats.spDefense
+
+                    ||
+
+                    1,
+
+
+
+                speed:
+
+                    stats.speed
+
+                    ||
+
+                    1
+
+
+            };
+
+
+        }
+
+        else
+        {
+
+
+            prepared.hp =
+
+                pokemon.hp
+
+                ||
+
+                (
+
+                    level * 2
+
+                    +
+
+                    20
+
+                );
+
+
+
+            prepared.maxHP =
+
+                pokemon.maxHP
+
+                ||
+
+                prepared.hp;
+
+
+
+            prepared.attack =
+
+                pokemon.attack
+
+                ||
+
+                basePokemon?.baseAttack
+
+                ||
+
+                1;
+
+
+
+            prepared.defense =
+
+                pokemon.defense
+
+                ||
+
+                basePokemon?.baseDefense
+
+                ||
+
+                1;
+
+
+
+            prepared.spAttack =
+
+                pokemon.spAttack
+
+                ||
+
+                basePokemon?.baseSpAttack
+
+                ||
+
+                1;
+
+
+
+            prepared.spDefense =
+
+                pokemon.spDefense
+
+                ||
+
+                basePokemon?.baseSpDefense
+
+                ||
+
+                1;
+
+
+
+            prepared.speed =
+
+                pokemon.speed
+
+                ||
+
+                basePokemon?.baseSpeed
+
+                ||
+
+                1;
+
+
+        }
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Prepare moves
+        //--------------------------------
+
+
+        prepared.moves =
+
+            Array.isArray(
+                pokemon.moves
+            )
+
+            ?
+
+            pokemon.moves.map(
+
+                move =>
+
+                ({
+
+                    name:
+
+                        move.name
+
+                        ||
+
+                        move.move
+
+                        ||
+
+                        move.constant,
+
+
+
+                    constant:
+
+                        move.constant
+
+                        ||
+
+                        move.move
+
+                        ||
+
+                        move.name,
+
+
+
+                    type:
+
+                        move.type
+
+                        ||
+
+                        "NORMAL",
+
+
+
+                    category:
+
+                        move.category
+
+                        ||
+
+                        "PHYSICAL",
+
+
+
+                    power:
+
+                        move.power
+
+                        ||
+
+                        0,
+
+
+
+                    accuracy:
+
+                        move.accuracy
+
+                        ||
+
+                        100,
+
+
+
+                    pp:
+
+                        move.pp
+
+                        ??
+
+                        move.maxPP
+
+                        ??
+
+                        10
+
+
+                })
+
+            )
+
+            :
+
+            [];
+
+
+
+
+
+
+
+        console.log(
+
+            "PREPARED POKEMON:",
+
+            {
+
+                species:
+                    prepared.species,
+
+                hp:
+                    prepared.hp,
+
+                attack:
+                    prepared.attack,
+
+                defense:
+                    prepared.defense,
+
+                spAttack:
+                    prepared.spAttack,
+
+                spDefense:
+                    prepared.spDefense,
+
+                speed:
+                    prepared.speed
+
+            }
+
+        );
+
+
+
+
+
+        return prepared;
+
 
     }
 
@@ -395,6 +1068,7 @@ class BattlePreparationService {
 
 
         const result =
+
             this.prepareTrainerBattle(
 
                 trainerId,
@@ -419,7 +1093,7 @@ class BattlePreparationService {
 
 
     //--------------------------------
-    // Get battle summary
+    // Battle summary
     //--------------------------------
 
 
@@ -430,6 +1104,7 @@ class BattlePreparationService {
 
 
         const trainer =
+
             this.getTrainer(
                 trainerId
             );
@@ -440,9 +1115,7 @@ class BattlePreparationService {
             !trainer
         )
         {
-
             return null;
-
         }
 
 
@@ -454,23 +1127,24 @@ class BattlePreparationService {
 
 
             name:
+
                 trainer.trainerName,
 
 
             type:
+
                 trainer.trainerType,
 
 
             class:
+
                 trainer.trainerClass,
 
 
             party:
 
                 this.getTrainerParty(
-
                     trainerId
-
                 )
 
 

@@ -45,6 +45,7 @@ class TrainerDatabaseService {
             game;
 
 
+
         this.trainers =
             this.loadDatabase();
 
@@ -85,14 +86,19 @@ class TrainerDatabaseService {
 
 
 
+
+
         if(
             !fs.existsSync(databasePath)
         )
         {
 
             console.warn(
+
                 "Trainer database not found:",
+
                 databasePath
+
             );
 
 
@@ -103,17 +109,54 @@ class TrainerDatabaseService {
 
 
 
-        return JSON.parse(
 
-            fs.readFileSync(
 
-                databasePath,
 
-                "utf8"
 
-            )
+        const data =
 
-        );
+            JSON.parse(
+
+                fs.readFileSync(
+
+                    databasePath,
+
+                    "utf8"
+
+                )
+
+            );
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Handle generated wrapper
+        //--------------------------------
+
+
+        if(
+            data.trainers
+        )
+        {
+
+            return data.trainers;
+
+        }
+
+
+
+
+
+
+
+
+        return data;
 
 
     }
@@ -137,6 +180,36 @@ class TrainerDatabaseService {
     {
 
 
+        if(
+            !id
+        )
+        {
+
+            return null;
+
+        }
+
+
+
+
+
+
+
+
+        const search =
+
+            String(id)
+
+                .toUpperCase();
+
+
+
+
+
+
+
+
+
         //--------------------------------
         // Direct ID lookup
         //--------------------------------
@@ -156,17 +229,46 @@ class TrainerDatabaseService {
 
 
 
+
+
         //--------------------------------
-        // Resolve by trainer name
+        // Search trainers
         //--------------------------------
 
 
         return this.getAllTrainers()
+
             .find(
 
                 trainer =>
 
-                    trainer.trainerName === id
+                (
+
+                    trainer.id &&
+
+                    trainer.id.toUpperCase() === search
+
+                )
+
+                ||
+
+                (
+
+                    trainer.trainerName &&
+
+                    trainer.trainerName.toUpperCase() === search
+
+                )
+
+                ||
+
+                (
+
+                    trainer.name &&
+
+                    trainer.name.toUpperCase() === search
+
+                )
 
             )
 
@@ -199,7 +301,9 @@ class TrainerDatabaseService {
         return (
 
             this.getTrainer(
+
                 id
+
             )
 
             !==
@@ -227,11 +331,23 @@ class TrainerDatabaseService {
     getAllTrainers()
     {
 
+
         return Object.values(
 
             this.trainers
 
+        )
+
+        .filter(
+
+            trainer =>
+
+                trainer &&
+
+                typeof trainer === "object"
+
         );
+
 
     }
 
@@ -255,9 +371,14 @@ class TrainerDatabaseService {
 
 
         const trainer =
+
             this.getTrainer(
+
                 id
+
             );
+
+
 
 
 
@@ -269,6 +390,8 @@ class TrainerDatabaseService {
             return [];
 
         }
+
+
 
 
 
@@ -294,7 +417,7 @@ class TrainerDatabaseService {
 
 
     //--------------------------------
-    // Filter
+    // Filter by type
     //--------------------------------
 
 
@@ -303,14 +426,59 @@ class TrainerDatabaseService {
     )
     {
 
+
+        if(
+            !type
+        )
+        {
+
+            return [];
+
+        }
+
+
+
+
+
+
+
+        const search =
+
+            type.toUpperCase();
+
+
+
+
+
+
+
+
         return this.getAllTrainers()
+
             .filter(
 
                 trainer =>
 
-                    trainer.trainerType === type
+                (
+
+                    trainer.trainerType &&
+
+                    trainer.trainerType.toUpperCase() === search
+
+                )
+
+                ||
+
+                (
+
+                    trainer.type &&
+
+                    trainer.type.toUpperCase() === search
+
+                )
 
             );
+
 
     }
 
@@ -371,7 +539,7 @@ class TrainerDatabaseService {
 
 
     //--------------------------------
-    // Champion
+    // Champions
     //--------------------------------
 
 
@@ -426,11 +594,15 @@ class TrainerDatabaseService {
     reload()
     {
 
+
         this.trainers =
+
             this.loadDatabase();
 
 
+
         return this.trainers;
+
 
     }
 

@@ -108,6 +108,42 @@ const BattleEngineService =
 
 
 //================================
+// Battle Runtime Services
+//================================
+
+const BattleFlowService =
+    require("./services/battle-flow-service");
+
+
+const BattlePokemonService =
+    require("./services/battle-pokemon-service");
+
+
+const BattleValidationService =
+    require("./services/battle-validation-service");
+
+
+const BattleTurnOrderService =
+    require("./services/battle-turn-order-service");
+
+
+const BattleTurnService =
+    require("./services/battle-turn-service");
+
+
+const BattleFaintService =
+    require("./services/battle-faint-service");
+
+
+const BattleResultService =
+    require("./services/battle-result-service");
+
+
+const BattleStateService =
+    require("./services/battle-state-service");
+
+
+//================================
 // Pokémon Progression
 //================================
 
@@ -264,6 +300,9 @@ const MapAccessService =
 const MoveExecutionService =
     require("./services/move-execution-service");
 
+const DamageCalculationService =
+    require("./services/damage-calculation-service");
+
 const MoveMachineService =
     require("./services/move-machine-service");
 
@@ -276,8 +315,29 @@ const MoveReplacementService =
 const MoveReplacementSelectionService =
     require("./services/move-replacement-selection-service");
 
+const StatStageService =
+    require("./services/stat-stage-service");
+
+const StatCalculationService =
+    require("./services/stat-calculation-service");
+
+const PokemonStatProviderService =
+    require("./services/pokemon-stat-provider-service");
+
+const BattleSimulationService =
+    require("./services/battle-simulation-service");
+
+const BattlePredictionService =
+    require("./services/battle-prediction-service");
+
+const MoveForgetService =
+    require("./services/move-forget-service");
+
 const StatusEffectService =
     require("./services/status-effect-service");
+
+const TypeEffectivenessService =
+    require("./services/type-effectiveness-service");
 
 const PokemonSwitchService =
     require("./services/pokemon-switch-service");
@@ -482,6 +542,8 @@ class AppContainer {
         this.registerBattleOpponentServices();
 
         this.registerBattleStateServices();
+
+        this.registerBattleRuntimeServices();
 
 
         //================================
@@ -1017,8 +1079,36 @@ class AppContainer {
     {
 
 
+        const typeEffectiveness =
+            new TypeEffectivenessService();
+
+
+        const statusEffect =
+            new StatusEffectService();
+
+
+        const damageCalculation =
+            new DamageCalculationService(
+            
+                typeEffectiveness,
+            
+                statusEffect
+            
+            );
+        
+        
         const moveExecution =
-            new MoveExecutionService();
+            new MoveExecutionService(
+
+                null,
+
+                null,
+
+                damageCalculation,
+
+                statusEffect
+
+            );
 
 
 
@@ -1037,29 +1127,74 @@ class AppContainer {
 
         const moveReplacement =
             new MoveReplacementService();
-
-
-
+                
+                
+                
+        const moveForget =
+            new MoveForgetService();
+                
+                
+                
         const moveReplacementSelection =
             new MoveReplacementSelectionService();
-
-
-
+                
+                
+                
         const moveLearning =
             new MoveLearningService(
+            
                 this.game,
-                this.get("moveDatabase"),
-                this.get("moveReplacement"),
-                this.get("moveReplacementSelection")
+            
+                this.get(
+                    "moveDatabase"
+                ),
+            
+                moveReplacement,
+            
+                moveReplacementSelection,
+            
+                moveForget
+            
             );
 
 
 
-        const statusEffect =
-            new StatusEffectService();
+        const statStage =
+            new StatStageService();
 
 
 
+        const statCalculation =
+            new StatCalculationService(
+
+                statStage,
+
+                null
+            
+            );
+        
+        
+        
+        const pokemonStatProvider =
+            new PokemonStatProviderService(
+            
+                statCalculation
+            
+            );
+        
+        
+        
+        const battleSimulation =
+            new BattleSimulationService(
+            
+                pokemonStatProvider,
+            
+                typeEffectiveness
+            
+            );
+        
+        
+        
         const pokemonSwitch =
             new PokemonSwitchService();
 
@@ -1080,6 +1215,16 @@ class AppContainer {
 
         this.container.register(
         
+            "damageCalculation",
+        
+            damageCalculation
+        
+        );
+
+
+
+        this.container.register(
+        
             "moveMachine",
         
             moveMachine
@@ -1093,6 +1238,16 @@ class AppContainer {
             "moveReplacement",
         
             moveReplacement
+        
+        );
+
+
+
+        this.container.register(
+        
+            "moveForget",
+        
+            moveForget
         
         );
 
@@ -1119,11 +1274,51 @@ class AppContainer {
 
 
         this.container.register(
-
+        
             "statusEffect",
-
+        
             statusEffect
+        
+        );
+        
+        
+        
+        this.container.register(
+        
+            "statStage",
+        
+            statStage
+        
+        );
+        
+        
+        
+        this.container.register(
+        
+            "statCalculation",
+        
+            statCalculation
+        
+        );
 
+
+
+        this.container.register(
+
+            "pokemonStatProvider",
+
+            pokemonStatProvider
+        
+        );
+
+
+
+        this.container.register(
+        
+            "battleSimulation",
+        
+            battleSimulation
+        
         );
 
 
@@ -1133,7 +1328,7 @@ class AppContainer {
             "pokemonSwitch",
 
             pokemonSwitch
-
+        
         );
 
 
@@ -1311,6 +1506,205 @@ class AppContainer {
 
 
     //================================
+    // Battle Runtime Layer
+    //================================
+
+
+    registerBattleRuntimeServices()
+    {
+
+
+        const validation =
+            new BattleValidationService();
+
+
+
+        const turnOrder =
+            new BattleTurnOrderService();
+
+
+
+        const turn =
+            new BattleTurnService(
+            
+                this.get(
+                    "moveExecution"
+                ),
+            
+            
+                this.get(
+                    "statusEffect"
+                ),
+            
+            
+                null
+            
+            );
+
+
+
+        const pokemon =
+            new BattlePokemonService();
+
+
+
+        const result =
+            new BattleResultService(
+
+                this.get(
+                    "battleStateFlow"
+                )
+
+            );
+
+
+
+        const faint =
+            new BattleFaintService(
+            
+                pokemon,
+            
+                this.get(
+                    "pokemonSwitch"
+                )
+            
+            );
+
+
+
+        const flow =
+            new BattleFlowService(
+
+                validation,
+
+                turnOrder,
+
+                turn,
+
+                faint,
+
+                result,
+
+                pokemon,
+
+                this.get(
+                    "battleAI"
+                )
+
+            );
+
+
+
+        const state =
+            new BattleStateService(
+
+                this.get(
+                    "battleStateFlow"
+                ),
+
+
+                this.get(
+                    "battleActiveFlow"
+                ),
+
+
+                this.get(
+                    "battleOpponentFlow"
+                )
+
+            );
+
+
+
+
+
+        this.container.register(
+
+            "battleValidation",
+
+            validation
+
+        );
+
+
+
+        this.container.register(
+
+            "battleTurnOrder",
+
+            turnOrder
+
+        );
+
+
+
+        this.container.register(
+
+            "battleTurn",
+
+            turn
+
+        );
+
+
+
+        this.container.register(
+
+            "battlePokemon",
+
+            pokemon
+
+        );
+
+
+
+        this.container.register(
+
+            "battleFaint",
+
+            faint
+
+        );
+
+
+
+        this.container.register(
+
+            "battleResult",
+
+            result
+
+        );
+
+
+
+        this.container.register(
+
+            "battleFlow",
+
+            flow
+
+        );
+
+
+
+        this.container.register(
+
+            "battleState",
+
+            state
+
+        );
+
+
+    }
+
+
+
+
+
+
+    //================================
     // Gameplay Layer
     //================================
 
@@ -1329,7 +1723,21 @@ class AppContainer {
 
         const battlePreparation =
             new BattlePreparationService(
-                trainer
+            
+                trainer,
+            
+                this.get(
+                    "pokemonDatabase"
+                ),
+            
+                this.get(
+                    "statCalculation"
+                ),
+            
+                this.get(
+                    "pokemonStatProvider"
+                )
+            
             );
 
 
@@ -1342,26 +1750,18 @@ class AppContainer {
             new BattleEngineService(
             
                 this.get(
-                    "moveExecution"
-                ),
-
-                this.get(
-                    "pokemonSwitch"
-                ),
-
-                this.get(
-                    "battleStateFlow"
+                    "battleState"
                 ),
             
-                this.get(
-                    "battleActiveFlow"
-                ),
             
                 this.get(
-                    "battleOpponentFlow"
+                    "battleFlow"
                 ),
             
-                battleAI,
+            
+                this.get(
+                    "battlePokemon"
+                )
             
             );
 
@@ -1385,6 +1785,19 @@ class AppContainer {
                 this.get(
                     "rewardService"
                 )
+            
+            );
+
+
+
+        const battlePrediction =
+            new BattlePredictionService(
+            
+                this.get(
+                    "battleSimulation"
+                ),
+            
+                battlePreparation
             
             );
 
@@ -1450,6 +1863,12 @@ class AppContainer {
         this.container.register(
             "battle",
             battle
+        );
+
+
+        this.container.register(
+            "battlePrediction",
+            battlePrediction
         );
 
 

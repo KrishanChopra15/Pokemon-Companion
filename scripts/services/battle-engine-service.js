@@ -2,23 +2,21 @@
  * Pokémon Companion
  * Battle Engine Service
  *
- * Handles battle state and turn flow.
+ * Main battle coordinator.
  *
  * Responsibilities:
- * - Manage active battle state.
- * - Process battle turns.
- * - Coordinate move execution.
- * - Handle fainting.
- * - Request Pokémon switching.
- * - Determine battle outcome.
+ * - Initialize battles.
+ * - Forward turns.
+ * - Provide battle access.
  *
  * Does NOT:
+ * - Store battle logic.
+ * - Validate moves.
  * - Calculate damage.
- * - Execute move mechanics.
- * - Manage trainer progression.
- * - Give rewards.
- * - Handle gym logic.
- * - Load ROM data.
+ * - Execute moves.
+ * - Handle fainting.
+ * - Handle switching.
+ * - Handle battle results.
  */
 
 "use strict";
@@ -32,47 +30,24 @@ class BattleEngineService {
 
 
     constructor(
-        moveExecutionService,
-        pokemonSwitchService,
-        battleStateFlow,
-        battleActiveFlow,
-        battleOpponentFlow,
-        battleAIService,
-        pokemonProgressionService
+        battleStateService,
+        battleFlowService,
+        battlePokemonService
     )
     {
 
 
-        this.moves =
-            moveExecutionService;
-
-
-        this.switches =
-            pokemonSwitchService;
-
-
         this.state =
-            battleStateFlow;
+            battleStateService;
 
 
-        this.active =
-            battleActiveFlow;
+        this.flow =
+            battleFlowService;
 
 
-        this.opponent =
-            battleOpponentFlow;
+        this.pokemon =
+            battlePokemonService;
 
-
-        this.ai =
-            battleAIService;
-
-            
-        this.progression =
-            pokemonProgressionService;
-
-
-        this.battles =
-        {};
 
     }
 
@@ -84,10 +59,44 @@ class BattleEngineService {
 
 
 
+    //--------------------------------
+    // Initialize battle
+    //--------------------------------
+
+
     initializeBattle(
         battle
     )
     {
+
+
+        if(
+            !battle
+            ||
+            !battle.id
+            ||
+            !battle.player
+            ||
+            !battle.opponent
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Invalid battle data"
+
+            };
+
+        }
+
+
+
+
+
+
 
 
         const state =
@@ -105,7 +114,7 @@ class BattleEngineService {
             {
 
                 party:
-                    battle.player.party,
+                    battle.player.party || [],
 
 
                 active:
@@ -118,7 +127,7 @@ class BattleEngineService {
             {
 
                 party:
-                    battle.opponent.party,
+                    battle.opponent.party || [],
 
 
                 active:
@@ -134,59 +143,34 @@ class BattleEngineService {
             winner:
                 null
 
-
         };
 
 
 
-        this.battles[battle.id] =
-            state;
 
 
 
-        if(this.state)
+
+
+
+        if(
+            this.state
+        )
         {
 
-            this.state.setPlayer(
-                state.player.party[
-                    state.player.active
-                ]
-            );
+            this.state.initialize(
 
+                state
 
-            this.state.setEnemy(
-                state.opponent.party[
-                    state.opponent.active
-                ]
             );
 
         }
 
 
 
-        if(this.active)
-        {
-
-            this.active.sendOut(
-                state.player.party[
-                    state.player.active
-                ]
-            );
-
-        }
 
 
 
-        if(this.opponent)
-        {
-
-            this.opponent.sendOut(
-                state.opponent.party[
-                    state.opponent.active
-                ]
-            );
-
-        }
 
 
 
@@ -203,12 +187,36 @@ class BattleEngineService {
 
 
 
+    //--------------------------------
+    // Get battle
+    //--------------------------------
+
+
     getBattle(
         battleId
     )
     {
 
-        return this.battles[battleId] || null;
+
+        if(
+            !this.state
+        )
+        {
+
+            return null;
+
+        }
+
+
+
+
+
+        return this.state.getBattle(
+
+            battleId
+
+        );
+
 
     }
 
@@ -218,6 +226,11 @@ class BattleEngineService {
 
 
 
+
+
+    //--------------------------------
+    // Process turn
+    //--------------------------------
 
 
     processTurn(
@@ -228,29 +241,22 @@ class BattleEngineService {
 
 
         const battle =
+
             this.getBattle(
+
                 battleId
+
             );
 
 
 
-        if(!battle)
-        {
 
-            return {
 
-                success:false,
-
-                reason:"Unknown battle"
-
-            };
-
-        }
 
 
 
         if(
-            battle.status !== "ACTIVE"
+            !battle
         )
         {
 
@@ -258,7 +264,8 @@ class BattleEngineService {
 
                 success:false,
 
-                reason:"Battle finished"
+                reason:
+                    "Unknown battle"
 
             };
 
@@ -266,222 +273,24 @@ class BattleEngineService {
 
 
 
-        const result =
-        {
 
-            turn:
-                battle.turn,
 
-
-            actions:
-                []
-
-        };
-
-
-
-
-
-
-
-        // PLAYER TURN
-
-        this.executeTurnMove(
-
-            battle.player,
-
-            battle.opponent,
-
-            playerMove,
-
-            result
-
-        );
-
-
-
-        this.handleFaint(
-
-            battle.opponent,
-
-            result
-
-        );
-
-
-
-
-
-
-
-        // OPPONENT TURN
-
-        if(
-
-            battle.status === "ACTIVE"
-
-            &&
-
-            !this.isFainted(
-                this.getActivePokemon(
-                    battle.opponent
-                )
-            )
-
-        )
-        {
-
-
-            const enemy =
-                this.getActivePokemon(
-                    battle.opponent
-                );
-
-
-            const player =
-                this.getActivePokemon(
-                    battle.player
-                );
-
-
-
-            const enemyMoves =
-                enemy.moves
-                ||
-                [];
-
-
-
-            const opponentMove =
-                this.ai
-                ?
-                this.ai.chooseMove(
-                    enemy,
-                    player,
-                    enemyMoves
-                )
-                :
-                enemyMoves[0];
-
-
-
-
-            this.executeTurnMove(
-
-                battle.opponent,
-
-                battle.player,
-
-                opponentMove,
-
-                result
-
-            );
-
-
-
-            this.handleFaint(
-
-                battle.player,
-
-                result
-
-            );
-
-
-        }
-
-
-
-
-
-
-
-        battle.turn++;
-
-
-
-
-
-        if(this.state)
-        {
-
-            this.state.startTurn();
-
-
-            this.state.record(
-                result
-            );
-
-        }
-
-
-
-
-
-        this.checkBattleEnd(
-            battle
-        );
-
-
-
-
-
-        return {
-
-            success:true,
-
-            result
-
-        };
-
-
-    }
-
-
-
-
-
-
-
-
-
-    executeTurnMove(
-        attackerSide,
-        defenderSide,
-        move,
-        result
-    )
-    {
-
-
-        if(!move)
-        {
-            return;
-        }
-
-
-
-        const attacker =
-            this.getActivePokemon(
-                attackerSide
-            );
-
-
-        const defender =
-            this.getActivePokemon(
-                defenderSide
-            );
 
 
 
         if(
-            !attacker ||
-            !defender
+            !this.flow
         )
         {
 
-            return;
+            return {
+
+                success:false,
+
+                reason:
+                    "Battle flow unavailable"
+
+            };
 
         }
 
@@ -489,47 +298,14 @@ class BattleEngineService {
 
 
 
-        const moveResult =
-            this.moves.executeMove(
-
-                attacker,
-
-                defender,
-
-                move
-
-            );
 
 
 
-        result.actions.push(
+        return this.flow.processTurn(
 
-            {
+            battle,
 
-                attacker:
-                    attacker.species,
-
-
-                move:
-                    moveResult.move
-                    ||
-                    move.name,
-
-
-                damage:
-                    moveResult.damage
-                    ||
-                    0,
-
-
-                target:
-                    defender.species,
-
-
-                targetHP:
-                    defender.hp
-
-            }
+            playerMove
 
         );
 
@@ -544,183 +320,50 @@ class BattleEngineService {
 
 
 
-    handleFaint(
-        side,
-        result
+    //--------------------------------
+    // Active player Pokémon
+    //--------------------------------
+
+
+    getPlayerActive(
+        battleId
     )
     {
 
 
-        const pokemon =
-            this.getActivePokemon(
-                side
+        const battle =
+
+            this.getBattle(
+
+                battleId
+
             );
+
+
 
 
 
         if(
-            !this.isFainted(
-                pokemon
-            )
+            !battle
+            ||
+            !this.pokemon
         )
         {
 
-            return;
+            return null;
 
         }
 
 
 
-        if(this.switches)
-        {
 
 
-            const switched =
-                this.switches.autoSwitch(
-                    side
-                );
+        return this.pokemon.getActivePokemon(
 
+            battle.player
 
-
-            if(
-                switched.success
-            )
-            {
-
-                result.actions.push(
-
-                    {
-
-                        type:
-                            "SWITCH",
-
-
-                        pokemon:
-                            switched.pokemon.species
-
-                    }
-
-                );
-
-
-            }
-
-
-        }
-
-
-    }
-
-
-
-
-
-
-
-
-
-    getActivePokemon(
-        side
-    )
-    {
-
-        return side.party[
-            side.active
-        ];
-
-    }
-
-
-
-
-
-
-
-
-
-    isFainted(
-        pokemon
-    )
-    {
-
-        return (
-            !pokemon ||
-            pokemon.hp <= 0
         );
 
-    }
-
-
-
-
-
-
-
-
-
-    checkBattleEnd(
-        battle
-    )
-    {
-
-
-        const playerAlive =
-            battle.player.party.some(
-
-                pokemon =>
-                    pokemon.hp > 0
-
-            );
-
-
-
-        const opponentAlive =
-            battle.opponent.party.some(
-
-                pokemon =>
-                    pokemon.hp > 0
-
-            );
-
-
-
-        if(!opponentAlive)
-        {
-
-            battle.status =
-                "COMPLETED";
-
-
-            battle.winner =
-                "PLAYER";
-
-        }
-
-
-
-        if(!playerAlive)
-        {
-
-            battle.status =
-                "COMPLETED";
-
-
-            battle.winner =
-                "OPPONENT";
-
-        }
-
-
-
-        if(this.state)
-        {
-
-            this.state.updateStatus(
-                battle.status
-            );
-
-        }
-
 
     }
 
@@ -732,18 +375,54 @@ class BattleEngineService {
 
 
 
-    cloneParty(
-        party
+    //--------------------------------
+    // Active opponent Pokémon
+    //--------------------------------
+
+
+    getOpponentActive(
+        battleId
     )
     {
 
-        return JSON.parse(
-            JSON.stringify(
-                party
-            )
+
+        const battle =
+
+            this.getBattle(
+
+                battleId
+
+            );
+
+
+
+
+
+        if(
+            !battle
+            ||
+            !this.pokemon
+        )
+        {
+
+            return null;
+
+        }
+
+
+
+
+
+        return this.pokemon.getActivePokemon(
+
+            battle.opponent
+
         );
 
+
     }
+
+
 
 
 

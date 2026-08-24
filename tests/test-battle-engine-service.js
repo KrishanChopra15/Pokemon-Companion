@@ -4,16 +4,15 @@
  *
  * Tests:
  * - Battle initialization
- * - Active Pokémon selection
- * - Turn processing
- * - Move execution
- * - Damage delegation
- * - Faint detection
- * - Auto switching
- * - Battle outcome
+ * - Battle retrieval
+ * - Turn forwarding
+ * - Active Pokémon access
+ * - Full battle flow integration
  */
 
 "use strict";
+
+
 
 
 
@@ -21,12 +20,90 @@ const BattleEngineService =
     require("../scripts/services/battle-engine-service");
 
 
-const MoveExecutionService =
-    require("../scripts/services/move-execution-service");
+const BattleStateService =
+    require("../scripts/services/battle-state-service");
+
+
+const BattlePokemonService =
+    require("../scripts/services/battle-pokemon-service");
+
+
+const BattleFlowService =
+    require("../scripts/services/battle-flow-service");
+
+
+const BattleValidationService =
+    require("../scripts/services/battle-validation-service");
+
+
+const BattleTurnOrderService =
+    require("../scripts/services/battle-turn-order-service");
+
+
+const BattleTurnService =
+    require("../scripts/services/battle-turn-service");
+
+
+const BattleFaintService =
+    require("../scripts/services/battle-faint-service");
+
+
+const BattleResultService =
+    require("../scripts/services/battle-result-service");
 
 
 const PokemonSwitchService =
     require("../scripts/services/pokemon-switch-service");
+
+
+const MoveExecutionService =
+    require("../scripts/services/move-execution-service");
+
+
+const DamageCalculationService =
+    require("../scripts/services/damage-calculation-service");
+
+
+const TypeEffectivenessService =
+    require("../scripts/services/type-effectiveness-service");
+
+
+const StatusEffectService =
+    require("../scripts/services/status-effect-service");
+
+
+
+
+
+const {
+    createBattle
+}
+=
+require("./helpers/mock-battle");
+
+
+
+
+
+
+
+
+
+console.log();
+
+console.log(
+"================================"
+);
+
+
+console.log(
+"Battle Engine Service Tests"
+);
+
+
+console.log(
+"================================"
+);
 
 
 
@@ -41,22 +118,60 @@ const PokemonSwitchService =
 //--------------------------------
 
 
-const moveExecutionService =
-    new MoveExecutionService();
+const battleStateService =
+
+    new BattleStateService();
 
 
 
-const pokemonSwitchService =
-    new PokemonSwitchService();
+
+const battlePokemonService =
+
+    new BattlePokemonService();
 
 
 
-const battleEngine =
-    new BattleEngineService(
 
-        moveExecutionService,
 
-        pokemonSwitchService
+const validationService =
+
+    new BattleValidationService();
+
+
+
+
+
+const turnOrderService =
+
+    new BattleTurnOrderService();
+
+
+
+
+
+const statusService =
+
+    new StatusEffectService();
+
+
+
+
+
+const typeEffectivenessService =
+
+    new TypeEffectivenessService();
+
+
+
+
+
+const damageCalculationService =
+
+    new DamageCalculationService(
+
+        typeEffectivenessService,
+
+        statusService
 
     );
 
@@ -64,98 +179,80 @@ const battleEngine =
 
 
 
+const moveExecutionService =
+
+    new MoveExecutionService(
+
+        null,
+
+        null,
+
+        damageCalculationService,
+
+        statusService
+
+    );
+
+
+
+
+
+const battleTurnService =
+
+    new BattleTurnService(
+
+        moveExecutionService,
+
+        statusService,
+
+        null
+
+    );
+
+
+
+
+
+const battleFaintService =
+
+    new BattleFaintService(
+
+        new PokemonSwitchService()
+
+    );
+
+
+
+
+
+const battleResultService =
+
+    new BattleResultService();
+
+
+
+
+
 
 
 
 
 //--------------------------------
-// Mock battle
+// AI
 //--------------------------------
 
 
-const battle =
+const battleAIService =
 {
 
-    id:
-        "BATTLE_TEST_1",
-
-
-
-    player:
+    chooseMove(
+        pokemon,
+        target,
+        moves
+    )
     {
 
-        party:
-        [
-
-            {
-
-                species:
-                    "CHARMANDER",
-
-                level:
-                    10,
-
-                hp:
-                    39
-
-            },
-
-
-            {
-
-                species:
-                    "PIKACHU",
-
-                level:
-                    12,
-
-                hp:
-                    40
-
-            }
-
-        ]
-
-    },
-
-
-
-
-
-    opponent:
-    {
-
-        party:
-        [
-
-            {
-
-                species:
-                    "GEODUDE",
-
-                level:
-                    12,
-
-                hp:
-                    30
-
-            },
-
-
-            {
-
-                species:
-                    "ONIX",
-
-                level:
-                    14,
-
-                hp:
-                    40
-
-            }
-
-        ]
+        return moves[0];
 
     }
 
@@ -169,19 +266,30 @@ const battle =
 
 
 
-console.log();
+//--------------------------------
+// Battle Flow
+//--------------------------------
 
-console.log(
-    "================================"
-);
 
-console.log(
-    "Battle Engine Tests"
-);
+const battleFlowService =
 
-console.log(
-    "================================"
-);
+    new BattleFlowService(
+
+        validationService,
+
+        turnOrderService,
+
+        battleTurnService,
+
+        battleFaintService,
+
+        battleResultService,
+
+        battlePokemonService,
+
+        battleAIService
+
+    );
 
 
 
@@ -192,22 +300,64 @@ console.log(
 
 
 //--------------------------------
-// Initialize
+// Engine
+//--------------------------------
+
+
+const battleEngine =
+
+    new BattleEngineService(
+
+        battleStateService,
+
+        battleFlowService,
+
+        battlePokemonService
+
+    );
+
+
+
+
+
+
+
+
+
+//--------------------------------
+// Initialize battle
 //--------------------------------
 
 
 console.log();
 
 console.log(
-    "Initializing battle:"
+"Initialize battle:"
 );
+
+
+
+const battle =
+
+    createBattle();
+
+
+
 
 
 console.log(
 
-    battleEngine.initializeBattle(
+    JSON.stringify(
 
-        battle
+        battleEngine.initializeBattle(
+
+            battle
+
+        ),
+
+        null,
+
+        4
 
     )
 
@@ -222,22 +372,31 @@ console.log(
 
 
 //--------------------------------
-// Loaded state
+// Get battle
 //--------------------------------
 
 
 console.log();
 
 console.log(
-    "Loaded battle:"
+"Get battle:"
 );
+
 
 
 console.log(
 
-    battleEngine.getBattle(
+    JSON.stringify(
 
-        "BATTLE_TEST_1"
+        battleEngine.getBattle(
+
+            battle.id
+
+        ),
+
+        null,
+
+        4
 
     )
 
@@ -252,50 +411,49 @@ console.log(
 
 
 //--------------------------------
-// First turn
+// Active Pokémon
 //--------------------------------
 
 
 console.log();
 
 console.log(
-    "Processing first turn:"
+"Active player Pokémon:"
 );
+
 
 
 console.log(
 
-    battleEngine.processTurn(
+    battleEngine.getPlayerActive(
 
-        "BATTLE_TEST_1",
+        battle.id
 
+    )
 
-        {
-
-            name:
-                "EMBER",
-
-            power:
-                40,
-
-            accuracy:
-                100
-
-        },
+);
 
 
-        {
 
-            name:
-                "TACKLE",
 
-            power:
-                35,
 
-            accuracy:
-                100
 
-        }
+
+
+
+console.log();
+
+console.log(
+"Active opponent Pokémon:"
+);
+
+
+
+console.log(
+
+    battleEngine.getOpponentActive(
+
+        battle.id
 
     )
 
@@ -310,121 +468,90 @@ console.log(
 
 
 //--------------------------------
-// Battle state
+// Process turn
 //--------------------------------
 
 
 console.log();
 
 console.log(
-    "Battle after first turn:"
+"Process turn:"
 );
+
 
 
 console.log(
 
-    battleEngine.getBattle(
-
-        "BATTLE_TEST_1"
-
-    )
-
-);
-
-
-
-
-
-
-
-
-
-//--------------------------------
-// Continue battle
-//--------------------------------
-
-
-console.log();
-
-console.log(
-    "Continuing battle:"
-);
-
-
-
-for(
-    let i = 0;
-    i < 5;
-    i++
-)
-{
-
-    console.log(
+    JSON.stringify(
 
         battleEngine.processTurn(
 
-            "BATTLE_TEST_1",
-
+            battle.id,
 
             {
 
                 name:
                     "EMBER",
 
-                power:
-                    40,
+                constant:
+                    "MOVE_EMBER"
 
-                accuracy:
-                    100
+            }
 
-            },
+        ),
 
+        null,
+
+        4
+
+    )
+
+);
+
+
+
+
+
+
+
+
+
+//--------------------------------
+// Unknown battle
+//--------------------------------
+
+
+console.log();
+
+console.log(
+"Unknown battle:"
+);
+
+
+
+console.log(
+
+    JSON.stringify(
+
+        battleEngine.processTurn(
+
+            "UNKNOWN",
 
             {
 
                 name:
-                    "TACKLE",
+                    "EMBER",
 
-                power:
-                    35,
-
-                accuracy:
-                    100
+                constant:
+                    "MOVE_EMBER"
 
             }
 
-        )
+        ),
 
-    );
+        null,
 
-
-}
-
-
-
-
-
-
-
-
-
-//--------------------------------
-// Final state
-//--------------------------------
-
-
-console.log();
-
-console.log(
-    "Final battle state:"
-);
-
-
-console.log(
-
-    battleEngine.getBattle(
-
-        "BATTLE_TEST_1"
+        4
 
     )
 
@@ -438,41 +565,18 @@ console.log(
 
 
 
-//--------------------------------
-// Winner
-//--------------------------------
-
-
 console.log();
 
 console.log(
-    "Battle winner:"
+"================================"
 );
 
 
 console.log(
-
-    battleEngine.getBattle(
-
-        "BATTLE_TEST_1"
-
-    )
-    .winner
-
+"Battle Engine Service Tests Completed."
 );
 
-
-
-
-
-
-
-
-
-console.log();
 
 console.log(
-    "Battle Engine Tests Completed."
+"================================"
 );
-
-console.log();

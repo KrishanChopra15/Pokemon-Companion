@@ -304,33 +304,38 @@ class ExperienceService {
 
 
 
+        pokemon.level =
+            checkLevel;
+
+
+
         return {
-
-
+        
+        
             success:true,
-
-
+        
+        
             gained:
-
+        
                 amount,
-
-
+        
+        
             total:
-
+        
                 pokemon.exp,
-
-
+        
+        
             oldLevel,
-
-
+        
+        
             currentLevel:
-
-                checkLevel,
-
-
+        
+                pokemon.level,
+        
+        
             levels
-
-
+        
+        
         };
 
 

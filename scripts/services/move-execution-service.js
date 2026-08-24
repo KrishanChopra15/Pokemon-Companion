@@ -5,10 +5,13 @@
  * Handles Pokémon move execution.
  *
  * Responsibilities:
+ * - Resolve special move mechanics.
  * - Execute moves.
  * - Calculate damage.
  * - Apply damage.
+ * - Apply move effects.
  * - Handle accuracy.
+ * - Handle status restrictions.
  * - Return move results.
  *
  * Does NOT:
@@ -28,8 +31,33 @@ class MoveExecutionService {
 
 
 
-    constructor()
+    constructor(
+        moveMechanicsService = null,
+        moveEffectService = null,
+        damageCalculationService = null,
+        statusEffectService = null
+    )
     {
+
+
+        this.moveMechanics =
+            moveMechanicsService;
+
+
+
+        this.moveEffect =
+            moveEffectService;
+
+
+
+        this.damageCalculation =
+            damageCalculationService;
+
+
+
+        this.statusEffect =
+            statusEffectService;
+
 
 
         this.defaultAccuracy =
@@ -54,7 +82,8 @@ class MoveExecutionService {
     executeMove(
         attacker,
         defender,
-        move
+        move,
+        context = {}
     )
     {
 
@@ -84,24 +113,158 @@ class MoveExecutionService {
 
 
 
+
+        //--------------------------------
+        // Status restriction check
+        //--------------------------------
+
+
+        if(
+            this.statusEffect
+        )
+        {
+
+
+            if(
+                !this.statusEffect.canAct(
+                    attacker
+                )
+            )
+            {
+
+                return {
+
+                    success:true,
+
+                    hit:false,
+
+                    damage:0,
+
+                    move:
+                        move.name
+                        ||
+                        move.constant,
+
+
+                    message:
+                        "Unable to move due to status"
+
+                };
+
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Resolve move mechanics
+        //--------------------------------
+
+
+        let resolvedMove =
+            move;
+
+
+
+        if(
+            this.moveMechanics
+        )
+        {
+
+            resolvedMove =
+
+                this.moveMechanics.resolveMove(
+
+                    move,
+
+                    {
+
+                        pokemon:
+                            attacker,
+
+
+                        weather:
+                            context.weather,
+
+
+                        environment:
+                            context.environment
+
+                    }
+
+                );
+
+        }
+
+
+
+
+
+
+
+
+        if(
+            !resolvedMove
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Unable to resolve move"
+
+            };
+
+        }
+
+
+
+
+
+
+
+
+
         //--------------------------------
         // Accuracy
         //--------------------------------
 
 
         const accuracy =
-            move.accuracy !== undefined
-                ?
-                move.accuracy
-                :
-                this.defaultAccuracy;
+
+            resolvedMove.accuracy !== undefined
+
+            ?
+
+            resolvedMove.accuracy
+
+            :
+
+            this.defaultAccuracy;
+
+
 
 
 
         const hit =
+
             this.checkAccuracy(
+
                 accuracy
+
             );
+
+
 
 
 
@@ -118,7 +281,18 @@ class MoveExecutionService {
 
                 damage:0,
 
+
+                move:
+
+                    resolvedMove.name
+
+                    ||
+
+                    resolvedMove.constant,
+
+
                 message:
+
                     "Move missed"
 
             };
@@ -134,26 +308,225 @@ class MoveExecutionService {
 
 
         //--------------------------------
-        // Damage
+        // Apply move effect
         //--------------------------------
 
 
-        const damage =
-            this.calculateDamage(
+        let effectResult =
+            null;
 
+
+
+        if(
+            resolvedMove.effect
+            &&
+            this.moveEffect
+        )
+        {
+
+            effectResult =
+
+                this.moveEffect.applyEffect(
+
+                    resolvedMove,
+
+                    attacker,
+
+                    defender,
+
+                    context.battle
+
+                );
+
+
+
+
+
+
+
+
+            //--------------------------------
+            // Ignore invalid empty effects
+            //--------------------------------
+
+
+            if(
+                effectResult
+                &&
+                effectResult.success === false
+            )
+            {
+
+                effectResult =
+                    null;
+
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Apply direct status
+        //--------------------------------
+
+
+        let statusResult = null;
+
+
+        if(
+            resolvedMove.status
+            &&
+            this.statusEffect
+        )
+        {
+        
+            statusResult =
+        
+                this.statusEffect.applyStatus(
+                
+                    defender,
+                
+                    resolvedMove.status
+                
+                );
+            
+        }
+
+
+
+
+
+
+
+        //--------------------------------
+        // Status / utility move
+        //--------------------------------
+
+
+        const power =
+
+            resolvedMove.power
+
+            ||
+
+            0;
+
+
+        if(
+            power === 0
+        )
+        {
+        
+            return {
+            
+                success:true,
+            
+                hit:true,
+            
+                damage:0,
+            
+            
+                remainingHP:
+            
+                    defender.hp,
+            
+            
+                effect:
+                {
+                
+                    moveEffect:
+                        effectResult,
+                
+                
+                    status:
+                        statusResult
+                
+                },
+            
+            
+                move:
+            
+                    resolvedMove.name
+            
+                    ||
+            
+                    resolvedMove.constant,
+            
+            
+                resolvedMove
+            
+            };
+        
+        }
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Calculate damage
+        //--------------------------------
+
+
+        let damage =
+            1;
+
+
+
+        if(
+            this.damageCalculation
+        )
+        {
+
+            console.log(
+            {
+                damageCalculatorConnected:true,
+            
+                attacker:
+                    attacker.species,
+            
+                defender:
+                    defender.species,
+            
+                move:
+                    resolvedMove.name
+            });
+        
+        
+            damage =
+        
+            this.damageCalculation.calculateDamage(
                 attacker,
-
                 defender,
-
-                move
-
+                resolvedMove,
+                context
             );
 
+        }
 
 
 
 
 
+
+
+
+
+        //--------------------------------
+        // Apply damage
+        //--------------------------------
 
 
         this.applyDamage(
@@ -174,12 +547,9 @@ class MoveExecutionService {
 
         return {
 
-
             success:true,
 
-
             hit:true,
-
 
             damage,
 
@@ -189,12 +559,29 @@ class MoveExecutionService {
                 defender.hp,
 
 
+            effect:
+            {
+            
+                moveEffect:
+                    effectResult,
+            
+            
+                status:
+                    statusResult
+            
+            },
+
 
             move:
 
-                move.name
+                resolvedMove.name
+
+                ||
+
+                resolvedMove.constant,
 
 
+            resolvedMove
 
         };
 
@@ -220,101 +607,33 @@ class MoveExecutionService {
     {
 
 
-        const roll =
-            Math.floor(
-
-                Math.random() * 100
-
-            )
-            + 1;
-
-
-
-        return roll <= accuracy;
-
-
-    }
-
-
-
-
-
-
-
-
-
-    //--------------------------------
-    // Damage calculation
-    //--------------------------------
-
-
-    calculateDamage(
-        attacker,
-        defender,
-        move
-    )
-    {
-
-
-        const level =
-            attacker.level
-            ||
-            1;
-
-
-
-        const power =
-            move.power
-            ||
-            0;
-
-
-
-
-
         if(
-            power === 0
+            accuracy >= 100
         )
         {
 
-            return 0;
+            return true;
 
         }
 
 
 
+        if(
+            accuracy <= 0
+        )
+        {
+
+            return false;
+
+        }
 
 
 
+        const roll =
 
-        const damage =
             Math.floor(
 
-                (
-
-                    (
-
-                        2 *
-
-                        level
-
-                    ) /
-
-                    5
-
-                    +
-
-                    2
-
-                )
-
-                *
-
-                power
-
-                /
-
-                10
+                Math.random() * 100
 
             )
 
@@ -322,13 +641,9 @@ class MoveExecutionService {
 
 
 
+        return (
 
-
-        return Math.max(
-
-            damage,
-
-            1
+            roll <= accuracy
 
         );
 
@@ -360,8 +675,7 @@ class MoveExecutionService {
         )
         {
 
-            pokemon.hp =
-                0;
+            pokemon.hp = 0;
 
         }
 
@@ -376,8 +690,7 @@ class MoveExecutionService {
         )
         {
 
-            pokemon.hp =
-                0;
+            pokemon.hp = 0;
 
         }
 
@@ -406,7 +719,12 @@ class MoveExecutionService {
     )
     {
 
+
         return (
+
+            !pokemon
+
+            ||
 
             pokemon.hp <= 0
 
@@ -424,7 +742,7 @@ class MoveExecutionService {
 
 
     //--------------------------------
-    // Simple summary
+    // Summary
     //--------------------------------
 
 
@@ -440,26 +758,44 @@ class MoveExecutionService {
         return {
 
             attacker:
+
                 attacker.species,
 
 
             defender:
+
                 defender.species,
 
 
             move:
-                move.name,
+
+                result.move
+
+                ||
+
+                move.name
+
+                ||
+
+                move.constant,
 
 
             damage:
-                result.damage,
+
+                result.damage
+
+                ||
+
+                0,
 
 
             fainted:
-                this.isFainted(
-                    defender
-                )
 
+                this.isFainted(
+
+                    defender
+
+                )
 
         };
 

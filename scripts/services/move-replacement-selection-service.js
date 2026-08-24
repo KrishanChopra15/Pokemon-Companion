@@ -2,17 +2,17 @@
  * Pokémon Companion
  * Move Replacement Selection Service
  *
- * Handles replacing an existing Pokémon move.
+ * Handles selecting which move gets forgotten.
  *
  * Responsibilities:
+ * - Validate forgotten move.
  * - Remove forgotten move.
- * - Add newly learned move.
- * - Validate replacement choice.
+ * - Add replacement move.
+ * - Return replacement result.
  *
  * Does NOT:
  * - Decide which move should be forgotten.
- * - Handle battles.
- * - Teach TM/HM moves.
+ * - Handle level-up logic.
  */
 
 "use strict";
@@ -24,43 +24,54 @@ const PokemonMoveSlot =
 
 
 
+
 class MoveReplacementSelectionService {
 
 
 
+    constructor(
+        moveForget = null
+    )
+    {
+
+        this.moveForget =
+            moveForget;
+
+    }
+
+
+
+
+
+
+
+
+
     //--------------------------------
-    // Replace move
+    // Replace selected move
     //--------------------------------
 
 
     replaceMove(
-        pokemon,
+
+        currentMoves,
+
         forgottenMove,
+
         newMove
+
     )
     {
 
 
-        const moves =
-            pokemon.moves
-            ||
-            [];
+        //--------------------------------
+        // Check forget service
+        //--------------------------------
 
 
-
-        const index =
-            moves.findIndex(
-
-                move =>
-
-                    move.constant ===
-                    forgottenMove
-
-            );
-
-
-
-        if(index === -1)
+        if(
+            !this.moveForget
+        )
         {
 
             return {
@@ -68,7 +79,7 @@ class MoveReplacementSelectionService {
                 success:false,
 
                 reason:
-                    "Move to forget not found"
+                    "Move forget service unavailable"
 
             };
 
@@ -78,18 +89,66 @@ class MoveReplacementSelectionService {
 
 
 
-        const newSlot =
+
+
+
+        //--------------------------------
+        // Forget old move
+        //--------------------------------
+
+
+        const forgetResult =
+
+            this.moveForget.forgetMove(
+
+                currentMoves,
+
+                forgottenMove
+
+            );
+
+
+
+
+
+        if(
+            forgetResult.success === false
+        )
+        {
+
+            return forgetResult;
+
+        }
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Create new move slot
+        //--------------------------------
+
+
+        const slot =
+
             new PokemonMoveSlot({
 
                 constant:
+
                     newMove.constant,
 
 
                 currentPP:
+
                     newMove.pp,
 
 
                 maxPP:
+
                     newMove.pp
 
             });
@@ -98,30 +157,52 @@ class MoveReplacementSelectionService {
 
 
 
-        moves[index] =
-            newSlot;
 
 
 
-        pokemon.moves =
-            moves;
 
+        //--------------------------------
+        // Add new move
+        //--------------------------------
+
+
+        currentMoves.push(
+            slot
+        );
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Result
+        //--------------------------------
 
 
         return {
 
+
             success:true,
 
+
             forgotten:
+
                 forgottenMove,
 
 
             learned:
+
                 newMove.constant,
 
 
             move:
-                newSlot
+
+                slot
+
 
         };
 

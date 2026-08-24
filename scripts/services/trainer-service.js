@@ -21,6 +21,9 @@
 "use strict";
 
 
+
+
+
 class TrainerService {
 
 
@@ -29,10 +32,84 @@ class TrainerService {
         trainerDatabase = []
     )
     {
+    
+    
+        //--------------------------------
+        // Accept TrainerDatabaseService
+        //--------------------------------
+    
+    
+        if(
+            trainerDatabase &&
+            trainerDatabase.trainers
+        )
+        {
+        
+            this.trainers =
+                trainerDatabase.trainers;
+        
+        }
+    
+        else
+        {
+        
+            this.trainers =
+                trainerDatabase;
+        
+        }
+    
+    
+    }
 
 
-        this.trainers =
-            trainerDatabase;
+
+
+
+
+
+
+
+    //--------------------------------
+    // Normalize trainer list
+    //--------------------------------
+
+
+    getTrainerList()
+    {
+
+
+        if(
+            Array.isArray(this.trainers)
+        )
+        {
+
+            return this.trainers;
+
+        }
+
+
+
+
+
+        if(
+            this.trainers &&
+            typeof this.trainers === "object"
+        )
+        {
+
+            return Object.values(
+
+                this.trainers
+
+            );
+
+        }
+
+
+
+
+
+        return [];
 
 
     }
@@ -51,13 +128,13 @@ class TrainerService {
 
 
     getTrainer(
-        name
+        id
     )
     {
 
 
         if(
-            !name
+            !id
         )
         {
 
@@ -69,21 +146,145 @@ class TrainerService {
 
 
 
+        const search =
+
+            String(id)
+                .toUpperCase();
 
 
 
-        return this.trainers.find(
 
-            trainer =>
 
-                trainer.name ===
-                name.toUpperCase()
+        const trainers =
 
+            this.getTrainerList();
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Direct ID lookup
+        //--------------------------------
+
+
+        const byId =
+
+            trainers.find(
+
+                trainer =>
+
+                    trainer.id &&
+
+                    trainer.id.toUpperCase() === search
+
+            );
+
+
+
+
+
+        if(
+            byId
         )
+        {
 
-        ||
+            return byId;
 
-        null;
+        }
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Trainer name lookup
+        //--------------------------------
+
+
+        const byName =
+
+            trainers.find(
+
+                trainer =>
+
+                (
+
+                    trainer.trainerName &&
+
+                    trainer.trainerName.toUpperCase() === search
+
+                )
+
+                ||
+
+                (
+
+                    trainer.name &&
+
+                    trainer.name.toUpperCase() === search
+
+                )
+
+            );
+
+
+
+
+
+        return (
+
+            byName
+
+            ||
+
+            null
+
+        );
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Exists
+    //--------------------------------
+
+
+    hasTrainer(
+        id
+    )
+    {
+
+
+        return (
+
+            this.getTrainer(
+
+                id
+
+            )
+
+            !==
+
+            null
+
+        );
 
 
     }
@@ -104,7 +305,9 @@ class TrainerService {
     getAllTrainers()
     {
 
-        return this.trainers;
+
+        return this.getTrainerList();
+
 
     }
 
@@ -128,14 +331,12 @@ class TrainerService {
 
 
         const trainer =
+
             this.getTrainer(
 
                 name
 
             );
-
-
-
 
 
 
@@ -154,10 +355,9 @@ class TrainerService {
 
 
 
-
-
-
         if(
+            trainer.trainerType !== "GYM_LEADER"
+            &&
             trainer.type !== "GYM_LEADER"
         )
         {
@@ -165,9 +365,6 @@ class TrainerService {
             return null;
 
         }
-
-
-
 
 
 
@@ -198,14 +395,12 @@ class TrainerService {
 
 
         const trainer =
+
             this.getTrainer(
 
                 name
 
             );
-
-
-
 
 
 
@@ -224,10 +419,15 @@ class TrainerService {
 
 
 
+        return (
 
+            trainer.party
 
+            ||
 
-        return trainer.party || [];
+            []
+
+        );
 
 
     }
@@ -241,7 +441,7 @@ class TrainerService {
 
 
     //--------------------------------
-    // Prepare battle opponent
+    // Prepare battle trainer
     //--------------------------------
 
 
@@ -252,14 +452,12 @@ class TrainerService {
 
 
         const trainer =
+
             this.getTrainer(
 
                 name
 
             );
-
-
-
 
 
 
@@ -272,13 +470,10 @@ class TrainerService {
 
             return {
 
-
                 success:false,
-
 
                 reason:
                     "Trainer not found"
-
 
             };
 
@@ -288,32 +483,40 @@ class TrainerService {
 
 
 
-
-
-
         return {
-
 
             success:true,
 
 
             trainer:
+
             {
 
+                id:
+                    trainer.id,
+
+
                 name:
+
+                    trainer.trainerName
+                    ||
                     trainer.name,
 
 
                 type:
+
+                    trainer.trainerType
+                    ||
                     trainer.type,
 
 
                 party:
-                    trainer.party || []
 
+                    trainer.party
+                    ||
+                    []
 
             }
-
 
         };
 
@@ -329,7 +532,7 @@ class TrainerService {
 
 
     //--------------------------------
-    // Search trainers by type
+    // Search by type
     //--------------------------------
 
 
@@ -352,18 +555,39 @@ class TrainerService {
 
 
 
+        const search =
+
+            type.toUpperCase();
 
 
 
-        return this.trainers.filter(
 
-            trainer =>
 
-                trainer.type ===
+        return this.getTrainerList()
 
-                type.toUpperCase()
+            .filter(
 
-        );
+                trainer =>
+
+                (
+
+                    trainer.trainerType &&
+
+                    trainer.trainerType.toUpperCase() === search
+
+                )
+
+                ||
+
+                (
+
+                    trainer.type &&
+
+                    trainer.type.toUpperCase() === search
+
+                )
+
+            );
 
 
     }
@@ -377,14 +601,15 @@ class TrainerService {
 
 
     //--------------------------------
-    // Count trainers
+    // Count
     //--------------------------------
 
 
     count()
     {
 
-        return this.trainers.length;
+        return this.getTrainerList().length;
+
 
     }
 

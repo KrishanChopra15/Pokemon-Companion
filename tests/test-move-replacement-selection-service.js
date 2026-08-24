@@ -5,9 +5,22 @@ const MoveReplacementSelectionService =
     require("../scripts/services/move-replacement-selection-service");
 
 
+const MoveForgetService =
+    require("../scripts/services/move-forget-service");
+
+
+
+
+
+const moveForget =
+    new MoveForgetService();
+
+
 
 const service =
-    new MoveReplacementSelectionService();
+    new MoveReplacementSelectionService(
+        moveForget
+    );
 
 
 
@@ -51,6 +64,8 @@ const charmander =
 
 
 
+
+
 console.log();
 
 
@@ -70,6 +85,9 @@ console.log(
 
 
 
+
+
+
 console.log();
 
 
@@ -78,11 +96,15 @@ console.log(
 );
 
 
+
 console.log(
 
     charmander.moves
 
 );
+
+
+
 
 
 
@@ -99,22 +121,35 @@ console.log(
 
 
 
+
+
+
 console.log(
 
     service.replaceMove(
 
-        charmander,
+        charmander.moves,
+
 
         "MOVE_SCRATCH",
 
+
         {
-            constant:"MOVE_FLAMETHROWER",
-            pp:15
+
+            constant:
+                "MOVE_FLAMETHROWER",
+
+
+            pp:
+                15
+
         }
 
     )
 
 );
+
+
 
 
 
@@ -136,6 +171,7 @@ console.log(
     charmander.moves
 
 );
+
 
 
 

@@ -1,145 +1,411 @@
-# Pokémon Companion Features
+# Pokémon Companion Feature Specification
 
-> Defines every capability provided by Pokémon Companion and describes how features are organized, related, and evolved throughout the platform.
-
----
-
-# Purpose
-
-The Features document serves as the functional specification for Pokémon Companion.
-
-Its purpose is to define every capability available to trainers, describe how features are organized within the platform, and document the relationships between user-facing functionality and the underlying architecture.
-
-Unlike the Development Roadmap, which describes when features are developed, this document describes what the platform is capable of doing.
-
-Unlike the Database Schema and Datasets documents, which define how Pokémon knowledge is stored, this document focuses on how that knowledge is presented and used throughout the application.
-
-Every feature available to trainers should be documented here.
-
-This document acts as the primary reference for product planning, frontend development, backend integration, testing, and future expansion.
+## Part 1: Platform Foundation, Architecture, and Infrastructure
 
 ---
 
-# Feature Philosophy
+# 1. Document Overview
 
-Pokémon Companion is designed as a unified platform rather than a collection of independent tools.
+## 1.1 Purpose
 
-Every feature should contribute to a cohesive trainer experience while building upon the shared architecture established throughout the project.
+The Pokémon Companion Feature Specification defines the functional scope of the Pokémon Companion platform.
 
-Features should not duplicate functionality.
+It describes what Pokémon Companion is designed to provide to trainers, developers, maintainers, and future contributors.
 
-Instead, they should reuse common services, shared datasets, and reusable user interface components wherever possible.
+The specification establishes:
 
-Every feature should:
+- Feature categories
+- Feature responsibilities
+- Feature relationships
+- Functional capabilities
+- Feature priorities
+- Feature statuses
+- Development direction
+- Long-term platform goals
 
-- Solve a clear user problem
-- Have one primary responsibility
-- Integrate with the existing platform
-- Reuse shared services
-- Respect architectural boundaries
-- Be independently testable
-- Remain maintainable over time
+This document is intentionally focused on **what the system should do**, rather than how individual features are technically implemented.
 
-Features should enhance the overall trainer experience rather than existing as isolated utilities.
-
----
-
-# Feature Lifecycle
-
-Every feature progresses through a predictable lifecycle.
-
-```text
-Concept
-        │
-        ▼
-Specification
-        │
-        ▼
-Architecture Review
-        │
-        ▼
-Implementation
-        │
-        ▼
-Validation
-        │
-        ▼
-Release
-        │
-        ▼
-Maintenance
-        │
-        ▼
-Future Expansion
-```
-
-Each stage has a clearly defined purpose.
-
-Features should be fully specified before implementation begins.
-
-After release, features continue to evolve through maintenance, refinement, and future enhancements.
+Technical implementation details belong in the relevant architecture, database, API, UI, coding, and deployment documentation.
 
 ---
 
-# Feature Classification
+# 2. Pokémon Companion Vision
 
-Every feature belongs to exactly one primary category.
+## Vision
 
-The primary feature categories are:
+> **Everything you need for every Pokémon adventure.**
 
-## Platform Features
+Pokémon Companion is designed to become a comprehensive Pokémon companion platform that combines canonical Pokémon knowledge, personal trainer management, collection tracking, battle analysis, world exploration, intelligent assistance, and community features into one unified experience.
 
-Provide the shared foundation used throughout Pokémon Companion.
+The platform should support a trainer throughout the entire lifecycle of a Pokémon adventure:
+
+1. Discovering information.
+2. Starting an adventure.
+3. Building a team.
+4. Tracking progression.
+5. Exploring the world.
+6. Collecting Pokémon and other achievements.
+7. Preparing for battles.
+8. Analyzing progress.
+9. Receiving intelligent recommendations.
+10. Sharing achievements with the community.
+
+Pokémon Companion should not be limited to a single Pokémon game, generation, or gameplay style.
+
+It should be designed as a long-term platform capable of supporting historical Pokémon games, current games, and future Pokémon titles.
+
+---
+
+# 3. Platform Mission
+
+## Mission
+
+Create the most comprehensive Pokémon companion platform possible by combining:
+
+- Canonical Pokémon knowledge
+- Historical game data
+- Trainer-owned progression
+- Collection management
+- Battle intelligence
+- World exploration
+- Intelligent assistance
+- Community interaction
+- Reliable infrastructure
+
+The platform should provide information and tools that are accurate, contextual, explainable, and useful throughout a trainer's journey.
+
+---
+
+# 4. Core Platform Principles
+
+Every feature within Pokémon Companion should follow the principles below.
+
+---
+
+## 4.1 Canonical Accuracy
+
+Pokémon Companion should prioritize accurate Pokémon information.
+
+Canonical Pokémon data should be treated as authoritative application knowledge.
+
+Features should avoid inventing or silently altering canonical information.
+
+When information differs between games, the difference should be represented through the appropriate **Game Context** rather than overwriting historical information.
+
+---
+
+## 4.2 Historical Preservation
+
+Pokémon Companion should preserve historical differences between Pokémon games.
 
 Examples include:
 
-- Homepage
-- Dashboard
-- Authentication
-- User Profiles
-- Settings
-- Global Search
-- Notifications
+- Pokémon availability
+- Movesets
+- Abilities
+- Types
+- Evolution methods
+- Battle mechanics
+- Trainer teams
+- Locations
+- Encounter tables
+- Items
+- Story progression
+- Game-specific mechanics
+
+Historical information should remain associated with the game context in which it was valid.
+
+The platform should not normalize historical information into modern mechanics when doing so would make the original game inaccurate.
 
 ---
 
-## Knowledge Features
+## 4.3 Data-First Architecture
 
-Provide access to official Pokémon knowledge.
+Pokémon Companion follows a **data-first architecture**.
 
-Examples include:
+Canonical information should exist as structured datasets rather than being embedded directly into individual application features.
 
-- National Pokédex
-- Pokémon Details
-- Move Database
-- Ability Database
-- Item Database
-- Type Database
-- Region Database
-- Location Database
+Features consume shared datasets instead of maintaining isolated copies of Pokémon information.
+
+This approach improves:
+
+- Accuracy
+- Reusability
+- Maintainability
+- Consistency
+- Historical preservation
+- Searchability
+- Extensibility
 
 ---
 
-## Trainer Features
+## 4.4 Separation of Data Ownership
 
-Support each trainer's personal journey.
+Pokémon Companion distinguishes between two fundamental categories of information.
+
+### Canonical Data
+
+Canonical data represents Pokémon knowledge that belongs to the platform's knowledge base.
 
 Examples include:
 
-- Adventure Tracker
-- Team Management
-- Saved Teams
-- Trainer Notes
+- Pokémon
+- Species
+- Forms
+- Moves
+- Abilities
+- Items
+- Types
+- Regions
+- Locations
+- Trainers
+- Encounter tables
+- Battle mechanics
+
+Canonical data should be read by features but should not be modified by individual trainers.
+
+### Trainer-Owned Data
+
+Trainer-owned data represents information created or maintained by an individual trainer.
+
+Examples include:
+
+- Adventures
+- Teams
+- Collections
+- Statistics
 - Achievements
-- Game Progress
+- Journal entries
+- Personal preferences
+- Progress
+- Community sharing settings
+
+Trainer-owned data may reference canonical entities but should never modify the canonical entities themselves.
 
 ---
 
-## Collection Features
+## 4.5 Game Context Awareness
 
-Help trainers track progress and completion.
+**Game Context** is a fundamental concept throughout Pokémon Companion.
+
+A Game Context represents the specific Pokémon game or ruleset under which information should be interpreted.
+
+Features should use Game Context to determine which information is relevant.
+
+For example, the same Pokémon may have different:
+
+- Available moves
+- Abilities
+- Types
+- Stats
+- Locations
+- Evolution methods
+- Encounter availability
+- Trainer interactions
+- Battle mechanics
+
+depending on the selected game.
+
+The active Game Context should therefore influence all features where historical or game-specific differences matter.
+
+---
+
+## 4.6 Explainability
+
+Information and recommendations should be understandable.
+
+This is particularly important for Intelligence and Battle features.
+
+When Pokémon Companion provides a recommendation, the platform should explain the reasoning whenever practical.
 
 Examples include:
+
+- Why a Pokémon was recommended.
+- Why a move is effective.
+- Why a trainer is considered the next challenge.
+- Why an item is relevant.
+- Why a collection objective has been prioritized.
+- Why a team adjustment is suggested.
+
+The goal is to assist trainers, not replace their decision-making.
+
+---
+
+## 4.7 Non-Destructive Assistance
+
+Features that analyze or recommend actions should not automatically modify trainer-owned data.
+
+Examples:
+
+- AI recommendations should not automatically change teams.
+- Collection analysis should not mark Pokémon as collected.
+- Adventure guidance should not automatically advance progression.
+- Team recommendations should not replace an existing team.
+
+Recommendations should remain optional and under trainer control.
+
+---
+
+## 4.8 Modularity
+
+Features should remain independently understandable and maintainable.
+
+A feature should have:
+
+- A clear responsibility
+- Defined dependencies
+- Defined data requirements
+- Defined relationships with other features
+- Clear ownership boundaries
+
+Features should communicate through established services and shared data rather than creating tightly coupled implementations.
+
+---
+
+## 4.9 Reusability
+
+Common Pokémon entities should be reusable throughout the platform.
+
+For example, the same canonical Pokémon entity may be referenced by:
+
+- Pokédex
+- Teams
+- Collections
+- Encounter tables
+- Trainer teams
+- Battle analysis
+- Search
+- AI Assistant
+- Community features
+
+The platform should avoid creating separate representations of the same canonical entity unless there is a clearly defined reason.
+
+---
+
+## 4.10 Scalability
+
+The architecture should support expansion without requiring fundamental redesign.
+
+Expansion should include:
+
+- New Pokémon games
+- New generations
+- New regions
+- New forms
+- New mechanics
+- Larger datasets
+- More trainers
+- More community users
+- Additional intelligent services
+
+New content should generally be introduced by extending existing systems rather than creating parallel architectures.
+
+---
+
+# 5. Platform Architecture
+
+Pokémon Companion follows a layered architecture.
+
+The major layers are:
+
+1. Infrastructure
+2. Knowledge
+3. Trainer
+4. Collection
+5. Battle
+6. World
+7. Intelligence
+8. Community
+
+These layers are related but maintain distinct responsibilities.
+
+---
+
+# 6. Infrastructure Layer
+
+The Infrastructure Layer provides the technical foundation required by every other layer.
+
+Its responsibilities include:
+
+- Data generation
+- Data validation
+- Application services
+- APIs
+- Synchronization
+- Monitoring
+- Performance
+- Reliability
+
+Infrastructure should operate independently of individual trainer workflows wherever possible.
+
+The Infrastructure Layer currently includes:
+
+- Data Generation Pipeline
+- Validation Framework
+- Cloud Synchronization
+- API Platform
+- Monitoring
+
+---
+
+# 7. Knowledge Layer
+
+The Knowledge Layer provides canonical Pokémon information.
+
+Its purpose is to answer:
+
+> **What exists in the Pokémon world, and what are its official properties within a specific Game Context?**
+
+The Knowledge Layer includes information such as:
+
+- Pokémon
+- Species
+- Forms
+- Moves
+- Abilities
+- Items
+- Types
+- Regions
+- Locations
+- Game mechanics
+- Other canonical entities
+
+Knowledge data should be reusable by every higher-level feature.
+
+---
+
+# 8. Trainer Layer
+
+The Trainer Layer manages trainer-owned information and personal progression.
+
+Its purpose is to answer:
+
+> **What is this trainer doing, collecting, using, and accomplishing?**
+
+The Trainer Layer may include:
+
+- Trainer Profiles
+- Adventures
+- Team Management
+- Trainer Statistics
+- Achievements
+- Trainer Journal
+- Personal Preferences
+- Progress Tracking
+
+Trainer data should reference canonical knowledge rather than duplicate it.
+
+---
+
+# 9. Collection Layer
+
+The Collection Layer manages trainer-owned collection progress.
+
+Its purpose is to answer:
+
+> **What has this trainer collected, and what remains to be collected?**
+
+Collection systems may include:
 
 - Living Dex
 - Regional Pokédex
@@ -147,405 +413,1094 @@ Examples include:
 - Form Collection
 - Ribbon Collection
 - Mark Collection
+- Prestige Collection
 - Collection Statistics
 
+Collections should combine canonical entities with trainer-owned completion state.
+
 ---
 
-## Battle Features
+# 10. Battle Layer
 
-Provide competitive and strategic tools.
+The Battle Layer provides battle analysis and preparation tools.
 
-Examples include:
+Its purpose is to answer:
 
-- Team Builder
+> **How can a trainer understand, prepare for, and analyze Pokémon battles?**
+
+Battle capabilities may include:
+
+- Team Analysis
 - Damage Calculator
-- Battle Analysis
-- Type Coverage
-- Move Recommendations
+- Battle Simulator
+- Strategy Planner
+- Battle Statistics
+
+Battle systems should consume canonical battle data and trainer-created teams without modifying canonical knowledge.
 
 ---
 
-## World Features
+# 11. World Layer
 
-Support exploration of the Pokémon world.
+The World Layer represents the Pokémon world and enables exploration.
 
-Examples include:
+Its purpose is to answer:
+
+> **Where is something, what can be found there, and what can the trainer do there?**
+
+World capabilities may include:
 
 - World Explorer
 - Interactive Maps
-- Routes
+- Route Explorer
 - Encounter Tables
 - Trainer Database
-- Hidden Items
-- NPC Database
+- Hidden Item Finder
+
+World entities should remain connected through canonical relationships such as:
+
+- Regions
+- Locations
+- Routes
+- Maps
+- Trainers
+- Encounters
+- Items
+- Story events
 
 ---
 
-## Intelligence Features
+# 12. Intelligence Layer
 
-Enhance the platform through intelligent assistance.
+The Intelligence Layer analyzes existing platform information to provide contextual assistance.
 
-Examples include:
+Its purpose is to answer:
+
+> **Given everything the platform knows about the game and trainer, what information or recommendation would be most useful right now?**
+
+The Intelligence Layer includes:
 
 - AI Assistant
-- Intelligent Search
-- Team Suggestions
+- Smart Search
+- Team Recommendations
 - Adventure Guidance
 - Collection Analysis
-- Screenshot Recognition
+
+Intelligence features should not become a replacement for canonical data.
+
+They should interpret existing information and produce recommendations or explanations.
 
 ---
 
-## Community Features
+# 13. Community Layer
 
-Enable interaction between trainers.
+The Community Layer enables optional interaction between trainers.
 
-Examples include:
+Its purpose is to answer:
+
+> **How can trainers connect, share, compare, and participate together?**
+
+The Community Layer includes:
 
 - Friends
 - Shared Teams
 - Shared Collections
-- Community Challenges
 - Leaderboards
-- Trainer Profiles
+- Community Challenges
+
+Community features should operate on trainer-approved information.
 
 ---
 
-## Infrastructure Features
+# 14. Layer Dependency Model
 
-Provide the technical capabilities that support the platform.
+The general dependency direction is:
+
+```text
+Infrastructure
+      ↓
+Knowledge
+      ↓
+Trainer
+      ↓
+Collection / Battle / World
+      ↓
+Intelligence
+      ↓
+Community
+```
+
+This represents the general architectural foundation, not a strict rule that every feature may only depend on the layer immediately below it.
+
+For example:
+
+- Battle Features depend on Knowledge and Trainer data.
+- Collection Features depend on Knowledge and Trainer data.
+- World Features depend heavily on Knowledge and Game Context.
+- Intelligence consumes information from multiple layers.
+- Community consumes trainer-approved information from multiple layers.
+
+Higher-level features should not directly modify lower-level canonical datasets.
+
+---
+
+# 15. Game Context Architecture
+
+Game Context is one of the most important concepts in Pokémon Companion.
+
+A Game Context defines the environment in which a canonical entity or feature should be interpreted.
+
+A context may represent:
+
+- A specific Pokémon game
+- A specific game version
+- A historical ruleset
+- A regional release where relevant
+- A game-specific mechanic set
+
+The exact implementation of Game Context belongs to the technical architecture and data documentation.
+
+Functionally, however, every feature should respect Game Context whenever the underlying information differs between games.
+
+---
+
+## 15.1 Context-Aware Information
 
 Examples include:
 
-- Data Generation Pipeline
-- Validation Framework
-- Cloud Synchronization
-- Application Services
-- Build Pipeline
-- Monitoring
+### Pokémon
+
+A Pokémon may have different availability depending on the selected game.
+
+### Moves
+
+A move may have different:
+
+- Power
+- Accuracy
+- Type
+- Category
+- Availability
+- Effects
+
+depending on the game.
+
+### Abilities
+
+Abilities may not exist, function, or be obtainable in the same way across games.
+
+### Locations
+
+A Pokémon may appear in one game but not another.
+
+### Trainers
+
+Trainer teams may differ between games.
+
+### Battle Mechanics
+
+Battle rules may differ substantially between generations.
+
+### Evolution
+
+Evolution methods may change across games.
+
+The platform should represent these differences rather than flattening them into a single modernized record.
 
 ---
 
-# Standard Feature Template
+# 16. Canonical Entity Model
 
-Every feature within Pokémon Companion should follow a consistent specification.
+Pokémon Companion should use canonical entities as the shared references for Pokémon information.
 
-Using a standardized template improves documentation quality, simplifies implementation, and makes future maintenance significantly easier.
+Examples include:
 
-Although individual features provide different functionality, they should all describe the same core information.
+- Pokémon
+- Species
+- Form
+- Move
+- Ability
+- Item
+- Type
+- Region
+- Location
+- Route
+- Trainer
+- Trainer Class
+- Encounter
+- Game Context
+
+Features should reference these entities instead of creating isolated feature-specific versions.
 
 ---
 
-## Feature Identifier
+# 17. Generated Database
 
-Every feature has one permanent identifier.
+The Generated Database is the application-ready representation of canonical Pokémon knowledge.
 
-Identifiers should:
+It is produced through the Data Generation Pipeline.
 
-- be unique
-- remain stable
-- never be reused
-- be independent of the feature name
+The Generated Database may contain:
 
-Examples:
+- Canonical datasets
+- Historical datasets
+- Generated relationships
+- Search indexes
+- Optimized lookup structures
+- Derived datasets
+
+The Generated Database should be optimized for application consumption.
+
+It should not require the application to depend directly on external live APIs for normal operation.
+
+---
+
+# 18. Data Generation Philosophy
+
+Pokémon Companion should use a build-time or generation-time data strategy wherever practical.
+
+The intended model is:
 
 ```text
-PC-001
-PC-002
-PC-003
+Canonical Sources
+       ↓
+Data Generation Pipeline
+       ↓
+Validation Framework
+       ↓
+Generated Database
+       ↓
+Application Services
+       ↓
+Feature Layer
+       ↓
+Trainer
 ```
 
-Feature identifiers are intended for documentation, development planning, issue tracking, and testing.
+This provides predictable application behavior and reduces dependence on external services during normal application use.
 
 ---
+
+# 19. External Data Sources
+
+External data sources may be used during data generation or controlled synchronization processes.
+
+They should not automatically become runtime dependencies for every feature.
+
+The platform should:
+
+1. Obtain source information.
+2. Transform it into the project's canonical model.
+3. Validate the resulting datasets.
+4. Generate application-ready outputs.
+5. Make those outputs available through internal services.
+
+This ensures that application features depend on Pokémon Companion's controlled data model rather than directly depending on the structure of external services.
+
+---
+
+# 20. Data Integrity
+
+Data integrity is a platform-wide responsibility.
+
+Generated datasets should be:
+
+- Schema-valid
+- Internally consistent
+- Cross-referenceable
+- Deterministic
+- Historically appropriate
+- Free of unintended duplicates
+- Validated before publication
+
+The Validation Framework is responsible for identifying problems before invalid generated data reaches normal application use.
+
+---
+
+# 21. Feature Responsibility Rules
+
+Every feature should follow several responsibility rules.
+
+### Rule 1: Features consume shared canonical data.
+
+Features should not maintain isolated copies of canonical Pokémon information.
+
+### Rule 2: Features may create trainer-owned state.
+
+Examples include:
+
+- Team membership
+- Collection completion
+- Adventure progress
+- Personal notes
+
+### Rule 3: Features should respect Game Context.
+
+Game-specific information must be interpreted within the appropriate context.
+
+### Rule 4: Features should have clear dependencies.
+
+A feature should not depend on another feature merely because it is convenient.
+
+### Rule 5: Features should avoid hidden side effects.
+
+Analysis and recommendation features should not silently modify trainer data.
+
+### Rule 6: Canonical data is read-only to trainers.
+
+Trainer actions may reference canonical entities but should never mutate them.
+
+---
+
+# 22. Application Services
+
+Application Services act as the internal service layer connecting feature functionality with data and infrastructure.
+
+They are responsible for coordinating application operations without becoming owners of canonical Pokémon knowledge.
+
+Application Services may support:
+
+- Authentication
+- Trainer operations
+- Team operations
+- Collection operations
+- Search
+- World queries
+- Battle calculations
+- Synchronization
+- AI requests
+
+The exact service boundaries are defined in the system architecture and API documentation.
+
+---
+
+# 23. Search Architecture
+
+Search is intended to become a platform-wide capability rather than an isolated feature.
+
+Search should eventually be capable of discovering:
+
+- Pokémon
+- Moves
+- Abilities
+- Items
+- Locations
+- Trainers
+- Teams
+- Collections
+- Adventures
+- Other canonical entities
+
+Search results should respect:
+
+- Game Context
+- Entity relationships
+- Trainer permissions
+- Canonical versus trainer-owned data
+
+Smart Search will later build upon this foundation to provide natural-language and intent-aware discovery.
+
+---
+
+# 24. Feature Categories
+
+Pokémon Companion currently organizes functionality into eight major categories.
+
+| Category | Primary Responsibility |
+|---|---|
+| Infrastructure | Platform foundation and operational services |
+| Knowledge | Canonical Pokémon information |
+| Trainer | Personal trainer data and progression |
+| Collection | Collection tracking and completion |
+| Battle | Battle analysis and preparation |
+| World | Pokémon world exploration |
+| Intelligence | Contextual analysis and recommendations |
+| Community | Trainer interaction and sharing |
+
+These categories provide organizational boundaries for the feature specification.
+
+They are not intended to prevent cross-feature integration.
+
+---
+
+# 25. Feature Specification Structure
+
+Every major feature should be documented using a consistent structure.
+
+Where applicable, feature specifications should define:
+
+- Feature ID
+- Feature Name
+- Purpose
+- Category
+- Primary Users
+- Dependencies
+- Primary Datasets
+- Functional Responsibilities
+- User Interface
+- Related Features
+- Priority
+- Status
+- Future Enhancements
+
+This structure allows features to remain understandable as Pokémon Companion expands.
+
+---
+
+# 26. Feature Status Definitions
+
+Feature status describes the current maturity or implementation state.
+
+### Completed
+
+The feature has been implemented to the extent currently defined by the project.
+
+### In Progress
+
+Active implementation is underway.
+
+### Planned
+
+The feature is defined and intended for implementation, but active implementation has not yet begun.
+
+### Future
+
+The feature is part of the long-term product vision and is not currently part of the immediate implementation scope.
+
+### Proposed
+
+The feature is being considered but has not yet been formally committed to the platform roadmap.
+
+Status should describe implementation maturity, not feature importance.
+
+---
+
+# 27. Infrastructure Features
+
+Infrastructure Features provide the foundation upon which every other Pokémon Companion feature operates.
+
+The current Infrastructure category contains:
+
+- **INF-001 — Data Generation Pipeline**
+- **INF-002 — Validation Framework**
+- **INF-003 — Cloud Synchronization**
+- **INF-004 — API Platform**
+- **INF-005 — Monitoring**
+
+Infrastructure features operate primarily behind the scenes.
+
+They should prioritize:
+
+- Reliability
+- Data integrity
+- Performance
+- Security
+- Maintainability
+- Scalability
+- Observability
+
+---
+
+# INF-001 — Data Generation Pipeline
 
 ## Feature Name
 
-A concise, human-readable name describing the feature.
-
-Examples include:
-
-- National Pokédex
-- Team Builder
-- Adventure Tracker
-- AI Assistant
-- World Explorer
-
-Feature names should remain descriptive and consistent throughout the project.
+Data Generation Pipeline
 
 ---
 
 ## Purpose
 
-Describes the primary responsibility of the feature.
+The Data Generation Pipeline is responsible for generating, transforming, validating, and maintaining the canonical datasets used throughout Pokémon Companion.
 
-Every feature should solve one clearly defined user problem.
+Its purpose is to provide a repeatable and controlled process for converting Pokémon source data into the project's canonical and application-ready datasets.
 
-If a feature grows to support multiple unrelated responsibilities, it should be divided into smaller features.
+The pipeline is a foundational component of the platform's data-first architecture.
+
+Rather than requiring every application feature to retrieve and transform external Pokémon data independently, the pipeline produces standardized datasets that can be consumed throughout Pokémon Companion.
 
 ---
 
 ## Category
 
-Identifies the feature's primary classification.
-
-Possible categories include:
-
-- Platform
-- Knowledge
-- Trainer
-- Collection
-- Battle
-- World
-- Intelligence
-- Community
-- Infrastructure
-
-Each feature should belong to one primary category.
+Infrastructure
 
 ---
 
 ## Primary Users
 
-Defines who primarily benefits from the feature.
+- Developers
+- Maintainers
+- Contributors
+- Automated Build Systems
 
-Examples include:
-
-- Every Trainer
-- New Trainers
-- Competitive Players
-- Collectors
-- Shiny Hunters
-- Researchers
-- Community Members
-
-Understanding the target audience helps guide future improvements.
+The Data Generation Pipeline is primarily an internal system and is not directly exposed to trainers.
 
 ---
 
 ## Dependencies
 
-Lists the systems required before the feature can operate.
+The Data Generation Pipeline depends upon:
 
-Examples include:
-
-- Application Services
-- Generated Database
+- Canonical Data Sources
+- Dataset Generators
+- Shared Utilities
 - Validation Framework
-- Authentication
-- Search Service
-- Intelligence Layer
-
-Dependencies should reference architectural components rather than implementation details.
+- Build and Generation Systems
 
 ---
 
 ## Primary Datasets
 
-Identifies the datasets most heavily used by the feature.
+The pipeline may generate:
 
-Examples include:
+- Canonical Datasets
+- Historical Datasets
+- Generated Datasets
+- Legacy Datasets
+- Relationship Graphs
+- Search Indexes
+- Derived Datasets
 
-- Species
-- Pokémon
+Generated outputs should conform to the project's canonical data model.
+
+---
+
+## Core Responsibilities
+
+The Data Generation Pipeline may perform:
+
+- Source data acquisition
+- Source parsing
+- Data normalization
+- Entity generation
+- Relationship generation
+- Historical data preservation
+- Derived dataset generation
+- Search index generation
+- Output optimization
+
+Each stage should remain modular and independently testable.
+
+---
+
+## Game Context Support
+
+The pipeline must preserve Game Context information during generation.
+
+Historical differences should not be lost during normalization.
+
+Generated data should be capable of representing game-specific differences such as:
+
+- Pokémon availability
 - Moves
 - Abilities
-- Teams
-- Collections
-- Encounter Tables
+- Items
+- Trainer teams
+- Encounters
+- Locations
+- Battle mechanics
+- Evolution requirements
 
-This section connects features with the data architecture.
+---
+
+## Output Requirements
+
+Generated outputs should be:
+
+- Deterministic
+- Machine-readable
+- Version-consistent
+- Validated
+- Reproducible
+- Suitable for application use
+
+The same source inputs and generation configuration should produce predictable results.
+
+---
+
+## Incremental Generation
+
+The pipeline should eventually support generating only the datasets affected by a change.
+
+This may reduce generation time as Pokémon Companion grows.
+
+Incremental generation should never compromise consistency between related datasets.
 
 ---
 
 ## Related Features
 
-Lists features that closely integrate with the current feature.
+The Data Generation Pipeline integrates closely with:
 
-Examples include:
-
-- National Pokédex ↔ Pokémon Details
-- Team Builder ↔ Battle Analysis
-- Adventure Tracker ↔ World Explorer
-- AI Assistant ↔ Intelligent Search
-
-Related features help developers understand feature interactions.
+- Validation Framework
+- API Platform
+- Knowledge Features
+- World Features
+- Battle Features
+- Intelligence Features
 
 ---
 
 ## Priority
 
-Defines the importance of the feature within the platform.
-
-Suggested priorities include:
-
-- Critical
-- High
-- Medium
-- Low
-
-Priority influences development planning but does not define implementation order.
+**Critical**
 
 ---
 
 ## Status
 
-Tracks the current development state.
-
-Possible values include:
-
-- Concept
-- Planned
-- In Progress
-- Completed
-- Deprecated
-
-Status should accurately reflect the current maturity of the feature.
+**Completed**
 
 ---
 
 ## Future Enhancements
 
-Describes planned improvements that extend the feature without changing its primary responsibility.
+Potential future improvements include:
 
-Examples include:
-
-- Additional filters
-- Better search
-- AI integration
-- Performance improvements
-- Accessibility enhancements
-- Community integration
-
-Future enhancements provide a roadmap for incremental feature evolution.
+- Incremental generation
+- Parallel generation
+- Generation caching
+- Pipeline visualization
+- Automated regression testing
+- Continuous integration
+- Generation analytics
+- Plugin-based generators
+- Performance profiling
 
 ---
 
-# Platform Features
+# INF-002 — Validation Framework
+
+## Feature Name
+
+Validation Framework
+
+---
 
 ## Purpose
 
-Platform Features provide the shared foundation upon which every other feature within Pokémon Companion is built.
+The Validation Framework is responsible for verifying the accuracy, consistency, completeness, and structural integrity of datasets generated for Pokémon Companion.
 
-Rather than focusing on Pokémon knowledge or gameplay, Platform Features establish the common application experience, enabling trainers to navigate the platform, manage their accounts, personalize their experience, and access every other capability.
+Its purpose is to identify invalid or inconsistent data before that data becomes available to normal application services.
 
-These features define the application's core infrastructure from the user's perspective.
-
-Every trainer interacts with Platform Features regardless of which Pokémon tools they use.
+The framework should detect problems rather than silently correcting canonical information.
 
 ---
 
-# Responsibilities
+## Category
 
-Platform Features are responsible for:
-
-- Application entry
-- User authentication
-- Trainer identity
-- Navigation
-- Personalization
-- Global search
-- Notifications
-- Application settings
-- Session management
-
-Platform Features should provide a consistent and intuitive experience throughout the application.
+Infrastructure
 
 ---
 
-# Design Principles
+## Primary Users
 
-Platform Features should follow several architectural principles.
+- Developers
+- Maintainers
+- Contributors
+- Automated Build Systems
 
-## Shared Experience
-
-Platform functionality should be reusable throughout the entire application.
-
-Every feature should integrate with the same navigation, authentication, settings, and user profile systems.
-
----
-
-## Consistency
-
-Platform Features should present a consistent experience across every page.
-
-Navigation, layouts, interactions, and terminology should remain predictable throughout the application.
+The Validation Framework is primarily an internal system.
 
 ---
 
-## Accessibility
+## Dependencies
 
-Platform Features should remain accessible to every trainer.
+The Validation Framework depends upon:
 
-Accessibility includes:
-
-- Keyboard navigation
-- Screen reader compatibility
-- Responsive layouts
-- High contrast support
-- Reduced motion preferences
-
-Accessibility should be considered part of the platform rather than an optional enhancement.
+- Data Generation Pipeline
+- Canonical Datasets
+- Generated Datasets
+- Historical Datasets
+- Legacy Datasets
+- Shared Utilities
 
 ---
 
-## Performance
+## Primary Validation Targets
 
-Platform Features should remain responsive regardless of application size.
+The framework validates:
 
-Examples include:
+- Canonical Datasets
+- Generated Datasets
+- Historical Datasets
+- Legacy Datasets
+- Search Indexes
+- Relationship Graphs
 
-- Fast startup
-- Efficient navigation
-- Session persistence
-- Lazy loading
-- Optimized rendering
+---
 
-Performance improvements should benefit every feature built upon the platform.
+## Validation Responsibilities
+
+The framework may perform:
+
+- Schema validation
+- Required field validation
+- Data type validation
+- Duplicate detection
+- Relationship validation
+- Cross-reference validation
+- Game Context validation
+- Historical consistency validation
+- File integrity validation
+
+---
+
+## Validation Philosophy
+
+Validation should be:
+
+- Deterministic
+- Reproducible
+- Explicit
+- Diagnosable
+- Automated where possible
+
+A failed validation should provide enough information for developers to understand the underlying problem.
+
+---
+
+## Validation Reporting
+
+The framework should produce:
+
+- Validation results
+- Error reports
+- Warning reports
+- Summary statistics
+- Validation history
+
+Reports should identify:
+
+- The affected dataset
+- The affected entity
+- The validation rule
+- The failure reason
+- The severity
+
+---
+
+## Publication Protection
+
+Invalid generated datasets should not be published as application-ready datasets.
+
+The validation process therefore acts as a quality gate between data generation and application consumption.
+
+---
+
+## Related Features
+
+The Validation Framework integrates closely with:
+
+- Data Generation Pipeline
+- API Platform
+- Monitoring
+- Knowledge Features
+- World Features
+- Battle Features
+
+---
+
+## Priority
+
+**Critical**
+
+---
+
+## Status
+
+**In Progress**
+
+---
+
+## Future Enhancements
+
+Potential future improvements include:
+
+- Incremental validation
+- Parallel validation
+- Continuous validation
+- Validation dashboards
+- Regression validation
+- Automated quality scoring
+- Performance benchmarking
+- Plugin-based validators
+- Validation trend analysis
+
+---
+
+# INF-003 — Cloud Synchronization
+
+## Feature Name
+
+Cloud Synchronization
+
+---
+
+## Purpose
+
+Cloud Synchronization enables trainers to securely synchronize trainer-owned data across supported devices.
+
+Its purpose is to allow trainers to continue using Pokémon Companion without losing personal progress when moving between devices.
+
+Cloud Synchronization applies to trainer-owned information and personal settings.
+
+It does not modify the canonical Pokémon knowledge base.
+
+---
+
+## Category
+
+Infrastructure
+
+---
+
+## Primary Users
+
+- Every Trainer
+- Multi-Device Users
+- Developers
+- System Administrators
+
+---
+
+## Dependencies
+
+Cloud Synchronization depends upon:
+
+- User Authentication
+- Application Services
+- API Platform
+- Trainer-Owned Datasets
+- Security Services
+
+---
+
+## Primary Datasets
+
+Cloud Synchronization may synchronize:
+
+- Trainer Profiles
+- Adventures
+- Teams
+- Collections
+- Achievements
+- Battle Statistics
+- Trainer Preferences
+- Application Settings
+
+Canonical Pokémon datasets are not synchronized as trainer-owned mutable data.
+
+---
+
+## Core Responsibilities
+
+Cloud Synchronization may perform:
+
+- Uploading trainer data
+- Downloading trainer data
+- Progress synchronization
+- Conflict detection
+- Conflict resolution
+- Version tracking
+- Interrupted synchronization recovery
+
+---
+
+## Data Integrity
+
+Synchronization should prioritize data preservation.
+
+The system should:
+
+- Prevent accidental data loss
+- Detect conflicts
+- Preserve valid progress
+- Verify synchronization success
+- Maintain consistent versions
+
+Synchronization speed should not take priority over data safety.
 
 ---
 
 ## Security
 
-Platform Features manage trainer identities and personal information.
+Cloud synchronization should:
 
-Security responsibilities include:
+- Require authenticated access
+- Use secure communication
+- Protect trainer-owned information
+- Validate synchronization requests
+- Respect privacy settings
 
+---
+
+## Related Features
+
+Cloud Synchronization integrates closely with:
+
+- User Authentication
+- API Platform
+- Trainer Features
+- Collection Features
+- Battle Features
+- Community Features
+
+---
+
+## Priority
+
+**Medium**
+
+---
+
+## Status
+
+**Future**
+
+---
+
+## Future Enhancements
+
+Potential future improvements include:
+
+- Real-time synchronization
+- Offline synchronization queues
+- Automatic conflict resolution
+- Backup and restore
+- Device management
+- Synchronization history
+- Selective synchronization
+- Cross-platform synchronization
+- Data export and import
+
+---
+
+# INF-004 — API Platform
+
+## Feature Name
+
+API Platform
+
+---
+
+## Purpose
+
+The API Platform provides controlled access to Pokémon Companion's canonical datasets, trainer-owned data, and application services.
+
+It serves as the communication layer between client applications, backend services, generated datasets, and internal application functionality.
+
+The API Platform should expose stable interfaces without exposing unnecessary implementation details.
+
+---
+
+## Category
+
+Infrastructure
+
+---
+
+## Primary Users
+
+- Client Applications
+- Backend Services
+- Developers
+- System Administrators
+
+---
+
+## Dependencies
+
+The API Platform depends upon:
+
+- Data Generation Pipeline
+- Validation Framework
+- Application Services
+- User Authentication
+- Cloud Synchronization
+
+---
+
+## Primary Data Domains
+
+The API Platform may provide access to:
+
+- Canonical Datasets
+- Generated Datasets
+- Trainer Profiles
+- Adventures
+- Teams
+- Collections
+- Battle Statistics
+- Application Settings
+- Search
+- World information
+
+---
+
+## API Responsibilities
+
+The API Platform may provide services for:
+
+- Data retrieval
+- Search
 - Authentication
 - Authorization
-- Session management
-- Privacy controls
-- Secure communication
-- Account protection
+- Trainer operations
+- Collection operations
+- Team operations
+- Battle services
+- World services
+- AI services
+- Synchronization services
 
-Security should be integrated into the platform from the beginning.
-
----
-
-# Core Platform Features
-
-The Platform category currently includes:
-
-- Homepage
-- Dashboard
-- User Authentication
-- Trainer Profile
-- Settings
-- Global Search
-- Notifications
-- Theme Management
-- Session Management
-
-Additional platform capabilities may be introduced as Pokémon Companion evolves.
+Each service should maintain clear boundaries.
 
 ---
 
-# Feature Relationships
+## Game Context
 
-Platform Features provide shared services for every other feature category.
+API requests involving game-specific information should respect the active Game Context.
 
-Examples include:
+Where appropriate, APIs should require or derive sufficient context to prevent returning historically incorrect information.
 
+---
+
+## Performance
+
+The API Platform should:
+
+- Minimize response latency
+- Support pagination
+- Support efficient dataset retrieval
+- Use caching where appropriate
+- Avoid unnecessary payload sizes
+- Maintain predictable performance
+
+---
+
+## Security
+
+The API Platform should:
+
+- Authenticate users
+- Authorize requests
+- Validate inputs
+- Protect trainer-owned data
+- Prevent unauthorized access
+- Secure communications
+- Enforce appropriate access controls
+
+---
+
+## Related Features
+
+The API Platform integrates with:
+
+- Data Generation Pipeline
+- Validation Framework
+- Cloud Synchronization
 - Knowledge Features
 - Trainer Features
 - Collection Features
@@ -554,119 +1509,17 @@ Examples include:
 - Intelligence Features
 - Community Features
 
-Every user-facing capability should integrate with the Platform Features rather than implementing its own independent solutions.
-
----
-
-# PF-001 — Homepage
-
-## Feature Name
-
-Homepage
-
----
-
-## Purpose
-
-The Homepage serves as the primary entry point to Pokémon Companion.
-
-Its purpose is to introduce the platform, provide quick access to major feature areas, highlight important trainer information, and guide both new and returning users toward their next action.
-
-The Homepage should present Pokémon Companion as a unified platform rather than a collection of independent tools.
-
----
-
-## Category
-
-Platform
-
----
-
-## Primary Users
-
-- New Trainers
-- Returning Trainers
-- Guest Users
-- Registered Users
-
-Every visitor interacts with the Homepage before accessing other platform features.
-
----
-
-## Dependencies
-
-The Homepage depends upon:
-
-- Application Services
-- Navigation System
-- User Authentication
-- User Preferences
-- Global Search
-- Generated Database
-
-Authenticated experiences may additionally consume user-specific data.
-
----
-
-## Primary Datasets
-
-The Homepage may consume information from:
-
-- User Profile
-- Dashboard Summary
-- Recent Adventures
-- Saved Teams
-- Collections
-- Achievements
-- News
-- Featured Pokémon
-
-The Homepage should display summarized information rather than complete datasets.
-
----
-
-## User Interface
-
-The Homepage may include:
-
-- Hero Section
-- Global Navigation
-- Search Bar
-- Quick Actions
-- Continue Adventure
-- Recently Viewed
-- Featured Content
-- Platform Highlights
-- Footer Navigation
-
-The exact layout may evolve while preserving a consistent user experience.
-
----
-
-## Related Features
-
-The Homepage integrates closely with:
-
-- Dashboard
-- User Authentication
-- Global Search
-- Trainer Profile
-- Knowledge Features
-- Trainer Features
-
-The Homepage acts as the central gateway to the platform.
-
 ---
 
 ## Priority
 
-Critical
+**Critical**
 
 ---
 
 ## Status
 
-Stable
+**Planned**
 
 ---
 
@@ -674,1753 +1527,146 @@ Stable
 
 Potential future improvements include:
 
-- Personalized homepage content
-- Recently viewed entities
-- Recommended adventures
-- AI-powered suggestions
-- Community highlights
-- Seasonal events
-- Customizable quick actions
-- Dynamic announcements
+- GraphQL support
+- API versioning
+- Rate limiting
+- WebSocket services
+- Real-time event streaming
+- Advanced caching
+- API analytics
+- Developer API documentation
+- Third-party integrations
 
 ---
 
-# PF-002 — Dashboard (My Adventures)
+# INF-005 — Monitoring
 
 ## Feature Name
 
-Dashboard (My Adventures)
+Monitoring
 
 ---
 
 ## Purpose
 
-The Dashboard serves as the central hub of Pokémon Companion.
+Monitoring provides operational visibility into the health, performance, availability, and reliability of Pokémon Companion.
 
-Its purpose is to provide trainers with a personalized overview of their Pokémon journey, allowing them to quickly resume adventures, monitor progress, access collections, manage teams, and navigate the platform efficiently.
+Its purpose is to identify problems early and provide developers and maintainers with enough information to diagnose and resolve issues.
 
-Rather than presenting static information, the Dashboard should summarize the trainer's current state across every major feature of the application.
-
-The Dashboard is intended to become the most frequently visited page after authentication.
+Monitoring should operate behind the scenes and should not interfere with normal application functionality.
 
 ---
 
 ## Category
 
-Platform
+Infrastructure
 
 ---
 
 ## Primary Users
 
-- Registered Trainers
-- Returning Trainers
-- Collectors
-- Competitive Players
-- Completionists
-
-Every authenticated trainer should use the Dashboard as their primary starting point.
+- Developers
+- Maintainers
+- System Administrators
+- Automated Operations
 
 ---
 
 ## Dependencies
 
-The Dashboard depends upon:
-
-- User Authentication
-- User Profiles
-- Application Services
-- Generated Database
-- Global Search
-- Notification System
-- Achievement System
-
-Additional modules become available as trainers progress through the platform.
-
----
-
-## Primary Datasets
-
-The Dashboard consumes summarized information from:
-
-- User Profile
-- Adventure Progress
-- Teams
-- Collections
-- Achievements
-- Recently Viewed Pokémon
-- Recently Visited Locations
-- Saved Searches
-- AI Recommendations
-- Community Activity (optional)
-
-The Dashboard should consume summaries rather than complete datasets to ensure fast loading.
-
----
-
-## User Interface
-
-The Dashboard may include:
-
-### Trainer Summary
-
-Displays:
-
-- Trainer Name
-- Avatar
-- Favorite Pokémon
-- Current Adventure
-- Overall Progress
-
----
-
-### Continue Adventure
-
-Provides quick access to:
-
-- Current Game
-- Current Route
-- Active Objectives
-- Recently Visited Locations
-
----
-
-### Collection Overview
-
-Displays progress for:
-
-- National Pokédex
-- Regional Pokédex
-- Living Dex
-- Shiny Collection
-- Form Collection
-- Ribbon Collection
-
----
-
-### Team Overview
-
-Displays:
-
-- Active Team
-- Saved Teams
-- Recent Team Changes
-- Team Statistics
-
----
-
-### Achievements
-
-Highlights:
-
-- Recent Achievements
-- Milestones
-- Completion Progress
-- Recommended Goals
-
----
-
-### Quick Actions
-
-Provides shortcuts to:
-
-- National Pokédex
-- Team Builder
-- World Explorer
-- Adventure Tracker
-- Collection Tracker
-- AI Assistant
-- Search
-
----
-
-### Activity Feed
-
-Displays recent trainer activity such as:
-
-- Newly Caught Pokémon
-- Badge Earned
-- Achievement Unlocked
-- Collection Progress
-- Team Updates
-
----
-
-### Recommendations
-
-May include:
-
-- Pokémon to Catch
-- Evolutions Available
-- Missing Pokédex Entries
-- Collection Goals
-- AI Suggestions
-
-Recommendations should always be explainable and derived from validated Pokémon knowledge.
-
----
-
-## Related Features
-
-The Dashboard integrates with nearly every major feature of Pokémon Companion, including:
-
-- Homepage
-- Trainer Profile
-- National Pokédex
-- Adventure Tracker
-- Collection Tracker
-- Team Builder
-- World Explorer
-- AI Assistant
-- Global Search
-- Achievements
-- Community Features
-
-The Dashboard acts as the primary navigation hub for authenticated users.
-
----
-
-## Priority
-
-Critical
-
----
-
-## Status
-
-In Progress
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Fully customizable dashboard layout
-- Drag-and-drop dashboard widgets
-- Multiple dashboard views
-- AI-generated daily summaries
-- Cross-game progress overview
-- Event reminders
-- Calendar integration
-- Weather and time-based gameplay widgets
-- Community activity highlights
-- Plugin or extension widgets
-
----
-
-# PF-003 — User Authentication
-
-## Feature Name
-
-User Authentication
-
----
-
-## Purpose
-
-User Authentication provides secure identity management for Pokémon Companion.
-
-Its purpose is to allow trainers to create accounts, securely access their personal data, synchronize progress across devices, and protect user-specific information while maintaining privacy and account security.
-
-Authentication establishes the identity of each trainer and enables personalized experiences throughout the platform.
-
----
-
-## Category
-
-Platform
-
----
-
-## Primary Users
-
-- Guest Users
-- Registered Trainers
-- Returning Trainers
-
-Authentication is required for any feature that stores or synchronizes personal trainer data.
-
----
-
-## Dependencies
-
-User Authentication depends upon:
+Monitoring depends upon:
 
 - Application Services
-- User Database
-- Session Management
-- Security Framework
-- Notification System
+- API Platform
 - Cloud Synchronization
-
-Authentication should remain independent of Pokémon knowledge and gameplay features.
-
----
-
-## Primary Datasets
-
-Authentication primarily consumes:
-
-- User Accounts
-- Authentication Credentials
-- User Profiles
-- Active Sessions
-- Security Settings
-- Privacy Preferences
-
-Authentication should never directly access canonical Pokémon datasets.
+- Data Generation Pipeline
+- Validation Framework
 
 ---
 
-## User Interface
+## Primary Data
 
-The Authentication system may include:
+Monitoring may consume:
 
-### Registration
+- Application Logs
+- Performance Metrics
+- Error Reports
+- System Events
+- Service Health Information
+- Infrastructure Metrics
+- Background Job Results
 
-Allows new trainers to create an account.
-
-Examples include:
-
-- Username
-- Email Address
-- Password
-- Terms Acceptance
-
----
-
-### Login
-
-Allows registered trainers to securely access their accounts.
-
-Supported authentication methods may include:
-
-- Username
-- Email Address
-- Password
-- Remember Me
+Monitoring data should remain separate from canonical Pokémon datasets and trainer-owned data.
 
 ---
 
-### Password Management
+## Monitoring Responsibilities
 
-Allows trainers to:
+Monitoring may perform:
 
-- Reset Password
-- Change Password
-- Recover Account
-
----
-
-### Session Management
-
-Supports:
-
-- Automatic Login
-- Secure Logout
-- Session Expiration
-- Multi-Device Sessions
+- Service health monitoring
+- Performance monitoring
+- Error detection
+- Resource monitoring
+- Availability monitoring
+- Background job monitoring
+- Validation monitoring
+- Synchronization monitoring
+- System diagnostics
 
 ---
 
-### Account Security
+## Alerting
 
-Provides:
+Monitoring should support alerts for:
 
-- Email Verification
-- Two-Factor Authentication
-- Login Notifications
-- Device Management
-- Security History
+- Critical failures
+- Service outages
+- Performance degradation
+- Validation failures
+- Synchronization failures
+- Background job failures
+- Resource thresholds
 
-Security features should evolve as the platform grows.
+Alerts should provide actionable diagnostic information.
+
+---
+
+## Reporting
+
+Monitoring may provide:
+
+- Service availability
+- Performance statistics
+- Error trends
+- Infrastructure health
+- Resource utilization
+- Background job status
+- Operational statistics
 
 ---
 
 ## Related Features
 
-Authentication integrates closely with:
+Monitoring integrates closely with:
 
-- Dashboard
-- Trainer Profile
+- Data Generation Pipeline
+- Validation Framework
 - Cloud Synchronization
-- Community Features
-- AI Assistant
-- Collection Tracker
-- Adventure Tracker
-
-Authentication acts as the gateway to every trainer-specific feature.
-
----
-
-## Priority
-
-Critical
-
----
-
-## Status
-
-Planned
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Passkey Support
-- Social Login Providers
-- Multi-Factor Authentication
-- Trusted Devices
-- Biometric Authentication
-- Account Recovery Improvements
-- Security Dashboard
-- Login Activity History
-
----
-
-# PF-004 — Trainer Profile
-
-## Feature Name
-
-Trainer Profile
-
----
-
-## Purpose
-
-The Trainer Profile represents a trainer's personal identity within Pokémon Companion.
-
-Its purpose is to allow trainers to manage their profile information, customize their experience, configure privacy preferences, and define how they interact with the platform and other trainers.
-
-The Trainer Profile acts as the central location for user-specific information while remaining independent of gameplay progress and canonical Pokémon knowledge.
-
----
-
-## Category
-
-Platform
-
----
-
-## Primary Users
-
-- Registered Trainers
-- Community Members
-- Collectors
-- Competitive Players
-
-Every authenticated trainer owns exactly one Trainer Profile.
-
----
-
-## Dependencies
-
-The Trainer Profile depends upon:
-
-- User Authentication
-- Application Services
-- User Database
-- Cloud Synchronization
-- Community Platform
-- Notification System
-
-The Trainer Profile should remain independent of Pokémon game data while integrating with trainer-specific features.
-
----
-
-## Primary Datasets
-
-The Trainer Profile primarily consumes:
-
-- User Profile
-- User Preferences
-- Privacy Settings
-- Notification Settings
-- Trainer Statistics
-- Favorite Pokémon
-- Display Preferences
-
-The Trainer Profile should reference personal data without duplicating information owned by other datasets.
-
----
-
-## User Interface
-
-The Trainer Profile may include:
-
-### Profile Information
-
-Allows trainers to manage:
-
-- Display Name
-- Username
-- Avatar
-- Biography
-- Favorite Pokémon
-- Favorite Game
-- Trainer Card
-
----
-
-### Personal Preferences
-
-Allows trainers to configure:
-
-- Language
-- Time Zone
-- Theme
-- Accessibility Options
-- Default Game Context
-- Homepage Preferences
-
----
-
-### Privacy Settings
-
-Allows trainers to control:
-
-- Profile Visibility
-- Collection Visibility
-- Team Sharing
-- Activity Sharing
-- Friend Requests
-- Community Participation
-
-Trainers should retain full control over their personal information.
-
----
-
-### Notification Settings
-
-Allows trainers to manage:
-
-- Achievement Notifications
-- Adventure Reminders
-- Collection Progress
-- Community Activity
-- AI Recommendations
-- Platform Updates
-
----
-
-### Trainer Statistics
-
-Displays personal statistics such as:
-
-- Adventures Completed
-- Pokémon Caught
-- Pokédex Completion
-- Teams Created
-- Achievements Earned
-- Platform Activity
-
-Statistics should summarize trainer progress without exposing sensitive information.
-
----
-
-## Related Features
-
-The Trainer Profile integrates closely with:
-
-- User Authentication
-- Dashboard
-- Adventure Tracker
-- Collection Tracker
-- Team Builder
-- AI Assistant
-- Community Platform
-- Cloud Synchronization
-
-The Trainer Profile serves as the personal identity layer for every trainer-facing feature.
-
----
-
-## Priority
-
-High
-
----
-
-## Status
-
-Planned
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Custom Trainer Cards
-- Achievement Showcase
-- Profile Themes
-- Public Portfolio
-- Trainer Badges
-- Activity Timeline
-- Profile Widgets
-- Cross-Game Statistics
-- Verified Trainer Profiles
-
----
-
-# PF-005 — Settings
-
-## Feature Name
-
-Settings
-
----
-
-## Purpose
-
-The Settings feature allows trainers to configure how Pokémon Companion behaves according to their personal preferences.
-
-Its purpose is to provide centralized control over application behavior, accessibility, appearance, notifications, default game preferences, and privacy options while maintaining a consistent experience throughout the platform.
-
-Settings affect how the application operates but do not modify canonical Pokémon knowledge or trainer progress.
-
----
-
-## Category
-
-Platform
-
----
-
-## Primary Users
-
-- Registered Trainers
-
-Every authenticated trainer should be able to personalize their application experience.
-
----
-
-## Dependencies
-
-The Settings feature depends upon:
-
-- User Authentication
-- User Profile
-- Application Services
-- Cloud Synchronization
-- Notification System
-- Theme System
-
-Settings should remain independent of gameplay mechanics.
-
----
-
-## Primary Datasets
-
-The Settings feature primarily consumes:
-
-- User Preferences
-- Accessibility Preferences
-- Theme Preferences
-- Notification Settings
-- Privacy Settings
-- Default Game Context
-- Language Preferences
-
-Settings should store only user-configurable preferences.
-
----
-
-## User Interface
-
-The Settings feature may include:
-
-### Appearance
-
-Allows trainers to configure:
-
-- Theme
-- Color Scheme
-- Display Density
-- Font Size
-- Animations
-
----
-
-### Accessibility
-
-Provides options for:
-
-- Keyboard Navigation
-- High Contrast Mode
-- Reduced Motion
-- Screen Reader Support
-- Text Scaling
-
-Accessibility should be supported throughout the platform.
-
----
-
-### Notifications
-
-Allows trainers to manage:
-
-- Achievement Notifications
-- Adventure Reminders
-- Collection Updates
-- Community Activity
-- AI Suggestions
-- System Announcements
-
----
-
-### Default Preferences
-
-Allows trainers to configure:
-
-- Default Game
-- Default Region
-- Preferred Language
-- Measurement Units
-- Time Zone
-
-These preferences personalize the application experience without affecting canonical data.
-
----
-
-### Privacy
-
-Provides controls for:
-
-- Public Profile
-- Collection Visibility
-- Team Sharing
-- Community Participation
-- Activity Sharing
-
-Privacy settings should always be controlled by the trainer.
-
----
-
-## Related Features
-
-The Settings feature integrates with:
-
-- Trainer Profile
-- Dashboard
-- User Authentication
-- Community Platform
-- AI Assistant
-- Notification System
-
-Every major feature should respect the trainer's configured preferences.
-
----
-
-## Priority
-
-High
-
----
-
-## Status
-
-Planned
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Per-Game Preferences
-- Dashboard Layout Preferences
-- Backup & Restore Settings
-- Advanced Accessibility Options
-- Developer Mode
-- Experimental Features
-- Plugin Settings
-
----
-
-# PF-006 — Global Search
-
-## Feature Name
-
-Global Search
-
----
-
-## Purpose
-
-Global Search provides a unified search experience across the entire Pokémon Companion platform.
-
-Its purpose is to allow trainers to quickly discover Pokémon knowledge, navigate application features, locate personal data, and access relevant information through a single, consistent interface.
-
-Rather than searching individual databases separately, Global Search should intelligently connect every searchable part of Pokémon Companion while respecting the currently selected Game Context and user permissions.
-
-Global Search acts as the primary discovery mechanism throughout the platform.
-
----
-
-## Category
-
-Platform
-
----
-
-## Primary Users
-
-- Every Trainer
-- New Trainers
-- Competitive Players
-- Collectors
-- Researchers
-
-Global Search should be available throughout the application regardless of the current page.
-
----
-
-## Dependencies
-
-Global Search depends upon:
-
-- Search Service
-- Generated Search Indexes
-- Application Services
-- User Authentication
-- Game Context Engine
-- Intelligence Layer
-
-Search should consume optimized generated datasets rather than querying the canonical database directly.
-
----
-
-## Primary Datasets
-
-Global Search primarily consumes:
-
-- Search Index
-- Autocomplete Index
-- Pokémon Lookup
-- Species Lookup
-- Move Lookup
-- Ability Lookup
-- Item Lookup
-- Location Lookup
-- Trainer Lookup
-
-Authenticated searches may additionally include:
-
-- Recent Searches
-- Recently Viewed
-- Saved Teams
-- User Collections
-
----
-
-## User Interface
-
-The Global Search feature may include:
-
-### Universal Search Bar
-
-Provides instant access from anywhere within the application.
-
----
-
-### Autocomplete
-
-Displays suggestions while typing.
-
-Examples include:
-
-- Pokémon
-- Moves
-- Abilities
-- Items
-- Locations
-- Trainers
-- Features
-
-Suggestions should prioritize relevance while remaining responsive.
-
----
-
-### Search Results
-
-Search results may include:
-
-- Pokémon
-- Species
-- Moves
-- Abilities
-- Items
-- Locations
-- Trainers
-- Regions
-- Features
-- User Content
-
-Results should clearly indicate the entity type.
-
----
-
-### Filters
-
-Allows trainers to refine results using filters such as:
-
-- Entity Type
-- Game
-- Generation
-- Region
-- Type
-- Availability
-
-Filters should adapt based on the selected search domain.
-
----
-
-### Search History
-
-Allows trainers to:
-
-- View recent searches
-- Repeat previous searches
-- Clear search history
-
-Search history should remain private unless explicitly shared.
-
----
-
-## Related Features
-
-Global Search integrates closely with:
-
-- National Pokédex
-- Pokémon Details
-- Move Database
-- Ability Database
-- Item Database
-- World Explorer
-- Team Builder
-- Collection Tracker
-- AI Assistant
-
-Nearly every feature within Pokémon Companion should be discoverable through Global Search.
-
----
-
-## Priority
-
-Critical
-
----
-
-## Status
-
-Planned
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Natural Language Search
-- Voice Search
-- Image-Based Search
-- Screenshot Recognition
-- Semantic Search
-- AI-Powered Suggestions
-- Personalized Search Ranking
-- Cross-Feature Search Recommendations
-- Search Shortcuts
-
----
-
-# Knowledge Features
-
-## Purpose
-
-Knowledge Features provide access to the official Pokémon knowledge contained within Pokémon Companion.
-
-Their purpose is to present validated, historically accurate, and interconnected Pokémon information through intuitive interfaces that support exploration, learning, research, and gameplay.
-
-Unlike Platform Features, which provide the shared application foundation, Knowledge Features expose the canonical Pokémon knowledge graph to trainers.
-
-Every Knowledge Feature should present official Pokémon information without modifying the underlying canonical data.
-
----
-
-# Responsibilities
-
-Knowledge Features are responsible for:
-
-- Browsing Pokémon knowledge
-- Searching official data
-- Exploring relationships
-- Viewing historical changes
-- Comparing official information
-- Navigating interconnected entities
-
-Knowledge Features should prioritize accuracy, discoverability, and clarity.
-
----
-
-# Design Principles
-
-## Canonical First
-
-Every Knowledge Feature should consume Canonical Datasets and Generated Datasets rather than maintaining independent copies of Pokémon information.
-
----
-
-## Context Awareness
-
-Knowledge should adapt to the selected Game Context.
-
-Examples include:
-
-- Available Pokémon
-- Learnsets
-- Abilities
-- Encounter Tables
-- Evolution Methods
-- Pokédex Entries
-
-Changing the Game Context should change the interpretation of the data without changing the underlying canonical entities.
-
----
-
-## Relationship Navigation
-
-Knowledge Features should encourage exploration through relationships.
-
-Examples include:
-
-- Pokémon → Evolution Chain
-- Pokémon → Learnset
-- Pokémon → Abilities
-- Move → Pokémon that Learn It
-- Item → Evolutions
-- Region → Locations
-
-The platform should behave like a navigable knowledge graph rather than isolated pages.
-
----
-
-## Historical Accuracy
-
-Historical Pokémon information should never be overwritten.
-
-Knowledge Features should preserve differences between Pokémon games whenever official mechanics have changed.
-
----
-
-## Consistency
-
-Every knowledge page should provide a familiar browsing experience.
-
-Navigation, layout, terminology, filtering, and search behaviour should remain consistent across all Knowledge Features.
-
----
-
-# Core Knowledge Features
-
-The Knowledge category currently includes:
-
-- National Pokédex
-- Pokémon Details
-- Move Database
-- Ability Database
-- Item Database
-- Type Database
-- Region Database
-- Location Database
-- Trainer Database
-- Evolution Explorer
-
-Additional knowledge features may be introduced as Pokémon Companion expands.
-
----
-
-# Feature Relationships
-
-Knowledge Features integrate closely with:
-
-- Global Search
-- World Features
-- Collection Features
-- Battle Features
-- Intelligence Features
-- Trainer Features
-
-Knowledge Features serve as the primary interface to Pokémon Companion's canonical knowledge graph.
-
----
-
-# KF-001 — National Pokédex
-
-## Feature Name
-
-National Pokédex
-
----
-
-## Purpose
-
-The National Pokédex provides a complete, searchable, and interconnected catalog of every official Pokémon supported by Pokémon Companion.
-
-Its purpose is to allow trainers to browse, discover, compare, and explore Pokémon while maintaining historical accuracy across every supported game.
-
-Rather than acting as a static list, the National Pokédex should serve as the primary gateway into the Pokémon knowledge graph.
-
-Every Pokémon entry should connect naturally to related entities such as moves, abilities, evolutions, forms, locations, and game-specific information.
-
----
-
-## Category
-
-Knowledge
-
----
-
-## Primary Users
-
-- Every Trainer
-- Collectors
-- Competitive Players
-- Researchers
-- New Trainers
-
-The National Pokédex is expected to become one of the most frequently used features within Pokémon Companion.
-
----
-
-## Dependencies
-
-The National Pokédex depends upon:
-
-- Generated Database
-- Search Service
-- Game Context Engine
-- Application Services
-- Navigation System
-
-The Pokédex should remain independent of trainer-specific data while supporting optional personalization.
-
----
-
-## Primary Datasets
-
-The National Pokédex primarily consumes:
-
-- Species
-- Pokémon
-- Forms
-- Types
-- Abilities
-- Evolution Graph
-- Sprites
-- Models
-- Pokédex Entries
-- Search Index
-
-Additional contextual information may be loaded as required.
-
----
-
-## User Interface
-
-The National Pokédex may include:
-
-### Pokémon List
-
-Displays every supported Pokémon with configurable layouts.
-
-Examples include:
-
-- Grid View
-- List View
-- Compact View
-
----
-
-### Search
-
-Supports searching by:
-
-- Name
-- Pokédex Number
-- Type
-- Ability
-- Generation
-- Region
-
----
-
-### Filters
-
-Allows trainers to filter Pokémon using criteria such as:
-
-- Generation
-- Region
-- Type
-- Evolution Stage
-- Legendary Status
-- Mythical Status
-- Form Availability
-- Catch Status (optional)
-
----
-
-### Sorting
-
-Supports sorting by:
-
-- National Number
-- Name
-- Generation
-- Height
-- Weight
-- Base Stat Total
-
----
-
-### Navigation
-
-Each Pokémon entry should provide direct navigation to related knowledge.
-
-Examples include:
-
-- Pokémon Details
-- Evolution Chain
-- Forms
-- Learnsets
-- Locations
-- Moves
-- Abilities
-
-The Pokédex should encourage exploration rather than isolated browsing.
-
----
-
-## Related Features
-
-The National Pokédex integrates closely with:
-
-- Pokémon Details
-- Move Database
-- Ability Database
-- Type Database
-- Collection Tracker
-- World Explorer
-- Global Search
-- AI Assistant
-
-It acts as the primary entry point into Pokémon knowledge.
-
----
-
-## Priority
-
-Critical
-
----
-
-## Status
-
-Planned
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Side-by-side Pokémon comparison
-- Advanced filter builder
-- Saved filter presets
-- Personalized Pokédex views
-- AI-powered discovery
-- Interactive evolution visualization
-- Cross-game availability comparison
-- Collection-aware browsing
-- Accessibility improvements
-
-# KF-002 — Pokémon Details
-
-## Feature Name
-
-Pokémon Details
-
----
-
-## Purpose
-
-The Pokémon Details feature provides a comprehensive view of an individual Pokémon within the Pokémon Companion knowledge graph.
-
-Its purpose is to present every relevant piece of official information about a Pokémon through a single, interconnected page.
-
-Rather than displaying isolated facts, the Pokémon Details page should act as the central hub from which trainers can explore relationships, mechanics, historical changes, and game-specific information.
-
-Every Pokémon page should provide both an overview and direct access to deeper knowledge throughout the platform.
-
----
-
-## Category
-
-Knowledge
-
----
-
-## Primary Users
-
-- Every Trainer
-- Collectors
-- Competitive Players
-- Researchers
-- Completionists
-
-Pokémon Details should serve both casual browsing and in-depth research.
-
----
-
-## Dependencies
-
-The Pokémon Details feature depends upon:
-
-- Generated Database
-- Game Context Engine
-- Search Service
-- Navigation System
-- Application Services
-- Asset Delivery Service
-
-The feature should dynamically adapt to the selected Game Context.
-
----
-
-## Primary Datasets
-
-Pokémon Details primarily consumes:
-
-- Pokémon
-- Species
-- Forms
-- Types
-- Abilities
-- Base Stats
-- Evolution Relationships
-- Learnsets
-- Moves
-- Sprites
-- Models
-- Pokédex Entries
-- Encounter Data
-- Locations
-- Assets
-
-Additional generated datasets may be loaded to improve navigation and performance.
-
----
-
-## User Interface
-
-The Pokémon Details page may include:
-
-### Overview
-
-Displays:
-
-- National Number
-- Name
-- Category
-- Species
-- Height
-- Weight
-- Gender Ratio
-- Catch Rate
-- Base Experience
-
----
-
-### Visual Gallery
-
-Displays:
-
-- Official Artwork
-- Sprites
-- Shiny Sprites
-- Animated Sprites
-- Models
-- Alternate Forms
-
-The gallery should adapt to the selected Game Context where applicable.
-
----
-
-### Typing
-
-Displays:
-
-- Primary Type
-- Secondary Type
-- Type Effectiveness
-- Weaknesses
-- Resistances
-- Immunities
-
----
-
-### Abilities
-
-Displays:
-
-- Standard Abilities
-- Hidden Ability
-- Ability Descriptions
-- Historical Changes
-
----
-
-### Base Statistics
-
-Displays:
-
-- HP
-- Attack
-- Defense
-- Special Attack
-- Special Defense
-- Speed
-- Base Stat Total
-
-Statistics should clearly distinguish between canonical values and game-specific changes.
-
----
-
-### Evolution
-
-Displays:
-
-- Evolution Chain
-- Evolution Requirements
-- Alternate Evolutions
-- Regional Evolutions
-- Branching Evolutions
-
-Evolution data should be fully interactive.
-
----
-
-### Learnsets
-
-Displays:
-
-- Level-Up Moves
-- TM/HM/TR Compatibility
-- Egg Moves
-- Tutor Moves
-- Event Moves
-
-Learnsets should respect the selected Game Context.
-
----
-
-### Encounters
-
-Displays:
-
-- Available Games
-- Locations
-- Encounter Methods
-- Encounter Rates
-- Conditions
-
-Encounter information should adapt to the currently selected version.
-
----
-
-### Pokédex Entries
-
-Displays:
-
-- Official Pokédex Entries
-- Multiple Languages
-- Historical Entries
-- Version Differences
-
----
-
-### Related Content
-
-Provides navigation to:
-
-- Moves
-- Abilities
-- Types
-- Locations
-- Trainers
-- Items
-- Forms
-- Evolutions
-
-The page should encourage exploration throughout the knowledge graph.
-
----
-
-## Related Features
-
-The Pokémon Details feature integrates closely with:
-
-- National Pokédex
-- Move Database
-- Ability Database
-- Type Database
-- Item Database
-- World Explorer
-- Collection Tracker
-- Team Builder
-- AI Assistant
-
-It serves as the primary destination for detailed Pokémon information.
-
----
-
-## Priority
-
-Critical
-
----
-
-## Status
-
-Planned
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Interactive stat comparison
-- Battle simulator preview
-- Animated models
-- Timeline of historical changes
-- Cross-game comparison mode
-- AI-generated summaries
-- Personal collection indicators
-- Strategy recommendations
-- Related Pokémon suggestions
-
----
-
-# KF-003 — Move Database
-
-## Feature Name
-
-Move Database
-
----
-
-## Purpose
-
-The Move Database provides a comprehensive reference for every official Pokémon move supported by Pokémon Companion.
-
-Its purpose is to allow trainers to browse, search, compare, and understand move mechanics while preserving historical accuracy across every supported Pokémon game.
-
-Rather than acting as a simple move list, the Move Database should expose relationships between moves, Pokémon, abilities, battle mechanics, machines, and game contexts, allowing trainers to fully understand how moves behave throughout the Pokémon franchise.
-
----
-
-## Category
-
-Knowledge
-
----
-
-## Primary Users
-
-- Every Trainer
-- Competitive Players
-- Researchers
-- Team Builders
-- Battle Enthusiasts
-
-The Move Database should support both quick lookups and detailed mechanical research.
-
----
-
-## Dependencies
-
-The Move Database depends upon:
-
-- Generated Database
-- Game Context Engine
-- Search Service
-- Navigation System
+- API Platform
 - Application Services
 
-Move information should always respect the selected Game Context.
-
----
-
-## Primary Datasets
-
-The Move Database primarily consumes:
-
-- Moves
-- Move Effects
-- Move Targets
-- Damage Classes
-- Types
-- Learnsets
-- Machines
-- Battle Flags
-- Contest Data
-- Historical Move Data
-
-Additional generated datasets may be used to optimize navigation and filtering.
-
----
-
-## User Interface
-
-The Move Database may include:
-
-### Move List
-
-Displays every official move with configurable layouts.
-
-Examples include:
-
-- Grid View
-- Table View
-- Compact View
-
----
-
-### Search
-
-Supports searching by:
-
-- Name
-- Type
-- Category
-- Power
-- Accuracy
-- PP
-- Effect
-
----
-
-### Filters
-
-Allows trainers to filter moves using criteria such as:
-
-- Type
-- Damage Class
-- Power Range
-- Accuracy Range
-- PP
-- Priority
-- Contact Moves
-- Sound Moves
-- Punch Moves
-- Bite Moves
-- Status Moves
-
-Filters should adapt as new mechanics are introduced.
-
----
-
-### Move Details
-
-Each move page may display:
-
-- Name
-- Type
-- Category
-- Power
-- Accuracy
-- PP
-- Priority
-- Effect Description
-- Target
-- Flags
-- Contest Information
-
----
-
-### Learnability
-
-Displays:
-
-- Pokémon that learn the move
-- Learn Methods
-- TM/HM/TR Compatibility
-- Tutor Availability
-- Event Distribution
-
-Information should respect the selected Game Context.
-
----
-
-### Historical Information
-
-Displays:
-
-- Power Changes
-- Accuracy Changes
-- PP Changes
-- Effect Changes
-- Category Changes
-- Distribution Changes
-
-Historical information should preserve differences between Pokémon games.
-
----
-
-### Related Content
-
-Provides navigation to:
-
-- Pokémon
-- Types
-- Abilities
-- Machines
-- Learnsets
-- Battle Mechanics
-
-The Move Database should encourage exploration throughout the knowledge graph.
-
----
-
-## Related Features
-
-The Move Database integrates closely with:
-
-- Pokémon Details
-- Ability Database
-- Type Database
-- Team Builder
-- Battle Analysis
-- AI Assistant
-- Global Search
-
-It serves as the authoritative reference for official Pokémon move mechanics.
-
 ---
 
 ## Priority
 
-High
+**Medium**
 
 ---
 
 ## Status
 
-Planned
+**Planned**
 
 ---
 
@@ -2428,1059 +1674,27 @@ Planned
 
 Potential future improvements include:
 
-- Move comparison
-- Damage formula visualization
-- Battle animation gallery
-- AI strategy recommendations
-- Move popularity statistics
-- Competitive usage insights
-- Interactive move simulator
-- Cross-generation comparison mode
+- Real-time monitoring dashboards
+- Predictive failure detection
+- Automated alert escalation
+- Performance anomaly detection
+- Distributed tracing
+- Infrastructure analytics
+- Capacity planning
+- Automated recovery workflows
+- Historical operational reports
 
 ---
 
-# KF-004 — Ability Database
-
-## Feature Name
-
-Ability Database
-
----
+# 4. Trainer Features
 
 ## Purpose
 
-The Ability Database provides a comprehensive reference for every official Pokémon Ability supported by Pokémon Companion.
+Trainer Features provide the personal experience layer of Pokémon Companion.
 
-Its purpose is to allow trainers to browse, search, compare, and understand Ability mechanics while preserving historical accuracy across every supported Pokémon game.
+Their purpose is to allow trainers to create, manage, and track their own Pokémon journey while maintaining a strict separation between canonical Pokémon knowledge and trainer-owned data.
 
-Rather than acting as a simple list of Abilities, the Ability Database should expose relationships between Abilities, Pokémon, moves, battle mechanics, forms, and game contexts, enabling trainers to fully understand how Abilities influence gameplay.
-
----
-
-## Category
-
-Knowledge
-
----
-
-## Primary Users
-
-- Every Trainer
-- Competitive Players
-- Researchers
-- Team Builders
-- Battle Enthusiasts
-
-The Ability Database should support both quick reference and detailed gameplay analysis.
-
----
-
-## Dependencies
-
-The Ability Database depends upon:
-
-- Generated Database
-- Game Context Engine
-- Search Service
-- Navigation System
-- Application Services
-
-Ability information should always reflect the selected Game Context.
-
----
-
-## Primary Datasets
-
-The Ability Database primarily consumes:
-
-- Abilities
-- Pokémon
-- Forms
-- Moves
-- Types
-- Battle Mechanics
-- Historical Ability Data
-
-Additional generated datasets may be used to optimize search and navigation.
-
----
-
-## User Interface
-
-The Ability Database may include:
-
-### Ability List
-
-Displays every official Ability with configurable layouts.
-
-Examples include:
-
-- Grid View
-- Table View
-- Compact View
-
----
-
-### Search
-
-Supports searching by:
-
-- Name
-- Effect
-- Category
-- Pokémon
-
----
-
-### Filters
-
-Allows trainers to filter Abilities using criteria such as:
-
-- Battle Effect
-- Exploration Effect
-- Hidden Ability
-- Generation Introduced
-- Distribution
-
-Additional filters may be introduced as new mechanics become available.
-
----
-
-### Ability Details
-
-Each Ability page may display:
-
-- Name
-- Description
-- Battle Effect
-- Outside Battle Effect
-- Generation Introduced
-- Availability
-- Historical Notes
-
----
-
-### Pokémon Distribution
-
-Displays:
-
-- Pokémon with the Ability
-- Hidden Ability Distribution
-- Form-specific Abilities
-- Regional Differences
-
-Distribution information should respect the selected Game Context.
-
----
-
-### Historical Information
-
-Displays:
-
-- Effect Changes
-- Distribution Changes
-- Availability Changes
-- Generation History
-
-Historical information should preserve official differences between Pokémon games.
-
----
-
-### Related Content
-
-Provides navigation to:
-
-- Pokémon
-- Moves
-- Types
-- Battle Mechanics
-- Forms
-- Evolution Chains
-
-The Ability Database should encourage exploration throughout the knowledge graph.
-
----
-
-## Related Features
-
-The Ability Database integrates closely with:
-
-- Pokémon Details
-- Move Database
-- Type Database
-- Team Builder
-- Battle Analysis
-- AI Assistant
-- Global Search
-
-It serves as the authoritative reference for official Pokémon Ability mechanics.
-
----
-
-## Priority
-
-High
-
----
-
-## Status
-
-Planned
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Ability comparison
-- Competitive usage statistics
-- AI-powered synergy analysis
-- Pokémon compatibility recommendations
-- Historical timeline visualization
-- Interactive battle demonstrations
-- Cross-generation comparison mode
-
----
-
-# KF-005 — Item Database
-
-## Feature Name
-
-Item Database
-
----
-
-## Purpose
-
-The Item Database provides a comprehensive reference for every official Pokémon item supported by Pokémon Companion.
-
-Its purpose is to allow trainers to browse, search, compare, and understand item mechanics, availability, and usage while preserving historical accuracy across every supported Pokémon game.
-
-Rather than acting as a simple inventory list, the Item Database should expose relationships between items, Pokémon, evolutions, locations, battle mechanics, machines, and game contexts.
-
-The Item Database should become the authoritative reference for official Pokémon items.
-
----
-
-## Category
-
-Knowledge
-
----
-
-## Primary Users
-
-- Every Trainer
-- Collectors
-- Competitive Players
-- Researchers
-- Adventure Players
-
-The Item Database should support both quick reference and detailed exploration.
-
----
-
-## Dependencies
-
-The Item Database depends upon:
-
-- Generated Database
-- Game Context Engine
-- Search Service
-- Navigation System
-- Application Services
-
-Item information should always respect the selected Game Context.
-
----
-
-## Primary Datasets
-
-The Item Database primarily consumes:
-
-- Items
-- Machines
-- Berries
-- Evolution Items
-- Held Items
-- Key Items
-- Battle Items
-- Item Categories
-- Locations
-- Historical Item Data
-
-Additional generated datasets may be used to optimize search and navigation.
-
----
-
-## User Interface
-
-The Item Database may include:
-
-### Item List
-
-Displays every official item with configurable layouts.
-
-Examples include:
-
-- Grid View
-- Table View
-- Compact View
-
----
-
-### Search
-
-Supports searching by:
-
-- Name
-- Category
-- Effect
-- Generation
-- Availability
-
----
-
-### Filters
-
-Allows trainers to filter items using criteria such as:
-
-- Held Items
-- Evolution Items
-- Battle Items
-- Key Items
-- Medicine
-- Poké Balls
-- Berries
-- Machines
-- Treasure Items
-
-Additional filters may be introduced as new item categories are added.
-
----
-
-### Item Details
-
-Each item page may display:
-
-- Name
-- Category
-- Description
-- Purchase Price
-- Sell Price
-- Effect
-- Generation Introduced
-- Availability
-
----
-
-### Item Usage
-
-Displays relationships such as:
-
-- Pokémon that evolve using the item
-- Pokémon that commonly hold the item
-- Machines that teach moves
-- Battle effects
-- Field effects
-
-Usage information should respect the selected Game Context.
-
----
-
-### Item Locations
-
-Displays:
-
-- Obtainable Locations
-- Shops
-- NPC Gifts
-- Hidden Items
-- Pickup Locations
-- Event Distribution
-
-Availability should adapt to the selected game.
-
----
-
-### Historical Information
-
-Displays:
-
-- Effect Changes
-- Availability Changes
-- Category Changes
-- Price Changes
-- Distribution History
-
-Historical information should preserve official differences between Pokémon games.
-
----
-
-### Related Content
-
-Provides navigation to:
-
-- Pokémon
-- Moves
-- Machines
-- Locations
-- Evolution Chains
-- Battle Mechanics
-
-The Item Database should encourage exploration throughout the knowledge graph.
-
----
-
-## Related Features
-
-The Item Database integrates closely with:
-
-- Pokémon Details
-- Move Database
-- World Explorer
-- Adventure Tracker
-- Team Builder
-- AI Assistant
-- Global Search
-
-It serves as the authoritative reference for official Pokémon items.
-
----
-
-## Priority
-
-High
-
----
-
-## Status
-
-Planned
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Item comparison
-- Location maps
-- Shopping planner
-- AI item recommendations
-- Collection progress indicators
-- Cross-generation comparison
-- Event distribution timeline
-- Interactive acquisition guides
-
----
-
-# KF-006 — Type Database
-
-## Feature Name
-
-Type Database
-
----
-
-## Purpose
-
-The Type Database provides a comprehensive reference for every official Pokémon type supported by Pokémon Companion.
-
-Its purpose is to help trainers understand offensive and defensive type interactions, explore Pokémon and move distributions, and learn how the type system evolves throughout the Pokémon franchise.
-
-Rather than presenting a simple effectiveness chart, the Type Database should act as the central knowledge portal for Pokémon typing and battle relationships.
-
----
-
-## Category
-
-Knowledge
-
----
-
-## Primary Users
-
-- Every Trainer
-- New Trainers
-- Competitive Players
-- Team Builders
-- Researchers
-
-The Type Database should support both learning and advanced strategic analysis.
-
----
-
-## Dependencies
-
-The Type Database depends upon:
-
-- Generated Database
-- Game Context Engine
-- Search Service
-- Navigation System
-- Application Services
-
-Type relationships should always reflect the selected Game Context.
-
----
-
-## Primary Datasets
-
-The Type Database primarily consumes:
-
-- Types
-- Type Effectiveness
-- Pokémon
-- Moves
-- Abilities
-- Historical Type Data
-
-Additional generated datasets may be used for optimized calculations and navigation.
-
----
-
-## User Interface
-
-The Type Database may include:
-
-### Type List
-
-Displays every official Pokémon type.
-
-Examples include:
-
-- Grid View
-- Compact View
-- Interactive Type Chart
-
----
-
-### Type Overview
-
-Each type page may display:
-
-- Name
-- Icon
-- Color
-- Generation Introduced
-- Description
-
----
-
-### Offensive Matchups
-
-Displays:
-
-- Super Effective Targets
-- Not Very Effective Targets
-- No Effect Targets
-
-Results should update automatically for the selected Game Context.
-
----
-
-### Defensive Matchups
-
-Displays:
-
-- Weaknesses
-- Resistances
-- Immunities
-
-The effectiveness chart should be interactive and easy to explore.
-
----
-
-### Pokémon Distribution
-
-Displays:
-
-- Pokémon with the Type
-- Primary Type Distribution
-- Secondary Type Distribution
-- Regional Variants
-- Form Variations
-
----
-
-### Move Distribution
-
-Displays:
-
-- Moves belonging to the Type
-- Physical Moves
-- Special Moves
-- Status Moves
-- Signature Moves
-
----
-
-### Historical Information
-
-Displays:
-
-- Generation Introduced
-- Historical Matchup Changes
-- Type Chart Changes
-- Newly Added Pokémon
-- Newly Added Moves
-
-Historical information should preserve official mechanics across every supported game.
-
----
-
-### Related Content
-
-Provides navigation to:
-
-- Pokémon
-- Moves
-- Abilities
-- Team Builder
-- Battle Analysis
-
-The Type Database should encourage exploration of the complete battle ecosystem.
-
----
-
-## Related Features
-
-The Type Database integrates closely with:
-
-- Pokémon Details
-- Move Database
-- Team Builder
-- Battle Analysis
-- Damage Calculator
-- AI Assistant
-- Global Search
-
-It serves as the authoritative reference for the Pokémon type system.
-
----
-
-## Priority
-
-High
-
----
-
-## Status
-
-Planned
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Interactive dual-type calculator
-- Type distribution statistics
-- Historical type comparison
-- Team coverage visualization
-- AI-powered type recommendations
-- Competitive usage insights
-- Matchup simulator
-- Cross-generation comparison mode
-
----
-
-# KF-007 — Region Database
-
-## Feature Name
-
-Region Database
-
----
-
-## Purpose
-
-The Region Database provides a comprehensive reference for every official Pokémon region supported by Pokémon Companion.
-
-Its purpose is to allow trainers to explore each region as a connected geographical and historical entity while preserving game-specific differences across every supported Pokémon title.
-
-Rather than acting as a simple list of regions, the Region Database should organize every location, route, city, landmark, trainer, and regional Pokédex into a unified exploration experience.
-
-Each region should serve as the entry point to its own section of the Pokémon world.
-
----
-
-## Category
-
-Knowledge
-
----
-
-## Primary Users
-
-- Every Trainer
-- Adventure Players
-- Completionists
-- Researchers
-
-The Region Database should support both exploration and historical research.
-
----
-
-## Dependencies
-
-The Region Database depends upon:
-
-- Generated Database
-- Game Context Engine
-- Navigation System
-- Search Service
-- Application Services
-
-Regional information should adapt to the selected Game Context.
-
----
-
-## Primary Datasets
-
-The Region Database primarily consumes:
-
-- Regions
-- Locations
-- Maps
-- Routes
-- Cities
-- Landmarks
-- Regional Pokédexes
-- Trainers
-- Encounter Tables
-
-Additional generated datasets may be used to optimize navigation.
-
----
-
-## User Interface
-
-The Region Database may include:
-
-### Region Overview
-
-Displays:
-
-- Region Name
-- Generation
-- Featured Games
-- Regional Map
-- Regional Pokédex
-- Introduction
-
----
-
-### Interactive Map
-
-Displays:
-
-- Routes
-- Cities
-- Towns
-- Dungeons
-- Landmarks
-- Special Locations
-
-Navigation should encourage exploration.
-
----
-
-### Regional Pokédex
-
-Displays:
-
-- Available Pokémon
-- Regional Variants
-- Regional Completion Progress
-
-Results should respect the selected Game Context.
-
----
-
-### Location Directory
-
-Displays:
-
-- Cities
-- Routes
-- Caves
-- Forests
-- Buildings
-- Islands
-
-Each location should link directly to its Location page.
-
----
-
-### Region Statistics
-
-Displays:
-
-- Number of Locations
-- Number of Pokémon
-- Number of Trainers
-- Regional Progress
-- Completion Statistics
-
----
-
-### Related Content
-
-Provides navigation to:
-
-- Location Database
-- Pokémon Details
-- Encounter Tables
-- Trainer Database
-- Adventure Tracker
-
----
-
-## Related Features
-
-The Region Database integrates closely with:
-
-- Location Database
-- World Explorer
-- Adventure Tracker
-- National Pokédex
-- Collection Tracker
-- Global Search
-
----
-
-## Priority
-
-Medium
-
----
-
-## Status
-
-Planned
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Historical regional comparison
-- Interactive travel planner
-- Regional achievements
-- Region timeline
-- AI exploration recommendations
-- Community exploration statistics
-
----
-
-# KF-008 — Location Database
-
-## Feature Name
-
-Location Database
-
----
-
-## Purpose
-
-The Location Database provides detailed information for every official Pokémon location supported by Pokémon Companion.
-
-Its purpose is to allow trainers to explore locations, discover encounters, locate items, understand geography, and navigate the Pokémon world while preserving historical accuracy across every supported game.
-
-Each location should function as an interconnected knowledge page rather than a simple map reference.
-
----
-
-## Category
-
-Knowledge
-
----
-
-## Primary Users
-
-- Adventure Players
-- Completionists
-- Collectors
-- Researchers
-
-The Location Database should become the definitive reference for Pokémon locations.
-
----
-
-## Dependencies
-
-The Location Database depends upon:
-
-- Generated Database
-- Game Context Engine
-- Navigation System
-- Search Service
-- World Services
-
-Location information should adapt dynamically to the selected Game Context.
-
----
-
-## Primary Datasets
-
-The Location Database primarily consumes:
-
-- Locations
-- Maps
-- Encounter Tables
-- Items
-- Trainers
-- Regions
-- Landmarks
-- World Relationships
-
----
-
-## User Interface
-
-The Location Database may include:
-
-### Location Overview
-
-Displays:
-
-- Name
-- Region
-- Map
-- Description
-- Connected Locations
-
----
-
-### Encounters
-
-Displays:
-
-- Wild Pokémon
-- Encounter Methods
-- Encounter Rates
-- Time Variations
-- Seasonal Variations
-
----
-
-### Trainers
-
-Displays:
-
-- Trainers
-- Trainer Classes
-- Teams
-- Rematches
-
----
-
-### Items
-
-Displays:
-
-- Hidden Items
-- Visible Items
-- NPC Gifts
-- Shops
-- Berry Trees
-
----
-
-### Navigation
-
-Displays:
-
-- Connected Routes
-- Buildings
-- Dungeons
-- Points of Interest
-
----
-
-### Historical Information
-
-Displays:
-
-- Version Differences
-- Layout Changes
-- Encounter Changes
-- Item Changes
-- Trainer Changes
-
-Historical information should preserve every supported game.
-
----
-
-### Related Content
-
-Provides navigation to:
-
-- Region Database
-- Pokémon Details
-- Item Database
-- Adventure Tracker
-- World Explorer
-
----
-
-## Related Features
-
-The Location Database integrates closely with:
-
-- Region Database
-- World Explorer
-- Adventure Tracker
-- National Pokédex
-- Item Database
-- Global Search
-
----
-
-## Priority
-
-Medium
-
----
-
-## Status
-
-Planned
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Interactive 3D maps
-- Encounter heatmaps
-- Collectible tracker
-- Route planner
-- Hidden item assistant
-- AI travel recommendations
-- Community notes
-- Screenshot location recognition
-
----
-
-# Trainer Features
-
-## Purpose
-
-Trainer Features support each trainer's personal journey throughout the Pokémon Companion platform.
-
-Their purpose is to help trainers organize adventures, manage progress, build teams, track goals, and personalize their Pokémon experience while remaining completely independent of the canonical Pokémon knowledge graph.
-
-Unlike Knowledge Features, which present official Pokémon information, Trainer Features manage user-generated data and interact with personal collections, achievements, and gameplay progress.
-
-Every Trainer Feature should enhance the trainer's individual experience without modifying official Pokémon knowledge.
+Trainer Features should never alter canonical Pokémon datasets. Instead, they reference canonical entities and maintain trainer-specific state around those entities.
 
 ---
 
@@ -3488,105 +1702,91 @@ Every Trainer Feature should enhance the trainer's individual experience without
 
 Trainer Features are responsible for:
 
-- Adventure tracking
-- Team management
-- Personal notes
-- Progress tracking
-- Achievement tracking
-- Personal statistics
-- Trainer customization
-- Game completion
+- Trainer identity
+- Trainer profiles
+- Adventures
+- Teams
+- Journaling
+- Trainer statistics
+- Achievements
+- Personal progression
+- Game-specific trainer state
 
-Trainer Features should focus on helping trainers achieve their own goals.
+Trainer Features should provide the foundation for every trainer's personal experience within Pokémon Companion.
 
 ---
 
 # Design Principles
 
-## User Ownership
+## Trainer Ownership
 
-Every trainer owns their own progress.
-
-Trainer Features should never modify canonical Pokémon data.
-
-Instead, they reference canonical entities through permanent identifiers.
-
----
-
-## Multi-Game Support
-
-Trainer Features should support multiple Pokémon games simultaneously.
-
-Each adventure should remain independent while sharing the same trainer profile.
+Trainer-owned data belongs to the trainer.
 
 Examples include:
 
-- Pokémon Emerald Adventure
-- Pokémon Platinum Adventure
-- Pokémon Scarlet Adventure
+- Teams
+- Adventures
+- Collection progress
+- Journal entries
+- Statistics
+- Achievements
+- Preferences
 
-Each adventure should maintain its own progress and history.
-
----
-
-## Context Awareness
-
-Trainer progress should always respect the selected Game Context.
-
-Examples include:
-
-- Gym Badges
-- Pokédex Completion
-- Available Pokémon
-- Story Progress
-- Regional Collections
-
-Changing the active Game Context should update the trainer experience accordingly.
+Canonical Pokémon information must remain separate and immutable.
 
 ---
 
-## Long-Term Progress
+## Game Context Awareness
 
-Trainer Features should preserve historical progress rather than overwrite it.
+Trainer data should always operate within an appropriate Game Context.
 
-Examples include:
+A trainer may have:
 
-- Completed Adventures
-- Historical Teams
-- Previous Collections
-- Past Achievements
+- Multiple adventures
+- Multiple teams
+- Multiple collections
+- Multiple games
+- Multiple saves or playthroughs
 
-A trainer's history should become richer over time.
+Trainer-owned data should never be assumed to belong to a single game unless explicitly associated with one.
 
 ---
 
-## Integration
+## Historical Accuracy
 
-Trainer Features should integrate naturally with:
+Trainer Features must respect the mechanics and progression rules of the selected Game Context.
 
-- Knowledge Features
-- Battle Features
-- Collection Features
-- Intelligence Features
-- Community Features
+For example:
 
-The trainer experience should feel like one connected platform.
+- A Pokémon should only be obtainable where it was actually obtainable.
+- A move should only be usable where it was actually available.
+- A gym should only appear when it exists in the selected game.
+- Evolution requirements should reflect the selected game.
+
+---
+
+## Non-Destructive Data
+
+Trainer Features should never modify canonical knowledge.
+
+Instead, trainer-owned records should reference canonical entities through stable identifiers.
+
+This allows the same Pokémon, move, item, location, or trainer entity to be reused across multiple games and trainer experiences.
 
 ---
 
 # Core Trainer Features
 
-The Trainer category currently includes:
+The Trainer category includes:
 
-- Adventure Tracker
+- Trainer Profiles
+- Adventures
 - Team Management
-- Saved Teams
+- Trainer Journal
 - Trainer Statistics
-- Personal Notes
-- Game Progress
 - Achievements
 
-Additional trainer capabilities may be introduced as Pokémon Companion expands.
+Additional trainer functionality may be introduced as Pokémon Companion expands.
 
 ---
 
@@ -3594,33 +1794,34 @@ Additional trainer capabilities may be introduced as Pokémon Companion expands.
 
 Trainer Features integrate closely with:
 
-- Dashboard
-- National Pokédex
+- Game Context Engine
+- Knowledge Features
 - Collection Features
-- World Features
 - Battle Features
-- AI Assistant
+- World Features
+- Intelligence Features
 - Community Features
+- Cloud Synchronization
 
-Trainer Features provide the personalized layer that transforms Pokémon Companion from a knowledge platform into a true companion application.
+Trainer Features form the personal state layer that connects canonical Pokémon information with individual trainer experiences.
 
 ---
 
-# TF-001 — Adventure Tracker
+# TF-001 — Trainer Profiles
 
 ## Feature Name
 
-Adventure Tracker
+Trainer Profiles
 
 ---
 
 ## Purpose
 
-The Adventure Tracker enables trainers to record, organize, and monitor their progress through every supported Pokémon game.
+Trainer Profiles provide each trainer with a persistent identity within Pokémon Companion.
 
-Its purpose is to provide a structured overview of each adventure, allowing trainers to resume gameplay, track objectives, monitor completion, and preserve the history of their Pokémon journeys.
+The profile represents the trainer rather than any single adventure or game.
 
-Rather than acting as a checklist, the Adventure Tracker should become the trainer's digital journey log.
+It should contain general trainer information while allowing individual adventures, teams, collections, achievements, and statistics to remain separate.
 
 ---
 
@@ -3633,109 +1834,267 @@ Trainer
 ## Primary Users
 
 - Every Trainer
-- Completionists
-- Nuzlocke Players
-- Challenge Run Players
+- Returning Players
+- Collectors
+- Competitive Players
+- Community Members
 
 ---
 
 ## Dependencies
 
-The Adventure Tracker depends upon:
+Trainer Profiles depend upon:
 
 - User Authentication
-- Game Context Engine
 - Application Services
-- User Datasets
-- Generated Database
+- Cloud Synchronization
+- Privacy Settings
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Adventure Tracker primarily consumes:
+Trainer Profiles may contain:
 
-- Adventures
-- Story Progress
-- Gym Badges
-- Elite Four Progress
-- Champion Status
-- Locations
-- Teams
-- Collections
-- Objectives
+- Trainer Name
+- Trainer Avatar
+- Favorite Pokémon
+- Favorite Game
+- Trainer Preferences
+- Account Creation Date
+- Profile Statistics
+- Privacy Settings
+
+Sensitive account information should remain outside the public trainer profile.
 
 ---
 
 ## User Interface
 
-The Adventure Tracker may include:
-
-### Adventure Overview
+### Profile Overview
 
 Displays:
 
-- Current Game
-- Current Save
-- Play Time
-- Current Location
-- Current Objective
+- Trainer Name
+- Avatar
+- Favorite Pokémon
+- Favorite Game
+- Achievements
+- Collection Summary
+- Adventure Summary
+
+Only information permitted by privacy settings should be visible to other trainers.
 
 ---
 
-### Story Progress
+### Profile Customization
 
-Tracks:
+Allows trainers to configure:
 
-- Story Milestones
-- Rival Battles
-- Team Encounters
-- Legendary Events
-- Game Completion
+- Trainer Name
+- Avatar
+- Favorite Pokémon
+- Profile Decoration
+- Public Profile Information
 
----
-
-### Badge Progress
-
-Displays:
-
-- Gym Badges
-- Trials
-- Elite Four
-- Champion Status
+Customization should not affect canonical Pokémon data.
 
 ---
 
-### Progress Timeline
+### Privacy Controls
 
-Displays:
+Allows trainers to control visibility of:
 
-- Important Events
-- Major Battles
-- Pokémon Captures
-- Milestones
+- Profile
+- Teams
+- Collections
+- Statistics
+- Adventures
+- Activity
+- Achievements
 
----
-
-### Notes
-
-Allows trainers to record:
-
-- Goals
-- Reminders
-- Route Plans
-- Personal Observations
+Privacy controls should be explicit and easy to understand.
 
 ---
 
 ## Related Features
 
-Integrates closely with:
+Trainer Profiles integrate with:
 
-- Dashboard
-- World Explorer
+- Friends
+- Shared Teams
+- Shared Collections
+- Leaderboards
+- Community Challenges
+- Achievements
+- Trainer Statistics
+
+---
+
+## Priority
+
+Critical
+
+---
+
+## Status
+
+Planned
+
+---
+
+## Future Enhancements
+
+Potential future improvements include:
+
+- Trainer titles
+- Profile badges
+- Custom profile themes
+- Trainer cards
+- Public achievement showcases
+- Profile customization packs
+
+---
+
+# TF-002 — Adventures
+
+## Feature Name
+
+Adventures
+
+---
+
+## Purpose
+
+The Adventures feature allows trainers to create and manage individual Pokémon playthroughs.
+
+An Adventure represents a specific journey through a specific Game Context.
+
+This distinction is essential because one trainer may play the same game multiple times, play different games simultaneously, or maintain separate challenge runs.
+
+---
+
+## Category
+
+Trainer
+
+---
+
+## Primary Users
+
+- Every Trainer
+- New Players
+- Returning Players
+- Challenge Run Players
+- Completionists
+
+---
+
+## Dependencies
+
+Adventures depend upon:
+
+- Trainer Profiles
+- Game Context Engine
+- World Features
+- Collection Features
+- Battle Features
+- Application Services
+
+---
+
+## Primary Data
+
+An Adventure may contain:
+
+- Adventure Name
+- Game Context
+- Character Name
+- Current Location
+- Story Progress
+- Badge Progress
+- Current Team
+- Adventure Statistics
+- Adventure Goals
+- Completion Status
+- Start Date
+- Completion Date
+
+---
+
+## User Interface
+
+### Adventure Overview
+
+Displays:
+
+- Adventure Name
+- Selected Game
+- Current Location
+- Story Progress
+- Badges
+- Current Team
+- Completion Percentage
+
+---
+
+### Adventure Creation
+
+Allows trainers to create a new adventure by selecting:
+
+- Game
+- Version
+- Region
+- Adventure Name
+- Trainer Name
+- Optional Challenge Rules
+
+The selected Game Context becomes the authoritative context for the adventure.
+
+---
+
+### Adventure Progress
+
+Allows trainers to track:
+
+- Story Events
+- Gyms
+- Badges
+- Rival Battles
+- Major Battles
+- Locations Visited
+- Important Items
+- Optional Objectives
+
+Progress should remain editable because Pokémon Companion is a tracking platform rather than an authoritative save file.
+
+---
+
+### Multiple Adventures
+
+A trainer may maintain multiple simultaneous adventures.
+
+Examples:
+
+- Pokémon FireRed normal playthrough
+- Pokémon FireRed Nuzlocke
+- Pokémon Emerald challenge run
+- Pokémon HeartGold completion run
+
+Each adventure should maintain independent progress.
+
+---
+
+## Related Features
+
+Adventures integrate with:
+
+- Adventure Tracker
+- Team Management
 - Collections
-- Team Builder
+- World Explorer
+- Battle Features
+- Adventure Guidance
 - AI Assistant
 
 ---
@@ -3756,17 +2115,17 @@ Planned
 
 Potential future improvements include:
 
-- Multiple save slots
-- Nuzlocke mode
-- Randomizer support
-- Auto-save import
-- Emulator integration
-- Timeline replay
+- Save file import
+- Automatic progression detection
 - Challenge templates
+- Adventure comparison
+- Adventure timeline
+- Playthrough statistics
+- Adventure sharing
 
 ---
 
-# TF-002 — Team Management
+# TF-003 — Team Management
 
 ## Feature Name
 
@@ -3776,13 +2135,11 @@ Team Management
 
 ## Purpose
 
-The Team Management feature enables trainers to create, organize, customize, and maintain Pokémon teams throughout their adventures.
+Team Management enables trainers to create, organize, and maintain Pokémon teams for their adventures and battle objectives.
 
-Its purpose is to provide a centralized workspace for managing active teams, competitive teams, challenge teams, and historical teams while integrating seamlessly with the Pokémon Companion knowledge graph.
+Teams are trainer-owned compositions that reference canonical Pokémon entities while storing trainer-specific information separately.
 
-Rather than functioning solely as a team builder, Team Management should become the trainer's complete team organization system.
-
-Every team should remain connected to canonical Pokémon data while preserving trainer-specific customizations.
+A trainer may create multiple teams and associate them with different adventures, games, or objectives.
 
 ---
 
@@ -3797,138 +2154,117 @@ Trainer
 - Every Trainer
 - Competitive Players
 - Challenge Run Players
-- Collectors
-- Team Builders
-
-The Team Management feature should support both casual gameplay and advanced team organization.
+- New Players
+- Researchers
 
 ---
 
 ## Dependencies
 
-The Team Management feature depends upon:
+Team Management depends upon:
 
-- User Authentication
-- Application Services
-- User Datasets
-- Generated Database
+- Trainer Profiles
+- Adventures
+- Pokémon Knowledge
+- Move Knowledge
+- Ability Knowledge
+- Item Knowledge
 - Game Context Engine
-
-Optional integrations may include AI recommendations and Cloud Synchronization.
+- Application Services
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Team Management feature primarily consumes:
+Teams may contain:
 
-- Teams
-- Team Pokémon
-- Pokémon
-- Forms
+- Team Name
+- Game Context
+- Adventure
+- Pokémon References
 - Moves
 - Abilities
-- Items
-- Natures
-- Trainer Collections
+- Held Items
+- Levels
+- Nicknames
+- Team Notes
+- Team Roles
 
-Trainer-owned data should reference canonical Pokémon entities without duplicating them.
+Canonical Pokémon data should remain referenced rather than copied into trainer-owned records.
 
 ---
 
 ## User Interface
 
-The Team Management feature may include:
-
-### Team Library
+### Team Overview
 
 Displays:
 
-- Active Teams
-- Saved Teams
-- Favorite Teams
-- Archived Teams
-
-Teams should be searchable and easy to organize.
+- Team Name
+- Game
+- Adventure
+- Team Members
+- Levels
+- Types
+- Roles
+- Team Notes
 
 ---
 
-### Team Editor
+### Team Builder
 
 Allows trainers to:
 
 - Add Pokémon
 - Remove Pokémon
-- Rearrange Team Order
-- Rename Teams
+- Change Moves
+- Assign Held Items
+- Configure Abilities
+- Set Levels
 - Add Notes
-- Assign Game Context
+- Reorder Team Members
 
-The Team Editor should support both casual and competitive teams.
-
----
-
-### Pokémon Configuration
-
-Each team member may include:
-
-- Species
-- Form
-- Nickname
-- Level
-- Nature
-- Ability
-- Held Item
-- Moves
-- EVs
-- IVs
-- Tera Type (where applicable)
-
-Configuration options should adapt to the selected Game Context.
+The builder should validate selections against the selected Game Context.
 
 ---
 
-### Team Organization
+### Multiple Teams
 
-Allows trainers to organize teams using:
+Trainers may maintain multiple teams for:
 
-- Tags
-- Favorites
-- Categories
-- Game
-- Challenge Type
-- Last Modified
-
-Organization tools should scale efficiently for large collections of teams.
+- Story Progression
+- Gym Preparation
+- Elite Four
+- Competitive Battles
+- Challenge Runs
+- Collection Goals
 
 ---
 
-### Import & Export
+### Team Import
 
-Supports:
+Teams may eventually be imported from:
 
-- Team Sharing
-- Import
-- Export
-- Backup
-- Copy Team
+- Other Pokémon Companion teams
+- Shared Teams
+- External battle formats
+- Save files
 
-Supported formats may expand as the platform evolves.
+Imported teams should become trainer-owned records.
 
 ---
 
 ## Related Features
 
-The Team Management feature integrates closely with:
+Team Management integrates with:
 
-- Adventure Tracker
-- Pokémon Details
-- Team Builder
-- Battle Analysis
-- Collection Features
+- Team Analysis
+- Damage Calculator
+- Battle Simulator
+- Strategy Planner
+- Team Recommendations
+- Shared Teams
 - AI Assistant
-
-Team Management serves as the central hub for all trainer-created teams.
 
 ---
 
@@ -3948,20 +2284,18 @@ Planned
 
 Potential future improvements include:
 
-- Team version history
 - Team templates
-- Team collaboration
-- Cross-game compatibility analysis
-- AI team optimization
-- Team performance analytics
-- QR code import/export
-- Cloud synchronization
-- Team comparison
-- Automatic legality validation
+- Team version history
+- Team duplication
+- Team export
+- External format import
+- Team sharing
+- AI team building
+- Automatic team validation
 
 ---
 
-# TF-003 — Trainer Journal
+# TF-004 — Trainer Journal
 
 ## Feature Name
 
@@ -3971,13 +2305,11 @@ Trainer Journal
 
 ## Purpose
 
-The Trainer Journal allows trainers to document, organize, and revisit their Pokémon adventures through personal notes, milestones, memorable events, and gameplay history.
+The Trainer Journal provides trainers with a personal record of their Pokémon adventures.
 
-Its purpose is to preserve the story behind each adventure rather than simply recording statistics.
+It allows trainers to document memorable events, discoveries, battles, milestones, and personal notes throughout their journeys.
 
-The Trainer Journal should become the trainer's personal logbook, capturing experiences that cannot be represented through structured progress tracking alone.
-
-Every journal belongs exclusively to the trainer while remaining connected to the appropriate adventure and canonical Pokémon data.
+The journal is entirely trainer-owned and should remain independent from canonical Pokémon data.
 
 ---
 
@@ -3990,120 +2322,110 @@ Trainer
 ## Primary Users
 
 - Every Trainer
-- Story-focused Players
-- Challenge Run Players
+- Story Players
 - Completionists
-- Content Creators
-
-The Trainer Journal should encourage trainers to document their unique Pokémon journey.
+- Challenge Run Players
+- Collectors
 
 ---
 
 ## Dependencies
 
-The Trainer Journal depends upon:
+Trainer Journal depends upon:
 
-- User Authentication
+- Trainer Profiles
+- Adventures
 - Application Services
-- User Datasets
-- Adventure Tracker
-- Game Context Engine
-
-Optional integrations may include AI-generated summaries and Cloud Synchronization.
+- Cloud Synchronization
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Trainer Journal primarily consumes:
+Journal entries may contain:
 
-- Adventures
-- Journal Entries
-- Milestones
-- Teams
-- Locations
-- Pokémon
-- Screenshots
+- Adventure
+- Entry Title
+- Entry Content
+- Date
+- Location
+- Pokémon References
+- Battle References
+- Story Event References
+- Tags
 - Attachments
-
-Journal entries should reference canonical Pokémon entities without duplicating their information.
 
 ---
 
 ## User Interface
 
-The Trainer Journal may include:
-
 ### Journal Timeline
 
-Displays:
+Displays entries chronologically.
 
-- Daily Entries
-- Adventure Milestones
-- Major Battles
-- Pokémon Captures
-- Story Events
+Entries may be grouped by:
 
-The timeline should provide a chronological history of each adventure.
-
----
-
-### Journal Entry Editor
-
-Allows trainers to:
-
-- Write Notes
-- Add Screenshots
-- Link Pokémon
-- Link Locations
-- Link Teams
-- Add Tags
-
-Entries should support both short notes and detailed adventure logs.
+- Adventure
+- Game
+- Region
+- Location
+- Date
+- Category
 
 ---
 
-### Milestones
+### Journal Entry
 
 Allows trainers to record:
 
-- First Badge
-- Legendary Encounters
-- Champion Victory
-- Shiny Encounters
-- Personal Records
-- Challenge Milestones
-
-Milestones should become part of the trainer's permanent history.
+- Important Battles
+- New Pokémon
+- Gym Victories
+- Story Events
+- Collection Milestones
+- Personal Notes
+- Memorable Moments
 
 ---
 
-### Search & Organization
+### Journal Search
 
-Allows trainers to organize entries using:
+Allows trainers to search their own journal using:
 
-- Tags
-- Adventure
-- Date
+- Keywords
 - Pokémon
-- Location
-- Challenge Type
+- Locations
+- Adventures
+- Tags
+- Dates
 
-The journal should remain easy to browse even after years of gameplay.
+---
+
+### Journal Linking
+
+Journal entries may reference canonical entities such as:
+
+- Pokémon
+- Locations
+- Trainers
+- Items
+- Moves
+- Adventures
+
+References should remain links to canonical entities rather than duplicated records.
 
 ---
 
 ## Related Features
 
-The Trainer Journal integrates closely with:
+Trainer Journal integrates with:
 
-- Adventure Tracker
-- Team Management
+- Adventures
+- Trainer Profiles
+- Achievements
+- Collections
 - World Explorer
-- Collection Features
 - AI Assistant
-
-The Journal complements structured progress by preserving personal experiences.
 
 ---
 
@@ -4123,19 +2445,17 @@ Planned
 
 Potential future improvements include:
 
-- Rich text formatting
-- Photo galleries
-- Video attachments
-- Voice notes
-- AI-generated adventure summaries
-- Export to PDF
-- Public journals
-- Shared travel logs
-- Timeline replay
+- Automatic journal events
+- Screenshot attachments
+- Battle replay references
+- Timeline visualization
+- Journal export
+- AI-generated summaries
+- Adventure recap generation
 
 ---
 
-# TF-004 — Trainer Statistics
+# TF-005 — Trainer Statistics
 
 ## Feature Name
 
@@ -4145,13 +2465,17 @@ Trainer Statistics
 
 ## Purpose
 
-The Trainer Statistics feature provides a comprehensive analytical overview of a trainer's activity throughout Pokémon Companion.
+Trainer Statistics provide trainers with measurable insights into their Pokémon Companion activity and progression.
 
-Its purpose is to transform gameplay history, collections, adventures, and achievements into meaningful statistics that help trainers understand their long-term progress.
+Statistics should summarize trainer-owned data without altering or duplicating canonical Pokémon knowledge.
 
-Rather than displaying isolated numbers, Trainer Statistics should reveal trends, milestones, accomplishments, and gameplay patterns across every supported Pokémon game.
+The system should distinguish between:
 
-The feature should provide insights while preserving the trainer's complete history.
+1. Lifetime trainer statistics
+2. Adventure-specific statistics
+3. Game-specific statistics
+4. Collection-specific statistics
+5. Battle-specific statistics
 
 ---
 
@@ -4165,146 +2489,108 @@ Trainer
 
 - Every Trainer
 - Completionists
-- Collectors
 - Competitive Players
+- Collectors
 - Researchers
-
-Trainer Statistics should support both casual curiosity and detailed progress analysis.
 
 ---
 
 ## Dependencies
 
-The Trainer Statistics feature depends upon:
+Trainer Statistics depend upon:
 
-- User Authentication
+- Trainer Profiles
+- Adventures
+- Collections
+- Battle Features
+- Achievements
 - Application Services
-- User Datasets
-- Adventure Tracker
-- Collection Features
-- Team Management
-
-Statistics should always be generated from existing trainer data rather than stored independently.
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Trainer Statistics feature primarily consumes:
+Statistics may include:
 
-- Adventures
-- Teams
-- Collections
-- Achievements
-- Journal Entries
-- Trainer Profile
+- Pokémon Caught
+- Pokémon Seen
+- Battles Won
+- Battles Lost
+- Gyms Completed
+- Badges Earned
+- Locations Visited
+- Items Collected
+- Collection Completion
+- Adventures Completed
+- Playtime
+- Achievements Earned
 
-Statistical summaries should reference user datasets without duplicating underlying information.
+Statistics should be derived from trainer-owned records wherever possible.
 
 ---
 
 ## User Interface
 
-The Trainer Statistics feature may include:
-
-### Overall Summary
+### Statistics Overview
 
 Displays:
 
-- Total Adventures
-- Total Play Time
-- Games Completed
-- Active Adventures
-- Completion Percentage
-
----
-
-### Pokémon Statistics
-
-Displays:
-
-- Pokémon Caught
-- Pokémon Seen
-- Pokémon Trained
-- Shiny Pokémon
-- Legendary Pokémon
-- Mythical Pokémon
-
----
-
-### Battle Statistics
-
-Displays:
-
-- Battles Won
-- Battles Lost
-- Win Percentage
-- Gym Battles
-- Elite Four Victories
-- Champion Victories
-
----
-
-### Collection Statistics
-
-Displays:
-
-- Living Dex Progress
-- Regional Pokédex Progress
-- Shiny Collection Progress
-- Form Collection Progress
-- Ribbon Collection Progress
-
----
-
-### Team Statistics
-
-Displays:
-
-- Teams Created
-- Favorite Team
-- Most Used Pokémon
-- Most Used Types
-- Average Team Level
-
----
-
-### Achievement Statistics
-
-Displays:
-
-- Achievements Earned
-- Milestones Reached
-- Completion Rate
-- Recent Achievements
-
----
-
-### Progress Charts
-
-Provides visualizations such as:
-
-- Adventure Timeline
-- Collection Growth
-- Battle Activity
+- Overall Progress
+- Collection Progress
+- Battle Performance
+- Adventure Progress
 - Achievement Progress
 
-Charts should help trainers understand long-term trends.
+---
+
+### Adventure Statistics
+
+Displays statistics for an individual adventure.
+
+Examples include:
+
+- Pokémon Caught
+- Battles
+- Badges
+- Locations
+- Story Progress
+
+---
+
+### Historical Statistics
+
+Allows trainers to view progression over time.
+
+Examples include:
+
+- Collection Growth
+- Battle Improvement
+- Adventure Completion
+- Achievement Progress
+
+---
+
+### Privacy
+
+Trainers should control whether statistics are:
+
+- Private
+- Friends Only
+- Public
 
 ---
 
 ## Related Features
 
-The Trainer Statistics feature integrates closely with:
+Trainer Statistics integrate with:
 
-- Adventure Tracker
-- Team Management
-- Trainer Journal
-- Collection Features
+- Trainer Profiles
+- Adventures
+- Collections
+- Battle Statistics
 - Achievements
-- Dashboard
-
-Trainer Statistics summarizes information generated by other Trainer Features.
+- Leaderboards
+- Collection Analysis
 
 ---
 
@@ -4324,19 +2610,17 @@ Planned
 
 Potential future improvements include:
 
-- Cross-game analytics
-- Interactive dashboards
+- Advanced analytics
+- Progress graphs
 - Historical comparisons
-- Yearly summaries
-- Personal records
+- Performance forecasting
 - AI-generated insights
-- Exportable reports
-- Community comparisons
-- Custom statistics
+- Friend comparisons
+- Achievement recommendations
 
 ---
 
-# TF-005 — Achievements
+# TF-006 — Achievements
 
 ## Feature Name
 
@@ -4346,13 +2630,20 @@ Achievements
 
 ## Purpose
 
-The Achievements feature recognizes and celebrates a trainer's accomplishments throughout Pokémon Companion.
+The Achievements feature provides trainers with goals and recognition for completing meaningful activities throughout Pokémon Companion.
 
-Its purpose is to reward meaningful progress, encourage exploration, and provide long-term goals that extend beyond completing individual Pokémon games.
+Achievements should recognize multiple playstyles rather than focusing exclusively on competitive performance.
 
-Rather than acting as a simple checklist, Achievements should represent milestones across every aspect of the trainer's journey, including adventures, collections, battles, exploration, and platform engagement.
+Examples include:
 
-Achievements should motivate continued progress while preserving a permanent record of the trainer's accomplishments.
+- Completing a Pokédex
+- Defeating a Gym
+- Completing an Adventure
+- Collecting rare Pokémon
+- Discovering hidden items
+- Completing challenge runs
+
+Achievements should remain separate from canonical Pokémon information.
 
 ---
 
@@ -4370,130 +2661,103 @@ Trainer
 - Competitive Players
 - Challenge Run Players
 
-Achievements should encourage both casual and dedicated trainers to explore more of the platform.
-
 ---
 
 ## Dependencies
 
-The Achievements feature depends upon:
+Achievements depend upon:
 
-- User Authentication
-- Application Services
-- Adventure Tracker
-- Team Management
-- Trainer Statistics
-- Collection Features
+- Trainer Profiles
+- Adventures
+- Collections
 - Battle Features
-
-Achievements should always be generated from trainer activity rather than manually awarded.
+- World Features
+- Application Services
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Achievements feature primarily consumes:
+Achievement records may contain:
 
-- Achievements
-- Adventures
-- Teams
-- Collections
-- Battle Records
-- Trainer Statistics
-- Journal Entries
-
-Achievement progress should reference trainer data without duplicating it.
+- Achievement Definition
+- Achievement Category
+- Requirements
+- Progress
+- Completion Status
+- Completion Date
+- Related Adventure
+- Related Game Context
+- Reward Information
 
 ---
 
 ## User Interface
 
-The Achievements feature may include:
-
-### Achievement Gallery
+### Achievement Overview
 
 Displays:
 
-- Earned Achievements
-- Locked Achievements
-- Achievement Categories
+- Completed Achievements
+- Incomplete Achievements
+- Progress
+- Categories
 - Completion Percentage
 
-Achievements should be grouped by category for easy navigation.
-
 ---
 
-### Achievement Details
+### Achievement Categories
 
-Each achievement may display:
-
-- Name
-- Description
-- Icon
-- Category
-- Progress
-- Date Earned
-- Rarity
-
----
-
-### Categories
-
-Achievements may include:
+Possible categories include:
 
 - Adventure
 - Collection
 - Battle
 - Exploration
-- Team Building
+- Completion
+- Challenge
 - Community
-- Platform
-- Special Events
-
-Additional categories may be introduced as Pokémon Companion expands.
 
 ---
 
-### Progress Tracking
+### Achievement Details
 
 Displays:
 
+- Description
+- Requirements
 - Current Progress
-- Remaining Objectives
-- Estimated Completion
-- Recently Unlocked Achievements
+- Completion Status
+- Completion Date
+- Rewards
 
-Progress should update automatically as trainers use the platform.
+Requirements should be clearly explained.
 
 ---
 
-### Milestone Highlights
+### Achievement Notifications
 
-Highlights major accomplishments such as:
+The system may notify trainers when:
 
-- First Adventure Completed
-- Champion Defeated
-- Living Dex Completed
-- First Shiny Found
-- 100 Battles Won
-- 1,000 Pokémon Registered
+- An achievement is completed
+- Progress reaches a milestone
+- A new achievement becomes available
 
-Milestones should become part of the trainer's permanent history.
+Notifications should remain configurable.
 
 ---
 
 ## Related Features
 
-The Achievements feature integrates closely with:
+Achievements integrate with:
 
-- Adventure Tracker
-- Team Management
-- Trainer Statistics
-- Collection Features
-- Battle Features
-- Dashboard
-
-Achievements summarize progress across the entire Pokémon Companion platform.
+- Trainer Profiles
+- Adventures
+- Collections
+- Battle Statistics
+- World Explorer
+- Community Challenges
+- Leaderboards
 
 ---
 
@@ -4513,27 +2777,25 @@ Planned
 
 Potential future improvements include:
 
-- Secret Achievements
-- Seasonal Achievements
-- Community Challenges
-- Limited-Time Events
-- Achievement Showcase
-- Shareable Achievement Cards
-- AI Achievement Recommendations
-- Custom Achievement Collections
-- Cross-Game Milestones
+- Achievement tiers
+- Hidden achievements
+- Seasonal achievements
+- Adventure-specific achievements
+- Community achievements
+- Achievement showcases
+- Achievement recommendations
 
-# Collection Features
+---
+
+# 5. Collection Features
 
 ## Purpose
 
-Collection Features enable trainers to track, organize, analyze, and complete their personal Pokémon collections across every supported Pokémon game.
+Collection Features provide comprehensive systems for tracking, organizing, and completing Pokémon-related collections.
 
-Their purpose is to transform Pokémon Companion into a comprehensive collection management platform by allowing trainers to monitor ownership, completion, rarity, and progress while preserving historical accuracy across multiple game contexts.
+Their purpose is to transform Pokémon Companion from a reference platform into a long-term collection management system.
 
-Unlike Knowledge Features, which present official Pokémon information, Collection Features manage trainer-owned collections without modifying the canonical Pokémon knowledge graph.
-
-Every Collection Feature should reference canonical Pokémon entities while storing only trainer-specific ownership and progress.
+Collection Features should allow trainers to track Pokémon and associated achievements across multiple games while preserving the distinction between canonical knowledge and trainer-owned progress.
 
 ---
 
@@ -4541,14 +2803,15 @@ Every Collection Feature should reference canonical Pokémon entities while stor
 
 Collection Features are responsible for:
 
-- Tracking owned Pokémon
-- Monitoring collection progress
-- Recording rare collectibles
-- Managing collection goals
-- Calculating completion statistics
-- Preserving collection history
-
-Collection Features should support both casual collectors and completionists.
+- Pokémon collection tracking
+- Pokédex completion
+- Shiny tracking
+- Form tracking
+- Ribbon tracking
+- Mark tracking
+- Prestige tracking
+- Collection statistics
+- Completion planning
 
 ---
 
@@ -4556,75 +2819,55 @@ Collection Features should support both casual collectors and completionists.
 
 ## Canonical References
 
-Collections should always reference canonical entities using permanent identifiers.
+Collections should reference canonical Pokémon entities.
 
-Trainer-owned data should never duplicate canonical Pokémon information.
+A trainer's collection should never duplicate the complete canonical Pokémon record.
 
 ---
 
-## Multi-Game Support
+## Game Context Awareness
 
-Collections should support every official Pokémon game independently.
+Collection availability should always respect the selected Game Context.
+
+A collection record should distinguish between:
+
+- Species
+- Form
+- Game
+- Region
+- Generation
+- Availability
+
+---
+
+## Multiple Collection Models
+
+Pokémon Companion should support different collection goals without forcing all trainers into a single completion model.
 
 Examples include:
 
-- Pokémon Emerald Living Dex
-- Pokémon Platinum Living Dex
-- Pokémon Scarlet Living Dex
-
-Collections from different games should remain separate while contributing to overall trainer statistics.
-
----
-
-## Context Awareness
-
-Collection progress should always respect the selected Game Context.
-
-Examples include:
-
-- Regional Pokédexes
-- Version-exclusive Pokémon
-- Game-specific Forms
-- Regional Variants
-- Historical availability
-
-Changing the active Game Context should automatically update collection progress.
+- Regional Pokédex
+- National Pokédex
+- Living Dex
+- Shiny Dex
+- Form Dex
+- Ribbon Collection
+- Mark Collection
+- Prestige Collection
 
 ---
 
-## Long-Term Preservation
+## Collection Ownership
 
-Collections should preserve historical ownership and completion.
+Collection progress is trainer-owned.
 
-Examples include:
-
-- Previously completed collections
-- Historical Living Dex progress
-- Legacy event Pokémon
-- Archived adventures
-
-Collection history should never be lost.
-
----
-
-## Integration
-
-Collection Features should integrate naturally with:
-
-- Knowledge Features
-- Trainer Features
-- Battle Features
-- World Features
-- Intelligence Features
-- Community Features
-
-Collections should become a central part of the trainer experience.
+Canonical availability determines what can exist within a game context, while trainer-owned state determines what the trainer has collected.
 
 ---
 
 # Core Collection Features
 
-The Collection category currently includes:
+The Collection category includes:
 
 - Living Dex
 - Regional Pokédex
@@ -4632,25 +2875,23 @@ The Collection category currently includes:
 - Form Collection
 - Ribbon Collection
 - Mark Collection
+- Prestige Collection
 - Collection Statistics
-
-Additional collection types may be introduced as Pokémon Companion expands.
 
 ---
 
 # Feature Relationships
 
-Collection Features integrate closely with:
+Collection Features integrate with:
 
-- National Pokédex
-- Pokémon Details
-- Adventure Tracker
-- Team Management
-- Trainer Statistics
-- Global Search
-- AI Assistant
+- Trainer Features
+- Knowledge Features
+- World Features
+- Battle Features
+- Intelligence Features
+- Community Features
 
-Collection Features transform Pokémon Companion from a reference application into a long-term collection management platform.
+Collections provide one of the primary sources of long-term trainer progression.
 
 ---
 
@@ -4664,13 +2905,9 @@ Living Dex
 
 ## Purpose
 
-The Living Dex feature enables trainers to build, organize, and monitor a complete living collection of Pokémon across every supported Pokémon game.
+The Living Dex enables trainers to track ownership of every required Pokémon simultaneously rather than simply recording whether a species has been encountered.
 
-Its purpose is to provide a comprehensive system for tracking permanent ownership of Pokémon while preserving historical accuracy, game-specific availability, and trainer-defined collection goals.
-
-Rather than functioning as a simple completion tracker, the Living Dex should become the central collection experience within Pokémon Companion.
-
-Every recorded Pokémon should reference canonical Pokémon entities while storing trainer-specific ownership information separately.
+The system should support comprehensive Living Dex goals while accounting for Game Context availability.
 
 ---
 
@@ -4682,159 +2919,107 @@ Collection
 
 ## Primary Users
 
-- Every Trainer
-- Collectors
 - Completionists
-- Living Dex Enthusiasts
+- Collectors
 - Researchers
-
-The Living Dex should support both casual collecting and long-term completion goals.
+- Every Trainer
 
 ---
 
 ## Dependencies
 
-The Living Dex depends upon:
+Living Dex depends upon:
 
-- User Authentication
-- Application Services
-- User Datasets
-- Generated Database
+- Pokémon Database
+- Species
+- Forms
 - Game Context Engine
-- National Pokédex
-
-Collection progress should always respect the selected Game Context.
+- Trainer Profiles
+- Adventures
+- Collection Statistics
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Living Dex primarily consumes:
+Living Dex records may contain:
 
-- Pokémon
 - Species
-- Forms
-- User Collections
-- Adventures
-- Regions
-- Game Contexts
-
-Trainer-owned data should reference canonical Pokémon entities without duplicating canonical information.
+- Form
+- Ownership Status
+- Game Context
+- Adventure
+- Collection Location
+- Shiny Status
+- Nickname
+- Notes
 
 ---
 
 ## User Interface
 
-The Living Dex may include:
-
-### Collection Overview
+### Dex Overview
 
 Displays:
 
+- Total Required
 - Total Owned
-- Total Missing
+- Missing Pokémon
 - Completion Percentage
-- Recently Added Pokémon
-- Collection Milestones
 
 ---
 
 ### Pokémon Grid
 
-Displays every Pokémon using configurable layouts.
+Each entry displays:
 
-Examples include:
-
-- National Order
-- Regional Order
-- Generation Order
-- Custom Collections
-
-Each Pokémon should clearly indicate its ownership status.
-
----
-
-### Ownership Status
-
-Allows trainers to track:
-
-- Owned
-- Missing
-- Seen
-- Transferred
-- Released
-- In Progress
-
-Additional ownership states may be introduced in future versions.
-
----
-
-### Collection Filters
-
-Allows trainers to filter Pokémon using:
-
-- Generation
-- Region
-- Type
-- Evolution Stage
-- Legendary Status
-- Mythical Status
-- Game Availability
+- Pokémon
+- Form
 - Ownership Status
-
-Filters should remain consistent with the National Pokédex.
-
----
-
-### Collection Progress
-
-Displays progress by:
-
-- National Pokédex
-- Regional Pokédex
-- Generation
-- Game
-- Type
-- Evolution Family
-
-Progress should update automatically as the collection grows.
+- Shiny Status
+- Game Source
 
 ---
 
-### Collection Notes
+### Missing Pokémon
 
-Allows trainers to record:
+Allows trainers to identify:
 
-- Capture Location
-- Original Game
-- Original Trainer
-- Special Notes
-- Personal Tags
+- Missing Species
+- Missing Forms
+- Unavailable Pokémon
+- Version Exclusives
+- Evolution Requirements
 
-These notes belong to the trainer and never modify canonical Pokémon data.
+---
+
+### Collection Goals
+
+Trainers may create goals such as:
+
+- Regional Living Dex
+- National Living Dex
+- Game-Specific Living Dex
+- Shiny Living Dex
 
 ---
 
 ## Related Features
 
-The Living Dex integrates closely with:
+Living Dex integrates with:
 
-- National Pokédex
-- Pokémon Details
-- Adventure Tracker
-- Trainer Statistics
 - Regional Pokédex
-- Shiny Collection
-- Form Collection
+- World Explorer
+- Encounter Tables
+- Collection Analysis
+- Adventure Guidance
 - AI Assistant
-
-The Living Dex serves as the foundation for all Pokémon collection tracking.
 
 ---
 
 ## Priority
 
-Critical
+High
 
 ---
 
@@ -4848,16 +3033,13 @@ Planned
 
 Potential future improvements include:
 
-- Multiple Living Dex profiles
-- Cross-game synchronization
-- Duplicate detection
-- Collection templates
-- AI completion recommendations
-- Missing Pokémon planner
-- Collection sharing
-- Historical collection timeline
-- Import from Pokémon HOME
-- Save file integration
+- Automatic acquisition planning
+- Evolution chain planning
+- Version-exclusive planning
+- Trade planning
+- Cross-game ownership
+- Duplicate management
+- Storage box visualization
 
 ---
 
@@ -4871,13 +3053,9 @@ Regional Pokédex
 
 ## Purpose
 
-The Regional Pokédex feature enables trainers to track and complete regional Pokédexes for every supported Pokémon game.
+The Regional Pokédex enables trainers to track their progress against the Pokédex associated with a specific Game Context.
 
-Its purpose is to provide game-specific collection progress while respecting each game's official regional Pokédex, version differences, and Game Context.
-
-Unlike the Living Dex, which focuses on permanent ownership, the Regional Pokédex focuses on completing the official Pokédex associated with a particular region or adventure.
-
-Each Regional Pokédex should remain independent while contributing to the trainer's overall collection progress.
+Unlike the Living Dex, the Regional Pokédex focuses on completion status rather than simultaneous physical ownership.
 
 ---
 
@@ -4891,122 +3069,86 @@ Collection
 
 - Every Trainer
 - Completionists
-- Adventure Players
-- Collectors
-
-The Regional Pokédex should support trainers progressing through both current and historical Pokémon games.
+- New Players
+- Researchers
 
 ---
 
 ## Dependencies
 
-The Regional Pokédex depends upon:
+Regional Pokédex depends upon:
 
-- User Authentication
-- Application Services
-- User Datasets
-- Generated Database
+- Pokémon Database
 - Game Context Engine
-- National Pokédex
-- Region Database
-
-Regional progress should always reflect the selected Game Context.
+- Trainer Profiles
+- Adventures
+- Encounter Tables
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Regional Pokédex primarily consumes:
+Regional Pokédex records may contain:
 
-- Regional Pokédexes
 - Pokémon
-- Species
-- Regions
-- Game Contexts
-- User Collections
-
-Trainer-owned data should reference canonical Pokémon entities without duplicating canonical information.
+- Seen Status
+- Caught Status
+- Owned Status
+- Game Context
+- Adventure
+- Completion Status
 
 ---
 
 ## User Interface
 
-The Regional Pokédex may include:
-
-### Regional Overview
+### Regional Dex Overview
 
 Displays:
 
-- Region Name
 - Total Pokémon
-- Owned
 - Seen
+- Caught
 - Missing
 - Completion Percentage
 
 ---
 
-### Pokémon List
+### Dex Filters
 
-Displays every Pokémon belonging to the selected Regional Pokédex.
-
-Each entry should indicate:
+Allows filtering by:
 
 - Seen
 - Caught
-- Owned
 - Missing
-
----
-
-### Filters
-
-Allows trainers to filter Pokémon using:
-
-- Ownership Status
 - Type
 - Evolution Stage
-- Version Exclusive
-- Generation
+- Location
 
 ---
 
-### Progress Tracking
+### Pokémon Details
 
-Displays progress by:
+Links each entry to:
 
-- Region
-- Adventure
-- Version
-- Game
-
-Progress should update automatically as trainer collections change.
-
----
-
-### Completion Rewards
-
-Displays:
-
-- Completed Regions
-- Remaining Pokémon
-- Milestones
-- Personal Goals
+- Pokémon Details
+- Evolution
+- Locations
+- Encounter Tables
+- Moves
+- Abilities
 
 ---
 
 ## Related Features
 
-The Regional Pokédex integrates closely with:
+Regional Pokédex integrates with:
 
 - Living Dex
-- National Pokédex
+- World Explorer
+- Encounter Tables
 - Adventure Tracker
-- Region Database
-- Trainer Statistics
-- AI Assistant
-
-It provides game-specific collection tracking while complementing the Living Dex.
+- Collection Analysis
 
 ---
 
@@ -5026,13 +3168,11 @@ Planned
 
 Potential future improvements include:
 
-- Version-exclusive comparison
-- Missing Pokémon planner
-- Regional completion history
-- Cross-game comparison
-- AI completion recommendations
-- Community completion statistics
-- Import from save files
+- Automatic progress updates
+- Encounter route planning
+- Evolution planning
+- Version-exclusive tracking
+- Dex completion recommendations
 
 ---
 
@@ -5046,13 +3186,9 @@ Shiny Collection
 
 ## Purpose
 
-The Shiny Collection feature enables trainers to record, organize, and monitor every shiny Pokémon they own across all supported Pokémon games.
+The Shiny Collection enables trainers to track Shiny Pokémon collected across their Pokémon adventures.
 
-Its purpose is to provide a dedicated collection system for one of the rarest and most celebrated aspects of the Pokémon franchise while preserving historical accuracy and trainer-specific ownership information.
-
-Rather than functioning as a simple checklist, the Shiny Collection should become a permanent archive of a trainer's shiny hunting achievements.
-
-Each shiny Pokémon should reference canonical Pokémon entities while storing trainer-specific collection details separately.
+The system should distinguish between species, forms, games, and individual ownership where required by the trainer's collection goals.
 
 ---
 
@@ -5064,136 +3200,90 @@ Collection
 
 ## Primary Users
 
-- Every Trainer
 - Shiny Hunters
 - Collectors
 - Completionists
-- Challenge Run Players
-
-The Shiny Collection should support both casual collectors and dedicated shiny hunters.
+- Every Trainer
 
 ---
 
 ## Dependencies
 
-The Shiny Collection depends upon:
+Shiny Collection depends upon:
 
-- User Authentication
-- Application Services
-- User Datasets
-- Generated Database
+- Pokémon Database
+- Forms
 - Game Context Engine
-- Living Dex
-
-Collection progress should always respect the selected Game Context.
+- Trainer Profiles
+- Adventures
+- Collection Statistics
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Shiny Collection primarily consumes:
+Shiny records may contain:
 
 - Pokémon
-- Species
-- Forms
-- User Collections
-- Adventures
-- Game Contexts
-
-Trainer-owned data should reference canonical Pokémon entities without duplicating canonical information.
+- Form
+- Game
+- Adventure
+- Acquisition Method
+- Encounter Method
+- Nickname
+- Level
+- Nature
+- Ability
+- Notes
+- Ownership Status
 
 ---
 
 ## User Interface
 
-The Shiny Collection may include:
-
-### Collection Overview
+### Shiny Dex
 
 Displays:
 
-- Total Shinies
+- Shiny Owned
+- Shiny Missing
 - Completion Percentage
-- Recently Added Shinies
-- Favorite Shinies
-- Collection Milestones
+- Game Source
 
 ---
 
-### Shiny Gallery
+### Shiny Entry
 
-Displays every shiny Pokémon owned by the trainer.
+Displays:
 
-Supported layouts may include:
-
-- Grid View
-- List View
-- Regional View
-- Generation View
-
----
-
-### Shiny Details
-
-Each collected shiny Pokémon may include:
-
-- Species
+- Pokémon
 - Form
-- Nickname
-- Original Trainer
-- Original Game
-- Capture Date
-- Poké Ball
-- Nature
-- Ability
-- Level
-
-Additional trainer-owned information may be recorded over time.
+- Game
+- Acquisition Information
+- Personal Notes
 
 ---
 
-### Collection Filters
+### Shiny Goals
 
-Allows trainers to filter shiny Pokémon using:
+Allows trainers to track goals such as:
 
-- Generation
-- Region
-- Type
-- Form
-- Original Game
-- Adventure
-- Favorite Status
-
-Filters should remain consistent with other Collection Features.
-
----
-
-### Hunting Progress
-
-Allows trainers to monitor:
-
-- Target Pokémon
-- Current Hunt
-- Encounter Count
-- Hunting Method
-- Personal Goals
-
-The feature should support active shiny hunting without requiring external tools.
+- Complete Regional Shiny Dex
+- Complete National Shiny Dex
+- Shiny Living Dex
+- Game-Specific Shiny Collection
 
 ---
 
 ## Related Features
 
-The Shiny Collection integrates closely with:
+Shiny Collection integrates with:
 
-- Living Dex
-- National Pokédex
+- World Explorer
+- Encounter Tables
+- Collection Analysis
 - Adventure Tracker
-- Trainer Journal
-- Trainer Statistics
 - AI Assistant
-
-The Shiny Collection represents one of the trainer's most valuable long-term collections.
 
 ---
 
@@ -5213,15 +3303,12 @@ Planned
 
 Potential future improvements include:
 
-- Shiny hunting dashboard
-- Encounter counter
-- Hunting timers
-- Probability calculator
-- Hunt history
-- Community shiny showcase
-- Import from save files
-- Pokémon HOME synchronization
-- AI hunt recommendations
+- Shiny hunt planner
+- Encounter method recommendations
+- Probability tracking
+- Hunt statistics
+- Route optimization
+- Shiny phase tracking
 
 ---
 
@@ -5235,13 +3322,9 @@ Form Collection
 
 ## Purpose
 
-The Form Collection feature enables trainers to record, organize, and monitor every official Pokémon form across all supported Pokémon games.
+The Form Collection enables trainers to track alternate Pokémon forms independently from their base species.
 
-Its purpose is to provide a dedicated collection system for alternate Pokémon forms while preserving historical accuracy, game-specific availability, and trainer-specific ownership information.
-
-Rather than treating alternate forms as simple variants, the Form Collection recognizes each official form as a distinct collectible within the trainer's overall collection.
-
-Every collected form should reference canonical Form entities while storing trainer-owned information separately.
+This distinction is important because multiple forms may have different appearances, typings, abilities, moves, availability, or game-specific mechanics.
 
 ---
 
@@ -5253,159 +3336,94 @@ Collection
 
 ## Primary Users
 
-- Every Trainer
 - Collectors
 - Completionists
-- Form Collectors
 - Researchers
-
-The Form Collection should support both casual collecting and complete form completion.
+- Every Trainer
 
 ---
 
 ## Dependencies
 
-The Form Collection depends upon:
+Form Collection depends upon:
 
-- User Authentication
-- Application Services
-- User Datasets
-- Generated Database
+- Pokémon Database
+- Forms
 - Game Context Engine
-- Living Dex
-- National Pokédex
-
-Collection progress should always respect the selected Game Context.
+- Trainer Profiles
+- Collection Statistics
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Form Collection primarily consumes:
+Form records may contain:
 
-- Forms
-- Pokémon
 - Species
-- User Collections
-- Game Contexts
-- Adventures
-
-Trainer-owned data should reference canonical Form entities without duplicating canonical information.
+- Form
+- Game Context
+- Ownership Status
+- Shiny Status
+- Acquisition Information
+- Notes
 
 ---
 
 ## User Interface
 
-The Form Collection may include:
-
-### Collection Overview
+### Form Dex
 
 Displays:
 
-- Total Forms Collected
-- Total Forms Available
+- Base Species
+- Available Forms
+- Owned Forms
+- Missing Forms
 - Completion Percentage
-- Recently Collected Forms
-- Collection Milestones
-
----
-
-### Form Gallery
-
-Displays every official Pokémon form owned by the trainer.
-
-Supported layouts may include:
-
-- Species View
-- Regional View
-- Generation View
-- Form Category View
 
 ---
 
 ### Form Details
 
-Each collected form may include:
+Displays:
 
-- Species
 - Form Name
-- Form Category
-- Original Game
-- Original Trainer
-- Capture Date
-- Poké Ball
-- Notes
-
-Trainer-owned information should remain independent of canonical Pokémon data.
+- Appearance
+- Typing
+- Abilities
+- Moves
+- Game Availability
+- Acquisition Method
 
 ---
 
-### Collection Filters
+### Form Filters
 
-Allows trainers to filter forms using:
+Allows trainers to filter by:
 
-- Generation
+- Game
 - Region
-- Form Category
-- Original Game
-- Adventure
-- Collection Status
-
-Filters should remain consistent with other Collection Features.
-
----
-
-### Collection Progress
-
-Displays progress by:
-
-- Species
-- Generation
-- Region
-- Form Category
-- Game Context
-
-Progress should update automatically as the collection grows.
-
----
-
-## Form Categories
-
-The Form Collection should support every official form category, including:
-
-- Regional Forms
-- Mega Evolutions
-- Gigantamax Forms
-- Primal Reversions
-- Origin Forms
-- Alternate Forms
-- Seasonal Forms
-- Weather Forms
-- Battle Forms
-- Cosmetic Forms
-
-Additional official form categories should integrate without requiring structural redesign.
+- Type
+- Ownership
+- Shiny Status
 
 ---
 
 ## Related Features
 
-The Form Collection integrates closely with:
+Form Collection integrates with:
 
 - Living Dex
-- Regional Pokédex
+- World Explorer
+- Collection Analysis
 - Pokémon Details
-- Trainer Statistics
-- Adventure Tracker
 - AI Assistant
-
-The Form Collection expands the trainer's collection beyond species ownership.
 
 ---
 
 ## Priority
 
-High
+Medium
 
 ---
 
@@ -5420,13 +3438,10 @@ Planned
 Potential future improvements include:
 
 - Form comparison
-- Missing form planner
-- AI collection recommendations
-- Cross-game synchronization
-- Collection sharing
-- Pokémon HOME integration
-- Save file import
-- Historical form timeline
+- Form acquisition planner
+- Regional form tracking
+- Shiny form tracking
+- Form history across games
 
 ---
 
@@ -5440,13 +3455,9 @@ Ribbon Collection
 
 ## Purpose
 
-The Ribbon Collection feature enables trainers to record, organize, and monitor every Ribbon earned by their Pokémon across all supported Pokémon games.
+The Ribbon Collection enables trainers to track ribbons earned by Pokémon throughout their journeys.
 
-Its purpose is to provide a comprehensive collection system for one of the franchise's most prestigious accomplishments while preserving historical accuracy, game-specific availability, and trainer-specific ownership information.
-
-Rather than functioning as a simple checklist, the Ribbon Collection should document each Pokémon's achievements and recognize the effort required to earn every official Ribbon.
-
-Every recorded Ribbon should reference canonical Ribbon entities while storing trainer-owned information separately.
+Ribbons may be associated with specific games, contests, achievements, battle accomplishments, or special events depending on the selected Game Context.
 
 ---
 
@@ -5458,144 +3469,84 @@ Collection
 
 ## Primary Users
 
-- Every Trainer
-- Ribbon Collectors
 - Completionists
-- Competitive Players
-- Long-Term Collectors
-
-The Ribbon Collection should support both casual trainers and dedicated Ribbon Masters.
+- Collectors
+- Researchers
 
 ---
 
 ## Dependencies
 
-The Ribbon Collection depends upon:
+Ribbon Collection depends upon:
 
-- User Authentication
-- Application Services
-- User Datasets
-- Generated Database
+- Ribbon Database
+- Pokémon Database
 - Game Context Engine
-- Living Dex
-
-Ribbon progress should always respect the selected Game Context.
+- Trainer Profiles
+- Adventures
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Ribbon Collection primarily consumes:
+Ribbon records may contain:
 
-- Ribbons
+- Ribbon
 - Pokémon
-- User Collections
-- Adventures
-- Game Contexts
-
-Trainer-owned data should reference canonical Ribbon entities without duplicating canonical information.
+- Game Context
+- Acquisition Status
+- Acquisition Date
+- Related Adventure
+- Notes
 
 ---
 
 ## User Interface
 
-The Ribbon Collection may include:
-
-### Collection Overview
+### Ribbon Overview
 
 Displays:
 
-- Total Ribbons Earned
-- Total Ribbon Types Collected
-- Ribbon Completion Percentage
-- Recently Earned Ribbons
-- Collection Milestones
-
----
-
-### Ribbon Gallery
-
-Displays every official Ribbon supported by Pokémon Companion.
-
-Supported layouts may include:
-
-- Category View
-- Generation View
-- Game View
-- Completion View
-
----
-
-### Pokémon Ribbon Details
-
-Each Pokémon may display:
-
+- Total Ribbons
 - Earned Ribbons
 - Missing Ribbons
-- Ribbon History
-- Date Earned
-- Original Game
-
-The feature should clearly distinguish between Ribbon definitions and trainer-owned Ribbon records.
+- Completion Percentage
 
 ---
 
-### Collection Filters
+### Ribbon Details
 
-Allows trainers to filter Ribbons using:
+Displays:
 
-- Generation
+- Ribbon Name
+- Description
+- Game Availability
+- Acquisition Requirements
+- Pokémon Holding the Ribbon
+
+---
+
+### Ribbon Filters
+
+Allows trainers to filter by:
+
 - Game
-- Ribbon Category
+- Region
+- Category
+- Earned Status
 - Pokémon
-- Completion Status
-
-Filters should remain consistent with other Collection Features.
-
----
-
-### Collection Progress
-
-Displays progress by:
-
-- Generation
-- Game
-- Ribbon Category
-- Pokémon
-- Adventure
-
-Progress should update automatically as new Ribbons are earned.
-
----
-
-## Ribbon Categories
-
-The Ribbon Collection should support every official Ribbon category, including:
-
-- Champion Ribbons
-- Contest Ribbons
-- Battle Ribbons
-- Memory Ribbons
-- Event Ribbons
-- Friendship Ribbons
-- Special Ribbons
-
-Additional official Ribbon categories should integrate without requiring structural redesign.
 
 ---
 
 ## Related Features
 
-The Ribbon Collection integrates closely with:
+Ribbon Collection integrates with:
 
-- Living Dex
-- Form Collection
-- Adventure Tracker
-- Trainer Statistics
-- Trainer Journal
-- AI Assistant
-
-The Ribbon Collection documents the accomplishments of individual Pokémon throughout their journey.
+- Pokémon Details
+- Adventures
+- Collection Statistics
+- Collection Analysis
+- Community Features
 
 ---
 
@@ -5615,15 +3566,11 @@ Planned
 
 Potential future improvements include:
 
-- Ribbon Master tracker
-- Ribbon requirement guides
-- Missing Ribbon planner
+- Ribbon journey planning
 - Ribbon timeline
-- Cross-game Ribbon history
-- Collection sharing
-- Save file import
-- Pokémon HOME synchronization
-- AI Ribbon recommendations
+- Pokémon-specific ribbon history
+- Ribbon acquisition recommendations
+- Cross-game ribbon tracking
 
 ---
 
@@ -5637,13 +3584,9 @@ Mark Collection
 
 ## Purpose
 
-The Mark Collection feature enables trainers to record, organize, and monitor every official Pokémon Mark earned or obtained across all supported Pokémon games.
+The Mark Collection enables trainers to track special marks associated with Pokémon where supported by the selected Game Context.
 
-Its purpose is to provide a dedicated collection system for Pokémon Marks while preserving historical accuracy, game-specific availability, and trainer-specific ownership information.
-
-Rather than functioning as a simple checklist, the Mark Collection should document the unique characteristics and titles associated with individual Pokémon throughout a trainer's collection.
-
-Every recorded Mark should reference canonical Mark entities while storing trainer-owned information separately.
+Marks should be treated separately from ribbons because they represent a different canonical mechanic and acquisition system.
 
 ---
 
@@ -5655,144 +3598,83 @@ Collection
 
 ## Primary Users
 
-- Every Trainer
 - Collectors
 - Completionists
-- Mark Hunters
-- Long-Term Collectors
-
-The Mark Collection should support both casual trainers and dedicated collectors.
+- Researchers
 
 ---
 
 ## Dependencies
 
-The Mark Collection depends upon:
+Mark Collection depends upon:
 
-- User Authentication
-- Application Services
-- User Datasets
-- Generated Database
+- Mark Database
+- Pokémon Database
 - Game Context Engine
-- Living Dex
-
-Mark progress should always respect the selected Game Context.
+- Trainer Profiles
+- Adventures
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Mark Collection primarily consumes:
+Mark records may contain:
 
-- Marks
+- Mark
 - Pokémon
-- User Collections
-- Adventures
-- Game Contexts
-
-Trainer-owned data should reference canonical Mark entities without duplicating canonical information.
+- Game Context
+- Acquisition Status
+- Acquisition Method
+- Acquisition Date
+- Notes
 
 ---
 
 ## User Interface
 
-The Mark Collection may include:
-
-### Collection Overview
+### Mark Overview
 
 Displays:
 
-- Total Marks Collected
-- Total Mark Types
+- Total Marks
+- Earned Marks
+- Missing Marks
 - Completion Percentage
-- Recently Obtained Marks
-- Collection Milestones
 
 ---
 
-### Mark Gallery
+### Mark Details
 
-Displays every official Mark supported by Pokémon Companion.
+Displays:
 
-Supported layouts may include:
-
-- Category View
-- Generation View
-- Game View
-- Completion View
-
----
-
-### Pokémon Mark Details
-
-Each Pokémon may display:
-
-- Obtained Marks
-- Available Titles
-- Date Obtained
-- Original Game
-- Original Trainer
-
-The feature should clearly distinguish between canonical Mark definitions and trainer-owned Mark records.
+- Mark Name
+- Description
+- Game Availability
+- Acquisition Conditions
+- Pokémon Holding the Mark
 
 ---
 
-### Collection Filters
+### Mark Filters
 
-Allows trainers to filter Marks using:
+Allows filtering by:
 
-- Generation
 - Game
-- Mark Category
+- Acquisition Method
+- Earned Status
 - Pokémon
-- Completion Status
-
-Filters should remain consistent with other Collection Features.
-
----
-
-### Collection Progress
-
-Displays progress by:
-
-- Generation
-- Game
-- Mark Category
-- Pokémon
-- Adventure
-
-Progress should update automatically as new Marks are obtained.
-
----
-
-## Mark Categories
-
-The Mark Collection should support every official Mark category, including:
-
-- Personality Marks
-- Time Marks
-- Weather Marks
-- Fishing Marks
-- Rare Marks
-- Special Event Marks
-
-Additional official Mark categories should integrate without requiring structural redesign.
 
 ---
 
 ## Related Features
 
-The Mark Collection integrates closely with:
+Mark Collection integrates with:
 
-- Living Dex
-- Form Collection
-- Ribbon Collection
-- Adventure Tracker
-- Trainer Statistics
-- Trainer Journal
+- Pokémon Details
+- World Explorer
+- Encounter Tables
+- Collection Analysis
 - AI Assistant
-
-The Mark Collection highlights the individuality and history of each Pokémon within a trainer's collection.
 
 ---
 
@@ -5813,14 +3695,10 @@ Planned
 Potential future improvements include:
 
 - Mark hunting planner
-- Mark rarity statistics
-- Title preview
-- Mark timeline
-- Collection sharing
-- Save file import
-- Pokémon HOME synchronization
-- AI mark recommendations
-- Cross-game Mark history
+- Acquisition probability tracking
+- Mark comparison
+- Hunt history
+- Personalized recommendations
 
 ---
 
@@ -5834,13 +3712,11 @@ Prestige Collection
 
 ## Purpose
 
-The Prestige Collection feature enables trainers to record, organize, and monitor prestigious accomplishments earned throughout every supported Pokémon game.
+The Prestige Collection provides an expandable framework for tracking rare, exceptional, or high-value collection accomplishments.
 
-Its purpose is to preserve game-specific achievements that represent mastery, dedication, and long-term progression beyond traditional Pokémon collection.
+Prestige should not be treated as a single canonical Pokémon mechanic unless the selected Game Context explicitly defines one.
 
-Rather than focusing on Pokémon ownership, the Prestige Collection tracks prestigious accomplishments awarded directly by Pokémon games, allowing trainers to showcase their highest in-game achievements.
-
-Every Prestige record should reference canonical Prestige entities while storing trainer-owned progress separately.
+Instead, this feature acts as a collection framework for special achievements that may be introduced or configured by Pokémon Companion.
 
 ---
 
@@ -5852,141 +3728,75 @@ Collection
 
 ## Primary Users
 
-- Every Trainer
 - Completionists
-- Challenge Run Players
-- Long-Term Players
-- Achievement Hunters
-
-The Prestige Collection should celebrate accomplishments earned through gameplay rather than collection alone.
+- Collectors
+- Community Members
+- Researchers
 
 ---
 
 ## Dependencies
 
-The Prestige Collection depends upon:
+Prestige Collection depends upon:
 
-- User Authentication
-- Application Services
-- User Datasets
-- Generated Database
+- Collection Features
+- Achievements
+- Trainer Profiles
 - Game Context Engine
-- Adventure Tracker
-
-Prestige progress should always respect the selected Game Context.
+- Application Services
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Prestige Collection primarily consumes:
+Prestige records may contain:
 
-- Prestige Awards
-- Adventures
-- Games
-- Game Contexts
-- User Collections
-
-Trainer-owned data should reference canonical Prestige entities without duplicating canonical information.
+- Prestige Category
+- Related Pokémon
+- Related Collection
+- Requirement
+- Completion Status
+- Completion Date
+- Game Context
+- Notes
 
 ---
 
 ## User Interface
 
-The Prestige Collection may include:
-
-### Collection Overview
+### Prestige Overview
 
 Displays:
 
-- Total Prestige Awards
-- Games Completed
-- Overall Prestige Progress
-- Recently Earned Awards
-- Collection Milestones
+- Completed Prestige Goals
+- Active Goals
+- Available Goals
+- Completion Percentage
 
 ---
 
-### Prestige Gallery
+### Prestige Categories
 
-Displays every supported Prestige Award.
+Potential categories include:
 
-Supported layouts may include:
-
-- Game View
-- Generation View
-- Completion View
-- Achievement View
-
----
-
-### Award Details
-
-Each Prestige Award may display:
-
-- Name
-- Description
-- Game
-- Requirements
-- Date Earned
-- Completion Status
-
-The feature should clearly distinguish between official award definitions and trainer-owned records.
-
----
-
-### Collection Filters
-
-Allows trainers to filter Prestige Awards using:
-
-- Generation
-- Game
-- Award Type
-- Completion Status
-
-Filters should remain consistent with other Collection Features.
-
----
-
-### Collection Progress
-
-Displays progress by:
-
-- Game
-- Generation
-- Award Type
-- Adventure
-
-Progress should update automatically as new Prestige Awards are earned.
-
----
-
-## Supported Prestige Systems
-
-The Prestige Collection should support every official prestige system introduced throughout the Pokémon series, including:
-
-- Trainer Card Stars
-- League Cards
-- Trainer Card Ranks
-- Completion Certificates
-- Academy Awards
-- Special Game Completion Awards
-
-Additional official prestige systems should integrate without requiring structural redesign.
+- Rare Collections
+- Full Form Collections
+- Complete Ribbon Collections
+- Complete Mark Collections
+- Challenge Achievements
+- Special Milestones
 
 ---
 
 ## Related Features
 
-The Prestige Collection integrates closely with:
+Prestige Collection integrates with:
 
-- Adventure Tracker
-- Trainer Statistics
 - Achievements
-- Trainer Journal
-- AI Assistant
-
-The Prestige Collection documents a trainer's highest accomplishments across every supported Pokémon game.
+- Collection Statistics
+- Community Features
+- Collection Analysis
+- Trainer Profiles
 
 ---
 
@@ -6006,15 +3816,11 @@ Planned
 
 Potential future improvements include:
 
-- Prestige comparison
-- Completion planner
-- Historical prestige timeline
-- Cross-game prestige statistics
-- Collection sharing
-- Save file import
-- Pokémon HOME integration
-- AI prestige recommendations
-- Community prestige leaderboards
+- Prestige tiers
+- Rare collection scoring
+- Community prestige rankings
+- Special achievement badges
+- Prestige showcases
 
 ---
 
@@ -6028,13 +3834,9 @@ Collection Statistics
 
 ## Purpose
 
-The Collection Statistics feature provides a comprehensive analytical overview of a trainer's collections throughout Pokémon Companion.
+Collection Statistics provide trainers with measurable information about their collection progress.
 
-Its purpose is to transform collection progress into meaningful insights, allowing trainers to understand completion rates, identify missing collectibles, monitor long-term growth, and celebrate collection milestones.
-
-Rather than acting as another collection tracker, Collection Statistics should serve as the analytical dashboard for every collection maintained by the trainer.
-
-The feature should summarize collection progress while preserving the underlying collection records.
+The system should summarize collection activity across multiple collection types while preserving the underlying collection records.
 
 ---
 
@@ -6047,22 +3849,16 @@ Collection
 ## Primary Users
 
 - Every Trainer
-- Completionists
 - Collectors
-- Long-Term Players
+- Completionists
 - Researchers
-
-Collection Statistics should support both casual progress tracking and detailed collection analysis.
 
 ---
 
 ## Dependencies
 
-The Collection Statistics feature depends upon:
+Collection Statistics depend upon:
 
-- User Authentication
-- Application Services
-- User Datasets
 - Living Dex
 - Regional Pokédex
 - Shiny Collection
@@ -6070,129 +3866,78 @@ The Collection Statistics feature depends upon:
 - Ribbon Collection
 - Mark Collection
 - Prestige Collection
-
-Statistics should always be generated from existing collection data rather than stored independently.
+- Trainer Profiles
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Collection Statistics feature primarily consumes:
+Statistics may include:
 
-- User Collections
-- Pokémon
-- Species
-- Forms
-- Ribbons
-- Marks
-- Prestige Awards
-- Adventures
-- Game Contexts
-
-Statistical summaries should reference existing collection datasets without duplicating underlying information.
+- Total Pokémon Collected
+- Dex Completion
+- Shiny Completion
+- Form Completion
+- Ribbon Completion
+- Mark Completion
+- Prestige Completion
+- Collection Growth
+- Missing Collectibles
 
 ---
 
 ## User Interface
 
-The Collection Statistics feature may include:
-
-### Collection Overview
+### Collection Dashboard
 
 Displays:
 
-- Overall Collection Completion
-- Total Collectibles
-- Completed Collections
-- Active Collections
-- Collection Milestones
+- Overall Completion
+- Collection Categories
+- Recent Progress
+- Missing Items
+- Recommended Goals
 
 ---
 
-### Pokémon Statistics
+### Progress Analysis
 
 Displays:
 
-- Living Dex Progress
-- Regional Pokédex Progress
-- Shiny Collection Progress
-- Form Collection Progress
-
----
-
-### Achievement Collections
-
-Displays:
-
-- Ribbon Collection Progress
-- Mark Collection Progress
-- Prestige Collection Progress
-
----
-
-### Completion Breakdown
-
-Displays progress by:
-
-- Generation
-- Region
-- Game
-- Collection Type
-
-The breakdown should help trainers identify remaining goals.
-
----
-
-### Missing Collectibles
-
-Displays:
-
-- Missing Pokémon
-- Missing Forms
-- Missing Ribbons
-- Missing Marks
-- Missing Prestige Awards
-
-The feature should prioritize helping trainers complete their collections.
-
----
-
-### Collection Insights
-
-Provides insights such as:
-
-- Most Complete Collection
-- Least Complete Collection
-- Recently Completed Collections
+- Completion Trends
+- Historical Progress
 - Collection Growth
-- Personal Records
+- Milestones
 
-Insights should evolve as the trainer's collections expand.
+---
+
+### Collection Comparison
+
+May eventually allow trainers to compare their own collection progress across:
+
+- Adventures
+- Games
+- Regions
+- Collection Types
 
 ---
 
 ## Related Features
 
-The Collection Statistics feature integrates closely with:
+Collection Statistics integrate with:
 
-- Living Dex
-- Regional Pokédex
-- Shiny Collection
-- Form Collection
-- Ribbon Collection
-- Mark Collection
-- Prestige Collection
+- Collection Analysis
 - Trainer Statistics
-- Dashboard
-- AI Assistant
-
-Collection Statistics provides the analytical summary for every trainer-owned collection.
+- Achievements
+- Shared Collections
+- Leaderboards
+- Adventure Guidance
 
 ---
 
 ## Priority
 
-Medium
+High
 
 ---
 
@@ -6206,27 +3951,24 @@ Planned
 
 Potential future improvements include:
 
-- Interactive analytics dashboard
-- Historical collection growth
 - Collection forecasting
-- Completion recommendations
-- AI-powered collection insights
-- Community collection comparisons
-- Exportable reports
+- Completion estimates
+- Progress graphs
 - Cross-game analytics
-- Custom statistic widgets
+- AI-generated collection insights
+- Collection efficiency metrics
 
-# Battle Features
+---
+
+# 6. Battle Features
 
 ## Purpose
 
-Battle Features provide trainers with advanced tools for analyzing, optimizing, and understanding Pokémon battles across every supported Pokémon game.
+Battle Features provide trainers with tools for understanding, analyzing, planning, and simulating Pokémon battles.
 
-Their purpose is to help trainers make informed strategic decisions by combining canonical Pokémon knowledge, battle mechanics, trainer data, and game-specific rules.
+Their purpose is to transform canonical battle knowledge and trainer-owned teams into practical battle preparation tools.
 
-Unlike Trainer Features, which manage personal teams and adventures, Battle Features evaluate and improve those teams through analysis, simulation, and intelligent recommendations.
-
-Every Battle Feature should consume canonical Pokémon data while respecting the selected Game Context.
+Battle Features must always respect the selected Game Context because battle mechanics, moves, abilities, items, formulas, and available Pokémon can differ substantially between games.
 
 ---
 
@@ -6235,77 +3977,67 @@ Every Battle Feature should consume canonical Pokémon data while respecting the
 Battle Features are responsible for:
 
 - Team analysis
-- Battle calculations
+- Damage calculation
+- Battle simulation
 - Strategy planning
-- Matchup evaluation
-- Battle simulations
-- Performance analysis
-
-Battle Features should assist decision-making without modifying canonical Pokémon data.
+- Battle statistics
+- Battle preparation
 
 ---
 
 # Design Principles
 
-## Canonical Accuracy
+## Game Context Accuracy
 
-Battle calculations should always use official Pokémon mechanics appropriate for the selected Game Context.
+Battle calculations must use mechanics appropriate to the selected Game Context.
 
-Results should reflect historical differences between supported games whenever official mechanics have changed.
+The system must never silently apply mechanics from a different generation or game.
 
 ---
 
-## Context Awareness
+## Canonical Mechanics
 
-Battle analysis should always respect the selected Game Context.
+Battle calculations should consume canonical mechanics rather than manually duplicated constants wherever possible.
 
 Examples include:
 
-- Physical/Special split
-- Fairy-type introduction
-- Ability changes
-- Move changes
-- Type chart differences
-- Battle mechanics
-
-Changing the active Game Context should automatically update every calculation.
-
----
-
-## Analytical Focus
-
-Battle Features should analyze trainer-created teams rather than replace trainer decision-making.
-
-Recommendations should explain why they are suggested whenever possible.
+- Type effectiveness
+- Base stats
+- Move power
+- Abilities
+- Items
+- Weather
+- Terrain
+- Status conditions
 
 ---
 
-## Modular Design
+## Explainability
 
-Every Battle Feature should function independently while integrating seamlessly with:
+Battle results should explain the factors contributing to the result.
 
-- Team Management
-- Pokémon Details
-- Move Database
-- Ability Database
-- Type Database
-- AI Assistant
+For example:
 
-This modular approach allows trainers to use only the tools they need.
+- Type effectiveness
+- STAB
+- Ability modifiers
+- Item modifiers
+- Stat changes
+- Critical hits
+- Weather
+- Terrain
 
 ---
 
-## Performance
+## Non-Destructive Simulation
 
-Battle calculations should remain responsive regardless of team complexity.
-
-Generated datasets and optimized lookup structures should be used whenever possible.
+Battle simulations must not modify trainer-owned teams, collections, or adventures unless the trainer explicitly chooses to save the resulting information.
 
 ---
 
 # Core Battle Features
 
-The Battle category currently includes:
+The Battle category includes:
 
 - Team Analysis
 - Damage Calculator
@@ -6313,23 +4045,18 @@ The Battle category currently includes:
 - Strategy Planner
 - Battle Statistics
 
-Additional battle tools may be introduced as Pokémon Companion expands.
-
 ---
 
 # Feature Relationships
 
-Battle Features integrate closely with:
+Battle Features integrate with:
 
-- Team Management
-- Pokémon Details
-- Move Database
-- Ability Database
-- Type Database
-- Trainer Statistics
-- AI Assistant
-
-Battle Features transform Pokémon knowledge into practical strategic insights.
+- Knowledge Features
+- Trainer Features
+- Collection Features
+- World Features
+- Intelligence Features
+- Community Features
 
 ---
 
@@ -6343,13 +4070,9 @@ Team Analysis
 
 ## Purpose
 
-The Team Analysis feature enables trainers to evaluate the strengths, weaknesses, balance, and overall effectiveness of their Pokémon teams.
+Team Analysis evaluates trainer-created teams to identify strengths, weaknesses, coverage gaps, and strategic opportunities.
 
-Its purpose is to transform team data into meaningful strategic insights by analyzing type coverage, defensive synergy, offensive capabilities, role distribution, and game-specific mechanics.
-
-Rather than creating teams, Team Analysis helps trainers understand and improve the teams they have already built.
-
-Every analysis should respect the selected Game Context while using official Pokémon battle mechanics.
+The system should analyze the team within the selected Game Context rather than applying generic modern battle assumptions.
 
 ---
 
@@ -6363,147 +4086,107 @@ Battle
 
 - Every Trainer
 - Competitive Players
-- Casual Players
 - Challenge Run Players
-- Team Builders
-
-The Team Analysis feature should support both beginners and experienced players.
+- Researchers
 
 ---
 
 ## Dependencies
 
-The Team Analysis feature depends upon:
+Team Analysis depends upon:
 
 - Team Management
-- Generated Database
+- Pokémon Database
+- Move Database
+- Ability Database
+- Item Database
+- Type Database
 - Game Context Engine
-- Application Services
-- Battle Engine
-
-Analysis should always use canonical Pokémon data.
+- Battle Calculation Services
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Team Analysis feature primarily consumes:
+Team Analysis may consume:
 
-- Teams
 - Pokémon
 - Forms
 - Types
-- Moves
 - Abilities
+- Moves
 - Items
-- Natures
-- Battle Mechanics
-
-Generated datasets should be used whenever possible to improve performance.
+- Levels
+- Team Roles
+- Game Context
 
 ---
 
 ## User Interface
-
-The Team Analysis feature may include:
 
 ### Team Overview
 
 Displays:
 
 - Team Members
-- Average Level
-- Team Roles
-- Overall Rating
-- Analysis Summary
-
----
-
-### Offensive Analysis
-
-Evaluates:
-
-- Offensive Type Coverage
-- Move Diversity
-- STAB Distribution
-- Coverage Gaps
-- Offensive Balance
-
-The analysis should identify strengths and weaknesses in the team's attacking options.
-
----
-
-### Defensive Analysis
-
-Evaluates:
-
-- Shared Weaknesses
-- Shared Resistances
-- Immunities
+- Types
+- Roles
+- Offensive Coverage
 - Defensive Coverage
-- Type Balance
-
-The analysis should help trainers identify vulnerabilities.
+- Major Weaknesses
 
 ---
 
-### Team Roles
+### Coverage Analysis
 
-Displays the strategic role of each Pokémon, such as:
+Analyzes:
+
+- Type Coverage
+- Super Effective Coverage
+- Resistances
+- Immunities
+- Shared Weaknesses
+
+---
+
+### Role Analysis
+
+Identifies roles such as:
 
 - Physical Attacker
 - Special Attacker
-- Tank
-- Wall
+- Defensive Pokémon
 - Support
-- Hazard Setter
-- Hazard Removal
+- Setup
 - Speed Control
 
-Role classifications should adapt to the selected Game Context.
+Role classification should remain contextual rather than absolute.
 
 ---
 
-### Synergy Analysis
+### Improvement Suggestions
 
-Evaluates:
+May suggest:
 
-- Type Synergy
-- Ability Synergy
-- Move Synergy
-- Item Synergy
-- Team Balance
-
-The analysis should explain how team members complement one another.
-
----
-
-### Recommendations
-
-Provides suggestions such as:
-
-- Coverage Improvements
-- Defensive Improvements
+- Move Changes
+- Pokémon Replacements
+- Held Items
+- Ability Choices
 - Role Adjustments
-- Potential Replacements
-- Team Balance Suggestions
 
-Recommendations should explain the reasoning behind each suggestion.
+Suggestions should remain optional.
 
 ---
 
 ## Related Features
 
-The Team Analysis feature integrates closely with:
+Team Analysis integrates with:
 
 - Team Management
 - Damage Calculator
-- Battle Simulator
 - Strategy Planner
-- Pokémon Details
+- Team Recommendations
 - AI Assistant
-
-Team Analysis serves as the primary evaluation tool for trainer-created teams.
 
 ---
 
@@ -6523,15 +4206,12 @@ Planned
 
 Potential future improvements include:
 
-- Competitive format analysis
-- Meta comparison
-- AI-powered optimization
+- Matchup simulations
+- AI-generated explanations
+- Opponent-specific analysis
+- Team scoring
 - Historical team comparison
-- Win probability estimation
-- Team archetype detection
-- Exportable analysis reports
-- Community team ratings
-- Personalized coaching
+- Competitive format analysis
 
 ---
 
@@ -6545,13 +4225,9 @@ Damage Calculator
 
 ## Purpose
 
-The Damage Calculator enables trainers to calculate and analyze battle damage using official Pokémon battle mechanics across every supported Pokémon game.
+The Damage Calculator provides game-accurate calculations for Pokémon attacks.
 
-Its purpose is to provide accurate, transparent, and context-aware damage calculations that help trainers understand battle outcomes, compare strategies, and optimize their teams.
-
-Rather than displaying only the final damage values, the Damage Calculator should explain how each calculation is derived, allowing trainers to better understand Pokémon battle mechanics.
-
-Every calculation should respect the selected Game Context while remaining faithful to official game mechanics.
+It should reproduce the appropriate battle mechanics for the selected Game Context rather than using a single universal formula.
 
 ---
 
@@ -6565,136 +4241,112 @@ Battle
 
 - Every Trainer
 - Competitive Players
-- Challenge Run Players
 - Researchers
-- Team Builders
-
-The Damage Calculator should support both quick calculations and advanced battle analysis.
+- Challenge Run Players
 
 ---
 
 ## Dependencies
 
-The Damage Calculator depends upon:
+Damage Calculator depends upon:
 
-- Generated Database
+- Pokémon Database
+- Move Database
+- Ability Database
+- Item Database
+- Type Database
+- Battle Mechanics
 - Game Context Engine
-- Battle Engine
-- Application Services
-- Team Management
-
-Damage calculations should always use official mechanics for the selected Game Context.
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Damage Calculator primarily consumes:
+The calculator may consume:
 
-- Pokémon
-- Forms
-- Types
+- Attacker
+- Defender
+- Levels
+- Stats
 - Moves
 - Abilities
 - Items
-- Base Stats
-- Natures
-- Battle Mechanics
-
-Generated lookup datasets should be used whenever possible to maximize performance.
+- Types
+- Stat Changes
+- Weather
+- Terrain
+- Status Conditions
+- Battle Rules
 
 ---
 
 ## User Interface
 
-The Damage Calculator may include:
+### Attack Configuration
 
-### Battle Setup
-
-Allows trainers to configure:
+Allows trainers to select:
 
 - Attacking Pokémon
+- Move
+- Level
+- Ability
+- Held Item
+- Stat Modifiers
+
+---
+
+### Defense Configuration
+
+Allows trainers to select:
+
 - Defending Pokémon
-- Levels
-- Moves
-- Abilities
-- Held Items
-- Battle Format
+- Level
+- Ability
+- Held Item
+- Defensive Stat
+- Stat Modifiers
 
 ---
 
 ### Battle Conditions
 
-Supports official battle conditions including:
+Allows configuration of:
 
 - Weather
 - Terrain
-- Stat Stages
-- Status Conditions
 - Screens
-- Critical Hits
+- Critical Hit
+- Burn
+- Type Modifiers
+- Other Game-Specific Conditions
 
-Available options should automatically adapt to the selected Game Context.
+Only mechanics supported by the selected Game Context should appear.
 
 ---
 
-### Damage Results
+### Results
 
 Displays:
 
 - Minimum Damage
 - Maximum Damage
-- Percentage Damage
+- Damage Percentage
 - Knockout Probability
-- Remaining HP
+- Relevant Modifiers
 
-Results should clearly distinguish between guaranteed and possible outcomes.
-
----
-
-### Calculation Breakdown
-
-Displays the major factors contributing to the result, including:
-
-- Base Power
-- Attack and Defense Statistics
-- Type Effectiveness
-- STAB
-- Ability Effects
-- Item Effects
-- Battle Modifiers
-
-The breakdown should improve understanding of battle mechanics rather than simply presenting numbers.
-
----
-
-### Comparison Mode
-
-Allows trainers to compare:
-
-- Different Moves
-- Different Pokémon
-- Different Items
-- Different Abilities
-- Different Battle Conditions
-
-Comparisons should update dynamically as configurations change.
+Results should explain the calculation inputs and modifiers.
 
 ---
 
 ## Related Features
 
-The Damage Calculator integrates closely with:
+Damage Calculator integrates with:
 
 - Team Analysis
 - Battle Simulator
 - Strategy Planner
-- Pokémon Details
-- Move Database
-- Ability Database
+- Smart Search
 - AI Assistant
-
-The Damage Calculator provides the mathematical foundation for battle analysis throughout Pokémon Companion.
 
 ---
 
@@ -6714,15 +4366,13 @@ Planned
 
 Potential future improvements include:
 
-- Multi-turn calculations
-- Double Battle support
-- Raid Battle calculations
-- Probability simulations
-- AI damage predictions
-- Scenario comparison
-- Saveable calculation presets
-- Exportable calculation reports
-- Community calculation sharing
+- Multi-target calculations
+- Full battle state simulation
+- Damage roll visualization
+- KO probability analysis
+- Batch calculations
+- Competitive format presets
+- Exportable calculations
 
 ---
 
@@ -6736,13 +4386,9 @@ Battle Simulator
 
 ## Purpose
 
-The Battle Simulator enables trainers to recreate, simulate, and analyze Pokémon battles using official battle mechanics across every supported Pokémon game.
+The Battle Simulator enables trainers to simulate Pokémon battles using the mechanics of the selected Game Context.
 
-Its purpose is to provide an interactive environment where trainers can experiment with different teams, strategies, battle conditions, and game mechanics without affecting their saved adventures.
-
-Rather than functioning as a competitive battle engine, the Battle Simulator should serve as an educational and analytical tool that helps trainers better understand Pokémon battles.
-
-Every simulation should respect the selected Game Context while accurately reproducing official game mechanics.
+Its purpose is to provide a safe environment for testing teams, moves, strategies, and battle scenarios without modifying trainer-owned game progress.
 
 ---
 
@@ -6754,51 +4400,44 @@ Battle
 
 ## Primary Users
 
-- Every Trainer
 - Competitive Players
 - Challenge Run Players
 - Researchers
-- Team Builders
-
-The Battle Simulator should support both casual experimentation and advanced strategic testing.
+- Every Trainer
 
 ---
 
 ## Dependencies
 
-The Battle Simulator depends upon:
+Battle Simulator depends upon:
 
-- Generated Database
-- Game Context Engine
 - Battle Engine
-- Application Services
+- Damage Calculator
 - Team Management
-
-Simulations should always use official mechanics appropriate for the selected Game Context.
+- Pokémon Database
+- Move Database
+- Ability Database
+- Item Database
+- Game Context Engine
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Battle Simulator primarily consumes:
+The simulator may consume:
 
 - Teams
 - Pokémon
-- Forms
-- Types
 - Moves
 - Abilities
 - Items
-- Battle Mechanics
 - Battle Conditions
-
-Generated datasets should be used to optimize simulation performance.
+- Game Rules
+- Trainer Data
 
 ---
 
 ## User Interface
-
-The Battle Simulator may include:
 
 ### Battle Setup
 
@@ -6806,86 +4445,64 @@ Allows trainers to configure:
 
 - Player Team
 - Opponent Team
-- Battle Format
-- Battle Rules
 - Levels
-- Game Context
-
-The simulator should support both custom teams and saved teams.
-
----
-
-### Battle Conditions
-
-Supports official battle conditions including:
-
-- Weather
-- Terrain
-- Entry Hazards
-- Status Conditions
-- Field Effects
-- Battle Items
-
-Available options should adapt automatically to the selected Game Context.
+- Moves
+- Abilities
+- Items
+- Battle Rules
 
 ---
 
-### Simulation Controls
+### Battle Interface
 
-Allows trainers to:
+Displays:
 
-- Start Battle
-- Pause Simulation
-- Resume Battle
-- Restart Battle
-- Skip Turns
-- Replay Battle
-
-Controls should make experimentation quick and intuitive.
+- Active Pokémon
+- HP
+- Status
+- Stat Changes
+- Available Moves
+- Battle Conditions
+- Turn History
 
 ---
 
 ### Battle Log
 
-Displays:
+Records:
 
-- Turn History
-- Move Usage
-- Damage Dealt
-- Ability Activations
-- Item Activations
+- Actions
+- Damage
 - Status Changes
-
-The Battle Log should provide a complete record of every simulated battle.
+- Switches
+- Abilities
+- Items
+- Knockouts
 
 ---
 
-### Battle Summary
+### Simulation Controls
 
-Displays:
+May include:
 
-- Winning Team
-- Remaining Pokémon
-- Battle Duration
-- Key Turning Points
-- Performance Summary
-
-The summary should help trainers understand why the battle ended as it did.
+- Pause
+- Resume
+- Restart
+- Undo
+- Turn-by-Turn Mode
+- Fast Simulation
 
 ---
 
 ## Related Features
 
-The Battle Simulator integrates closely with:
+Battle Simulator integrates with:
 
-- Team Analysis
 - Damage Calculator
+- Team Analysis
 - Strategy Planner
-- Team Management
-- Trainer Statistics
+- Battle Statistics
 - AI Assistant
-
-The Battle Simulator allows trainers to validate strategies before using them in actual gameplay.
 
 ---
 
@@ -6905,16 +4522,14 @@ Planned
 
 Potential future improvements include:
 
-- Double Battles
-- Triple Battles
-- Rotation Battles
-- Multi Battles
-- Raid Battles
-- Battle recording
-- Battle replay sharing
-- AI-controlled opponents
-- Tournament simulation
-- Multiplayer simulation
+- AI opponents
+- Trainer Database integration
+- Gym Leader battles
+- Elite Four battles
+- Champion battles
+- Battle replay
+- Scenario library
+- Automated strategy testing
 
 ---
 
@@ -6928,13 +4543,9 @@ Strategy Planner
 
 ## Purpose
 
-The Strategy Planner enables trainers to prepare effective battle strategies for specific opponents, challenges, and gameplay objectives across every supported Pokémon game.
+Strategy Planner enables trainers to prepare structured battle strategies before entering an encounter.
 
-Its purpose is to combine team analysis, battle mechanics, and official Pokémon knowledge into actionable battle plans that help trainers make informed strategic decisions before entering battle.
-
-Rather than replacing trainer creativity, the Strategy Planner should organize information, identify potential weaknesses, and suggest possible approaches based on the selected Game Context.
-
-Every strategy should be generated using official Pokémon data while respecting game-specific mechanics.
+It should allow trainers to plan around specific opponents, teams, moves, battle conditions, and Game Context rules.
 
 ---
 
@@ -6946,92 +4557,65 @@ Battle
 
 ## Primary Users
 
-- Every Trainer
 - Competitive Players
 - Challenge Run Players
-- Speedrunners
+- New Players
 - Researchers
-
-The Strategy Planner should support both casual preparation and advanced strategic planning.
 
 ---
 
 ## Dependencies
 
-The Strategy Planner depends upon:
+Strategy Planner depends upon:
 
 - Team Management
 - Team Analysis
+- Trainer Database
 - Damage Calculator
 - Battle Simulator
-- Generated Database
 - Game Context Engine
-- Application Services
-
-Strategy recommendations should always use official Pokémon mechanics.
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Strategy Planner primarily consumes:
+Strategy plans may contain:
 
-- Teams
-- Pokémon
-- Trainers
+- Opponent
+- Player Team
+- Planned Leads
+- Switch Plans
 - Moves
-- Abilities
-- Types
 - Items
-- Battle Mechanics
-- Game Contexts
-
-Generated datasets should be used whenever possible to improve performance.
+- Battle Conditions
+- Win Conditions
+- Notes
 
 ---
 
 ## User Interface
 
-The Strategy Planner may include:
-
 ### Strategy Overview
 
 Displays:
 
-- Selected Team
-- Target Opponent
-- Battle Format
-- Strategy Summary
-- Overall Readiness
+- Opponent
+- Recommended Team
+- Primary Strategy
+- Backup Strategy
+- Important Threats
 
 ---
 
-### Opponent Analysis
+### Turn Planning
 
-Displays:
+Allows trainers to define:
 
-- Opponent Team
-- Pokémon Roles
-- Known Moves
-- Abilities
-- Type Distribution
-- Potential Threats
-
-Opponent information should respect the selected Game Context.
-
----
-
-### Team Preparation
-
-Provides recommendations such as:
-
-- Suggested Lead Pokémon
-- Team Order
-- Held Item Changes
-- Move Adjustments
-- Ability Selection
-
-Recommendations should explain their reasoning whenever possible.
+- Opening Move
+- Switch Conditions
+- Target Priority
+- Setup Opportunities
+- Emergency Responses
 
 ---
 
@@ -7039,42 +4623,30 @@ Recommendations should explain their reasoning whenever possible.
 
 Identifies:
 
-- High-Risk Opponents
-- Shared Weaknesses
-- Coverage Gaps
-- Defensive Risks
-- Speed Disadvantages
-
-The planner should help trainers anticipate difficult matchups.
+- Dangerous Pokémon
+- Dangerous Moves
+- Type Threats
+- Speed Threats
+- Setup Threats
 
 ---
 
-### Battle Plan
+### Strategy Notes
 
-Allows trainers to create:
-
-- Opening Strategy
-- Mid-Battle Objectives
-- Backup Plans
-- Win Conditions
-- Personal Notes
-
-Battle plans should remain editable and specific to each challenge.
+Trainers may add personal notes for future attempts.
 
 ---
 
 ## Related Features
 
-The Strategy Planner integrates closely with:
+Strategy Planner integrates with:
 
-- Team Management
+- Trainer Database
 - Team Analysis
 - Damage Calculator
 - Battle Simulator
-- Adventure Tracker
+- Team Recommendations
 - AI Assistant
-
-The Strategy Planner transforms battle analysis into actionable preparation.
 
 ---
 
@@ -7094,15 +4666,13 @@ Planned
 
 Potential future improvements include:
 
-- AI-generated battle plans
-- Gym Leader strategy guides
-- Elite Four preparation
-- Champion battle planning
-- Competitive format planning
-- Nuzlocke strategy support
-- Strategy templates
-- Saveable battle plans
-- Community strategy sharing
+- AI strategy generation
+- Automated turn planning
+- Opponent prediction
+- Battle replay analysis
+- Challenge Run presets
+- Nuzlocke planning
+- Strategy sharing
 
 ---
 
@@ -7116,13 +4686,9 @@ Battle Statistics
 
 ## Purpose
 
-The Battle Statistics feature provides a comprehensive analytical overview of a trainer's battle history throughout Pokémon Companion.
+Battle Statistics provide trainers with insights into their battle performance across adventures and Game Contexts.
 
-Its purpose is to transform battle records into meaningful insights that help trainers understand performance trends, evaluate team effectiveness, monitor strategic improvements, and identify opportunities for growth.
-
-Rather than functioning as a battle log, Battle Statistics should provide long-term analysis of battles across every supported Pokémon game.
-
-The feature should summarize battle history while preserving the underlying battle records.
+Statistics should be derived from trainer-owned battle records and should never modify canonical battle information.
 
 ---
 
@@ -7138,46 +4704,42 @@ Battle
 - Competitive Players
 - Challenge Run Players
 - Researchers
-- Team Builders
-
-Battle Statistics should support both casual progress tracking and advanced performance analysis.
 
 ---
 
 ## Dependencies
 
-The Battle Statistics feature depends upon:
+Battle Statistics depend upon:
 
-- User Authentication
-- Application Services
-- Team Management
+- Battle Records
+- Adventures
+- Teams
+- Trainer Profiles
 - Battle Simulator
-- Generated Database
-- Game Context Engine
-
-Statistics should always be generated from recorded battle data rather than stored independently.
+- Application Services
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Battle Statistics feature primarily consumes:
+Statistics may include:
 
-- Battle Records
-- Teams
-- Pokémon
-- Trainers
-- Moves
-- Battle Results
-- Game Contexts
-
-Statistical summaries should reference existing battle datasets without duplicating underlying information.
+- Battles
+- Wins
+- Losses
+- Draws
+- Win Rate
+- Pokémon Used
+- Most Used Moves
+- Most Used Teams
+- Knockouts
+- Faints
+- Damage Statistics
+- Opponent Statistics
 
 ---
 
 ## User Interface
-
-The Battle Statistics feature may include:
 
 ### Battle Overview
 
@@ -7186,91 +4748,56 @@ Displays:
 - Total Battles
 - Wins
 - Losses
-- Win Percentage
-- Current Streak
-- Best Streak
+- Win Rate
+- Recent Battles
 
 ---
 
 ### Team Performance
 
-Displays:
+Displays performance by:
 
-- Most Used Teams
-- Best Performing Teams
-- Team Win Rates
-- Team Usage Frequency
-
-The feature should help trainers evaluate long-term team performance.
-
----
-
-### Pokémon Performance
-
-Displays:
-
-- Most Used Pokémon
-- Highest Win Rate
-- Most Valuable Pokémon
-- Most Frequently Defeated Opponents
-
-Performance metrics should reflect the selected Game Context.
+- Team
+- Pokémon
+- Adventure
+- Game
+- Battle Type
 
 ---
 
-### Move Statistics
+### Historical Performance
 
 Displays:
 
-- Most Used Moves
-- Highest Damage Moves
-- Most Successful Moves
-- Accuracy Statistics
-
-Move statistics should help trainers better understand battle patterns.
+- Win Rate Trends
+- Battle Volume
+- Team Performance
+- Improvement Over Time
 
 ---
 
-### Opponent Analysis
+### Privacy
 
-Displays:
+Battle statistics should support:
 
-- Frequently Faced Opponents
-- Win Rates Against Opponents
-- Difficult Matchups
-- Most Challenging Battles
+- Private
+- Friends Only
+- Public
 
-The feature should highlight recurring strengths and weaknesses.
-
----
-
-### Performance Trends
-
-Displays:
-
-- Battle Activity
-- Win Rate Over Time
-- Team Improvement
-- Strategy Changes
-- Personal Records
-
-Trend analysis should help trainers measure long-term improvement.
+visibility options.
 
 ---
 
 ## Related Features
 
-The Battle Statistics feature integrates closely with:
+Battle Statistics integrate with:
 
-- Team Management
-- Team Analysis
-- Damage Calculator
-- Battle Simulator
-- Strategy Planner
 - Trainer Statistics
+- Team Analysis
+- Leaderboards
+- Shared Teams
+- Collection Analysis
 - AI Assistant
-
-Battle Statistics provides the analytical summary for every recorded battle.
 
 ---
 
@@ -7290,27 +4817,25 @@ Planned
 
 Potential future improvements include:
 
-- Interactive analytics dashboard
-- Battle replay statistics
-- Tournament analytics
-- AI performance insights
-- Cross-game comparisons
-- Exportable battle reports
-- Community performance comparisons
-- Historical performance timelines
-- Custom analytics widgets
+- Advanced battle analytics
+- Opponent matchup analysis
+- Performance forecasting
+- AI coaching
+- Battle history visualization
+- Competitive ranking
+- Replay analysis
 
-# World Features
+---
+
+# 7. World Features
 
 ## Purpose
 
-World Features enable trainers to explore, understand, and navigate every official Pokémon region through comprehensive geographical, environmental, and gameplay information.
+World Features provide trainers with comprehensive tools for exploring the Pokémon world.
 
-Their purpose is to provide an interactive representation of the Pokémon world by connecting regions, routes, cities, landmarks, encounters, and exploration mechanics into a unified experience.
+Their purpose is to connect locations, routes, maps, encounters, trainers, items, and story progression into a unified world reference.
 
-Unlike Knowledge Features, which focus on Pokémon-related information, World Features focus on the locations where trainers adventure and the relationships between those locations.
-
-Every World Feature should consume canonical world data while respecting the selected Game Context.
+World Features should always respect the selected Game Context because world structure, available Pokémon, NPCs, items, and progression can differ between games.
 
 ---
 
@@ -7318,86 +4843,61 @@ Every World Feature should consume canonical world data while respecting the sel
 
 World Features are responsible for:
 
-- World exploration
+- Region exploration
+- Location navigation
+- Route information
 - Interactive maps
-- Route navigation
 - Encounter information
-- Landmark discovery
-- Environmental data
-
-World Features should encourage exploration while preserving historical accuracy across every supported Pokémon game.
+- Trainer information
+- Hidden item discovery
+- World relationships
 
 ---
 
 # Design Principles
 
-## Canonical Accuracy
+## Game Context Accuracy
 
-Every World Feature should consume canonical world datasets rather than maintaining independent copies of world information.
+Every world record must belong to an appropriate Game Context.
 
-Official region layouts, routes, cities, and landmarks should always reflect the selected Game Context.
+The same named location may have different:
 
----
+- Layouts
+- Encounters
+- Trainers
+- Items
+- Exits
+- Story requirements
 
-## Context Awareness
-
-World information should adapt automatically to the selected Game Context.
-
-Examples include:
-
-- Regional maps
-- Route layouts
-- Available encounters
-- Hidden items
-- Landmark accessibility
-- Story progression
-
-Changing the active Game Context should update the displayed world without altering the underlying canonical data.
+across different games.
 
 ---
 
-## Connected World
+## Canonical World Entities
 
-World Features should encourage exploration through relationships.
+Locations, routes, trainers, items, and encounters should reference canonical entities.
 
-Examples include:
-
-- Region → Cities
-- City → Buildings
-- Route → Encounters
-- Cave → Pokémon
-- Landmark → Story Events
-- Area → Hidden Items
-
-The platform should present the Pokémon world as a connected network rather than isolated pages.
+Game-specific differences should be represented through Game Context relationships rather than duplicated universal records.
 
 ---
 
-## Exploration First
+## Navigation
 
-World Features should prioritize discovery.
+World Features should allow trainers to move naturally between related entities.
 
-Navigation should help trainers answer questions such as:
+For example:
 
-- Where can I find this Pokémon?
-- What items are available here?
-- Which trainers can I battle?
-- What events occur here?
-- How do I reach the next location?
+**Region → Location → Route → Encounter → Pokémon**
 
----
+or:
 
-## Consistency
-
-Every world page should provide a familiar browsing experience.
-
-Navigation, filtering, search behaviour, terminology, and layouts should remain consistent throughout all World Features.
+**Location → Trainer → Team → Pokémon**
 
 ---
 
 # Core World Features
 
-The World category currently includes:
+The World category includes:
 
 - World Explorer
 - Interactive Maps
@@ -7406,22 +4906,19 @@ The World category currently includes:
 - Trainer Database
 - Hidden Item Finder
 
-Additional world features may be introduced as Pokémon Companion expands.
-
 ---
 
 # Feature Relationships
 
-World Features integrate closely with:
+World Features integrate with:
 
-- National Pokédex
-- Pokémon Details
-- Adventure Tracker
+- Knowledge Features
+- Trainer Features
 - Collection Features
 - Battle Features
-- AI Assistant
-
-World Features provide the geographical foundation that connects Pokémon knowledge with trainer adventures.
+- Intelligence Features
+- Interactive Maps
+- Adventure Guidance
 
 ---
 
@@ -7435,13 +4932,9 @@ World Explorer
 
 ## Purpose
 
-The World Explorer enables trainers to discover, browse, and explore every official Pokémon region through an interconnected view of locations, routes, cities, landmarks, and points of interest.
+World Explorer provides the primary navigation system for exploring the Pokémon world.
 
-Its purpose is to provide a centralized gateway into the Pokémon world by connecting geographical information, exploration mechanics, encounters, and story progression across every supported Pokémon game.
-
-Rather than functioning as a static map, the World Explorer should encourage discovery by revealing how every location relates to the wider Pokémon world.
-
-Every location should reference canonical world entities while respecting the selected Game Context.
+It enables trainers to discover regions, locations, routes, points of interest, encounters, trainers, items, and story information within the selected Game Context.
 
 ---
 
@@ -7457,135 +4950,109 @@ World
 - Explorers
 - Completionists
 - Researchers
-- New Players
-
-The World Explorer should support both casual exploration and detailed world research.
+- Speedrunners
 
 ---
 
 ## Dependencies
 
-The World Explorer depends upon:
+World Explorer depends upon:
 
 - Generated Database
 - Game Context Engine
+- Locations
+- Regions
+- Routes
+- Interactive Maps
 - Application Services
-- Navigation System
-- Search Service
-
-World information should always reflect the selected Game Context.
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The World Explorer primarily consumes:
+World Explorer may consume:
 
 - Regions
+- Locations
 - Routes
-- Cities
-- Towns
-- Buildings
+- Maps
 - Landmarks
-- Dungeons
-- Areas
-- World Connections
-
-Generated datasets should provide fast navigation between related locations.
+- Points of Interest
+- Trainers
+- Items
+- Encounters
+- Story Events
+- Game Contexts
 
 ---
 
 ## User Interface
 
-The World Explorer may include:
-
 ### World Overview
 
 Displays:
 
-- Regions
-- Major Cities
+- Region
+- Game
+- Major Locations
 - Routes
-- Landmarks
-- Current Adventure
-
-The overview should provide an accessible entry point into every supported Pokémon world.
+- Important Points of Interest
 
 ---
 
-### Region Browser
-
-Allows trainers to browse:
-
-- Regions
-- Cities
-- Routes
-- Caves
-- Forests
-- Islands
-- Buildings
-
-Navigation should encourage exploration rather than isolated pages.
-
----
-
-### Location Details
-
-Each location may display:
-
-- Description
-- Connected Locations
-- Available Pokémon
-- Available Items
-- NPCs
-- Trainers
-- Story Events
-
-Location details should adapt automatically to the selected Game Context.
-
----
-
-### Exploration Progress
+### Location Explorer
 
 Displays:
 
-- Visited Locations
-- Discovered Areas
-- Remaining Locations
-- Exploration Percentage
-
-Progress should integrate with Adventure Tracker.
+- Location Name
+- Region
+- Connected Areas
+- Available Encounters
+- Trainers
+- Items
+- Story Events
+- Map
 
 ---
 
-### Navigation
+### World Navigation
 
-Allows trainers to navigate between related locations such as:
+Allows trainers to navigate through connected entities.
 
-- Region → Route
-- Route → City
-- City → Building
-- Building → NPC
-- Area → Pokémon
-- Area → Hidden Items
+Examples:
 
-Relationships should encourage continuous exploration.
+- Region → City
+- City → Route
+- Route → Cave
+- Cave → Floor
+- Location → Trainer
+- Location → Item
+
+---
+
+### Progress Integration
+
+When an Adventure is active, World Explorer may display:
+
+- Visited Locations
+- Unvisited Locations
+- Completed Story Events
+- Available Objectives
+- Collection Opportunities
 
 ---
 
 ## Related Features
 
-The World Explorer integrates closely with:
+World Explorer integrates with:
 
 - Interactive Maps
 - Route Explorer
 - Encounter Tables
+- Trainer Database
 - Hidden Item Finder
-- National Pokédex
 - Adventure Tracker
-- AI Assistant
-
-The World Explorer serves as the primary gateway into Pokémon Companion's world knowledge.
+- Adventure Guidance
 
 ---
 
@@ -7605,15 +5072,13 @@ Planned
 
 Potential future improvements include:
 
-- Interactive world map
-- Real-time exploration tracking
-- Story progression overlays
-- Fast navigation shortcuts
-- Favorite locations
-- Route planning
-- Offline world explorer
-- Community location guides
-- AI travel recommendations
+- 3D world visualization
+- Travel planning
+- Route optimization
+- Custom markers
+- Fog-of-war exploration
+- Save file synchronization
+- AI exploration recommendations
 
 ---
 
@@ -7627,203 +5092,9 @@ Interactive Maps
 
 ## Purpose
 
-The Interactive Maps feature enables trainers to visually explore every official Pokémon region through dynamic, interactive maps that display routes, cities, landmarks, buildings, encounter locations, and points of interest.
+Interactive Maps provide visual representations of Pokémon regions, locations, routes, caves, buildings, and other explorable areas.
 
-Its purpose is to transform the Pokémon world into an intuitive visual experience that helps trainers navigate regions, discover hidden content, and better understand geographical relationships.
-
-Rather than functioning as static reference images, Interactive Maps should provide an exploratory interface that responds to trainer interaction and Game Context.
-
-Every map should represent canonical world data while respecting official layouts for the selected Pokémon game.
-
----
-
-## Category
-
-World
-
----
-
-## Primary Users
-
-- Every Trainer
-- Explorers
-- Completionists
-- New Players
-- Researchers
-
-The Interactive Maps feature should support both casual exploration and detailed route planning.
-
----
-
-## Dependencies
-
-The Interactive Maps feature depends upon:
-
-- Generated Database
-- Game Context Engine
-- Application Services
-- World Explorer
-- Navigation System
-
-Maps should always reflect the selected Game Context.
-
----
-
-## Primary Datasets
-
-The Interactive Maps feature primarily consumes:
-
-- Regions
-- Maps
-- Routes
-- Cities
-- Towns
-- Buildings
-- Landmarks
-- Areas
-- World Connections
-
-Generated datasets should optimize map rendering and navigation.
-
----
-
-## User Interface
-
-The Interactive Maps feature may include:
-
-### Regional Maps
-
-Displays:
-
-- Region Layout
-- Cities
-- Routes
-- Water Routes
-- Mountains
-- Forests
-- Islands
-
-Maps should accurately represent each supported Pokémon game.
-
----
-
-### Interactive Navigation
-
-Allows trainers to:
-
-- Zoom
-- Pan
-- Select Locations
-- Highlight Routes
-- View Connected Areas
-
-Navigation should remain smooth across all supported devices.
-
----
-
-### Map Layers
-
-Allows trainers to toggle:
-
-- Pokémon Encounters
-- Hidden Items
-- Trainers
-- Buildings
-- NPCs
-- Story Events
-
-Layers should update dynamically without reloading the map.
-
----
-
-### Location Information
-
-Selecting a location may display:
-
-- Description
-- Available Pokémon
-- Available Items
-- Connected Locations
-- Story Events
-- Trainers
-
-Information should remain synchronized with World Explorer.
-
----
-
-### Exploration Tracking
-
-Displays:
-
-- Visited Locations
-- Unexplored Areas
-- Adventure Progress
-- Discovery Percentage
-
-Progress should integrate with Adventure Tracker.
-
----
-
-## Related Features
-
-The Interactive Maps feature integrates closely with:
-
-- World Explorer
-- Route Explorer
-- Encounter Tables
-- Hidden Item Finder
-- Adventure Tracker
-- AI Assistant
-
-Interactive Maps provide the visual foundation for world exploration throughout Pokémon Companion.
-
----
-
-## Priority
-
-High
-
----
-
-## Status
-
-Planned
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Animated maps
-- Indoor building maps
-- Cave floor navigation
-- Real-time route planner
-- Custom map markers
-- Offline maps
-- Community annotations
-- AI navigation assistance
-- Accessibility enhancements
-
----
-
-# WF-003 — Route Explorer
-
-## Feature Name
-
-Route Explorer
-
----
-
-## Purpose
-
-The Route Explorer enables trainers to explore every official Pokémon route, cave, forest, dungeon, and explorable area across all supported Pokémon games.
-
-Its purpose is to provide comprehensive information about individual locations, including encounters, trainers, items, landmarks, environmental conditions, and progression requirements.
-
-Rather than functioning as a simple location page, the Route Explorer should become the definitive guide for exploring every area within the Pokémon world.
-
-Every route should reference canonical world entities while respecting the selected Game Context.
+The maps should allow trainers to inspect world entities directly and navigate to connected information.
 
 ---
 
@@ -7839,148 +5110,104 @@ World
 - Explorers
 - Completionists
 - Speedrunners
-- Researchers
-
-The Route Explorer should support both casual exploration and detailed route planning.
 
 ---
 
 ## Dependencies
 
-The Route Explorer depends upon:
+Interactive Maps depend upon:
 
-- Generated Database
-- Game Context Engine
-- Application Services
 - World Explorer
-- Interactive Maps
-
-Route information should always reflect the selected Game Context.
+- Map Data
+- Locations
+- Routes
+- Game Context Engine
+- Generated Database
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Route Explorer primarily consumes:
+Maps may contain:
 
-- Routes
-- Areas
-- Encounter Tables
+- Map Layouts
+- Map Sections
+- Coordinates
+- Exits
 - Trainers
 - Items
+- Hidden Items
+- Encounters
 - Landmarks
-- Story Events
-- World Connections
-
-Generated datasets should optimize navigation and cross-referencing.
+- Points of Interest
 
 ---
 
 ## User Interface
 
-The Route Explorer may include:
-
-### Route Overview
+### Map View
 
 Displays:
 
-- Route Name
-- Region
-- Connected Locations
-- Environment Type
-- Accessibility
-- Story Progress Requirements
-
-The overview should provide a quick summary of the selected location.
+- Current Area
+- Connected Areas
+- Landmarks
+- Trainers
+- Items
+- Encounters
+- Navigation Points
 
 ---
 
-### Wild Pokémon
+### Map Filters
 
-Displays:
+Allows trainers to toggle:
 
-- Available Pokémon
-- Encounter Methods
-- Encounter Rates
-- Time-Based Encounters
-- Seasonal Encounters
-- Version Differences
-
-Encounter information should update automatically based on the selected Game Context.
-
----
-
-### Trainers
-
-Displays:
-
-- Trainer Names
-- Trainer Classes
-- Pokémon Teams
-- Battle Rewards
-- Rematch Availability
-
-Trainer information should remain historically accurate for each supported game.
-
----
-
-### Items
-
-Displays:
-
-- Visible Items
+- Pokémon
+- Trainers
+- Items
 - Hidden Items
-- Key Items
-- TMs
-- Berries
-- Item Respawn Information
-
-Items should be categorized for easy browsing.
+- Exits
+- Story Events
+- Points of Interest
 
 ---
 
-### Navigation
+### Map Navigation
 
-Displays:
+Allows movement between:
 
-- Connected Routes
-- Nearby Cities
+- Floors
+- Areas
+- Routes
+- Cities
 - Buildings
 - Caves
-- Landmarks
-- Story Destinations
-
-Navigation should encourage exploration throughout the world.
 
 ---
 
-### Route Progress
+### Adventure Overlay
 
-Displays:
+When an Adventure is selected, maps may display:
 
-- Visited Status
+- Visited Areas
+- Completed Objectives
 - Collected Items
-- Trainers Defeated
-- Pokémon Encountered
-- Exploration Percentage
-
-Progress should integrate with Adventure Tracker.
+- Unvisited Locations
+- Recommended Destinations
 
 ---
 
 ## Related Features
 
-The Route Explorer integrates closely with:
+Interactive Maps integrate with:
 
 - World Explorer
-- Interactive Maps
+- Route Explorer
 - Encounter Tables
+- Trainer Database
 - Hidden Item Finder
-- Adventure Tracker
-- National Pokédex
-- AI Assistant
-
-The Route Explorer provides comprehensive exploration information for every explorable location.
+- Adventure Guidance
 
 ---
 
@@ -8000,15 +5227,177 @@ Planned
 
 Potential future improvements include:
 
-- Route comparison
-- Custom route planner
-- Daily encounter tracker
-- Weather overlays
-- Spawn condition visualization
-- Community route notes
-- Offline route guides
-- AI exploration recommendations
-- Route completion planner
+- Custom markers
+- Route drawing
+- Travel planning
+- Collection overlays
+- Trainer overlays
+- Hidden item overlays
+- Fog-of-war
+- User-generated map notes
+- Offline maps
+
+---
+
+# WF-003 — Route Explorer
+
+## Feature Name
+
+Route Explorer
+
+---
+
+## Purpose
+
+Route Explorer provides detailed information about individual routes and connected travel areas.
+
+It should allow trainers to understand what Pokémon, trainers, items, exits, and progression opportunities exist within a route.
+
+---
+
+## Category
+
+World
+
+---
+
+## Primary Users
+
+- Every Trainer
+- Explorers
+- Completionists
+- Speedrunners
+
+---
+
+## Dependencies
+
+Route Explorer depends upon:
+
+- World Explorer
+- Interactive Maps
+- Encounter Tables
+- Trainer Database
+- Hidden Item Finder
+- Game Context Engine
+
+---
+
+## Primary Data
+
+Route Explorer may consume:
+
+- Routes
+- Locations
+- Encounters
+- Trainers
+- Items
+- Hidden Items
+- Landmarks
+- Story Requirements
+- Connected Areas
+
+---
+
+## User Interface
+
+### Route Overview
+
+Displays:
+
+- Route Name
+- Region
+- Game
+- Connected Locations
+- Available Encounters
+- Trainers
+- Items
+
+---
+
+### Route Navigation
+
+Displays:
+
+- Entrance
+- Exit
+- Connected Locations
+- Buildings
+- Areas
+- Landmarks
+
+---
+
+### Route Encounters
+
+Displays:
+
+- Pokémon
+- Encounter Method
+- Levels
+- Encounter Conditions
+- Availability
+
+---
+
+### Route Trainers
+
+Displays:
+
+- Trainer Name
+- Trainer Class
+- Team
+- Battle Availability
+- Prize Money
+
+---
+
+### Route Collectibles
+
+Displays:
+
+- Visible Items
+- Hidden Items
+- Important Items
+- Collection Status
+
+---
+
+## Related Features
+
+Route Explorer integrates with:
+
+- World Explorer
+- Interactive Maps
+- Encounter Tables
+- Trainer Database
+- Hidden Item Finder
+- Adventure Guidance
+
+---
+
+## Priority
+
+High
+
+---
+
+## Status
+
+Planned
+
+---
+
+## Future Enhancements
+
+Potential future improvements include:
+
+- Route completion tracking
+- Optimal route planning
+- Speedrun routing
+- Collection routing
+- AI route recommendations
+- Custom route notes
 
 ---
 
@@ -8022,13 +5411,9 @@ Encounter Tables
 
 ## Purpose
 
-The Encounter Tables feature enables trainers to explore official wild Pokémon encounter data across every supported Pokémon game.
+Encounter Tables provide historically accurate information about Pokémon encounters within each supported Game Context.
 
-Its purpose is to provide comprehensive, searchable, and historically accurate encounter information for every location, encounter method, and Game Context while preserving official encounter mechanics.
-
-Rather than functioning as a simple Pokémon location list, Encounter Tables should become the definitive reference for discovering where, when, and how Pokémon can be encountered.
-
-Every encounter should reference canonical encounter data while respecting the selected Game Context.
+The system should show not only which Pokémon can be encountered, but also the conditions under which each encounter occurs.
 
 ---
 
@@ -8045,144 +5430,107 @@ World
 - Completionists
 - Shiny Hunters
 - Researchers
-
-The Encounter Tables feature should support both casual exploration and advanced encounter planning.
+- Speedrunners
 
 ---
 
 ## Dependencies
 
-The Encounter Tables feature depends upon:
+Encounter Tables depend upon:
 
-- Generated Database
+- Pokémon Database
+- Locations
+- Routes
 - Game Context Engine
-- Application Services
-- World Explorer
-- Route Explorer
-
-Encounter information should always reflect the selected Game Context.
+- Generated Database
 
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Encounter Tables primarily consume:
+Encounter records may contain:
 
-- Encounter Tables
 - Pokémon
-- Species
-- Locations
-- Routes
-- Encounter Methods
-- Game Contexts
-
-Generated datasets should optimize searching and filtering across every supported Pokémon game.
+- Form
+- Location
+- Game
+- Encounter Method
+- Level Range
+- Encounter Rate
+- Time
+- Weather
+- Season
+- Special Conditions
+- Version Availability
 
 ---
 
 ## User Interface
-
-The Encounter Tables feature may include:
 
 ### Encounter Overview
 
 Displays:
 
 - Location
-- Available Pokémon
-- Encounter Methods
-- Total Encounter Slots
-- Version Differences
-
-The overview should summarize every encounter available within the selected location.
-
----
-
-### Encounter Details
-
-Each encounter may display:
-
+- Game
 - Pokémon
+- Method
 - Level Range
 - Encounter Rate
-- Encounter Method
-- Time Requirements
-- Weather Requirements
-- Seasonal Availability
-
-Encounter information should always reflect official game mechanics.
 
 ---
 
 ### Encounter Filters
 
-Allows trainers to filter encounters using:
+Allows trainers to filter by:
 
 - Pokémon
-- Generation
-- Region
+- Location
 - Game
 - Encounter Method
-- Time of Day
+- Time
 - Weather
-- Season
 - Version
-
-Filters should make locating specific encounters quick and intuitive.
-
----
-
-### Encounter Methods
-
-Supports official encounter methods including:
-
-- Walking
-- Surfing
-- Fishing
-- Rock Smash
-- Headbutt
-- Honey Trees
-- Swarms
-- Hidden Grottoes
-- Poké Radar
-- Special Encounters
-
-Additional encounter methods should integrate without requiring structural redesign.
+- Level
 
 ---
 
-### Encounter Comparison
+### Pokémon Lookup
 
-Allows trainers to compare:
+Trainers may begin from a Pokémon and discover:
 
-- Multiple Locations
-- Multiple Games
-- Encounter Rates
-- Version Differences
-- Availability
+- Where it can be found
+- Which games contain it
+- Encounter methods
+- Level ranges
+- Conditions
 
-Comparisons should help trainers identify the best location for obtaining a Pokémon.
+---
+
+### Game Context Accuracy
+
+Encounter tables must never combine encounter data from different games unless explicitly requested.
 
 ---
 
 ## Related Features
 
-The Encounter Tables feature integrates closely with:
+Encounter Tables integrate with:
 
 - World Explorer
-- Interactive Maps
 - Route Explorer
-- National Pokédex
-- Pokémon Details
+- Interactive Maps
+- Regional Pokédex
+- Living Dex
+- Shiny Collection
+- Adventure Guidance
 - AI Assistant
-
-Encounter Tables provide the canonical source for wild Pokémon availability throughout Pokémon Companion.
 
 ---
 
 ## Priority
 
-Critical
+High
 
 ---
 
@@ -8196,15 +5544,12 @@ Planned
 
 Potential future improvements include:
 
-- Encounter probability calculator
-- Spawn heat maps
-- Real-time encounter planner
-- Repel optimization
-- Shiny hunting support
-- Encounter history
-- Save file integration
-- AI encounter recommendations
-- Community encounter reports
+- Encounter probability analysis
+- Shiny hunt planning
+- Optimal encounter recommendations
+- Collection routing
+- Rare encounter alerts
+- Encounter comparison across games
 
 ---
 
@@ -8218,13 +5563,11 @@ Trainer Database
 
 ## Purpose
 
-The Trainer Database enables trainers to explore official information about every NPC trainer across all supported Pokémon games.
+The Trainer Database enables trainers to explore official information about NPC trainers across supported Pokémon games.
 
-Its purpose is to provide a comprehensive, searchable, and historically accurate database of trainer classes, individual trainers, battle teams, locations, rewards, and progression throughout the Pokémon world.
+Its purpose is to provide a comprehensive reference for trainer classes, individual trainers, battle teams, locations, rewards, and progression.
 
-Rather than functioning as a simple trainer list, the Trainer Database should become the definitive reference for every official trainer encounter in the Pokémon series.
-
-Every trainer should reference canonical Trainer entities while respecting the selected Game Context.
+Every trainer encounter should reference canonical Trainer entities while respecting the selected Game Context.
 
 ---
 
@@ -8242,8 +5585,6 @@ World
 - Challenge Run Players
 - Speedrunners
 
-The Trainer Database should support both casual exploration and advanced gameplay planning.
-
 ---
 
 ## Dependencies
@@ -8256,13 +5597,11 @@ The Trainer Database depends upon:
 - World Explorer
 - Route Explorer
 
-Trainer information should always reflect the selected Game Context.
-
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Trainer Database primarily consumes:
+The Trainer Database consumes:
 
 - Trainers
 - Trainer Classes
@@ -8272,13 +5611,9 @@ The Trainer Database primarily consumes:
 - Battle Rewards
 - Game Contexts
 
-Generated datasets should optimize searching and navigation across trainer records.
-
 ---
 
 ## User Interface
-
-The Trainer Database may include:
 
 ### Trainer Overview
 
@@ -8290,8 +5625,6 @@ Displays:
 - Game
 - Location
 - Battle Availability
-
-The overview should summarize the trainer's role within the selected game.
 
 ---
 
@@ -8306,7 +5639,7 @@ Displays:
 - Moves
 - Abilities
 
-Trainer teams should always reflect the selected Game Context.
+Trainer teams must always reflect the selected Game Context.
 
 ---
 
@@ -8320,13 +5653,11 @@ Displays:
 - Battle Conditions
 - Story Progress Requirements
 
-Battle information should remain historically accurate.
-
 ---
 
 ### Trainer Filters
 
-Allows trainers to filter records using:
+Allows trainers to filter using:
 
 - Trainer Class
 - Region
@@ -8336,13 +5667,11 @@ Allows trainers to filter records using:
 - Rematch Status
 - Pokémon Used
 
-Filters should make locating trainers quick and intuitive.
-
 ---
 
 ### Trainer Relationships
 
-Displays related information including:
+Displays:
 
 - Nearby Trainers
 - Connected Routes
@@ -8351,13 +5680,11 @@ Displays related information including:
 - Elite Four
 - Champions
 
-Relationships should encourage exploration of the Pokémon world.
-
 ---
 
 ## Related Features
 
-The Trainer Database integrates closely with:
+Trainer Database integrates with:
 
 - World Explorer
 - Interactive Maps
@@ -8365,8 +5692,6 @@ The Trainer Database integrates closely with:
 - Encounter Tables
 - Strategy Planner
 - AI Assistant
-
-The Trainer Database serves as the canonical reference for every NPC trainer throughout Pokémon Companion.
 
 ---
 
@@ -8408,13 +5733,9 @@ Hidden Item Finder
 
 ## Purpose
 
-The Hidden Item Finder enables trainers to discover, organize, and track hidden items throughout every supported Pokémon game.
+The Hidden Item Finder enables trainers to discover, organize, and track hidden items throughout supported Pokémon games.
 
-Its purpose is to provide a comprehensive reference for hidden collectibles, secret items, and interactable objects while preserving historical accuracy and game-specific availability.
-
-Rather than functioning as a simple item list, the Hidden Item Finder should become a complete exploration companion that encourages trainers to fully explore every location.
-
-Every hidden item should reference canonical world entities while respecting the selected Game Context.
+Its purpose is to provide a complete exploration reference for hidden collectibles, secret items, and interactable objects while preserving historical accuracy and Game Context-specific availability.
 
 ---
 
@@ -8432,8 +5753,6 @@ World
 - Collectors
 - Speedrunners
 
-The Hidden Item Finder should support both casual exploration and complete world completion.
-
 ---
 
 ## Dependencies
@@ -8447,13 +5766,11 @@ The Hidden Item Finder depends upon:
 - Interactive Maps
 - Route Explorer
 
-Hidden item information should always reflect the selected Game Context.
-
 ---
 
-## Primary Datasets
+## Primary Data
 
-The Hidden Item Finder primarily consumes:
+The Hidden Item Finder consumes:
 
 - Hidden Items
 - Locations
@@ -8463,13 +5780,9 @@ The Hidden Item Finder primarily consumes:
 - Story Requirements
 - Game Contexts
 
-Generated datasets should optimize searching and navigation across hidden item locations.
-
 ---
 
 ## User Interface
-
-The Hidden Item Finder may include:
 
 ### Item Overview
 
@@ -8480,8 +5793,6 @@ Displays:
 - Region
 - Game
 - Collection Status
-
-The overview should summarize every hidden item available within the selected Game Context.
 
 ---
 
@@ -8494,8 +5805,6 @@ Displays:
 - Nearby Landmarks
 - Accessibility Requirements
 - Story Progress Requirements
-
-Location information should help trainers locate hidden items without ambiguity.
 
 ---
 
@@ -8514,7 +5823,7 @@ Progress should integrate with Adventure Tracker.
 
 ### Item Filters
 
-Allows trainers to filter hidden items using:
+Allows filtering by:
 
 - Region
 - Game
@@ -8523,13 +5832,11 @@ Allows trainers to filter hidden items using:
 - Collection Status
 - Story Availability
 
-Filters should make locating hidden items quick and intuitive.
-
 ---
 
 ### Navigation
 
-Allows trainers to navigate between:
+Allows navigation between:
 
 - Hidden Items
 - Nearby Routes
@@ -8537,13 +5844,11 @@ Allows trainers to navigate between:
 - Landmarks
 - Related Points of Interest
 
-Navigation should integrate seamlessly with World Explorer and Interactive Maps.
-
 ---
 
 ## Related Features
 
-The Hidden Item Finder integrates closely with:
+Hidden Item Finder integrates with:
 
 - World Explorer
 - Interactive Maps
@@ -8551,8 +5856,6 @@ The Hidden Item Finder integrates closely with:
 - Encounter Tables
 - Adventure Tracker
 - AI Assistant
-
-The Hidden Item Finder completes the exploration experience by helping trainers discover every hidden collectible throughout the Pokémon world.
 
 ---
 
@@ -8582,725 +5885,9 @@ Potential future improvements include:
 - Community discovery notes
 - Offline exploration mode
 
-# Intelligence Features
-
-## Purpose
-
-Intelligence Features provide trainers with intelligent assistance, contextual recommendations, and personalized insights throughout Pokémon Companion.
-
-Their purpose is to transform Pokémon Companion from a comprehensive reference platform into an intelligent companion capable of assisting trainers with exploration, collection management, team optimization, battle preparation, and long-term progression.
-
-Unlike Knowledge Features, which present official Pokémon information, Intelligence Features analyze existing data to generate meaningful recommendations and actionable insights.
-
-Every Intelligence Feature should consume canonical knowledge and trainer-owned data without modifying either.
-
 ---
 
-# Responsibilities
-
-Intelligence Features are responsible for:
-
-- Intelligent recommendations
-- Context-aware assistance
-- Personalized insights
-- Advanced search
-- Collection analysis
-- Team optimization
-- Adventure guidance
-
-Intelligence Features should enhance decision-making while keeping trainers in control.
-
----
-
-# Design Principles
-
-## Context Awareness
-
-Every recommendation should respect the selected Game Context.
-
-Examples include:
-
-- Game mechanics
-- Regional availability
-- Story progression
-- Trainer collections
-- Battle rules
-
-Recommendations should automatically adapt as the active Game Context changes.
-
----
-
-## Explainability
-
-Recommendations should explain the reasoning behind them whenever possible.
-
-Examples include:
-
-- Why a Pokémon is recommended
-- Why a move is effective
-- Why a collection goal is prioritized
-- Why a battle strategy is suggested
-
-Transparency should always take priority over opaque recommendations.
-
----
-
-## Personalization
-
-Recommendations should adapt to each trainer.
-
-Examples include:
-
-- Current adventure
-- Collection progress
-- Battle history
-- Team preferences
-- Personal goals
-
-Intelligence Features should evolve alongside the trainer.
-
----
-
-## Non-Destructive Assistance
-
-Intelligence Features should never automatically modify trainer data.
-
-Suggestions should always remain optional and under trainer control.
-
----
-
-## Integration
-
-Intelligence Features should integrate naturally with:
-
-- Knowledge Features
-- Trainer Features
-- Collection Features
-- Battle Features
-- World Features
-- Community Features
-
-Intelligence should enhance every area of Pokémon Companion without replacing existing functionality.
-
----
-
-# Core Intelligence Features
-
-The Intelligence category currently includes:
-
-- AI Assistant
-- Smart Search
-- Team Recommendations
-- Adventure Guidance
-- Collection Analysis
-
-Additional intelligent tools may be introduced as Pokémon Companion expands.
-
----
-
-# Feature Relationships
-
-Intelligence Features integrate closely with every major feature category within Pokémon Companion.
-
-Rather than acting as an isolated module, Intelligence Features serve as an intelligent layer that connects knowledge, collections, battles, exploration, and trainer progression into a unified experience.
-
----
-
-# IF-001 — AI Assistant
-
-## Feature Name
-
-AI Assistant
-
----
-
-## Purpose
-
-The AI Assistant enables trainers to interact with Pokémon Companion through natural language, providing intelligent, context-aware assistance across every supported Pokémon game.
-
-Its purpose is to help trainers discover information, answer questions, explain mechanics, recommend strategies, and simplify complex tasks by combining canonical Pokémon knowledge with trainer-specific data.
-
-Rather than replacing existing features, the AI Assistant should serve as an intelligent guide that helps trainers navigate Pokémon Companion more efficiently.
-
-Every response should respect the selected Game Context while distinguishing between canonical Pokémon knowledge, trainer-owned data, and generated recommendations.
-
----
-
-## Category
-
-Intelligence
-
----
-
-## Primary Users
-
-- Every Trainer
-- New Players
-- Competitive Players
-- Completionists
-- Researchers
-- Content Creators
-
-The AI Assistant should support both simple questions and complex planning.
-
----
-
-## Dependencies
-
-The AI Assistant depends upon:
-
-- Generated Database
-- Knowledge Features
-- Trainer Features
-- Collection Features
-- Battle Features
-- World Features
-- Application Services
-- Game Context Engine
-
-Responses should always reflect the selected Game Context and available trainer data.
-
----
-
-## Primary Datasets
-
-The AI Assistant may consume:
-
-- Pokémon
-- Species
-- Forms
-- Moves
-- Abilities
-- Items
-- Locations
-- Encounter Tables
-- Trainers
-- Teams
-- Collections
-- Adventures
-- Statistics
-- User Preferences
-
-The assistant should combine information from multiple datasets while preserving the distinction between canonical data and trainer-owned information.
-
----
-
-## User Interface
-
-The AI Assistant may include:
-
-### Natural Language Chat
-
-Allows trainers to ask questions such as:
-
-- Where can I catch Riolu?
-- Which Pokémon counters Garchomp?
-- How do I complete my Living Dex?
-- What should I do next?
-- Which team should I use?
-
-The assistant should support conversational interactions rather than keyword-based queries.
-
----
-
-### Context Awareness
-
-The assistant should automatically understand the trainer's current context, including:
-
-- Active Adventure
-- Current Game
-- Team
-- Collections
-- Progress
-- Selected Pokémon
-
-Context should reduce the need for repetitive user input.
-
----
-
-### Intelligent Recommendations
-
-Provides recommendations for:
-
-- Teams
-- Battles
-- Exploration
-- Collections
-- Training
-- Progression
-
-Recommendations should explain the reasoning behind each suggestion.
-
----
-
-### Guided Workflows
-
-The assistant may guide trainers through tasks such as:
-
-- Completing a Regional Pokédex
-- Building a balanced team
-- Preparing for Gym Leaders
-- Finding evolution items
-- Planning shiny hunts
-
-Complex objectives should be broken into manageable steps.
-
----
-
-### Conversation History
-
-Allows trainers to:
-
-- View Previous Conversations
-- Continue Existing Discussions
-- Save Important Conversations
-- Bookmark Helpful Responses
-
-Conversation history should remain searchable and organized.
-
----
-
-## Related Features
-
-The AI Assistant integrates closely with:
-
-- Knowledge Features
-- Trainer Features
-- Collection Features
-- Battle Features
-- World Features
-- Smart Search
-
-The AI Assistant serves as the intelligent interface to every major feature within Pokémon Companion.
-
----
-
-## Priority
-
-Critical
-
----
-
-## Status
-
-Future
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Voice conversations
-- Image recognition
-- Screenshot analysis
-- Save file analysis
-- Battle replay analysis
-- Personalized coaching
-- Multi-language support
-- Cross-device conversations
-- Offline AI assistance
-
----
-
-# IF-002 — Smart Search
-
-## Feature Name
-
-Smart Search
-
----
-
-## Purpose
-
-The Smart Search feature enables trainers to discover Pokémon knowledge, world information, collections, and trainer data through intelligent, context-aware search.
-
-Its purpose is to provide a unified search experience that understands natural language, relationships between entities, and trainer intent while respecting the selected Game Context.
-
-Rather than functioning as a simple keyword search, Smart Search should interpret user queries and guide trainers to the most relevant information across Pokémon Companion.
-
-Every search result should be derived from canonical Pokémon knowledge, trainer-owned data, or clearly identified generated recommendations.
-
----
-
-## Category
-
-Intelligence
-
----
-
-## Primary Users
-
-- Every Trainer
-- New Players
-- Collectors
-- Researchers
-- Competitive Players
-
-Smart Search should support both quick lookups and complex information discovery.
-
----
-
-## Dependencies
-
-The Smart Search feature depends upon:
-
-- Generated Database
-- Search Index
-- Knowledge Features
-- Trainer Features
-- Collection Features
-- World Features
-- Application Services
-- Game Context Engine
-
-Search results should always reflect the selected Game Context.
-
----
-
-## Primary Datasets
-
-The Smart Search feature may consume:
-
-- Pokémon
-- Species
-- Forms
-- Moves
-- Abilities
-- Items
-- Types
-- Locations
-- Regions
-- Trainers
-- Encounter Tables
-- Collections
-- Teams
-- Adventures
-
-Search should unify information from every major feature within Pokémon Companion.
-
----
-
-## User Interface
-
-The Smart Search feature may include:
-
-### Universal Search
-
-Allows trainers to search using:
-
-- Pokémon Names
-- Moves
-- Abilities
-- Items
-- Locations
-- Trainers
-- Teams
-- Collections
-
-Search should provide a single entry point into the entire platform.
-
----
-
-### Natural Language Search
-
-Supports queries such as:
-
-- Which Pokémon resist Ice?
-- Where can I find Larvitar?
-- Which Pokémon evolve with a Moon Stone?
-- Show all Water-type Gym Leaders.
-- Which Pokémon can learn Surf?
-
-The search engine should interpret intent rather than relying solely on exact keyword matches.
-
----
-
-### Intelligent Suggestions
-
-Provides suggestions based on:
-
-- Partial Queries
-- Spelling Corrections
-- Related Pokémon
-- Similar Moves
-- Related Locations
-- Trainer History
-
-Suggestions should help trainers discover relevant information more efficiently.
-
----
-
-### Search Filters
-
-Allows trainers to refine results using:
-
-- Category
-- Generation
-- Region
-- Game
-- Type
-- Collection Status
-- Battle Role
-
-Filters should adapt dynamically to the current search context.
-
----
-
-### Search Results
-
-Results may include:
-
-- Canonical Knowledge
-- Trainer Data
-- Collection Progress
-- Battle Tools
-- World Information
-- AI Recommendations
-
-Each result should clearly indicate its source and relationship to the trainer's query.
-
----
-
-## Related Features
-
-The Smart Search feature integrates closely with:
-
-- AI Assistant
-- Knowledge Features
-- Trainer Features
-- Collection Features
-- Battle Features
-- World Features
-
-Smart Search provides intelligent discovery across every major feature of Pokémon Companion.
-
----
-
-## Priority
-
-Critical
-
----
-
-## Status
-
-Future
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Voice search
-- Image-based search
-- OCR search
-- Search history
-- Saved searches
-- Cross-language search
-- Semantic search ranking
-- Offline search
-- AI-powered query refinement
-
----
-
-# IF-003 — Team Recommendations
-
-## Feature Name
-
-Team Recommendations
-
----
-
-## Purpose
-
-The Team Recommendations feature enables trainers to receive intelligent team suggestions based on their goals, available Pokémon, game progress, and battle objectives.
-
-Its purpose is to assist trainers in building effective teams by combining canonical Pokémon knowledge, battle mechanics, trainer collections, and Game Context into personalized recommendations.
-
-Rather than automatically creating teams, Team Recommendations should provide explainable suggestions that help trainers make informed decisions while maintaining full control over their final team composition.
-
-Every recommendation should respect the selected Game Context and the trainer's available resources.
-
----
-
-## Category
-
-Intelligence
-
----
-
-## Primary Users
-
-- Every Trainer
-- New Players
-- Competitive Players
-- Challenge Run Players
-- Collectors
-
-The Team Recommendations feature should support both casual gameplay and advanced strategic planning.
-
----
-
-## Dependencies
-
-The Team Recommendations feature depends upon:
-
-- AI Assistant
-- Team Management
-- Team Analysis
-- Battle Features
-- Collection Features
-- Generated Database
-- Game Context Engine
-- Application Services
-
-Recommendations should always use official Pokémon mechanics appropriate for the selected Game Context.
-
----
-
-## Primary Datasets
-
-The Team Recommendations feature may consume:
-
-- Pokémon
-- Forms
-- Types
-- Moves
-- Abilities
-- Items
-- Teams
-- User Collections
-- Battle Statistics
-- Trainer Preferences
-- Game Contexts
-
-Recommendations should combine canonical data with trainer-owned information while preserving the distinction between the two.
-
----
-
-## User Interface
-
-The Team Recommendations feature may include:
-
-### Team Builder Assistant
-
-Allows trainers to generate recommendations based on:
-
-- Current Adventure
-- Battle Objective
-- Favorite Pokémon
-- Available Collection
-- Difficulty Level
-
-Recommendations should adapt automatically to the trainer's current situation.
-
----
-
-### Team Suggestions
-
-Displays:
-
-- Recommended Pokémon
-- Suggested Roles
-- Team Balance
-- Offensive Coverage
-- Defensive Coverage
-- Overall Synergy
-
-Each recommendation should include a clear explanation.
-
----
-
-### Alternative Recommendations
-
-Provides alternative options based on:
-
-- Collection Availability
-- Game Progress
-- Version Exclusives
-- Personal Preferences
-- Challenge Rules
-
-Alternatives should give trainers flexibility without sacrificing strategy.
-
----
-
-### Improvement Suggestions
-
-Analyzes an existing team and recommends:
-
-- Pokémon Replacements
-- Move Changes
-- Ability Changes
-- Held Item Changes
-- Role Adjustments
-
-Suggestions should complement Team Analysis rather than duplicate it.
-
----
-
-### Recommendation Preferences
-
-Allows trainers to customize recommendations using preferences such as:
-
-- Favorite Pokémon
-- Preferred Types
-- Difficulty
-- Competitive Focus
-- Story Playthrough
-- Challenge Runs
-
-Preferences should personalize future recommendations.
-
----
-
-## Related Features
-
-The Team Recommendations feature integrates closely with:
-
-- AI Assistant
-- Smart Search
-- Team Management
-- Team Analysis
-- Damage Calculator
-- Strategy Planner
-- Collection Features
-
-Team Recommendations transform battle knowledge into personalized team-building guidance.
-
----
-
-## Priority
-
-High
-
----
-
-## Status
-
-Future
-
----
-
-## Future Enhancements
-
-Potential future improvements include:
-
-- Meta-aware recommendations
-- AI-generated competitive teams
-- Gym Leader preparation
-- Elite Four optimization
-- Champion-specific teams
-- Nuzlocke team planning
-- Team comparison
-- Community team suggestions
-- Learning from trainer preferences
-
----
-
-# IF-004 — Adventure Guidance
+# IF-004: Adventure Guidance
 
 ## Feature Name
 
@@ -9310,13 +5897,22 @@ Adventure Guidance
 
 ## Purpose
 
-The Adventure Guidance feature enables trainers to receive intelligent, context-aware guidance throughout their Pokémon adventures.
+The Adventure Guidance feature provides context-aware recommendations that help trainers understand what they can do next during an adventure.
 
-Its purpose is to assist trainers in planning their next steps by analyzing current progress, available resources, upcoming challenges, and game-specific objectives while respecting the selected Game Context.
+It analyzes the trainer's current Game Context, adventure progress, location, team, available resources, completed objectives, and upcoming progression requirements.
 
-Rather than replacing player exploration, Adventure Guidance should provide optional recommendations that help trainers make informed decisions and reduce unnecessary confusion.
+Adventure Guidance should not force a linear playstyle. It should present useful options and explain why each option may be relevant.
 
-Every recommendation should be generated using canonical Pokémon knowledge combined with trainer-specific progress.
+The system should distinguish between:
+
+- Required progression
+- Recommended progression
+- Optional content
+- Exploration opportunities
+- Completion opportunities
+- Trainer-defined goals
+
+Every recommendation must respect the selected Game Context.
 
 ---
 
@@ -9333,134 +5929,224 @@ Intelligence
 - Returning Players
 - Completionists
 - Challenge Run Players
-
-The Adventure Guidance feature should support both first-time playthroughs and experienced trainers seeking efficient progression.
+- Speedrunners
+- Researchers
 
 ---
 
 ## Dependencies
 
-The Adventure Guidance feature depends upon:
+Adventure Guidance depends upon:
 
-- AI Assistant
+- Game Context Engine
 - Adventure Tracker
-- World Features
+- World Explorer
+- Route Explorer
+- Interactive Maps
+- Trainer Database
+- Encounter Tables
+- Hidden Item Finder
+- Team Management
+- Team Analysis
 - Collection Features
 - Battle Features
 - Generated Database
-- Game Context Engine
 - Application Services
-
-Guidance should always reflect the trainer's current adventure and selected Game Context.
+- AI Assistant
 
 ---
 
 ## Primary Datasets
 
-The Adventure Guidance feature may consume:
+Adventure Guidance may consume:
 
+- Game Contexts
 - Adventures
 - Story Progress
-- Regions
 - Locations
+- Routes
 - Trainers
+- Trainer Teams
 - Encounter Tables
+- Hidden Items
+- Items
+- Pokémon
+- Moves
+- Abilities
 - Teams
 - Collections
-- Game Contexts
+- Achievements
 - User Preferences
-
-Recommendations should combine canonical knowledge with trainer progress while preserving the distinction between the two.
 
 ---
 
 ## User Interface
 
-The Adventure Guidance feature may include:
-
 ### Adventure Overview
 
 Displays:
 
-- Current Objective
-- Story Progress
+- Current Game
+- Current Adventure
 - Current Location
-- Recommended Destination
-- Overall Adventure Progress
+- Story Progress
+- Completed Objectives
+- Current Objective
+- Recommended Next Steps
+- Upcoming Major Challenge
 
-The overview should help trainers quickly understand where they are in their journey.
+The overview should provide a concise understanding of the trainer's current situation.
 
 ---
 
 ### Next Steps
 
-Provides recommendations such as:
+The system may recommend:
 
-- Visit a new location
-- Challenge the next Gym
-- Complete a story event
-- Explore optional areas
-- Strengthen the current team
-- Collect important items
+- Story progression
+- Gym challenges
+- Rival battles
+- Important locations
+- Optional areas
+- Important items
+- Team preparation
+- Collection opportunities
+- Hidden items
+- Nearby trainers
 
-Recommendations should adapt automatically as progress changes.
+Recommendations should be ordered according to relevance rather than simply displaying every available activity.
+
+---
+
+### Progress Requirements
+
+When a trainer cannot access a location, event, battle, or feature, Adventure Guidance should explain:
+
+- What is currently blocked
+- Why it is blocked
+- What requirement must be completed
+- Where that requirement can be completed
+- What becomes available afterward
+
+This is particularly important for games with progression locks.
 
 ---
 
 ### Preparation Guidance
 
-Suggests preparations for upcoming challenges, including:
+Upcoming challenges may include:
 
-- Recommended Team Level
-- Useful Pokémon Types
-- Helpful Items
-- Important Moves
-- Suggested Team Adjustments
+- Recommended team levels
+- Relevant Pokémon types
+- Useful moves
+- Important items
+- Recommended team roles
+- Known opposing Pokémon
+- Trainer battle information
 
-Guidance should explain why each recommendation is useful.
+Recommendations should explain the reasoning behind preparation suggestions.
 
 ---
 
-### Exploration Suggestions
+### Exploration Opportunities
 
-Highlights opportunities such as:
+Adventure Guidance may highlight:
 
 - Nearby Pokémon
 - Hidden Items
-- Optional Trainers
-- Side Activities
-- Collection Opportunities
+- Trainers
+- Optional areas
+- Evolution opportunities
+- Collection opportunities
+- Story-related points of interest
 
-Suggestions should encourage exploration without forcing a specific playstyle.
+Exploration recommendations should remain optional.
 
 ---
 
-### Progress Planning
+### Goal Planning
 
-Allows trainers to plan goals such as:
+Trainers may define goals such as:
 
-- Completing the Regional Pokédex
-- Defeating the Elite Four
-- Building a stronger team
-- Finding evolution items
-- Preparing for post-game content
+- Defeat the next Gym
+- Complete a Regional Pokédex
+- Build a specific team
+- Find a specific Pokémon
+- Collect all hidden items
+- Complete a Living Dex
+- Prepare for the Elite Four
+- Complete post-game content
 
-Plans should remain editable and adapt to changing trainer goals.
+The system should adapt recommendations according to the selected goal.
+
+---
+
+## Game Context Behavior
+
+Adventure Guidance must never assume that all Pokémon games follow the same progression structure.
+
+The selected Game Context determines:
+
+- Story sequence
+- Available locations
+- Gym order
+- Trainer availability
+- Encounter availability
+- Evolution mechanics
+- Items
+- Battle mechanics
+- Progression requirements
+
+Historical differences between versions should be preserved.
+
+---
+
+## Recommendation Classification
+
+Every recommendation should be classified as one of:
+
+### Required
+
+Necessary for normal story progression.
+
+### Recommended
+
+Strongly useful but not strictly required.
+
+### Optional
+
+Available content that does not block primary progression.
+
+### Completion
+
+Relevant to collection or completion goals.
+
+### Preparation
+
+Recommended before an upcoming challenge.
+
+### Exploration
+
+Useful nearby discoveries or optional activities.
+
+This classification prevents the guidance system from presenting optional content as mandatory progression.
 
 ---
 
 ## Related Features
 
-The Adventure Guidance feature integrates closely with:
+Adventure Guidance integrates with:
 
 - AI Assistant
+- Smart Search
 - Adventure Tracker
 - World Explorer
+- Route Explorer
 - Interactive Maps
+- Trainer Database
+- Hidden Item Finder
 - Team Recommendations
 - Collection Analysis
-
-Adventure Guidance transforms trainer progress into practical recommendations for what to do next.
 
 ---
 
@@ -9481,18 +6167,19 @@ Future
 Potential future improvements include:
 
 - Dynamic journey planning
-- Personalized challenge suggestions
-- Daily adventure goals
-- Post-game guidance
-- Event recommendations
-- AI route optimization
 - Save file analysis
+- Personalized route planning
+- Challenge Run guidance
+- Nuzlocke guidance
+- Speedrun routing
+- Post-game planning
+- Daily adventure goals
+- AI-generated progression explanations
 - Multi-adventure planning
-- Community-generated adventure guides
 
 ---
 
-# IF-005 — Collection Analysis
+# IF-005: Collection Analysis
 
 ## Feature Name
 
@@ -9502,13 +6189,11 @@ Collection Analysis
 
 ## Purpose
 
-The Collection Analysis feature enables trainers to receive intelligent insights and recommendations based on their Pokémon collections across every supported Pokémon game.
+Collection Analysis provides intelligent insights into trainer-owned collections.
 
-Its purpose is to analyze collection progress, identify missing collectibles, prioritize achievable goals, and recommend efficient collection strategies while respecting the selected Game Context.
+It identifies missing collectibles, analyzes completion progress, determines achievable objectives, and recommends efficient collection paths based on the selected Game Context.
 
-Rather than functioning as a statistics dashboard, Collection Analysis should help trainers understand their collections and make informed decisions about what to pursue next.
-
-Every recommendation should combine canonical Pokémon knowledge with trainer-owned collection data while preserving the distinction between the two.
+The feature should analyze existing trainer data without modifying collections automatically.
 
 ---
 
@@ -9526,29 +6211,27 @@ Intelligence
 - Shiny Hunters
 - Researchers
 
-The Collection Analysis feature should support both casual collectors and dedicated completionists.
-
 ---
 
 ## Dependencies
 
-The Collection Analysis feature depends upon:
+Collection Analysis depends upon:
 
-- AI Assistant
-- Collection Features
-- World Features
-- Adventure Tracker
-- Generated Database
 - Game Context Engine
+- Collection Features
+- Adventure Tracker
+- World Explorer
+- Encounter Tables
+- Hidden Item Finder
+- AI Assistant
+- Generated Database
 - Application Services
-
-Analysis should always reflect the trainer's active collections and selected Game Context.
 
 ---
 
 ## Primary Datasets
 
-The Collection Analysis feature may consume:
+Collection Analysis may consume:
 
 - Living Dex
 - Regional Pokédex
@@ -9558,17 +6241,19 @@ The Collection Analysis feature may consume:
 - Mark Collection
 - Prestige Collection
 - Collection Statistics
+- Pokémon
+- Forms
+- Moves
+- Abilities
+- Items
+- Locations
+- Encounter Tables
 - Adventures
-- Game Contexts
 - User Preferences
-
-Analysis should combine canonical collection data with trainer-owned progress while preserving the distinction between the two.
 
 ---
 
 ## User Interface
-
-The Collection Analysis feature may include:
 
 ### Collection Overview
 
@@ -9576,82 +6261,104 @@ Displays:
 
 - Overall Completion
 - Active Collection Goals
-- Highest Completion
-- Lowest Completion
+- Completed Goals
+- Missing Collectibles
+- Highest Completion Category
+- Lowest Completion Category
 - Recommended Priorities
-
-The overview should summarize the trainer's overall collection progress.
 
 ---
 
 ### Missing Collectibles
 
-Identifies:
+May identify:
 
 - Missing Pokémon
 - Missing Forms
+- Missing Shinies
 - Missing Ribbons
 - Missing Marks
 - Missing Prestige Awards
 
-Missing collectibles should be prioritized based on the selected Game Context and trainer goals.
+Missing items should be grouped according to the selected collection and Game Context.
 
 ---
 
 ### Collection Recommendations
 
-Provides suggestions such as:
+Recommendations may include:
 
-- Easy Collection Opportunities
-- Nearby Missing Pokémon
-- High-Priority Objectives
-- Rare Collectibles
-- Time-Limited Opportunities
+- Easy completion opportunities
+- Nearby missing Pokémon
+- Available evolution opportunities
+- Rare collectibles
+- Difficult objectives
+- Version-specific requirements
+- Trade requirements
+- Story-locked collectibles
 
-Recommendations should explain why they are suggested.
+Recommendations should explain why they were selected.
 
 ---
 
-### Progress Analysis
+### Collection Progress
 
-Analyzes:
+Displays:
 
 - Collection Growth
+- Recently Completed Objectives
 - Completion Trends
-- Recently Completed Goals
-- Collection Efficiency
-- Personal Milestones
-
-Analysis should help trainers understand long-term progress.
+- Milestones
+- Completion Percentage
+- Remaining Objectives
 
 ---
 
 ### Goal Planning
 
-Allows trainers to plan objectives such as:
+Trainers may define goals such as:
 
+- Complete a Regional Pokédex
 - Complete a Living Dex
-- Finish a Regional Pokédex
-- Collect Every Form
-- Earn Every Ribbon
-- Complete Prestige Awards
+- Collect every available form
+- Complete a Shiny Collection
+- Earn every Ribbon
+- Collect every Mark
+- Complete Prestige objectives
 
-Goals should remain editable and adapt as progress changes.
+---
+
+## Collection Feasibility
+
+Collection Analysis should identify whether an objective is:
+
+- Currently obtainable
+- Obtainable later
+- Version exclusive
+- Trade dependent
+- Event dependent
+- Post-game dependent
+- Unavailable in the selected Game Context
+
+This prevents the system from recommending impossible objectives.
 
 ---
 
 ## Related Features
 
-The Collection Analysis feature integrates closely with:
+Collection Analysis integrates with:
 
-- AI Assistant
-- Collection Statistics
 - Living Dex
 - Regional Pokédex
-- World Explorer
+- Shiny Collection
+- Form Collection
+- Ribbon Collection
+- Mark Collection
+- Prestige Collection
+- Collection Statistics
 - Adventure Guidance
-
-Collection Analysis transforms collection progress into intelligent recommendations and long-term planning.
+- World Explorer
+- AI Assistant
 
 ---
 
@@ -9672,26 +6379,25 @@ Future
 Potential future improvements include:
 
 - AI completion forecasting
-- Route optimization
-- Personalized collection plans
-- Cross-game collection analysis
-- Community collection comparisons
-- Event opportunity alerts
+- Collection route optimization
+- Cross-game collection planning
+- Personalized collection roadmaps
+- Event opportunity tracking
 - Save file analysis
-- Collection achievement predictions
-- Interactive collection roadmap
+- Collection milestone predictions
+- Community collection comparisons
+
+---
 
 # Community Features
 
 ## Purpose
 
-Community Features enable trainers to connect, collaborate, compare, and share their Pokémon journeys with other trainers across the Pokémon Companion platform.
+Community Features enable trainers to connect, collaborate, compare achievements, and share selected Pokémon Companion experiences.
 
-Their purpose is to encourage interaction, knowledge sharing, friendly competition, and collaborative gameplay while respecting trainer privacy and personal preferences.
+Community functionality must remain optional.
 
-Unlike Trainer Features, which focus on an individual trainer's progress, Community Features extend that experience by enabling meaningful interactions between trainers.
-
-Every Community Feature should operate independently of canonical Pokémon knowledge while integrating naturally with trainer-owned data.
+Trainer-owned data must never become public merely because a trainer participates in the community.
 
 ---
 
@@ -9700,13 +6406,12 @@ Every Community Feature should operate independently of canonical Pokémon knowl
 Community Features are responsible for:
 
 - Trainer connections
+- Shared teams
 - Shared collections
-- Team sharing
+- Community rankings
 - Community challenges
-- Friendly competition
-- Progress comparison
-
-Community Features should strengthen the Pokémon Companion community while maintaining trainer ownership and privacy.
+- Community interaction
+- Optional social discovery
 
 ---
 
@@ -9714,75 +6419,57 @@ Community Features should strengthen the Pokémon Companion community while main
 
 ## Trainer Ownership
 
-Every trainer owns their own data.
+Trainers retain ownership of their personal information and data.
 
-Sharing should always be optional and controlled by the trainer.
-
-Community Features should never expose trainer information without explicit permission.
+Sharing requires explicit trainer action.
 
 ---
 
 ## Privacy First
 
-Trainers should control:
+Trainers should control the visibility of:
 
-- Public Profile Visibility
-- Shared Teams
-- Shared Collections
+- Profile information
+- Teams
+- Collections
 - Statistics
+- Achievements
 - Activity
-- Friend Requests
-
-Privacy settings should remain clear and easy to manage.
+- Adventure progress
 
 ---
 
 ## Positive Community
 
-Community Features should encourage:
+Community systems should encourage:
 
 - Collaboration
 - Learning
-- Friendly Competition
 - Discovery
-- Shared Achievements
+- Friendly competition
+- Achievement sharing
 
-The platform should promote respectful interactions rather than unhealthy competition.
-
----
-
-## Context Awareness
-
-Community interactions should respect the selected Game Context.
-
-Examples include:
-
-- Game-specific teams
-- Regional collections
-- Adventure progress
-- Battle statistics
-- Collection achievements
-
-Shared information should always reflect the correct game context.
+The platform should avoid mechanics that create unnecessary pressure to participate.
 
 ---
 
-## Integration
+## Game Context Awareness
 
-Community Features should integrate naturally with:
+Community content must identify the relevant:
 
-- Trainer Features
-- Collection Features
-- Battle Features
-- Intelligence Features
+- Game
+- Generation
+- Region
+- Battle Format
+- Collection Type
 
-Community should enhance the trainer experience without becoming a requirement for progression.
+This prevents information from different games from being incorrectly compared.
 
 ---
 
 # Core Community Features
 
-The Community category currently includes:
+The Community category includes:
 
 - Friends
 - Shared Teams
@@ -9790,24 +6477,9 @@ The Community category currently includes:
 - Leaderboards
 - Community Challenges
 
-Additional community features may be introduced as Pokémon Companion expands.
-
 ---
 
-# Feature Relationships
-
-Community Features integrate closely with:
-
-- Trainer Features
-- Collection Features
-- Battle Features
-- AI Assistant
-
-Community Features extend Pokémon Companion beyond a personal companion into a collaborative trainer platform.
-
----
-
-# CM-001 — Friends
+# CM-001: Friends
 
 ## Feature Name
 
@@ -9817,13 +6489,9 @@ Friends
 
 ## Purpose
 
-The Friends feature enables trainers to connect with other Pokémon Companion users through a secure and privacy-focused friendship system.
+The Friends feature enables trainers to connect with other Pokémon Companion users while maintaining privacy and control over shared information.
 
-Its purpose is to foster collaboration, communication, and shared experiences by allowing trainers to build a network of friends while maintaining full control over their personal information and shared content.
-
-Rather than functioning as a traditional social network, the Friends feature should strengthen the Pokémon Companion experience through meaningful trainer connections.
-
-Every friendship should be managed independently of canonical Pokémon knowledge while respecting trainer privacy and preferences.
+Friends should function as a focused trainer connection system rather than attempting to become a general-purpose social network.
 
 ---
 
@@ -9838,56 +6506,48 @@ Community
 - Every Trainer
 - Collectors
 - Competitive Players
-- Friends
 - Families
 - Community Groups
-
-The Friends feature should support both casual and long-term trainer relationships.
 
 ---
 
 ## Dependencies
 
-The Friends feature depends upon:
+Friends depends upon:
 
 - User Authentication
 - Trainer Profiles
-- Application Services
 - Privacy Settings
-
-Friend relationships should always respect trainer privacy preferences.
+- Application Services
 
 ---
 
 ## Primary Datasets
 
-The Friends feature primarily consumes:
+Friends may use:
 
 - Trainer Profiles
-- Friend Lists
+- Friend Relationships
 - Friend Requests
 - Privacy Settings
 - Activity Summaries
-
-Friend data should remain independent from canonical Pokémon datasets.
+- Blocking Records
 
 ---
 
 ## User Interface
 
-The Friends feature may include:
-
 ### Friend List
 
 Displays:
 
-- Friend Name
-- Trainer Avatar
+- Trainer Name
+- Avatar
 - Online Status
 - Favorite Game
-- Recent Activity
+- Shared Activity
 
-The Friend List should provide a quick overview of connected trainers.
+Only publicly permitted information should be displayed.
 
 ---
 
@@ -9898,58 +6558,55 @@ Allows trainers to:
 - Send Requests
 - Accept Requests
 - Decline Requests
-- Cancel Pending Requests
+- Cancel Requests
+- Remove Friends
 - Block Users
-
-Request management should remain simple and transparent.
 
 ---
 
 ### Friend Profiles
 
-Displays shared information such as:
+May display:
 
 - Trainer Profile
 - Favorite Pokémon
-- Public Collections
 - Public Teams
+- Public Collections
 - Achievements
 - Activity Summary
 
-Only information permitted by the trainer's privacy settings should be visible.
-
----
-
-### Activity Feed
-
-Displays shared activities including:
-
-- New Achievements
-- Collection Milestones
-- Team Updates
-- Adventure Progress
-- Community Challenges
-
-Activity visibility should respect individual privacy preferences.
+All information remains controlled by privacy settings.
 
 ---
 
 ### Friend Search
 
-Allows trainers to search using:
+May support:
 
 - Trainer Name
 - Trainer ID
 - Friend Code
-- QR Code (if supported)
+- QR Code
 
-Search methods should simplify connecting with other trainers.
+Search identifiers should not expose unnecessary personal information.
+
+---
+
+### Activity
+
+Friends may see approved activity such as:
+
+- Collection Milestones
+- Achievements
+- Team Updates
+- Challenge Participation
+- Adventure Milestones
 
 ---
 
 ## Related Features
 
-The Friends feature integrates closely with:
+Friends integrates with:
 
 - Trainer Profiles
 - Shared Teams
@@ -9957,8 +6614,6 @@ The Friends feature integrates closely with:
 - Leaderboards
 - Community Challenges
 - AI Assistant
-
-The Friends feature provides the social foundation for Community Features throughout Pokémon Companion.
 
 ---
 
@@ -9980,17 +6635,16 @@ Potential future improvements include:
 
 - Friend groups
 - Private messaging
-- Activity notifications
-- Shared wish lists
 - Friend recommendations
-- Cross-platform friends
+- Shared wish lists
 - Event invitations
 - Friend milestones
 - Community clubs
+- Cross-platform friendships
 
 ---
 
-# CM-002 — Shared Teams
+# CM-002: Shared Teams
 
 ## Feature Name
 
@@ -10000,13 +6654,11 @@ Shared Teams
 
 ## Purpose
 
-The Shared Teams feature enables trainers to publish, discover, and explore Pokémon teams shared by the Pokémon Companion community.
+Shared Teams provides a community library where trainers can publish, discover, study, bookmark, compare, and optionally copy Pokémon teams.
 
-Its purpose is to encourage collaboration, strategic learning, and team building by allowing trainers to share successful team compositions while preserving ownership and attribution.
+Shared teams must remain separate from private teams.
 
-Rather than replacing Team Management, Shared Teams should provide a community-driven library of teams that trainers can study, bookmark, and adapt to their own adventures.
-
-Every shared team should remain linked to its original trainer while respecting privacy settings and the selected Game Context.
+Importing a shared team creates an independent trainer-owned copy.
 
 ---
 
@@ -10024,43 +6676,41 @@ Community
 - Challenge Run Players
 - Researchers
 
-The Shared Teams feature should support both discovering new strategies and sharing personal creations.
-
 ---
 
 ## Dependencies
 
-The Shared Teams feature depends upon:
+Shared Teams depends upon:
 
 - User Authentication
 - Team Management
+- Team Analysis
 - Trainer Profiles
 - Privacy Settings
-- Application Services
 - Game Context Engine
-
-Only teams explicitly shared by their owners should be publicly available.
+- Application Services
 
 ---
 
 ## Primary Datasets
 
-The Shared Teams feature primarily consumes:
+Shared Teams may consume:
 
 - Teams
+- Team Members
+- Moves
+- Abilities
+- Items
 - Team Metadata
 - Trainer Profiles
 - Game Contexts
-- Team Ratings
+- Ratings
 - Bookmarks
-
-Shared team data should remain separate from each trainer's private teams.
+- Community Feedback
 
 ---
 
 ## User Interface
-
-The Shared Teams feature may include:
 
 ### Team Gallery
 
@@ -10069,11 +6719,11 @@ Displays:
 - Team Name
 - Trainer
 - Game
+- Generation
+- Battle Format
 - Team Preview
 - Popularity
 - Community Rating
-
-The gallery should help trainers quickly discover interesting teams.
 
 ---
 
@@ -10086,26 +6736,24 @@ Displays:
 - Moves
 - Abilities
 - Held Items
-- Strategy Description
+- Strategy
 - Team Notes
-
-Shared information should reflect the permissions selected by the trainer.
+- Game Context
 
 ---
 
 ### Search and Filters
 
-Allows trainers to filter teams using:
+Filters may include:
 
 - Game
 - Generation
+- Region
 - Battle Format
 - Pokémon
 - Type
 - Team Style
-- Community Rating
-
-Filters should make discovering relevant teams fast and intuitive.
+- Rating
 
 ---
 
@@ -10113,40 +6761,47 @@ Filters should make discovering relevant teams fast and intuitive.
 
 Allows trainers to:
 
-- Bookmark Teams
-- Like Teams
-- Rate Teams
-- Leave Feedback
-- Share Teams
+- Bookmark
+- Like
+- Rate
+- Comment
+- Share
 
-Community interactions should remain respectful and constructive.
+Community moderation should apply to user-generated content.
 
 ---
 
-### Import Options
+### Import
 
-Allows trainers to:
+Trainers may:
 
 - Save a Copy
 - Import into Team Management
-- Compare with Existing Teams
-- Customize Imported Teams
+- Compare with an Existing Team
+- Customize the Team
 
-Imported teams should become independent copies owned by the trainer.
+The original shared team must never be modified through importing.
+
+---
+
+## Game Context Protection
+
+A shared team should clearly identify the Game Context in which it was created.
+
+A team created for one game's mechanics should not automatically be presented as valid for another game's mechanics.
 
 ---
 
 ## Related Features
 
-The Shared Teams feature integrates closely with:
+Shared Teams integrates with:
 
 - Team Management
 - Team Analysis
 - Strategy Planner
+- Damage Calculator
 - Friends
 - AI Assistant
-
-Shared Teams encourage collaboration while helping trainers discover new battle strategies.
 
 ---
 
@@ -10167,18 +6822,18 @@ Future
 Potential future improvements include:
 
 - Featured teams
-- Tournament-winning teams
-- AI-generated team summaries
+- Tournament teams
+- AI team summaries
 - Team version history
 - Community team collections
 - Team discussions
-- Team collaboration
-- Export to battle simulators
-- Cross-platform sharing
+- Collaborative teams
+- Battle simulator integration
+- Export formats
 
 ---
 
-# CM-003 — Shared Collections
+# CM-003: Shared Collections
 
 ## Feature Name
 
@@ -10188,13 +6843,9 @@ Shared Collections
 
 ## Purpose
 
-The Shared Collections feature enables trainers to publish, explore, and compare Pokémon collections shared by the Pokémon Companion community.
+Shared Collections enables trainers to showcase selected collection progress while discovering and comparing achievements from other trainers.
 
-Its purpose is to encourage collaboration, inspiration, and friendly competition by allowing trainers to showcase their collection achievements while maintaining full ownership and privacy controls.
-
-Rather than replacing personal Collection Features, Shared Collections should provide a community-driven platform where trainers can celebrate progress, discover collection goals, and learn from one another.
-
-Every shared collection should remain linked to its original trainer while respecting privacy settings and the selected Game Context.
+The feature should encourage inspiration and friendly competition without exposing private collection data.
 
 ---
 
@@ -10212,28 +6863,24 @@ Community
 - Shiny Hunters
 - Researchers
 
-The Shared Collections feature should support both showcasing achievements and discovering new collection goals.
-
 ---
 
 ## Dependencies
 
-The Shared Collections feature depends upon:
+Shared Collections depends upon:
 
 - User Authentication
 - Collection Features
 - Trainer Profiles
 - Privacy Settings
-- Application Services
 - Game Context Engine
-
-Only collections explicitly shared by their owners should be publicly visible.
+- Application Services
 
 ---
 
 ## Primary Datasets
 
-The Shared Collections feature primarily consumes:
+Shared Collections may consume:
 
 - Living Dex
 - Regional Pokédex
@@ -10245,13 +6892,9 @@ The Shared Collections feature primarily consumes:
 - Trainer Profiles
 - Collection Metadata
 
-Shared collection data should remain independent from private trainer records.
-
 ---
 
 ## User Interface
-
-The Shared Collections feature may include:
 
 ### Collection Gallery
 
@@ -10259,12 +6902,11 @@ Displays:
 
 - Trainer
 - Collection Type
+- Game
 - Completion Percentage
 - Featured Pokémon
 - Community Rating
 - Last Updated
-
-The gallery should help trainers discover interesting collections.
 
 ---
 
@@ -10272,20 +6914,17 @@ The gallery should help trainers discover interesting collections.
 
 Displays:
 
-- Collection Progress
-- Completion Statistics
+- Completion Progress
 - Collection Milestones
 - Featured Pokémon
-- Personal Notes
 - Collection Highlights
-
-Displayed information should respect trainer privacy settings.
+- Public Notes
 
 ---
 
 ### Search and Filters
 
-Allows trainers to filter collections using:
+Allows filtering by:
 
 - Collection Type
 - Game
@@ -10293,9 +6932,7 @@ Allows trainers to filter collections using:
 - Region
 - Completion Percentage
 - Trainer
-- Community Rating
-
-Filters should simplify discovering collections relevant to the trainer's interests.
+- Rating
 
 ---
 
@@ -10303,33 +6940,31 @@ Filters should simplify discovering collections relevant to the trainer's intere
 
 Allows trainers to:
 
-- Bookmark Collections
-- Like Collections
-- Leave Feedback
-- Share Collections
+- Bookmark
+- Like
+- Comment
+- Share
 - Compare Progress
-
-Community interactions should remain positive and constructive.
 
 ---
 
 ### Collection Comparison
 
-Allows trainers to compare:
+Comparison may include:
 
 - Overall Completion
-- Missing Pokémon
-- Shared Progress
-- Collection Milestones
+- Shared Collectibles
+- Missing Collectibles
+- Milestones
 - Achievement Differences
 
-Comparisons should highlight similarities and differences without modifying either trainer's data.
+Comparison must never modify either trainer's collection.
 
 ---
 
 ## Related Features
 
-The Shared Collections feature integrates closely with:
+Shared Collections integrates with:
 
 - Friends
 - Living Dex
@@ -10337,8 +6972,6 @@ The Shared Collections feature integrates closely with:
 - Collection Statistics
 - Collection Analysis
 - AI Assistant
-
-Shared Collections encourage collaboration and celebrate long-term collecting achievements throughout Pokémon Companion.
 
 ---
 
@@ -10370,7 +7003,7 @@ Potential future improvements include:
 
 ---
 
-# CM-004 — Leaderboards
+# CM-004: Leaderboards
 
 ## Feature Name
 
@@ -10380,13 +7013,9 @@ Leaderboards
 
 ## Purpose
 
-The Leaderboards feature enables trainers to compare achievements, collections, battle performance, and community milestones through optional, privacy-controlled rankings.
+Leaderboards provide optional rankings that allow trainers to compare achievements across defined categories.
 
-Its purpose is to encourage friendly competition, celebrate accomplishments, and motivate long-term engagement while respecting trainer privacy and individual playstyles.
-
-Rather than rewarding only competitive success, Leaderboards should recognize many forms of achievement across Pokémon Companion.
-
-Every leaderboard should be generated from trainer-approved data while respecting privacy settings and the selected Game Context.
+The system should recognize multiple forms of Pokémon achievement rather than treating competitive battle performance as the only meaningful measurement.
 
 ---
 
@@ -10404,62 +7033,55 @@ Community
 - Completionists
 - Community Members
 
-The Leaderboards feature should support both casual participation and long-term achievement tracking.
-
 ---
 
 ## Dependencies
 
-The Leaderboards feature depends upon:
+Leaderboards depend upon:
 
 - User Authentication
 - Trainer Profiles
 - Privacy Settings
-- Collection Features
-- Battle Features
-- Application Services
+- Collection Statistics
+- Battle Statistics
+- Achievements
+- Community Challenges
 - Game Context Engine
-
-Only trainer-approved data should appear on public leaderboards.
+- Application Services
 
 ---
 
 ## Primary Datasets
 
-The Leaderboards feature primarily consumes:
+Leaderboards may consume:
 
 - Trainer Profiles
 - Collection Statistics
 - Battle Statistics
 - Achievements
-- Community Challenges
+- Challenge Progress
 - Trainer Activity
-
-Leaderboard data should always respect trainer privacy preferences.
+- Game Contexts
 
 ---
 
 ## User Interface
 
-The Leaderboards feature may include:
-
 ### Global Leaderboards
 
-Displays rankings based on:
+Possible categories include:
 
 - Collection Completion
 - Battle Performance
 - Achievement Progress
 - Community Participation
-- Overall Activity
-
-Global rankings should provide an overview of community accomplishments.
+- Challenge Performance
 
 ---
 
 ### Category Leaderboards
 
-Allows trainers to browse rankings for:
+May include:
 
 - Living Dex
 - Regional Pokédex
@@ -10469,8 +7091,6 @@ Allows trainers to browse rankings for:
 - Prestige Collection
 - Battle Statistics
 
-Categories should celebrate different styles of gameplay.
-
 ---
 
 ### Personal Rankings
@@ -10478,47 +7098,57 @@ Categories should celebrate different styles of gameplay.
 Displays:
 
 - Current Rank
+- Previous Rank
 - Ranking History
-- Recent Progress
 - Personal Best
-- Nearby Trainers
-
-Personal rankings should focus on progress rather than only final position.
+- Nearby Ranked Trainers
 
 ---
 
-### Leaderboard Filters
+### Filters
 
-Allows trainers to filter rankings using:
+Filters may include:
 
 - Game
 - Generation
 - Region
-- Collection Type
-- Battle Category
+- Category
 - Time Period
-
-Filters should make leaderboard exploration simple and meaningful.
+- Battle Format
 
 ---
 
 ### Achievement Highlights
 
-Displays:
+May highlight:
 
-- New Community Records
-- Weekly Highlights
+- New Records
+- Weekly Leaders
 - Monthly Leaders
-- Recently Completed Milestones
+- Milestones
 - Featured Trainers
 
-Highlights should celebrate community accomplishments without discouraging newer trainers.
+---
+
+## Fairness
+
+Leaderboards should prevent misleading comparisons by separating incompatible contexts.
+
+For example, records from different games or battle formats should not automatically compete within the same ranking.
+
+---
+
+## Privacy
+
+Participation should be optional.
+
+Trainers who opt out should not appear in public rankings.
 
 ---
 
 ## Related Features
 
-The Leaderboards feature integrates closely with:
+Leaderboards integrate with:
 
 - Friends
 - Shared Teams
@@ -10527,8 +7157,6 @@ The Leaderboards feature integrates closely with:
 - Trainer Statistics
 - Collection Statistics
 - Battle Statistics
-
-Leaderboards provide an optional community-wide view of trainer accomplishments.
 
 ---
 
@@ -10549,18 +7177,18 @@ Future
 Potential future improvements include:
 
 - Seasonal rankings
-- Regional leaderboards
-- Friend-only leaderboards
-- Event leaderboards
+- Regional rankings
+- Friend-only rankings
+- Event rankings
 - Historical rankings
 - Achievement showcases
 - Team rankings
-- AI-powered performance insights
+- AI performance insights
 - Community awards
 
 ---
 
-# CM-005 — Community Challenges
+# CM-005: Community Challenges
 
 ## Feature Name
 
@@ -10570,13 +7198,9 @@ Community Challenges
 
 ## Purpose
 
-The Community Challenges feature enables trainers to participate in shared objectives, seasonal events, and collaborative activities across the Pokémon Companion community.
+Community Challenges provide optional shared objectives that allow trainers to participate in community-wide, seasonal, or limited-time activities.
 
-Its purpose is to encourage engagement, friendly competition, and collective achievement by providing optional challenges that reward participation rather than requiring it.
-
-Rather than replacing personal goals, Community Challenges should complement each trainer's individual journey through fun, community-driven experiences.
-
-Every challenge should respect the selected Game Context while remaining fair and accessible to participating trainers.
+Challenges should reward participation and achievement without creating gameplay advantages that cannot be earned normally.
 
 ---
 
@@ -10594,29 +7218,27 @@ Community
 - Completionists
 - Community Members
 
-The Community Challenges feature should support both individual participation and collaborative community events.
-
 ---
 
 ## Dependencies
 
-The Community Challenges feature depends upon:
+Community Challenges depend upon:
 
 - User Authentication
 - Trainer Profiles
 - Privacy Settings
 - Collection Features
 - Battle Features
-- Application Services
+- Adventure Tracker
+- Achievement System
 - Game Context Engine
-
-Participation should always remain optional and respect trainer privacy preferences.
+- Application Services
 
 ---
 
 ## Primary Datasets
 
-The Community Challenges feature primarily consumes:
+Community Challenges may consume:
 
 - Trainer Profiles
 - Collections
@@ -10624,14 +7246,11 @@ The Community Challenges feature primarily consumes:
 - Achievements
 - Challenge Definitions
 - Progress Records
-
-Challenge progress should reference trainer-owned data without modifying canonical Pokémon information.
+- Game Contexts
 
 ---
 
 ## User Interface
-
-The Community Challenges feature may include:
 
 ### Challenge Hub
 
@@ -10643,23 +7262,20 @@ Displays:
 - Featured Events
 - Participation Statistics
 
-The Challenge Hub should provide a central location for discovering community activities.
-
 ---
 
 ### Challenge Details
 
 Displays:
 
-- Challenge Description
+- Description
 - Objectives
 - Requirements
-- Progress
+- Game Context
 - Start Date
 - End Date
 - Rewards
-
-Challenge details should clearly explain participation requirements.
+- Progress
 
 ---
 
@@ -10671,30 +7287,26 @@ Displays:
 - Community Progress
 - Milestones
 - Completion Percentage
-- Time Remaining
-
-Progress should update automatically as trainers participate.
+- Remaining Time
 
 ---
 
 ### Challenge Categories
 
-Supports challenge types such as:
+May include:
 
 - Collection Challenges
 - Battle Challenges
 - Exploration Challenges
 - Adventure Challenges
 - Seasonal Events
-- Special Community Events
-
-Additional challenge types should integrate without requiring structural redesign.
+- Special Events
 
 ---
 
 ### Rewards
 
-May include:
+Possible rewards include:
 
 - Achievement Badges
 - Profile Decorations
@@ -10702,22 +7314,21 @@ May include:
 - Challenge History
 - Participation Milestones
 
-Rewards should celebrate participation without creating unfair gameplay advantages.
+Rewards should not provide unfair gameplay advantages.
 
 ---
 
 ## Related Features
 
-The Community Challenges feature integrates closely with:
+Community Challenges integrates with:
 
 - Friends
 - Shared Teams
 - Shared Collections
 - Leaderboards
 - Achievements
+- Adventure Tracker
 - AI Assistant
-
-Community Challenges encourage trainers to participate in shared experiences while celebrating progress across the Pokémon Companion community.
 
 ---
 
@@ -10740,24 +7351,1386 @@ Potential future improvements include:
 - Seasonal challenge series
 - Cooperative challenges
 - Friend-only challenges
-- Global community events
-- Challenge creation tools
+- Global events
+- Trainer-created challenges
 - AI-generated challenge suggestions
 - Historical challenge archive
 - Community voting
 - Cross-platform events
 
+---
+
 # Infrastructure Features
 
 ## Purpose
 
-Infrastructure Features provide the core systems, services, and operational capabilities that support every component of Pokémon Companion.
+Infrastructure Features provide the underlying systems required for Pokémon Companion to operate reliably.
 
-Their purpose is to ensure the platform remains reliable, scalable, maintainable, and capable of delivering accurate Pokémon knowledge and trainer experiences across every supported Pokémon game.
+They are responsible for:
 
-Unlike user-facing features, Infrastructure Features operate behind the scenes and are responsible for data generation, validation, application services, synchronization, APIs, monitoring, and overall platform stability.
+- Data generation
+- Data validation
+- APIs
+- Synchronization
+- Monitoring
+- Reliability
+- Scalability
+- Operational integrity
 
-Every Infrastructure Feature should prioritize reliability, maintainability, performance, and data integrity.
+Infrastructure should remain independent from presentation-layer functionality.
+
+---
+
+# Design Principles
+
+## Reliability
+
+Critical infrastructure should remain available and predictable.
+
+---
+
+## Data Integrity
+
+Invalid canonical or generated data must not reach production datasets.
+
+---
+
+## Scalability
+
+Infrastructure should support:
+
+- Additional Pokémon
+- Additional games
+- Larger datasets
+- More trainers
+- New feature categories
+- New client applications
+
+---
+
+## Performance
+
+Infrastructure should use:
+
+- Efficient generated datasets
+- Caching
+- Indexing
+- Pagination
+- Background processing
+- Optimized APIs
+
+---
+
+## Maintainability
+
+Infrastructure components should have:
+
+- Clear responsibilities
+- Stable interfaces
+- Independent tests
+- Documentation
+- Reusable services
+
+---
+
+# Core Infrastructure Features
+
+The Infrastructure category includes:
+
+- Data Generation Pipeline
+- Validation Framework
+- Cloud Synchronization
+- API Platform
+- Monitoring
+
+---
+
+# INF-001: Data Generation Pipeline
+
+## Feature Name
+
+Data Generation Pipeline
+
+---
+
+## Purpose
+
+The Data Generation Pipeline generates the canonical and derived datasets consumed by Pokémon Companion.
+
+It transforms source data into deterministic, optimized datasets that can be consumed without requiring live external API access during normal application operation.
+
+---
+
+## Category
+
+Infrastructure
+
+---
+
+## Primary Users
+
+- Developers
+- Maintainers
+- Contributors
+- Automated Build Systems
+
+---
+
+## Dependencies
+
+The Data Generation Pipeline depends upon:
+
+- Canonical Data Sources
+- Dataset Generators
+- Shared Utilities
+- Validation Framework
+- Build System
+- Version Management
+
+---
+
+## Primary Outputs
+
+The pipeline may generate:
+
+- Canonical Datasets
+- Generated Datasets
+- Historical Datasets
+- Legacy Datasets
+- Search Indexes
+- Relationship Graphs
+- Game Context Data
+- Derived Lookup Tables
+
+---
+
+## Pipeline Responsibilities
+
+The pipeline may perform:
+
+- Source acquisition
+- Parsing
+- Normalization
+- Transformation
+- Relationship resolution
+- Derived dataset generation
+- Search index generation
+- Output optimization
+
+Each stage should remain independently executable.
+
+---
+
+## Deterministic Generation
+
+Given the same approved source inputs and generation configuration, the pipeline should produce reproducible outputs.
+
+Generation metadata should identify:
+
+- Source version
+- Generator version
+- Game Context
+- Generation timestamp
+- Dataset version
+
+---
+
+## Historical Preservation
+
+The pipeline must preserve historical differences.
+
+It must not normalize historical mechanics into modern equivalents when those differences affect gameplay or factual accuracy.
+
+---
+
+## Output Management
+
+Generated outputs should:
+
+- Be machine-readable
+- Have predictable structures
+- Be versioned
+- Support incremental generation
+- Support validation
+- Be suitable for application consumption
+
+---
+
+## Status
+
+Completed
+
+---
+
+## Priority
+
+Critical
+
+---
+
+## Future Enhancements
+
+Potential future improvements include:
+
+- Incremental generation
+- Parallel processing
+- Generation caching
+- Pipeline visualization
+- Automated regression testing
+- Performance optimization
+- Continuous integration
+- Generation analytics
+- Plugin-based generators
+
+---
+
+# INF-002: Validation Framework
+
+## Feature Name
+
+Validation Framework
+
+---
+
+## Purpose
+
+The Validation Framework verifies that generated Pokémon Companion datasets are structurally valid, internally consistent, complete, and compatible with the canonical data model.
+
+It should identify problems rather than silently altering canonical information.
+
+---
+
+## Category
+
+Infrastructure
+
+---
+
+## Primary Users
+
+- Developers
+- Maintainers
+- Contributors
+- Automated Build Systems
+
+---
+
+## Dependencies
+
+Validation depends upon:
+
+- Data Generation Pipeline
+- Canonical Datasets
+- Generated Datasets
+- Historical Datasets
+- Legacy Datasets
+- Shared Utilities
+
+---
+
+## Validation Responsibilities
+
+The framework should support:
+
+- Schema validation
+- Required field validation
+- Data type validation
+- Duplicate detection
+- Relationship validation
+- Cross-reference validation
+- Game Context validation
+- Historical consistency validation
+- File integrity validation
+
+---
+
+## Validation Severity
+
+Validation results should distinguish between:
+
+### Error
+
+The dataset cannot safely be published.
+
+### Warning
+
+The dataset may be usable but requires review.
+
+### Informational
+
+The result provides useful diagnostic information without representing a failure.
+
+---
+
+## Validation Reporting
+
+Reports should provide:
+
+- Validation Status
+- Errors
+- Warnings
+- Summary Statistics
+- Failed Dataset
+- Failed Record
+- Validation Rule
+- Diagnostic Context
+
+---
+
+## Publication Protection
+
+Invalid datasets should not become production datasets.
+
+A failed validation process should stop publication unless an explicit maintainer override exists.
+
+---
+
+## Status
+
+In Progress
+
+---
+
+## Priority
+
+Critical
+
+---
+
+## Future Enhancements
+
+Potential future improvements include:
+
+- Incremental validation
+- Parallel validation
+- Continuous validation
+- Validation dashboards
+- Regression validation
+- Automated quality scoring
+- Performance benchmarking
+- Plugin-based validators
+- Validation trend analysis
+
+---
+
+# CM-001 — Friends
+
+## Feature Name
+
+Friends
+
+---
+
+## Purpose
+
+The Friends feature enables trainers to connect with other Pokémon Companion users through a secure, privacy-focused friendship system.
+
+Its purpose is to support meaningful trainer relationships, collaboration, shared achievements, and friendly interaction without turning Pokémon Companion into a general-purpose social network.
+
+Friend relationships are trainer-owned data and must remain separate from canonical Pokémon knowledge.
+
+---
+
+## Category
+
+Community
+
+---
+
+## Primary Users
+
+- Every Trainer
+- Collectors
+- Competitive Players
+- Friends
+- Families
+- Community Groups
+
+---
+
+## Dependencies
+
+The Friends feature depends upon:
+
+- User Authentication
+- Trainer Profiles
+- Privacy Settings
+- Application Services
+- Cloud Synchronization
+
+---
+
+## Primary Datasets
+
+The Friends feature primarily consumes:
+
+- Trainer Profiles
+- Friend Relationships
+- Friend Requests
+- Privacy Settings
+- Activity Summaries
+- Block Lists
+
+Friend data must remain independent from canonical Pokémon datasets.
+
+---
+
+## User Interface
+
+### Friend List
+
+Displays:
+
+- Friend Name
+- Trainer Avatar
+- Online Status
+- Favorite Game
+- Recent Activity
+
+The Friend List provides a quick overview of connected trainers.
+
+---
+
+### Friend Requests
+
+Allows trainers to:
+
+- Send Requests
+- Accept Requests
+- Decline Requests
+- Cancel Pending Requests
+- Block Users
+- Remove Friends
+
+Request management should remain simple and transparent.
+
+---
+
+### Friend Profiles
+
+Displays trainer-approved information such as:
+
+- Trainer Profile
+- Favorite Pokémon
+- Public Collections
+- Public Teams
+- Achievements
+- Activity Summary
+
+Only information permitted by privacy settings should be visible.
+
+---
+
+### Activity Feed
+
+Displays shared activities such as:
+
+- New Achievements
+- Collection Milestones
+- Team Updates
+- Adventure Progress
+- Community Challenge Progress
+
+Activity visibility must respect individual privacy preferences.
+
+---
+
+### Friend Search
+
+Allows trainers to search using:
+
+- Trainer Name
+- Trainer ID
+- Friend Code
+- QR Code, if supported
+
+Search should help trainers connect without exposing unnecessary personal information.
+
+---
+
+## Privacy
+
+Trainers should be able to control:
+
+- Who Can Send Friend Requests
+- Who Can View Their Profile
+- Who Can View Their Teams
+- Who Can View Their Collections
+- Who Can View Their Activity
+- Who Can See Their Online Status
+
+Blocking a trainer should immediately prevent further interaction where appropriate.
+
+---
+
+## Related Features
+
+The Friends feature integrates closely with:
+
+- Trainer Profiles
+- Shared Teams
+- Shared Collections
+- Leaderboards
+- Community Challenges
+- AI Assistant
+
+---
+
+## Priority
+
+Medium
+
+---
+
+## Status
+
+Future
+
+---
+
+## Future Enhancements
+
+Potential future improvements include:
+
+- Friend Groups
+- Private Messaging
+- Activity Notifications
+- Shared Wish Lists
+- Friend Recommendations
+- Cross-Platform Friends
+- Event Invitations
+- Friend Milestones
+- Community Clubs
+
+---
+
+# CM-002 — Shared Teams
+
+## Feature Name
+
+Shared Teams
+
+---
+
+## Purpose
+
+The Shared Teams feature enables trainers to publish, discover, compare, and reuse Pokémon teams shared by the Pokémon Companion community.
+
+Its purpose is to encourage strategic learning and collaboration while preserving team ownership, attribution, privacy, and Game Context accuracy.
+
+Shared teams must never overwrite a trainer's existing team.
+
+When imported, a shared team becomes an independent copy owned by the importing trainer.
+
+---
+
+## Category
+
+Community
+
+---
+
+## Primary Users
+
+- Every Trainer
+- Competitive Players
+- Casual Players
+- Challenge Run Players
+- Researchers
+
+---
+
+## Dependencies
+
+The Shared Teams feature depends upon:
+
+- User Authentication
+- Team Management
+- Team Analysis
+- Trainer Profiles
+- Privacy Settings
+- Application Services
+- Game Context Engine
+
+---
+
+## Primary Datasets
+
+The Shared Teams feature primarily consumes:
+
+- Teams
+- Team Members
+- Team Metadata
+- Trainer Profiles
+- Game Contexts
+- Team Ratings
+- Bookmarks
+- Community Feedback
+
+---
+
+## User Interface
+
+### Team Gallery
+
+Displays:
+
+- Team Name
+- Trainer
+- Game
+- Generation
+- Team Preview
+- Popularity
+- Community Rating
+
+---
+
+### Team Details
+
+Displays:
+
+- Team Members
+- Pokémon
+- Roles
+- Moves
+- Abilities
+- Held Items
+- Strategy Description
+- Team Notes
+- Game Context
+
+The displayed team must correspond to its original Game Context.
+
+---
+
+### Search and Filters
+
+Allows trainers to filter teams using:
+
+- Game
+- Generation
+- Region
+- Battle Format
+- Pokémon
+- Type
+- Team Style
+- Community Rating
+
+---
+
+### Community Feedback
+
+Allows trainers to:
+
+- Bookmark Teams
+- Like Teams
+- Rate Teams
+- Leave Feedback
+- Share Teams
+
+Community feedback should remain constructive and respectful.
+
+---
+
+### Import Options
+
+Allows trainers to:
+
+- Save a Copy
+- Import into Team Management
+- Compare with Existing Teams
+- Customize Imported Teams
+
+Imported teams become independent trainer-owned records.
+
+---
+
+### Team Attribution
+
+Shared teams should preserve:
+
+- Original Trainer
+- Original Publication Date
+- Game Context
+- Team Version
+- Attribution Information
+
+Attribution should remain attached to the shared team unless the original trainer removes or unpublishes it.
+
+---
+
+## Game Context
+
+Shared Teams must always preserve their original Game Context.
+
+For example:
+
+A team created for one game must not automatically be treated as valid for another game merely because the same Pokémon exist in both games.
+
+Game-specific:
+
+- Moves
+- Abilities
+- Forms
+- Items
+- Mechanics
+- Battle Rules
+
+must be interpreted according to the applicable Game Context.
+
+---
+
+## Related Features
+
+The Shared Teams feature integrates closely with:
+
+- Team Management
+- Team Analysis
+- Strategy Planner
+- Friends
+- AI Assistant
+- Smart Search
+
+---
+
+## Priority
+
+Medium
+
+---
+
+## Status
+
+Future
+
+---
+
+## Future Enhancements
+
+Potential future improvements include:
+
+- Featured Teams
+- Tournament Teams
+- AI-Generated Team Summaries
+- Team Version History
+- Community Team Collections
+- Team Discussions
+- Team Collaboration
+- Export to Battle Simulators
+- Cross-Platform Sharing
+
+---
+
+# CM-003 — Shared Collections
+
+## Feature Name
+
+Shared Collections
+
+---
+
+## Purpose
+
+The Shared Collections feature enables trainers to publish, discover, and compare Pokémon collections shared by the Pokémon Companion community.
+
+Its purpose is to encourage collaboration, inspiration, and friendly competition while preserving trainer ownership, privacy, attribution, and Game Context accuracy.
+
+Shared collections are read-only representations of trainer-owned collection data.
+
+Publishing a collection must never transfer ownership of the underlying private collection.
+
+---
+
+## Category
+
+Community
+
+---
+
+## Primary Users
+
+- Every Trainer
+- Collectors
+- Completionists
+- Shiny Hunters
+- Researchers
+
+---
+
+## Dependencies
+
+The Shared Collections feature depends upon:
+
+- User Authentication
+- Collection Features
+- Trainer Profiles
+- Privacy Settings
+- Application Services
+- Game Context Engine
+
+---
+
+## Primary Datasets
+
+The Shared Collections feature primarily consumes:
+
+- Living Dex
+- Regional Pokédex
+- Shiny Collection
+- Form Collection
+- Ribbon Collection
+- Mark Collection
+- Prestige Collection
+- Trainer Profiles
+- Collection Metadata
+- Collection Visibility Settings
+
+---
+
+## User Interface
+
+### Collection Gallery
+
+Displays:
+
+- Trainer
+- Collection Type
+- Game
+- Region
+- Completion Percentage
+- Featured Pokémon
+- Community Rating
+- Last Updated
+
+---
+
+### Collection Details
+
+Displays:
+
+- Collection Progress
+- Completion Statistics
+- Collection Milestones
+- Featured Pokémon
+- Personal Notes
+- Collection Highlights
+- Game Context
+
+Displayed information must respect the trainer's privacy settings.
+
+---
+
+### Search and Filters
+
+Allows trainers to filter collections using:
+
+- Collection Type
+- Game
+- Generation
+- Region
+- Completion Percentage
+- Trainer
+- Community Rating
+
+---
+
+### Community Interaction
+
+Allows trainers to:
+
+- Bookmark Collections
+- Like Collections
+- Leave Feedback
+- Share Collections
+- Compare Progress
+
+---
+
+### Collection Comparison
+
+Allows trainers to compare:
+
+- Overall Completion
+- Shared Pokémon
+- Missing Pokémon
+- Collection Milestones
+- Achievement Differences
+
+Comparison must be read-only and must never modify either trainer's collection.
+
+---
+
+## Privacy
+
+Trainers should control whether the following are publicly visible:
+
+- Overall Collection Progress
+- Individual Pokémon
+- Shiny Status
+- Forms
+- Ribbons
+- Marks
+- Personal Notes
+- Collection History
+
+Private collection information must never be exposed through search, comparison, leaderboards, or AI recommendations.
+
+---
+
+## Related Features
+
+The Shared Collections feature integrates closely with:
+
+- Friends
+- Living Dex
+- Regional Pokédex
+- Collection Statistics
+- Collection Analysis
+- AI Assistant
+
+---
+
+## Priority
+
+Medium
+
+---
+
+## Status
+
+Future
+
+---
+
+## Future Enhancements
+
+Potential future improvements include:
+
+- Featured Collections
+- Community Showcases
+- Collection History
+- Collection Collaboration
+- AI Collection Summaries
+- Community Collection Events
+- Exportable Collection Cards
+- Cross-Platform Sharing
+- Collection Achievements
+
+---
+
+# CM-004 — Leaderboards
+
+## Feature Name
+
+Leaderboards
+
+---
+
+## Purpose
+
+The Leaderboards feature enables trainers to compare achievements, collection progress, battle performance, and community milestones through optional and privacy-controlled rankings.
+
+Its purpose is to encourage friendly competition and celebrate different styles of Pokémon gameplay.
+
+Leaderboards must never require public participation.
+
+Only trainer-approved data may contribute to public rankings.
+
+---
+
+## Category
+
+Community
+
+---
+
+## Primary Users
+
+- Every Trainer
+- Collectors
+- Competitive Players
+- Completionists
+- Community Members
+
+---
+
+## Dependencies
+
+The Leaderboards feature depends upon:
+
+- User Authentication
+- Trainer Profiles
+- Privacy Settings
+- Collection Features
+- Battle Features
+- Achievement Features
+- Application Services
+- Game Context Engine
+
+---
+
+## Primary Datasets
+
+The Leaderboards feature primarily consumes:
+
+- Trainer Profiles
+- Collection Statistics
+- Battle Statistics
+- Achievements
+- Community Challenge Results
+- Trainer Activity
+- Leaderboard Records
+
+---
+
+## User Interface
+
+### Global Leaderboards
+
+Displays rankings based on categories such as:
+
+- Collection Completion
+- Battle Performance
+- Achievement Progress
+- Community Participation
+- Overall Activity
+
+---
+
+### Category Leaderboards
+
+Allows trainers to browse rankings for:
+
+- Living Dex
+- Regional Pokédex
+- Shiny Collection
+- Ribbon Collection
+- Mark Collection
+- Prestige Collection
+- Battle Statistics
+- Community Challenges
+
+---
+
+### Personal Rankings
+
+Displays:
+
+- Current Rank
+- Ranking History
+- Recent Progress
+- Personal Best
+- Nearby Trainers
+
+Personal rankings should emphasize progress as well as position.
+
+---
+
+### Leaderboard Filters
+
+Allows trainers to filter rankings using:
+
+- Game
+- Generation
+- Region
+- Collection Type
+- Battle Category
+- Time Period
+- Friends Only
+
+---
+
+### Achievement Highlights
+
+Displays:
+
+- New Community Records
+- Weekly Highlights
+- Monthly Leaders
+- Recently Completed Milestones
+- Featured Trainers
+
+Highlights should celebrate achievements without discouraging newer trainers.
+
+---
+
+## Ranking Integrity
+
+Leaderboards should:
+
+- Use validated data
+- Prevent duplicate submissions
+- Detect suspicious activity
+- Preserve historical rankings
+- Clearly define ranking rules
+- Recalculate rankings when source data changes
+
+Ranking logic should be transparent wherever possible.
+
+---
+
+## Game Context
+
+Leaderboard results must remain context-aware.
+
+For example:
+
+- A battle ranking for one game must not automatically include statistics from another game.
+- A regional Pokédex ranking must use the correct Regional Pokédex definition.
+- Collection percentages must be calculated against the correct collection scope.
+
+---
+
+## Related Features
+
+The Leaderboards feature integrates closely with:
+
+- Friends
+- Shared Teams
+- Shared Collections
+- Community Challenges
+- Trainer Statistics
+- Collection Statistics
+- Battle Statistics
+
+---
+
+## Priority
+
+Low
+
+---
+
+## Status
+
+Future
+
+---
+
+## Future Enhancements
+
+Potential future improvements include:
+
+- Seasonal Rankings
+- Regional Leaderboards
+- Friend-Only Leaderboards
+- Event Leaderboards
+- Historical Rankings
+- Achievement Showcases
+- Team Rankings
+- AI-Powered Performance Insights
+- Community Awards
+
+---
+
+# CM-005 — Community Challenges
+
+## Feature Name
+
+Community Challenges
+
+---
+
+## Purpose
+
+The Community Challenges feature enables trainers to participate in shared objectives, seasonal events, and collaborative activities across the Pokémon Companion community.
+
+Its purpose is to encourage engagement, friendly competition, and collective achievement through optional challenges.
+
+Community Challenges must never be required for normal Pokémon Companion progression.
+
+---
+
+## Category
+
+Community
+
+---
+
+## Primary Users
+
+- Every Trainer
+- Collectors
+- Competitive Players
+- Completionists
+- Community Members
+
+---
+
+## Dependencies
+
+The Community Challenges feature depends upon:
+
+- User Authentication
+- Trainer Profiles
+- Privacy Settings
+- Collection Features
+- Battle Features
+- Adventure Tracker
+- Achievement Features
+- Application Services
+- Game Context Engine
+
+---
+
+## Primary Datasets
+
+The Community Challenges feature primarily consumes:
+
+- Trainer Profiles
+- Collections
+- Battle Statistics
+- Achievements
+- Challenge Definitions
+- Challenge Progress
+- Challenge Results
+- Game Contexts
+
+Challenge systems should reference trainer-owned data without modifying canonical Pokémon datasets.
+
+---
+
+## User Interface
+
+### Challenge Hub
+
+Displays:
+
+- Active Challenges
+- Upcoming Challenges
+- Completed Challenges
+- Featured Events
+- Participation Statistics
+
+---
+
+### Challenge Details
+
+Displays:
+
+- Challenge Description
+- Objectives
+- Requirements
+- Progress
+- Start Date
+- End Date
+- Rewards
+- Game Context
+
+Requirements should be clearly defined before participation begins.
+
+---
+
+### Progress Tracking
+
+Displays:
+
+- Personal Progress
+- Community Progress
+- Milestones
+- Completion Percentage
+- Time Remaining
+
+---
+
+### Challenge Categories
+
+Supports:
+
+- Collection Challenges
+- Battle Challenges
+- Exploration Challenges
+- Adventure Challenges
+- Seasonal Events
+- Special Community Events
+
+---
+
+### Rewards
+
+Possible rewards include:
+
+- Achievement Badges
+- Profile Decorations
+- Community Recognition
+- Challenge History
+- Participation Milestones
+
+Rewards should not provide unfair gameplay advantages.
+
+---
+
+## Challenge Integrity
+
+Challenges should:
+
+- Use clearly defined rules
+- Track progress consistently
+- Prevent duplicate or invalid progress
+- Respect Game Context
+- Preserve historical challenge records
+- Prevent manipulation where practical
+
+---
+
+## Related Features
+
+The Community Challenges feature integrates closely with:
+
+- Friends
+- Shared Teams
+- Shared Collections
+- Leaderboards
+- Achievements
+- AI Assistant
+- Adventure Tracker
+
+---
+
+## Priority
+
+Low
+
+---
+
+## Status
+
+Future
+
+---
+
+## Future Enhancements
+
+Potential future improvements include:
+
+- Seasonal Challenge Series
+- Cooperative Challenges
+- Friend-Only Challenges
+- Global Community Events
+- Challenge Creation Tools
+- AI-Generated Challenge Suggestions
+- Historical Challenge Archive
+- Community Voting
+- Cross-Platform Events
+
+---
+
+# Infrastructure Features
+
+## Purpose
+
+Infrastructure Features provide the technical foundation required for every component of Pokémon Companion.
+
+Their purpose is to ensure that the platform remains:
+
+- Reliable
+- Scalable
+- Maintainable
+- Performant
+- Secure
+- Data-accurate
+
+Infrastructure operates primarily behind the scenes and should expose stable services to higher-level feature layers.
 
 ---
 
@@ -10767,14 +8740,14 @@ Infrastructure Features are responsible for:
 
 - Data generation
 - Data validation
-- Application services
-- API management
-- Cloud synchronization
+- API services
+- Synchronization
 - Monitoring
-- Performance optimization
-- Platform reliability
+- Background processing
+- Operational reliability
+- Data integrity
 
-Infrastructure Features should provide a stable foundation for every other feature within Pokémon Companion.
+Infrastructure must not contain unnecessary feature-specific business logic that belongs to higher application layers.
 
 ---
 
@@ -10782,39 +8755,62 @@ Infrastructure Features should provide a stable foundation for every other featu
 
 ## Reliability
 
-Infrastructure systems should remain stable, predictable, and fault tolerant.
+Critical infrastructure should remain stable and fault tolerant.
 
-Critical services should continue operating even when individual components fail.
+Individual service failures should be isolated whenever practical.
 
 ---
 
 ## Data Integrity
 
-Canonical Pokémon data should always remain accurate, validated, and internally consistent.
+Canonical Pokémon data must remain:
 
-Validation should occur throughout the data generation and deployment pipeline.
+- Accurate
+- Validated
+- Internally consistent
+- Versioned
+- Reproducible
 
 ---
 
 ## Scalability
 
-Infrastructure should support future Pokémon generations, expanding datasets, additional users, and new platform capabilities without requiring architectural redesign.
+Infrastructure should support:
+
+- Additional Pokémon games
+- Larger datasets
+- More trainers
+- Additional clients
+- New feature modules
+
+without requiring fundamental architectural redesign.
 
 ---
 
 ## Performance
 
-Infrastructure should minimize latency through optimized datasets, efficient APIs, caching, and background processing.
+Infrastructure should use:
 
-Performance improvements should remain transparent to trainers.
+- Optimized datasets
+- Efficient APIs
+- Caching
+- Pagination
+- Background processing
+- Indexed search
+
+where appropriate.
 
 ---
 
 ## Maintainability
 
-Infrastructure should consist of modular, well-documented components with clearly defined responsibilities.
+Infrastructure services should have:
 
-Each service should remain independently testable and replaceable.
+- Clear responsibilities
+- Stable interfaces
+- Strong documentation
+- Independent tests
+- Replaceable implementations
 
 ---
 
@@ -10834,9 +8830,13 @@ Additional infrastructure services may be introduced as Pokémon Companion expan
 
 # Feature Relationships
 
-Infrastructure Features support every major feature category within Pokémon Companion.
+Infrastructure supports every other feature category.
 
-Rather than interacting directly with trainers, Infrastructure Features provide the foundation that enables the platform to operate reliably, efficiently, and consistently.
+The dependency direction should generally flow upward:
+
+**Infrastructure → Knowledge → Trainer → Collection / Battle / World → Intelligence / Community**
+
+Higher-level features should consume lower-level services rather than creating competing infrastructure implementations.
 
 ---
 
@@ -10850,13 +8850,11 @@ Data Generation Pipeline
 
 ## Purpose
 
-The Data Generation Pipeline is responsible for generating, transforming, validating, and maintaining the canonical Pokémon datasets used throughout Pokémon Companion.
+The Data Generation Pipeline is responsible for generating, transforming, validating, and maintaining the canonical and derived datasets used throughout Pokémon Companion.
 
-Its purpose is to provide a reliable, repeatable, and automated process for building the complete Pokémon knowledge base from official data sources while preserving historical accuracy across every supported Pokémon game.
+Its purpose is to provide a repeatable and deterministic process for converting canonical source data into optimized datasets suitable for application use.
 
-Rather than relying on live external APIs during application use, the Data Generation Pipeline produces optimized datasets that power every feature within Pokémon Companion.
-
-The pipeline serves as the foundation for the platform's data-first architecture.
+The pipeline is a core component of the project's data-first architecture.
 
 ---
 
@@ -10873,8 +8871,6 @@ Infrastructure
 - Contributors
 - Automated Build Systems
 
-The Data Generation Pipeline operates behind the scenes and is not directly exposed to trainers.
-
 ---
 
 ## Dependencies
@@ -10883,17 +8879,16 @@ The Data Generation Pipeline depends upon:
 
 - Canonical Data Sources
 - Dataset Generators
-- Validation Framework
 - Shared Utilities
+- Validation Framework
 - Build System
-
-Generated datasets should remain internally consistent and reproducible.
+- Versioning Information
 
 ---
 
 ## Primary Datasets
 
-The Data Generation Pipeline is responsible for generating:
+The pipeline may generate:
 
 - Canonical Datasets
 - Generated Datasets
@@ -10901,23 +8896,40 @@ The Data Generation Pipeline is responsible for generating:
 - Legacy Datasets
 - Search Indexes
 - Relationship Graphs
-
-Every generated dataset should conform to the project's canonical data model.
+- Game Context Data
+- Derived Reference Data
 
 ---
 
 ## Pipeline Responsibilities
 
-The Data Generation Pipeline may perform tasks such as:
+The pipeline may perform:
 
-- Downloading source data
-- Parsing canonical data
-- Generating derived datasets
-- Resolving relationships
-- Building search indexes
-- Producing optimized JSON outputs
+- Source Data Acquisition
+- Source Parsing
+- Normalization
+- Relationship Resolution
+- Derived Dataset Generation
+- Search Index Generation
+- Graph Generation
+- Output Optimization
 
-Each stage should remain modular and independently executable.
+Each stage should remain independently executable where practical.
+
+---
+
+## Deterministic Generation
+
+The pipeline should:
+
+- Produce reproducible outputs
+- Record source versions
+- Record generator versions
+- Preserve Game Context information
+- Detect unexpected output changes
+- Support regeneration from a clean environment
+
+Generated data should not depend on uncontrolled runtime state.
 
 ---
 
@@ -10925,13 +8937,14 @@ Each stage should remain modular and independently executable.
 
 The pipeline should:
 
-- Produce deterministic outputs
+- Produce machine-readable datasets
 - Maintain version consistency
-- Preserve historical data
+- Preserve historical information
 - Support incremental generation
-- Generate machine-readable datasets
+- Support full regeneration
+- Separate source data from generated data
 
-Generated outputs should be suitable for use throughout Pokémon Companion without additional transformation.
+Generated outputs should be consumable without requiring external API access during normal application operation.
 
 ---
 
@@ -10945,8 +8958,7 @@ The Data Generation Pipeline integrates closely with:
 - World Features
 - Battle Features
 - Intelligence Features
-
-The pipeline provides the canonical datasets consumed by every major feature within Pokémon Companion.
+- Game Context Engine
 
 ---
 
@@ -10966,15 +8978,15 @@ Completed
 
 Potential future improvements include:
 
-- Incremental generation
-- Parallel processing
-- Generation caching
-- Pipeline visualization
-- Automated regression testing
-- Performance optimization
-- Continuous integration support
-- Generation analytics
-- Plugin-based generators
+- Incremental Generation
+- Parallel Processing
+- Generation Caching
+- Pipeline Visualization
+- Automated Regression Testing
+- Performance Optimization
+- Continuous Integration Support
+- Generation Analytics
+- Plugin-Based Generators
 
 ---
 
@@ -10990,9 +9002,9 @@ Validation Framework
 
 The Validation Framework is responsible for verifying the accuracy, consistency, completeness, and integrity of every dataset generated for Pokémon Companion.
 
-Its purpose is to ensure that canonical Pokémon data satisfies project validation standards before becoming available to the application.
+Its purpose is to ensure that generated data satisfies the project's canonical data model and validation rules before it becomes available to application features.
 
-Rather than correcting data automatically, the Validation Framework should identify, report, and isolate issues to maintain the reliability of the platform's data-first architecture.
+The Validation Framework should identify and report problems rather than silently modifying canonical data.
 
 Every validation process should produce deterministic and reproducible results.
 
@@ -11023,9 +9035,9 @@ The Validation Framework depends upon:
 - Canonical Datasets
 - Generated Datasets
 - Historical Datasets
+- Legacy Datasets
 - Shared Utilities
-
-Validation should occur before datasets are published for application use.
+- Game Context Engine
 
 ---
 
@@ -11039,25 +9051,46 @@ The Validation Framework validates:
 - Legacy Datasets
 - Search Indexes
 - Relationship Graphs
-
-Every dataset should conform to the project's canonical data model.
+- Game Context Data
+- Derived Datasets
 
 ---
 
 ## Validation Responsibilities
 
-The Validation Framework may perform checks such as:
+The framework may perform:
 
 - Schema Validation
 - Required Field Validation
 - Data Type Validation
+- Enum Validation
 - Duplicate Detection
 - Relationship Validation
 - Cross-Reference Validation
+- Referential Integrity Validation
 - Historical Consistency Validation
+- Game Context Validation
 - File Integrity Validation
+- Dataset Completeness Validation
 
 Each validation stage should remain modular and independently executable.
+
+---
+
+## Validation Rules
+
+Validation should verify that:
+
+- Required entities exist
+- Entity identifiers are unique
+- References resolve correctly
+- Relationships point to valid entities
+- Game-specific data belongs to the correct Game Context
+- Historical records remain distinguishable
+- Generated datasets follow expected schemas
+- No unexpected data loss occurs during generation
+
+Validation should distinguish between errors and warnings.
 
 ---
 
@@ -11069,9 +9102,11 @@ The framework should provide:
 - Error Reports
 - Warning Reports
 - Summary Statistics
+- Dataset Statistics
 - Validation History
+- Failed Rule Information
 
-Reports should clearly identify validation failures and their underlying causes.
+Reports should clearly identify the affected dataset, entity, field, and validation rule whenever possible.
 
 ---
 
@@ -11080,12 +9115,23 @@ Reports should clearly identify validation failures and their underlying causes.
 The Validation Framework should:
 
 - Detect invalid datasets
-- Prevent publication of invalid outputs
+- Prevent publication of invalid critical outputs
 - Isolate validation failures
 - Preserve diagnostic information
 - Support repeatable validation
+- Return machine-readable validation results
 
-Validation failures should be reproducible and easy to investigate.
+Validation failures should never be silently ignored.
+
+---
+
+## Release Gate
+
+Validation should act as a release gate for generated data.
+
+A dataset should not become an application-consumable release artifact when it fails a critical validation rule.
+
+Warnings may be permitted when explicitly classified as non-blocking.
 
 ---
 
@@ -11099,8 +9145,7 @@ The Validation Framework integrates closely with:
 - Knowledge Features
 - World Features
 - Battle Features
-
-The Validation Framework ensures that every dataset consumed by Pokémon Companion meets the project's quality standards.
+- Game Context Engine
 
 ---
 
@@ -11120,15 +9165,16 @@ In Progress
 
 Potential future improvements include:
 
-- Incremental validation
-- Parallel validation
-- Continuous validation
-- Validation dashboards
-- Regression validation
-- Automated quality scoring
-- Performance benchmarking
-- Plugin-based validators
-- Validation trend analysis
+- Incremental Validation
+- Parallel Validation
+- Continuous Validation
+- Validation Dashboards
+- Regression Validation
+- Automated Quality Scoring
+- Performance Benchmarking
+- Plugin-Based Validators
+- Validation Trend Analysis
+- Automated Release Gates
 
 ---
 
@@ -11142,13 +9188,13 @@ Cloud Synchronization
 
 ## Purpose
 
-The Cloud Synchronization feature enables trainers to securely synchronize their personal data across multiple devices while preserving consistency, reliability, and data integrity.
+The Cloud Synchronization feature enables trainers to securely synchronize trainer-owned data across supported devices.
 
-Its purpose is to ensure that trainer-owned information remains available wherever Pokémon Companion is used, allowing trainers to continue their adventures seamlessly without affecting the platform's canonical Pokémon knowledge.
+Its purpose is to allow trainers to continue their Pokémon Companion experience across devices while preserving consistency, reliability, privacy, and data integrity.
 
-Rather than synchronizing canonical datasets, Cloud Synchronization should focus exclusively on trainer-generated data and personal preferences.
+Cloud Synchronization applies to trainer-owned information and personal settings.
 
-Every synchronization operation should prioritize accuracy, security, and conflict resolution.
+It must never modify canonical Pokémon datasets.
 
 ---
 
@@ -11165,8 +9211,6 @@ Infrastructure
 - Developers
 - System Administrators
 
-Cloud Synchronization operates behind the scenes while providing a seamless trainer experience.
-
 ---
 
 ## Dependencies
@@ -11178,14 +9222,13 @@ The Cloud Synchronization feature depends upon:
 - API Platform
 - User Datasets
 - Security Services
-
-Synchronization should always occur within the authenticated trainer account.
+- Conflict Resolution Services
 
 ---
 
 ## Primary Datasets
 
-The Cloud Synchronization feature primarily synchronizes:
+The Cloud Synchronization feature may synchronize:
 
 - Trainer Profiles
 - Adventures
@@ -11195,35 +9238,75 @@ The Cloud Synchronization feature primarily synchronizes:
 - Battle Statistics
 - Trainer Preferences
 - Application Settings
+- Journal Entries
+- Tracker Progress
 
-Canonical Pokémon datasets should never be modified through synchronization.
+Canonical Pokémon datasets must never be modified through synchronization.
 
 ---
 
 ## Synchronization Responsibilities
 
-The Cloud Synchronization feature may perform tasks such as:
+The system may perform:
 
-- Uploading trainer data
-- Downloading trainer data
-- Synchronizing progress
-- Resolving synchronization conflicts
-- Maintaining data consistency
-- Recovering interrupted synchronization sessions
+- Uploading Trainer Data
+- Downloading Trainer Data
+- Synchronizing Progress
+- Detecting Conflicts
+- Resolving Conflicts
+- Maintaining Version Information
+- Recovering Interrupted Synchronization
+- Restoring Previous Valid Data
 
-Synchronization should occur automatically whenever appropriate while allowing manual synchronization when requested.
+---
+
+## Synchronization Model
+
+Synchronization should preserve clear ownership.
+
+### Canonical Data
+
+Canonical Pokémon knowledge is controlled by the platform's generated datasets.
+
+Cloud Synchronization must never overwrite canonical records.
+
+### Trainer Data
+
+Trainer-owned data belongs to the authenticated trainer and may be synchronized across supported devices.
+
+### Shared Data
+
+Community-shared data should remain linked to its source trainer and follow the applicable privacy and publishing rules.
+
+---
+
+## Conflict Resolution
+
+The synchronization system should detect conflicting updates.
+
+Examples include:
+
+- A team modified on two devices
+- Collection progress updated on two devices
+- Adventure progress changed simultaneously
+- Settings modified on multiple devices
+
+The system should preserve data whenever possible and avoid silent destructive overwrites.
+
+Where automatic resolution is unsafe, the trainer should be informed and given appropriate options.
 
 ---
 
 ## Data Integrity
 
-The synchronization process should:
+Synchronization should:
 
 - Preserve trainer progress
 - Prevent accidental data loss
-- Detect synchronization conflicts
+- Detect conflicting versions
 - Maintain version consistency
 - Verify successful synchronization
+- Support recovery after interrupted operations
 
 Data integrity should take priority over synchronization speed.
 
@@ -11234,12 +9317,26 @@ Data integrity should take priority over synchronization speed.
 Cloud Synchronization should:
 
 - Require authenticated access
-- Encrypt synchronized data
-- Protect trainer privacy
+- Encrypt data in transit
+- Protect stored trainer data
 - Validate synchronization requests
-- Maintain secure communication channels
+- Enforce authorization
+- Maintain secure communication
+- Respect privacy settings
 
-Security measures should remain transparent to trainers whenever possible.
+---
+
+## Offline Support
+
+Where supported, trainer changes may be stored locally and synchronized later.
+
+Offline synchronization should:
+
+- Queue pending changes
+- Preserve operation ordering where required
+- Detect conflicts after reconnecting
+- Prevent duplicate submissions
+- Confirm successful synchronization
 
 ---
 
@@ -11253,8 +9350,7 @@ The Cloud Synchronization feature integrates closely with:
 - Collection Features
 - Battle Features
 - Community Features
-
-Cloud Synchronization ensures that trainer-owned data remains consistent across every supported device.
+- Application Services
 
 ---
 
@@ -11274,15 +9370,15 @@ Future
 
 Potential future improvements include:
 
-- Real-time synchronization
-- Offline synchronization queue
-- Automatic conflict resolution
-- Backup and restore
-- Device management
-- Synchronization history
-- Selective synchronization
-- Cross-platform synchronization
-- Data export and import
+- Real-Time Synchronization
+- Offline Synchronization Queue
+- Automatic Conflict Resolution
+- Backup and Restore
+- Device Management
+- Synchronization History
+- Selective Synchronization
+- Cross-Platform Synchronization
+- Data Export and Import
 
 ---
 
@@ -11296,13 +9392,17 @@ API Platform
 
 ## Purpose
 
-The API Platform provides secure, scalable, and consistent access to Pokémon Companion's canonical datasets, trainer-owned data, and application services.
+The API Platform provides secure, scalable, and consistent interfaces through which client applications and backend services access Pokémon Companion data and application services.
 
-Its purpose is to act as the communication layer between client applications, backend services, and generated datasets while maintaining performance, security, and reliability.
+Its purpose is to provide a stable communication layer between:
 
-Rather than containing business logic itself, the API Platform should expose well-defined interfaces that enable every feature within Pokémon Companion to access the information and services it requires.
+- Client Applications
+- Application Services
+- Generated Datasets
+- Trainer Data
+- Infrastructure Services
 
-Every API should respect the selected Game Context while maintaining clear separation between canonical Pokémon data and trainer-owned data.
+The API Platform should expose well-defined interfaces without leaking internal implementation details.
 
 ---
 
@@ -11319,7 +9419,7 @@ Infrastructure
 - Developers
 - System Administrators
 
-The API Platform operates behind the scenes and is not directly exposed to trainers.
+The API Platform primarily operates behind the scenes.
 
 ---
 
@@ -11332,14 +9432,13 @@ The API Platform depends upon:
 - Cloud Synchronization
 - User Authentication
 - Application Services
-
-Every request should pass through appropriate authentication, authorization, and validation mechanisms.
+- Game Context Engine
 
 ---
 
 ## Primary Datasets
 
-The API Platform provides access to:
+The API Platform may provide access to:
 
 - Canonical Datasets
 - Generated Datasets
@@ -11349,20 +9448,26 @@ The API Platform provides access to:
 - Collections
 - Battle Statistics
 - Application Settings
-
-APIs should expose data through stable, well-defined interfaces without exposing internal implementation details.
+- Search Data
+- Game Context Data
 
 ---
 
 ## API Responsibilities
 
-The API Platform may provide services such as:
+The API Platform may provide services for:
 
-- Data Retrieval
+- Pokémon Data Retrieval
+- Move Data Retrieval
+- Ability Data Retrieval
+- Item Data Retrieval
+- Location Data Retrieval
+- Trainer Data Retrieval
 - Search
-- User Authentication
-- Collection Management
+- Authentication
 - Team Management
+- Collection Management
+- Adventure Management
 - Battle Services
 - AI Services
 - Synchronization Services
@@ -11371,17 +9476,56 @@ Each service should remain modular and independently maintainable.
 
 ---
 
+## Game Context
+
+APIs that return game-dependent information must respect the selected Game Context.
+
+For example:
+
+- Pokémon availability
+- Moves
+- Abilities
+- Forms
+- Items
+- Trainers
+- Locations
+- Encounters
+- Battle mechanics
+
+must be resolved according to the applicable game context.
+
+The API must not silently combine incompatible game-specific information.
+
+---
+
+## API Design
+
+The API should provide:
+
+- Stable Resource Identifiers
+- Consistent Request Formats
+- Consistent Response Formats
+- Clear Error Responses
+- Pagination
+- Filtering
+- Sorting
+- Search
+- Versioning
+
+API contracts should be documented separately from this Feature Specification.
+
+---
+
 ## Performance
 
 The API Platform should:
 
-- Minimize response times
+- Minimize response latency
 - Support efficient pagination
 - Optimize large dataset retrieval
 - Utilize caching where appropriate
+- Avoid unnecessary payload sizes
 - Maintain predictable performance under load
-
-Performance optimizations should remain transparent to client applications.
 
 ---
 
@@ -11392,11 +9536,26 @@ The API Platform should:
 - Authenticate users
 - Authorize requests
 - Validate inputs
-- Protect sensitive trainer data
+- Protect trainer-owned data
 - Encrypt communications
 - Prevent unauthorized access
+- Apply appropriate rate limits
+- Log security-relevant events
 
 Security should be applied consistently across every API endpoint.
+
+---
+
+## Error Handling
+
+API errors should be:
+
+- Predictable
+- Machine-readable
+- Documented
+- Safe to expose to clients
+
+Internal implementation details, secrets, and sensitive information must not appear in client-facing error responses.
 
 ---
 
@@ -11414,8 +9573,6 @@ The API Platform integrates closely with:
 - World Features
 - Intelligence Features
 - Community Features
-
-The API Platform serves as the primary communication layer connecting every component of Pokémon Companion.
 
 ---
 
@@ -11435,15 +9592,15 @@ Planned
 
 Potential future improvements include:
 
-- GraphQL support
-- API versioning
-- Rate limiting
-- WebSocket services
-- Real-time event streaming
-- Advanced caching
-- API analytics
-- Developer API documentation
-- Third-party integrations
+- GraphQL Support
+- API Versioning
+- Advanced Rate Limiting
+- WebSocket Services
+- Real-Time Event Streaming
+- Advanced Caching
+- API Analytics
+- Developer API Documentation
+- Third-Party Integrations
 
 ---
 
@@ -11457,13 +9614,11 @@ Monitoring
 
 ## Purpose
 
-The Monitoring feature provides continuous observation of Pokémon Companion's infrastructure, services, and operational health to ensure platform reliability, performance, and stability.
+The Monitoring feature provides continuous visibility into Pokémon Companion's infrastructure, application services, background processes, and operational health.
 
-Its purpose is to detect issues, measure system performance, monitor resource utilization, and provide actionable diagnostics that support the ongoing operation and maintenance of the platform.
+Its purpose is to detect failures, measure performance, identify abnormal behavior, and provide actionable diagnostic information for maintaining a reliable platform.
 
-Rather than interacting directly with trainers, Monitoring operates behind the scenes to maintain a dependable and responsive application experience.
-
-Every monitoring process should prioritize reliability, transparency, and rapid issue detection.
+Monitoring operates behind the scenes and should not negatively affect normal application performance.
 
 ---
 
@@ -11480,8 +9635,6 @@ Infrastructure
 - System Administrators
 - Automated Operations
 
-Monitoring operates entirely behind the scenes and is not directly exposed to trainers.
-
 ---
 
 ## Dependencies
@@ -11493,8 +9646,7 @@ The Monitoring feature depends upon:
 - Cloud Synchronization
 - Data Generation Pipeline
 - Validation Framework
-
-Monitoring should observe every critical platform component without affecting normal application performance.
+- Background Processing Systems
 
 ---
 
@@ -11508,54 +9660,95 @@ The Monitoring feature primarily consumes:
 - System Events
 - Service Health Information
 - Infrastructure Metrics
+- Background Job Status
+- Validation Results
+- Synchronization Status
 
-Monitoring data should remain independent from trainer-owned and canonical Pokémon datasets.
+Monitoring data should remain separate from canonical Pokémon datasets and private trainer data wherever possible.
 
 ---
 
 ## Monitoring Responsibilities
 
-The Monitoring feature may perform tasks such as:
+The system may monitor:
 
-- Service Health Monitoring
-- Performance Monitoring
-- Error Detection
-- Resource Monitoring
-- Availability Monitoring
-- Background Job Monitoring
-- System Diagnostics
+- Service Health
+- API Availability
+- API Performance
+- Error Rates
+- Resource Utilization
+- Database Health
+- Background Jobs
+- Data Generation Jobs
+- Validation Jobs
+- Synchronization Jobs
+- Infrastructure Availability
 
-Monitoring should continuously evaluate the operational health of Pokémon Companion.
+---
+
+## Health Monitoring
+
+Critical services should expose appropriate health information.
+
+Health monitoring should help determine whether a service is:
+
+- Healthy
+- Degraded
+- Unavailable
+- Recovering
+- Unknown
+
+Health checks should distinguish between service availability and actual service correctness where practical.
 
 ---
 
 ## Alerting
 
-The Monitoring feature should support:
+Monitoring should support:
 
 - Critical Alerts
 - Warning Notifications
 - Performance Thresholds
 - Service Availability Alerts
 - Validation Failure Alerts
+- Data Generation Failure Alerts
 - Synchronization Failure Alerts
+- Resource Utilization Alerts
 
-Alerts should provide sufficient diagnostic information to support rapid investigation.
+Alerts should contain sufficient diagnostic information to support investigation.
 
 ---
 
 ## Reporting
 
-Monitoring may provide reports including:
+Monitoring may provide:
 
 - Service Availability
 - System Performance
 - Error Trends
 - Infrastructure Health
 - Resource Utilization
-- Operational Statistics
+- Background Job Statistics
+- Validation Statistics
+- Synchronization Statistics
+- Operational History
 
-Reports should help maintain long-term platform reliability.
+Reports should support both real-time diagnosis and long-term trend analysis.
+
+---
+
+## Observability
+
+Future infrastructure should support appropriate observability practices such as:
+
+- Structured Logging
+- Metrics
+- Tracing
+- Correlation IDs
+- Request Tracking
+- Background Job Tracking
+
+Sensitive trainer information should not be unnecessarily included in logs or monitoring data.
 
 ---
 
@@ -11568,8 +9761,6 @@ The Monitoring feature integrates closely with:
 - Cloud Synchronization
 - API Platform
 - Application Services
-
-Monitoring provides operational visibility across every major infrastructure component within Pokémon Companion.
 
 ---
 
@@ -11589,15 +9780,15 @@ Planned
 
 Potential future improvements include:
 
-- Real-time monitoring dashboards
-- Predictive failure detection
-- Automated alert escalation
-- Performance anomaly detection
-- Distributed tracing
-- Infrastructure analytics
-- Capacity planning
-- Automated recovery workflows
-- Historical operational reports
+- Real-Time Monitoring Dashboards
+- Predictive Failure Detection
+- Automated Alert Escalation
+- Performance Anomaly Detection
+- Distributed Tracing
+- Infrastructure Analytics
+- Capacity Planning
+- Automated Recovery Workflows
+- Historical Operational Reports
 
 ---
 
@@ -11605,7 +9796,7 @@ Potential future improvements include:
 
 Pokémon Companion is designed as a layered platform where higher-level features build upon lower-level services and canonical datasets.
 
-Rather than existing independently, features collaborate through clearly defined relationships while maintaining separation of responsibilities.
+Features should collaborate through clearly defined boundaries while maintaining separation of responsibilities.
 
 ---
 
@@ -11621,7 +9812,7 @@ Core responsibilities include:
 - Cloud Synchronization
 - Monitoring
 
-Every feature within Pokémon Companion ultimately depends upon this layer.
+Infrastructure services should not become a replacement for application-level business logic.
 
 ---
 
@@ -11630,14 +9821,17 @@ Every feature within Pokémon Companion ultimately depends upon this layer.
 Knowledge Features provide canonical Pokémon information including:
 
 - Pokémon
+- Species
+- Forms
 - Moves
 - Abilities
 - Items
 - Types
 - Regions
 - Locations
+- Game Contexts
 
-Knowledge Features act as the authoritative source of Pokémon information throughout the platform.
+Knowledge Features act as the authoritative source of canonical Pokémon information.
 
 ---
 
@@ -11650,8 +9844,10 @@ Trainer Features manage trainer-owned information such as:
 - Statistics
 - Achievements
 - Personal Progress
+- Journal Entries
+- Preferences
 
-Trainer Features reference canonical data without modifying it.
+Trainer Features reference canonical knowledge without modifying it.
 
 ---
 
@@ -11666,8 +9862,9 @@ Collection Features organize trainer-owned collections including:
 - Ribbon Collection
 - Mark Collection
 - Prestige Collection
+- Collection Statistics
 
-Collections combine canonical Pokémon knowledge with trainer progress.
+Collections combine canonical Pokémon knowledge with trainer-owned progress.
 
 ---
 
@@ -11681,7 +9878,7 @@ Battle Features consume canonical Pokémon data together with trainer-created te
 - Strategy Planning
 - Battle Statistics
 
-Battle Features never modify canonical Pokémon data.
+Battle Features must not modify canonical Pokémon data.
 
 ---
 
@@ -11691,12 +9888,13 @@ World Features provide exploration capabilities including:
 
 - Regions
 - Routes
+- Locations
 - Interactive Maps
 - Encounter Tables
 - Trainers
 - Hidden Items
 
-World Features connect geographical information with trainer progression.
+World Features connect geographical information with trainer progression and Game Context.
 
 ---
 
@@ -11710,7 +9908,7 @@ Intelligence Features analyze existing platform data to provide:
 - Adventure Guidance
 - Collection Analysis
 
-Rather than owning data, Intelligence Features interpret existing information.
+Intelligence Features should interpret existing data rather than becoming an independent source of canonical truth.
 
 ---
 
@@ -11728,23 +9926,80 @@ Community Features operate on trainer-approved shared information.
 
 ---
 
-## Layer Relationships
+# Layer Relationships
 
 Pokémon Companion follows a layered architecture.
 
-Infrastructure supports every feature.
+The general dependency direction is:
 
-Knowledge provides canonical information.
+**Infrastructure → Knowledge → Trainer → Collection / Battle / World → Intelligence / Community**
 
-Trainer Features build personal experiences.
+However, this does not mean every feature depends directly on every feature below it.
 
-Collections, Battles, and World Features expand trainer capabilities.
+Dependencies should be explicit and should flow through stable services and interfaces.
 
-Intelligence connects every layer through intelligent assistance.
+---
 
-Community extends trainer experiences through optional collaboration.
+## Canonical Data Boundary
 
-Each layer remains modular while contributing to one unified platform.
+Canonical Pokémon knowledge is authoritative and must remain protected from trainer-owned and community-generated modifications.
+
+Examples include:
+
+- Pokémon species
+- Official moves
+- Abilities
+- Items
+- Locations
+- Trainer records
+- Game mechanics
+
+Trainer-owned information may reference canonical entities but must not overwrite them.
+
+---
+
+## Trainer Data Boundary
+
+Trainer-owned data includes:
+
+- Teams
+- Adventures
+- Collections
+- Achievements
+- Statistics
+- Journal Entries
+- Preferences
+
+Trainer data may reference canonical entities but remains owned by the trainer.
+
+---
+
+## Community Data Boundary
+
+Community-generated data includes:
+
+- Shared Teams
+- Shared Collections
+- Community Ratings
+- Community Feedback
+- Challenge Results
+- Community Activity
+
+Community data must not become canonical Pokémon knowledge.
+
+---
+
+## Intelligence Data Boundary
+
+Intelligence-generated information includes:
+
+- Recommendations
+- Explanations
+- Priorities
+- Suggested Actions
+- Search Interpretations
+
+Generated recommendations must remain distinguishable from canonical facts and trainer-owned records.
 
 ---
 
@@ -11752,9 +10007,9 @@ Each layer remains modular while contributing to one unified platform.
 
 Pokémon Companion features are assigned priorities to guide development planning and implementation.
 
-Priorities indicate the relative importance of each feature within the platform but do not necessarily determine the exact implementation order.
+Priorities indicate relative importance and do not necessarily determine exact implementation order.
 
-As the platform evolves, priorities may be adjusted to reflect changing requirements and project goals.
+Technical dependencies may require a lower-priority feature or service to be implemented before a higher-priority feature.
 
 ---
 
@@ -11762,9 +10017,7 @@ As the platform evolves, priorities may be adjusted to reflect changing requirem
 
 ### Critical
 
-Critical features are essential for the core operation of Pokémon Companion.
-
-Without these features, the platform cannot fulfill its primary purpose.
+Critical features are essential to the core operation of Pokémon Companion.
 
 Examples include:
 
@@ -11787,7 +10040,7 @@ Critical features form the foundation of the platform.
 
 ### High
 
-High priority features significantly improve the trainer experience but are not required for the initial operation of the platform.
+High-priority features significantly expand the trainer experience.
 
 Examples include:
 
@@ -11799,13 +10052,13 @@ Examples include:
 - Adventure Guidance
 - Collection Analysis
 
-These features expand the platform's capabilities after the core foundation has been established.
+These features build upon the core platform.
 
 ---
 
 ### Medium
 
-Medium priority features enhance usability, analytics, and long-term engagement.
+Medium-priority features provide additional functionality, analytics, exploration depth, and long-term engagement.
 
 Examples include:
 
@@ -11815,37 +10068,46 @@ Examples include:
 - Ribbon Collection
 - Mark Collection
 - Trainer Database
+- Hidden Item Finder
 - Cloud Synchronization
-- Leaderboards
-
-Medium priority features enrich the trainer experience while building upon the core platform.
+- Monitoring
+- Friends
 
 ---
 
 ### Low
 
-Low priority features provide optional enhancements and community functionality.
+Low-priority features provide optional community and engagement enhancements.
 
 Examples include:
 
-- Friends
 - Shared Teams
 - Shared Collections
+- Leaderboards
 - Community Challenges
 
-These features extend Pokémon Companion beyond its core functionality and may be implemented after the primary platform is complete.
+These features expand Pokémon Companion beyond its core reference and trainer-management capabilities.
 
 ---
 
 ## Priority Philosophy
 
-Feature priorities are intended to guide development rather than restrict it.
+Feature priorities guide planning rather than permanently restricting development.
 
-Implementation order may change depending on technical dependencies, available resources, and evolving project goals.
+Implementation order may change depending on:
 
-The platform follows a foundation-first approach, where core infrastructure and canonical data are completed before higher-level user experiences.
+- Technical dependencies
+- Data availability
+- Architecture
+- Development resources
+- Testing requirements
+- Project goals
 
-Every feature remains valuable regardless of its assigned priority, and lower-priority features are not considered less important to the overall vision of Pokémon Companion.
+The platform follows a foundation-first approach.
+
+Core infrastructure and canonical data should be stable before higher-level features depend heavily upon them.
+
+Every feature remains valuable regardless of priority.
 
 ---
 
@@ -11853,23 +10115,25 @@ Every feature remains valuable regardless of its assigned priority, and lower-pr
 
 Pokémon Companion follows a phased, foundation-first development strategy.
 
-Rather than implementing isolated features, the platform is developed in layers where each phase builds upon the capabilities established by previous phases.
+Rather than implementing isolated features, the platform should be developed in layers where each phase establishes capabilities required by later phases.
 
-This approach minimizes technical debt, improves maintainability, and ensures that every new feature is supported by a stable architectural foundation.
+This approach reduces technical debt and improves maintainability.
 
 ---
 
 ## Phase 1 — Platform Foundation
 
-Establish the core application infrastructure, project architecture, shared services, and development standards.
+Establish the core application infrastructure, architecture, shared services, and development standards.
 
 Primary goals include:
 
-- Project structure
-- Application framework
-- Shared utilities
+- Project Structure
+- Application Framework
+- Shared Utilities
 - Configuration
 - Documentation
+- Coding Standards
+- Application Services
 
 ---
 
@@ -11879,17 +10143,18 @@ Build the canonical Pokémon database and supporting datasets.
 
 Primary goals include:
 
-- Canonical datasets
-- Generated datasets
-- Historical datasets
-- Legacy datasets
-- Relationship graphs
+- Canonical Datasets
+- Generated Datasets
+- Historical Datasets
+- Legacy Datasets
+- Relationship Graphs
+- Game Context Data
 
 ---
 
 ## Phase 3 — Infrastructure
 
-Develop the services responsible for generating, validating, serving, and maintaining platform data.
+Develop the services responsible for generating, validating, serving, synchronizing, and monitoring platform data.
 
 Primary goals include:
 
@@ -11912,12 +10177,13 @@ Primary goals include:
 - User Authentication
 - Trainer Profiles
 - Global Search
+- Game Context Selection
 
 ---
 
 ## Phase 5 — Knowledge Platform
 
-Expose the canonical Pokémon knowledge graph through user-friendly interfaces.
+Expose canonical Pokémon knowledge through user-friendly interfaces.
 
 Primary goals include:
 
@@ -11946,7 +10212,7 @@ Primary goals include:
 
 ## Phase 7 — Collection Platform
 
-Enable comprehensive Pokémon collection tracking and completion systems.
+Enable comprehensive Pokémon collection tracking.
 
 Primary goals include:
 
@@ -11977,7 +10243,7 @@ Primary goals include:
 
 ## Phase 9 — World Platform
 
-Build exploration tools for navigating every Pokémon region.
+Build exploration tools for navigating supported Pokémon regions.
 
 Primary goals include:
 
@@ -12018,238 +10284,20 @@ Primary goals include:
 
 ---
 
-## Long-Term Vision
+## Phase 12 — Platform Hardening and Expansion
 
-Future development will continue expanding Pokémon Companion while preserving the project's core principles:
+After the primary platform is functional, focus on long-term reliability and extensibility.
 
-- Canonical accuracy
-- Data-first architecture
-- Historical preservation
-- Modular design
-- Explainable intelligence
-- Long-term maintainability
+Primary goals include:
 
-Every future feature should integrate naturally with the existing platform architecture rather than introducing isolated systems.
-
----
-
-# Future Expansion
-
-Pokémon Companion is designed as a long-term platform that can evolve alongside the Pokémon franchise.
-
-Its modular architecture allows new games, mechanics, datasets, and features to be integrated without requiring fundamental changes to the existing system.
-
-Future expansion should always build upon the established architecture while preserving the project's core principles.
+- Performance Optimization
+- Security Hardening
+- Advanced Monitoring
+- Automated Regression Testing
+- Data Quality Improvements
+- Accessibility Improvements
+- Offline Capabilities
+- Cross-Device Support
+- Future Game Integration
 
 ---
-
-## Expansion Philosophy
-
-Future development should prioritize:
-
-- Canonical accuracy
-- Historical preservation
-- Modular architecture
-- Data consistency
-- Backward compatibility
-- Long-term maintainability
-
-New capabilities should integrate naturally with existing systems rather than introducing isolated implementations.
-
----
-
-## Future Pokémon Games
-
-Pokémon Companion should support future Pokémon titles by extending existing canonical datasets and Game Contexts.
-
-Whenever possible, new games should integrate into the existing architecture without requiring structural redesign.
-
----
-
-## Future Features
-
-New features may be introduced across every feature category, including:
-
-- Knowledge
-- Trainer
-- Collection
-- Battle
-- World
-- Intelligence
-- Community
-- Infrastructure
-
-Every new feature should follow the same design principles established throughout this document.
-
----
-
-## Future Data
-
-Future datasets may include additional:
-
-- Pokémon
-- Forms
-- Moves
-- Abilities
-- Items
-- Regions
-- Locations
-- Battle Mechanics
-- World Mechanics
-
-New datasets should integrate with the canonical knowledge graph while maintaining historical accuracy.
-
----
-
-## Future Integrations
-
-Pokémon Companion may expand through additional integrations such as:
-
-- Official Pokémon services
-- Save file import and export
-- Cloud services
-- Third-party battle simulators
-- Accessibility technologies
-- Future platform APIs
-
-Integrations should enhance the trainer experience without compromising data integrity or platform independence.
-
----
-
-## Architectural Stability
-
-Future expansion should preserve the platform's existing architecture.
-
-Major architectural redesigns should be avoided whenever possible.
-
-Instead, new functionality should extend existing systems through modular components, well-defined interfaces, and reusable services.
-
-The long-term goal is for Pokémon Companion to remain maintainable, scalable, and adaptable throughout future generations of Pokémon.
-
----
-
-# Document Scope
-
-This document defines the functional capabilities of Pokémon Companion.
-
-Its purpose is to describe **what the platform is designed to do**, rather than how individual features are implemented.
-
-The Feature Specification serves as the primary functional reference for the project and establishes a shared understanding of the platform's capabilities before implementation.
-
----
-
-## Included
-
-This document includes:
-
-- Feature categories
-- Feature definitions
-- Feature responsibilities
-- Design principles
-- Feature relationships
-- User-facing capabilities
-- Infrastructure capabilities
-- Development priorities
-- Long-term feature roadmap
-
-Each feature is described at a functional level independent of implementation details.
-
----
-
-## Excluded
-
-This document does not define:
-
-- Database schemas
-- API specifications
-- User interface layouts
-- Source code
-- Algorithms
-- Technical implementation details
-- Deployment procedures
-- Testing strategies
-
-These topics are documented separately within their respective project documentation.
-
----
-
-## Intended Audience
-
-This document is intended for:
-
-- Developers
-- Contributors
-- Project Maintainers
-- Designers
-- Technical Writers
-- Future Collaborators
-
-It provides a common understanding of the platform's intended functionality throughout the project's lifecycle.
-
----
-
-## Relationship to Other Documentation
-
-The Feature Specification complements, but does not replace, other project documentation.
-
-Related documents include:
-
-- Project Vision
-- System Architecture
-- Database Schema
-- API Specification
-- UI Guidelines
-- Coding Standards
-- Development Roadmap
-
-Together, these documents provide a complete description of Pokémon Companion from vision through implementation.
-
----
-
-## Living Document
-
-This document is intended to evolve alongside Pokémon Companion.
-
-As new capabilities are introduced, existing features are refined, or future Pokémon games expand the platform, this document should be updated to reflect the current functional scope of the project.
-
-Every revision should preserve consistency with the project's architectural principles and long-term vision.
-
----
-
-# Revision History
-
-This document is maintained as a living specification and will evolve alongside Pokémon Companion.
-
-Revisions should preserve consistency with the project's architectural principles while documenting significant changes to the platform's functional scope.
-
-Minor editorial changes may be made without affecting the overall feature architecture.
-
----
-
-| Version | Date | Author | Summary |
-|----------|------|--------|---------|
-| 1.0.0 | Initial Release | Pokémon Companion Project | Initial feature specification including Platform, Knowledge, Trainer, Collection, Battle, World, Intelligence, Community, and Infrastructure Features. |
-
----
-
-## Revision Guidelines
-
-Future revisions should:
-
-- Preserve document structure and consistency.
-- Clearly document significant feature additions or removals.
-- Update feature priorities when necessary.
-- Maintain compatibility with related project documentation.
-- Record major architectural or organizational changes.
-
----
-
-## Versioning Policy
-
-The Feature Specification follows semantic versioning principles where appropriate.
-
-- **Major versions** represent significant structural or architectural changes.
-- **Minor versions** introduce new feature categories or substantial feature additions.
-- **Patch versions** include editorial improvements, corrections, clarifications, and minor updates that do not alter the functional scope of the platform.
-
-Every published revision should include a summary describing the primary changes introduced in that version.

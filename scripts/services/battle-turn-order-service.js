@@ -14,6 +14,7 @@
  * - Execute moves.
  * - Calculate damage.
  * - Modify battle state.
+ * - Store Pokémon state.
  */
 
 "use strict";
@@ -21,6 +22,16 @@
 
 class BattleTurnOrderService {
 
+
+    constructor(
+        battlePokemonService = null
+    )
+    {
+
+        this.battlePokemon =
+            battlePokemonService;
+
+    }
 
 
     //--------------------------------
@@ -34,27 +45,56 @@ class BattleTurnOrderService {
     )
     {
 
+        if(
+            !battle
+            ||
+            !battle.player
+            ||
+            !battle.opponent
+        )
+        {
+
+            return [];
+
+        }
+
 
         const player =
-            this.getActivePokemon(
+
+            this.battlePokemon
+
+            ?
+
+            this.battlePokemon.getActivePokemon(
 
                 battle.player
 
-            );
+            )
+
+            :
+
+            null;
 
 
         const enemy =
-            this.getActivePokemon(
+
+            this.battlePokemon
+
+            ?
+
+            this.battlePokemon.getActivePokemon(
 
                 battle.opponent
 
-            );
+            )
 
+            :
 
-
+            null;
 
 
         const playerPriority =
+
             this.getMovePriority(
 
                 playerMove
@@ -63,6 +103,7 @@ class BattleTurnOrderService {
 
 
         const enemyPriority =
+
             this.getMovePriority(
 
                 enemyMove
@@ -70,11 +111,8 @@ class BattleTurnOrderService {
             );
 
 
-
-
-
         //--------------------------------
-        // Priority check
+        // Player has higher priority
         //--------------------------------
 
         if(
@@ -86,8 +124,10 @@ class BattleTurnOrderService {
             return [
 
                 {
+
                     side:
-                        battle.player,
+                        "PLAYER",
+
 
                     move:
                         playerMove
@@ -96,8 +136,10 @@ class BattleTurnOrderService {
 
 
                 {
+
                     side:
-                        battle.opponent,
+                        "OPPONENT",
+
 
                     move:
                         enemyMove
@@ -109,8 +151,9 @@ class BattleTurnOrderService {
         }
 
 
-
-
+        //--------------------------------
+        // Opponent has higher priority
+        //--------------------------------
 
         if(
             enemyPriority >
@@ -121,8 +164,10 @@ class BattleTurnOrderService {
             return [
 
                 {
+
                     side:
-                        battle.opponent,
+                        "OPPONENT",
+
 
                     move:
                         enemyMove
@@ -131,8 +176,10 @@ class BattleTurnOrderService {
 
 
                 {
+
                     side:
-                        battle.player,
+                        "PLAYER",
+
 
                     move:
                         playerMove
@@ -144,14 +191,12 @@ class BattleTurnOrderService {
         }
 
 
-
-
-
         //--------------------------------
-        // Speed check
+        // Compare speed
         //--------------------------------
 
         const playerSpeed =
+
             this.getSpeed(
 
                 player
@@ -160,6 +205,7 @@ class BattleTurnOrderService {
 
 
         const enemySpeed =
+
             this.getSpeed(
 
                 enemy
@@ -167,8 +213,9 @@ class BattleTurnOrderService {
             );
 
 
-
-
+        //--------------------------------
+        // Player is faster
+        //--------------------------------
 
         if(
             playerSpeed >
@@ -179,8 +226,10 @@ class BattleTurnOrderService {
             return [
 
                 {
+
                     side:
-                        battle.player,
+                        "PLAYER",
+
 
                     move:
                         playerMove
@@ -189,8 +238,10 @@ class BattleTurnOrderService {
 
 
                 {
+
                     side:
-                        battle.opponent,
+                        "OPPONENT",
+
 
                     move:
                         enemyMove
@@ -202,8 +253,9 @@ class BattleTurnOrderService {
         }
 
 
-
-
+        //--------------------------------
+        // Opponent is faster
+        //--------------------------------
 
         if(
             enemySpeed >
@@ -214,8 +266,10 @@ class BattleTurnOrderService {
             return [
 
                 {
+
                     side:
-                        battle.opponent,
+                        "OPPONENT",
+
 
                     move:
                         enemyMove
@@ -224,8 +278,10 @@ class BattleTurnOrderService {
 
 
                 {
+
                     side:
-                        battle.player,
+                        "PLAYER",
+
 
                     move:
                         playerMove
@@ -237,57 +293,64 @@ class BattleTurnOrderService {
         }
 
 
-
-
-
         //--------------------------------
         // Speed tie
         //--------------------------------
 
-        return Math.random() < 0.5
+        if(
+            Math.random() < 0.5
+        )
+        {
 
-        ?
+            return [
 
-        [
+                {
+
+                    side:
+                        "PLAYER",
+
+
+                    move:
+                        playerMove
+
+                },
+
+
+                {
+
+                    side:
+                        "OPPONENT",
+
+
+                    move:
+                        enemyMove
+
+                }
+
+            ];
+
+        }
+
+
+        return [
 
             {
+
                 side:
-                    battle.player,
+                    "OPPONENT",
+
 
                 move:
-                    playerMove
+                    enemyMove
 
             },
 
 
             {
+
                 side:
-                    battle.opponent,
+                    "PLAYER",
 
-                move:
-                    enemyMove
-
-            }
-
-        ]
-
-        :
-
-        [
-
-            {
-                side:
-                    battle.opponent,
-
-                move:
-                    enemyMove
-
-            },
-
-
-            {
-                side:
-                    battle.player,
 
                 move:
                     playerMove
@@ -296,15 +359,7 @@ class BattleTurnOrderService {
 
         ];
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
@@ -326,12 +381,10 @@ class BattleTurnOrderService {
         }
 
 
-
-
-
         return (
 
-            typeof move.priority === "number"
+            typeof move.priority ===
+            "number"
 
             ?
 
@@ -343,15 +396,7 @@ class BattleTurnOrderService {
 
         );
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
@@ -363,7 +408,6 @@ class BattleTurnOrderService {
     )
     {
 
-
         if(
             !pokemon
         )
@@ -374,18 +418,13 @@ class BattleTurnOrderService {
         }
 
 
-
-
-
         let speed =
             pokemon.speed;
 
 
-
-
-
         if(
-            typeof speed !== "number"
+            typeof speed !==
+            "number"
         )
         {
 
@@ -397,16 +436,10 @@ class BattleTurnOrderService {
         }
 
 
-
-
-
         const stage =
             pokemon.statStages?.speed
             ||
             0;
-
-
-
 
 
         speed =
@@ -417,9 +450,6 @@ class BattleTurnOrderService {
                 stage
 
             );
-
-
-
 
 
         //--------------------------------
@@ -442,26 +472,17 @@ class BattleTurnOrderService {
         }
 
 
-
-
-
         return Math.max(
 
             1,
 
-            Math.floor(speed)
+            Math.floor(
+                speed
+            )
 
         );
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
@@ -473,7 +494,6 @@ class BattleTurnOrderService {
         stage
     )
     {
-
 
         const stages =
         {
@@ -520,9 +540,6 @@ class BattleTurnOrderService {
         };
 
 
-
-
-
         const safeStage =
 
             Math.max(
@@ -540,9 +557,6 @@ class BattleTurnOrderService {
             );
 
 
-
-
-
         return Math.floor(
 
             stat *
@@ -550,73 +564,17 @@ class BattleTurnOrderService {
             stages[
 
                 String(
-
                     safeStage
-
                 )
 
             ]
 
         );
 
-
-    }
-
-
-
-
-
-
-
-
-
-    //--------------------------------
-    // Get active Pokémon
-    //--------------------------------
-
-    getActivePokemon(
-        side
-    )
-    {
-
-
-        if(
-            !side
-            ||
-            !side.party
-        )
-        {
-
-            return null;
-
-        }
-
-
-
-
-
-        return (
-
-            side.party[
-
-                side.active || 0
-
-            ]
-
-            ||
-
-            null
-
-        );
-
-
     }
 
 
 }
-
-
-
 
 
 module.exports =

@@ -20,10 +20,9 @@
 "use strict";
 
 
-
-//----------------------------------------
+//========================================
 // Raw Generators
-//----------------------------------------
+//========================================
 
 const PokemonSpeciesGenerator =
     require("../generators/raw/pokemon-species-generator");
@@ -77,12 +76,9 @@ const GymGenerator =
     require("../generators/raw/gym-generator");
 
 
-
-
-
-//----------------------------------------
+//========================================
 // Reference Generators
-//----------------------------------------
+//========================================
 
 const SpeciesNameGenerator =
     require("../generators/reference/species-name-generator");
@@ -116,6 +112,10 @@ const ItemGenerator =
     require("../generators/reference/item-generator");
 
 
+const ItemEffectGenerator =
+    require("../generators/reference/item-effect-generator");
+
+
 const EvolutionMethodGenerator =
     require("../generators/reference/evolution-method-generator");
 
@@ -132,12 +132,21 @@ const MoveTargetGenerator =
     require("../generators/reference/move-targets-generator");
 
 
+const PokedexGenerator =
+    require("../generators/reference/pokedex-generator");
 
 
+const PickupGenerator =
+    require("../generators/reference/pickup-generator");
 
-//----------------------------------------
+
+const CaptureGenerator =
+    require("../generators/reference/capture-generator");
+
+
+//========================================
 // Generated Generators
-//----------------------------------------
+//========================================
 
 const MoveLearnerGenerator =
     require("../generators/generated/move-learner-generator");
@@ -147,48 +156,34 @@ const StoryEventMapGenerator =
     require("../generators/generated/story-event-map-generator");
 
 
-
-
-
-//----------------------------------------
+//========================================
 // Rules
-//----------------------------------------
+//========================================
 
 const ProgressionRules =
 {
-
     firered:
         require("../rules/firered-progression-rules")
-
 };
-
 
 
 const GymRules =
 {
-
     firered:
         require("../rules/firered-gym-rules")
-
 };
-
 
 
 const EventMappings =
 {
-
     firered:
         require("../rules/firered-event-mappings")
-
 };
 
 
-
-
-
-//----------------------------------------
+//========================================
 // Builders
-//----------------------------------------
+//========================================
 
 const PokemonSpeciesBuilder =
     require("./pokemon-species-builder");
@@ -230,11 +225,11 @@ const GymBuilder =
     require("./gym-builder");
 
 
-
-
+//========================================
+// Build Manager
+//========================================
 
 class BuildManager {
-
 
 
     constructor()
@@ -242,19 +237,19 @@ class BuildManager {
 
         this.built =
         {
+            progression:
+                false,
 
-            progression:false,
-
-            gyms:false
-
+            gyms:
+                false
         };
 
     }
 
 
-
-
-
+    //========================================
+    // Build Game
+    //========================================
 
     buildGame(
         game,
@@ -262,32 +257,33 @@ class BuildManager {
     )
     {
 
-
         console.log();
 
         console.log(
             "========================================"
         );
 
-
         console.log(
             "Build Manager"
         );
-
 
         console.log(
             "========================================"
         );
 
 
+        //========================================
+        // Raw Databases
+        //========================================
 
         console.log(
             "Generating raw databases..."
         );
 
 
-
-        if(data.species)
+        if(
+            data.species
+        )
         {
 
             new PokemonSpeciesGenerator()
@@ -298,8 +294,9 @@ class BuildManager {
         }
 
 
-
-        if(data.moves)
+        if(
+            data.moves
+        )
         {
 
             new PokemonMoveGenerator()
@@ -310,12 +307,10 @@ class BuildManager {
         }
 
 
-
         new PokemonEvolutionGenerator()
             .generate(
                 game
             );
-
 
 
         new PokemonLearnsetGenerator()
@@ -324,8 +319,9 @@ class BuildManager {
             );
 
 
-
-        if(data.encounters)
+        if(
+            data.encounters
+        )
         {
 
             new PokemonEncounterGenerator()
@@ -337,12 +333,10 @@ class BuildManager {
         }
 
 
-
         new PokemonMachineGenerator()
             .generate(
                 game
             );
-
 
 
         new PokemonEggMoveGenerator()
@@ -351,12 +345,10 @@ class BuildManager {
             );
 
 
-
         new TrainerGenerator()
             .generate(
                 game
             );
-
 
 
         new TrainerPartyGenerator()
@@ -365,8 +357,9 @@ class BuildManager {
             );
 
 
-
-        if(data.locations)
+        if(
+            data.locations
+        )
         {
 
             new LocationGenerator()
@@ -377,21 +370,17 @@ class BuildManager {
         }
 
 
-
-
-
-                //----------------------------------------
+        //========================================
         // Gym Database
-        //----------------------------------------
-
+        //========================================
 
         const gyms =
             GymRules[game];
 
 
-
         if(
-            gyms &&
+            gyms
+            &&
             !this.built.gyms
         )
         {
@@ -410,23 +399,17 @@ class BuildManager {
         }
 
 
-
-
-
-
-
-        //----------------------------------------
+        //========================================
         // Progression Database
-        //----------------------------------------
-
+        //========================================
 
         const rules =
             ProgressionRules[game];
 
 
-
         if(
-            rules &&
+            rules
+            &&
             !this.built.progression
         )
         {
@@ -445,23 +428,32 @@ class BuildManager {
         }
 
 
-
-
-
-
-
-        //----------------------------------------
+        //========================================
         // Reference Databases
-        //----------------------------------------
-
+        //========================================
 
         console.log(
             "Generating reference databases..."
         );
 
 
-
         new SpeciesNameGenerator()
+            .generate();
+
+
+        new PokedexGenerator(
+            game
+        )
+            .generate();
+
+
+        new PickupGenerator(
+            game
+        )
+            .generate();
+
+
+        new CaptureGenerator()
             .generate();
 
 
@@ -493,6 +485,10 @@ class BuildManager {
             .generate();
 
 
+        new ItemEffectGenerator()
+            .generate();
+
+
         new EvolutionMethodGenerator()
             .generate();
 
@@ -509,24 +505,18 @@ class BuildManager {
             .generate();
 
 
-
-
-
-
-
-
-        //----------------------------------------
+        //========================================
         // Generated Databases
-        //----------------------------------------
-
+        //========================================
 
         console.log(
             "Building generated databases..."
         );
 
 
-
-        if(data.species)
+        if(
+            data.species
+        )
         {
 
             new PokemonSpeciesBuilder()
@@ -537,8 +527,9 @@ class BuildManager {
         }
 
 
-
-        if(data.moves)
+        if(
+            data.moves
+        )
         {
 
             new PokemonMoveBuilder()
@@ -549,8 +540,9 @@ class BuildManager {
         }
 
 
-
-        if(data.encounters)
+        if(
+            data.encounters
+        )
         {
 
             new PokemonEncounterBuilder()
@@ -561,15 +553,9 @@ class BuildManager {
         }
 
 
-
-
-
-
-
-        //----------------------------------------
-        // Pokemon Availability Database
-        //----------------------------------------
-
+        //========================================
+        // Pokémon Availability Database
+        //========================================
 
         if(
             data.species
@@ -581,7 +567,6 @@ class BuildManager {
             console.log(
                 "Building Pokémon availability database..."
             );
-
 
 
             const availabilityBuilder =
@@ -598,36 +583,27 @@ class BuildManager {
                 );
 
 
-
             const availability =
                 availabilityBuilder.build();
-
-
-
 
 
             new PokemonAvailabilityGenerator()
                 .generate(
 
                     {
-
                         availability
-
                     },
 
                     game
 
                 );
 
-
         }
 
 
-
-
-
-
-
+        //========================================
+        // Location Database
+        //========================================
 
         new LocationBuilder()
             .build(
@@ -635,16 +611,14 @@ class BuildManager {
             );
 
 
-
-
+        //========================================
+        // Move Learner Database
+        //========================================
 
         new MoveLearnerGenerator()
             .generate(
                 game
             );
-
-
-
 
 
         new MoveLearnerBuilder()
@@ -653,8 +627,9 @@ class BuildManager {
             );
 
 
-
-
+        //========================================
+        // Trainer Database
+        //========================================
 
         new TrainerBuilder()
             .build(
@@ -662,19 +637,13 @@ class BuildManager {
             );
 
 
-
-
-
-
-
-
-        //----------------------------------------
+        //========================================
         // Gym Builder
-        //----------------------------------------
-
+        //========================================
 
         if(
-            gyms &&
+            gyms
+            &&
             !this.built.gyms
         )
         {
@@ -690,24 +659,19 @@ class BuildManager {
                 );
 
 
-            this.built.gyms = true;
+            this.built.gyms =
+                true;
 
         }
 
 
-
-
-
-
-
-
-        //----------------------------------------
+        //========================================
         // Progression Builder
-        //----------------------------------------
-
+        //========================================
 
         if(
-            rules &&
+            rules
+            &&
             !this.built.progression
         )
         {
@@ -723,28 +687,23 @@ class BuildManager {
                 );
 
 
-            this.built.progression = true;
+            this.built.progression =
+                true;
 
         }
 
 
-
-
-
-
-
-
-        //----------------------------------------
+        //========================================
         // Story Event Mapping
-        //----------------------------------------
-
+        //========================================
 
         const eventMappings =
             EventMappings[game];
 
 
-
-        if(eventMappings)
+        if(
+            eventMappings
+        )
         {
 
             new StoryEventMapGenerator()
@@ -756,18 +715,13 @@ class BuildManager {
         }
 
 
-
-
-
-
-
-
-        //----------------------------------------
+        //========================================
         // Dialogue
-        //----------------------------------------
+        //========================================
 
-
-        if(data.dialogues)
+        if(
+            data.dialogues
+        )
         {
 
             new DialogueBuilder()
@@ -779,11 +733,9 @@ class BuildManager {
         }
 
 
-
-
-
-
-
+        //========================================
+        // Complete
+        //========================================
 
         console.log();
 
@@ -794,24 +746,19 @@ class BuildManager {
         console.log();
 
 
-
         return {
 
-            success:true,
+            success:
+                true,
 
             game
 
         };
 
-
     }
 
 
-
 }
-
-
-
 
 
 module.exports =

@@ -9,6 +9,7 @@
  * - Read raw Pokémon move data.
  * - Read reference move names.
  * - Merge datasets.
+ * - Resolve Gen 3 move categories.
  * - Write the generated Pokémon move database.
  *
  * Does NOT:
@@ -40,56 +41,56 @@ class PokemonMoveBuilder extends Builder {
 
         const generatedMoves = rawMoves.map(move => {
 
-            const reference = references.moveNames.get(
-                move.id
-            );
-            
-            
+            const reference =
+                references.moveNames.get(
+                    move.id
+                );
+
             const effect =
                 references.moveEffects.get(
                     move.effect
                 );
-            
-            
+
             const target =
                 references.moveTargets.get(
                     move.target
                 );
-            
-            
+
+            const type =
+                references.types.get(
+                    move.type
+                )
+                || null;
+
             return {
-            
+
                 ...move,
-            
-            
+
                 name:
                     reference
                     ? reference.name
                     : null,
-            
-            
+
                 constant:
                     reference
                     ? reference.constant
                     : null,
-            
-            
-                type:
-                    references.types.get(
-                        move.type
-                    )
-                    || null,
-                
-                
+
+                type,
+
+                category:
+                    this.getMoveCategory(
+                        type
+                    ),
+
                 effect:
                     effect
                     || null,
-                
-                
+
                 target:
                     target
                     || null
-                
+
             };
 
         });
@@ -111,6 +112,70 @@ class PokemonMoveBuilder extends Builder {
         );
 
         console.log();
+
+    }
+
+
+    //--------------------------------
+    // Resolve Gen 3 move category
+    //--------------------------------
+
+    getMoveCategory(type)
+    {
+
+        const specialTypes = [
+
+            "FIRE",
+            "WATER",
+            "GRASS",
+            "ELECTRIC",
+            "ICE",
+            "PSYCHIC",
+            "DRAGON",
+            "DARK"
+
+        ];
+
+
+        if (!type)
+        {
+            return "PHYSICAL";
+        }
+
+
+        const typeName =
+
+            typeof type === "string"
+
+            ?
+
+            type
+
+            :
+
+            type.name;
+
+
+        if (!typeName)
+        {
+            return "PHYSICAL";
+        }
+
+
+        return specialTypes.includes(
+
+            String(typeName)
+                .toUpperCase()
+
+        )
+
+        ?
+
+        "SPECIAL"
+
+        :
+
+        "PHYSICAL";
 
     }
 

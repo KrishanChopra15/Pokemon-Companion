@@ -2,13 +2,16 @@
  * Pokémon Companion
  * Battle Opponent Flow
  *
- * Coordinates enemy Pokémon during battle.
+ * Coordinates access to the active opponent during battle.
  *
  * Responsibilities:
- * - Send enemy Pokémon.
- * - Track opponent status.
+ * - Get the active opponent Pokémon.
+ * - Provide opponent status.
  *
  * Does NOT:
+ * - Store Pokémon data.
+ * - Create duplicate Pokémon data.
+ * - Manage active indexes.
  * - Execute attacks.
  * - Handle AI.
  */
@@ -24,13 +27,18 @@ class BattleOpponentFlow {
 
 
     constructor(
-        opponentManager
+        battleStateService,
+        battlePokemonService
     )
     {
 
 
-        this.opponent =
-            opponentManager;
+        this.battles =
+            battleStateService;
+
+
+        this.pokemon =
+            battlePokemonService;
 
 
     }
@@ -44,22 +52,45 @@ class BattleOpponentFlow {
 
 
     //--------------------------------
-    // Send opponent
+    // Get active opponent
     //--------------------------------
 
 
-    sendOut(
-        pokemon
+    getOpponent(
+        battleId
     )
     {
 
 
-        return this.opponent
-            .setOpponent(
-                pokemon
+        const battle =
+            this.battles.getBattle(
+                battleId
             );
 
 
+
+
+
+        if(
+            !battle
+        )
+        {
+
+            return null;
+
+        }
+
+
+
+
+
+        return this.pokemon.getActivePokemon(
+
+            battle.opponent
+
+        );
+
+
     }
 
 
@@ -71,39 +102,34 @@ class BattleOpponentFlow {
 
 
     //--------------------------------
-    // Current opponent
+    // Opponent status
     //--------------------------------
 
 
-    getOpponent()
+    getStatus(
+        battleId
+    )
     {
 
 
-        return this.opponent
-            .getOpponent();
-
-
-    }
-
-
+        const opponent =
+            this.getOpponent(
+                battleId
+            );
 
 
 
 
 
+        return {
+
+            hasOpponent:
+                !!opponent,
 
 
-    //--------------------------------
-    // Status
-    //--------------------------------
+            opponent
 
-
-    getStatus()
-    {
-
-
-        return this.opponent
-            .getStatus();
+        };
 
 
     }

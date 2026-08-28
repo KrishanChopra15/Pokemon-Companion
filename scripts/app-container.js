@@ -100,6 +100,9 @@ const BattlePreparationService =
 const BattleService =
     require("./services/battle-service");
 
+const BattleRewardService =
+    require("./services/battle-reward-service");
+
 const BattleAIService =
     require("./services/battle-ai-service");
 
@@ -114,33 +117,32 @@ const BattleEngineService =
 const BattleFlowService =
     require("./services/battle-flow-service");
 
-
 const BattlePokemonService =
     require("./services/battle-pokemon-service");
-
 
 const BattleValidationService =
     require("./services/battle-validation-service");
 
-
 const BattleTurnOrderService =
     require("./services/battle-turn-order-service");
-
 
 const BattleTurnService =
     require("./services/battle-turn-service");
 
-
 const BattleFaintService =
     require("./services/battle-faint-service");
-
 
 const BattleResultService =
     require("./services/battle-result-service");
 
-
 const BattleStateService =
     require("./services/battle-state-service");
+
+const BattleActiveFlow =
+    require("./battle-active/battle-active-flow");
+
+const BattleOpponentFlow =
+    require("./battle-opponent/battle-opponent-flow");
 
 
 //================================
@@ -241,9 +243,9 @@ const EncounterBattleFlow =
     require("./encounter/encounter-battle-flow");
 
 
-//--------------------------------
+//================================
 // NPC Services
-//--------------------------------
+//================================
 
 const NPCService =
     require("./services/npc-service");
@@ -296,7 +298,6 @@ const MapAccessService =
 // Battle Support Services
 //================================
 
-
 const MoveExecutionService =
     require("./services/move-execution-service");
 
@@ -341,17 +342,6 @@ const TypeEffectivenessService =
 
 const PokemonSwitchService =
     require("./services/pokemon-switch-service");
-
-
-//================================
-// Battle Active Services
-//================================
-
-const BattleActiveManager =
-    require("./battle-active/battle-active-manager");
-
-const BattleActiveFlow =
-    require("./battle-active/battle-active-flow");
 
 
 //================================
@@ -446,28 +436,6 @@ const ActivePokemonFlow =
 
 
 //================================
-// Battle Opponent Services
-//================================
-
-const BattleOpponentManager =
-    require("./battle-opponent/battle-opponent-manager");
-
-const BattleOpponentFlow =
-    require("./battle-opponent/battle-opponent-flow");
-
-
-//================================
-// Battle State Services
-//================================
-
-const BattleStateManager =
-    require("./battle-state/battle-state-manager");
-
-const BattleStateFlow =
-    require("./battle-state/battle-state-flow");
-
-
-//================================
 // Inventory Services
 //================================
 
@@ -486,11 +454,11 @@ const SaveManager =
     require("./save/save-manager");
 
 
-
-
+//================================
+// Application Container
+//================================
 
 class AppContainer {
-
 
 
     constructor(
@@ -506,26 +474,50 @@ class AppContainer {
             game;
 
 
+        //================================
+        // Base Data
+        //================================
+
         this.registerDatabaseServices();
+
+
+        //================================
+        // Progression
+        //================================
 
         this.registerProgressionServices();
 
+
+        //================================
+        // World
+        //================================
+
         this.registerWorldServices();
 
+
+        //================================
+        // Gym
+        //================================
+
         this.registerGymServices();
+
+
+        //================================
+        // Location
+        //================================
 
         this.registerLocationServices();
 
 
         //================================
-        // Battle Dependencies
+        // Battle Support
         //================================
 
         this.registerBattleSupportServices();
 
 
         //================================
-        // Team Dependencies
+        // Team
         //================================
 
         this.registerTeamServices();
@@ -534,34 +526,46 @@ class AppContainer {
 
 
         //================================
-        // Battle State Dependencies
+        // Battle AI
         //================================
 
-        this.registerBattleActiveServices();
+        this.registerBattleAIServices();
 
-        this.registerBattleOpponentServices();
 
-        this.registerBattleStateServices();
+        //================================
+        // Battle Runtime
+        //================================
 
         this.registerBattleRuntimeServices();
 
 
         //================================
-        // Pokémon Utility Dependencies
+        // Pokémon Utility
         //================================
-            
+
         this.registerPokemonUtilityServices();
-            
-            
+
+
         //================================
-        // Core Gameplay
+        // Event Services
         //================================
-            
+        //
+        // Registered before Gameplay because
+        // BattleRewardService depends on
+        // RewardService.
+        //
+        //================================
+
         this.registerEventServices();
 
+
+        //================================
+        // Gameplay
+        //================================
+
         this.registerGameplayServices();
-            
-            
+
+
         //================================
         // Remaining Systems
         //================================
@@ -593,101 +597,70 @@ class AppContainer {
     }
 
 
-
-
-
-
     //================================
     // Database Layer
     //================================
 
-
     registerDatabaseServices()
     {
 
-
         this.container.register(
-
             "pokemonDatabase",
-
             new PokemonDatabaseService(
                 this.game
             )
-
         );
 
 
         this.container.register(
-        
             "moveDatabase",
-        
             new MoveDatabaseService(
                 this.game
             )
-        
         );
 
 
         this.container.register(
-
             "trainerDatabase",
-
             new TrainerDatabaseService(
                 this.game
             )
-
         );
 
 
         this.container.register(
-
             "locationDatabase",
-
             new LocationDatabaseService(
                 this.game
             )
-
         );
 
 
         this.container.register(
-
             "gymDatabase",
-
             new GymDatabaseService(
                 this.game
             )
-
         );
 
-
     }
-
-
-
-
-
 
 
     //================================
     // Progression Layer
     //================================
 
-
     registerProgressionServices()
     {
 
-
         const requirement =
             new ProgressionRequirementService();
-
 
 
         const progression =
             new ProgressionService(
                 this.game
             );
-
 
 
         const gymProgression =
@@ -698,12 +671,10 @@ class AppContainer {
             );
 
 
-
         const storyProgression =
             new StoryProgressionService(
                 this.game
             );
-
 
 
         this.container.register(
@@ -729,23 +700,15 @@ class AppContainer {
             storyProgression
         );
 
-
     }
-
-
-
-
-
 
 
     //================================
     // World Layer
     //================================
 
-
     registerWorldServices()
     {
-
 
         const locationGraph =
             new LocationGraphService(
@@ -756,14 +719,18 @@ class AppContainer {
         const locationGate =
             new LocationGateService(
                 this.game,
-                this.get("progression")
+                this.get(
+                    "progression"
+                )
             );
 
 
         const fieldObstacle =
             new FieldObstacleService(
                 this.game,
-                this.get("progression")
+                this.get(
+                    "progression"
+                )
             );
 
 
@@ -775,19 +742,30 @@ class AppContainer {
 
         const worldProgression =
             new WorldProgressionService(
-                this.get("storyProgression"),
-                this.get("gymProgression"),
-                this.get("progression")
+                this.get(
+                    "storyProgression"
+                ),
+                this.get(
+                    "gymProgression"
+                ),
+                this.get(
+                    "progression"
+                )
             );
 
 
         const objective =
             new ObjectiveService(
-                this.get("storyProgression"),
-                this.get("gymProgression"),
-                this.get("progression")
+                this.get(
+                    "storyProgression"
+                ),
+                this.get(
+                    "gymProgression"
+                ),
+                this.get(
+                    "progression"
+                )
             );
-
 
 
         this.container.register(
@@ -825,259 +803,164 @@ class AppContainer {
             objective
         );
 
-
     }
-
-
-
-
 
 
     //================================
     // Gym Layer
     //================================
 
-
     registerGymServices()
     {
 
-
         const gymReward =
             new GymRewardService(
-
                 this.get(
                     "gymDatabase"
                 )
-
             );
-
 
 
         const gymLocation =
             new GymLocationService(
-
                 this.get(
                     "gymProgression"
                 ),
-
-
                 this.get(
                     "locationGraph"
                 ),
-
-
                 this.get(
                     "locationGate"
                 ),
-
-
                 this.get(
                     "fieldObstacle"
                 )
-
             );
 
+
+        const gymEventService =
+            new GymEventService(
+                this.get(
+                    "gymDatabase"
+                )
+            );
+
+
+        this.container.register(
+            "gymEventService",
+            gymEventService
+        );
 
 
         const gym =
             new GymService(
-
                 this.get(
                     "gymProgression"
                 ),
-
-
-                this.get(
-                    "gymEventService"
-                ),
-
-
+                gymEventService,
                 gymReward,
-
-
                 this.get(
                     "trainerDatabase"
                 )
-
             );
 
 
-
-
         this.container.register(
-        
-            "gymEventService",
-        
-            new GymEventService(
-            
-                this.get(
-                    "gymDatabase"
-                )
-            
-            )
-        
-        );
-
-
-
-        this.container.register(
-
             "gymReward",
-
             gymReward
-
         );
 
 
-
         this.container.register(
-
             "gymLocation",
-
             gymLocation
-
         );
-
 
 
         this.container.register(
-
             "gym",
-
             gym
-
         );
-
 
     }
-
-
-
-
 
 
     //================================
     // Location Layer
     //================================
-    
-    
+
     registerLocationServices()
     {
-    
-    
+
         const locationAccess =
             new LocationAccessService(
-            
                 this.get(
                     "locationGraph"
                 ),
-            
                 this.get(
                     "fieldObstacle"
                 ),
-            
                 this.get(
                     "locationGate"
                 ),
-            
                 this.get(
                     "progression"
                 )
-            
             );
-        
-        
-        
-        
+
+
         const locationAnalysis =
             new LocationAnalysisService(
-            
                 this.get(
                     "locationDatabase"
                 )
-            
             );
-        
-        
-        
-        
+
+
         const locationAvailability =
             new LocationAvailabilityService(
-            
                 this.get(
                     "locationDatabase"
                 )
-            
             );
-        
-        
-        
-        
+
+
         const mapAccess =
             new MapAccessService();
-        
-        
-        
-        
-        
-        
+
+
         this.container.register(
-        
             "locationAccess",
-        
             locationAccess
-        
         );
-    
-    
-    
-    
+
+
         this.container.register(
-        
             "locationAnalysis",
-        
             locationAnalysis
-        
         );
-    
-    
-    
-    
+
+
         this.container.register(
-        
             "locationAvailability",
-        
             locationAvailability
-        
         );
-    
-    
-    
-    
+
+
         this.container.register(
-        
             "mapAccess",
-        
             mapAccess
-        
         );
-    
-    
+
     }
-
-
-
-
 
 
     //================================
     // Battle Support Layer
     //================================
 
-
     registerBattleSupportServices()
     {
-
 
         const typeEffectiveness =
             new TypeEffectivenessService();
@@ -1089,488 +972,264 @@ class AppContainer {
 
         const damageCalculation =
             new DamageCalculationService(
-            
                 typeEffectiveness,
-            
                 statusEffect
-            
             );
-        
-        
+
+
         const moveExecution =
             new MoveExecutionService(
-
                 null,
-
                 null,
-
                 damageCalculation,
-
                 statusEffect
-
             );
-
 
 
         const moveMachine =
             new MoveMachineService(
-            
                 this.game,
-            
                 this.get(
                     "moveDatabase"
                 )
-            
             );
-
 
 
         const moveReplacement =
             new MoveReplacementService();
-                
-                
-                
+
+
         const moveForget =
             new MoveForgetService();
-                
-                
-                
+
+
         const moveReplacementSelection =
             new MoveReplacementSelectionService();
-                
-                
-                
+
+
         const moveLearning =
             new MoveLearningService(
-            
                 this.game,
-            
                 this.get(
                     "moveDatabase"
                 ),
-            
                 moveReplacement,
-            
                 moveReplacementSelection,
-            
                 moveForget
-            
             );
-
 
 
         const statStage =
             new StatStageService();
 
 
-
         const statCalculation =
             new StatCalculationService(
-
                 statStage,
-
                 null
-            
             );
-        
-        
-        
+
+
         const pokemonStatProvider =
             new PokemonStatProviderService(
-            
                 statCalculation
-            
             );
-        
-        
-        
+
+
         const battleSimulation =
             new BattleSimulationService(
-            
                 pokemonStatProvider,
-            
                 typeEffectiveness
-            
             );
-        
-        
-        
-        const pokemonSwitch =
-            new PokemonSwitchService();
-
-
-
-
 
 
         this.container.register(
-
             "moveExecution",
-
             moveExecution
-
         );
 
 
-
         this.container.register(
-        
             "damageCalculation",
-        
             damageCalculation
-        
         );
 
 
-
         this.container.register(
-        
             "moveMachine",
-        
             moveMachine
-        
         );
 
 
-
         this.container.register(
-        
             "moveReplacement",
-        
             moveReplacement
-        
         );
 
 
-
         this.container.register(
-        
             "moveForget",
-        
             moveForget
-        
         );
 
 
-
         this.container.register(
-
             "moveReplacementSelection",
-
             moveReplacementSelection
-
         );
 
 
-
         this.container.register(
-        
             "moveLearning",
-        
             moveLearning
-        
         );
 
 
-
         this.container.register(
-        
             "statusEffect",
-        
             statusEffect
-        
         );
-        
-        
-        
+
+
         this.container.register(
-        
             "statStage",
-        
             statStage
-        
         );
-        
-        
-        
+
+
         this.container.register(
-        
             "statCalculation",
-        
             statCalculation
-        
         );
 
 
-
         this.container.register(
-
             "pokemonStatProvider",
-
             pokemonStatProvider
-        
         );
 
 
-
         this.container.register(
-        
             "battleSimulation",
-        
             battleSimulation
-        
         );
-
-
-
-        this.container.register(
-
-            "pokemonSwitch",
-
-            pokemonSwitch
-        
-        );
-
 
     }
 
 
-
-
-
-
     //================================
-    // Battle Active Layer
+    // Battle AI Layer
     //================================
 
-
-    registerBattleActiveServices()
+    registerBattleAIServices()
     {
 
-
-        const battleActiveManager =
-            new BattleActiveManager();
-
-
-
-
-        const battleActiveFlow =
-            new BattleActiveFlow(
-            
-                battleActiveManager,
-            
-            
-                this.get(
-                    "teamFlow"
-                )
-            
-            );
-
-
-
+        const battleAI =
+            new BattleAIService();
 
 
         this.container.register(
-
-            "battleActiveManager",
-
-            battleActiveManager
-
+            "battleAI",
+            battleAI
         );
-
-
-
-
-
-        this.container.register(
-
-            "battleActiveFlow",
-
-            battleActiveFlow
-
-        );
-
 
     }
-
-
-
-
-
-
-    //================================
-    // Battle Opponent Layer
-    //================================
-
-
-    registerBattleOpponentServices()
-    {
-
-
-        const battleOpponentManager =
-            new BattleOpponentManager();
-
-
-
-        const battleOpponentFlow =
-            new BattleOpponentFlow(
-
-                battleOpponentManager
-
-            );
-
-
-
-
-
-        this.container.register(
-
-            "battleOpponentManager",
-
-            battleOpponentManager
-
-        );
-
-
-
-
-
-        this.container.register(
-
-            "battleOpponentFlow",
-
-            battleOpponentFlow
-
-        );
-
-
-    }
-
-
-
-
-
-
-    //================================
-    // Battle State Layer
-    //================================
-
-
-    registerBattleStateServices()
-    {
-
-
-        const battleStateManager =
-            new BattleStateManager();
-
-
-
-
-        const battleStateFlow =
-            new BattleStateFlow(
-
-                battleStateManager
-
-            );
-
-
-
-
-
-        this.container.register(
-
-            "battleStateManager",
-
-            battleStateManager
-
-        );
-
-
-
-
-
-        this.container.register(
-
-            "battleStateFlow",
-
-            battleStateFlow
-
-        );
-
-
-    }
-
-
-
-
 
 
     //================================
     // Battle Runtime Layer
     //================================
 
-
     registerBattleRuntimeServices()
     {
 
+        //--------------------------------
+        // Validation
+        //--------------------------------
 
         const validation =
             new BattleValidationService();
 
 
-
-        const turnOrder =
-            new BattleTurnOrderService();
-
-
-
-        const turn =
-            new BattleTurnService(
-            
-                this.get(
-                    "moveExecution"
-                ),
-            
-            
-                this.get(
-                    "statusEffect"
-                ),
-            
-            
-                null
-            
-            );
-
-
+        //--------------------------------
+        // Pokémon utilities
+        //--------------------------------
 
         const pokemon =
             new BattlePokemonService();
 
 
+        //--------------------------------
+        // Turn order
+        //--------------------------------
 
-        const result =
-            new BattleResultService(
+        const turnOrder =
+            new BattleTurnOrderService(
 
-                this.get(
-                    "battleStateFlow"
-                )
+                pokemon
 
             );
 
 
+        //--------------------------------
+        // Turn execution
+        //--------------------------------
+
+        const turn =
+            new BattleTurnService(
+
+                this.get(
+                    "moveExecution"
+                ),
+
+                this.get(
+                    "statusEffect"
+                ),
+
+                null,
+
+                pokemon
+
+            );
+
+
+        //--------------------------------
+        // Pokémon switching
+        //--------------------------------
+
+        const pokemonSwitch =
+            new PokemonSwitchService(
+
+                pokemon
+
+            );
+
+
+        //--------------------------------
+        // Battle result
+        //--------------------------------
+
+        const result =
+            new BattleResultService();
+
+
+        //--------------------------------
+        // Faint handling
+        //--------------------------------
 
         const faint =
             new BattleFaintService(
-            
+
                 pokemon,
-            
-                this.get(
-                    "pokemonSwitch"
-                )
-            
+
+                pokemonSwitch
+
             );
 
 
+        //--------------------------------
+        // Battle flow
+        //--------------------------------
 
         const flow =
             new BattleFlowService(
@@ -1594,124 +1253,190 @@ class AppContainer {
             );
 
 
-
-        const state =
-            new BattleStateService(
-
-                this.get(
-                    "battleStateFlow"
-                ),
-
-
-                this.get(
-                    "battleActiveFlow"
-                ),
-
-
-                this.get(
-                    "battleOpponentFlow"
-                )
-
-            );
-
-
-
-
+        //--------------------------------
+        // Register runtime services
+        //--------------------------------
 
         this.container.register(
-
             "battleValidation",
-
             validation
-
         );
 
 
-
         this.container.register(
-
             "battleTurnOrder",
-
             turnOrder
-
         );
 
 
-
         this.container.register(
-
             "battleTurn",
-
             turn
-
         );
 
 
-
         this.container.register(
-
             "battlePokemon",
-
             pokemon
-
         );
 
 
+        this.container.register(
+            "pokemonSwitch",
+            pokemonSwitch
+        );
+
 
         this.container.register(
-
             "battleFaint",
-
             faint
-
         );
 
 
-
         this.container.register(
-
             "battleResult",
-
             result
-
         );
 
 
-
         this.container.register(
-
             "battleFlow",
-
             flow
-
         );
-
-
-
-        this.container.register(
-
-            "battleState",
-
-            state
-
-        );
-
 
     }
 
 
+    //================================
+    // Pokémon Utility Layer
+    //================================
+
+    registerPokemonUtilityServices()
+    {
+
+        const evolution =
+            new EvolutionService(
+                this.get(
+                    "pokemonDatabase"
+                )
+            );
 
 
+        const growthRate =
+            new GrowthRateService();
+
+
+        const experience =
+            new ExperienceService(
+                growthRate
+            );
+
+
+        const levelUp =
+            new LevelUpService();
+
+
+        const evolutionRequirement =
+            new EvolutionRequirementService();
+
+
+        const pokemonProgression =
+            new PokemonProgressionService(
+
+                experience,
+
+                levelUp,
+
+                evolution
+
+            );
+
+
+        this.container.register(
+            "evolutionRequirement",
+            evolutionRequirement
+        );
+
+
+        this.container.register(
+            "growthRate",
+            growthRate
+        );
+
+
+        this.container.register(
+            "evolution",
+            evolution
+        );
+
+
+        this.container.register(
+            "experience",
+            experience
+        );
+
+
+        this.container.register(
+            "levelUp",
+            levelUp
+        );
+
+
+        this.container.register(
+            "pokemonProgression",
+            pokemonProgression
+        );
+
+    }
+
+
+    //================================
+    // Event Layer
+    //================================
+
+    registerEventServices()
+    {
+
+        this.container.register(
+            "rewardService",
+            new RewardService()
+        );
+
+
+        this.container.register(
+            "eventRewardService",
+            new EventRewardService()
+        );
+
+
+        this.container.register(
+            "eventService",
+            new EventService(
+                this.game
+            )
+        );
+
+
+        this.container.register(
+            "storyEventService",
+            new StoryEventService(
+                this.game
+            )
+        );
+
+    }
 
 
     //================================
     // Gameplay Layer
     //================================
 
-
     registerGameplayServices()
     {
 
+        //--------------------------------
+        // Trainer
+        //--------------------------------
 
         const trainer =
             new TrainerService(
@@ -1721,120 +1446,96 @@ class AppContainer {
             );
 
 
+        //--------------------------------
+        // Battle preparation
+        //--------------------------------
+
         const battlePreparation =
             new BattlePreparationService(
-            
+
                 trainer,
-            
+
                 this.get(
                     "pokemonDatabase"
                 ),
-            
+
                 this.get(
                     "statCalculation"
                 ),
-            
+
                 this.get(
                     "pokemonStatProvider"
+                ),
+
+                this.get(
+                    "moveDatabase"
                 )
-            
+
             );
 
 
-        const battleAI =
-            new BattleAIService();
+        //--------------------------------
+        // Battle reward
+        //--------------------------------
 
+        const battleReward =
+            new BattleRewardService(
 
-
-        const battleEngine =
-            new BattleEngineService(
-            
-                this.get(
-                    "battleState"
-                ),
-            
-            
-                this.get(
-                    "battleFlow"
-                ),
-            
-            
-                this.get(
-                    "battlePokemon"
-                )
-            
-            );
-
-
-
-        const battle =
-            new BattleService(
-            
-                battlePreparation,
-            
-                battleEngine,
-            
-                this.get(
-                    "pokemonProgression"
-                ),
-            
                 this.get(
                     "experience"
                 ),
-            
+
+                this.get(
+                    "evolution"
+                ),
+
                 this.get(
                     "rewardService"
                 )
-            
+
             );
 
 
+        //--------------------------------
+        // Battle engine
+        //--------------------------------
 
-        const battlePrediction =
-            new BattlePredictionService(
-            
+        const battleEngine =
+            new BattleEngineService(
+
                 this.get(
-                    "battleSimulation"
+                    "battleFlow"
                 ),
-            
-                battlePreparation
-            
-            );
 
-
-
-        const availability =
-            new PokemonAvailabilityService(
-            
                 this.get(
-                    "pokemonDatabase"
-                ),
-            
-                this.get(
-                    "locationDatabase"
-                ),
-            
-                this.get(
-                    "evolution"
+                    "battlePokemon"
                 )
-            
+
             );
 
 
+        //--------------------------------
+        // Battle service
+        //--------------------------------
 
-        const obtainability =
-            new PokemonObtainabilityService(
-                availability
+        const battle =
+            new BattleService(
+
+                battlePreparation,
+
+                battleEngine,
+
+                battleReward
+
             );
 
 
-
-        const recommendation =
-            new TeamRecommendationService(
-                availability
-            );
-
-
+        //--------------------------------
+        // Register battle first
+        //
+        // Battle state must reference the
+        // actual authoritative BattleService.
+        //--------------------------------
 
         this.container.register(
             "trainerService",
@@ -1849,8 +1550,8 @@ class AppContainer {
 
 
         this.container.register(
-            "battleAI",
-            battleAI
+            "battleReward",
+            battleReward
         );
 
 
@@ -1865,6 +1566,134 @@ class AppContainer {
             battle
         );
 
+
+        //--------------------------------
+        // Battle state access
+        //--------------------------------
+
+        const battleState =
+            new BattleStateService(
+
+                battle
+
+            );
+
+
+        //--------------------------------
+        // Active Pokémon flow
+        //--------------------------------
+
+        const battleActive =
+            new BattleActiveFlow(
+
+                battleState,
+
+                this.get(
+                    "pokemonSwitch"
+                )
+
+            );
+
+
+        //--------------------------------
+        // Opponent flow
+        //--------------------------------
+
+        const battleOpponent =
+            new BattleOpponentFlow(
+
+                battleState
+
+            );
+
+
+        //--------------------------------
+        // Register battle state services
+        //--------------------------------
+
+        this.container.register(
+            "battleState",
+            battleState
+        );
+
+
+        this.container.register(
+            "battleActive",
+            battleActive
+        );
+
+
+        this.container.register(
+            "battleOpponent",
+            battleOpponent
+        );
+
+
+        //--------------------------------
+        // Battle prediction
+        //--------------------------------
+
+        const battlePrediction =
+            new BattlePredictionService(
+
+                this.get(
+                    "battleSimulation"
+                ),
+
+                battlePreparation
+
+            );
+
+
+        //--------------------------------
+        // Pokémon availability
+        //--------------------------------
+
+        const availability =
+            new PokemonAvailabilityService(
+
+                this.get(
+                    "pokemonDatabase"
+                ),
+
+                this.get(
+                    "locationDatabase"
+                ),
+
+                this.get(
+                    "evolution"
+                )
+
+            );
+
+
+        //--------------------------------
+        // Pokémon obtainability
+        //--------------------------------
+
+        const obtainability =
+            new PokemonObtainabilityService(
+
+                availability
+
+            );
+
+
+        //--------------------------------
+        // Team recommendation
+        //--------------------------------
+
+        const recommendation =
+            new TeamRecommendationService(
+
+                availability
+
+            );
+
+
+        //--------------------------------
+        // Register remaining gameplay services
+        //--------------------------------
 
         this.container.register(
             "battlePrediction",
@@ -1889,211 +1718,99 @@ class AppContainer {
             recommendation
         );
 
-
     }
-
-
-
-
-
-
-
-    //================================
-    // Event Layer
-    //================================
-
-
-    registerEventServices()
-    {
-
-
-        this.container.register(
-
-            "rewardService",
-
-            new RewardService()
-
-        );
-
-
-        this.container.register(
-
-            "eventRewardService",
-
-            new EventRewardService()
-
-        );
-
-
-        this.container.register(
-
-            "eventService",
-
-            new EventService(
-                this.game
-            )
-
-        );
-
-
-        this.container.register(
-
-            "storyEventService",
-
-            new StoryEventService(
-                this.game
-            )
-
-        );
-
-
-    }
-
-
-
-
-
 
 
     //================================
     // Capture Layer
     //================================
 
-
     registerCaptureServices()
     {
 
-
         const captureManager =
             new CaptureManager();
-
 
 
         const captureService =
             new CaptureService();
 
 
-
         const wildBattleService =
             new WildBattleService();
-
-
-
 
 
         const captureFlow =
             new CaptureFlow(
 
                 captureService,
-            
-            
+
                 captureManager,
-            
-            
+
                 this.get(
                     "teamFlow"
                 ),
-            
-            
+
                 this.get(
                     "storageFlow"
                 ),
-            
-            
+
                 this.get(
                     "inventoryFlow"
                 ),
-            
-            
+
                 this.get(
                     "pokemonTracker"
                 ),
-            
-            
+
                 this.get(
                     "actionFlow"
                 )
-            
+
             );
 
 
-
-
-
-
-
-
         this.container.register(
-
             "captureManager",
-
             captureManager
-
         );
 
 
-
-
-
         this.container.register(
-
             "captureService",
-
             captureService
-
         );
 
 
-
-
-
         this.container.register(
-
             "wildBattleService",
-
             wildBattleService
-
         );
-
-
-
 
 
         this.container.register(
-
             "captureFlow",
-
             captureFlow
-
         );
-
 
     }
-
-
-
 
 
     //================================
     // Encounter Layer
     //================================
 
-
     registerEncounterServices()
     {
 
-
         const encounterManager =
             new EncounterManager();
-
-
 
 
         const encounterFlow =
             new EncounterFlow(
 
                 encounterManager,
-
 
                 this.get(
                     "locationDatabase"
@@ -2102,14 +1819,10 @@ class AppContainer {
             );
 
 
-
-
-
         const encounterBattleFlow =
             new EncounterBattleFlow(
 
                 encounterFlow,
-
 
                 this.get(
                     "wildBattleService"
@@ -2118,119 +1831,68 @@ class AppContainer {
             );
 
 
-
-
-
-
-
-
         this.container.register(
-
             "encounterManager",
-
             encounterManager
-
         );
 
 
-
-
-
         this.container.register(
-
             "encounterFlow",
-
             encounterFlow
-
         );
-
-
-
 
 
         this.container.register(
-
             "encounterBattleFlow",
-
             encounterBattleFlow
-
         );
-
 
     }
-
-
-
 
 
     //================================
     // Action Layer
     //================================
-    
-    
+
     registerActionServices()
     {
-    
-    
+
         const actionManager =
             new ActionManager();
-    
-    
-    
-    
+
+
         const actionFlow =
             new ActionFlow(
-            
+
                 actionManager
-            
+
             );
-        
-        
-        
-        
-        
-        
-        
+
+
         this.container.register(
-        
             "actionManager",
-        
             actionManager
-        
         );
-    
-    
-    
-    
-    
+
+
         this.container.register(
-        
             "actionFlow",
-        
             actionFlow
-        
         );
-    
-    
+
     }
-
-
-
 
 
     //================================
     // Team Layer
     //================================
 
-
     registerTeamServices()
     {
 
-
         const teamManager =
             new TeamManager();
-
-
 
 
         const teamFlow =
@@ -2241,107 +1903,66 @@ class AppContainer {
             );
 
 
-
-
-
-
-
         this.container.register(
-
             "teamManager",
-
             teamManager
-
         );
-
-
-
 
 
         this.container.register(
-
             "teamFlow",
-
             teamFlow
-
         );
-
 
     }
-
-
-
 
 
     //================================
     // Active Pokémon Layer
     //================================
-    
-    
+
     registerActivePokemonServices()
     {
-    
-    
+
         const activePokemonManager =
             new ActivePokemonManager();
-    
-    
-    
+
+
         const activePokemonFlow =
             new ActivePokemonFlow(
-            
+
                 activePokemonManager,
-            
-            
+
                 this.get(
                     "teamFlow"
                 )
-            
+
             );
-        
-        
-        
-        
-        
+
+
         this.container.register(
-        
             "activePokemonManager",
-        
             activePokemonManager
-        
         );
-    
-    
-    
-    
-    
+
+
         this.container.register(
-        
             "activePokemonFlow",
-        
             activePokemonFlow
-        
         );
-    
-    
+
     }
-
-
-
 
 
     //================================
     // Pokémon Information Layer
     //================================
 
-
     registerPokemonInformationServices()
     {
 
-
         const explanation =
             new PokemonExplanationService();
-
 
 
         const sourceResolver =
@@ -2356,269 +1977,92 @@ class AppContainer {
             );
 
 
-
         const tracker =
             new PokemonTrackerService();
 
 
-
-
-
         this.container.register(
-
             "pokemonExplanation",
-
             explanation
-
         );
 
 
-
         this.container.register(
-
             "pokemonSourceResolver",
-
             sourceResolver
-
         );
-
 
 
         this.container.register(
-
             "pokemonTracker",
-
             tracker
-
         );
-
 
     }
-
-
-
 
 
     //================================
     // Storage Layer
     //================================
 
-
     registerStorageServices()
     {
-
 
         const storageManager =
             new StorageManager();
 
 
-
         const storageFlow =
             new StorageFlow(
-            
+
                 storageManager,
-            
+
                 this.get(
                     "teamFlow"
                 )
-            
+
             );
 
 
-
-
-
         this.container.register(
-
             "storageManager",
-
             storageManager
-
         );
-
-
-
 
 
         this.container.register(
-
             "storageFlow",
-
             storageFlow
-
         );
-
 
     }
-
-
-
 
 
     //================================
     // Starter Layer
     //================================
 
-
     registerStarterServices()
     {
-
 
         const starterSelection =
             new StarterSelectionService();
 
 
-
-
         this.container.register(
-
             "starterSelection",
-
             starterSelection
-
         );
-
 
     }
-
-
-
-
-
-    //================================
-    // Pokémon Utility Layer
-    //================================
-    
-    
-    registerPokemonUtilityServices()
-    {
-
-
-        const evolution =
-            new EvolutionService(
-
-                this.get(
-                    "pokemonDatabase"
-                )
-
-            );
-
-
-
-        const growthRate =
-            new GrowthRateService();
-
-
-
-        const experience =
-            new ExperienceService(
-            
-                this.get(
-                    "growthRate"
-                )
-            
-            );
-
-
-
-        const levelUp =
-            new LevelUpService();
-
-
-
-        const evolutionRequirement =
-            new EvolutionRequirementService();
-
-
-
-        const pokemonProgression =
-            new PokemonProgressionService(
-
-                experience,
-
-                levelUp,
-
-                evolution
-
-            );
-
-
-
-
-
-        this.container.register(
-
-            "evolutionRequirement",
-
-            evolutionRequirement
-
-        );
-
-
-
-        this.container.register(
-
-            "growthRate",
-
-            growthRate
-
-        );
-
-
-
-        this.container.register(
-
-            "evolution",
-
-            evolution
-
-        );
-
-
-
-        this.container.register(
-
-            "experience",
-
-            experience
-
-        );
-
-
-
-        this.container.register(
-
-            "levelUp",
-
-            levelUp
-
-        );
-
-
-
-        this.container.register(
-
-            "pokemonProgression",
-
-            pokemonProgression
-
-        );
-
-
-    }
-
-
-
 
 
     //================================
     // NPC Layer
     //================================
 
-
     registerNPCServices()
     {
-
 
         const npcService =
             new NPCService(
@@ -2626,15 +2070,12 @@ class AppContainer {
             );
 
 
-
         const npcAvailability =
             new NPCAvailabilityService();
 
 
-
         const npcInteraction =
             new NPCInteractionService();
-
 
 
         const dialogue =
@@ -2643,62 +2084,38 @@ class AppContainer {
             );
 
 
-
-
-
         this.container.register(
-
             "npcService",
-
             npcService
-
         );
 
 
-
         this.container.register(
-
             "npcAvailability",
-
             npcAvailability
-
         );
 
 
-
         this.container.register(
-
             "npcInteraction",
-
             npcInteraction
-
         );
-
 
 
         this.container.register(
-
             "dialogue",
-
             dialogue
-
         );
-
 
     }
-
-
-
 
 
     //================================
     // Trainer Analysis Layer
     //================================
 
-
     registerTrainerAnalysisServices()
     {
-
 
         const trainerAnalysis =
             new TrainerAnalysisService(
@@ -2714,10 +2131,8 @@ class AppContainer {
             );
 
 
-
         const trainerDifficulty =
             new TrainerDifficultyService();
-
 
 
         const trainerRecommendation =
@@ -2730,83 +2145,55 @@ class AppContainer {
             );
 
 
-
-
-
         this.container.register(
-
             "trainerAnalysis",
-
             trainerAnalysis
-
         );
 
 
-
         this.container.register(
-
             "trainerDifficulty",
-
             trainerDifficulty
-
         );
-
 
 
         this.container.register(
-
             "trainerRecommendation",
-
             trainerRecommendation
-
         );
-
 
     }
-
-
-
 
 
     //================================
     // Session Layer
     //================================
-    
-    
+
     registerSessionServices()
     {
-    
-    
+
         const session =
             new GameSession(
+
                 this.game
+
             );
-        
-        
-        
+
+
         this.container.register(
-        
             "session",
-        
             session
-        
         );
-    
-    
+
     }
-
-
-
 
 
     //================================
     // World Runtime Layer
     //================================
 
-
     registerWorldRuntimeServices()
     {
-
 
         const worldManager =
             new WorldManager(
@@ -2818,18 +2205,14 @@ class AppContainer {
             );
 
 
-
-
         const worldFlow =
             new WorldFlow(
 
                 worldManager,
 
-
                 this.get(
                     "locationAccess"
                 ),
-
 
                 this.get(
                     "mapAccess"
@@ -2838,119 +2221,75 @@ class AppContainer {
             );
 
 
-
-
-
-
         this.container.register(
-
             "worldManager",
-
             worldManager
-
         );
-
-
-
 
 
         this.container.register(
-
             "worldFlow",
-
             worldFlow
-
         );
-
 
     }
-
-
-
 
 
     //================================
     // Inventory Layer
     //================================
-    
-    
+
     registerInventoryServices()
     {
-    
-    
+
         const inventoryManager =
             new InventoryManager();
-    
-    
-    
+
+
         const inventoryFlow =
             new InventoryFlow(
+
                 inventoryManager
+
             );
-        
-        
-        
-        
+
+
         this.container.register(
-        
             "inventoryManager",
-        
             inventoryManager
-        
         );
-    
-    
-    
-    
-    
+
+
         this.container.register(
-        
             "inventoryFlow",
-        
             inventoryFlow
-        
         );
-    
-    
+
     }
-
-
-
 
 
     //================================
     // Save Layer
     //================================
 
-
     registerSaveServices()
     {
-
 
         const saveManager =
             new SaveManager();
 
 
-
         this.container.register(
-
             "saveManager",
-
             saveManager
-
         );
 
-
     }
-
-
-
 
 
     //================================
     // Access
     //================================
-
 
     get(
         name
@@ -2958,11 +2297,12 @@ class AppContainer {
     {
 
         return this.container.get(
+
             name
+
         );
 
     }
-
 
 
     getContainer()
@@ -2974,7 +2314,6 @@ class AppContainer {
 
 
 }
-
 
 
 module.exports =

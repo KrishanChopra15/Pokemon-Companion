@@ -1,178 +1,383 @@
 # Pokémon Companion Datasets
 
-> Defines every dataset used throughout Pokémon Companion and documents how data is organized, generated, validated, and consumed across the entire platform.
+> **Master Dataset Catalog**
+>
+> Defines the datasets used by Pokémon Companion, their responsibilities, ownership, lifecycle, dependencies, validation, versioning, and consumption rules.
 
 ---
 
-# Purpose
+## 1. Purpose
 
-The Datasets document serves as the master catalog of every dataset used by Pokémon Companion.
+The Datasets document is the master catalog for the Pokémon Companion data ecosystem.
 
-Its purpose is to describe what datasets exist, why they exist, where they belong within the data architecture, and how they interact with one another.
+It explains:
 
-Unlike the Database Schema, which defines the structure of canonical entities and relationships, this document focuses on the datasets that store, organize, and expose those entities throughout the project.
+- What datasets exist
+- Why each dataset exists
+- Which architectural layer owns it
+- Where its data originates
+- Which systems consume it
+- How it is generated
+- How it is validated
+- How it is versioned
+- How it evolves as the project expands
 
-Every dataset, whether extracted from official sources, generated during the build pipeline, or created by users, should be documented here.
+This document catalogs datasets. It does not replace:
 
-This document acts as the central reference for developers working with the Pokémon Companion data ecosystem.
+- `DATA_ARCHITECTURE.md`, which defines the overall data pipeline and architecture
+- `DATABASE_SCHEMA.md`, which defines entity and relationship structures
+- Validation documentation, which defines detailed validation algorithms
+- API documentation, which defines external application interfaces
 
----
-
-# Dataset Philosophy
-
-Pokémon Companion treats datasets as independent architectural components.
-
-Each dataset should have one clearly defined responsibility.
-
-Information should exist in only one canonical location.
-
-Derived datasets should never become the source of truth.
-
-Instead, they exist to improve performance, simplify application development, and expose optimized views of the canonical knowledge graph.
-
-Every dataset should be:
-
-- Clearly defined
-- Version-aware
-- Fully documented
-- Deterministically generated where applicable
-- Independently validated
-- Easily maintainable
-
-Datasets should remain understandable without requiring knowledge of their implementation.
+The goal is to provide one practical reference for understanding the dataset ecosystem without duplicating the detailed specifications maintained elsewhere.
 
 ---
 
-# Dataset Lifecycle
+# 2. Dataset Philosophy
 
-Datasets follow the lifecycle defined in `DATA_ARCHITECTURE.md`.
+Pokémon Companion treats datasets as independent architectural components with clearly defined responsibilities.
 
-This document describes the datasets present at each stage of that lifecycle rather than redefining it.
+The following principles apply to every dataset.
 
----
+### 2.1 Single Responsibility
 
-# Dataset Classification
+Each dataset should answer one primary data question.
 
-Every dataset within Pokémon Companion belongs to exactly one architectural layer.
+For example:
 
-The primary dataset categories are:
+```text
+species
+```
 
-## Layer 1 — Official Sources
+defines species.
 
-Official Pokémon resources used during extraction.
+```text
+pokemon-learns-move
+```
 
-These datasets exist outside Pokémon Companion and act as the project's highest authority.
+defines learning relationships.
 
----
+```text
+pokemon-lookup
+```
 
-## Layer 2 — Raw Sources
+provides an optimized lookup view.
 
-Machine-readable representations extracted directly from official sources.
+A dataset should not gradually become a general-purpose storage area.
 
-These datasets preserve the original structure of official game data and act as the archival foundation of the project.
+### 2.2 One Canonical Location
 
----
+A factual concept should have one canonical home.
 
-## Layer 3 — Canonical Datasets
+Duplicated information should normally be represented as a reference.
 
-Canonical datasets define the permanent entities used throughout Pokémon Companion.
+For example, a move name belongs to the Move dataset. A learnset references the Move identifier rather than storing another authoritative copy of the move.
 
-Each canonical concept exists exactly once.
+### 2.3 Derived Data Is Disposable
 
-These datasets form the project's knowledge graph.
+Generated datasets may duplicate information for performance.
 
----
+However:
 
-## Layer 4 — Relationship Datasets
+> A generated dataset is never the source of truth.
 
-Relationship datasets explicitly connect canonical entities together.
+Generated data must be reproducible from its inputs.
 
-Rather than embedding duplicated information inside canonical datasets, relationships are stored independently.
+### 2.4 Context Matters
 
-These datasets transform isolated entities into a fully interconnected knowledge graph.
+Pokémon data changes between generations, versions, and games.
 
----
+Datasets must preserve the context required to interpret historical information correctly.
 
-## Layer 5 — Generated Datasets
+### 2.5 User Data Is Independent
 
-Generated datasets provide optimized views of the knowledge graph.
+User datasets represent personal state.
 
-These datasets exist solely to improve application performance and developer experience.
+They may reference canonical entities but must never modify canonical knowledge.
 
-They may always be regenerated from canonical and relationship datasets.
+### 2.6 Provenance Matters
 
----
+Data should remain traceable to its source and transformation path.
 
-## Layer 6 — User Datasets
+A developer should be able to determine:
 
-User datasets store trainer-specific information.
-
-Unlike every previous layer, these datasets are unique to each trainer and remain completely independent from official Pokémon knowledge.
-
-User datasets should reference canonical entities without modifying them.
-
----
-
-# Layer 1 — Official Sources
-
-## Purpose
-
-Official Sources represent the origin of every piece of Pokémon knowledge used throughout Pokémon Companion.
-
-Unlike every other dataset layer, Official Sources are not created, modified, or maintained by Pokémon Companion.
-
-Instead, they provide the authoritative information from which every internal dataset is ultimately derived.
-
-Whenever official information is available, it is considered the canonical source of truth.
-
-Every later dataset should be traceable back to one or more official sources through the project's provenance system.
+```text
+Official Source
+    ↓
+Raw Dataset
+    ↓
+Canonical Dataset
+    ↓
+Relationship Dataset
+    ↓
+Generated Dataset
+    ↓
+Application
+```
 
 ---
 
-# Dataset Characteristics
+# 3. Dataset Lifecycle
 
-Official Source datasets have the following characteristics:
+The dataset lifecycle follows the project's broader data architecture.
 
-- External to Pokémon Companion
-- Read-only
-- Not version-controlled by the project
-- Never modified directly
-- Used only during extraction
-- Fully traceable through provenance metadata
+```text
+Official Sources
+      ↓
+Raw Sources
+      ↓
+Canonical Datasets
+      ↓
+Relationship Datasets
+      ↓
+Generated Datasets
+      ↓
+Application Runtime
 
-Official Sources define what exists.
+User Input
+      ↓
+User Datasets
+      ↓
+Application Runtime
+```
 
-Pokémon Companion defines how that information is represented.
+The first five layers describe official Pokémon knowledge.
+
+The User Dataset layer describes trainer-specific state.
+
+These two flows may interact through identifiers, but they must remain logically separated.
 
 ---
 
-# Dataset Categories
+# 4. Dataset Layers
 
-Official Sources include several categories of information.
+Every dataset belongs to exactly one primary layer.
 
-## Game Data
+| Layer | Name | Primary Responsibility |
+|---|---|---|
+| 1 | Official Sources | External authoritative Pokémon information |
+| 2 | Raw Sources | Faithful extracted representations |
+| 3 | Canonical Datasets | Stable internal knowledge |
+| 4 | Relationship Datasets | Connections between canonical entities |
+| 5 | Generated Datasets | Optimized derived views |
+| 6 | User Datasets | Trainer-owned mutable state |
 
-Official game data provides the majority of Pokémon Companion's knowledge.
+A dataset should not move between layers during normal operation.
 
-Examples include:
+If the purpose of a dataset changes substantially, it should normally be replaced by a dataset appropriate to the new layer.
 
-- Game executables
-- Game archives
-- Binary resources
-- Internal data tables
-- Game scripts
+---
+
+# 5. Dataset Registry
+
+The following registry provides the high-level catalog.
+
+## 5.1 Official Source Categories
+
+```text
+official-game-data
+official-game-assets
+official-text-resources
+official-event-data
+official-platform-data
+```
+
+## 5.2 Raw Dataset Categories
+
+```text
+raw-game
+raw-world
+raw-pokemon
+raw-battle
+raw-trainer
+raw-item
+raw-asset
+raw-text
+raw-event
+```
+
+## 5.3 Canonical Dataset Categories
+
+```text
+generations
+version-groups
+versions
+game-contexts
+
+regions
+locations
+location-areas
+maps
+
+species
+forms
+pokemon
+types
+moves
+abilities
+items
+evolution-methods
+machines
+natures
+egg-groups
+pokedex-entries
+
+trainers
+encounters
+events
+requirements
+objectives
+
+assets
+```
+
+## 5.4 Relationship Dataset Categories
+
+```text
+species-has-form
+species-has-pokemon
+
+pokemon-has-type
+pokemon-has-ability
+pokemon-learns-move
+pokemon-evolves-into-pokemon
+pokemon-has-asset
+
+move-has-type
+move-has-damage-class
+move-has-target
+machine-teaches-move
+
+game-contains-region
+region-contains-location
+location-contains-area
+area-contains-encounter
+
+encounter-contains-pokemon
+encounter-requires-condition
+encounter-occurs-in-context
+
+trainer-uses-pokemon
+trainer-appears-in-game
+trainer-located-at-location
+
+item-used-for-evolution
+item-found-at-location
+item-held-by-pokemon
+item-available-in-game
+
+context-enables-pokemon
+context-enables-move
+context-enables-item
+context-enables-mechanic
+```
+
+## 5.5 Generated Dataset Categories
+
+```text
+pokemon-lookup
+species-lookup
+move-lookup
+ability-lookup
+item-lookup
+trainer-lookup
+location-lookup
+
+search-index
+autocomplete-index
+alias-index
+
+pokemon-by-type
+pokemon-by-ability
+pokemon-by-region
+pokemon-by-generation
+pokemon-by-game
+
+evolution-graph
+learnset-index
+encounter-index
+map-connection-index
+progression-index
+type-effectiveness-index
+
+regional-pokedex-index
+machine-compatibility-index
+
+build-manifest
+dataset-manifest
+validation-summary
+```
+
+## 5.6 User Dataset Categories
+
+```text
+users
+user-settings
+adventures
+trackers
+tracker-state
+tracker-map-state
+tracker-objectives
+
+pokemon-instances
+teams
+team-members
+
+collection-state
+item-collection
+form-collection
+shiny-collection
+ribbon-collection
+mark-collection
+
+achievement-state
+notes
+challenge-runs
+
+ai-preferences
+ai-history
+saved-prompts
+
+friends
+shared-teams
+community-activity
+```
+
+---
+
+# 6. Layer 1: Official Sources
+
+## 6.1 Purpose
+
+Official Sources are external resources used as inputs to the Pokémon Companion extraction pipeline.
+
+They are not application datasets and should never be consumed directly by application code.
+
+They provide the factual and historical foundation for supported games.
+
+## 6.2 Ownership
+
+Official Sources remain owned by their respective rights holders.
+
+Pokémon Companion does not treat these resources as project-owned canonical datasets.
+
+## 6.3 Source Categories
+
+### Game Data
+
+May include:
+
+- Executables
+- Archives
+- Binary tables
+- Scripts
 - Battle data
 - Save structures
+- Internal resources
 
-These datasets define the mechanics and behaviour of each supported game.
+### Game Assets
 
----
-
-## Game Assets
-
-Official game assets describe the visual and audio presentation of Pokémon.
-
-Examples include:
+May include:
 
 - Sprites
 - Models
@@ -180,1920 +385,2971 @@ Examples include:
 - Icons
 - Cries
 - Backgrounds
-- Interface assets
+- Interface resources
 
-Assets should remain linked to their originating games.
+### Text Resources
 
----
+May include:
 
-## Text Resources
-
-Official localized text.
-
-Examples include:
-
-- Pokémon names
-- Move names
-- Ability names
-- Item names
-- Pokédex entries
+- Names
 - Dialogue
-- Location names
+- Pokédex entries
+- Location text
 - Trainer names
+- Item text
+- Move descriptions
 
-Text resources should preserve language-specific information whenever possible.
+### Gameplay Data
 
----
-
-## Gameplay Data
-
-Gameplay datasets define how Pokémon games function.
-
-Examples include:
+May include:
 
 - Learnsets
-- Evolution methods
-- Encounter tables
+- Evolution definitions
+- Encounters
 - Trainer parties
-- Item locations
+- Item placements
 - Machine compatibility
-- Battle facilities
+- Battle rules
 
-Gameplay data provides the behavioural foundation for later canonical relationships.
+### Event Data
 
----
-
-## Event Data
-
-Official event information distributed throughout the lifetime of Pokémon games.
-
-Examples include:
+May include:
 
 - Mystery Gifts
 - Event Pokémon
-- Distribution events
-- Promotional items
-- Time-limited events
+- Promotional distributions
+- Event items
+- Time-limited content
 
-Event datasets should preserve their original availability and historical context.
-
----
-
-# Dataset Ownership
-
-Official Sources are owned by their respective copyright holders.
-
-Pokémon Companion does not modify, redistribute, or redefine official information.
-
-Instead, Official Sources are used solely to extract factual Pokémon knowledge for use within the project's internal build pipeline.
-
----
-
-# Dataset Consumers
+## 6.4 Consumption Rules
 
 Official Sources are consumed only by:
 
-- Official Data Extraction
-- Provenance Tracking
-- Verification Processes
+- Extraction
+- Provenance tooling
+- Verification
+- Research tooling
 
-No application component should consume Official Sources directly.
+Application services must not depend directly on Official Sources.
 
-All application data should originate from later stages of the build pipeline.
+## 6.5 Validation
 
----
+Before extraction, the source should be checked for:
 
-# Validation
-
-Official Sources are validated before extraction.
-
-Validation includes:
-
-- Source identification
+- Identity
+- Game version
+- Platform
 - File integrity
-- Version detection
-- Platform detection
-- Language detection
-- Compatibility verification
-
-Extraction should begin only after the selected sources have been successfully identified and validated.
+- Compatibility
+- Language
+- Expected structure
 
 ---
 
-# Layer 2 — Raw Sources
+# 7. Layer 2: Raw Sources
 
-## Purpose
+## 7.1 Purpose
 
-Raw Sources represent the permanent archival layer of Pokémon Companion.
+Raw Sources preserve extracted information before normalization.
 
-These datasets are created directly from Official Sources through the Official Data Extraction pipeline.
+They should remain close to the original game representation.
 
-Their purpose is to preserve extracted Pokémon game data as faithfully as possible before any normalization, interpretation, or optimization occurs.
+Raw data is optimized for fidelity rather than application convenience.
 
-Raw Sources provide the foundation from which every canonical dataset can be regenerated.
+## 7.2 Responsibilities
 
-They should always remain reproducible from the same official inputs.
+Raw datasets preserve:
 
----
+- Original values
+- Original structures
+- Source identifiers
+- Game-specific details
+- Extraction metadata
+- Provenance
+- Unnormalized relationships where necessary
 
-# Dataset Characteristics
+## 7.3 Raw Dataset Families
 
-Raw Source datasets have the following characteristics:
+### Raw Game Dataset
 
-- Generated directly from Official Sources
-- Machine-readable
-- Read-only after extraction
-- Closely mirror official game structures
-- Contain no generated relationships
-- Contain no calculated values
-- Preserve provenance information
-- Fully reproducible
-
-Raw Sources prioritize completeness and accuracy over application performance.
-
----
-
-# Dataset Categories
-
-Raw Sources are organized by game engine and platform.
-
-Each supported game contributes one or more raw datasets.
-
-Typical dataset categories include:
-
----
-
-## Game Data
-
-Examples include:
+Describes:
 
 - Games
 - Generations
-- Version Groups
+- Version groups
 - Versions
 - Platforms
-- Regions
 
-These datasets describe the supported Pokémon titles and their organizational hierarchy.
+### Raw World Dataset
 
----
-
-## World Data
-
-Examples include:
+Describes:
 
 - Maps
+- Map headers
 - Locations
-- Location Areas
-- Routes
-- Cities
-- Buildings
-- Landmarks
+- Areas
+- Connections
+- Objects
+- Tiles
 
-World datasets preserve the original structure of each supported game.
+### Raw Pokémon Dataset
 
----
-
-## Pokémon Data
-
-Examples include:
+Describes:
 
 - Species
 - Forms
 - Pokémon
-- Evolutions
-- Learnsets
+- Base statistics
 - Types
 - Abilities
-- Base Statistics
-- Growth Rates
+- Growth data
+- Evolution data
+- Learnsets
 
-These datasets preserve official Pokémon mechanics before normalization.
+### Raw Battle Dataset
 
----
-
-## Battle Data
-
-Examples include:
+Describes:
 
 - Moves
-- Move Effects
-- Damage Classes
-- Move Targets
-- Battle Mechanics
-- Status Effects
+- Effects
+- Targets
+- Damage classes
+- Status mechanics
+- Battle-specific values
 
-Battle datasets describe official gameplay behaviour.
+### Raw Trainer Dataset
 
----
-
-## Trainer Data
-
-Examples include:
+Describes:
 
 - Trainers
-- Trainer Parties
-- Trainer Classes
-- AI Behaviour
-- Battle Facilities
+- Trainer classes
+- Parties
+- Levels
+- Held items
+- AI flags
+- Battle facilities
 
-Trainer datasets preserve opponent information exactly as defined within official games.
+### Raw Item Dataset
 
----
-
-## Item Data
-
-Examples include:
+Describes:
 
 - Items
+- Item categories
 - Machines
-- Berries
-- Held Items
-- Key Items
-- Battle Items
+- Held items
+- Key items
+- Item effects
 
-Item datasets preserve official item definitions.
+### Raw Asset Dataset
 
----
-
-## Asset Data
-
-Examples include:
+Describes:
 
 - Sprites
 - Models
 - Animations
 - Icons
 - Cries
-- Artwork Metadata
+- Asset metadata
 
-Assets remain associated with their originating games.
+### Raw Text Dataset
 
----
+Preserves:
 
-## Text Data
+- Original text
+- Language
+- String identifiers
+- Localization metadata
 
-Examples include:
+### Raw Event Dataset
 
-- Pokémon Names
-- Move Names
-- Ability Names
-- Item Names
-- Pokédex Entries
-- Trainer Names
-- Location Names
+Preserves:
 
-Text datasets preserve official localization before canonical processing.
+- Event definitions
+- Event conditions
+- Distribution information
+- Historical availability
 
----
+## 7.4 Raw Data Rules
 
-# Dataset Ownership
+Raw datasets:
 
-Raw Sources are generated and maintained by Pokémon Companion.
+- Are generated by extraction
+- Are read-only after generation
+- Must retain provenance
+- Must not contain application-specific calculations
+- Must not contain user state
+- Should be reproducible
 
-However, they remain archival representations of official data rather than independent sources of truth.
-
-Whenever extraction improves, Raw Sources should be regenerated rather than edited manually.
-
----
-
-# Dataset Consumers
-
-Raw Sources are consumed by:
-
-- Canonical Database Generation
-- Verification Tools
-- Build Pipeline
-- Validation Framework
-
-Application Services, Frontend Applications, and AI systems should never consume Raw Sources directly.
+Manual correction should normally occur in the extraction or normalization layer, not by silently editing raw output.
 
 ---
 
-# Validation
+# 8. Layer 3: Canonical Datasets
 
-Raw Sources are validated immediately after extraction.
+## 8.1 Purpose
 
-Validation includes:
+Canonical Datasets provide the stable internal representation of Pokémon knowledge.
 
-- File integrity
-- Schema validation
-- Metadata completeness
-- Source consistency
-- Duplicate detection
-- Extraction completeness
-- Provenance verification
+They normalize differences between source formats while preserving historical context through relationships and game contexts.
 
-Validation confirms that Raw Sources accurately represent the extracted official data before canonical processing begins.
+## 8.2 Canonical Dataset Rules
 
----
+Canonical datasets should:
 
-# Layer 3 — Canonical Datasets
-
-## Purpose
-
-Canonical Datasets define Pokémon Companion's permanent representation of official Pokémon knowledge.
-
-Unlike Raw Sources, which preserve the structure of individual games, Canonical Datasets organize information into stable entities that remain consistent across every supported Pokémon title.
-
-Each canonical concept exists exactly once within the Canonical Database.
-
-Historical differences between games are represented through contexts and relationship datasets rather than duplicate canonical records.
-
-Canonical Datasets form the foundation of Pokémon Companion's knowledge graph.
+- Have stable identifiers
+- Avoid unnecessary duplication
+- Represent one conceptual entity per record
+- Preserve provenance
+- Support historical interpretation
+- Remain independent of generated views
+- Remain independent of user state
 
 ---
 
-# Dataset Characteristics
+# 9. Game Context Datasets
 
-Canonical Datasets have the following characteristics:
+## 9.1 Generations
 
-- One dataset per canonical entity
-- Version-independent whenever possible
-- Stable identifiers
-- No duplicated concepts
-- Fully validated
-- Source-attributed
-- Context-aware
-- Independent of generated datasets
+Dataset:
 
-Canonical Datasets prioritize correctness, consistency, and maintainability.
+```text
+generations
+```
+
+Represents major mechanical eras.
+
+Primary fields:
+
+```text
+id
+number
+name
+release-period
+```
+
+## 9.2 Version Groups
+
+Dataset:
+
+```text
+version-groups
+```
+
+Groups releases sharing a common rules/data family.
+
+## 9.3 Versions
+
+Dataset:
+
+```text
+versions
+```
+
+Represents individual official releases.
+
+## 9.4 Game Contexts
+
+Dataset:
+
+```text
+game-contexts
+```
+
+Defines the context required to interpret data correctly.
+
+A Game Context may reference:
+
+- Version
+- Version Group
+- Generation
+- Rule Set
+- Enabled mechanics
+- Available entities
+- Map set
+- Progression model
+
+Game Contexts are critical for historical accuracy.
 
 ---
 
-# Core Canonical Datasets
+# 10. World Datasets
 
-Each canonical dataset represents one permanent Pokémon concept.
+## 10.1 Regions
 
----
+Dataset:
 
-## Game Family
+```text
+regions
+```
 
-Datasets include:
+Represents broad Pokémon world regions.
 
-- Generations
-- Version Groups
-- Versions
-- Game Contexts
+## 10.2 Locations
 
-Purpose
+Dataset:
 
-Defines the complete hierarchy of supported Pokémon games.
+```text
+locations
+```
 
-Consumers
+Represents named places such as:
 
-- Relationship Layer
-- Generated Database
-- Application Services
-
----
-
-## World
-
-Datasets include:
-
-- Regions
-- Locations
-- Location Areas
-- Maps
-- Routes
 - Cities
-- Landmarks
+- Towns
+- Routes
+- Caves
+- Forests
+- Towers
+- Buildings
+- Islands
 
-Purpose
+## 10.3 Location Areas
 
-Defines the explorable Pokémon world independently from any specific game implementation.
+Dataset:
 
-Consumers
+```text
+location-areas
+```
 
-- Relationship Layer
-- Generated Database
-- World Explorer
-- Adventure Tracker
+Represents logical sub-areas used for encounters, events, and navigation.
+
+## 10.4 Maps
+
+Dataset:
+
+```text
+maps
+```
+
+Represents context-specific playable map representations.
+
+Maps may reference:
+
+- Location
+- Game Context
+- Dimensions
+- Tile set
+- Collision metadata
+- Object layers
+- Connection metadata
 
 ---
 
-## Species
+# 11. Pokémon Datasets
 
-Dataset
+## 11.1 Species
 
-- species
+Dataset:
 
-Purpose
+```text
+species
+```
 
-Defines every official Pokémon species.
+One record per canonical species.
 
-Species describe permanent biological concepts independent of individual forms or game contexts.
+Examples:
 
-Consumers
+```text
+species:bulbasaur
+species:pikachu
+species:charizard
+```
 
-- Pokémon
-- Evolutions
-- Pokédex
-- Generated Database
+## 11.2 Forms
+
+Dataset:
+
+```text
+forms
+```
+
+Represents recognized variations of species.
+
+Examples:
+
+- Regional forms
+- Mega forms
+- Primal forms
+- Gigantamax forms
+- Battle forms
+- Cosmetic forms
+
+## 11.3 Pokémon
+
+Dataset:
+
+```text
+pokemon
+```
+
+Represents canonical Pokémon/form combinations used by the application.
+
+This is not the same as a trainer-owned Pokémon instance.
+
+## 11.4 Types
+
+Dataset:
+
+```text
+types
+```
+
+Represents canonical elemental types.
+
+## 11.5 Moves
+
+Dataset:
+
+```text
+moves
+```
+
+Represents canonical moves.
+
+## 11.6 Abilities
+
+Dataset:
+
+```text
+abilities
+```
+
+Represents canonical abilities.
+
+## 11.7 Natures
+
+Dataset:
+
+```text
+natures
+```
+
+Represents canonical natures and their mechanical characteristics.
+
+## 11.8 Egg Groups
+
+Dataset:
+
+```text
+egg-groups
+```
+
+Represents breeding compatibility categories.
+
+## 11.9 Evolution Methods
+
+Dataset:
+
+```text
+evolution-methods
+```
+
+Defines reusable evolution mechanisms.
+
+Examples:
+
+```text
+level-up
+use-item
+trade
+trade-with-held-item
+friendship
+location
+known-move
+time-of-day
+```
 
 ---
 
-## Forms
+# 12. Item Datasets
 
-Dataset
+## 12.1 Items
 
-- forms
+Dataset:
 
-Purpose
+```text
+items
+```
 
-Defines every official Pokémon form.
+Represents canonical items.
 
 Examples include:
 
-- Regional Forms
-- Mega Evolution Forms
-- Gigantamax Forms
-- Primal Forms
-- Alternate Forms
+- Poké Balls
+- Potions
+- Key Items
+- Held Items
+- Battle Items
+- Evolution Items
 
-Forms remain independent from battle-specific Pokémon instances.
+## 12.2 Machines
 
-Consumers
+Dataset:
+
+```text
+machines
+```
+
+Represents move-teaching items or systems.
+
+The dataset supports historical differences between:
+
+- HM
+- TM
+- TR
+- Other teaching systems
+
+Machine applicability is represented through relationships.
+
+---
+
+# 13. Trainer Datasets
+
+## 13.1 Trainers
+
+Dataset:
+
+```text
+trainers
+```
+
+Represents canonical trainer definitions.
+
+A trainer record may include:
+
+- Trainer identity
+- Trainer class
+- Display name
+- Game-specific identity
+- Context information
+
+## 13.2 Trainer Parties
+
+Trainer parties are represented through relationship or party datasets rather than embedding permanent Pokémon entities inside trainer records.
+
+Party information may include:
 
 - Pokémon
-- Relationship Layer
-- Generated Database
-
----
-
-## Pokémon
-
-Dataset
-
-- pokemon
-
-Purpose
-
-Defines every canonical Pokémon representation.
-
-Pokémon combine Species with Forms while remaining independent of trainer-owned Pokémon.
-
-Consumers
-
-- Learnsets
-- Evolutions
-- Encounters
-- Sprites
-- Models
-
----
-
-## Moves
-
-Dataset
-
-- moves
-
-Purpose
-
-Defines every official Pokémon move.
-
-Consumers
-
-- Learnsets
-- Machines
-- Battle Systems
-- AI
-
----
-
-## Abilities
-
-Dataset
-
-- abilities
-
-Purpose
-
-Defines every official Pokémon ability.
-
-Consumers
-
-- Pokémon
-- Battle Systems
-- Generated Database
-
----
-
-## Types
-
-Dataset
-
-- types
-
-Purpose
-
-Defines elemental Pokémon types and their permanent characteristics.
-
-Consumers
-
-- Pokémon
+- Level
 - Moves
-- Type Effectiveness
-- Team Analysis
+- Held items
+- Ability
+- Nature
+- IV/EV information where available
+- Battle context
 
 ---
 
-## Items
+# 14. Encounter Datasets
 
-Dataset
+## 14.1 Encounters
 
-- items
+Dataset:
 
-Purpose
+```text
+encounters
+```
 
-Defines every official Pokémon item.
+Defines encounter definitions.
 
-Consumers
+An encounter can contain:
 
-- Machines
-- Encounters
-- Trainers
-- Battle Systems
+- Pokémon reference
+- Location area
+- Game context
+- Encounter method
+- Level range
+- Probability
+- Time restrictions
+- Conditions
+- Special rules
 
----
+Examples of methods:
 
-## Evolution Methods
+```text
+walk
+surf
+fish
+old-rod
+good-rod
+super-rod
+rock-smash
+headbutt
+gift
+static
+special
+```
 
-Dataset
-
-- evolution-methods
-
-Purpose
-
-Defines every official evolution mechanism.
-
-Consumers
-
-- Evolution Relationships
-- Pokédex
-- AI Assistant
-
----
-
-## Machines
-
-Dataset
-
-- machines
-
-Purpose
-
-Defines technical machines, hidden machines, technical records, and future teaching systems.
-
-Consumers
-
-- Learnsets
-- Relationship Layer
+Encounter datasets must preserve version-specific differences.
 
 ---
 
-## Trainers
+# 15. Event Datasets
 
-Dataset
+## 15.1 Events
 
-- trainers
+Dataset:
 
-Purpose
+```text
+events
+```
 
-Defines canonical trainer identities.
+Represents important in-game or distribution events.
 
-Consumers
+Examples:
 
-- Trainer Parties
-- Encounters
-- Adventure Tracker
+- Receiving a key item
+- Receiving a gift Pokémon
+- Defeating a story trainer
+- Triggering a story event
+- Removing an obstacle
+- Unlocking an area
 
----
+Events may reference:
 
-## Encounters
-
-Dataset
-
-- encounters
-
-Purpose
-
-Defines encounter definitions independently from locations.
-
-Consumers
-
-- World Explorer
-- Adventure Tracker
-- Generated Database
+- Game Context
+- Location
+- NPC
+- Object
+- Requirement Set
+- Rewards
+- State changes
 
 ---
 
-## Pokédex Entries
+# 16. Requirement Datasets
 
-Dataset
+## 16.1 Requirements
 
-- pokedex-entries
+Dataset:
 
-Purpose
+```text
+requirements
+```
 
-Stores official Pokédex descriptions across supported games and languages.
+Represents conditions used by progression and world systems.
 
-Consumers
+Requirement types may include:
 
-- Pokédex
-- AI Assistant
+```text
+badge
+item
+key-item
+move
+field-move
+story-flag
+event
+trainer-defeat
+location-visit
+pokemon-state
+developer-setting
+glitch-enabled
+```
 
----
+Requirements should be composable through explicit operators such as:
 
-## Assets
+```text
+all
+any
+not
+```
 
-Datasets include:
-
-- Sprites
-- Models
-- Artwork Metadata
-- Icons
-- Animations
-
-Purpose
-
-Defines canonical visual representations of Pokémon and related entities.
-
-Consumers
-
-- Frontend
-- Generated Database
-
----
-
-# Dataset Ownership
-
-Canonical Datasets are owned and maintained by Pokémon Companion.
-
-They are generated from validated Raw Sources through the normalization process.
-
-Canonical Datasets become the permanent source of truth for every later stage of the build pipeline.
-
-No application should modify Canonical Datasets directly.
+Requirements must remain context-aware.
 
 ---
 
-# Dataset Consumers
+# 17. Objective Datasets
 
-Canonical Datasets are consumed by:
+## 17.1 Objectives
 
-- Relationship Datasets
-- Generated Datasets
-- Validation Framework
-- Application Services
-- Intelligence Layer
+Dataset:
 
-Every later layer depends upon the stability of the Canonical Database.
+```text
+objectives
+```
 
----
+Represents discoverable progression goals.
 
-# Validation
+Objectives are not necessarily linear.
 
-Canonical Datasets undergo comprehensive validation.
+They may describe:
 
-Validation includes:
+- Story goals
+- Optional goals
+- Collection goals
+- Exploration goals
+- Preparation goals
+- Challenge goals
 
-- Identifier validation
-- Duplicate detection
-- Required property validation
-- Metadata validation
-- Provenance verification
-- Context consistency
-- Historical consistency
+An objective may reference:
 
-Only validated canonical datasets may progress to the Relationship Layer.
-
----
-
-# Layer 4 — Relationship Datasets
-
-## Purpose
-
-Relationship Datasets define the connections between canonical entities throughout Pokémon Companion.
-
-Rather than embedding relationships directly within canonical datasets, every significant connection is represented as an independent dataset.
-
-This approach minimizes duplication, preserves historical accuracy, simplifies validation, and enables efficient navigation throughout the knowledge graph.
-
-Relationship Datasets transform isolated canonical entities into a fully interconnected Pokémon ecosystem.
+- Location
+- Event
+- Requirement Set
+- Reward
+- Completion condition
 
 ---
 
-# Dataset Characteristics
+# 18. Asset Datasets
 
-Relationship Datasets have the following characteristics:
+## 18.1 Assets
 
-- Connect two or more canonical entities
-- Context-aware
-- Version-aware
-- Historically accurate
-- Independently validated
-- Source-attributed
-- Deterministically generated
+Dataset:
 
-Relationships should contain only connection-specific information.
+```text
+assets
+```
 
-Canonical properties remain within their respective canonical datasets.
+Defines metadata and references for visual or audio resources.
 
----
+Asset records may include:
 
-# Core Relationship Datasets
+```text
+id
+asset-type
+subject-id
+game-context-id
+variant
+path
+format
+dimensions
+checksum
+license/provenance metadata
+```
 
-Each relationship dataset describes one specific connection within the Pokémon universe.
-
----
-
-## Species Relationships
-
-Datasets include:
-
-- species-has-form
-- species-has-pokemon
-
-Purpose
-
-Defines how Species relate to their Forms and canonical Pokémon representations.
-
-Consumers
-
-- Pokédex
-- Generated Database
-- Intelligence Layer
+Asset files themselves should not be treated as canonical entity definitions.
 
 ---
 
-## Pokémon Relationships
+# 19. Pokédex Dataset
 
-Datasets include:
+## 19.1 Pokédex Entries
 
-- pokemon-has-type
-- pokemon-has-ability
-- pokemon-learns-move
-- pokemon-evolves-into-pokemon
-- pokemon-has-sprite
-- pokemon-has-model
+Dataset:
 
-Purpose
+```text
+pokedex-entries
+```
 
-Defines the characteristics and progression of every canonical Pokémon.
+Stores context-specific and language-specific Pokédex descriptions.
 
-Consumers
+Each entry may reference:
 
-- Battle Systems
-- Pokédex
-- Team Analysis
-- AI Assistant
+- Pokémon
+- Version
+- Language
+- Text
+- Source
 
----
-
-## Move Relationships
-
-Datasets include:
-
-- machine-teaches-move
-- move-has-type
-- move-has-damage-class
-- move-has-target
-
-Purpose
-
-Defines how moves interact with machines and battle mechanics.
-
-Consumers
-
-- Move Pages
-- Battle Tools
-- Generated Database
+A Pokémon can therefore have different Pokédex entries without duplicating the Pokémon entity.
 
 ---
 
-## World Relationships
+# 20. Layer 4: Relationship Datasets
 
-Datasets include:
+## 20.1 Purpose
 
-- game-contains-region
-- region-contains-location
-- location-contains-area
-- area-contains-encounter
+Relationship Datasets connect canonical entities.
 
-Purpose
+They contain facts about how entities interact rather than redefining the entities themselves.
 
-Defines the hierarchical structure of the Pokémon world.
+## 20.2 Relationship Rules
 
-Consumers
+Every relationship should define:
 
-- World Explorer
-- Adventure Tracker
-- Map Systems
+```text
+id
+source
+target
+relationship-type
+context
+conditions
+provenance
+```
 
----
+Additional fields may be added when they describe the relationship itself.
 
-## Encounter Relationships
+Examples:
 
-Datasets include:
-
-- encounter-contains-pokemon
-- encounter-requires-condition
-- encounter-occurs-in-context
-
-Purpose
-
-Defines how Pokémon are encountered across every supported game.
-
-Consumers
-
-- Encounter Tables
-- Route Guides
-- AI Assistant
+```text
+level
+method
+slot
+probability
+quantity
+priority
+availability
+```
 
 ---
 
-## Trainer Relationships
+# 21. Pokémon Relationships
 
-Datasets include:
+## 21.1 Species to Form
 
-- trainer-uses-pokemon
-- trainer-appears-in-game
-- trainer-located-at-location
+```text
+species-has-form
+```
 
-Purpose
+Connects a species to its recognized forms.
 
-Defines trainer battles and trainer progression.
+## 21.2 Pokémon to Type
 
-Consumers
+```text
+pokemon-has-type
+```
 
-- Trainer Database
-- Adventure Tracker
-- Battle Reference
+May contain:
 
----
+```text
+slot
+game-context
+```
 
-## Item Relationships
+This permits historical type changes.
 
-Datasets include:
+## 21.3 Pokémon to Ability
 
-- item-used-for-evolution
-- item-found-at-location
-- item-held-by-pokemon
-- item-available-in-game
+```text
+pokemon-has-ability
+```
 
-Purpose
+May contain:
 
-Defines how items interact with Pokémon and the game world.
+```text
+slot
+hidden
+game-context
+```
 
-Consumers
+## 21.4 Pokémon to Move
 
-- Item Database
-- World Explorer
-- AI Assistant
+```text
+pokemon-learns-move
+```
 
----
+May contain:
 
-## Context Relationships
+```text
+method
+level
+machine
+move-tutor
+egg
+event
+requirements
+game-context
+```
 
-Datasets include:
+## 21.5 Evolution
 
-- context-enables-pokemon
-- context-enables-move
-- context-enables-item
-- context-enables-mechanic
+```text
+pokemon-evolves-into-pokemon
+```
 
-Purpose
+May contain:
 
-Determines which entities and relationships are active within a specific Game Context.
-
-Consumers
-
-- Context Engine
-- Generated Database
-- Application Services
-
----
-
-# Dataset Ownership
-
-Relationship Datasets are generated from Canonical Datasets and Raw Sources.
-
-They are maintained automatically and should never be edited manually.
-
-Changes to canonical entities or official game data should regenerate the affected relationships.
-
----
-
-# Dataset Consumers
-
-Relationship Datasets are consumed by:
-
-- Generated Datasets
-- Application Services
-- Search Engine
-- Navigation Systems
-- Intelligence Layer
-- Validation Framework
-
-Every feature that traverses the knowledge graph depends upon these datasets.
+```text
+method
+item
+level
+time
+location
+known-move
+friendship
+trade-target
+conditions
+```
 
 ---
 
-# Validation
+# 22. Move Relationships
 
-Relationship Datasets undergo extensive validation.
+Supported relationships include:
 
-Validation includes:
+```text
+move-has-type
+move-has-damage-class
+move-has-target
+machine-teaches-move
+```
 
-- Entity existence
-- Identifier validation
-- Duplicate relationships
-- Context validation
-- Historical consistency
-- Circular relationship detection (where applicable)
-- Provenance verification
-
-Relationships containing invalid references should prevent the build from succeeding.
+These relationships allow mechanics to change historically without duplicating move records.
 
 ---
 
-# Layer 5 — Generated Datasets
+# 23. World Relationships
 
-## Purpose
+Core world relationships include:
 
-Generated Datasets provide optimized representations of Pokémon Companion's knowledge graph.
+```text
+game-contains-region
+region-contains-location
+location-contains-area
+location-contains-map
+map-connects-to-map
+area-contains-encounter
+map-contains-object
+```
 
-Unlike Canonical and Relationship Datasets, Generated Datasets are created specifically for application performance, efficient querying, fast navigation, and intelligent analysis.
-
-Every generated dataset is derived entirely from validated Canonical Datasets and Relationship Datasets.
-
-Generated Datasets should never become the source of truth.
-
-They exist solely to improve performance and developer experience.
-
-Whenever the canonical knowledge graph changes, generated datasets should be regenerated automatically.
+World relationships should preserve game context where geometry or accessibility differs.
 
 ---
 
-# Dataset Characteristics
+# 24. Encounter Relationships
 
-Generated Datasets have the following characteristics:
+Core encounter relationships include:
 
-- Automatically generated
+```text
+encounter-contains-pokemon
+encounter-occurs-in-context
+encounter-requires-condition
+```
+
+Encounter relationships may include:
+
+- Probability
+- Level range
+- Method
+- Time
+- Weather
+- Special conditions
+
+---
+
+# 25. Trainer Relationships
+
+Core trainer relationships include:
+
+```text
+trainer-uses-pokemon
+trainer-appears-in-game
+trainer-located-at-location
+trainer-party-member
+```
+
+Trainer relationships must preserve game context because trainer parties often change between releases.
+
+---
+
+# 26. Item Relationships
+
+Core item relationships include:
+
+```text
+item-used-for-evolution
+item-found-at-location
+item-held-by-pokemon
+item-available-in-game
+item-teaches-move
+```
+
+---
+
+# 27. Context Relationships
+
+Context relationships define historical availability.
+
+Examples:
+
+```text
+context-enables-pokemon
+context-enables-move
+context-enables-item
+context-enables-ability
+context-enables-form
+context-enables-mechanic
+```
+
+A canonical entity may exist globally while being unavailable in a specific Game Context.
+
+---
+
+# 28. Layer 5: Generated Datasets
+
+## 28.1 Purpose
+
+Generated Datasets provide optimized runtime views.
+
+They are produced from validated canonical and relationship datasets.
+
+They may duplicate data intentionally for performance.
+
+## 28.2 Generation Rules
+
+Generated datasets must be:
+
 - Deterministic
 - Reproducible
-- Optimized for performance
 - Read-only
-- Fully validated
-- Derived from canonical data
-- Never manually maintained
-
-Generated datasets should minimize runtime computation throughout the application.
-
----
-
-# Dataset Categories
-
-Generated Datasets are organized according to their purpose rather than the entities they represent.
-
----
-
-## Lookup Datasets
-
-Lookup datasets provide fast access to canonical entities through optimized indexes.
-
-Examples include:
-
-- Pokémon Lookup
-- Species Lookup
-- Move Lookup
-- Ability Lookup
-- Item Lookup
-- Type Lookup
-- Trainer Lookup
-- Location Lookup
-
-Purpose
-
-Enable constant-time or near constant-time retrieval of canonical entities.
-
-Consumers
-
-- Backend Services
-- Frontend
-- AI
-- Search Engine
-
----
-
-## Search Datasets
-
-Search datasets support fast discovery of Pokémon knowledge.
-
-Examples include:
-
-- Global Search Index
-- Autocomplete Index
-- Alias Index
-- Name Index
-- Keyword Index
-- Full Text Index
-
-Purpose
-
-Provide efficient search across every supported entity.
-
-Consumers
-
-- Search Service
-- AI Assistant
-- Frontend
-
----
-
-## Navigation Datasets
-
-Navigation datasets simplify movement throughout the knowledge graph.
-
-Examples include:
-
-- Pokémon by Type
-- Pokémon by Ability
-- Pokémon by Region
-- Pokémon by Generation
-- Pokémon by Game
-- Moves by Type
-- Items by Category
-- Trainers by Region
-
-Purpose
-
-Reduce expensive relationship traversal during normal application usage.
-
-Consumers
-
-- Frontend
-- Navigation
-- Search
-- AI
-
----
-
-## Relationship Views
-
-Relationship Views provide optimized access to commonly used relationship data.
-
-Examples include:
-
-- Evolution Graph
-- Learnsets
-- Encounter Tables
-- Species Forms
-- Machine Compatibility
-- Type Effectiveness
-- Regional Pokédexes
-
-Purpose
-
-Expose complex relationship data through application-friendly structures.
-
-Consumers
-
-- Pokédex
-- Adventure Tracker
-- Team Builder
-- Battle Tools
-
----
-
-## Analytical Datasets
-
-Analytical datasets contain pre-computed statistics and derived information.
-
-Examples include:
-
-- Type Coverage
-- Collection Statistics
-- Encounter Statistics
-- Battle Statistics
-- Completion Statistics
-- Evolution Statistics
-
-Purpose
-
-Reduce runtime calculations for advanced features.
-
-Consumers
-
-- Team Analysis
-- Collection Tracker
-- AI Assistant
-- Dashboard
-
----
-
-## Build Metadata
-
-Metadata datasets describe the generated database itself.
-
-Examples include:
-
-- Build Manifest
-- Dataset Manifest
-- Build Version
-- Generator Versions
-- Validation Summary
-- Generation Timestamp
-- Supported Games
-
-Purpose
-
-Support reproducibility, debugging, auditing, and deployment.
-
-Consumers
-
-- Build System
-- Validation
-- Developers
-- Deployment Pipeline
-
----
-
-# Dataset Ownership
-
-Generated Datasets are produced automatically by the build pipeline.
-
-They should never be edited manually.
-
-Whenever canonical data changes, the affected generated datasets should be regenerated.
-
-Generated datasets are disposable implementation artifacts rather than permanent knowledge stores.
-
----
-
-# Dataset Consumers
-
-Generated Datasets are consumed by:
-
-- Application Services
-- User Experience Platform
-- Intelligence Layer
-- Community Platform
-- Search Engine
-- External APIs
-- Future SDKs
-
-Applications should consume Generated Datasets whenever possible instead of querying the canonical knowledge graph directly.
-
----
-
-# Validation
-
-Generated Datasets are validated before publication.
-
-Validation includes:
-
-- Schema validation
-- Reference validation
-- Build consistency
-- Metadata validation
-- Duplicate detection
-- Performance verification
-- Completeness validation
-
-Only validated generated datasets should be distributed to application services.
-
----
-
-# Layer 6 — User Datasets
-
-## Purpose
-
-User Datasets store trainer-specific information created through interaction with Pokémon Companion.
-
-Unlike Official Sources, Raw Sources, Canonical Datasets, Relationship Datasets, and Generated Datasets, User Datasets are unique to each individual trainer.
-
-These datasets record personal progress, preferences, collections, and application settings while maintaining complete separation from the canonical Pokémon knowledge graph.
-
-User Datasets should reference canonical entities through permanent identifiers without modifying official Pokémon data.
-
----
-
-# Dataset Characteristics
-
-User Datasets have the following characteristics:
-
-- User-owned
-- Persistent
-- Cloud synchronizable
-- Independently versioned
-- Privacy-aware
-- Canonical reference based
-- Never generated from official data
-- Never modify canonical datasets
-
-User Datasets prioritize personalization, reliability, and privacy.
-
----
-
-# Dataset Categories
-
-User Datasets are organized according to trainer activities.
-
----
-
-## Account Datasets
-
-Examples include:
-
-- User Profile
-- Authentication
-- Preferences
-- Settings
-- Privacy Configuration
-- Notification Preferences
-
-Purpose
-
-Store trainer identity and application preferences.
-
-Consumers
-
-- Application Services
-- User Experience Platform
-
----
-
-## Team Datasets
-
-Examples include:
-
-- Saved Teams
-- Team Members
-- Nicknames
-- Team Notes
-- Battle Roles
-- Team Tags
-
-Purpose
-
-Store trainer-created Pokémon teams independently from canonical Pokémon data.
-
-Consumers
-
-- Team Builder
-- Battle Tools
-- AI Assistant
-
----
-
-## Collection Datasets
-
-Examples include:
-
-- National Pokédex Progress
-- Regional Pokédex Progress
-- Living Dex
-- Shiny Collection
-- Form Collection
-- Ribbon Collection
-- Mark Collection
-- Item Collection
-
-Purpose
-
-Track each trainer's collection progress.
-
-Consumers
-
-- Collection Tracker
-- Dashboard
-- Achievement System
-
----
-
-## Adventure Datasets
-
-Examples include:
-
-- Current Adventure
-- Story Progress
-- Gym Badges
-- Elite Four Progress
-- Champion Status
-- Completed Objectives
-- Personal Notes
-- Challenge Runs
-
-Purpose
-
-Track progress throughout supported Pokémon games.
-
-Consumers
-
-- Adventure Tracker
-- Dashboard
-- AI Assistant
-
----
-
-## Achievement Datasets
-
-Examples include:
-
-- Achievement Progress
-- Completed Achievements
-- Milestones
-- Rewards
-- Statistics
-
-Purpose
-
-Track long-term trainer accomplishments.
-
-Consumers
-
-- Dashboard
-- Community Platform
-- Collection Tracker
-
----
-
-## AI Datasets
-
-Examples include:
-
-- Conversation History
-- Saved Prompts
-- AI Preferences
-- Personalized Recommendations
-- Interaction History
-
-Purpose
-
-Provide continuity and personalization for intelligent features.
-
-Consumers
-
-- Intelligence Layer
-- AI Assistant
-
----
-
-## Community Datasets
-
-Examples include:
-
-- Friends
-- Friend Requests
-- Shared Teams
-- Shared Collections
-- Community Activity
-- Event Participation
-
-Purpose
-
-Support optional community interactions between trainers.
-
-Consumers
-
-- Community Platform
-
----
-
-# Dataset Ownership
-
-User Datasets belong exclusively to the trainer.
-
-Pokémon Companion manages the storage and synchronization of these datasets but does not treat them as canonical Pokémon knowledge.
-
-Users should retain ownership and control over their personal information.
-
----
-
-# Dataset Consumers
-
-User Datasets are consumed by:
-
-- Application Services
-- User Experience Platform
-- Trainer Experience
-- Intelligence Layer
-- Community Platform
-
-Canonical and Relationship Datasets should never depend upon User Datasets.
-
----
-
-# Validation
-
-User Datasets undergo validation to ensure data integrity.
-
-Validation includes:
-
-- Authentication validation
-- Canonical reference validation
-- Data consistency
-- Permission validation
-- Synchronization validation
-- Version compatibility
-
-Validation should protect user data while maintaining compatibility with the canonical knowledge graph.
-
----
-
-# Dataset Metadata
-
-## Purpose
-
-Every dataset within Pokémon Companion should include standardized metadata describing its identity, origin, ownership, lifecycle, and validation status.
-
-Consistent metadata improves traceability, debugging, validation, automation, and long-term maintenance.
-
-Metadata should describe the dataset itself rather than the data it contains.
-
----
-
-## Standard Metadata
-
-Every dataset should define the following metadata where applicable.
-
-### Dataset Identifier
-
-A permanent identifier that uniquely identifies the dataset within Pokémon Companion.
-
-Examples:
-
-- species
-- pokemon
-- pokemon-has-ability
-- pokemon-lookup
-- trainer-collections
-
-Dataset identifiers should remain stable over time.
-
----
-
-### Display Name
-
-A human-readable name used throughout documentation and developer tooling.
-
-Examples:
-
-- Species
-- Pokémon
-- Pokémon Has Ability
-- Pokémon Lookup
-- Trainer Collections
-
-Display names should never be used as permanent identifiers.
-
----
-
-### Dataset Layer
-
-Identifies which architectural layer owns the dataset.
-
-Possible values include:
-
-- Official Sources
-- Raw Sources
-- Canonical Datasets
-- Relationship Datasets
-- Generated Datasets
-- User Datasets
-
-Each dataset belongs to exactly one layer.
-
----
-
-### Dataset Type
-
-Describes the dataset's architectural purpose.
-
-Examples include:
-
-- Canonical
-- Relationship
-- Generated
-- User
-- Metadata
-- Configuration
-
-Dataset type helps determine how the dataset is generated, validated, and consumed.
-
----
-
-### Source
-
-Identifies where the dataset originates.
-
-Examples include:
-
-- Official Game Data
-- Raw Sources
-- Canonical Database
-- Relationship Layer
-- Build Pipeline
-- User Input
-
-Every dataset should have a clearly defined origin.
-
----
-
-### Consumers
-
-Lists the systems that depend upon the dataset.
-
-Examples include:
-
-- Validation Framework
-- Application Services
-- User Experience Platform
-- Intelligence Layer
-- Community Platform
-
-Understanding dataset consumers simplifies dependency management.
-
----
-
-### Generation Method
-
-Describes how the dataset is created.
-
-Examples include:
-
-- Extracted
-- Normalized
-- Generated
-- User Managed
-
-This field documents the dataset lifecycle.
-
----
-
-### Validation Status
-
-Records whether the dataset has successfully passed the validation pipeline.
-
-Possible values include:
-
-- Pending
+- Context-aware
 - Validated
-- Deprecated
-- Archived
+- Disposable
+- Build-versioned
 
-Only validated datasets should progress through the build pipeline.
-
----
-
-### Version
-
-Records the dataset version used for compatibility and maintenance.
-
-Version information supports reproducible builds and future schema evolution.
+No generated dataset should require manual editing.
 
 ---
 
-### Status
+# 29. Lookup Datasets
 
-Indicates the current lifecycle state of the dataset.
-
-Possible values include:
-
-- Planned
-- Active
-- Deprecated
-- Archived
-
-Status provides visibility into long-term maintenance and future development.
-
----
-
-# Dataset Ownership
-
-Dataset ownership follows the ownership model defined in Data Architecture.
-
-This document identifies the owner of each dataset.
-
----
-
-# Future Compatibility
-
-As Pokémon Companion expands, new datasets should integrate into the existing ownership model rather than introducing new ownership rules.
-
-Maintaining consistent ownership simplifies validation, documentation, automation, and long-term maintenance while preserving the integrity of the project's knowledge graph.
-
----
-
-# Dataset Validation
-
-Datasets follow the validation framework defined in Validation Principles.
-
-This document records
-
-• which datasets are validated
-
-• which layer validates them
-
-• their validation status
-
----
-
-# Future Expansion
-
-As Pokémon Companion grows, new validation rules should extend the existing framework rather than replacing it.
-
-Future validation may include:
-
-- Performance validation
-- AI dataset validation
-- Localization validation
-- Asset validation
-- Community dataset validation
-- Security validation
-
-Expanding the validation framework ensures that the project's data quality remains consistent as new datasets and features are introduced.
-
----
-
-# Dataset Naming Standards
-
-Dataset names follow the Naming Standards defined in Database Schema.
-
-Only dataset-specific conventions are documented here.
-
----
-
-# Internal Identifiers
-
-Every dataset should also define a stable internal identifier.
+Lookup datasets provide direct retrieval by stable identifier.
 
 Examples:
+
+```text
+pokemon-lookup
+species-lookup
+move-lookup
+ability-lookup
+item-lookup
+trainer-lookup
+location-lookup
+```
+
+Typical lookup structure:
+
+```json
+{
+    "pokemon:pikachu-default": {
+        "name": "Pikachu",
+        "speciesId": "species:pikachu"
+    }
+}
+```
+
+Lookup datasets should optimize common application reads.
+
+---
+
+# 30. Search Datasets
+
+Search datasets support user discovery.
+
+Examples:
+
+```text
+search-index
+autocomplete-index
+alias-index
+name-index
+keyword-index
+```
+
+Search records may contain:
+
+```text
+canonicalId
+displayName
+aliases
+searchTokens
+entityType
+contextAvailability
+```
+
+Search indexes are rebuildable.
+
+---
+
+# 31. Navigation Datasets
+
+Navigation datasets simplify common queries.
+
+Examples:
+
+```text
+pokemon-by-type
+pokemon-by-ability
+pokemon-by-region
+pokemon-by-generation
+pokemon-by-game
+moves-by-type
+items-by-category
+trainers-by-region
+locations-by-region
+```
+
+These views should reference canonical identifiers.
+
+---
+
+# 32. Relationship Views
+
+Frequently traversed graphs should receive optimized views.
+
+Examples:
+
+```text
+evolution-graph
+learnset-index
+encounter-index
+machine-compatibility-index
+type-effectiveness-index
+map-connection-index
+progression-index
+regional-pokedex-index
+```
+
+The view may flatten several relationships when doing so improves runtime access.
+
+The flattened result remains derived data.
+
+---
+
+# 33. Analytical Datasets
+
+Analytical datasets contain calculated information.
+
+Examples:
+
+```text
+type-coverage
+encounter-statistics
+collection-statistics
+battle-statistics
+completion-statistics
+evolution-statistics
+```
+
+Calculated values must record the build or source versions used to produce them.
+
+Analytics must not silently become canonical facts.
+
+---
+
+# 34. Progression Datasets
+
+Progression indexes support adventure simulation.
+
+Examples:
+
+```text
+progression-index
+reachable-location-index
+objective-index
+requirement-index
+obstacle-index
+event-index
+```
+
+These datasets may pre-compute:
+
+- Available objectives
+- Reachable locations
+- Unlocked connections
+- Blocked connections
+- Required items
+- Required badges
+- Required events
+
+Progression views must distinguish:
+
+```text
+normal
+developer
+glitch-enabled
+```
+
+when the project supports multiple rule modes.
+
+---
+
+# 35. Map Runtime Datasets
+
+Map-oriented generated datasets may include:
+
+```text
+map-index
+map-object-index
+collision-index
+warp-index
+map-connection-index
+obstacle-index
+tile-index
+```
+
+These datasets should allow the frontend to load only the information required for a particular map or region.
+
+---
+
+# 36. Build Metadata Datasets
+
+## 36.1 Build Manifest
+
+Dataset:
+
+```text
+build-manifest
+```
+
+Records:
+
+- Build ID
+- Build timestamp
+- Schema version
+- Dataset versions
+- Generator versions
+- Validation versions
+- Supported contexts
+- Source revisions
+
+## 36.2 Dataset Manifest
+
+Dataset:
+
+```text
+dataset-manifest
+```
+
+Records:
+
+- Dataset identifier
+- Dataset version
+- Layer
+- Generator
+- Input datasets
+- Record count
+- Checksum
+- Status
+
+## 36.3 Validation Summary
+
+Dataset:
+
+```text
+validation-summary
+```
+
+Records:
+
+- Validation run
+- Dataset
+- Rules executed
+- Errors
+- Warnings
+- Result
+
+---
+
+# 37. Layer 6: User Datasets
+
+## 37.1 Purpose
+
+User Datasets store mutable trainer-specific information.
+
+They are separate from canonical knowledge.
+
+The canonical database describes Pokémon.
+
+The User Database describes what a particular trainer has done with that knowledge.
+
+---
+
+# 38. User Account Datasets
+
+Core datasets include:
+
+```text
+users
+user-settings
+privacy-settings
+notification-settings
+```
+
+Sensitive account information should remain isolated from gameplay state wherever practical.
+
+---
+
+# 39. Adventure Datasets
+
+Core datasets include:
+
+```text
+adventures
+trackers
+tracker-state
+tracker-map-state
+tracker-objectives
+```
+
+An Adventure or Tracker references a Game Context.
+
+Example:
+
+```text
+tracker:firered-main
+    ↓
+context:firered
+```
+
+---
+
+# 40. Tracker State
+
+Tracker state may contain:
+
+```text
+current-location
+badges
+key-items
+field-moves
+story-flags
+completed-events
+defeated-trainers
+completed-objectives
+```
+
+This state belongs exclusively to the tracker.
+
+---
+
+# 41. Tracker Map State
+
+Map state may contain:
+
+```text
+visited-locations
+visited-maps
+collected-items
+defeated-trainers
+cleared-obstacles
+activated-events
+discovered-encounters
+```
+
+Canonical map objects remain immutable.
+
+Only their user-specific state is stored in the User Database.
+
+---
+
+# 42. Pokémon Instance Dataset
+
+Dataset:
+
+```text
+pokemon-instances
+```
+
+Represents a trainer-owned Pokémon.
+
+A Pokémon instance references a canonical Pokémon.
+
+Example:
+
+```text
+pokemon-instance:001
+    ↓
+pokemon:pikachu-default
+```
+
+The instance may store:
+
+```text
+nickname
+level
+nature
+ability
+IVs
+EVs
+moves
+held-item
+Poké Ball
+shiny
+ribbons
+marks
+original-trainer
+notes
+```
+
+Canonical Pokémon records must never store these trainer-specific properties.
+
+---
+
+# 43. Team Datasets
+
+Core datasets:
+
+```text
+teams
+team-members
+```
+
+A Team references Pokémon Instances rather than canonical Pokémon when representing an actual trainer team.
+
+A separate team-planning feature may reference canonical Pokémon.
+
+This distinction prevents planned teams from being confused with owned Pokémon.
+
+---
+
+# 44. Collection Datasets
+
+Collection datasets track trainer progress.
+
+Examples:
+
+```text
+collection-state
+item-collection
+form-collection
+shiny-collection
+ribbon-collection
+mark-collection
+```
+
+A collection record should reference canonical identifiers.
+
+Example:
+
+```text
+collection-state
+    ↓
+pokemon:pikachu-default
+```
+
+---
+
+# 45. Achievement Datasets
+
+Core datasets:
+
+```text
+achievement-state
+milestones
+rewards
+```
+
+Achievement definitions may be canonical or application configuration.
+
+Achievement progress is always user-owned.
+
+---
+
+# 46. Challenge Run Datasets
+
+Challenge runs may include:
+
+```text
+challenge-runs
+challenge-rules
+challenge-state
+challenge-events
+```
+
+Examples:
+
+- Nuzlocke
+- Monotype
+- Solo runs
+- Level caps
+- Randomizer-compatible tracking
+
+Challenge rules should be stored separately from normal tracker state.
+
+---
+
+# 47. Notes Dataset
+
+Dataset:
+
+```text
+notes
+```
+
+Stores trainer-created notes.
+
+Notes may reference:
+
+- Tracker
+- Location
+- Pokémon Instance
+- Trainer
+- Event
+- Objective
+
+Notes are user content and must never be written into canonical datasets.
+
+---
+
+# 48. AI User Datasets
+
+Possible datasets include:
+
+```text
+ai-preferences
+ai-history
+saved-prompts
+recommendation-state
+```
+
+AI datasets may contain user-generated or model-generated information.
+
+AI-generated recommendations should remain distinguishable from verified canonical knowledge.
+
+The AI layer must not promote generated suggestions into canonical datasets without explicit verification.
+
+---
+
+# 49. Community Datasets
+
+Possible datasets include:
+
+```text
+friends
+friend-requests
+shared-teams
+shared-collections
+community-activity
+event-participation
+```
+
+Community data is optional and should remain separate from private tracker state.
+
+Sharing a team should not automatically expose the user's complete adventure data.
+
+---
+
+# 50. Dataset Ownership Matrix
+
+| Dataset Layer | Owner | Mutable by Application |
+|---|---|---:|
+| Official Sources | Rights holders | No |
+| Raw Sources | Pokémon Companion pipeline | No |
+| Canonical Datasets | Pokémon Companion | No at runtime |
+| Relationship Datasets | Build pipeline | No at runtime |
+| Generated Datasets | Build pipeline | No |
+| User Datasets | User | Yes |
+
+Runtime services should never mutate canonical knowledge.
+
+---
+
+# 51. Dataset Dependency Rules
+
+Dependencies should flow in one direction.
+
+Allowed:
+
+```text
+Official → Raw
+Raw → Canonical
+Canonical → Relationships
+Canonical + Relationships → Generated
+Canonical + Context → User references
+User → Application
+```
+
+Not allowed:
+
+```text
+User → Canonical
+Generated → Canonical
+Generated → Raw
+Canonical → User state
+Application runtime → Raw
+Application runtime → Official
+```
+
+Generated datasets may depend on multiple upstream datasets.
+
+User datasets may reference canonical identifiers but must not become upstream inputs to canonical generation.
+
+---
+
+# 52. Dataset Consumption Rules
+
+Application services should prefer generated datasets for common read operations.
+
+Use canonical or relationship datasets directly when:
+
+- A query is complex
+- A generated view does not exist
+- An administrative operation requires source-level detail
+- A validation operation requires canonical data
+
+Frontend code should generally consume application-facing APIs or runtime datasets rather than raw source data.
+
+---
+
+# 53. Dataset Boundaries
+
+Each dataset has an explicit boundary.
+
+For example:
+
+```text
+species
+```
+
+owns:
+
+```text
+species identity
+```
+
+It does not own:
+
+```text
+encounters
+learnsets
+trainer ownership
+user progress
+```
+
+Likewise:
+
+```text
+pokemon-learns-move
+```
+
+owns:
+
+```text
+learning relationship
+```
+
+It does not own:
+
+```text
+move identity
+pokemon identity
+user move selection
+```
+
+Clear boundaries prevent uncontrolled dataset growth.
+
+---
+
+# 54. Dataset Naming Standards
+
+Dataset identifiers should use lowercase kebab-case.
+
+Preferred:
+
+```text
+pokemon
+pokemon-has-ability
+evolution-graph
+trainer-collections
+```
+
+Avoid:
+
+```text
+PokemonData
+Pokemon_Data
+pokemonData
+POKEMON
+```
+
+Dataset names should describe their responsibility rather than their implementation.
+
+Avoid names such as:
+
+```text
+misc
+data
+stuff
+common
+everything
+```
+
+---
+
+# 55. Singular vs Plural
+
+Entity datasets normally use plural names:
 
 ```text
 species
 pokemon
 moves
-pokemon-has-ability
-pokemon-lookup
-trainer-collections
+abilities
+items
+locations
+trainers
 ```
 
-Internal identifiers should:
+Relationship datasets describe the relationship:
 
-- remain stable
-- be language-independent
-- never depend on display names
-- never change without a documented migration strategy
+```text
+pokemon-has-type
+pokemon-learns-move
+pokemon-evolves-into-pokemon
+```
 
----
+Generated views should describe their access pattern:
 
-# Reserved Terms
-
-Certain terms have specific architectural meanings and should be used consistently throughout the project.
-
-Examples include:
-
-- Canonical
-- Relationship
-- Generated
-- Context
-- Validation
-- Metadata
-- Lookup
-- Index
-- Manifest
-
-These terms should not be reused for unrelated purposes.
+```text
+pokemon-lookup
+pokemon-by-type
+evolution-graph
+search-index
+```
 
 ---
 
-# Future Compatibility
+# 56. Identifier Rules
 
-Future datasets should follow the established naming conventions without introducing alternative styles.
+Dataset identifiers and record identifiers are different concepts.
 
-Maintaining a single naming system improves automation, documentation, validation, and developer experience while ensuring Pokémon Companion remains consistent as the project continues to expand.
+Dataset:
 
----
+```text
+pokemon
+```
 
-# Dataset Versioning
+Record:
 
-Dataset versioning follows the Versioning Strategy defined in Database Schema.
+```text
+pokemon:pikachu-default
+```
 
-This document records only dataset-specific version metadata.
+Identifiers should:
 
----
-
-# Compatibility
-
-Dataset changes should be classified according to their impact.
-
-### Compatible Changes
-
-Examples include:
-
-- Adding new records
-- Adding optional fields
-- Supporting new Pokémon games
-- Extending metadata
-- Improving validation
-
-These changes should not require dataset consumers to be rewritten.
+- Remain stable
+- Be globally unique where required
+- Not depend on display names
+- Not be reused
+- Remain language-independent
+- Support references across generated datasets
 
 ---
 
-### Breaking Changes
+# 57. Metadata Standards
 
-Examples include:
+Every dataset should expose metadata describing itself.
+
+Recommended metadata:
+
+```text
+datasetId
+displayName
+layer
+datasetType
+version
+status
+source
+generator
+schemaVersion
+recordCount
+checksum
+createdAt
+updatedAt
+```
+
+Generated datasets should additionally expose:
+
+```text
+inputDatasets
+buildVersion
+generatorVersion
+validationVersion
+```
+
+---
+
+# 58. Dataset Versioning
+
+Dataset versions exist to protect compatibility.
+
+A version should change when the dataset contract changes or when project policy requires a release boundary.
+
+### Compatible changes
+
+Examples:
+
+- Adding records
+- Adding optional metadata
+- Adding new supported contexts
+- Adding non-breaking indexes
+
+### Breaking changes
+
+Examples:
 
 - Removing required fields
-- Changing identifier formats
-- Renaming canonical datasets
-- Modifying relationship semantics
-- Removing supported structures
+- Changing identifier semantics
+- Changing relationship meaning
+- Removing supported record structures
+- Renaming a dataset without a migration
 
-Breaking changes should be rare, carefully documented, and introduced only when absolutely necessary.
+Breaking changes require:
 
----
-
-# Version Tracking
-
-Every build should record the versions of all major datasets.
-
-Examples include:
-
-- Dataset Version
-- Build Version
-- Schema Version
-- Generator Version
-- Validation Version
-
-Version tracking improves debugging, auditing, and long-term reproducibility.
-
----
-
-# Future Compatibility
-
-The versioning strategy should allow Pokémon Companion to support future Pokémon generations without requiring structural redesign.
-
-Future datasets should extend existing systems while preserving historical compatibility and maintaining stable canonical references.
-
-Versioning is considered a long-term architectural commitment rather than an implementation detail.
-
----
-
-# Future Expansion
-
-Pokémon Companion is designed to evolve alongside the Pokémon franchise.
-
-As new games, mechanics, platforms, and technologies are introduced, new datasets should integrate into the existing architecture without requiring structural redesign.
-
-Future expansion should extend the dataset ecosystem while preserving the architectural principles established throughout this document.
-
----
-
-## Expansion Principles
-
-Future datasets should:
-
-- Follow the established architectural layers.
-- Have one clearly defined responsibility.
-- Belong to exactly one owning layer.
-- Reuse existing canonical entities whenever possible.
-- Introduce new relationships instead of duplicating information.
-- Be fully documented before implementation.
-- Be validated before publication.
-
-Expanding the dataset ecosystem should strengthen the architecture rather than increase complexity.
-
----
-
-## Future Dataset Categories
-
-As Pokémon Companion grows, additional datasets may include:
-
-### World Data
-
-Examples include:
-
-- Buildings
-- NPC Database
-- Interactive Maps
-- Landmark Database
-- Route Connections
-- Dungeon Layouts
-
----
-
-### Battle Data
-
-Examples include:
-
-- Battle Facilities
-- Battle Rules
-- Rental Teams
-- Competitive Formats
-- Battle Records
-
----
-
-### Gameplay Data
-
-Examples include:
-
-- Side Quests
-- Missions
-- Achievements
-- Minigames
-- Contest Data
-- Pokéathlon Data
-
----
-
-### Event Data
-
-Examples include:
-
-- Mystery Gifts
-- Distribution Events
-- Limited-Time Events
-- Promotional Pokémon
-- Event Items
-
----
-
-### Collection Data
-
-Examples include:
-
-- Ribbon Database
-- Mark Database
-- Decoration Database
-- Fashion Items
-- Trainer Card Data
-
----
-
-### Intelligence Data
-
-Examples include:
-
-- AI Knowledge Cache
-- Recommendation Models
-- Strategy Datasets
-- Analytical Reports
-- Usage Statistics
-
-These datasets should enhance intelligent features without becoming canonical sources of truth.
-
----
-
-## Evolution Strategy
-
-Future datasets should integrate into existing architectural layers rather than creating new layers.
-
-Whenever possible:
-
-- Extend Canonical Datasets.
-- Extend Relationship Datasets.
-- Regenerate Generated Datasets.
-- Preserve User Datasets.
-
-Maintaining a stable architecture simplifies long-term maintenance and future development.
-
----
-
-## Documentation
-
-Every new dataset introduced into Pokémon Companion should be documented before implementation.
-
-Documentation should include:
-
-- Purpose
-- Ownership
-- Architectural Layer
-- Source
-- Consumers
+- Documentation
+- Migration planning
+- Consumer review
 - Validation
-- Versioning
-- Relationships
-
-This document should remain the authoritative catalog of every dataset used throughout Pokémon Companion.
+- Updated build metadata
 
 ---
 
-# Document Status
+# 59. Build Versioning
 
-**Document Version:** 1.0
+A complete build should identify:
+
+```text
+buildVersion
+schemaVersion
+datasetVersions
+generatorVersions
+validationVersion
+sourceRevisions
+```
+
+This allows a deployed runtime dataset to be traced back to its inputs.
+
+---
+
+# 60. Provenance
+
+Every factual dataset should preserve provenance appropriate to its layer.
+
+A useful provenance chain is:
+
+```text
+source
+    ↓
+extraction
+    ↓
+raw record
+    ↓
+normalization
+    ↓
+canonical record
+    ↓
+relationship
+    ↓
+generated view
+```
+
+Provenance should be sufficient to answer:
+
+- Where did this fact come from?
+- Which source version produced it?
+- Which transformation produced it?
+- Which build contains it?
+- When was it verified?
+
+---
+
+# 61. Validation by Layer
+
+| Layer | Primary Validation |
+|---|---|
+| Official | Source identity and integrity |
+| Raw | Extraction correctness |
+| Canonical | Entity integrity |
+| Relationship | Reference and context integrity |
+| Generated | Build and output integrity |
+| User | Ownership and state integrity |
+
+Each layer should validate before passing data downstream.
+
+---
+
+# 62. Canonical Validation
+
+Canonical datasets should validate:
+
+- Unique identifiers
+- Required fields
+- Valid data types
+- Valid enumerations
+- Provenance
+- Context references
+- Duplicate concepts
+- Historical consistency
+
+A canonical build should fail if a required reference cannot be resolved.
+
+---
+
+# 63. Relationship Validation
+
+Relationship datasets should validate:
+
+- Source exists
+- Target exists
+- Relationship type is valid
+- Context exists
+- Conditions resolve
+- Duplicate relationships are rejected
+- Relationship semantics are valid
+
+Relationships that reference nonexistent canonical entities should fail validation.
+
+---
+
+# 64. Generated Dataset Validation
+
+Generated datasets should validate:
+
+- Input build versions
+- Record counts
+- Reference integrity
+- Output schema
+- Determinism
+- Completeness
+- Duplicate keys
+- Manifest consistency
+
+Generated output should never silently contain unresolved identifiers.
+
+---
+
+# 65. User Dataset Validation
+
+User datasets should validate:
+
+- User ownership
+- Tracker ownership
+- Canonical references
+- Game context compatibility
+- Team membership
+- Pokémon instance ownership
+- Permission boundaries
+- Synchronization consistency
+
+Invalid user references should be rejected without modifying canonical data.
+
+---
+
+# 66. Tracker Isolation
+
+Trackers must remain independent.
+
+For example:
+
+```text
+FireRed Main
+FireRed Nuzlocke
+FireRed Challenge
+LeafGreen Main
+Emerald Living Dex
+```
+
+Each tracker owns its own:
+
+- Progress
+- Map state
+- Objectives
+- Collections
+- Pokémon instances
+- Teams
+- Notes
+- Challenge state
+
+One tracker must not inherit another tracker's state unless the user explicitly performs an operation such as:
+
+```text
+clone
+import
+export
+compare
+```
+
+---
+
+# 67. Context Isolation
+
+Game Contexts must not be silently mixed.
+
+For example:
+
+```text
+context:firered
+context:leafgreen
+context:emerald
+```
+
+A FireRed tracker should not automatically inherit LeafGreen progression rules.
+
+If two contexts share canonical entities, they may reference the same entity identifiers while using different relationships and rules.
+
+---
+
+# 68. Historical Accuracy
+
+Historical accuracy is represented through context-specific datasets and relationships.
+
+Avoid creating:
+
+```text
+pokemon-pikachu-gen1
+pokemon-pikachu-gen2
+pokemon-pikachu-gen3
+```
+
+when the underlying concept is the same Pokémon species.
+
+Instead:
+
+```text
+pokemon:pikachu-default
+```
+
+can be interpreted through context-specific relationships.
+
+Historical differences belong in:
+
+```text
+relationships
+contexts
+rules
+generated context views
+```
+
+---
+
+# 69. Generated Data Rebuild Rules
+
+Generated datasets must be rebuilt when relevant upstream inputs change.
+
+For example:
+
+```text
+pokemon
+    +
+pokemon-has-type
+    ↓
+pokemon-by-type
+```
+
+If either input changes, the generated view should be rebuilt.
+
+Likewise:
+
+```text
+maps
++
+map connections
++
+requirements
+    ↓
+progression-index
+```
+
+---
+
+# 70. Incremental Generation
+
+The build system may regenerate only affected datasets.
+
+Example:
+
+```text
+Move changed
+    ↓
+Rebuild:
+    move-lookup
+    move-search-index
+    pokemon-learnset-index
+    machine-compatibility-index
+```
+
+It should not unnecessarily rebuild unrelated user datasets.
+
+Generated dependency metadata should make incremental generation possible.
+
+---
+
+# 71. Dataset Manifests
+
+Every published dataset should have a manifest.
+
+Example:
+
+```json
+{
+    "datasetId": "pokemon-lookup",
+    "version": "1.0.0",
+    "layer": "generated",
+    "recordCount": 1025,
+    "schemaVersion": 1,
+    "generatorVersion": "1.4.0",
+    "buildVersion": "2026.08.16",
+    "validationStatus": "validated"
+}
+```
+
+The exact manifest structure may evolve with the build system.
+
+---
+
+# 72. Dataset Checksums
+
+Published datasets should support checksums where practical.
+
+Checksums help detect:
+
+- Corruption
+- Unexpected modification
+- Deployment mismatch
+- Incomplete downloads
+- Cache inconsistency
+
+Checksums should be calculated after generation and before publication.
+
+---
+
+# 73. Dataset Status
+
+Recommended statuses:
+
+```text
+planned
+active
+deprecated
+archived
+```
+
+### Planned
+
+Dataset is documented but not implemented.
+
+### Active
+
+Dataset is currently supported.
+
+### Deprecated
+
+Dataset remains available temporarily but should not receive new consumers.
+
+### Archived
+
+Dataset is retained for historical or reproducibility purposes and is no longer active.
+
+---
+
+# 74. Deprecation Rules
+
+A deprecated dataset should:
+
+- Have a replacement where applicable
+- Document its replacement
+- Define a migration path
+- Remain readable for the supported compatibility period
+- Be removed only through a documented migration
+
+Generated datasets may have shorter lifetimes because they are reproducible.
+
+---
+
+# 75. Dataset Documentation Requirements
+
+Before implementation, every new dataset should document:
+
+```text
+Purpose
+Layer
+Owner
+Source
+Consumers
+Dependencies
+Identifier
+Record shape
+Generation method
+Validation
+Versioning
+Status
+```
+
+Relationship datasets should additionally document:
+
+```text
+Source entity
+Target entity
+Context requirements
+Relationship semantics
+```
+
+---
+
+# 76. Dataset Review Checklist
+
+A dataset is ready for implementation when:
+
+- Its responsibility is clear
+- Its layer is defined
+- Its owner is defined
+- Its source is known
+- Its consumers are known
+- Its identifiers are stable
+- Its dependencies are documented
+- Its validation rules are known
+- Its versioning impact is understood
+
+If these questions cannot be answered, the dataset definition is incomplete.
+
+---
+
+# 77. Common Anti-Patterns
+
+## 77.1 Duplicate Canonical Data
+
+Bad:
+
+```text
+firered-pikachu
+leafgreen-pikachu
+```
+
+when both represent the same canonical Pokémon concept.
+
+Prefer context-specific relationships.
+
+## 77.2 Generated Data as Source of Truth
+
+Bad:
+
+```text
+Edit evolution-graph.json manually.
+```
+
+Prefer modifying canonical or relationship inputs and regenerating the graph.
+
+## 77.3 User Data in Canonical Records
+
+Bad:
+
+```text
+pokemon:pikachu
+    ownedBy: user:123
+```
+
+Ownership belongs in user datasets.
+
+## 77.4 General-Purpose Dataset
+
+Bad:
+
+```text
+everything.json
+```
+
+Prefer focused datasets with clear boundaries.
+
+## 77.5 Context-Free Historical Data
+
+Bad:
+
+```text
+pokemon:pokemon
+type:electric
+```
+
+without enough context to determine whether the relationship is historically correct.
+
+---
+
+# 78. Dataset Security
+
+Canonical datasets are read-only at runtime.
+
+User datasets require:
+
+- Authentication
+- Authorization
+- Ownership checks
+- Input validation
+- Synchronization protection
+- Appropriate privacy controls
+
+Community datasets additionally require sharing and visibility controls.
+
+AI datasets require separation between:
+
+```text
+verified canonical knowledge
+```
+
+and:
+
+```text
+generated or inferred information
+```
+
+---
+
+# 79. Offline Support
+
+Generated datasets should be suitable for local or offline use where practical.
+
+Offline packages may contain:
+
+```text
+canonical runtime subset
+generated lookup datasets
+search indexes
+map datasets
+progression datasets
+asset references
+```
+
+User state may be stored locally and synchronized later.
+
+Offline data must preserve dataset versions so synchronization can detect compatibility issues.
+
+---
+
+# 80. API Consumption
+
+The API layer should expose stable application-facing views.
+
+A service may internally read:
+
+```text
+pokemon
+pokemon-has-type
+pokemon-has-ability
+```
+
+while exposing:
+
+```text
+GET /pokemon/pikachu
+```
+
+The API should not force clients to understand internal dataset boundaries.
+
+Generated datasets may be used to satisfy API requests efficiently.
+
+---
+
+# 81. Frontend Consumption
+
+Frontend systems should generally consume:
+
+```text
+API responses
+runtime-generated datasets
+frontend-specific projections
+```
+
+They should not directly depend on:
+
+```text
+raw extraction files
+official source files
+internal build artifacts
+```
+
+This keeps frontend code independent from extraction implementation details.
+
+---
+
+# 82. Intelligence Layer Consumption
+
+The Intelligence Layer may consume:
+
+```text
+canonical knowledge
+relationship views
+search indexes
+progression indexes
+analytical datasets
+user state
+```
+
+However, AI-generated conclusions must remain distinguishable from verified facts.
+
+The AI layer must not silently rewrite canonical datasets.
+
+---
+
+# 83. Community Data Boundaries
+
+Community datasets must not alter official knowledge.
+
+For example, a user may publish:
+
+```text
+recommended FireRed team
+```
+
+but this does not change:
+
+```text
+pokemon
+moves
+trainers
+encounters
+```
+
+Community contributions may become candidate source material, but canonical promotion requires the project's verification process.
+
+---
+
+# 84. Localization
+
+Localized datasets should keep language-specific text separate from language-independent entity identity.
+
+For example:
+
+```text
+pokemon:pikachu
+```
+
+remains stable while localized records provide:
+
+```text
+en: Pikachu
+ja: ピカチュウ
+ko: 피카츄
+```
+
+Localized search indexes should be generated from the appropriate language datasets.
+
+---
+
+# 85. Alias Data
+
+Aliases may include:
+
+- Alternate spellings
+- Localized names
+- Historical names
+- Common abbreviations
+- Search-friendly terms
+
+Aliases should point to canonical identifiers.
+
+They should not create duplicate canonical entities.
+
+---
+
+# 86. Data Completeness
+
+Completeness should be measured relative to a defined scope.
+
+Examples:
+
+```text
+Generation I complete
+FireRed complete
+Kanto maps complete
+All Generation III moves complete
+```
+
+A dataset should never claim universal completeness when only a subset has been verified.
+
+Build metadata should identify the supported scope.
+
+---
+
+# 87. Data Quality Levels
+
+Datasets may use quality levels such as:
+
+```text
+draft
+extracted
+normalized
+verified
+release
+```
+
+The exact terminology may evolve, but the distinction between unverified and release-ready data must remain explicit.
+
+---
+
+# 88. Release Readiness
+
+A dataset is release-ready when:
+
+- Inputs are identified
+- Records validate
+- References resolve
+- Context is correct
+- Provenance is available
+- Required generated views are built
+- Build metadata is complete
+- Validation passes
+
+A failed validation should block publication of dependent generated datasets.
+
+---
+
+# 89. Dataset Testing
+
+Dataset tests should cover:
+
+### Unit-Level
+
+- Individual record shape
+- Identifier rules
+- Enum values
+
+### Relationship-Level
+
+- Reference integrity
+- Context applicability
+- Relationship uniqueness
+
+### Integration-Level
+
+- Cross-dataset consistency
+- Generated output
+- API projections
+
+### Regression-Level
+
+- Previously verified game behavior
+- Historical context
+- Existing tracker compatibility
+
+---
+
+# 90. Regression Protection
+
+Historical data should be protected against accidental changes.
+
+When a verified fact changes, the build should identify:
+
+```text
+previous value
+new value
+source
+affected datasets
+affected generated views
+```
+
+This allows developers to distinguish:
+
+```text
+legitimate correction
+```
+
+from:
+
+```text
+unintended regression
+```
+
+---
+
+# 91. Performance Considerations
+
+Datasets should be structured according to actual access patterns.
+
+Common operations include:
+
+```text
+get Pokémon by ID
+search Pokémon
+get moves for Pokémon
+get evolution chain
+get encounters for location
+get trainers for location
+get reachable locations
+get user tracker state
+```
+
+Generated datasets should optimize these operations without changing canonical semantics.
+
+---
+
+# 92. Dataset Size
+
+Dataset size should be controlled by responsibility, not by an arbitrary line count.
+
+However:
+
+- Extremely large monolithic datasets should be avoided.
+- Logical domains should be split.
+- Generated files should be partitionable.
+- Context-specific data should be loadable independently where useful.
+- Documentation should remain concise enough to maintain.
+
+The source documentation should describe the architecture, not duplicate every record.
+
+---
+
+# 93. Storage Formats
+
+The implementation may use different storage formats for different purposes.
+
+Possible formats include:
+
+```text
+JSON
+JSONL
+SQLite
+PostgreSQL
+Parquet
+Binary indexes
+Compressed archives
+```
+
+The storage format is an implementation decision.
+
+The logical dataset contract should remain independent of the physical format.
+
+---
+
+# 94. Dataset Packaging
+
+Datasets may be packaged by:
+
+```text
+game
+generation
+region
+feature
+language
+runtime target
+```
+
+Example:
+
+```text
+firered/
+    pokemon/
+    moves/
+    items/
+    maps/
+    encounters/
+    trainers/
+    progression/
+```
+
+Packaging should support both development and production workflows.
+
+---
+
+# 95. Caching
+
+Generated datasets may be cached using:
+
+```text
+datasetId
+datasetVersion
+buildVersion
+contextId
+language
+```
+
+Caches must be invalidated when their input versions change.
+
+---
+
+# 96. Synchronization
+
+User synchronization should compare:
+
+```text
+user data version
+canonical dataset version
+schema version
+```
+
+If canonical identifiers remain compatible, user state should continue to reference them.
+
+If a migration is required, it must occur through an explicit migration process.
+
+---
+
+# 97. Migration
+
+Dataset migrations may be required for:
+
+- Identifier changes
+- Schema changes
+- Relationship changes
+- User state changes
+- Storage format changes
+
+Migration scripts should be:
+
+- Versioned
+- Deterministic
+- Tested
+- Reversible where practical
+- Documented
+
+Generated datasets generally do not require migration because they can be rebuilt.
+
+---
+
+# 98. Backup and Recovery
+
+User datasets require backup and recovery strategies.
+
+Canonical and generated datasets should also be reproducible from versioned build inputs.
+
+Recovery priorities:
+
+1. Protect user state.
+2. Restore compatible canonical runtime data.
+3. Rebuild generated datasets.
+4. Verify build integrity.
+5. Resume synchronization.
+
+---
+
+# 99. Future Dataset Expansion
+
+New datasets should normally fit into an existing layer.
+
+Do not introduce a new architectural layer merely because a new feature appears.
+
+Prefer:
+
+```text
+new canonical entity
+new relationship
+new generated view
+new user state
+```
+
+depending on the feature.
+
+---
+
+# 100. Future Dataset Categories
+
+Possible future datasets include:
+
+### World
+
+```text
+buildings
+npcs
+landmarks
+dungeon-layouts
+route-connections
+map-events
+```
+
+### Battle
+
+```text
+battle-facilities
+battle-formats
+rental-teams
+battle-rules
+```
+
+### Gameplay
+
+```text
+side-quests
+missions
+minigames
+contest-data
+pokéathlon-data
+```
+
+### Events
+
+```text
+mystery-gifts
+distribution-events
+promotional-items
+event-pokemon
+```
+
+### Collection
+
+```text
+ribbons
+marks
+decorations
+fashion-items
+trainer-card-data
+```
+
+### Intelligence
+
+```text
+strategy-datasets
+recommendation-data
+analytical-reports
+ai-knowledge-cache
+```
+
+These must remain derived or verified according to their role.
+
+---
+
+# 101. Expansion Rules
+
+When adding a dataset:
+
+1. Determine whether the information already exists.
+2. Reuse an existing canonical entity when possible.
+3. Add a relationship if the information describes a connection.
+4. Add a generated view if the information is derived.
+5. Add user state only when the information belongs to a trainer.
+6. Document provenance.
+7. Define validation.
+8. Define consumers.
+9. Define versioning.
+10. Add the dataset to the registry.
+
+---
+
+# 102. Dataset Lifecycle Status
+
+The master registry should make dataset maturity visible.
+
+Recommended lifecycle:
+
+```text
+planned
+    ↓
+implemented
+    ↓
+validated
+    ↓
+active
+    ↓
+deprecated
+    ↓
+archived
+```
+
+Not every dataset must pass through every state.
+
+Generated datasets may be recreated for every build.
+
+---
+
+# 103. Dataset Governance
+
+Changes to canonical or relationship datasets should be reviewed carefully because they may affect:
+
+- Generated indexes
+- APIs
+- Frontend behavior
+- AI responses
+- Adventure progression
+- User references
+
+Changes to user datasets should prioritize:
+
+- Privacy
+- Compatibility
+- Data integrity
+- Ownership
+
+---
+
+# 104. Final Dataset Architecture
+
+```text
+                    ┌─────────────────────┐
+                    │  Official Sources   │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │    Raw Sources      │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ Canonical Datasets  │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ Relationship Data   │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ Generated Datasets  │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ Application Runtime │
+                    └─────────────────────┘
+
+
+                    ┌─────────────────────┐
+                    │    User Datasets    │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ Application Runtime │
+                    └─────────────────────┘
+```
+
+The critical boundary is:
+
+```text
+Official Knowledge
+        ≠
+User State
+```
+
+The critical dependency rule is:
+
+```text
+Source → Raw → Canonical → Relationship → Generated
+```
+
+The critical runtime rule is:
+
+```text
+Generated data is disposable.
+Canonical data is authoritative.
+User data is independent.
+```
+
+---
+
+# 105. Final Dataset Rules
+
+The following rules are mandatory unless a documented architectural exception exists.
+
+1. Every dataset has one clear responsibility.
+2. Every dataset belongs to one architectural layer.
+3. Canonical concepts are not duplicated unnecessarily.
+4. Relationships are represented explicitly.
+5. Historical differences are context-aware.
+6. Generated datasets are reproducible.
+7. Generated datasets are never manually authoritative.
+8. User datasets never modify canonical knowledge.
+9. Trackers remain isolated.
+10. Dataset identifiers remain stable.
+11. Display names are never permanent foreign keys.
+12. Dataset provenance must be preserved.
+13. Dataset versions must be traceable.
+14. Validation must occur before publication.
+15. Failed upstream validation blocks dependent publication.
+16. New datasets should extend existing layers.
+17. Dataset documentation must precede implementation.
+18. Physical storage format must not redefine logical ownership.
+19. Community and AI data must remain distinguishable from verified canonical knowledge.
+20. Future expansion must preserve historical compatibility.
+
+---
+
+# 106. Document Status
+
+**Document:** `DATASETS.md`
+
+**Document Version:** `2.0`
 
 **Status:** Approved
 
-This document defines the complete dataset ecosystem used by Pokémon Companion.
+This document is the master catalog and architectural reference for Pokémon Companion datasets.
 
-Detailed dataset structures, entity definitions, relationship schemas, generation pipelines, and implementation details are documented separately within the project's architectural and reference documentation.
+It defines the responsibilities and boundaries of the project's dataset ecosystem without attempting to enumerate every individual record.
 
-As Pokémon Companion evolves, this document should be updated to reflect new datasets while preserving the architectural principles established throughout Version 1.0.
+Detailed entity structures belong in the Database Schema.
+
+Detailed extraction and transformation procedures belong in Data Architecture.
+
+Detailed validation algorithms belong in Validation documentation.
+
+Detailed API contracts belong in API documentation.
+
+As Pokémon Companion expands, this document should be updated whenever a new dataset, dataset layer, ownership boundary, or major dataset lifecycle rule is introduced.

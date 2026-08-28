@@ -2,7 +2,19 @@
  * Pokémon Companion
  * Battle State Flow
  *
- * Coordinates battle state.
+ * Provides access to the current battle state.
+ *
+ * Responsibilities:
+ * - Retrieve battle state.
+ * - Check battle status.
+ *
+ * Does NOT:
+ * - Create duplicate battle state.
+ * - Store Pokémon separately.
+ * - Track a separate turn counter.
+ * - Store a separate battle history.
+ * - Execute moves.
+ * - Calculate damage.
  */
 
 "use strict";
@@ -11,123 +23,104 @@
 class BattleStateFlow {
 
 
-
     constructor(
-        stateManager
+        battleStateService
     )
     {
 
-        this.state =
-            stateManager;
+        this.battles =
+            battleStateService;
 
     }
 
 
+    //--------------------------------
+    // Get battle state
+    //--------------------------------
 
-
-
-    setPlayer(
-        pokemon
+    getBattleState(
+        battleId
     )
     {
 
-        return this.state
-            .setPlayer(
-                pokemon
+        if(
+            !this.battles
+        )
+        {
+
+            return null;
+
+        }
+
+
+        return this.battles.getBattle(
+
+            battleId
+
+        );
+
+    }
+
+
+    //--------------------------------
+    // Check active
+    //--------------------------------
+
+    isActive(
+        battleId
+    )
+    {
+
+        const battle =
+            this.getBattleState(
+
+                battleId
+
             );
 
+
+        return !!(
+
+            battle &&
+
+            battle.status ===
+                "ACTIVE"
+
+        );
+
     }
 
 
+    //--------------------------------
+    // Check finished
+    //--------------------------------
 
-
-
-    setEnemy(
-        pokemon
+    isFinished(
+        battleId
     )
     {
 
-        return this.state
-            .setEnemy(
-                pokemon
+        const battle =
+            this.getBattleState(
+
+                battleId
+
             );
 
-    }
 
+        return !!(
 
+            battle &&
 
+            battle.status ===
+                "COMPLETED"
 
-
-    startTurn()
-    {
-
-        return this.state
-            .nextTurn();
+        );
 
     }
-
-
-
-
-
-    updateStatus(
-        status
-    )
-    {
-
-        return this.state
-            .setStatus(
-                status
-            );
-
-    }
-
-
-
-
-
-    record(
-        action
-    )
-    {
-
-        return this.state
-            .addHistory(
-                action
-            );
-
-    }
-
-
-
-
-
-    getBattleState()
-    {
-
-        return this.state
-            .getState();
-
-    }
-
-
-
-
-
-    reset()
-    {
-
-        return this.state
-            .clear();
-
-    }
-
 
 
 }
-
-
-
 
 
 module.exports =

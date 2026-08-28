@@ -2,16 +2,17 @@
  * Pokémon Companion
  * Battle State Service
  *
- * Handles battle state storage and synchronization.
+ * Provides access to battle state.
  *
  * Responsibilities:
- * - Store battle instances.
- * - Initialize battle state.
- * - Retrieve battles.
- * - Remove battles.
- * - Sync player/enemy active state.
+ * - Retrieve battle instances.
+ * - Remove battle instances.
+ * - List battle instances.
+ * - Check whether a battle exists.
  *
  * Does NOT:
+ * - Create duplicate battle state.
+ * - Store player/enemy copies.
  * - Execute moves.
  * - Calculate damage.
  * - Manage turns.
@@ -21,90 +22,81 @@
 "use strict";
 
 
-
-
-
 class BattleStateService {
 
 
-
     constructor(
-        battleStateFlow = null,
-        battleActiveFlow = null,
-        battleOpponentFlow = null
+        battleService = null
     )
     {
 
-
-        this.state =
-            battleStateFlow;
-
-
-        this.active =
-            battleActiveFlow;
-
-
-        this.opponent =
-            battleOpponentFlow;
-
-
-
-
-
-        //--------------------------------
-        // Battle storage
-        //--------------------------------
-
-
         this.battles =
-        {};
+            battleService;
 
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
-    // Initialize battle state
+    // Get battle
     //--------------------------------
 
-
-    initialize(
-        battle
+    getBattle(
+        battleId
     )
     {
 
+        if(
+            !this.battles
+        )
+        {
 
-        //--------------------------------
-        // Validate battle
-        //--------------------------------
+            return null;
 
+        }
+
+
+        return this.battles.getBattle(
+            battleId
+        );
+
+    }
+
+
+    //--------------------------------
+    // Get all battles
+    //--------------------------------
+
+    getBattles()
+    {
 
         if(
-            !battle
-            ||
-            !battle.id
-            ||
-            !battle.player
-            ||
-            !battle.opponent
-            ||
-            !Array.isArray(
-                battle.player.party
-            )
-            ||
-            !Array.isArray(
-                battle.opponent.party
-            )
-            ||
-            battle.player.party.length === 0
-            ||
-            battle.opponent.party.length === 0
+            !this.battles
+        )
+        {
+
+            return [];
+
+        }
+
+
+        return this.battles.getActiveBattles
+            ? this.battles.getActiveBattles()
+            : [];
+
+    }
+
+
+    //--------------------------------
+    // Remove battle
+    //--------------------------------
+
+    removeBattle(
+        battleId
+    )
+    {
+
+        if(
+            !this.battles
         )
         {
 
@@ -113,271 +105,30 @@ class BattleStateService {
         }
 
 
-
-
-
-
-
-
-
-        //--------------------------------
-        // Store battle
-        //--------------------------------
-
-
-        this.battles[
-
-            battle.id
-
-        ] =
-            battle;
-
-
-
-
-
-
-
-
-
-        //--------------------------------
-        // Get active Pokémon
-        //--------------------------------
-
-
-        const player =
-
-            battle.player.party[0];
-
-
-        const enemy =
-
-            battle.opponent.party[0];
-
-
-
-
-
-
-
-
-
-        //--------------------------------
-        // Sync state flow
-        //--------------------------------
-
-
-        if(
-            this.state
-        )
-        {
-
-            this.state.setPlayer(
-
-                player
-
-            );
-
-
-            this.state.setEnemy(
-
-                enemy
-
-            );
-
-        }
-
-
-
-
-
-
-
-
-
-        //--------------------------------
-        // Send out player Pokémon
-        //--------------------------------
-
-
-        if(
-            this.active
-        )
-        {
-
-            this.active.sendOut(
-
-                player
-
-            );
-
-        }
-
-
-
-
-
-
-
-
-
-        //--------------------------------
-        // Send out opponent Pokémon
-        //--------------------------------
-
-
-        if(
-            this.opponent
-        )
-        {
-
-            this.opponent.sendOut(
-
-                enemy
-
-            );
-
-        }
-
-
-
-
-
-
-
-
-
-        return true;
-
+        return this.battles.clearBattle(
+            battleId
+        );
 
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
-    // Get battle
+    // Check battle exists
     //--------------------------------
 
-
-    getBattle(
+    exists(
         battleId
     )
     {
 
-
-        return (
-
-            this.battles[battleId]
-
-            ||
-
-            null
-
+        return !!this.getBattle(
+            battleId
         );
-
-
-    }
-
-
-
-
-
-
-
-
-
-    //--------------------------------
-    // Remove battle
-    //--------------------------------
-
-
-    removeBattle(
-        battleId
-    )
-    {
-
-
-        if(
-            this.battles[battleId]
-        )
-        {
-
-            delete this.battles[battleId];
-
-
-            return true;
-
-        }
-
-
-
-
-
-        return false;
-
-
-    }
-
-
-
-
-
-
-
-
-
-    //--------------------------------
-    // List battles
-    //--------------------------------
-
-
-    getBattles()
-    {
-
-
-        return Object.values(
-
-            this.battles
-
-        );
-
-
-    }
-
-
-
-
-
-
-
-
-
-    //--------------------------------
-    // Clear battles
-    //--------------------------------
-
-
-    clear()
-    {
-
-
-        this.battles =
-        {};
-
 
     }
 
 
 }
-
-
-
 
 
 module.exports =

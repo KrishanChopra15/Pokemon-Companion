@@ -21,40 +21,29 @@
 "use strict";
 
 
-
-
-
 class PokemonSwitchService {
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Get available Pokémon
     //--------------------------------
 
-
     getAvailablePokemon(
         side
     )
     {
 
-
         if(
             !side ||
-            !side.party
+            !Array.isArray(
+                side.party
+            )
         )
         {
 
             return [];
 
         }
-
 
 
         return side.party
@@ -75,25 +64,17 @@ class PokemonSwitchService {
 
                 entry =>
 
+                    entry.pokemon &&
                     entry.pokemon.hp > 0
 
             );
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Check switch possible
     //--------------------------------
-
 
     canSwitch(
         side,
@@ -101,10 +82,11 @@ class PokemonSwitchService {
     )
     {
 
-
         if(
             !side ||
-            !side.party
+            !Array.isArray(
+                side.party
+            )
         )
         {
 
@@ -120,15 +102,8 @@ class PokemonSwitchService {
         }
 
 
-
-
-
-
-
-
         const pokemon =
             side.party[index];
-
 
 
         if(
@@ -148,12 +123,6 @@ class PokemonSwitchService {
         }
 
 
-
-
-
-
-
-
         if(
             pokemon.hp <= 0
         )
@@ -169,12 +138,6 @@ class PokemonSwitchService {
             };
 
         }
-
-
-
-
-
-
 
 
         if(
@@ -194,33 +157,18 @@ class PokemonSwitchService {
         }
 
 
-
-
-
-
-
-
         return {
 
             allowed:true
 
         };
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Switch Pokémon
     //--------------------------------
-
 
     switchPokemon(
         side,
@@ -228,16 +176,11 @@ class PokemonSwitchService {
     )
     {
 
-
         const check =
             this.canSwitch(
-
                 side,
-
                 index
-
             );
-
 
 
         if(
@@ -257,113 +200,61 @@ class PokemonSwitchService {
         }
 
 
-
-
-
-
-
-
         const previous =
             side.active;
-
 
 
         side.active =
             index;
 
 
-
-
-
-
-
-
         return {
 
             success:true,
 
-
             previous,
-
 
             current:
                 index,
-
 
             pokemon:
                 side.party[index]
 
         };
 
-
     }
-
-
-
-
-
-
-
-
-
-    //--------------------------------
-    // Get active Pokémon
-    //--------------------------------
-
-
-    getActivePokemon(
-        side
-    )
-    {
-
-
-        if(
-            !side ||
-            !side.party
-        )
-        {
-
-            return null;
-
-        }
-
-
-
-        return side.party[
-
-            side.active
-
-        ] || null;
-
-
-    }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Check if forced switch needed
     //--------------------------------
 
-
     needsSwitch(
         side
     )
     {
 
+        if(
+            !side ||
+            !Array.isArray(
+                side.party
+            )
+        )
+        {
+
+            return true;
+
+        }
+
+
+        const activeIndex =
+            side.active || 0;
+
 
         const active =
-            this.getActivePokemon(
-
-                side
-
-            );
-
+            side.party[
+                activeIndex
+            ];
 
 
         if(
@@ -376,38 +267,24 @@ class PokemonSwitchService {
         }
 
 
-
         return active.hp <= 0;
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Get next available Pokémon
     //--------------------------------
 
-
     getNextAvailable(
         side
     )
     {
 
-
         const available =
             this.getAvailablePokemon(
-
                 side
-
             );
-
 
 
         return available.find(
@@ -417,39 +294,27 @@ class PokemonSwitchService {
                 entry.index !== side.active
 
         )
+
         ||
 
         null;
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Auto switch
     //--------------------------------
 
-
     autoSwitch(
         side
     )
     {
 
-
         const next =
             this.getNextAvailable(
-
                 side
-
             );
-
 
 
         if(
@@ -469,40 +334,32 @@ class PokemonSwitchService {
         }
 
 
-
-
-
-
+        const previous =
+            side.active;
 
 
         side.active =
             next.index;
 
 
-
         return {
 
             success:true,
 
+            previous,
 
             index:
                 next.index,
-
 
             pokemon:
                 next.pokemon
 
         };
 
-
     }
 
 
-
 }
-
-
-
 
 
 module.exports =

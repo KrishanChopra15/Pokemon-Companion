@@ -2,14 +2,19 @@
  * Pokémon Companion
  * Battle Pokémon Service
  *
- * Handles Pokémon helpers.
+ * Provides battle Pokémon utilities.
  *
  * Responsibilities:
- * - Initialize active slots.
  * - Get active Pokémon.
  * - Check faint status.
- * - Check alive Pokémon.
- * - Clone party.
+ * - Check alive status.
+ * - Count alive Pokémon.
+ *
+ * Does NOT:
+ * - Manage active Pokémon state.
+ * - Handle switching.
+ * - Store battle state.
+ * - Clone parties.
  */
 
 "use strict";
@@ -19,77 +24,6 @@
 
 
 class BattlePokemonService {
-
-
-
-    //--------------------------------
-    // Initialize Pokémon state
-    //--------------------------------
-
-
-    initialize(
-        battle
-    )
-    {
-
-
-        if(
-            !battle
-        )
-        {
-
-            return false;
-
-        }
-
-
-
-
-
-        if(
-            battle.player
-        )
-        {
-
-            battle.player.active =
-
-                battle.player.active
-                ??
-                0;
-
-        }
-
-
-
-
-
-        if(
-            battle.opponent
-        )
-        {
-
-            battle.opponent.active =
-
-                battle.opponent.active
-                ??
-                0;
-
-        }
-
-
-
-
-
-        return true;
-
-
-    }
-
-
-
-
-
-
 
 
 
@@ -105,8 +39,7 @@ class BattlePokemonService {
 
 
         if(
-            !side
-            ||
+            !side ||
             !Array.isArray(
                 side.party
             )
@@ -121,11 +54,18 @@ class BattlePokemonService {
 
 
 
+        const activeIndex =
+            side.active ?? 0;
+
+
+
+
+
         return (
 
             side.party[
 
-                side.active || 0
+                activeIndex
 
             ]
 
@@ -159,9 +99,7 @@ class BattlePokemonService {
 
         return (
 
-            !pokemon
-
-            ||
+            !pokemon ||
 
             pokemon.hp <= 0
 
@@ -191,9 +129,7 @@ class BattlePokemonService {
 
         return !!(
 
-            pokemon
-
-            &&
+            pokemon &&
 
             pokemon.hp > 0
 
@@ -241,7 +177,6 @@ class BattlePokemonService {
             pokemon =>
 
                 this.isAlive(
-
                     pokemon
 
                 )
@@ -260,7 +195,7 @@ class BattlePokemonService {
 
 
     //--------------------------------
-    // Party alive
+    // Check party alive
     //--------------------------------
 
 
@@ -283,35 +218,6 @@ class BattlePokemonService {
 
     }
 
-
-
-
-
-
-
-
-
-    //--------------------------------
-    // Clone
-    //--------------------------------
-
-
-    cloneParty(
-        party
-    )
-    {
-
-        return JSON.parse(
-
-            JSON.stringify(
-
-                party
-
-            )
-
-        );
-
-    }
 
 
 }

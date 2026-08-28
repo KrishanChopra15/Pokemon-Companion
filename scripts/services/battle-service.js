@@ -12,30 +12,27 @@
  * - Track battle results.
  * - Complete battles.
  * - Initialize battle engine state.
+ * - Process battle rewards.
  *
  * Does NOT:
  * - Calculate damage.
  * - Execute moves.
  * - Handle battle AI.
  * - Manage turn order.
+ * - Calculate EXP directly.
+ * - Handle evolution directly.
  */
 
 "use strict";
 
 
-
-
-
 class BattleService {
-
 
 
     constructor(
         battlePreparationService,
         battleEngineService,
-        pokemonProgressionService,
-        experienceService,
-        rewardService
+        battleRewardService
     )
     {
 
@@ -44,28 +41,20 @@ class BattleService {
             battlePreparationService;
 
 
-
         this.engine =
             battleEngineService;
 
 
-
-        this.progression =
-            pokemonProgressionService;
-
-
-        this.experience =
-            experienceService;
-
-
         this.rewards =
-            rewardService;
+            battleRewardService;
 
 
+        //--------------------------------
+        // Active battle storage
+        //--------------------------------
 
         this.activeBattles =
         {};
-
 
 
         this.nextBattleId =
@@ -75,17 +64,23 @@ class BattleService {
     }
 
 
+    //--------------------------------
+    // Generate battle ID
+    //--------------------------------
+
+    createBattleId()
+    {
 
 
+        return `BATTLE_${this.nextBattleId++}`;
 
 
-
+    }
 
 
     //--------------------------------
     // Start trainer battle
     //--------------------------------
-
 
     startTrainerBattle(
         trainerId,
@@ -94,19 +89,36 @@ class BattleService {
     {
 
 
+        if(
+            !this.preparation
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Battle preparation service unavailable"
+
+            };
+
+        }
+
+
         const preparation =
-            this.preparation
-                .prepareTrainerBattle(
+            this.preparation.prepareTrainerBattle(
 
-                    trainerId,
+                trainerId,
 
-                    playerState
+                playerState
 
-                );
-
+            );
 
 
         if(
+            !preparation
+            ||
             !preparation.success
         )
         {
@@ -116,27 +128,17 @@ class BattleService {
                 success:false,
 
                 reason:
-                    preparation.reason
+                    preparation?.reason
+                    ||
+                    "Unable to prepare trainer battle"
 
             };
 
         }
 
 
-
-
-
-
-
-
         const battleId =
-            `BATTLE_${this.nextBattleId++}`;
-
-
-
-
-
-
+            this.createBattleId();
 
 
         const battle =
@@ -147,18 +149,23 @@ class BattleService {
 
 
             type:
-                preparation.battleType,
+                preparation.battleType
+                ||
+                "TRAINER",
 
 
             status:
                 "ACTIVE",
 
 
-            trainerId,
+            trainerId:
+                trainerId,
 
 
             trainer:
-                preparation.trainer,
+                preparation.trainer
+                ||
+                null,
 
 
             player:
@@ -169,64 +176,91 @@ class BattleService {
                 preparation.opponent,
 
 
-            result:
-                null
+            turn:
+                1,
 
+
+            result:
+                null,
+
+
+            winner:
+                null
 
         };
 
 
+        //--------------------------------
+        // Validate basic battle structure
+        //--------------------------------
+
+        if(
+            !battle.player
+            ||
+            !battle.opponent
+            ||
+            !Array.isArray(
+                battle.player.party
+            )
+            ||
+            !Array.isArray(
+                battle.opponent.party
+            )
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Invalid prepared battle"
+
+            };
+
+        }
 
 
-
-
-
+        //--------------------------------
+        // Store authoritative battle
+        //--------------------------------
 
         this.activeBattles[battleId] =
             battle;
 
 
-
-
-
-
-
-
         //--------------------------------
-        // Initialize Engine
+        // Initialize battle engine
         //--------------------------------
+
+        const initialization =
+            this.initializeBattle(
+                battle
+            );
 
 
         if(
-            this.engine
+            !initialization.success
         )
         {
 
-            this.engine.initializeBattle(
-                battle
-            );
+            delete this.activeBattles[
+                battleId
+            ];
+
+
+            return initialization;
 
         }
 
 
-
-
-
-
-
-
         return {
-
 
             success:true,
 
-
             battleId,
 
-
             battle
-
-
 
         };
 
@@ -234,17 +268,9 @@ class BattleService {
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
     // Start wild battle
     //--------------------------------
-
 
     startWildBattle(
         playerState,
@@ -270,20 +296,129 @@ class BattleService {
         }
 
 
+        if(
+            !this.preparation
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Battle preparation service unavailable"
+
+            };
+
+        }
 
 
+        //--------------------------------
+        // Get player party
+        //--------------------------------
+
+        const playerParty =
+
+            this.preparation.getPlayerParty(
+
+                playerState
+
+            );
 
 
+        if(
+            !Array.isArray(playerParty)
+            ||
+            playerParty.length === 0
+        )
+        {
 
+            return {
+
+                success:false,
+
+                reason:
+                    "Player has no Pokémon"
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Prepare player party
+        //--------------------------------
+
+        const preparedPlayerParty =
+
+            playerParty
+                .map(
+
+                    pokemon =>
+
+                        this.preparation.preparePokemon(
+
+                            pokemon
+
+                        )
+
+                )
+                .filter(Boolean);
+
+
+        if(
+            preparedPlayerParty.length === 0
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Player has no valid Pokémon"
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Prepare wild Pokémon
+        //--------------------------------
+
+        const preparedWildPokemon =
+
+            this.preparation.preparePokemon(
+
+                wildPokemon
+
+            );
+
+
+        if(
+            !preparedWildPokemon
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Invalid wild Pokémon"
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Create battle
+        //--------------------------------
 
         const battleId =
-            `BATTLE_${this.nextBattleId++}`;
-
-
-
-
-
-
+            this.createBattleId();
 
 
         const battle =
@@ -313,8 +448,11 @@ class BattleService {
             {
 
                 party:
+                    preparedPlayerParty,
 
-                    playerState.party
+
+                active:
+                    0
 
             },
 
@@ -323,74 +461,73 @@ class BattleService {
             {
 
                 party:
-
                 [
 
-                    wildPokemon
+                    preparedWildPokemon
 
-                ]
+                ],
+
+
+                active:
+                    0
 
             },
 
 
-            result:
-                null
+            turn:
+                1,
 
+
+            result:
+                null,
+
+
+            winner:
+                null
 
         };
 
 
-
-
-
-
-
+        //--------------------------------
+        // Store authoritative battle
+        //--------------------------------
 
         this.activeBattles[battleId] =
             battle;
 
 
-
-
-
-
-
-
         //--------------------------------
-        // Initialize Engine
+        // Initialize battle engine
         //--------------------------------
+
+        const initialization =
+            this.initializeBattle(
+                battle
+            );
 
 
         if(
-            this.engine
+            !initialization.success
         )
         {
 
-            this.engine.initializeBattle(
-                battle
-            );
+            delete this.activeBattles[
+                battleId
+            ];
+
+
+            return initialization;
 
         }
 
 
-
-
-
-
-
-
         return {
-
 
             success:true,
 
-
             battleId,
 
-
             battle
-
-
 
         };
 
@@ -398,17 +535,63 @@ class BattleService {
     }
 
 
+    //--------------------------------
+    // Initialize battle
+    //--------------------------------
+
+    initializeBattle(
+        battle
+    )
+    {
 
 
+        if(
+            !battle
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Missing battle"
+
+            };
+
+        }
 
 
+        if(
+            !this.engine
+        )
+        {
 
+            return {
+
+                success:false,
+
+                reason:
+                    "Battle engine unavailable"
+
+            };
+
+        }
+
+
+        return this.engine.initializeBattle(
+
+            battle
+
+        );
+
+
+    }
 
 
     //--------------------------------
     // Get battle
     //--------------------------------
-
 
     getBattle(
         battleId
@@ -430,20 +613,31 @@ class BattleService {
     }
 
 
+    //--------------------------------
+    // Get all battles
+    //--------------------------------
+
+    getBattles()
+    {
 
 
+        return Object.values(
+
+            this.activeBattles
+
+        );
 
 
-
+    }
 
 
     //--------------------------------
-    // Active battles
+    // Get active battles
     //--------------------------------
-
 
     getActiveBattles()
     {
+
 
         return Object.values(
 
@@ -454,7 +648,8 @@ class BattleService {
 
             battle =>
 
-                battle.status === "ACTIVE"
+                battle.status ===
+                "ACTIVE"
 
         );
 
@@ -462,17 +657,9 @@ class BattleService {
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
     // Check active
     //--------------------------------
-
 
     isActive(
         battleId
@@ -482,18 +669,20 @@ class BattleService {
 
         const battle =
             this.getBattle(
+
                 battleId
+
             );
 
 
-
-        return (
+        return !!(
 
             battle
 
             &&
 
-            battle.status === "ACTIVE"
+            battle.status ===
+                "ACTIVE"
 
         );
 
@@ -501,30 +690,23 @@ class BattleService {
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
-    // Complete battle
+    // Process turn
     //--------------------------------
 
-
-    completeBattle(
+    processTurn(
         battleId,
-        result = {}
+        playerMove
     )
     {
 
 
         const battle =
             this.getBattle(
-                battleId
-            );
 
+                battleId
+
+            );
 
 
         if(
@@ -544,99 +726,210 @@ class BattleService {
         }
 
 
-
-
-        battle.status =
-            "COMPLETED";
-
-
-
-        battle.result =
-            result;
-
-
-
-
-
-        //--------------------------------
-        // Give EXP reward
-        //--------------------------------
-
-
         if(
-            result.winner === "PLAYER"
-            &&
-            this.progression
+            battle.status !==
+            "ACTIVE"
         )
         {
 
+            return {
 
-            const defeated =
-                battle.opponent.party[
-                    0
-                ];
+                success:false,
 
+                reason:
+                    "Battle finished"
 
+            };
 
-            const playerPokemon =
-                battle.player.party.filter(
-                
-                    pokemon =>
-                        pokemon.hp > 0
-                
-                )[0];
+        }
 
 
+        if(
+            !this.engine
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Battle engine unavailable"
+
+            };
+
+        }
 
 
-            const exp =
-                this.experience.calculateExp(
+        const result =
+            this.engine.processTurn(
 
-                    defeated,
+                battle,
 
-                    battle.type === "WILD"
-                    ?
-                    "WILD"
-                    :
-                    "TRAINER"
+                playerMove
 
-                );
+            );
 
 
+        if(
+            !result
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Battle turn failed"
+
+            };
+
+        }
 
 
+        //--------------------------------
+        // Battle may have ended inside engine
+        //--------------------------------
 
-            result.exp =
-                this.progression.processProgression(
+        if(
+            battle.status !==
+            "ACTIVE"
+            &&
+            !battle.result
+        )
+        {
 
-                    playerPokemon,
+            this.resolveBattleResult(
+                battle
+            );
 
-                    exp
+        }
 
-                );
+
+        return result;
+
+
+    }
+
+
+    //--------------------------------
+    // Resolve battle result
+    //--------------------------------
+
+    resolveBattleResult(
+        battle
+    )
+    {
+
+
+        if(
+            !battle
+        )
+        {
+
+            return null;
+
+        }
+
+
+        const playerAlive =
+
+            battle.player.party.some(
+
+                pokemon =>
+                    pokemon
+                    &&
+                    pokemon.hp > 0
+
+            );
+
+
+        const opponentAlive =
+
+            battle.opponent.party.some(
+
+                pokemon =>
+                    pokemon
+                    &&
+                    pokemon.hp > 0
+
+            );
+
+
+        if(
+            opponentAlive
+            &&
+            !playerAlive
+        )
+        {
+
+            battle.status =
+                "COMPLETED";
+
+
+            battle.winner =
+                "OPPONENT";
+
+
+            battle.result =
+            {
+
+                winner:
+                    "OPPONENT",
+
+
+                outcome:
+                    "DEFEAT"
+
+            };
 
 
         }
 
 
+        else if(
+            playerAlive
+            &&
+            !opponentAlive
+        )
+        {
+
+            battle.status =
+                "COMPLETED";
 
 
+            battle.winner =
+                "PLAYER";
 
 
+            battle.result =
+            {
+
+                winner:
+                    "PLAYER",
+
+
+                outcome:
+                    "VICTORY"
+
+            };
+
+        }
 
 
         return {
 
-
-            success:true,
-
-
-            battleId,
+            status:
+                battle.status,
 
 
-            result
+            winner:
+                battle.winner,
 
 
+            result:
+                battle.result
 
         };
 
@@ -644,17 +937,212 @@ class BattleService {
     }
 
 
+    //--------------------------------
+    // Complete battle
+    //--------------------------------
+
+    completeBattle(
+        battleId,
+        result = {}
+    )
+    {
 
 
+        const battle =
+            this.getBattle(
+
+                battleId
+
+            );
 
 
+        if(
+            !battle
+        )
+        {
 
+            return {
+
+                success:false,
+
+                reason:
+                    "Unknown battle"
+
+            };
+
+        }
+
+
+        if(
+            battle.status ===
+            "COMPLETED"
+        )
+        {
+
+            return {
+
+                success:true,
+
+                battleId,
+
+                result:
+                    battle.result
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Determine winner
+        //--------------------------------
+
+        const winner =
+            result.winner
+            ||
+            this.resolveBattleResult(
+                battle
+            )?.winner
+            ||
+            null;
+
+
+        battle.status =
+            "COMPLETED";
+
+
+        battle.winner =
+            winner;
+
+
+        battle.result =
+        {
+
+            ...result,
+
+            winner:
+
+
+                winner
+                ||
+                result.winner
+                ||
+                null
+
+        };
+
+
+        //--------------------------------
+        // Battle rewards
+        //--------------------------------
+
+        let rewardResult =
+            null;
+
+
+        if(
+            winner ===
+            "PLAYER"
+            &&
+            this.rewards
+        )
+        {
+
+
+            const defeatedPokemon =
+
+                battle.opponent.party.find(
+
+                    pokemon =>
+
+                        pokemon
+                        &&
+                        pokemon.hp <= 0
+
+                );
+
+
+            const playerPokemon =
+
+                battle.player.party.find(
+
+                    pokemon =>
+
+                        pokemon
+                        &&
+                        pokemon.hp > 0
+
+                );
+
+
+            if(
+                defeatedPokemon
+                &&
+                playerPokemon
+            )
+            {
+
+
+                rewardResult =
+
+                    this.rewards.processBattleRewards(
+
+                        playerPokemon,
+
+
+                        defeatedPokemon,
+
+
+                        battle.trainer
+                        ?
+                        battle.trainer.rewards
+                        :
+                        null,
+
+
+                        battle.player,
+
+
+                        battle.type ===
+                        "WILD"
+
+                        ?
+
+                        "WILD"
+
+                        :
+
+                        "TRAINER"
+
+                    );
+
+
+                battle.result.rewards =
+                    rewardResult;
+
+            }
+
+        }
+
+
+        return {
+
+            success:true,
+
+            battleId,
+
+            result:
+                battle.result
+
+        };
+
+
+    }
 
 
     //--------------------------------
     // Victory
     //--------------------------------
-
 
     winBattle(
         battleId
@@ -683,17 +1171,9 @@ class BattleService {
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
     // Loss
     //--------------------------------
-
 
     loseBattle(
         battleId
@@ -722,17 +1202,9 @@ class BattleService {
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
     // Remove battle
     //--------------------------------
-
 
     clearBattle(
         battleId
@@ -750,8 +1222,9 @@ class BattleService {
         }
 
 
-
-        delete this.activeBattles[battleId];
+        delete this.activeBattles[
+            battleId
+        ];
 
 
         return true;
@@ -760,20 +1233,13 @@ class BattleService {
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
     // Statistics
     //--------------------------------
 
-
     getBattleCount()
     {
+
 
         return Object.keys(
 
@@ -786,11 +1252,7 @@ class BattleService {
     }
 
 
-
 }
-
-
-
 
 
 module.exports =

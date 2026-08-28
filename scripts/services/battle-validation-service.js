@@ -73,7 +73,11 @@ class BattleValidationService {
 
 
 
+
+
+
         const usableMoves =
+
             this.getUsableMoves(
 
                 pokemon
@@ -143,8 +147,27 @@ class BattleValidationService {
         //--------------------------------
 
 
+        const moveConstant =
+
+            typeof move === "string"
+
+            ?
+
+            move
+
+            :
+
+            move.constant;
+
+
+
+
+
+
+
+
         if(
-            move.constant ===
+            moveConstant ===
             this.struggleConstant
         )
         {
@@ -193,6 +216,7 @@ class BattleValidationService {
 
 
         const selectedMove =
+
             this.getKnownMove(
 
                 pokemon,
@@ -254,6 +278,7 @@ class BattleValidationService {
 
 
                 struggle:
+
                     this.hasNoPP(
 
                         pokemon
@@ -275,7 +300,11 @@ class BattleValidationService {
 
         return {
 
-            success:true
+            success:true,
+
+            move:
+
+                selectedMove
 
         };
 
@@ -303,7 +332,63 @@ class BattleValidationService {
 
 
         const moves =
+
             pokemon.moves || [];
+
+
+
+
+
+
+
+
+        if(
+            !move
+        )
+        {
+            return null;
+        }
+
+
+
+
+
+
+
+
+        const moveName =
+
+            typeof move === "string"
+
+            ?
+
+            move
+
+            :
+
+            move.name;
+
+
+
+
+
+
+
+
+        const moveConstant =
+
+            typeof move === "string"
+
+            ?
+
+            move
+
+            :
+
+            move.constant;
+
+
+
 
 
 
@@ -320,12 +405,8 @@ class BattleValidationService {
 
                     &&
 
-                    move.constant
-
-                    &&
-
                     knownMove.constant ===
-                    move.constant
+                    moveConstant
 
                 )
 
@@ -337,12 +418,24 @@ class BattleValidationService {
 
                     &&
 
-                    move.name
+                    (
 
-                    &&
+                        knownMove.name ===
+                        moveName
 
-                    knownMove.name ===
-                    move.name
+                        ||
+
+                        knownMove.name ===
+
+                        String(
+                            moveName
+                        )
+                        .replace(
+                            "MOVE_",
+                            ""
+                        )
+
+                    )
 
                 )
 
@@ -372,7 +465,9 @@ class BattleValidationService {
 
         if(
             !pokemon
+
             ||
+
             !Array.isArray(
                 pokemon.moves
             )

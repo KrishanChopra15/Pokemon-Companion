@@ -2,24 +2,33 @@
 
 > **Backend Architecture Specification**
 >
-> Defines the backend structure, dependency rules, data boundaries, runtime services, and development standards for Pokémon Companion.
+> Defines the backend structure, dependency rules, data boundaries, runtime services, application services, and development standards for Pokémon Companion.
 
 ---
 
 ## 1. Purpose
 
-The Pokémon Companion backend provides a stable interface between:
+The Pokémon Companion backend provides the stable application layer between:
 
 - Generated canonical Pokémon datasets
-- Context-aware application logic
-- Dynamic maps and progression simulation
-- User-owned adventure trackers
-- Cloud synchronization
+- Game Context data
+- Application services
+- Dynamic world and progression systems
+- Trainer-owned data
+- Collection systems
+- Battle systems
+- Community systems
+- Intelligence systems
 - Public and private APIs
+- Cloud synchronization
 
-The backend must remain independent of frontend implementation details and external Pokémon APIs at runtime.
+The backend is responsible for exposing validated Pokémon knowledge, executing context-aware application logic, and safely managing trainer-owned data.
 
-Its primary responsibility is to expose validated Pokémon knowledge and safely manage personal trainer data.
+The backend must remain independent of frontend implementation details.
+
+The backend must also remain independent of live third-party Pokémon APIs during normal application runtime.
+
+External sources may be used during controlled data-generation processes, but runtime canonical information must come from validated generated datasets.
 
 ---
 
@@ -28,100 +37,285 @@ Its primary responsibility is to expose validated Pokémon knowledge and safely 
 This document defines:
 
 - Backend project organization
-- Layer responsibilities
+- Architectural layers
 - Dependency direction
+- Application services
 - Request lifecycle
 - Canonical data access
-- User data access
-- Context resolution
+- Trainer data access
+- Community data boundaries
+- Intelligence data boundaries
+- Game Context resolution
 - Dynamic map services
-- Progression simulation services
-- Tracker isolation
-- Validation and error handling
-- Configuration, logging, performance, and security rules
+- Progression simulation
+- Collection services
+- Battle services
+- Validation
+- API integration
+- Error handling
+- Configuration
+- Logging
+- Performance
+- Security
+- Testing
+- Background processing
+- Extensibility standards
 
-This document does not define the complete API endpoint catalog, canonical database schema, data extraction pipeline, or frontend implementation.
+This document does **not** define:
+
+- The complete public API endpoint catalog
+- The complete canonical database schema
+- Frontend implementation
+- UI component structure
+- Data-source extraction procedures in full detail
+
+Those responsibilities are documented separately.
 
 ---
 
-## 3. Core Principles
+# 3. Architectural Philosophy
 
-### 3.1 Database-First Runtime
+Pokémon Companion follows a **foundation-first, data-first, context-aware architecture**.
 
-The backend consumes generated and validated local datasets.
+The platform is built around four major principles:
 
-It must not rely on live third-party Pokémon APIs for canonical runtime information.
+1. Canonical knowledge must be trustworthy.
+2. Game-specific information must remain context-aware.
+3. Trainer-owned data must remain isolated and mutable.
+4. Higher-level features must consume lower-level services through explicit interfaces.
+
+The architecture therefore separates:
 
 ```text
-Generated Knowledge Datasets
+Canonical Knowledge
         ↓
-Repositories
+Application Services
         ↓
-Services
+Trainer / Collection / Battle / World Features
         ↓
-Controllers
+Intelligence / Community Features
         ↓
-API Responses
+Client Applications
 ```
 
-### 3.2 Canonical Data Is Read-Only
+Infrastructure provides the technical foundation underneath these layers.
 
-Canonical Pokémon knowledge is immutable at runtime.
+---
 
-Backend services may query and transform canonical data but must never modify it.
+# 4. Architectural Layers
 
-Examples of read-only canonical data:
+Pokémon Companion is organized into the following conceptual layers.
 
+```text
+┌─────────────────────────────────────────────┐
+│              Client Applications            │
+├─────────────────────────────────────────────┤
+│       Intelligence / Community Features     │
+├─────────────────────────────────────────────┤
+│ Collection / Battle / World / Trainer       │
+├─────────────────────────────────────────────┤
+│              Knowledge Layer                 │
+├─────────────────────────────────────────────┤
+│            Application Services              │
+├─────────────────────────────────────────────┤
+│                Infrastructure                │
+└─────────────────────────────────────────────┘
+```
+
+The general dependency direction is:
+
+**Infrastructure → Knowledge → Trainer → Collection / Battle / World → Intelligence / Community**
+
+This represents architectural responsibility rather than a requirement that every feature directly import every lower-level module.
+
+Dependencies should pass through stable services and interfaces.
+
+---
+
+## 4.1 Infrastructure Layer
+
+The Infrastructure Layer provides the technical foundation required by every other layer.
+
+Primary responsibilities include:
+
+- Data generation
+- Dataset validation
+- API infrastructure
+- Storage adapters
+- Cloud synchronization
+- Background jobs
+- Monitoring
+- Logging
+- Configuration
+- Runtime infrastructure
+
+Core infrastructure features include:
+
+- Data Generation Pipeline
+- Validation Framework
+- Cloud Synchronization
+- API Platform
+- Monitoring
+
+Infrastructure should provide reusable capabilities rather than feature-specific business logic.
+
+---
+
+## 4.2 Knowledge Layer
+
+The Knowledge Layer provides authoritative Pokémon information.
+
+Examples include:
+
+- Pokémon
 - Species
 - Forms
-- Pokémon
 - Moves
 - Abilities
 - Items
-- Maps
-- Encounters
+- Types
+- Regions
+- Locations
 - Trainers
+- Encounters
 - Events
-- Progression rules
+- Maps
+- Game Contexts
+- Progression Rules
 - Assets
 
-### 3.3 User Data Is Mutable and Isolated
+The Knowledge Layer is the authoritative source for canonical Pokémon information.
 
-User-owned data is mutable but must remain isolated by user and tracker.
-
-Examples:
-
-- Accounts
-- Settings
-- Adventure trackers
-- Teams
-- Pokémon instances
-- Map progress
-- Collection progress
-- Notes
-- Achievements
-
-A tracker may reference canonical records but must never change them.
-
-### 3.4 Context-Aware Results
-
-Every historical result must be evaluated within a Game Context.
-
-A request for FireRed data must not accidentally return LeafGreen, Emerald, or modern-game mechanics.
-
-### 3.5 Service-Oriented Logic
-
-Controllers coordinate HTTP input and output.
-
-Services contain business logic.
-
-Repositories provide data access.
-
-No layer may bypass the layers beneath it.
+Canonical records are read-only during normal application runtime.
 
 ---
 
-## 4. Backend Structure
+## 4.3 Trainer Layer
+
+The Trainer Layer manages trainer-owned information.
+
+Examples include:
+
+- Trainer profiles
+- Adventures
+- Teams
+- Pokémon instances
+- Journal entries
+- Achievements
+- Trainer statistics
+- Preferences
+- Personal progress
+
+Trainer data may reference canonical knowledge.
+
+Trainer data must never modify canonical knowledge.
+
+---
+
+## 4.4 Collection Layer
+
+The Collection Layer manages trainer-owned collection systems.
+
+Examples include:
+
+- Living Dex
+- Regional Pokédex
+- Shiny Collection
+- Form Collection
+- Ribbon Collection
+- Mark Collection
+- Prestige Collection
+- Collection Statistics
+
+Collection records reference canonical Pokémon entities while storing trainer-specific ownership and progress.
+
+---
+
+## 4.5 Battle Layer
+
+The Battle Layer provides battle analysis and simulation capabilities.
+
+Examples include:
+
+- Team Analysis
+- Damage Calculator
+- Battle Simulator
+- Strategy Planner
+- Battle Statistics
+- Battle Recommendations
+
+Battle systems consume canonical battle data and trainer-created teams.
+
+Battle calculations must respect the selected Game Context.
+
+Battle services must not modify canonical Pokémon records.
+
+---
+
+## 4.6 World Layer
+
+The World Layer provides exploration and geographical functionality.
+
+Examples include:
+
+- World Explorer
+- Interactive Maps
+- Route Explorer
+- Encounter Tables
+- Trainer Database
+- Hidden Item Finder
+- Location Information
+- Map Progress
+
+The World Layer combines canonical world information with trainer-specific progression.
+
+---
+
+## 4.7 Intelligence Layer
+
+The Intelligence Layer analyzes existing platform information to provide useful recommendations and interpretations.
+
+Examples include:
+
+- AI Assistant
+- Smart Search
+- Team Recommendations
+- Adventure Guidance
+- Collection Analysis
+- Battle Recommendations
+
+Intelligence services must distinguish between:
+
+- Canonical facts
+- Trainer-owned records
+- Community-generated information
+- AI-generated recommendations
+
+AI output must never silently become canonical Pokémon knowledge.
+
+---
+
+## 4.8 Community Layer
+
+The Community Layer provides optional trainer interaction.
+
+Examples include:
+
+- Friends
+- Shared Teams
+- Shared Collections
+- Leaderboards
+- Community Challenges
+
+Community systems operate on trainer-approved information.
+
+Community-generated data must never become canonical Pokémon knowledge.
+
+---
+
+# 5. Backend Structure
+
+The backend implementation follows a modular structure.
 
 ```text
 backend/
@@ -134,9 +328,10 @@ backend/
 ├── repositories/
 ├── routes/
 ├── services/
-├── utils/
 ├── validators/
+├── utils/
 ├── jobs/
+├── tests/
 ├── app.js
 └── server.js
 ```
@@ -147,25 +342,261 @@ backend/
 | `constants/` | Shared constants, enums, limits, error codes |
 | `controllers/` | HTTP request and response coordination |
 | `middleware/` | Authentication, authorization, logging, error handling |
-| `models/` | Domain models for user-owned backend data |
-| `repositories/` | Canonical and user data access |
+| `models/` | Domain models for mutable trainer-owned data |
+| `repositories/` | Canonical and trainer data access |
 | `routes/` | URL mapping and middleware registration |
-| `services/` | Business logic and cross-repository coordination |
+| `services/` | Application and domain business logic |
+| `validators/` | Request and domain input validation |
 | `utils/` | Stateless reusable helpers |
-| `validators/` | Request parameter, query, and body validation |
-| `jobs/` | Background synchronization, indexing, and maintenance tasks |
+| `jobs/` | Background processing and maintenance |
+| `tests/` | Unit, integration, validation, and architecture tests |
 
 ---
 
-## 5. Application Entry Points
+# 6. Database-First Runtime
 
-### 5.1 `app.js`
+The backend consumes validated generated datasets for canonical Pokémon knowledge.
+
+The normal runtime path is:
+
+```text
+Canonical Sources
+       ↓
+Data Generation Pipeline
+       ↓
+Validation Framework
+       ↓
+Validated Generated Datasets
+       ↓
+Canonical Repositories
+       ↓
+Application Services
+       ↓
+Controllers
+       ↓
+API
+```
+
+The backend must not depend on live third-party Pokémon APIs for normal runtime knowledge.
+
+This provides:
+
+- Deterministic results
+- Offline-capable canonical access
+- Faster requests
+- Better historical accuracy
+- Controlled versioning
+- Reproducible builds
+- Reduced external dependency risk
+
+---
+
+# 7. Canonical Data Is Read-Only
+
+Canonical Pokémon knowledge is immutable during application runtime.
+
+Backend services may:
+
+- Query canonical records
+- Filter canonical records
+- Resolve relationships
+- Calculate derived information
+- Select Game Context-specific records
+- Transform data into API responses
+
+Backend services must not:
+
+- Modify canonical records
+- Add trainer-created Pokémon to canonical datasets
+- Replace official move data with user-created values
+- Alter historical game information through trainer actions
+- Persist trainer changes into generated canonical files
+
+Examples of canonical data include:
+
+```text
+Species
+Forms
+Pokémon
+Moves
+Abilities
+Items
+Locations
+Maps
+Encounters
+Trainers
+Events
+Progression Rules
+Game Contexts
+Assets
+```
+
+---
+
+# 8. Trainer Data Is Mutable and Isolated
+
+Trainer-owned data is mutable.
+
+However, every trainer-owned record must remain scoped to its owner.
+
+Examples include:
+
+```text
+Trainer Profile
+Adventure Tracker
+Team
+Pokémon Instance
+Collection Progress
+Achievement Progress
+Journal Entry
+Map Progress
+Settings
+Statistics
+```
+
+A trainer record may reference canonical entities such as:
+
+```text
+pokemon:charizard
+move:flamethrower
+item:charcoal
+location:celadon-city
+```
+
+but the reference does not grant permission to modify those canonical records.
+
+---
+
+# 9. Data Ownership Boundaries
+
+Pokémon Companion maintains four important data boundaries.
+
+### Canonical Data
+
+Controlled by the platform.
+
+```text
+Species
+Moves
+Abilities
+Items
+Maps
+Locations
+Game Mechanics
+```
+
+### Trainer Data
+
+Owned by an individual trainer.
+
+```text
+Teams
+Collections
+Adventure Progress
+Achievements
+Notes
+Settings
+```
+
+### Community Data
+
+Created from trainer-approved sharing.
+
+```text
+Shared Teams
+Shared Collections
+Ratings
+Feedback
+Challenge Results
+Community Activity
+```
+
+### Intelligence Data
+
+Generated by application intelligence.
+
+```text
+Recommendations
+Suggested Actions
+Priorities
+Explanations
+Search Interpretations
+```
+
+These boundaries must remain distinct.
+
+No community or AI-generated information may silently overwrite trainer or canonical data.
+
+---
+
+# 10. Application Service Layer
+
+The Application Service Layer coordinates use cases across repositories and domain services.
+
+Its responsibilities include:
+
+- Orchestrating multi-step operations
+- Resolving dependencies
+- Enforcing application-level rules
+- Coordinating transactions
+- Combining canonical and trainer data
+- Calling domain services
+- Preparing data for controllers
+
+Application services must not contain HTTP-specific logic.
+
+They should operate independently of Express or any specific web framework.
+
+---
+
+# 11. Service Container
+
+The backend should provide a centralized application service container.
+
+Its purpose is to create and wire shared services and repositories.
+
+Conceptually:
+
+```text
+Application Container
+        │
+        ├── Configuration
+        ├── Repositories
+        ├── Game Context Engine
+        ├── Knowledge Services
+        ├── Trainer Services
+        ├── Collection Services
+        ├── Battle Services
+        ├── World Services
+        ├── Intelligence Services
+        └── Community Services
+```
+
+The service container is responsible for:
+
+- Creating shared dependencies
+- Registering implementations
+- Resolving service dependencies
+- Preventing duplicated service instances
+- Providing controlled dependency injection
+
+The service container must **not** execute feature logic.
+
+It creates and wires services only.
+
+---
+
+# 12. Application Entry Points
+
+## 12.1 `app.js`
 
 `app.js` creates and configures the application.
 
 Responsibilities:
 
 - Create the HTTP application
+- Load application configuration
+- Initialize the service container
 - Register middleware
 - Register route groups
 - Configure centralized error handling
@@ -173,664 +604,750 @@ Responsibilities:
 
 `app.js` must not start the network listener.
 
-### 5.2 `server.js`
+---
 
-`server.js` starts and stops the server.
+## 12.2 `server.js`
+
+`server.js` starts the runtime process.
 
 Responsibilities:
 
 - Load configuration
+- Initialize the application
 - Start the HTTP server
 - Report startup status
 - Handle graceful shutdown
-- Close database and file resources safely
+- Close resources safely
+
+`server.js` should remain thin.
+
+It must not contain business logic.
 
 ---
 
-## 6. Request Lifecycle
+# 13. Core Architectural Rule
 
-Every request follows the same lifecycle.
-
-```mermaid
-flowchart LR
-    Client --> Route
-    Route --> Middleware
-    Middleware --> Validator
-    Validator --> Controller
-    Controller --> Service
-    Service --> Repository
-    Repository --> Data["Generated Dataset or User Store"]
-    Data --> Repository
-    Repository --> Service
-    Service --> Controller
-    Controller --> Response
-```
-
-### 6.1 Lifecycle Rules
-
-1. Routes map URLs to controllers.
-2. Middleware applies reusable request behavior.
-3. Validators reject invalid input before business logic runs.
-4. Controllers invoke services.
-5. Services apply business rules.
-6. Repositories read or write storage.
-7. Controllers return standardized responses.
-8. Centralized middleware handles unexpected errors.
-
----
-
-## 7. Dependency Rules
-
-Dependencies must flow downward.
+The backend must preserve this fundamental flow:
 
 ```text
-Routes
-    ↓
-Controllers
-    ↓
-Services
-    ↓
-Repositories
-    ↓
+HTTP
+ ↓
+Route
+ ↓
+Middleware
+ ↓
+Validator
+ ↓
+Controller
+ ↓
+Application Service
+ ↓
+Domain Service
+ ↓
+Repository
+ ↓
 Storage
 ```
 
-Allowed dependencies:
+No layer should bypass another layer simply because doing so appears convenient.
 
-- Routes may import middleware, validators, and controllers.
-- Controllers may import services and response utilities.
-- Services may import repositories, domain models, and pure utilities.
-- Repositories may import storage adapters and dataset utilities.
-- Validators may import schemas and pure validation utilities.
+This keeps the architecture:
 
-Forbidden dependencies:
-
-- Repositories must not import services or controllers.
-- Services must not import controllers or routes.
-- Validators must not execute business logic.
-- Canonical repositories must not import user services.
-- User repositories must not modify canonical datasets.
-- Circular dependencies are prohibited.
+- Testable
+- Replaceable
+- Predictable
+- Maintainable
+- Scalable
 
 ---
 
-## 8. Repository Architecture
+## 14. Request Lifecycle
 
-Repositories hide storage details from services.
+Every API request follows a predictable lifecycle.
 
-### 8.1 Canonical Repositories
+```text
+Client
+  ↓
+Route
+  ↓
+Middleware
+  ↓
+Validator
+  ↓
+Controller
+  ↓
+Application Service
+  ↓
+Domain Service
+  ↓
+Repository
+  ↓
+Generated Dataset / User Store
+```
 
-Canonical repositories provide read-only access to generated knowledge datasets.
+The response follows the reverse direction:
+
+```text
+Generated Dataset / User Store
+  ↓
+Repository
+  ↓
+Domain Service
+  ↓
+Application Service
+  ↓
+Controller
+  ↓
+API Response
+  ↓
+Client
+```
+
+---
+
+## 14.1 Lifecycle Rules
+
+1. Routes map URLs to controllers.
+2. Middleware applies reusable request behavior.
+3. Validators reject invalid input before business logic executes.
+4. Controllers translate HTTP requests into application-service calls.
+5. Application services coordinate the requested use case.
+6. Domain services execute feature-specific business rules.
+7. Repositories access canonical or trainer-owned data.
+8. Controllers convert service results into standardized responses.
+9. Centralized error middleware handles unexpected failures.
+10. No controller should directly access storage.
+
+---
+
+# 15. Dependency Rules
+
+Dependencies must flow toward lower-level infrastructure.
+
+```text
+Routes
+   ↓
+Controllers
+   ↓
+Application Services
+   ↓
+Domain Services
+   ↓
+Repositories
+   ↓
+Storage Adapters
+```
+
+The dependency direction must remain explicit.
+
+---
+
+## 15.1 Allowed Dependencies
+
+### Routes
+
+Routes may import:
+
+- Controllers
+- Middleware
+- Validators
+- Route configuration
+
+Routes must not contain business logic.
+
+---
+
+### Controllers
+
+Controllers may import:
+
+- Application services
+- Request/response utilities
+- Error utilities
+
+Controllers must not directly access:
+
+- Databases
+- Generated datasets
+- Storage adapters
+- External APIs
+
+---
+
+### Application Services
+
+Application services may import:
+
+- Domain services
+- Repositories
+- Validators where appropriate
+- Domain models
+- Pure utilities
+
+Application services must remain independent of HTTP implementation details.
+
+---
+
+### Domain Services
+
+Domain services may import:
+
+- Repositories
+- Domain models
+- Constants
+- Pure utilities
+- Other approved domain services
+
+Domain services must not import:
+
+- Controllers
+- Routes
+- HTTP request objects
+- HTTP response objects
+
+---
+
+### Repositories
+
+Repositories may import:
+
+- Storage adapters
+- Dataset readers
+- Persistence utilities
+- Serialization utilities
+
+Repositories must not import:
+
+- Controllers
+- Routes
+- Application services
+
+---
+
+### Validators
+
+Validators may import:
+
+- Schemas
+- Constants
+- Pure validation utilities
+
+Validators must not execute business operations or modify persistent state.
+
+---
+
+## 15.2 Forbidden Dependencies
+
+The following are prohibited:
+
+```text
+Repository → Service
+Repository → Controller
+Repository → Route
+
+Service → Controller
+Service → Route
+
+Validator → Controller
+Validator → Service Logic
+
+Canonical Repository → Trainer Service
+Trainer Repository → Canonical Mutation
+
+Controller → Database
+Controller → Generated Dataset
+```
+
+Circular dependencies are prohibited.
+
+---
+
+# 16. Repository Architecture
+
+Repositories hide storage implementation details from services.
+
+A service should request data through a repository rather than knowing whether the data comes from:
+
+- JSON
+- SQLite
+- PostgreSQL
+- IndexedDB
+- Object storage
+- Another supported storage provider
+
+---
+
+# 16.1 Canonical Repositories
+
+Canonical repositories provide read-only access to generated Pokémon knowledge.
 
 Examples:
 
 ```text
 species-repository
 pokemon-repository
+form-repository
 move-repository
 ability-repository
 item-repository
+type-repository
 location-repository
 map-repository
 encounter-repository
 trainer-repository
 event-repository
 progression-rule-repository
+game-context-repository
 asset-repository
 ```
 
 Responsibilities:
 
 - Load generated datasets
-- Build and reuse lookup maps
-- Resolve canonical identifiers
-- Resolve context-specific records
+- Build lookup maps
+- Resolve stable identifiers
+- Resolve Game Context-specific records
+- Resolve relationships
 - Return stable domain objects
-- Avoid exposing storage paths to services
+- Hide dataset paths
+- Prevent runtime mutation
 
-### 8.2 User Repositories
+---
 
-User repositories manage mutable personal data.
+# 16.2 Canonical Repository Rules
+
+Canonical repositories must:
+
+- Treat generated data as immutable
+- Avoid writing to generated datasets
+- Validate requested identifiers
+- Resolve the requested Game Context
+- Return predictable results
+- Avoid exposing raw storage structures unnecessarily
+
+For example:
+
+```text
+PokemonService
+      ↓
+PokemonRepository
+      ↓
+Generated Pokemon Dataset
+```
+
+The service should not know whether the repository internally uses JSON files, SQLite, or another implementation.
+
+---
+
+# 16.3 User Repositories
+
+User repositories manage mutable trainer-owned data.
 
 Examples:
 
 ```text
 user-repository
+profile-repository
 tracker-repository
 tracker-state-repository
 pokemon-instance-repository
+team-repository
 collection-repository
 achievement-repository
+journal-repository
 sync-repository
 ```
 
 Responsibilities:
 
 - Enforce user ownership
-- Enforce tracker isolation
-- Persist state changes
-- Return user-scoped records only
-- Support synchronization metadata
-
-### 8.3 Storage Adapters
-
-Repositories should depend on storage adapters rather than a fixed database technology.
-
-Possible adapters include:
-
-- JSON datasets for canonical offline data
-- SQLite for local user data
-- PostgreSQL for cloud user data
-- Object storage for assets
-- IndexedDB for browser-local persistence
-
-Storage may evolve without forcing service or controller rewrites.
+- Enforce tracker ownership
+- Persist trainer changes
+- Return user-scoped records
+- Maintain synchronization metadata
+- Prevent cross-trainer access
 
 ---
 
-## 9. Service Architecture
+# 16.4 Community Repositories
 
-Services contain backend business logic.
+Community repositories manage approved shared information.
 
-### 9.1 Knowledge Services
+Examples:
+
+```text
+friend-repository
+shared-team-repository
+shared-collection-repository
+leaderboard-repository
+challenge-repository
+community-feedback-repository
+```
+
+Community repositories must respect:
+
+- Trainer privacy
+- Sharing permissions
+- Ownership
+- Visibility rules
+- Attribution
+- Game Context
+
+Community repositories must never modify the original private trainer record merely because a public representation was created.
+
+---
+
+# 16.5 Storage Adapters
+
+Repositories should use storage adapters rather than binding the application to a single database technology.
+
+Possible storage implementations include:
+
+```text
+Canonical:
+JSON
+SQLite
+Generated Binary / Indexed Data
+
+Trainer:
+SQLite
+PostgreSQL
+Other supported relational storage
+
+Local Client:
+IndexedDB
+Local Storage where appropriate
+
+Assets:
+Object Storage
+Filesystem
+CDN-backed storage
+```
+
+The storage implementation may evolve without requiring service or controller rewrites.
+
+---
+
+# 17. Repository Result Rules
+
+Repositories should return domain-oriented results rather than leaking raw storage structures.
+
+For example:
+
+```javascript
+const pokemon = await pokemonRepository.findById(
+    pokemonId,
+    gameContext
+);
+```
+
+The service should receive a predictable domain representation.
+
+It should not need to know:
+
+```text
+/data/generated/pokemon.json
+/database/pokemon.db
+/storage/pokemon/table
+```
+
+Storage paths and persistence details belong inside the repository layer.
+
+---
+
+# 18. Application Service Architecture
+
+Application services represent complete application use cases.
+
+Examples:
+
+```text
+GetPokemonDetails
+CreateTracker
+UpdateTrackerProgress
+AnalyzeTeam
+CalculateDamage
+GetMapState
+EvaluateProgression
+UpdateCollection
+ShareCollection
+SubmitChallengeProgress
+```
+
+Application services coordinate multiple components when necessary.
+
+For example:
+
+```text
+Get Dynamic Map State
+        ↓
+Game Context Service
+        ↓
+Map Repository
+        ↓
+Map State Service
+        ↓
+Tracker Repository
+        ↓
+Reachability Service
+        ↓
+Combined Map Result
+```
+
+---
+
+# 19. Service Architecture
+
+Services contain business logic and are organized according to platform responsibilities.
+
+---
+
+## 19.1 Knowledge Services
 
 | Service | Responsibilities |
 |---|---|
-| Pokémon Service | Pokémon, species, forms, abilities, moves, and evolutions |
-| Search Service | Search, autocomplete, aliases, filters, and ranking |
+| Pokémon Service | Pokémon, species, forms, abilities, moves, and evolution relationships |
+| Search Service | Search, aliases, autocomplete, filtering, and ranking |
+| Game Context Service | Resolve supported games, versions, rulesets, and context metadata |
 | World Service | Regions, locations, maps, areas, and connections |
 | Encounter Service | Wild encounters, gifts, fishing, trades, and version differences |
-| Trainer Service | Trainers, parties, rematches, and battle metadata |
-| Event Service | Story events, NPC events, items, gifts, and static encounters |
-| Asset Service | Context-aware sprite, tile, model, and icon resolution |
+| Trainer Knowledge Service | NPC trainers, parties, rematches, and battle metadata |
+| Event Service | Story events, NPC events, gifts, static encounters, and event requirements |
+| Asset Service | Context-aware sprites, tiles, models, icons, and other assets |
 
-### 9.2 Dynamic Map Services
-
-| Service | Responsibilities |
-|---|---|
-| Map Service | Load maps, tiles, layers, objects, and connections |
-| Map State Service | Merge canonical map objects with tracker progress |
-| Map Interaction Service | Resolve object interaction state and valid tracker actions |
-| Reachability Service | Calculate accessible maps, connections, objects, and areas |
-| Exploration Service | Track discovery, item collection, trainer completion, and encounter discovery |
-
-### 9.3 Progression Services
-
-| Service | Responsibilities |
-|---|---|
-| Progression Service | Evaluate current progression state within a game context |
-| Requirement Service | Resolve badges, HMs, items, events, and story requirements |
-| Objective Service | Return available objectives and blocked objectives |
-| Simulation Service | Evaluate hypothetical progress without changing tracker state |
-| Developer Mode Service | Apply explicitly enabled glitch and debug rules |
-
-### 9.4 Adventure Services
-
-| Service | Responsibilities |
-|---|---|
-| Tracker Service | Create, update, archive, clone, and select trackers |
-| Adventure State Service | Manage badges, field moves, location, key items, and story flags |
-| Team Service | Manage party and box Pokémon instances |
-| Collection Service | Manage seen, caught, owned, shiny, and item collection states |
-| Achievement Service | Evaluate tracker achievement progress |
-| Sync Service | Queue, merge, upload, and reconcile user changes |
+Knowledge services operate primarily on canonical information.
 
 ---
 
-## 10. Game Context Resolution
+# 19.2 Trainer Services
 
-All canonical requests must resolve a Game Context before returning context-sensitive data.
+| Service | Responsibilities |
+|---|---|
+| Trainer Service | Trainer profile and account-related information |
+| Tracker Service | Create, update, archive, clone, and select trackers |
+| Adventure State Service | Badges, field moves, key items, story flags, and location |
+| Team Service | Party and box Pokémon instances |
+| Journal Service | Trainer-owned journal entries and notes |
+| Achievement Service | Achievement evaluation and progress |
+| Trainer Statistics Service | Trainer-owned statistics and progress summaries |
+| Preference Service | Trainer-specific application preferences |
+
+---
+
+# 19.3 Collection Services
+
+| Service | Responsibilities |
+|---|---|
+| Collection Service | General collection ownership and progress |
+| Living Dex Service | Living Dex state |
+| Regional Dex Service | Regional Pokédex progress |
+| Shiny Collection Service | Shiny ownership and progress |
+| Form Collection Service | Form ownership and progress |
+| Ribbon Collection Service | Ribbon collection |
+| Mark Collection Service | Mark collection |
+| Prestige Collection Service | Prestige collection |
+| Collection Statistics Service | Completion percentages and collection analytics |
+
+Collection services must always distinguish between:
+
+```text
+Canonical Pokémon Definition
+        +
+Trainer Collection State
+```
+
+---
+
+# 19.4 Battle Services
+
+| Service | Responsibilities |
+|---|---|
+| Team Analysis Service | Team weaknesses, strengths, coverage, and recommendations |
+| Damage Calculation Service | Context-aware damage calculations |
+| Battle Simulation Service | Simulated battle interactions |
+| Strategy Service | Strategy planning and battle preparation |
+| Battle Statistics Service | Trainer-owned battle statistics |
+| Battle Recommendation Service | Context-aware battle recommendations |
+
+Battle calculations must use the appropriate:
+
+- Generation
+- Version
+- Move mechanics
+- Ability mechanics
+- Type interactions
+- Stat rules
+- Damage rules
+
+The service must never silently use modern mechanics for historical games.
+
+---
+
+# 19.5 World Services
+
+| Service | Responsibilities |
+|---|---|
+| World Service | Regions, locations, maps, and connections |
+| Map Service | Map geometry, layers, objects, and connections |
+| Map State Service | Combine canonical map state with tracker progress |
+| Map Interaction Service | Validate map object interactions |
+| Reachability Service | Calculate accessible areas and connections |
+| Exploration Service | Discovery, item collection, trainer completion, and encounter discovery |
+| Encounter Service | Resolve context-specific encounters |
+| Hidden Item Service | Hidden item locations and tracker progress |
+
+---
+
+# 19.6 Intelligence Services
+
+| Service | Responsibilities |
+|---|---|
+| AI Assistant Service | Natural-language trainer assistance |
+| Smart Search Service | Intelligent search interpretation |
+| Team Recommendation Service | Team recommendations |
+| Adventure Guidance Service | Progression guidance |
+| Collection Analysis Service | Collection analysis |
+| Battle Recommendation Service | Battle recommendations |
+
+Intelligence services must consume authoritative data through approved services.
+
+They must not create a second canonical Pokémon database.
+
+---
+
+# 19.7 Community Services
+
+| Service | Responsibilities |
+|---|---|
+| Friends Service | Friend relationships and requests |
+| Shared Team Service | Publishing and viewing shared teams |
+| Shared Collection Service | Publishing and viewing shared collections |
+| Leaderboard Service | Ranking and leaderboard calculations |
+| Community Challenge Service | Challenge definitions and participation |
+| Community Feedback Service | Likes, ratings, feedback, and moderation-related workflows |
+
+Community services must enforce privacy and visibility rules before exposing trainer-owned information.
+
+---
+
+# 20. Game Context Engine
+
+The Game Context Engine is a central backend capability.
+
+It ensures that historical and game-specific information is resolved correctly.
+
+The general flow is:
 
 ```text
 Request
-    ↓
-Version or Context Identifier
-    ↓
-Context Resolver
-    ↓
-Generation, Version Group, Version, Rule Set
-    ↓
+   ↓
+Context Identifier
+   ↓
+Game Context Engine
+   ↓
+Generation
+Version Group
+Version
+Ruleset
+Mechanics
+Availability
+Progression Rules
+   ↓
 Context-Aware Repository Query
-    ↓
+   ↓
 Validated Result
 ```
 
-Example:
+A Game Context should be treated as a first-class domain concept.
+
+---
+
+# 20.1 Context Resolution
+
+A context may define:
+
+- Game
+- Version
+- Generation
+- Version Group
+- Regional Pokédex
+- Available Pokémon
+- Available Moves
+- Available Abilities
+- Available Items
+- Forms
+- Locations
+- Encounters
+- Trainers
+- Mechanics
+- Progression Rules
+- Assets
+
+---
+
+# 20.2 Context Validation
+
+The Game Context Engine must reject:
+
+- Unknown contexts
+- Unsupported games
+- Invalid context identifiers
+- Incompatible entity combinations
+- Unsupported historical data requests
+
+The engine must not silently fall back to another game.
+
+---
+
+# 20.3 Context-Aware Example
 
 ```text
 GET /contexts/firered/locations/celadon-city
+```
 
-Context Resolver:
+The backend should resolve:
+
+```text
 context:firered
-
-Result:
-- FireRed map geometry
-- FireRed encounters
-- FireRed events
-- FireRed trainer data
-- FireRed progression requirements
+        ↓
+Generation 3
+        ↓
+FireRed version
+        ↓
+FireRed map
+        ↓
+FireRed encounters
+        ↓
+FireRed trainers
+        ↓
+FireRed events
+        ↓
+FireRed progression requirements
 ```
 
-Context resolution must reject unknown or unsupported contexts.
+The result must not accidentally include LeafGreen-specific or modern-game information.
 
 ---
 
-## 11. Dynamic Map Backend Behavior
+# 21. Context Propagation
 
-The backend provides map data and interaction state. The frontend is responsible for visual rendering.
-
-### 11.1 Map Response Composition
-
-A dynamic-map response combines:
-
-1. Canonical map geometry
-2. Canonical map objects
-3. Game-context rules
-4. Tracker-specific progress
-5. Current reachability evaluation
-
-```json
-{
-    "mapId": "map:firered-celadon-city",
-    "gameContextId": "context:firered",
-    "trackerId": "tracker:firered-100",
-    "layers": [],
-    "objects": [],
-    "accessibleConnections": [],
-    "blockedConnections": [],
-    "completion": {
-        "itemsCollected": 3,
-        "itemsTotal": 7,
-        "trainersDefeated": 5,
-        "trainersTotal": 8
-    }
-}
-```
-
-### 11.2 Map Object Actions
-
-The backend validates tracker actions against the selected map object.
-
-Examples:
-
-- Mark an item as collected
-- Mark a hidden item as discovered
-- Mark a trainer as defeated
-- Mark an NPC interaction as completed
-- Mark a Pokémon as seen or caught
-- Mark a static encounter as completed
-
-The backend must confirm:
-
-- The user owns the tracker.
-- The map object exists in the tracker's game context.
-- The requested state transition is valid.
-- The action does not affect another tracker.
-
----
-
-## 12. Progression Simulation Backend Behavior
-
-The Progression Service must use a graph of explicit requirements rather than a fixed badge sequence.
-
-### 12.1 Inputs
-
-- Game Context
-- Tracker badge state
-- Field move state
-- Key items
-- Story flags
-- Completed events
-- Cleared obstacles
-- Enabled developer options
-- Optional hypothetical simulation state
-
-### 12.2 Outputs
-
-- Accessible locations
-- Accessible map connections
-- Available events
-- Available trainers
-- Available items
-- Available encounters
-- Available objectives
-- Blocked objectives and their requirements
-
-```json
-{
-    "gameContextId": "context:firered",
-    "mode": "normal",
-    "accessibleLocationIds": [],
-    "availableObjectiveIds": [],
-    "blockedObjectives": [
-        {
-            "objectiveId": "objective:firered-enter-saffron",
-            "missingRequirements": [
-                "item:tea"
-            ]
-        }
-    ]
-}
-```
-
-### 12.3 Simulation Mode
-
-Simulation Mode accepts hypothetical state changes but must never persist them.
+Once a request establishes a Game Context, that context must remain available throughout the operation.
 
 ```text
-Saved Tracker State
-        ≠
-Simulation State
+Controller
+   ↓
+Application Service
+   ↓
+Game Context Engine
+   ↓
+Domain Service
+   ↓
+Repository
 ```
 
-A simulation request may ask:
+A downstream repository must not silently select a different context.
 
-> If this tracker had the Cascade Badge, Cut, and Tea, what would become reachable?
-
-The result is read-only unless the user separately applies changes to the tracker.
+Where practical, context information should be represented explicitly in service and repository method parameters.
 
 ---
 
-## 13. Normal Mode and Developer Mode
-
-### 13.1 Normal Mode
-
-Normal Mode is the default progression ruleset.
-
-It supports:
-
-- Intended gameplay
-- Context-accurate mechanics
-- Legitimate alternate routes
-- Optional locations
-- Non-glitch sequence breaks
-
-### 13.2 Developer Mode
-
-Developer Mode is opt-in and supports:
-
-- Verified glitches
-- Debug states
-- Test field moves
-- Forced events
-- Full map preview
-- Advanced route analysis
-
-Developer Mode must never silently alter Normal Mode results.
-
-Every developer-only result should identify the enabled glitch or override that made it available.
-
----
-
-## 14. User Data and Tracker Isolation
-
-Every write operation must enforce both user ownership and tracker ownership.
-
-```text
-Authenticated User
-        ↓
-Requested Tracker
-        ↓
-Ownership Validation
-        ↓
-Tracker-Scoped Service
-        ↓
-Tracker-Scoped Repository Write
-```
-
-Required rules:
-
-1. A tracker belongs to exactly one user.
-2. Every adventure-state record belongs to exactly one tracker.
-3. Every Pokémon instance belongs to exactly one tracker.
-4. A tracker may use only one selected game context at a time.
-5. One tracker cannot inherit progress from another tracker automatically.
-6. A FireRed tracker and a LeafGreen tracker are always independent.
-7. Two FireRed trackers are always independent.
-
----
-
-## 15. Validation Flow
-
-Incoming requests are validated before reaching services.
-
-### 15.1 Request Validation
-
-Validators check:
-
-- Route parameters
-- Context identifiers
-- Entity identifiers
-- Pagination
-- Filters
-- Sort fields
-- Request body shape
-- User ownership
-- Tracker ownership
-- Allowed state transitions
-
-### 15.2 Domain Validation
-
-Services validate:
-
-- Context compatibility
-- Requirement satisfaction
-- Tracker mode restrictions
-- Map object availability
-- Event transitions
-- Duplicate collection actions
-- Developer-mode permissions
-
-### 15.3 Repository Validation
-
-Repositories validate:
-
-- Record existence
-- Storage integrity
-- Identifier consistency
-- Context reference resolution
-- User and tracker scope
-
----
-
-## 16. Response Standards
-
-Successful responses use a consistent structure.
-
-```json
-{
-    "success": true,
-    "data": {},
-    "meta": {}
-}
-```
-
-Error responses use a consistent structure.
-
-```json
-{
-    "success": false,
-    "error": {
-        "code": "RESOURCE_NOT_FOUND",
-        "message": "The requested resource does not exist."
-    }
-}
-```
-
-Responses may include metadata for:
-
-- Pagination
-- Context
-- Build version
-- Dataset version
-- Warnings
-- Simulation mode
-- Developer-mode status
-
----
-
-## 17. Error Handling
-
-Errors must be handled centrally through error middleware.
-
-Error responses must:
-
-- Use appropriate HTTP status codes
-- Avoid exposing internal implementation details
-- Include a stable error code
-- Include a meaningful user-safe message
-- Be logged with diagnostic context
-- Support future localization
-
-Typical error categories:
-
-```text
-VALIDATION_ERROR
-AUTHENTICATION_REQUIRED
-AUTHORIZATION_DENIED
-RESOURCE_NOT_FOUND
-CONTEXT_NOT_SUPPORTED
-TRACKER_NOT_FOUND
-TRACKER_ACCESS_DENIED
-INVALID_STATE_TRANSITION
-DATASET_UNAVAILABLE
-INTERNAL_ERROR
-```
-
----
-
-## 18. Configuration Management
-
-Configuration must remain centralized.
-
-Examples:
-
-- HTTP port
-- Environment mode
-- Dataset paths
-- User database connection
-- Asset storage paths
-- API version
-- Sync settings
-- Authentication settings
-- Rate limits
-- Feature flags
-- Developer-mode availability
-
-Configuration must not be duplicated across controllers, services, or repositories.
-
-Secrets must never be committed to source control.
-
----
-
-## 19. Logging and Observability
-
-Logging must be centralized and structured.
-
-Log categories:
-
-- `info`
-- `warning`
-- `error`
-- `debug`
-- `audit`
-
-Important backend events include:
-
-- Server startup and shutdown
-- Dataset version loaded
-- Validation failures
-- Authentication failures
-- Tracker writes
-- Synchronization conflicts
-- Unexpected errors
-- Background job failures
-
-User-sensitive information must not be written to logs unnecessarily.
-
----
-
-## 20. Performance Principles
-
-The backend should provide predictable performance without weakening historical correctness.
-
-Recommendations:
-
-- Build lookup maps once and reuse them.
-- Avoid repeated dataset loading.
-- Use repository-level caching for immutable canonical data.
-- Load only the required context-specific records.
-- Pre-generate expensive relationship and search indexes.
-- Cache progression calculations only when tracker state is included in the cache key.
-- Avoid exposing unnecessary map layers or assets by default.
-- Paginate large lists.
-
-Performance optimizations must preserve context correctness and tracker isolation.
-
----
-
-## 21. Security Principles
-
-The backend must use secure defaults.
-
-Required practices:
-
-- Authenticate all private user-data requests.
-- Authorize every tracker mutation.
-- Validate all input.
-- Sanitize untrusted text.
-- Rate-limit public endpoints where appropriate.
-- Use secure HTTP headers.
-- Store secrets only in environment configuration.
-- Log security-relevant events.
-- Keep canonical datasets read-only at runtime.
-- Support recoverable deletion for user data where practical.
-
----
-
-## 22. Future Expansion
-
-The backend architecture supports future additions through new services, repositories, and storage adapters.
-
-Planned capabilities include:
-
-- Account authentication
-- Cloud synchronization
-- WebSocket updates
-- Background jobs
-- Notifications
-- Save-file imports
-- OCR-assisted progress detection
-- AI companion services
-- Community routes
-- Shared challenges
-- Advanced analytics
-- Multiple local and cloud storage providers
-
-New features should extend the existing dependency flow rather than bypassing it.
-
----
-
-## 23. Final Architecture Summary
-
-```text
-Generated Canonical Datasets
-            ↓
-      Canonical Repositories
-            ↓
-       Context-Aware Services
-            ↓
-Controllers and API Responses
-            ↓
-Frontend Applications
-
-User Database
-            ↓
-User Repositories
-            ↓
-Tracker and Sync Services
-            ↓
-Authenticated User APIs
-```
-
-The backend exists to expose historically accurate Pokémon knowledge, dynamic exploration data, and isolated trainer progress through a predictable, modular, and secure architecture.

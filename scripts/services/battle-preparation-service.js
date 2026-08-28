@@ -33,7 +33,8 @@ class BattlePreparationService {
         trainerDatabaseService = null,
         pokemonDatabaseService = null,
         statCalculationService = null,
-        pokemonStatProviderService = null
+        pokemonStatProviderService = null,
+        moveDatabaseService = null
     )
     {
 
@@ -52,6 +53,9 @@ class BattlePreparationService {
 
         this.statProvider =
             pokemonStatProviderService;
+
+        this.moves =
+            moveDatabaseService;
 
 
     }
@@ -403,6 +407,8 @@ class BattlePreparationService {
 
 
 
+
+
         if(
             Array.isArray(
                 playerState.pokemon
@@ -414,6 +420,8 @@ class BattlePreparationService {
 
 
 
+
+
         if(
             Array.isArray(
                 playerState.team
@@ -422,6 +430,21 @@ class BattlePreparationService {
         {
             return playerState.team;
         }
+
+
+
+
+
+        if(
+            Array.isArray(
+                playerState.party
+            )
+        )
+        {
+            return playerState.party;
+        }
+
+
 
 
 
@@ -898,108 +921,230 @@ class BattlePreparationService {
         //--------------------------------
 
 
-        prepared.moves =
+        let moveSource = [];
 
+
+
+
+        //--------------------------------
+        // Use supplied moves
+        //--------------------------------
+
+
+        if(
             Array.isArray(
                 pokemon.moves
             )
+            &&
+            pokemon.moves.length > 0
+        )
+        {
+        
+            moveSource =
+                pokemon.moves;
+        
+        }
 
-            ?
 
-            pokemon.moves.map(
 
+
+
+
+        //--------------------------------
+        // Load level-up moves
+        //--------------------------------
+
+
+        else if(
+            basePokemon
+            &&
+            Array.isArray(
+                basePokemon.learnset
+            )
+        )
+        {
+        
+            moveSource =
+        
+                basePokemon.learnset
+        
+                    .filter(
+                    
+                        entry =>
+                        
+                            entry.level <= level
+
+                    )
+                
+                    .slice(-4)
+                
+                    .map(
+                    
+                        entry =>
+                        
+                            entry.move
+
+                    );
+                
+        }
+
+
+
+
+
+
+        prepared.moves =
+
+            moveSource.map(
+            
                 move =>
+                {
+                
 
-                ({
-
-                    name:
-
-                        move.name
-
-                        ||
-
-                        move.move
-
-                        ||
-
-                        move.constant,
-
-
-
-                    constant:
+                    const constant =
 
                         move.constant
 
                         ||
 
-                        move.move
+                        move.move?.constant
 
                         ||
 
-                        move.name,
-
-
-
-                    type:
-
-                        move.type
-
-                        ||
-
-                        "NORMAL",
-
-
-
-                    category:
-
-                        move.category
-
-                        ||
-
-                        "PHYSICAL",
-
-
-
-                    power:
-
-                        move.power
-
-                        ||
-
-                        0,
-
-
-
-                    accuracy:
-
-                        move.accuracy
-
-                        ||
-
-                        100,
-
-
-
-                    pp:
-
-                        move.pp
-
-                        ??
-
-                        move.maxPP
-
-                        ??
-
-                        10
-
-
-                })
-
-            )
-
-            :
-
-            [];
+                        (
+                            move.name
+                        
+                            ?
+                        
+                            (
+                                move.name.startsWith("MOVE_")
+                            
+                                ?
+                            
+                                move.name
+                            
+                                :
+                            
+                                `MOVE_${move.name.toUpperCase()}`
+                            )
+                        
+                            :
+                        
+                            null
+                        );
+                
+                
+                
+                    const databaseMove =
+                
+                        this.moves
+                
+                        &&
+                
+                        constant
+                
+                        ?
+                
+                        this.moves.getMoveByConstant(
+                        
+                            constant
+                        
+                        )
+                    
+                        :
+                    
+                        null;
+                    
+                    
+                    
+                    
+                    
+                    return {
+                    
+                    
+                        name:
+                                        
+                            databaseMove?.name
+                                        
+                            ||
+                                        
+                            move.name
+                                        
+                            ||
+                                        
+                            constant
+                                        
+                            ||
+                                        
+                            "UNKNOWN",
+                    
+                    
+                    
+                    
+                        constant:
+                    
+                    
+                    
+                            constant,
+                    
+                    
+                    
+                    
+                        type:
+                    
+                            databaseMove?.type
+                    
+                            ||
+                    
+                            "NORMAL",
+                    
+                    
+                    
+                    
+                        category:
+                            databaseMove?.category
+                            || "PHYSICAL",
+                    
+                    
+                    
+                    
+                        power:
+                    
+                            databaseMove?.power
+                    
+                            ||
+                    
+                            0,
+                    
+                    
+                    
+                    
+                        accuracy:
+                    
+                            databaseMove?.accuracy
+                    
+                            ||
+                    
+                            100,
+                    
+                    
+                    
+                    
+                        pp:
+                    
+                            databaseMove?.pp
+                    
+                            ||
+                    
+                            20
+                    
+                    
+                    };
+                
+                
+                }
+            
+            );
 
 
 
@@ -1046,6 +1191,65 @@ class BattlePreparationService {
 
 
     }
+
+
+
+
+
+
+
+
+
+//--------------------------------
+// Resolve Gen 3 move category
+//--------------------------------
+
+getMoveCategory(
+    type
+)
+{
+
+    const specialTypes =
+
+    [
+        "FIRE",
+        "WATER",
+        "GRASS",
+        "ELECTRIC",
+        "ICE",
+        "PSYCHIC",
+        "DRAGON",
+        "DARK"
+    ];
+
+
+
+    if(
+        !type
+    )
+    {
+        return "PHYSICAL";
+    }
+
+
+
+    return specialTypes.includes(
+
+        String(type)
+        .toUpperCase()
+
+    )
+
+    ?
+
+    "SPECIAL"
+
+    :
+
+    "PHYSICAL";
+
+
+}
 
 
 

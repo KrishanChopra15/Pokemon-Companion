@@ -910,15 +910,15 @@ class DamageCalculationService {
 
 
         const stage =
-
+            
             special
-
+            
             ?
-
-            pokemon.statStages?.specialAttack
-
+            
+            pokemon.statStages?.spAttack
+            
             :
-
+            
             pokemon.statStages?.attack;
 
 
@@ -987,7 +987,7 @@ class DamageCalculationService {
 
             ?
 
-            pokemon.statStages?.specialDefense
+            pokemon.statStages?.spDefense
 
             :
 

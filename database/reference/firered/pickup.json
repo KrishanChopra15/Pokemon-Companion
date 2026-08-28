@@ -1,0 +1,118 @@
+{
+    "game": "firered",
+    "pokemonUsers": [
+        "SPECIES_ZIGZAGOON",
+        "SPECIES_LINOONE",
+        "SPECIES_PHANPY",
+        "SPECIES_MEOWTH",
+        "SPECIES_TEDDIURSA",
+        "SPECIES_AIPOM"
+    ],
+    "lootPool": [
+        {
+            "itemConstant": "ITEM_ORAN_BERRY",
+            "threshold": 15,
+            "minRoll": 0,
+            "maxRoll": 14,
+            "probability": 15
+        },
+        {
+            "itemConstant": "ITEM_CHERI_BERRY",
+            "threshold": 25,
+            "minRoll": 15,
+            "maxRoll": 24,
+            "probability": 10
+        },
+        {
+            "itemConstant": "ITEM_CHESTO_BERRY",
+            "threshold": 35,
+            "minRoll": 25,
+            "maxRoll": 34,
+            "probability": 10
+        },
+        {
+            "itemConstant": "ITEM_PECHA_BERRY",
+            "threshold": 45,
+            "minRoll": 35,
+            "maxRoll": 44,
+            "probability": 10
+        },
+        {
+            "itemConstant": "ITEM_RAWST_BERRY",
+            "threshold": 55,
+            "minRoll": 45,
+            "maxRoll": 54,
+            "probability": 10
+        },
+        {
+            "itemConstant": "ITEM_ASPEAR_BERRY",
+            "threshold": 65,
+            "minRoll": 55,
+            "maxRoll": 64,
+            "probability": 10
+        },
+        {
+            "itemConstant": "ITEM_PERSIM_BERRY",
+            "threshold": 75,
+            "minRoll": 65,
+            "maxRoll": 74,
+            "probability": 10
+        },
+        {
+            "itemConstant": "ITEM_TM10",
+            "threshold": 80,
+            "minRoll": 75,
+            "maxRoll": 79,
+            "probability": 5
+        },
+        {
+            "itemConstant": "ITEM_PP_UP",
+            "threshold": 85,
+            "minRoll": 80,
+            "maxRoll": 84,
+            "probability": 5
+        },
+        {
+            "itemConstant": "ITEM_RARE_CANDY",
+            "threshold": 90,
+            "minRoll": 85,
+            "maxRoll": 89,
+            "probability": 5
+        },
+        {
+            "itemConstant": "ITEM_NUGGET",
+            "threshold": 95,
+            "minRoll": 90,
+            "maxRoll": 94,
+            "probability": 5
+        },
+        {
+            "itemConstant": "ITEM_SPELON_BERRY",
+            "threshold": 96,
+            "minRoll": 95,
+            "maxRoll": 95,
+            "probability": 1
+        },
+        {
+            "itemConstant": "ITEM_PAMTRE_BERRY",
+            "threshold": 97,
+            "minRoll": 96,
+            "maxRoll": 96,
+            "probability": 1
+        },
+        {
+            "itemConstant": "ITEM_WATMEL_BERRY",
+            "threshold": 98,
+            "minRoll": 97,
+            "maxRoll": 97,
+            "probability": 1
+        },
+        {
+            "itemConstant": "ITEM_DURIN_BERRY",
+            "threshold": 99,
+            "minRoll": 98,
+            "maxRoll": 98,
+            "probability": 1
+        }
+    ]
+}

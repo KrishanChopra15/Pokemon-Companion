@@ -14,310 +14,666 @@
  * Does NOT:
  * - Read ROMs.
  * - Parse binary data.
- * * - Generate reference databases.
+ * - Generate reference databases.
  */
 
 "use strict";
 
-const Builder = require("./builder");
-const ReferenceRegistry = require("./reference-registry");
-const EvolutionMoveBuilder = require("./evolution-move-builder");
 
-class PokemonSpeciesBuilder extends Builder {
+const Builder =
+    require("./builder");
+
+
+const ReferenceRegistry =
+    require("./reference-registry");
+
+
+const EvolutionMoveBuilder =
+    require("./evolution-move-builder");
+
+
+
+class PokemonSpeciesBuilder
+    extends Builder
+{
+
 
     /**
      * Build the generated Pokémon species database.
      *
      * @param {string} game
      */
-    build(game) {
+    build(
+        game
+    )
+    {
 
         //------------------------------------------------------
         // Load databases
         //------------------------------------------------------
 
-        const rawSpecies = this.loadRawDatabase(
-            game,
-            "pokemon-species"
-        );
+        const rawSpecies =
+            this.loadRawDatabase(
+                game,
+                "pokemon-species"
+            );
 
-        const rawEvolutions = this.loadRawDatabase(
-            game,
-            "pokemon-evolutions"
-        );
 
-        const rawLearnsets = this.loadRawDatabase(
-            game,
-            "pokemon-learnsets"
-        );
+        const rawEvolutions =
+            this.loadRawDatabase(
+                game,
+                "pokemon-evolutions"
+            );
 
-        const rawMachines = this.loadRawDatabase(
-            game,
-            "pokemon-machines"
-        );
 
-        const rawEggMoves = this.loadRawDatabase(
-            game,
-            "pokemon-egg-moves"
-        );
+        const rawLearnsets =
+            this.loadRawDatabase(
+                game,
+                "pokemon-learnsets"
+            );
 
-        const references = new ReferenceRegistry();
 
-        const evolutionMoveBuilder = new EvolutionMoveBuilder();
+        const rawMachines =
+            this.loadRawDatabase(
+                game,
+                "pokemon-machines"
+            );
 
-        const evolutionsBySpecies = new Map();
 
-        const learnsetsBySpecies = new Map();
+        const rawEggMoves =
+            this.loadRawDatabase(
+                game,
+                "pokemon-egg-moves"
+            );
 
-        const machinesBySpecies = new Map();
 
-        const eggMovesBySpecies = new Map();
+        const references =
+            new ReferenceRegistry();
 
-        for (const evolution of rawEvolutions) {
-        
+
+        const evolutionMoveBuilder =
+            new EvolutionMoveBuilder();
+
+
+        const evolutionsBySpecies =
+            new Map();
+
+
+        const learnsetsBySpecies =
+            new Map();
+
+
+        const machinesBySpecies =
+            new Map();
+
+
+        const eggMovesBySpecies =
+            new Map();
+
+
+        for(
+            const evolution of rawEvolutions
+        )
+        {
+
             evolutionsBySpecies.set(
                 evolution.species,
                 evolution
             );
-        
+
         }
 
-        for (const learnset of rawLearnsets) {
-        
+
+        for(
+            const learnset of rawLearnsets
+        )
+        {
+
             learnsetsBySpecies.set(
                 learnset.species,
                 learnset
             );
-        
+
         }
 
-        for (const machine of rawMachines) {
-        
+
+        for(
+            const machine of rawMachines
+        )
+        {
+
             machinesBySpecies.set(
                 machine.species,
                 machine
             );
-        
+
         }
 
-        for (const eggMove of rawEggMoves) {
-        
+
+        for(
+            const eggMove of rawEggMoves
+        )
+        {
+
             eggMovesBySpecies.set(
                 eggMove.species,
                 eggMove
             );
-        
+
         }
+
 
         //------------------------------------------------------
         // Merge
         //------------------------------------------------------
 
-        const generatedSpecies = rawSpecies.map((species, index) => {
+        const generatedSpecies =
+            rawSpecies.map(
+                (
+                    species,
+                    index
+                ) =>
+                {
 
-            const reference = references.speciesNames.get(index + 1);
-
-            const evolutionData = evolutionsBySpecies.get(
-                reference.constant
-            );
-
-            const learnsetData = learnsetsBySpecies.get(
-                reference.constant
-            );
-
-            const machineData = machinesBySpecies.get(
-                reference.constant
-            );
-
-            const eggMoveData = eggMovesBySpecies.get(
-                reference.constant
-            );
-
-            const type1 = references.types.get(species.type1);
-            const type2 = references.types.get(species.type2);
-                    
-            const ability1 = references.abilities.get(species.ability1);
-            const ability2 = references.abilities.get(species.ability2);
-                    
-            const growthRate = references.growthRates.get(species.growthRate);
-                    
-            const eggGroup1 = references.eggGroups.get(species.eggGroup1);
-            const eggGroup2 = references.eggGroups.get(species.eggGroup2);
-
-            const bodyColor = references.bodyColors.get(species.bodyColor);
-
-            return {
-
-                ...species,
-                
-                itemCommon: this.buildHeldItem(
-                    species.itemCommon,
-                    references
-                ),
-
-                itemRare: this.buildHeldItem(
-                    species.itemRare,
-                    references
-                ),
-
-                id: String(index + 1).padStart(4, "0"),
-
-                nationalDexNumber: String(index + 1).padStart(4, "0"),
-
-                name: reference
-                    ? reference.name
-                    : null,
-
-                constant: reference
-                    ? reference.constant
-                    : null,
-
-                type1: this.buildType(type1),
-
-                type2: this.buildType(type2),
-
-                ability1: this.buildAbility(ability1),
-
-                ability2: this.buildAbility(ability2),
-
-                growthRate: this.buildGrowthRate(growthRate),
-
-                eggGroup1: this.buildEggGroup(eggGroup1),
-
-                eggGroup2: this.buildEggGroup(eggGroup2),
-
-                bodyColor: this.buildBodyColor(bodyColor),
-                
-                evolutions: evolutionData
-                    ? evolutionData.evolutions.map(evolution =>
-                        this.buildEvolution(
-                            evolution,
-                            references
-                        )
-                    )
-                    : [],
-
-                learnset: learnsetData
-                    ? learnsetData.moves.map(move => ({
-
-                        level: move.level,
-                    
-                        move: references.moveNames.getByConstant(
-                            move.move
-                        )
-                    
-                    }))
-                    : [],
-
-                machines: machineData
-                    ? machineData.machines.map(machine => {
-                    
-                        const reference =
-                        references.machines.getByConstant(
-                            machine
+                    const reference =
+                        references.speciesNames.get(
+                            index + 1
                         );
-                    
-                        if (!reference) {
-                            return null;
-                        }
-                    
-                        return {
-                        
-                            constant:
-                            reference.constant,
-                        
-                            name:
-                            reference.name,
-                        
-                            itemConstant:
-                            reference.itemConstant,
-                        
-                            move:
-                            references.moveNames.getByConstant(
-                                reference.move.constant
-                            )
-                        
-                        };
-                    
-                    }).filter(Boolean)
-                    : [],
 
-                eggMoves: eggMoveData
-                    ? eggMoveData.moves.map(move =>
-                        references.moveNames.getByConstant(
-                            move
+
+                    const evolutionData =
+                        reference
+                        ?
+                        evolutionsBySpecies.get(
+                            reference.constant
                         )
+                        :
+                        null;
+
+
+                    const learnsetData =
+                        reference
+                        ?
+                        learnsetsBySpecies.get(
+                            reference.constant
+                        )
+                        :
+                        null;
+
+
+                    const machineData =
+                        reference
+                        ?
+                        machinesBySpecies.get(
+                            reference.constant
+                        )
+                        :
+                        null;
+
+
+                    const eggMoveData =
+                        reference
+                        ?
+                        eggMovesBySpecies.get(
+                            reference.constant
+                        )
+                        :
+                        null;
+
+
+                    const ability1 =
+                        references.abilities.get(
+                            species.ability1
+                        );
+
+
+                    const ability2 =
+                        references.abilities.get(
+                            species.ability2
+                        );
+
+
+                    const growthRate =
+                        references.growthRates.get(
+                            species.growthRate
+                        );
+
+
+                    const eggGroup1 =
+                        references.eggGroups.get(
+                            species.eggGroup1
+                        );
+
+
+                    const eggGroup2 =
+                        references.eggGroups.get(
+                            species.eggGroup2
+                        );
+
+
+                    const bodyColor =
+                        references.bodyColors.get(
+                            species.bodyColor
+                        );
+
+
+                    const type1 =
+                        references.types.get(
+                            species.type1
+                        );
+
+
+                    let type2 =
+                        references.types.get(
+                            species.type2
+                        );
+
+
+                    //------------------------------------------
+                    // Pokédex reference
+                    //------------------------------------------
+
+                    const pokedex =
+                        reference
+                        ?
+                        references.pokedex.getByConstant(
+                            reference.constant
+                        )
+                        :
+                        null;
+
+
+                    //------------------------------------------
+                    // Remove duplicate secondary type
+                    //------------------------------------------
+
+                    if(
+                        type1
+                        &&
+                        type2
+                        &&
+                        type1.id === type2.id
                     )
-                    : [],
+                    {
 
-                evolutionLostMoves: []
+                        type2 =
+                            null;
 
-            };
+                    }
 
-        });
+
+                    //------------------------------------------
+                    // Generated species record
+                    //------------------------------------------
+
+                    return {
+
+                        ...species,
+
+
+                        //----------------------------------
+                        // Held items
+                        //----------------------------------
+
+                        itemCommon:
+                            this.buildHeldItem(
+                                species.itemCommon,
+                                references
+                            ),
+
+
+                        itemRare:
+                            this.buildHeldItem(
+                                species.itemRare,
+                                references
+                            ),
+
+
+                        //----------------------------------
+                        // Identity
+                        //----------------------------------
+
+                        id:
+                            String(
+                                index + 1
+                            ).padStart(
+                                4,
+                                "0"
+                            ),
+
+
+                        nationalDexNumber:
+                            String(
+                                index + 1
+                            ).padStart(
+                                4,
+                                "0"
+                            ),
+
+
+                        name:
+                            reference
+                            ?
+                            reference.name
+                            :
+                            null,
+
+
+                        constant:
+                            reference
+                            ?
+                            reference.constant
+                            :
+                            null,
+
+
+                        //----------------------------------
+                        // Types
+                        //----------------------------------
+
+                        type1:
+                            this.buildType(
+                                type1
+                            ),
+
+
+                        type2:
+                            this.buildType(
+                                type2
+                            ),
+
+
+                        //----------------------------------
+                        // Abilities
+                        //----------------------------------
+
+                        ability1:
+                            this.buildAbility(
+                                ability1
+                            ),
+
+
+                        ability2:
+                            this.buildAbility(
+                                ability2
+                            ),
+
+
+                        //----------------------------------
+                        // Growth
+                        //----------------------------------
+
+                        growthRate:
+                            this.buildGrowthRate(
+                                growthRate
+                            ),
+
+
+                        //----------------------------------
+                        // Egg groups
+                        //----------------------------------
+
+                        eggGroup1:
+                            this.buildEggGroup(
+                                eggGroup1
+                            ),
+
+
+                        eggGroup2:
+                            this.buildEggGroup(
+                                eggGroup2
+                            ),
+
+
+                        //----------------------------------
+                        // Body color
+                        //----------------------------------
+
+                        bodyColor:
+                            this.buildBodyColor(
+                                bodyColor
+                            ),
+
+
+                        //----------------------------------
+                        // Pokédex
+                        //----------------------------------
+
+                        pokedex:
+                            this.buildPokedex(
+                                pokedex
+                            ),
+
+
+                        //----------------------------------
+                        // Pickup
+                        //----------------------------------
+
+                        pickup:
+                            this.hasPickupAbility(
+                                species
+                            ),
+
+
+                        //----------------------------------
+                        // Evolutions
+                        //----------------------------------
+
+                        evolutions:
+                            evolutionData
+                            ?
+                            evolutionData.evolutions.map(
+                                evolution =>
+                                    this.buildEvolution(
+                                        evolution,
+                                        references
+                                    )
+                            )
+                            :
+                            [],
+
+
+                        //----------------------------------
+                        // Level-up moves
+                        //----------------------------------
+
+                        learnset:
+                            learnsetData
+                            ?
+                            learnsetData.moves.map(
+                                move =>
+                                ({
+
+                                    level:
+                                        move.level,
+
+                                    move:
+                                        references.moveNames
+                                            .getByConstant(
+                                                move.move
+                                            )
+
+                                })
+                            )
+                            :
+                            [],
+
+
+                        //----------------------------------
+                        // Machines
+                        //----------------------------------
+
+                        machines:
+                            machineData
+                            ?
+                            machineData.machines
+                                .map(
+                                    machine =>
+                                    {
+
+                                        const reference =
+                                            references.machines
+                                                .getByConstant(
+                                                    machine
+                                                );
+
+
+                                        if(
+                                            !reference
+                                        )
+                                        {
+
+                                            return null;
+
+                                        }
+
+
+                                        return {
+
+                                            constant:
+                                                reference.constant,
+
+                                            name:
+                                                reference.name,
+
+                                            itemConstant:
+                                                reference.itemConstant,
+
+                                            move:
+                                                references.moveNames
+                                                    .getByConstant(
+                                                        reference.move.constant
+                                                    )
+
+                                        };
+
+                                    }
+                                )
+                                .filter(
+                                    Boolean
+                                )
+                            :
+                            [],
+
+
+                        //----------------------------------
+                        // Egg moves
+                        //----------------------------------
+
+                        eggMoves:
+                            eggMoveData
+                            ?
+                            eggMoveData.moves.map(
+                                move =>
+                                    references.moveNames
+                                        .getByConstant(
+                                            move
+                                        )
+                            )
+                            :
+                            [],
+
+
+                        //----------------------------------
+                        // Evolution-exclusive moves
+                        //----------------------------------
+
+                        evolutionLostMoves:
+                            []
+
+                    };
+
+                }
+            );
+
 
         //------------------------------------------------------
         // Species lookup
         //------------------------------------------------------
 
-        const speciesByConstant = new Map();
+        const speciesByConstant =
+            new Map();
 
-        for (const species of generatedSpecies) {
-        
+
+        for(
+            const species of generatedSpecies
+        )
+        {
+
             speciesByConstant.set(
                 species.constant,
                 species
             );
-        
+
         }
+
 
         //------------------------------------------------------
         // Resolve evolution species
         //------------------------------------------------------
-            
-        for (const species of generatedSpecies) {
-        
-            for (const evolution of species.evolutions) {
-            
-                const target = speciesByConstant.get(
-                    evolution.targetSpecies
-                );
-            
-                if (!target) {
-                
+
+        for(
+            const species of generatedSpecies
+        )
+        {
+
+            for(
+                const evolution of species.evolutions
+            )
+            {
+
+                const target =
+                    speciesByConstant.get(
+                        evolution.targetSpecies
+                    );
+
+
+                if(
+                    !target
+                )
+                {
+
                     continue;
-                
+
                 }
-            
-                evolution.targetSpecies = {
-                
-                    id: target.id,
-                
-                    nationalDexNumber: target.nationalDexNumber,
-                
-                    name: target.name
-                
+
+
+                evolution.targetSpecies =
+                {
+
+                    id:
+                        target.id,
+
+                    nationalDexNumber:
+                        target.nationalDexNumber,
+
+                    name:
+                        target.name
+
                 };
-            
+
             }
-        
+
         }
+
 
         //------------------------------------------------------
         // Build evolution exclusive moves
         //------------------------------------------------------
 
-        for (const species of generatedSpecies) {
-        
-        
+        for(
+            const species of generatedSpecies
+        )
+        {
+
             species.evolutionLostMoves =
-            evolutionMoveBuilder.build(
-                species,
-                generatedSpecies
-            );
-        
-        
+                evolutionMoveBuilder.build(
+                    species,
+                    generatedSpecies
+                );
+
         }
+
 
         //------------------------------------------------------
         // Save
@@ -329,41 +685,77 @@ class PokemonSpeciesBuilder extends Builder {
             generatedSpecies
         );
 
+
         console.log();
+
 
         console.log(
             "Generated Pokémon species database."
         );
 
+
         console.log(
             `Species: ${generatedSpecies.length}`
         );
+
 
         console.log();
 
     }
 
+
     /**
      * Resolve an evolution parameter.
      *
      * @param {string} parameter
-     * @returns {number|string}
+     * @param {ReferenceRegistry} references
+     * @returns {number|string|Object}
      */
-    resolveEvolutionParameter(parameter, references) {
+    resolveEvolutionParameter(
+        parameter,
+        references
+    )
+    {
 
+        //--------------------------------
         // Numeric parameter
-        if (/^\d+$/.test(parameter)) {
+        //--------------------------------
 
-            return Number(parameter);
+        if(
+            /^\d+$/.test(
+                parameter
+            )
+        )
+        {
+
+            return Number(
+                parameter
+            );
 
         }
 
+
+        //--------------------------------
         // Item
-        if (parameter.startsWith("ITEM_")) {
+        //--------------------------------
 
-            const item = references.items.getByConstant(parameter);
+        if(
+            parameter.startsWith(
+                "ITEM_"
+            )
+        )
+        {
 
-            if (item) {
+            const item =
+                references.items.getByConstant(
+                    parameter
+                );
+
+
+            if(
+                item
+            )
+            {
 
                 return item;
 
@@ -371,9 +763,11 @@ class PokemonSpeciesBuilder extends Builder {
 
         }
 
+
         return parameter;
 
     }
+
 
     /**
      * Build an evolution object.
@@ -382,26 +776,38 @@ class PokemonSpeciesBuilder extends Builder {
      * @param {ReferenceRegistry} references
      * @returns {Object}
      */
-    buildEvolution(evolution, references) {
+    buildEvolution(
+        evolution,
+        references
+    )
+    {
 
-        const method = references.evolutionMethods.getByConstant(
-            evolution.method
-        );
+        const method =
+            references.evolutionMethods.getByConstant(
+                evolution.method
+            );
 
-        const result = {
+
+        const result =
+        {
 
             method,
 
-            targetSpecies: evolution.targetSpecies
+            targetSpecies:
+                evolution.targetSpecies
 
         };
-        
-        switch (method.constant) {
-        
-            //--------------------------------------------------
+
+
+        switch(
+            method.constant
+        )
+        {
+
+            //----------------------------------------------
             // Level evolutions
-            //--------------------------------------------------
-        
+            //----------------------------------------------
+
             case "EVO_LEVEL":
             case "EVO_LEVEL_ATK_GT_DEF":
             case "EVO_LEVEL_ATK_EQ_DEF":
@@ -410,62 +816,175 @@ class PokemonSpeciesBuilder extends Builder {
             case "EVO_LEVEL_CASCOON":
             case "EVO_LEVEL_NINJASK":
             case "EVO_LEVEL_SHEDINJA":
-        
-                result.level = Number(
-                    evolution.parameter
-                );
-            
+
+                result.level =
+                    Number(
+                        evolution.parameter
+                    );
+
                 break;
-            
-            //--------------------------------------------------
+
+
+            //----------------------------------------------
             // Item evolutions
-            //--------------------------------------------------
-            
+            //----------------------------------------------
+
             case "EVO_ITEM":
             case "EVO_TRADE_ITEM":
-            
-                result.item = references.items.getByConstant(
-                    evolution.parameter
-                );
-            
+
+                result.item =
+                    references.items.getByConstant(
+                        evolution.parameter
+                    );
+
                 break;
-            
-            //--------------------------------------------------
+
+
+            //----------------------------------------------
             // Beauty evolution
-            //--------------------------------------------------
-            
+            //----------------------------------------------
+
             case "EVO_BEAUTY":
-            
-                result.beauty = Number(
-                    evolution.parameter
-                );
-            
+
+                result.beauty =
+                    Number(
+                        evolution.parameter
+                    );
+
                 break;
-            
+
         }
+
 
         return result;
 
     }
 
+
     /**
-     * Resolve a held item.
+     * Build a held item.
      *
-     * @param {number} id
+     * @param {Object|number|string|null} item
      * @param {ReferenceRegistry} references
      * @returns {Object|null}
      */
-    buildHeldItem(id, references) {
+    buildHeldItem(
+        item,
+        references
+    )
+    {
 
-        if (id === 0) {
+        //--------------------------------
+        // No item
+        //--------------------------------
+
+        if(
+            item === null
+            ||
+            item === undefined
+            ||
+            item === 0
+        )
+        {
 
             return null;
 
         }
 
-        return references.items.get(id);
+
+        //--------------------------------
+        // ITEM_NONE constant
+        //--------------------------------
+
+        if(
+            typeof item === "string"
+            &&
+            item === "ITEM_NONE"
+        )
+        {
+
+            return null;
+
+        }
+
+
+        //--------------------------------
+        // ITEM_NONE object
+        //--------------------------------
+
+        if(
+            typeof item === "object"
+            &&
+            (
+                item.id === 0
+                ||
+                item.constant ===
+                    "ITEM_NONE"
+            )
+        )
+        {
+
+            return null;
+
+        }
+
+
+        //--------------------------------
+        // Item object
+        //--------------------------------
+
+        if(
+            typeof item === "object"
+            &&
+            item.id !== undefined
+        )
+        {
+
+            return references.items.get(
+                item.id
+            );
+
+        }
+
+
+        //--------------------------------
+        // Item reference
+        //--------------------------------
+
+        return references.items.get(
+            item
+        );
 
     }
+
+
+    //----------------------------------------
+    // Check Pickup ability
+    //----------------------------------------
+
+    /**
+     * Check whether a Pokémon has Pickup.
+     *
+     * @param {Object} species
+     * @returns {boolean}
+     */
+    hasPickupAbility(
+        species
+    )
+    {
+
+        return (
+            species.ability1 ===
+            "ABILITY_PICKUP"
+        )
+        ||
+        (
+            species.ability2 ===
+            "ABILITY_PICKUP"
+        );
+
+    }
+
 
     /**
      * Build a type object.
@@ -473,23 +992,79 @@ class PokemonSpeciesBuilder extends Builder {
      * @param {Object|null} type
      * @returns {Object|null}
      */
-    buildType(type) {
+    buildType(
+        type
+    )
+    {
 
-        if (!type) {
+        if(
+            !type
+        )
+        {
 
             return null;
 
         }
 
+
         return {
 
-            id: type.id,
+            id:
+                type.id,
 
-            name: type.name
+            name:
+                type.name
 
         };
 
     }
+
+
+    /**
+     * Build a Pokédex object.
+     *
+     * @param {Object|null} pokedex
+     * @returns {Object|null}
+     */
+    buildPokedex(
+        pokedex
+    )
+    {
+
+        if(
+            !pokedex
+        )
+        {
+
+            return null;
+
+        }
+
+
+        return {
+
+            game:
+                pokedex.game,
+
+            generation:
+                pokedex.generation,
+
+            category:
+                pokedex.category,
+
+            height:
+                pokedex.height,
+
+            weight:
+                pokedex.weight,
+
+            description:
+                pokedex.description
+
+        };
+
+    }
+
 
     /**
      * Build an ability object.
@@ -497,25 +1072,41 @@ class PokemonSpeciesBuilder extends Builder {
      * @param {Object|null} ability
      * @returns {Object|null}
      */
-    buildAbility(ability) {
+    buildAbility(
+        ability
+    )
+    {
 
-        if (!ability) {
+        if(
+            !ability
+            ||
+            ability.id === 0
+            ||
+            ability.name ===
+                "-------"
+        )
+        {
 
             return null;
 
         }
 
+
         return {
 
-            id: ability.id,
+            id:
+                ability.id,
 
-            name: ability.name,
+            name:
+                ability.name,
 
-            description: ability.description
+            description:
+                ability.description
 
         };
 
     }
+
 
     /**
      * Build a growth rate object.
@@ -523,23 +1114,33 @@ class PokemonSpeciesBuilder extends Builder {
      * @param {Object|null} growthRate
      * @returns {Object|null}
      */
-    buildGrowthRate(growthRate) {
+    buildGrowthRate(
+        growthRate
+    )
+    {
 
-        if (!growthRate) {
+        if(
+            !growthRate
+        )
+        {
 
             return null;
 
         }
 
+
         return {
 
-            id: growthRate.id,
+            id:
+                growthRate.id,
 
-            name: growthRate.name
+            name:
+                growthRate.name
 
         };
 
     }
+
 
     /**
      * Build an egg group object.
@@ -547,23 +1148,33 @@ class PokemonSpeciesBuilder extends Builder {
      * @param {Object|null} eggGroup
      * @returns {Object|null}
      */
-    buildEggGroup(eggGroup) {
+    buildEggGroup(
+        eggGroup
+    )
+    {
 
-        if (!eggGroup) {
+        if(
+            !eggGroup
+        )
+        {
 
             return null;
 
         }
 
+
         return {
 
-            id: eggGroup.id,
+            id:
+                eggGroup.id,
 
-            name: eggGroup.name
+            name:
+                eggGroup.name
 
         };
 
     }
+
 
     /**
      * Build a body color object.
@@ -571,24 +1182,36 @@ class PokemonSpeciesBuilder extends Builder {
      * @param {Object|null} bodyColor
      * @returns {Object|null}
      */
-    buildBodyColor(bodyColor) {
+    buildBodyColor(
+        bodyColor
+    )
+    {
 
-        if (!bodyColor) {
+        if(
+            !bodyColor
+        )
+        {
 
             return null;
 
         }
 
+
         return {
 
-            id: bodyColor.id,
+            id:
+                bodyColor.id,
 
-            name: bodyColor.name
+            name:
+                bodyColor.name
 
         };
 
     }
 
+
 }
 
-module.exports = PokemonSpeciesBuilder;
+
+module.exports =
+    PokemonSpeciesBuilder;

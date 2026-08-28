@@ -1,0 +1,1084 @@
+[
+    {
+        "id": 13,
+        "constant": "ITEM_POTION",
+        "effectDefinition": "sItemEffect_Potion",
+        "rawFields": {
+            "4": "ITEM4_HEAL_HP",
+            "6": "20"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": 20
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "constant": "ITEM_ANTIDOTE",
+        "effectDefinition": "sItemEffect_Antidote",
+        "rawFields": {
+            "3": "ITEM3_POISON"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "POISON"
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "constant": "ITEM_BURN_HEAL",
+        "effectDefinition": "sItemEffect_BurnHeal",
+        "rawFields": {
+            "3": "ITEM3_BURN"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "BURN"
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "constant": "ITEM_ICE_HEAL",
+        "effectDefinition": "sItemEffect_IceHeal",
+        "rawFields": {
+            "3": "ITEM3_FREEZE"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "FREEZE"
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "constant": "ITEM_AWAKENING",
+        "effectDefinition": "sItemEffect_Awakening",
+        "rawFields": {
+            "3": "ITEM3_SLEEP"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "SLEEP"
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "constant": "ITEM_PARALYZE_HEAL",
+        "effectDefinition": "sItemEffect_ParalyzeHeal",
+        "rawFields": {
+            "3": "ITEM3_PARALYSIS"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "PARALYSIS"
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "constant": "ITEM_FULL_RESTORE",
+        "effectDefinition": "sItemEffect_FullRestore",
+        "rawFields": {
+            "3": "ITEM3_STATUS_ALL",
+            "4": "ITEM4_HEAL_HP",
+            "6": "ITEM6_HEAL_HP_FULL"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "ALL"
+            },
+            {
+                "type": "HEAL_HP",
+                "amount": "FULL"
+            }
+        ]
+    },
+    {
+        "id": 20,
+        "constant": "ITEM_MAX_POTION",
+        "effectDefinition": "sItemEffect_MaxPotion",
+        "rawFields": {
+            "4": "ITEM4_HEAL_HP",
+            "6": "ITEM6_HEAL_HP_FULL"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": "FULL"
+            }
+        ]
+    },
+    {
+        "id": 21,
+        "constant": "ITEM_HYPER_POTION",
+        "effectDefinition": "sItemEffect_HyperPotion",
+        "rawFields": {
+            "4": "ITEM4_HEAL_HP",
+            "6": "200"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": 200
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "constant": "ITEM_SUPER_POTION",
+        "effectDefinition": "sItemEffect_SuperPotion",
+        "rawFields": {
+            "4": "ITEM4_HEAL_HP",
+            "6": "50"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": 50
+            }
+        ]
+    },
+    {
+        "id": 23,
+        "constant": "ITEM_FULL_HEAL",
+        "effectDefinition": "sItemEffect_FullHeal",
+        "rawFields": {
+            "3": "ITEM3_STATUS_ALL"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "ALL"
+            }
+        ]
+    },
+    {
+        "id": 24,
+        "constant": "ITEM_REVIVE",
+        "effectDefinition": "sItemEffect_Revive",
+        "rawFields": {
+            "4": "ITEM4_REVIVE | ITEM4_HEAL_HP",
+            "6": "ITEM6_HEAL_HP_HALF"
+        },
+        "effects": [
+            {
+                "type": "REVIVE",
+                "hp": "HALF"
+            }
+        ]
+    },
+    {
+        "id": 25,
+        "constant": "ITEM_MAX_REVIVE",
+        "effectDefinition": "sItemEffect_MaxRevive",
+        "rawFields": {
+            "4": "ITEM4_REVIVE | ITEM4_HEAL_HP",
+            "6": "ITEM6_HEAL_HP_FULL"
+        },
+        "effects": [
+            {
+                "type": "REVIVE",
+                "hp": "FULL"
+            }
+        ]
+    },
+    {
+        "id": 26,
+        "constant": "ITEM_FRESH_WATER",
+        "effectDefinition": "sItemEffect_FreshWater",
+        "rawFields": {
+            "4": "ITEM4_HEAL_HP",
+            "6": "50"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": 50
+            }
+        ]
+    },
+    {
+        "id": 27,
+        "constant": "ITEM_SODA_POP",
+        "effectDefinition": "sItemEffect_SodaPop",
+        "rawFields": {
+            "4": "ITEM4_HEAL_HP",
+            "6": "60"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": 60
+            }
+        ]
+    },
+    {
+        "id": 28,
+        "constant": "ITEM_LEMONADE",
+        "effectDefinition": "sItemEffect_Lemonade",
+        "rawFields": {
+            "4": "ITEM4_HEAL_HP",
+            "6": "80"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": 80
+            }
+        ]
+    },
+    {
+        "id": 29,
+        "constant": "ITEM_MOOMOO_MILK",
+        "effectDefinition": "sItemEffect_MoomooMilk",
+        "rawFields": {
+            "4": "ITEM4_HEAL_HP",
+            "6": "100"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": 100
+            }
+        ]
+    },
+    {
+        "id": 30,
+        "constant": "ITEM_ENERGY_POWDER",
+        "effectDefinition": "sItemEffect_EnergyPowder",
+        "rawFields": {
+            "4": "ITEM4_HEAL_HP",
+            "5": "ITEM5_FRIENDSHIP_ALL",
+            "6": "50",
+            "7": "-5",
+            "8": "-5",
+            "9": "-10"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": 50
+            }
+        ]
+    },
+    {
+        "id": 31,
+        "constant": "ITEM_ENERGY_ROOT",
+        "effectDefinition": "sItemEffect_EnergyRoot",
+        "rawFields": {
+            "4": "ITEM4_HEAL_HP",
+            "5": "ITEM5_FRIENDSHIP_ALL",
+            "6": "200",
+            "7": "-10",
+            "8": "-10",
+            "9": "-15"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": 200
+            }
+        ]
+    },
+    {
+        "id": 32,
+        "constant": "ITEM_HEAL_POWDER",
+        "effectDefinition": "sItemEffect_HealPowder",
+        "rawFields": {
+            "3": "ITEM3_STATUS_ALL",
+            "5": "ITEM5_FRIENDSHIP_ALL",
+            "6": "-5",
+            "7": "-5",
+            "8": "-10"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "ALL"
+            }
+        ]
+    },
+    {
+        "id": 33,
+        "constant": "ITEM_REVIVAL_HERB",
+        "effectDefinition": "sItemEffect_RevivalHerb",
+        "rawFields": {
+            "4": "ITEM4_REVIVE | ITEM4_HEAL_HP",
+            "5": "ITEM5_FRIENDSHIP_ALL",
+            "6": "ITEM6_HEAL_HP_FULL",
+            "7": "-15",
+            "8": "-15",
+            "9": "-20"
+        },
+        "effects": [
+            {
+                "type": "REVIVE",
+                "hp": "FULL"
+            }
+        ]
+    },
+    {
+        "id": 34,
+        "constant": "ITEM_ETHER",
+        "effectDefinition": "sItemEffect_Ether",
+        "rawFields": {
+            "4": "ITEM4_HEAL_PP_ONE | ITEM4_HEAL_PP_ALL",
+            "6": "10"
+        },
+        "effects": [
+            {
+                "type": "HEAL_PP",
+                "scope": "ALL",
+                "amount": 10
+            },
+            {
+                "type": "HEAL_PP",
+                "scope": "ONE",
+                "amount": 10
+            }
+        ]
+    },
+    {
+        "id": 35,
+        "constant": "ITEM_MAX_ETHER",
+        "effectDefinition": "sItemEffect_MaxEther",
+        "rawFields": {
+            "4": "ITEM4_HEAL_PP_ONE | ITEM4_HEAL_PP_ALL",
+            "6": "ITEM6_HEAL_PP_FULL"
+        },
+        "effects": [
+            {
+                "type": "HEAL_PP",
+                "scope": "ALL",
+                "amount": "FULL"
+            },
+            {
+                "type": "HEAL_PP",
+                "scope": "ONE",
+                "amount": "FULL"
+            }
+        ]
+    },
+    {
+        "id": 36,
+        "constant": "ITEM_ELIXIR",
+        "effectDefinition": "sItemEffect_Elixir",
+        "rawFields": {
+            "4": "ITEM4_HEAL_PP_ALL",
+            "6": "10"
+        },
+        "effects": [
+            {
+                "type": "HEAL_PP",
+                "scope": "ALL",
+                "amount": 10
+            }
+        ]
+    },
+    {
+        "id": 37,
+        "constant": "ITEM_MAX_ELIXIR",
+        "effectDefinition": "sItemEffect_MaxElixir",
+        "rawFields": {
+            "4": "ITEM4_HEAL_PP_ALL",
+            "6": "ITEM6_HEAL_PP_FULL"
+        },
+        "effects": [
+            {
+                "type": "HEAL_PP",
+                "scope": "ALL",
+                "amount": "FULL"
+            }
+        ]
+    },
+    {
+        "id": 38,
+        "constant": "ITEM_LAVA_COOKIE",
+        "effectDefinition": "sItemEffect_LavaCookie",
+        "rawFields": {
+            "3": "ITEM3_STATUS_ALL"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "ALL"
+            }
+        ]
+    },
+    {
+        "id": 39,
+        "constant": "ITEM_BLUE_FLUTE",
+        "effectDefinition": "sItemEffect_BlueFlute",
+        "rawFields": {
+            "3": "ITEM3_SLEEP"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "SLEEP"
+            }
+        ]
+    },
+    {
+        "id": 40,
+        "constant": "ITEM_YELLOW_FLUTE",
+        "effectDefinition": "sItemEffect_YellowFlute",
+        "rawFields": {
+            "3": "ITEM3_CONFUSION"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "CONFUSION"
+            }
+        ]
+    },
+    {
+        "id": 41,
+        "constant": "ITEM_RED_FLUTE",
+        "effectDefinition": "sItemEffect_RedFlute",
+        "rawFields": {
+            "0": "ITEM0_INFATUATION"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "INFATUATION"
+            }
+        ]
+    },
+    {
+        "id": 44,
+        "constant": "ITEM_BERRY_JUICE",
+        "effectDefinition": "sItemEffect_BerryJuice",
+        "rawFields": {
+            "4": "ITEM4_HEAL_HP",
+            "6": "20"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": 20
+            }
+        ]
+    },
+    {
+        "id": 45,
+        "constant": "ITEM_SACRED_ASH",
+        "effectDefinition": "sItemEffect_SacredAsh",
+        "rawFields": {
+            "0": "ITEM0_SACRED_ASH",
+            "4": "ITEM4_REVIVE | ITEM4_HEAL_HP",
+            "6": "ITEM6_HEAL_HP_FULL"
+        },
+        "effects": [
+            {
+                "type": "SACRED_ASH"
+            },
+            {
+                "type": "REVIVE",
+                "hp": "FULL"
+            }
+        ]
+    },
+    {
+        "id": 63,
+        "constant": "ITEM_HP_UP",
+        "effectDefinition": "sItemEffect_HPUp",
+        "rawFields": {
+            "4": "ITEM4_EV_HP",
+            "5": "ITEM5_FRIENDSHIP_ALL",
+            "6": "ITEM6_ADD_EV",
+            "__macros": [
+                "VITAMIN_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "EV_CHANGE",
+                "stat": "HP",
+                "amount": 10
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 5,
+                "mid": 3,
+                "high": 2
+            }
+        ]
+    },
+    {
+        "id": 64,
+        "constant": "ITEM_PROTEIN",
+        "effectDefinition": "sItemEffect_Protein",
+        "rawFields": {
+            "4": "ITEM4_EV_ATK",
+            "5": "ITEM5_FRIENDSHIP_ALL",
+            "6": "ITEM6_ADD_EV",
+            "__macros": [
+                "VITAMIN_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "EV_CHANGE",
+                "stat": "ATTACK",
+                "amount": 10
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 5,
+                "mid": 3,
+                "high": 2
+            }
+        ]
+    },
+    {
+        "id": 65,
+        "constant": "ITEM_IRON",
+        "effectDefinition": "sItemEffect_Iron",
+        "rawFields": {
+            "5": "ITEM5_EV_DEF | ITEM5_FRIENDSHIP_ALL",
+            "6": "ITEM6_ADD_EV",
+            "__macros": [
+                "VITAMIN_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "EV_CHANGE",
+                "stat": "DEFENSE",
+                "amount": 10
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 5,
+                "mid": 3,
+                "high": 2
+            }
+        ]
+    },
+    {
+        "id": 66,
+        "constant": "ITEM_CARBOS",
+        "effectDefinition": "sItemEffect_Carbos",
+        "rawFields": {
+            "5": "ITEM5_EV_SPEED | ITEM5_FRIENDSHIP_ALL",
+            "6": "ITEM6_ADD_EV",
+            "__macros": [
+                "VITAMIN_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "EV_CHANGE",
+                "stat": "SPEED",
+                "amount": 10
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 5,
+                "mid": 3,
+                "high": 2
+            }
+        ]
+    },
+    {
+        "id": 67,
+        "constant": "ITEM_CALCIUM",
+        "effectDefinition": "sItemEffect_Calcium",
+        "rawFields": {
+            "5": "ITEM5_EV_SPATK | ITEM5_FRIENDSHIP_ALL",
+            "6": "ITEM6_ADD_EV",
+            "__macros": [
+                "VITAMIN_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "EV_CHANGE",
+                "stat": "SPECIAL_ATTACK",
+                "amount": 10
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 5,
+                "mid": 3,
+                "high": 2
+            }
+        ]
+    },
+    {
+        "id": 68,
+        "constant": "ITEM_RARE_CANDY",
+        "effectDefinition": "sItemEffect_RareCandy",
+        "rawFields": {
+            "3": "ITEM3_LEVEL_UP",
+            "4": "ITEM4_REVIVE | ITEM4_HEAL_HP",
+            "5": "ITEM5_FRIENDSHIP_ALL",
+            "6": "ITEM6_HEAL_HP_LVL_UP",
+            "__macros": [
+                "VITAMIN_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "LEVEL_UP"
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 5,
+                "mid": 3,
+                "high": 2
+            }
+        ]
+    },
+    {
+        "id": 69,
+        "constant": "ITEM_PP_UP",
+        "effectDefinition": "sItemEffect_PPUp",
+        "rawFields": {
+            "4": "ITEM4_PP_UP",
+            "5": "ITEM5_FRIENDSHIP_ALL",
+            "__macros": [
+                "VITAMIN_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "PP_UP"
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 5,
+                "mid": 3,
+                "high": 2
+            }
+        ]
+    },
+    {
+        "id": 70,
+        "constant": "ITEM_ZINC",
+        "effectDefinition": "sItemEffect_Zinc",
+        "rawFields": {
+            "5": "ITEM5_EV_SPDEF | ITEM5_FRIENDSHIP_ALL",
+            "6": "ITEM6_ADD_EV",
+            "__macros": [
+                "VITAMIN_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "EV_CHANGE",
+                "stat": "SPECIAL_DEFENSE",
+                "amount": 10
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 5,
+                "mid": 3,
+                "high": 2
+            }
+        ]
+    },
+    {
+        "id": 71,
+        "constant": "ITEM_PP_MAX",
+        "effectDefinition": "sItemEffect_PPMax",
+        "rawFields": {
+            "5": "ITEM5_PP_MAX | ITEM5_FRIENDSHIP_ALL",
+            "__macros": [
+                "VITAMIN_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "PP_MAX"
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 5,
+                "mid": 3,
+                "high": 2
+            }
+        ]
+    },
+    {
+        "id": 73,
+        "constant": "ITEM_GUARD_SPEC",
+        "effectDefinition": "sItemEffect_GuardSpec",
+        "rawFields": {
+            "3": "ITEM3_GUARD_SPEC",
+            "5": "ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID",
+            "__macros": [
+                "STAT_BOOST_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "GUARD_SPEC"
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 1,
+                "mid": 1
+            }
+        ]
+    },
+    {
+        "id": 74,
+        "constant": "ITEM_DIRE_HIT",
+        "effectDefinition": "sItemEffect_DireHit",
+        "rawFields": {
+            "0": "2 << 4",
+            "5": "ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID",
+            "__macros": [
+                "STAT_BOOST_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "CRITICAL_HIT_STAGE",
+                "stages": 2
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 1,
+                "mid": 1
+            }
+        ]
+    },
+    {
+        "id": 75,
+        "constant": "ITEM_X_ATTACK",
+        "effectDefinition": "sItemEffect_XAttack",
+        "rawFields": {
+            "0": "1",
+            "5": "ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID",
+            "__macros": [
+                "STAT_BOOST_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 1,
+                "mid": 1
+            }
+        ]
+    },
+    {
+        "id": 76,
+        "constant": "ITEM_X_DEFEND",
+        "effectDefinition": "sItemEffect_XDefend",
+        "rawFields": {
+            "1": "1 << 4",
+            "5": "ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID",
+            "__macros": [
+                "STAT_BOOST_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 1,
+                "mid": 1
+            }
+        ]
+    },
+    {
+        "id": 77,
+        "constant": "ITEM_X_SPEED",
+        "effectDefinition": "sItemEffect_XSpeed",
+        "rawFields": {
+            "1": "1",
+            "5": "ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID",
+            "__macros": [
+                "STAT_BOOST_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 1,
+                "mid": 1
+            }
+        ]
+    },
+    {
+        "id": 78,
+        "constant": "ITEM_X_ACCURACY",
+        "effectDefinition": "sItemEffect_XAccuracy",
+        "rawFields": {
+            "2": "1 << 4",
+            "5": "ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID",
+            "__macros": [
+                "STAT_BOOST_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 1,
+                "mid": 1
+            }
+        ]
+    },
+    {
+        "id": 79,
+        "constant": "ITEM_X_SPECIAL",
+        "effectDefinition": "sItemEffect_XSpecial",
+        "rawFields": {
+            "2": "1",
+            "5": "ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID",
+            "__macros": [
+                "STAT_BOOST_FRIENDSHIP_CHANGE"
+            ]
+        },
+        "effects": [
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 1,
+                "mid": 1
+            }
+        ]
+    },
+    {
+        "id": 93,
+        "constant": "ITEM_SUN_STONE",
+        "effectDefinition": "sItemEffect_SunStone",
+        "rawFields": {
+            "4": "ITEM4_EVO_STONE"
+        },
+        "effects": [
+            {
+                "type": "EVOLUTION_STONE"
+            }
+        ]
+    },
+    {
+        "id": 94,
+        "constant": "ITEM_MOON_STONE",
+        "effectDefinition": "sItemEffect_MoonStone",
+        "rawFields": {
+            "4": "ITEM4_EVO_STONE"
+        },
+        "effects": [
+            {
+                "type": "EVOLUTION_STONE"
+            }
+        ]
+    },
+    {
+        "id": 95,
+        "constant": "ITEM_FIRE_STONE",
+        "effectDefinition": "sItemEffect_FireStone",
+        "rawFields": {
+            "4": "ITEM4_EVO_STONE"
+        },
+        "effects": [
+            {
+                "type": "EVOLUTION_STONE"
+            }
+        ]
+    },
+    {
+        "id": 96,
+        "constant": "ITEM_THUNDER_STONE",
+        "effectDefinition": "sItemEffect_ThunderStone",
+        "rawFields": {
+            "4": "ITEM4_EVO_STONE"
+        },
+        "effects": [
+            {
+                "type": "EVOLUTION_STONE"
+            }
+        ]
+    },
+    {
+        "id": 97,
+        "constant": "ITEM_WATER_STONE",
+        "effectDefinition": "sItemEffect_WaterStone",
+        "rawFields": {
+            "4": "ITEM4_EVO_STONE"
+        },
+        "effects": [
+            {
+                "type": "EVOLUTION_STONE"
+            }
+        ]
+    },
+    {
+        "id": 98,
+        "constant": "ITEM_LEAF_STONE",
+        "effectDefinition": "sItemEffect_LeafStone",
+        "rawFields": {
+            "4": "ITEM4_EVO_STONE"
+        },
+        "effects": [
+            {
+                "type": "EVOLUTION_STONE"
+            }
+        ]
+    },
+    {
+        "id": 133,
+        "constant": "ITEM_CHERI_BERRY",
+        "effectDefinition": "sItemEffect_CheriBerry",
+        "rawFields": {
+            "3": "ITEM3_PARALYSIS"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "PARALYSIS"
+            }
+        ]
+    },
+    {
+        "id": 134,
+        "constant": "ITEM_CHESTO_BERRY",
+        "effectDefinition": "sItemEffect_ChestoBerry",
+        "rawFields": {
+            "3": "ITEM3_SLEEP"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "SLEEP"
+            }
+        ]
+    },
+    {
+        "id": 135,
+        "constant": "ITEM_PECHA_BERRY",
+        "effectDefinition": "sItemEffect_PechaBerry",
+        "rawFields": {
+            "3": "ITEM3_POISON"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "POISON"
+            }
+        ]
+    },
+    {
+        "id": 136,
+        "constant": "ITEM_RAWST_BERRY",
+        "effectDefinition": "sItemEffect_RawstBerry",
+        "rawFields": {
+            "3": "ITEM3_BURN"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "BURN"
+            }
+        ]
+    },
+    {
+        "id": 137,
+        "constant": "ITEM_ASPEAR_BERRY",
+        "effectDefinition": "sItemEffect_AspearBerry",
+        "rawFields": {
+            "3": "ITEM3_FREEZE"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "FREEZE"
+            }
+        ]
+    },
+    {
+        "id": 138,
+        "constant": "ITEM_LEPPA_BERRY",
+        "effectDefinition": "sItemEffect_LeppaBerry",
+        "rawFields": {
+            "4": "ITEM4_HEAL_PP_ONE | ITEM4_HEAL_PP_ALL",
+            "6": "10"
+        },
+        "effects": [
+            {
+                "type": "HEAL_PP",
+                "scope": "ALL",
+                "amount": 10
+            },
+            {
+                "type": "HEAL_PP",
+                "scope": "ONE",
+                "amount": 10
+            }
+        ]
+    },
+    {
+        "id": 139,
+        "constant": "ITEM_ORAN_BERRY",
+        "effectDefinition": "sItemEffect_OranBerry",
+        "rawFields": {
+            "4": "ITEM4_HEAL_HP",
+            "6": "10"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": 10
+            }
+        ]
+    },
+    {
+        "id": 140,
+        "constant": "ITEM_PERSIM_BERRY",
+        "effectDefinition": "sItemEffect_PersimBerry",
+        "rawFields": {
+            "3": "ITEM3_CONFUSION"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "CONFUSION"
+            }
+        ]
+    },
+    {
+        "id": 141,
+        "constant": "ITEM_LUM_BERRY",
+        "effectDefinition": "sItemEffect_LumBerry",
+        "rawFields": {
+            "3": "ITEM3_STATUS_ALL"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "ALL"
+            }
+        ]
+    },
+    {
+        "id": 142,
+        "constant": "ITEM_SITRUS_BERRY",
+        "effectDefinition": "sItemEffect_SitrusBerry",
+        "rawFields": {
+            "4": "ITEM4_HEAL_HP",
+            "6": "30"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": 30
+            }
+        ]
+    }
+]

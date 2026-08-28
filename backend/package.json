@@ -1,12 +1,12 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Pokédex Companion Backend",
+  "description": "Pokémon Companion Backend",
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "cd .. && node backend/server.js",
+    "dev": "cd .. && nodemon backend/server.js"
   },
   "keywords": [
     "pokemon",

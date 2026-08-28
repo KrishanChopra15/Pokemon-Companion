@@ -4,7 +4,7 @@
 
 The Collaboration Contract defines the standards, principles, and working practices that govern all contributions to Pokémon Companion.
 
-Its purpose is to ensure that every contributor—whether human or AI—works consistently, transparently, and in alignment with the project's documented architecture and long-term vision.
+Its purpose is to ensure that every contributor, whether human or AI, works consistently, transparently, and in alignment with the project's documented architecture and long-term vision.
 
 Rather than defining the platform itself, this document defines how contributors collaborate to design, develop, document, and maintain Pokémon Companion.
 
@@ -113,39 +113,6 @@ Information should be documented in its most appropriate location and referenced
 
 Contributors should avoid introducing overlapping responsibilities or conflicting sources of truth.
 
-# Collaboration Contract
-
-## Purpose
-
-The Collaboration Contract defines the standards, principles, and working practices that govern all contributions to Pokémon Companion.
-
-Its purpose is to ensure that every contributor—whether human or AI—works consistently, transparently, and in alignment with the project's documented architecture and long-term vision.
-
-Rather than defining the platform itself, this document defines how contributors collaborate to design, develop, document, and maintain Pokémon Companion.
-
-Every contribution should prioritize correctness, consistency, maintainability, and traceability over speed or convenience.
-
----
-
-## Scope
-
-This document applies to every contribution made to Pokémon Companion, including:
-
-- Documentation
-- Architecture
-- Data Models
-- Source Code
-- APIs
-- User Interface
-- Testing
-- Tooling
-- Planning
-- Design Discussions
-
-The Collaboration Contract governs how contributors make decisions, propose changes, resolve uncertainty, and maintain consistency throughout the project.
-
-Repository-specific workflows, such as branching strategies, pull requests, commit conventions, and code reviews, are documented separately in `CONTRIBUTING.md`.
-
 ---
 
 # Collaboration Workflow
@@ -200,13 +167,15 @@ Every completed contribution should improve the project without reducing its ove
 
 ---
 
-## Implementation Workflow
+# Implementation Workflow
 
 To maintain consistency and reduce implementation errors, contributors should follow a structured implementation workflow.
 
 Unless there is a clear reason to do otherwise, implementation should proceed using the following sequence.
 
-### Create Before Implementing
+---
+
+## Create Before Implementing
 
 When introducing a new file or directory:
 
@@ -214,7 +183,9 @@ When introducing a new file or directory:
 - Confirm its creation before implementation begins.
 - Avoid combining creation and implementation into a single step.
 
-### Review Before Modification
+---
+
+## Review Before Modification
 
 Before modifying an existing file:
 
@@ -223,7 +194,9 @@ Before modifying an existing file:
 - Prefer updating the complete file rather than providing isolated code fragments.
 - When implementation depends on the repository structure, verify the relevant file or directory locations before providing project-specific paths.
 
-### One Step at a Time
+---
+
+## One Step at a Time
 
 Implementation should progress incrementally.
 
@@ -231,7 +204,9 @@ Each step should have a single objective that can be completed, reviewed, and ve
 
 Large features should be divided into small, independently verifiable tasks.
 
-### Testing Workflow
+---
+
+## Testing Workflow
 
 When implementation requires verification:
 
@@ -240,7 +215,9 @@ When implementation requires verification:
 - Request the complete output rather than a summary.
 - Use the output as the basis for further decisions before continuing implementation.
 
-### Temporary Files
+---
+
+## Temporary Files
 
 When temporary files are created for development or verification purposes:
 

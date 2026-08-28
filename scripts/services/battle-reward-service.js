@@ -12,20 +12,17 @@
  * - Apply trainer rewards.
  *
  * Does NOT:
+ * - Store battle state.
+ * - Store Pokémon copies.
  * - Execute moves.
  * - Calculate damage.
  * - Manage turns.
- * - Handle battle state.
  */
 
 "use strict";
 
 
-
-
-
 class BattleRewardService {
-
 
 
     constructor(
@@ -46,21 +43,12 @@ class BattleRewardService {
         this.rewards =
             rewardService;
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Give battle EXP
     //--------------------------------
-
 
     giveBattleExp(
         pokemon,
@@ -69,10 +57,8 @@ class BattleRewardService {
     )
     {
 
-
         if(
-            !pokemon
-            ||
+            !pokemon ||
             !defeatedPokemon
         )
         {
@@ -89,86 +75,44 @@ class BattleRewardService {
         }
 
 
-
-
-
-
-
-
         const expAmount =
-
             this.experience.calculateExp(
-
                 defeatedPokemon,
-
                 source
-
             );
-
-
-
-
-
-
 
 
         const result =
-
             this.experience.giveExp(
-
                 pokemon,
-
                 expAmount
-
             );
-
-
-
-
-
-
 
 
         return {
 
-
             success:
-
                 result.success,
 
-
             exp:
-
                 expAmount,
-
 
             result
 
-
         };
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Check evolution
     //--------------------------------
 
-
     checkEvolution(
         pokemon,
         context = {}
     )
     {
-
 
         if(
             !this.evolution
@@ -187,36 +131,18 @@ class BattleRewardService {
         }
 
 
-
-
-
-
-
-
         return this.evolution.checkEvolution(
-
             pokemon,
-
             context
-
         );
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Process full battle reward
     //--------------------------------
-    
-    
+
     processBattleRewards(
         pokemon,
         defeatedPokemon,
@@ -225,174 +151,115 @@ class BattleRewardService {
         source = "TRAINER"
     )
     {
-    
-    
-        //--------------------------------
-        // Store original species
-        //--------------------------------
-    
-    
-        const oldSpecies =
-            pokemon.species;
-    
-    
-    
-    
-    
+
+        if(
+            !pokemon ||
+            !defeatedPokemon
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Missing Pokemon"
+
+            };
+
+        }
+
+
         //--------------------------------
         // EXP
         //--------------------------------
-    
-    
+
         const expResult =
-    
             this.giveBattleExp(
-            
                 pokemon,
-            
                 defeatedPokemon,
-            
                 source
-            
             );
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+        if(
+            !expResult.success
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Failed to give battle EXP",
+
+                exp:
+                    expResult
+
+            };
+
+        }
+
+
         //--------------------------------
         // Evolution
         //--------------------------------
-        
-        
-        let evolutionResult = null;
-        
-        
-        
-        
-        
-        if(
-            expResult.success
-        )
-        {
-        
-        
-            evolutionResult =
-        
-                this.checkEvolution(
-                
-                    pokemon
-                
-                );
-            
-            
-        }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+        const evolutionResult =
+            this.checkEvolution(
+                pokemon
+            );
+
+
         //--------------------------------
         // Trainer rewards
         //--------------------------------
-    
-    
+
         let rewardResult = null;
-    
-    
-    
-    
-    
+
+
         if(
-            this.rewards
-            &&
-            trainerRewards
-            &&
+            this.rewards &&
+            trainerRewards &&
             trainerState
         )
         {
-        
-        
+
             rewardResult =
-        
                 this.rewards.execute(
-                
                     trainerRewards,
-                
                     trainerState
-                
                 );
-            
-            
+
         }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+        //--------------------------------
+        // Result
+        //--------------------------------
+
         return {
-        
-        
+
             success:true,
-        
-        
-            pokemonBeforeEvolution:
-        
-                oldSpecies,
-        
-        
-        
-            pokemon:
-        
-                pokemon.species,
-        
-        
-        
-            levelUps:
-        
-                expResult.result.levels,
-        
-        
-        
+
+            pokemon,
+
             exp:
-        
                 expResult,
-        
-        
-        
+
             evolution:
-        
                 evolutionResult,
-        
-        
-        
+
             rewards:
-        
                 rewardResult
-        
-        
+
         };
-    
-    
+
     }
 
 
 }
-
-
-
 
 
 module.exports =

@@ -10,19 +10,16 @@
  *
  * Does NOT:
  * - Store battles.
+ * - Store duplicate battle state.
  * - Calculate damage.
- * - Execute move mechanics.
+ * - Execute move mechanics directly.
  * - Manage ROM data.
  */
 
 "use strict";
 
 
-
-
-
 class BattleFlowService {
-
 
 
     constructor(
@@ -35,7 +32,6 @@ class BattleFlowService {
         battleAIService
     )
     {
-
 
         this.validation =
             validationService;
@@ -64,21 +60,12 @@ class BattleFlowService {
         this.ai =
             battleAIService;
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Process battle turn
     //--------------------------------
-
 
     processTurn(
         battle,
@@ -86,6 +73,9 @@ class BattleFlowService {
     )
     {
 
+        //--------------------------------
+        // Validate battle
+        //--------------------------------
 
         if(
             !battle
@@ -102,9 +92,6 @@ class BattleFlowService {
             };
 
         }
-
-
-
 
 
         if(
@@ -125,12 +112,45 @@ class BattleFlowService {
         }
 
 
+        if(
+            !battle.player
+            ||
+            !battle.opponent
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Invalid battle participants"
+
+            };
+
+        }
 
 
+        if(
+            !this.pokemon
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Battle Pokémon service unavailable"
+
+            };
+
+        }
 
 
-
-
+        //--------------------------------
+        // Get active Pokémon
+        //--------------------------------
 
         const player =
 
@@ -148,9 +168,6 @@ class BattleFlowService {
                 battle.opponent
 
             );
-
-
-
 
 
         if(
@@ -171,19 +188,28 @@ class BattleFlowService {
         }
 
 
-
-
-
-
-
-
-
         //--------------------------------
         // Validate player move
         //--------------------------------
 
+        if(
+            !this.validation
+        )
+        {
 
-        const validation =
+            return {
+
+                success:false,
+
+                reason:
+                    "Battle validation unavailable"
+
+            };
+
+        }
+
+
+        let validation =
 
             this.validation.validateMove(
 
@@ -194,8 +220,9 @@ class BattleFlowService {
             );
 
 
-
-
+        //--------------------------------
+        // Automatic STRUGGLE
+        //--------------------------------
 
         if(
             validation.struggle
@@ -203,11 +230,10 @@ class BattleFlowService {
         {
 
             playerMove =
-
                 this.getStruggleMove();
 
-
         }
+
 
         else if(
             !validation.success
@@ -219,65 +245,57 @@ class BattleFlowService {
         }
 
 
+        else
+        {
 
+            playerMove =
+                validation.move
+                ||
+                playerMove;
 
-
-
-
+        }
 
 
         //--------------------------------
         // Select enemy move
         //--------------------------------
 
-
-        let enemyMove = null;
-
-
-
+        let enemyMove =
+            null;
 
 
         if(
             this.ai
         )
         {
-        
+
             const enemyMoves =
-        
-                this.pokemon.getUsableMoves
-        
-                ?
-        
-                this.pokemon.getUsableMoves(
+
+                this.getUsableEnemyMoves(
+
                     enemy
-                )
-            
-                :
-            
-                enemy.moves;
-            
-            
-            enemyMove =
-            
-                this.ai.chooseMove(
-                
-                    enemy,
-                
-                    player,
-                
-                    enemyMoves
-                
+
                 );
-            
+
+
+            enemyMove =
+
+                this.ai.chooseMove(
+
+                    enemy,
+
+                    player,
+
+                    enemyMoves
+
+                );
+
         }
 
 
-
-
-
-
-
-
+        //--------------------------------
+        // Enemy has no usable move
+        //--------------------------------
 
         if(
             !enemyMove
@@ -285,21 +303,30 @@ class BattleFlowService {
         {
 
             enemyMove =
-            this.getStruggleMove();
+                this.getStruggleMove();
 
         }
-
-
-
-
-
-
-
 
 
         //--------------------------------
         // Determine turn order
         //--------------------------------
+
+        if(
+            !this.order
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Turn order service unavailable"
+
+            };
+
+        }
 
 
         const actions =
@@ -315,98 +342,105 @@ class BattleFlowService {
             );
 
 
-
-
-
-
-
-
-
         //--------------------------------
         // Turn result container
         //--------------------------------
 
-
         const result =
         {
-        
+
             turn:
-        
                 battle.turn,
-        
-        
+
+
             player:
             {
-            
+
                 pokemon:
-            
-                    player.species,
-            
-            
+                    this.getPokemonName(
+                        player
+                    ),
+
+
                 hp:
-            
                     player.hp
-            
+
             },
-        
-        
+
+
             enemy:
             {
-            
+
                 pokemon:
-            
-                    enemy.species,
-            
-            
+                    this.getPokemonName(
+                        enemy
+                    ),
+
+
                 hp:
-            
                     enemy.hp
-            
+
             },
-        
-        
+
+
             actions:
-        
                 []
-        
+
         };
 
 
-
-
-
-
-
-
-
         //--------------------------------
-        // Execute actions
+        // Execute ordered actions
         //--------------------------------
-
 
         for(
             const action of actions
         )
         {
 
+            //--------------------------------
+            // Resolve attacker side
+            //--------------------------------
 
-            const attacker =
+            const attackerSide =
 
-                this.pokemon.getActivePokemon(
+                this.getBattleSide(
+
+                    battle,
 
                     action.side
 
                 );
 
 
+            if(
+                !attackerSide
+            )
+            {
 
+                continue;
+
+            }
+
+
+            //--------------------------------
+            // Resolve attacker Pokémon
+            //--------------------------------
+
+            const attacker =
+
+                this.pokemon.getActivePokemon(
+
+                    attackerSide
+
+                );
 
 
             if(
+                !attacker
+                ||
                 this.pokemon.isFainted(
-
                     attacker
-
                 )
             )
             {
@@ -416,16 +450,13 @@ class BattleFlowService {
             }
 
 
-
-
-
-
-
-
+            //--------------------------------
+            // Resolve defender side
+            //--------------------------------
 
             const defenderSide =
 
-                action.side === battle.player
+                action.side === "PLAYER"
 
                 ?
 
@@ -434,13 +465,6 @@ class BattleFlowService {
                 :
 
                 battle.player;
-
-
-
-
-
-
-
 
 
             const defender =
@@ -452,11 +476,12 @@ class BattleFlowService {
                 );
 
 
-
-
-
             if(
                 !defender
+                ||
+                this.pokemon.isFainted(
+                    defender
+                )
             )
             {
 
@@ -465,93 +490,132 @@ class BattleFlowService {
             }
 
 
+            //--------------------------------
+            // Execute move
+            //--------------------------------
 
+            if(
+                !this.turn
+            )
+            {
 
+                return {
 
+                    success:false,
 
+                    reason:
+                        "Battle turn service unavailable"
 
+                };
+
+            }
 
 
             this.turn.executeTurnMove(
 
                 action.side,
 
-                defenderSide,
+                action.side === "PLAYER"
+                    ? "OPPONENT"
+                    : "PLAYER",
 
                 action.move,
 
                 result,
-
-                battle,
-
-                side =>
-
-                    this.pokemon.getActivePokemon(
-
-                        side
-
-                    )
-
-            );
-
-
-
-
-
-
-
-
-
-            //--------------------------------
-            // Faint checks
-            //--------------------------------
-
-
-            this.faint.handleFaint(
-
-                action.side,
-
-                result
-
-            );
-
-
-
-
-
-            this.faint.handleFaint(
-
-                defenderSide,
-
-                result
-
-            );
-
-
-
-
-
-
-
-
-
-            //--------------------------------
-            // Battle end
-            //--------------------------------
-
-
-            this.result.checkBattleEnd(
 
                 battle
 
             );
 
 
+            //--------------------------------
+            // Re-resolve sides after move
+            //--------------------------------
+
+            const currentAttackerSide =
+
+                this.getBattleSide(
+
+                    battle,
+
+                    action.side
+
+                );
 
 
+            const currentDefenderSide =
+
+                this.getBattleSide(
+
+                    battle,
+
+                    action.side === "PLAYER"
+                    ? "OPPONENT"
+                    : "PLAYER"
+
+                );
 
 
+            //--------------------------------
+            // Handle attacker faint
+            //--------------------------------
 
+            if(
+                this.faint
+                &&
+                currentAttackerSide
+            )
+            {
+
+                this.faint.handleFaint(
+
+                    currentAttackerSide,
+
+                    result
+
+                );
+
+            }
+
+
+            //--------------------------------
+            // Handle defender faint
+            //--------------------------------
+
+            if(
+                this.faint
+                &&
+                currentDefenderSide
+            )
+            {
+
+                this.faint.handleFaint(
+
+                    currentDefenderSide,
+
+                    result
+
+                );
+
+            }
+
+
+            //--------------------------------
+            // Check battle end
+            //--------------------------------
+
+            if(
+                this.result
+            )
+            {
+
+                this.result.checkBattleEnd(
+
+                    battle
+
+                );
+
+            }
 
 
             if(
@@ -564,79 +628,107 @@ class BattleFlowService {
 
             }
 
-
         }
-
-
-
-
-
-
-
 
 
         //--------------------------------
         // Update final HP snapshot
         //--------------------------------
-            
+
+        const currentPlayer =
+
+            this.pokemon.getActivePokemon(
+
+                battle.player
+
+            );
+
+
+        const currentEnemy =
+
+            this.pokemon.getActivePokemon(
+
+                battle.opponent
+
+            );
+
+
         result.player.hp =
-            player.hp;
-            
-            
+
+            currentPlayer
+            ?
+            currentPlayer.hp
+            :
+            0;
+
+
         result.enemy.hp =
-            enemy.hp;
 
-
-
-
-
-
-
+            currentEnemy
+            ?
+            currentEnemy.hp
+            :
+            0;
 
 
         //--------------------------------
         // End turn effects
         //--------------------------------
 
-
         if(
             battle.status ===
             "ACTIVE"
+            &&
+            this.turn
         )
         {
-
 
             this.turn.processEndTurn(
 
                 battle,
 
-                result,
-
-                side =>
-
-                    this.pokemon.getActivePokemon(
-
-                        side
-
-                    )
+                result
 
             );
-
 
         }
 
 
+        //--------------------------------
+        // Check faint after end effects
+        //--------------------------------
+
+        if(
+            battle.status ===
+            "ACTIVE"
+            &&
+            this.faint
+        )
+        {
+
+            this.faint.handleFaint(
+
+                battle.player,
+
+                result
+
+            );
 
 
+            this.faint.handleFaint(
 
+                battle.opponent,
 
+                result
 
+            );
+
+        }
 
 
         //--------------------------------
         // Advance turn
         //--------------------------------
-
 
         if(
             battle.status ===
@@ -649,25 +741,22 @@ class BattleFlowService {
         }
 
 
+        //--------------------------------
+        // Final battle result check
+        //--------------------------------
 
+        if(
+            this.result
+        )
+        {
 
+            this.result.checkBattleEnd(
 
+                battle
 
+            );
 
-
-
-        this.result.checkBattleEnd(
-
-            battle
-
-        );
-
-
-
-
-
-
-
+        }
 
 
         return {
@@ -678,21 +767,128 @@ class BattleFlowService {
 
         };
 
+    }
+
+
+    //--------------------------------
+    // Resolve battle side
+    //--------------------------------
+
+    getBattleSide(
+        battle,
+        side
+    )
+    {
+
+        if(
+            !battle
+        )
+        {
+
+            return null;
+
+        }
+
+
+        if(
+            side ===
+            "PLAYER"
+        )
+        {
+
+            return battle.player;
+
+        }
+
+
+        if(
+            side ===
+            "OPPONENT"
+        )
+        {
+
+            return battle.opponent;
+
+        }
+
+
+        return null;
 
     }
 
 
+    //--------------------------------
+    // Get usable enemy moves
+    //--------------------------------
+
+    getUsableEnemyMoves(
+        pokemon
+    )
+    {
+
+        if(
+            !pokemon
+            ||
+            !Array.isArray(
+                pokemon.moves
+            )
+        )
+        {
+
+            return [];
+
+        }
 
 
+        return pokemon.moves.filter(
+
+            move =>
+
+                typeof move.pp !==
+                "number"
+
+                ||
+
+                move.pp > 0
+
+        );
+
+    }
 
 
+    //--------------------------------
+    // Pokémon name
+    //--------------------------------
 
+    getPokemonName(
+        pokemon
+    )
+    {
+
+        return (
+
+            pokemon?.species
+
+            ||
+
+            pokemon?.name
+
+            ||
+
+            pokemon?.constant
+
+            ||
+
+            "UNKNOWN"
+
+        );
+
+    }
 
 
     //--------------------------------
     // Default STRUGGLE
     //--------------------------------
-
 
     getStruggleMove()
     {
@@ -732,9 +928,6 @@ class BattleFlowService {
 
 
 }
-
-
-
 
 
 module.exports =

@@ -12,6 +12,8 @@
  * - Process end turn effects.
  *
  * Does NOT:
+ * - Store Pokémon.
+ * - Create duplicate Pokémon data.
  * - Determine turn order.
  * - Calculate damage.
  * - Validate moves.
@@ -21,20 +23,16 @@
 "use strict";
 
 
-
-
-
 class BattleTurnService {
-
 
 
     constructor(
         moveExecutionService,
         statusEffectService,
-        weatherService
+        weatherService,
+        battlePokemonService
     )
     {
-
 
         this.moves =
             moveExecutionService;
@@ -48,49 +46,168 @@ class BattleTurnService {
             weatherService;
 
 
+        this.pokemon =
+            battlePokemonService;
+
     }
 
 
+    //--------------------------------
+    // Pokémon name resolver
+    //--------------------------------
+
+    getPokemonName(
+        pokemon
+    )
+    {
+
+        return (
+
+            pokemon?.species
+
+            ||
+
+            pokemon?.name
+
+            ||
+
+            pokemon?.constant
+
+            ||
+
+            "UNKNOWN"
+
+        );
+
+    }
 
 
+    //--------------------------------
+    // Resolve battle side
+    //--------------------------------
+
+    getSide(
+        battle,
+        side
+    )
+    {
+
+        if(
+            !battle
+        )
+        {
+
+            return null;
+
+        }
 
 
+        if(
+            side === "PLAYER"
+        )
+        {
 
+            return battle.player;
+
+        }
+
+
+        if(
+            side === "OPPONENT"
+        )
+        {
+
+            return battle.opponent;
+
+        }
+
+
+        return null;
+
+    }
 
 
     //--------------------------------
     // Execute ordered move
     //--------------------------------
 
-
     executeTurnMove(
         attackerSide,
         defenderSide,
         move,
         result,
-        battle,
-        getActivePokemon
+        battle
     )
     {
 
+        if(
+            !battle ||
+            !this.pokemon
+        )
+        {
 
-        const attacker =
-            getActivePokemon(
+            return;
+
+        }
+
+
+        //--------------------------------
+        // Resolve participants
+        //--------------------------------
+
+        const attackerParticipant =
+
+            this.getSide(
+
+                battle,
 
                 attackerSide
 
             );
 
 
-        const defender =
-            getActivePokemon(
+        const defenderParticipant =
+
+            this.getSide(
+
+                battle,
 
                 defenderSide
 
             );
 
 
+        if(
+            !attackerParticipant ||
+            !defenderParticipant
+        )
+        {
 
+            return;
+
+        }
+
+
+        //--------------------------------
+        // Resolve active Pokémon
+        //--------------------------------
+
+        const attacker =
+
+            this.pokemon.getActivePokemon(
+
+                attackerParticipant
+
+            );
+
+
+        const defender =
+
+            this.pokemon.getActivePokemon(
+
+                defenderParticipant
+
+            );
 
 
         if(
@@ -105,48 +222,66 @@ class BattleTurnService {
         }
 
 
-
-
+        //--------------------------------
+        // Resolve known move
+        //--------------------------------
 
         let selectedMove =
-            
+
+            Array.isArray(
+                attacker.moves
+            )
+
+            ?
+
             attacker.moves.find(
-            
+
                 knownMove =>
-                
+
                     (
+
                         knownMove.constant
                         &&
                         move.constant
                         &&
-                        knownMove.constant === move.constant
+                        knownMove.constant ===
+                            move.constant
+
                     )
-                
+
                     ||
-                
+
                     (
+
                         knownMove.name
                         &&
                         move.name
                         &&
-                        knownMove.name === move.name
+                        knownMove.name ===
+                            move.name
+
                     )
-                
-            );
-        
-        
+
+            )
+
+            :
+
+            null;
+
+
+        //--------------------------------
+        // Use supplied move if not found
+        //--------------------------------
+
         if(
             !selectedMove
         )
         {
-        
+
             selectedMove =
                 move;
-        
+
         }
-
-
-
 
 
         //--------------------------------
@@ -154,58 +289,29 @@ class BattleTurnService {
         //--------------------------------
 
         if(
-            move &&
             move.constant ===
             "MOVE_STRUGGLE"
         )
         {
 
             selectedMove =
-            {
-
-                name:
-                    "STRUGGLE",
-
-
-                constant:
-                    "MOVE_STRUGGLE",
-
-
-                type:
-                    "NORMAL",
-
-
-                category:
-                    "PHYSICAL",
-
-
-                power:
-                    50,
-
-
-                accuracy:
-                    100,
-
-
-                priority:
-                    0
-
-            };
-
+                this.getStruggleMove();
 
         }
-
-
-
-
-
-
-
 
 
         //--------------------------------
         // Execute move
         //--------------------------------
+
+        if(
+            !this.moves
+        )
+        {
+
+            return;
+
+        }
 
 
         const moveResult =
@@ -233,17 +339,9 @@ class BattleTurnService {
             );
 
 
-
-
-
-
-
-
-
         //--------------------------------
         // Consume PP
         //--------------------------------
-
 
         if(
             selectedMove.constant !==
@@ -262,40 +360,36 @@ class BattleTurnService {
         }
 
 
-
-
-
-
-
-
-
         //--------------------------------
         // Battle log
         //--------------------------------
-
 
         result.actions.push(
 
             {
 
                 attacker:
-                    attacker.species,
+                    this.getPokemonName(
+                        attacker
+                    ),
 
 
                 move:
-                    moveResult.move
+                    moveResult?.move
                     ||
                     selectedMove.name,
 
 
                 damage:
-                    moveResult.damage
+                    moveResult?.damage
                     ||
                     0,
 
 
                 target:
-                    defender.species,
+                    this.getPokemonName(
+                        defender
+                    ),
 
 
                 targetHP:
@@ -303,11 +397,11 @@ class BattleTurnService {
 
 
                 hit:
-                    moveResult.hit !== false,
+                    moveResult?.hit !== false,
 
 
                 effect:
-                    moveResult.effect
+                    moveResult?.effect
                     ||
                     null
 
@@ -316,17 +410,9 @@ class BattleTurnService {
         );
 
 
-
-
-
-
-
-
-
         //--------------------------------
         // Struggle recoil
         //--------------------------------
-
 
         if(
 
@@ -335,11 +421,10 @@ class BattleTurnService {
 
             &&
 
-            moveResult.hit !== false
+            moveResult?.hit !== false
 
         )
         {
-
 
             const recoil =
 
@@ -349,20 +434,15 @@ class BattleTurnService {
 
                     Math.floor(
 
-                        moveResult.damage / 4
+                        (moveResult?.damage || 0) / 4
 
                     )
 
                 );
 
 
-
-
-
-            attacker.hp -= recoil;
-
-
-
+            attacker.hp -=
+                recoil;
 
 
             if(
@@ -370,12 +450,10 @@ class BattleTurnService {
             )
             {
 
-                attacker.hp = 0;
+                attacker.hp =
+                    0;
 
             }
-
-
-
 
 
             result.actions.push(
@@ -387,7 +465,9 @@ class BattleTurnService {
 
 
                     pokemon:
-                        attacker.species,
+                        this.getPokemonName(
+                            attacker
+                        ),
 
 
                     damage:
@@ -401,24 +481,14 @@ class BattleTurnService {
 
             );
 
-
         }
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Consume PP
     //--------------------------------
-
 
     consumePP(
         pokemon,
@@ -426,10 +496,11 @@ class BattleTurnService {
     )
     {
 
-
         if(
             !pokemon ||
-            !pokemon.moves ||
+            !Array.isArray(
+                pokemon.moves
+            ) ||
             !move
         )
         {
@@ -439,15 +510,11 @@ class BattleTurnService {
         }
 
 
-
-
-
         const selected =
 
             pokemon.moves.find(
 
                 known =>
-
 
                     (
 
@@ -456,7 +523,7 @@ class BattleTurnService {
                         move.constant
                         &&
                         known.constant ===
-                        move.constant
+                            move.constant
 
                     )
 
@@ -469,14 +536,11 @@ class BattleTurnService {
                         move.name
                         &&
                         known.name ===
-                        move.name
+                            move.name
 
                     )
 
             );
-
-
-
 
 
         if(
@@ -489,9 +553,6 @@ class BattleTurnService {
         }
 
 
-
-
-
         if(
             typeof selected.pp ===
             "number"
@@ -501,55 +562,53 @@ class BattleTurnService {
             selected.pp--;
 
 
-
-
-
             if(
                 selected.pp < 0
             )
             {
 
-                selected.pp = 0;
+                selected.pp =
+                    0;
 
             }
 
         }
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // End turn processing
     //--------------------------------
 
-
     processEndTurn(
         battle,
-        result,
-        getActivePokemon
+        result
     )
     {
+
+        if(
+            !battle ||
+            !this.pokemon
+        )
+        {
+
+            return;
+
+        }
 
 
         const activePokemon =
         [
 
-            getActivePokemon(
+            this.pokemon.getActivePokemon(
 
                 battle.player
 
             ),
 
 
-            getActivePokemon(
+            this.pokemon.getActivePokemon(
 
                 battle.opponent
 
@@ -558,14 +617,10 @@ class BattleTurnService {
         ];
 
 
-
-
-
         for(
             const pokemon of activePokemon
         )
         {
-
 
             if(
                 !pokemon ||
@@ -578,19 +633,14 @@ class BattleTurnService {
             }
 
 
-
-
-
             //--------------------------------
             // Status effects
             //--------------------------------
-
 
             if(
                 this.status
             )
             {
-
 
                 const statusResult =
 
@@ -601,16 +651,12 @@ class BattleTurnService {
                     );
 
 
-
-
-
                 if(
                     statusResult
                     &&
                     statusResult.damage
                 )
                 {
-
 
                     result.actions.push(
 
@@ -621,7 +667,9 @@ class BattleTurnService {
 
 
                             pokemon:
-                                pokemon.species,
+                                this.getPokemonName(
+                                    pokemon
+                                ),
 
 
                             damage:
@@ -637,27 +685,17 @@ class BattleTurnService {
 
                 }
 
-
             }
-
-
-
-
-
-
-
 
 
             //--------------------------------
             // Weather effects
             //--------------------------------
 
-
             if(
                 this.weather
             )
             {
-
 
                 const weatherResult =
 
@@ -668,16 +706,12 @@ class BattleTurnService {
                     );
 
 
-
-
-
                 if(
                     weatherResult
                     &&
                     weatherResult.damage
                 )
                 {
-
 
                     result.actions.push(
 
@@ -688,7 +722,9 @@ class BattleTurnService {
 
 
                             pokemon:
-                                pokemon.species,
+                                this.getPokemonName(
+                                    pokemon
+                                ),
 
 
                             damage:
@@ -704,20 +740,55 @@ class BattleTurnService {
 
                 }
 
-
             }
-
 
         }
 
+    }
+
+
+    //--------------------------------
+    // Struggle
+    //--------------------------------
+
+    getStruggleMove()
+    {
+
+        return {
+
+            name:
+                "STRUGGLE",
+
+
+            constant:
+                "MOVE_STRUGGLE",
+
+
+            type:
+                "NORMAL",
+
+
+            category:
+                "PHYSICAL",
+
+
+            power:
+                50,
+
+
+            accuracy:
+                100,
+
+
+            priority:
+                0
+
+        };
 
     }
 
 
 }
-
-
-
 
 
 module.exports =

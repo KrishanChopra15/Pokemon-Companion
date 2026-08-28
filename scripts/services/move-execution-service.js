@@ -181,26 +181,33 @@ class MoveExecutionService {
 
             resolvedMove =
 
-                this.moveMechanics.resolveMove(
-
-                    move,
-
-                    {
-
-                        pokemon:
-                            attacker,
-
-
-                        weather:
-                            context.weather,
-
-
-                        environment:
-                            context.environment
-
-                    }
-
-                );
+                {
+                    ...move,
+                
+                    ...(this.moveMechanics
+                        ?
+                        this.moveMechanics.resolveMove(
+                        
+                            move,
+                        
+                            {
+                            
+                                pokemon:
+                                    attacker,
+                            
+                                weather:
+                                    context.weather,
+                            
+                                environment:
+                                    context.environment
+                            
+                            }
+                        
+                        )
+                        :
+                        {}
+                    )
+                };
 
         }
 
@@ -513,7 +520,10 @@ class MoveExecutionService {
                 resolvedMove,
                 context
             );
-
+console.log(
+    "CALCULATED DAMAGE RESULT:",
+    damage
+);
         }
 
 
@@ -537,7 +547,14 @@ class MoveExecutionService {
 
         );
 
-
+console.log(
+    "BEFORE DAMAGE:",
+    {
+        pokemon:defender.species,
+        hp:defender.hp,
+        damage
+    }
+);
 
 
 

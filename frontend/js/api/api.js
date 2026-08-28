@@ -1,86 +1,171 @@
 /**
- * =====================================================
+ * Pokémon Companion
  * API Service
- * -----------------------------------------------------
- * Handles all communication with the backend.
- * Every frontend module should use this file instead
- * of calling fetch() directly.
- * =====================================================
+ *
+ * Single frontend gateway for backend communication.
+ *
+ * Responsibilities:
+ * - Send HTTP requests.
+ * - Attach authentication.
+ * - Parse backend responses.
+ * - Handle API errors.
+ *
+ * Does NOT:
+ * - Store application state.
+ * - Contain business logic.
+ * - Manage Pokémon state.
+ * - Manage battle state.
+ * - Manipulate the DOM.
  */
+
+"use strict";
+
 
 import { getToken } from "../utils/storage.js";
 
-// ===============================
+
+//================================
 // Configuration
-// ===============================
+//================================
 
-const API_BASE_URL = "http://localhost:8000/api";
+const API_BASE_URL =
+    "http://localhost:8000/api";
 
-// ===============================
-// Generic Request Function
-// ===============================
 
-/**
- * Send an HTTP request to the backend.
- *
- * @param {string} endpoint
- * @param {Object} options
- * @returns {Promise<Object>}
- */
-export async function apiRequest(endpoint, options = {}) {
-    const token = getToken();
+//================================
+// API Request
+//================================
 
-    const config = {
-        headers: {
-            "Content-Type": "application/json",
-            ...(token && {
-                Authorization: `Bearer ${token}`
-            }),
-            ...options.headers
-        },
-        ...options
+export async function apiRequest(
+    endpoint,
+    options = {}
+)
+{
+
+    const token =
+        getToken();
+
+
+    const headers =
+    {
+
+        "Content-Type":
+            "application/json",
+
+        ...(token
+            ?
+            {
+                Authorization:
+                    `Bearer ${token}`
+            }
+            :
+            {}),
+
+        ...(options.headers || {})
+
     };
 
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
 
-    const data = await response.json();
+    const config =
+    {
 
-    if (!response.ok) {
-        throw new Error(data.message || "Something went wrong.");
+        ...options,
+
+        headers
+
+    };
+
+
+    let response;
+
+
+    try
+    {
+
+        response =
+            await fetch(
+
+                `${API_BASE_URL}${endpoint}`,
+
+                config
+
+            );
+
+    }
+    catch(error)
+    {
+
+        throw new Error(
+            "Unable to connect to the server."
+        );
+
     }
 
+
+    let data =
+        null;
+
+
+    const contentType =
+        response.headers.get(
+            "content-type"
+        );
+
+
+    if(
+        contentType &&
+        contentType.includes(
+            "application/json"
+        )
+    )
+    {
+
+        data =
+            await response.json();
+
+    }
+    else
+    {
+
+        data =
+            await response.text();
+
+    }
+
+
+    if(
+        !response.ok
+    )
+    {
+
+        const message =
+
+            typeof data === "object"
+
+            &&
+
+            data !== null
+
+            &&
+
+            data.message
+
+                ?
+
+                data.message
+
+                :
+
+                `API request failed (${response.status})`;
+
+
+        throw new Error(
+            message
+        );
+
+    }
+
+
     return data;
-}
 
-// ===============================
-// Authentication APIs
-// ===============================
-
-/**
- * Register a new user.
- */
-export function registerUser(userData) {
-    return apiRequest("/auth/register", {
-        method: "POST",
-        body: JSON.stringify(userData)
-    });
-}
-
-/**
- * Login existing user.
- */
-export function loginUser(credentials) {
-    return apiRequest("/auth/login", {
-        method: "POST",
-        body: JSON.stringify(credentials)
-    });
-}
-
-/**
- * Get current logged-in user.
- */
-export function getCurrentUser() {
-    return apiRequest("/auth/me", {
-        method: "GET"
-    });
 }

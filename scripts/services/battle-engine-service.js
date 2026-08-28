@@ -2,18 +2,22 @@
  * Pokémon Companion
  * Battle Engine Service
  *
- * Main battle coordinator.
+ * Coordinates battle operations.
  *
  * Responsibilities:
- * - Initialize battles.
- * - Forward turns.
- * - Provide battle access.
+ * - Validate battle data.
+ * - Initialize battle metadata.
+ * - Forward turns to battle flow.
+ * - Resolve active Pokémon.
  *
  * Does NOT:
- * - Store battle logic.
- * - Validate moves.
+ * - Store battles.
+ * - Create duplicate battle state.
+ * - Store Pokémon separately.
+ * - Manage active Pokémon separately.
  * - Calculate damage.
  * - Execute moves.
+ * - Handle battle AI.
  * - Handle fainting.
  * - Handle switching.
  * - Handle battle results.
@@ -22,24 +26,14 @@
 "use strict";
 
 
-
-
-
 class BattleEngineService {
 
 
-
     constructor(
-        battleStateService,
         battleFlowService,
         battlePokemonService
     )
     {
-
-
-        this.state =
-            battleStateService;
-
 
         this.flow =
             battleFlowService;
@@ -48,27 +42,17 @@ class BattleEngineService {
         this.pokemon =
             battlePokemonService;
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Initialize battle
     //--------------------------------
 
-
     initializeBattle(
         battle
     )
     {
-
 
         if(
             !battle
@@ -78,6 +62,14 @@ class BattleEngineService {
             !battle.player
             ||
             !battle.opponent
+            ||
+            !Array.isArray(
+                battle.player.party
+            )
+            ||
+            !Array.isArray(
+                battle.opponent.party
+            )
         )
         {
 
@@ -93,167 +85,90 @@ class BattleEngineService {
         }
 
 
+        //--------------------------------
+        // Initialize metadata
+        //--------------------------------
+
+        battle.status ??=
+            "ACTIVE";
 
 
+        battle.turn ??=
+            1;
 
 
+        battle.result ??=
+            null;
 
 
-        const state =
+        //--------------------------------
+        // Initialize active indexes
+        //--------------------------------
+
+        battle.player.active ??=
+            0;
+
+
+        battle.opponent.active ??=
+            0;
+
+
+        //--------------------------------
+        // Validate player active index
+        //--------------------------------
+
+        if(
+            battle.player.active < 0
+            ||
+            battle.player.active >=
+                battle.player.party.length
+        )
         {
 
-            id:
-                battle.id,
+            battle.player.active =
+                0;
+
+        }
 
 
-            status:
-                "ACTIVE",
+        //--------------------------------
+        // Validate opponent active index
+        //--------------------------------
+
+        if(
+            battle.opponent.active < 0
+            ||
+            battle.opponent.active >=
+                battle.opponent.party.length
+        )
+        {
+
+            battle.opponent.active =
+                0;
+
+        }
 
 
-            player:
-            {
+        return {
 
-                party:
-                    battle.player.party || [],
+            success:true,
 
-
-                active:
-                    0
-
-            },
-
-
-            opponent:
-            {
-
-                party:
-                    battle.opponent.party || [],
-
-
-                active:
-                    0
-
-            },
-
-
-            turn:
-                1,
-
-
-            winner:
-                null
+            battle
 
         };
 
-
-
-
-
-
-
-
-
-        if(
-            this.state
-        )
-        {
-
-            this.state.initialize(
-
-                state
-
-            );
-
-        }
-
-
-
-
-
-
-
-
-
-        return state;
-
-
     }
-
-
-
-
-
-
-
-
-
-    //--------------------------------
-    // Get battle
-    //--------------------------------
-
-
-    getBattle(
-        battleId
-    )
-    {
-
-
-        if(
-            !this.state
-        )
-        {
-
-            return null;
-
-        }
-
-
-
-
-
-        return this.state.getBattle(
-
-            battleId
-
-        );
-
-
-    }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Process turn
     //--------------------------------
 
-
     processTurn(
-        battleId,
+        battle,
         playerMove
     )
     {
-
-
-        const battle =
-
-            this.getBattle(
-
-                battleId
-
-            );
-
-
-
-
-
-
-
 
         if(
             !battle
@@ -272,10 +187,22 @@ class BattleEngineService {
         }
 
 
+        if(
+            battle.status !==
+            "ACTIVE"
+        )
+        {
 
+            return {
 
+                success:false,
 
+                reason:
+                    "Battle is not active"
 
+            };
+
+        }
 
 
         if(
@@ -295,12 +222,6 @@ class BattleEngineService {
         }
 
 
-
-
-
-
-
-
         return this.flow.processTurn(
 
             battle,
@@ -309,42 +230,22 @@ class BattleEngineService {
 
         );
 
-
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
-    // Active player Pokémon
+    // Get active player Pokémon
     //--------------------------------
-
 
     getPlayerActive(
-        battleId
+        battle
     )
     {
 
-
-        const battle =
-
-            this.getBattle(
-
-                battleId
-
-            );
-
-
-
-
-
         if(
             !battle
+            ||
+            !battle.player
             ||
             !this.pokemon
         )
@@ -353,9 +254,6 @@ class BattleEngineService {
             return null;
 
         }
-
-
-
 
 
         return this.pokemon.getActivePokemon(
@@ -364,42 +262,22 @@ class BattleEngineService {
 
         );
 
-
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
-    // Active opponent Pokémon
+    // Get active opponent Pokémon
     //--------------------------------
-
 
     getOpponentActive(
-        battleId
+        battle
     )
     {
 
-
-        const battle =
-
-            this.getBattle(
-
-                battleId
-
-            );
-
-
-
-
-
         if(
             !battle
+            ||
+            !battle.opponent
             ||
             !this.pokemon
         )
@@ -410,26 +288,16 @@ class BattleEngineService {
         }
 
 
-
-
-
         return this.pokemon.getActivePokemon(
 
             battle.opponent
 
         );
 
-
     }
 
 
-
-
-
 }
-
-
-
 
 
 module.exports =

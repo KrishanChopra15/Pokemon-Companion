@@ -5,11 +5,12 @@
  * Coordinates active Pokémon during battle.
  *
  * Responsibilities:
- * - Send Pokémon into battle.
- * - Switch active Pokémon.
- * - Handle active status.
+ * - Get the active Pokémon.
+ * - Request Pokémon switches.
  *
  * Does NOT:
+ * - Store a separate active Pokémon.
+ * - Create duplicate Pokémon data.
  * - Execute attacks.
  * - Calculate damage.
  */
@@ -17,136 +18,187 @@
 "use strict";
 
 
-
-
-
 class BattleActiveFlow {
 
 
-
     constructor(
-        activeManager,
-        teamFlow
+        battleStateService,
+        pokemonSwitchService
     )
     {
 
+        this.battles =
+            battleStateService;
 
-        this.active =
-            activeManager;
 
-
-        this.team =
-            teamFlow;
-
+        this.switches =
+            pokemonSwitchService;
 
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
-    // Send Pokémon
+    // Get active Pokémon
     //--------------------------------
 
-
-    sendOut(
-        pokemon
+    getActive(
+        battleId,
+        side
     )
     {
 
-
-        return this.active
-            .setActive(
-                pokemon
+        const battle =
+            this.battles.getBattle(
+                battleId
             );
 
 
+        if(
+            !battle ||
+            !side
+        )
+        {
+
+            return null;
+
+        }
+
+
+        const activeIndex =
+            side === "PLAYER"
+
+            ?
+            battle.player.active
+
+            :
+            battle.opponent.active;
+
+
+        const participant =
+            side === "PLAYER"
+
+            ?
+            battle.player
+
+            :
+            battle.opponent;
+
+
+        return (
+
+            participant.party[
+                activeIndex ?? 0
+            ]
+
+            ||
+
+            null
+
+        );
+
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Switch Pokémon
     //--------------------------------
 
-
     switchPokemon(
-        pokemon
+        battleId,
+        side,
+        index
     )
     {
 
-
-        return this.active
-            .setActive(
-                pokemon
+        const battle =
+            this.battles.getBattle(
+                battleId
             );
 
 
+        if(
+            !battle
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Unknown battle"
+
+            };
+
+        }
+
+
+        const participant =
+            side === "PLAYER"
+
+            ?
+            battle.player
+
+            :
+            battle.opponent;
+
+
+        if(
+            !participant
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Invalid battle side"
+
+            };
+
+        }
+
+
+        return this.switches.switchPokemon(
+            participant,
+            index
+        );
+
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
-    // Current Pokémon
+    // Get active status
     //--------------------------------
 
-
-    getActive()
+    getStatus(
+        battleId,
+        side
+    )
     {
 
-
-        return this.active
-            .getActive();
-
-
-    }
-
+        const pokemon =
+            this.getActive(
+                battleId,
+                side
+            );
 
 
+        return {
 
+            hasActive:
+                !!pokemon,
 
+            active:
+                pokemon
 
-
-
-
-    //--------------------------------
-    // Battle status
-    //--------------------------------
-
-
-    getStatus()
-    {
-
-
-        return this.active
-            .getStatus();
-
+        };
 
     }
-
 
 
 }
-
-
-
 
 
 module.exports =

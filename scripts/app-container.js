@@ -19,6 +19,13 @@
 "use strict";
 
 
+const fs =
+    require("fs");
+
+const path =
+    require("path");
+
+
 //================================
 // Container
 //================================
@@ -196,6 +203,12 @@ const StoryEventService =
 
 const CaptureService =
     require("./services/capture-service");
+
+const SafariCaptureService =
+    require("./services/safari-capture-service");
+
+const SafariZoneService =
+    require("./services/safari-zone-service");
 
 const WildBattleService =
     require("./services/wild-battle-service");
@@ -444,6 +457,9 @@ const InventoryManager =
 
 const InventoryFlow =
     require("./inventory/inventory-flow");
+
+const ItemEffectService =
+    require("./services/item-effect-service");
 
 
 //================================
@@ -1728,17 +1744,109 @@ class AppContainer {
     registerCaptureServices()
     {
 
+        //--------------------------------
+        // Load capture reference
+        //--------------------------------
+
+        const captureReferencePath =
+            path.join(
+
+                __dirname,
+
+                "..",
+
+                "database",
+
+                "reference",
+
+                this.game,
+
+                "capture.json"
+
+            );
+
+
+        if(
+            !fs.existsSync(
+                captureReferencePath
+            )
+        )
+        {
+
+            throw new Error(
+
+                `Capture reference database not found: ${captureReferencePath}`
+
+            );
+
+        }
+
+
+        const captureReference =
+            JSON.parse(
+
+                fs.readFileSync(
+
+                    captureReferencePath,
+
+                    "utf8"
+
+                )
+
+            );
+
+
+        //--------------------------------
+        // Capture manager
+        //--------------------------------
+
         const captureManager =
             new CaptureManager();
 
 
-        const captureService =
-            new CaptureService();
+        //--------------------------------
+        // Normal capture
+        //--------------------------------
 
+        const captureService =
+            new CaptureService(
+
+                captureReference
+
+            );
+
+
+        //--------------------------------
+        // Safari capture
+        //--------------------------------
+
+        const safariCaptureService =
+            new SafariCaptureService(
+
+                captureReference
+
+            );
+
+
+        //--------------------------------
+        // Safari Zone
+        //--------------------------------
+
+        const safariZoneService =
+            new SafariZoneService();
+
+
+        //--------------------------------
+        // Wild battle
+        //--------------------------------
 
         const wildBattleService =
             new WildBattleService();
 
+
+        //--------------------------------
+        // Capture flow
+        //--------------------------------
 
         const captureFlow =
             new CaptureFlow(
@@ -1770,6 +1878,10 @@ class AppContainer {
             );
 
 
+        //--------------------------------
+        // Register services
+        //--------------------------------
+
         this.container.register(
             "captureManager",
             captureManager
@@ -1779,6 +1891,18 @@ class AppContainer {
         this.container.register(
             "captureService",
             captureService
+        );
+
+
+        this.container.register(
+            "safariCaptureService",
+            safariCaptureService
+        );
+
+
+        this.container.register(
+            "safariZoneService",
+            safariZoneService
         );
 
 
@@ -2238,33 +2362,119 @@ class AppContainer {
     //================================
     // Inventory Layer
     //================================
-
+    
     registerInventoryServices()
     {
-
+    
+        //--------------------------------
+        // Inventory manager
+        //--------------------------------
+    
         const inventoryManager =
             new InventoryManager();
-
-
+    
+    
+        //--------------------------------
+        // Load Gen III item behavior database
+        //--------------------------------
+    
+        const itemBehaviorPath =
+            path.join(
+            
+                __dirname,
+            
+                "..",
+            
+                "database",
+            
+                "reference",
+            
+                "gen3-item-behaviors.json"
+            
+            );
+        
+        
+        if(
+            !fs.existsSync(
+                itemBehaviorPath
+            )
+        )
+        {
+        
+            throw new Error(
+            
+                `Gen III item behavior database not found: ${itemBehaviorPath}`
+            
+            );
+        
+        }
+    
+    
+        const itemBehaviors =
+            JSON.parse(
+            
+                fs.readFileSync(
+                
+                    itemBehaviorPath,
+                
+                    "utf8"
+                
+                )
+            
+            );
+        
+        
+        //--------------------------------
+        // Item effect service
+        //--------------------------------
+        
+        const itemEffect =
+            new ItemEffectService(
+            
+                this.get(
+                    "statusEffect"
+                )
+            
+            );
+        
+        
+        //--------------------------------
+        // Inventory flow
+        //--------------------------------
+        
         const inventoryFlow =
             new InventoryFlow(
-
-                inventoryManager
-
+            
+                inventoryManager,
+            
+                itemEffect,
+            
+                itemBehaviors
+            
             );
-
-
+        
+        
+        //--------------------------------
+        // Register
+        //--------------------------------
+        
         this.container.register(
             "inventoryManager",
             inventoryManager
         );
-
-
+    
+    
+        this.container.register(
+            "itemEffect",
+            itemEffect
+        );
+    
+    
         this.container.register(
             "inventoryFlow",
             inventoryFlow
         );
-
+    
     }
 
 

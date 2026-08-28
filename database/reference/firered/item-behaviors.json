@@ -1,0 +1,707 @@
+[
+    {
+        "id": 13,
+        "itemConstant": "ITEM_POTION",
+        "name": "Potion",
+        "price": 300,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_PARTY_MENU",
+        "fieldUse": "FieldUseFunc_Medicine",
+        "battleUsage": 1,
+        "battleUse": "BattleUseFunc_Medicine",
+        "category": "HEALING",
+        "behavior": "HEAL_HP",
+        "amount": 20,
+        "item": {
+            "id": 13,
+            "constant": "ITEM_POTION",
+            "name": "Potion"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": 20
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_Potion",
+            "rawFields": {
+                "4": "ITEM4_HEAL_HP",
+                "6": "20"
+            }
+        }
+    },
+    {
+        "id": 14,
+        "itemConstant": "ITEM_ANTIDOTE",
+        "name": "Antidote",
+        "price": 100,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_PARTY_MENU",
+        "fieldUse": "FieldUseFunc_Medicine",
+        "battleUsage": 1,
+        "battleUse": "BattleUseFunc_Medicine",
+        "category": "STATUS_HEALING",
+        "behavior": "CURE_STATUS",
+        "status": "POISON",
+        "item": {
+            "id": 14,
+            "constant": "ITEM_ANTIDOTE",
+            "name": "Antidote"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "POISON"
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_Antidote",
+            "rawFields": {
+                "3": "ITEM3_POISON"
+            }
+        }
+    },
+    {
+        "id": 15,
+        "itemConstant": "ITEM_BURN_HEAL",
+        "name": "Burn Heal",
+        "price": 250,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_PARTY_MENU",
+        "fieldUse": "FieldUseFunc_Medicine",
+        "battleUsage": 1,
+        "battleUse": "BattleUseFunc_Medicine",
+        "category": "STATUS_HEALING",
+        "behavior": "CURE_STATUS",
+        "status": "BURN",
+        "item": {
+            "id": 15,
+            "constant": "ITEM_BURN_HEAL",
+            "name": "Burn Heal"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "BURN"
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_BurnHeal",
+            "rawFields": {
+                "3": "ITEM3_BURN"
+            }
+        }
+    },
+    {
+        "id": 16,
+        "itemConstant": "ITEM_ICE_HEAL",
+        "name": "Ice Heal",
+        "price": 250,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_PARTY_MENU",
+        "fieldUse": "FieldUseFunc_Medicine",
+        "battleUsage": 1,
+        "battleUse": "BattleUseFunc_Medicine",
+        "category": "STATUS_HEALING",
+        "behavior": "CURE_STATUS",
+        "status": "FREEZE",
+        "item": {
+            "id": 16,
+            "constant": "ITEM_ICE_HEAL",
+            "name": "Ice Heal"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "FREEZE"
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_IceHeal",
+            "rawFields": {
+                "3": "ITEM3_FREEZE"
+            }
+        }
+    },
+    {
+        "id": 17,
+        "itemConstant": "ITEM_AWAKENING",
+        "name": "Awakening",
+        "price": 250,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_PARTY_MENU",
+        "fieldUse": "FieldUseFunc_Medicine",
+        "battleUsage": 1,
+        "battleUse": "BattleUseFunc_Medicine",
+        "category": "STATUS_HEALING",
+        "behavior": "CURE_STATUS",
+        "status": "SLEEP",
+        "item": {
+            "id": 17,
+            "constant": "ITEM_AWAKENING",
+            "name": "Awakening"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "SLEEP"
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_Awakening",
+            "rawFields": {
+                "3": "ITEM3_SLEEP"
+            }
+        }
+    },
+    {
+        "id": 18,
+        "itemConstant": "ITEM_PARALYZE_HEAL",
+        "name": "Paralyze Heal",
+        "price": 200,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_PARTY_MENU",
+        "fieldUse": "FieldUseFunc_Medicine",
+        "battleUsage": 1,
+        "battleUse": "BattleUseFunc_Medicine",
+        "category": "STATUS_HEALING",
+        "behavior": "CURE_STATUS",
+        "status": "PARALYSIS",
+        "item": {
+            "id": 18,
+            "constant": "ITEM_PARALYZE_HEAL",
+            "name": "Paralyze Heal"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "PARALYSIS"
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_ParalyzeHeal",
+            "rawFields": {
+                "3": "ITEM3_PARALYSIS"
+            }
+        }
+    },
+    {
+        "id": 19,
+        "itemConstant": "ITEM_FULL_RESTORE",
+        "name": "Full Restore",
+        "price": 3000,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_PARTY_MENU",
+        "fieldUse": "FieldUseFunc_Medicine",
+        "battleUsage": 1,
+        "battleUse": "BattleUseFunc_Medicine",
+        "category": "HEALING",
+        "behavior": "HEAL_HP_AND_CURE_STATUS",
+        "amount": "FULL",
+        "scope": "SINGLE_POKEMON",
+        "item": {
+            "id": 19,
+            "constant": "ITEM_FULL_RESTORE",
+            "name": "Full Restore"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "ALL"
+            },
+            {
+                "type": "HEAL_HP",
+                "amount": "FULL"
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_FullRestore",
+            "rawFields": {
+                "3": "ITEM3_STATUS_ALL",
+                "4": "ITEM4_HEAL_HP",
+                "6": "ITEM6_HEAL_HP_FULL"
+            }
+        }
+    },
+    {
+        "id": 20,
+        "itemConstant": "ITEM_MAX_POTION",
+        "name": "Max Potion",
+        "price": 2500,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_PARTY_MENU",
+        "fieldUse": "FieldUseFunc_Medicine",
+        "battleUsage": 1,
+        "battleUse": "BattleUseFunc_Medicine",
+        "category": "HEALING",
+        "behavior": "HEAL_HP",
+        "amount": "FULL",
+        "item": {
+            "id": 20,
+            "constant": "ITEM_MAX_POTION",
+            "name": "Max Potion"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": "FULL"
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_MaxPotion",
+            "rawFields": {
+                "4": "ITEM4_HEAL_HP",
+                "6": "ITEM6_HEAL_HP_FULL"
+            }
+        }
+    },
+    {
+        "id": 21,
+        "itemConstant": "ITEM_HYPER_POTION",
+        "name": "Hyper Potion",
+        "price": 1200,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_PARTY_MENU",
+        "fieldUse": "FieldUseFunc_Medicine",
+        "battleUsage": 1,
+        "battleUse": "BattleUseFunc_Medicine",
+        "category": "HEALING",
+        "behavior": "HEAL_HP",
+        "amount": 200,
+        "item": {
+            "id": 21,
+            "constant": "ITEM_HYPER_POTION",
+            "name": "Hyper Potion"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": 200
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_HyperPotion",
+            "rawFields": {
+                "4": "ITEM4_HEAL_HP",
+                "6": "200"
+            }
+        }
+    },
+    {
+        "id": 22,
+        "itemConstant": "ITEM_SUPER_POTION",
+        "name": "Super Potion",
+        "price": 700,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_PARTY_MENU",
+        "fieldUse": "FieldUseFunc_Medicine",
+        "battleUsage": 1,
+        "battleUse": "BattleUseFunc_Medicine",
+        "category": "HEALING",
+        "behavior": "HEAL_HP",
+        "amount": 50,
+        "item": {
+            "id": 22,
+            "constant": "ITEM_SUPER_POTION",
+            "name": "Super Potion"
+        },
+        "effects": [
+            {
+                "type": "HEAL_HP",
+                "amount": 50
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_SuperPotion",
+            "rawFields": {
+                "4": "ITEM4_HEAL_HP",
+                "6": "50"
+            }
+        }
+    },
+    {
+        "id": 23,
+        "itemConstant": "ITEM_FULL_HEAL",
+        "name": "Full Heal",
+        "price": 600,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_PARTY_MENU",
+        "fieldUse": "FieldUseFunc_Medicine",
+        "battleUsage": 1,
+        "battleUse": "BattleUseFunc_Medicine",
+        "category": "STATUS_HEALING",
+        "behavior": "CURE_STATUS",
+        "status": "ALL",
+        "item": {
+            "id": 23,
+            "constant": "ITEM_FULL_HEAL",
+            "name": "Full Heal"
+        },
+        "effects": [
+            {
+                "type": "CURE_STATUS",
+                "status": "ALL"
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_FullHeal",
+            "rawFields": {
+                "3": "ITEM3_STATUS_ALL"
+            }
+        }
+    },
+    {
+        "id": 24,
+        "itemConstant": "ITEM_REVIVE",
+        "name": "Revive",
+        "price": 1500,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_PARTY_MENU",
+        "fieldUse": "FieldUseFunc_Medicine",
+        "battleUsage": 1,
+        "battleUse": "BattleUseFunc_Medicine",
+        "category": "REVIVAL",
+        "behavior": "REVIVE",
+        "amount": "HALF_MAX_HP",
+        "item": {
+            "id": 24,
+            "constant": "ITEM_REVIVE",
+            "name": "Revive"
+        },
+        "effects": [
+            {
+                "type": "REVIVE",
+                "hp": "HALF"
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_Revive",
+            "rawFields": {
+                "4": "ITEM4_REVIVE | ITEM4_HEAL_HP",
+                "6": "ITEM6_HEAL_HP_HALF"
+            }
+        }
+    },
+    {
+        "id": 25,
+        "itemConstant": "ITEM_MAX_REVIVE",
+        "name": "Max Revive",
+        "price": 4000,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_PARTY_MENU",
+        "fieldUse": "FieldUseFunc_Medicine",
+        "battleUsage": 1,
+        "battleUse": "BattleUseFunc_Medicine",
+        "category": "REVIVAL",
+        "behavior": "REVIVE",
+        "amount": "FULL",
+        "item": {
+            "id": 25,
+            "constant": "ITEM_MAX_REVIVE",
+            "name": "Max Revive"
+        },
+        "effects": [
+            {
+                "type": "REVIVE",
+                "hp": "FULL"
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_MaxRevive",
+            "rawFields": {
+                "4": "ITEM4_REVIVE | ITEM4_HEAL_HP",
+                "6": "ITEM6_HEAL_HP_FULL"
+            }
+        }
+    },
+    {
+        "id": 73,
+        "itemConstant": "ITEM_GUARD_SPEC",
+        "name": "Guard Spec",
+        "price": 700,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_BAG_MENU",
+        "fieldUse": "FieldUseFunc_OakStopsYou",
+        "battleUsage": 2,
+        "battleUse": "BattleUseFunc_StatBooster",
+        "category": "BATTLE_PROTECTION",
+        "behavior": "MIST",
+        "duration": 5,
+        "scope": "SIDE",
+        "item": {
+            "id": 73,
+            "constant": "ITEM_GUARD_SPEC",
+            "name": "Guard Spec"
+        },
+        "effects": [
+            {
+                "type": "GUARD_SPEC"
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 1,
+                "mid": 1
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_GuardSpec",
+            "rawFields": {
+                "3": "ITEM3_GUARD_SPEC",
+                "5": "ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID",
+                "__macros": [
+                    "STAT_BOOST_FRIENDSHIP_CHANGE"
+                ]
+            }
+        }
+    },
+    {
+        "id": 74,
+        "itemConstant": "ITEM_DIRE_HIT",
+        "name": "Dire Hit",
+        "price": 650,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_BAG_MENU",
+        "fieldUse": "FieldUseFunc_OakStopsYou",
+        "battleUsage": 2,
+        "battleUse": "BattleUseFunc_StatBooster",
+        "category": "BATTLE_CRITICAL",
+        "behavior": "FOCUS_ENERGY",
+        "scope": "ACTIVE_BATTLER",
+        "item": {
+            "id": 74,
+            "constant": "ITEM_DIRE_HIT",
+            "name": "Dire Hit"
+        },
+        "effects": [
+            {
+                "type": "CRITICAL_HIT_STAGE",
+                "stages": 2
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 1,
+                "mid": 1
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_DireHit",
+            "rawFields": {
+                "0": "2 << 4",
+                "5": "ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID",
+                "__macros": [
+                    "STAT_BOOST_FRIENDSHIP_CHANGE"
+                ]
+            }
+        }
+    },
+    {
+        "id": 75,
+        "itemConstant": "ITEM_X_ATTACK",
+        "name": "X Attack",
+        "price": 500,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_BAG_MENU",
+        "fieldUse": "FieldUseFunc_OakStopsYou",
+        "battleUsage": 2,
+        "battleUse": "BattleUseFunc_StatBooster",
+        "category": "BATTLE_STAT",
+        "behavior": "RAISE_STAT_STAGE",
+        "stat": "ATTACK",
+        "stages": 1,
+        "scope": "ACTIVE_BATTLER",
+        "item": {
+            "id": 75,
+            "constant": "ITEM_X_ATTACK",
+            "name": "X Attack"
+        },
+        "effects": [
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 1,
+                "mid": 1
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_XAttack",
+            "rawFields": {
+                "0": "1",
+                "5": "ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID",
+                "__macros": [
+                    "STAT_BOOST_FRIENDSHIP_CHANGE"
+                ]
+            }
+        }
+    },
+    {
+        "id": 76,
+        "itemConstant": "ITEM_X_DEFEND",
+        "name": "X Defend",
+        "price": 550,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_BAG_MENU",
+        "fieldUse": "FieldUseFunc_OakStopsYou",
+        "battleUsage": 2,
+        "battleUse": "BattleUseFunc_StatBooster",
+        "category": "BATTLE_STAT",
+        "behavior": "RAISE_STAT_STAGE",
+        "stat": "DEFENSE",
+        "stages": 1,
+        "scope": "ACTIVE_BATTLER",
+        "item": {
+            "id": 76,
+            "constant": "ITEM_X_DEFEND",
+            "name": "X Defend"
+        },
+        "effects": [
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 1,
+                "mid": 1
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_XDefend",
+            "rawFields": {
+                "1": "1 << 4",
+                "5": "ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID",
+                "__macros": [
+                    "STAT_BOOST_FRIENDSHIP_CHANGE"
+                ]
+            }
+        }
+    },
+    {
+        "id": 77,
+        "itemConstant": "ITEM_X_SPEED",
+        "name": "X Speed",
+        "price": 350,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_BAG_MENU",
+        "fieldUse": "FieldUseFunc_OakStopsYou",
+        "battleUsage": 2,
+        "battleUse": "BattleUseFunc_StatBooster",
+        "category": "BATTLE_STAT",
+        "behavior": "RAISE_STAT_STAGE",
+        "stat": "SPEED",
+        "stages": 1,
+        "scope": "ACTIVE_BATTLER",
+        "item": {
+            "id": 77,
+            "constant": "ITEM_X_SPEED",
+            "name": "X Speed"
+        },
+        "effects": [
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 1,
+                "mid": 1
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_XSpeed",
+            "rawFields": {
+                "1": "1",
+                "5": "ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID",
+                "__macros": [
+                    "STAT_BOOST_FRIENDSHIP_CHANGE"
+                ]
+            }
+        }
+    },
+    {
+        "id": 78,
+        "itemConstant": "ITEM_X_ACCURACY",
+        "name": "X Accuracy",
+        "price": 950,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_BAG_MENU",
+        "fieldUse": "FieldUseFunc_OakStopsYou",
+        "battleUsage": 2,
+        "battleUse": "BattleUseFunc_StatBooster",
+        "category": "BATTLE_STAT",
+        "behavior": "RAISE_STAT_STAGE",
+        "stat": "ACCURACY",
+        "stages": 1,
+        "scope": "ACTIVE_BATTLER",
+        "item": {
+            "id": 78,
+            "constant": "ITEM_X_ACCURACY",
+            "name": "X Accuracy"
+        },
+        "effects": [
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 1,
+                "mid": 1
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_XAccuracy",
+            "rawFields": {
+                "2": "1 << 4",
+                "5": "ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID",
+                "__macros": [
+                    "STAT_BOOST_FRIENDSHIP_CHANGE"
+                ]
+            }
+        }
+    },
+    {
+        "id": 79,
+        "itemConstant": "ITEM_X_SPECIAL",
+        "name": "X Special",
+        "price": 350,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_BAG_MENU",
+        "fieldUse": "FieldUseFunc_OakStopsYou",
+        "battleUsage": 2,
+        "battleUse": "BattleUseFunc_StatBooster",
+        "category": "BATTLE_STAT",
+        "behavior": "RAISE_STAT_STAGE",
+        "stat": "SPECIAL_ATTACK",
+        "stages": 1,
+        "scope": "ACTIVE_BATTLER",
+        "item": {
+            "id": 79,
+            "constant": "ITEM_X_SPECIAL",
+            "name": "X Special"
+        },
+        "effects": [
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 1,
+                "mid": 1
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_XSpecial",
+            "rawFields": {
+                "2": "1",
+                "5": "ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID",
+                "__macros": [
+                    "STAT_BOOST_FRIENDSHIP_CHANGE"
+                ]
+            }
+        }
+    },
+    {
+        "id": 110,
+        "itemConstant": "ITEM_NUGGET",
+        "name": "Nugget",
+        "price": 10000,
+        "pocket": "POCKET_ITEMS",
+        "type": "ITEM_TYPE_BAG_MENU",
+        "fieldUse": "FieldUseFunc_OakStopsYou",
+        "battleUsage": 0,
+        "battleUse": "NULL",
+        "category": "ECONOMY",
+        "behavior": "SELLABLE",
+        "item": {
+            "id": 110,
+            "constant": "ITEM_NUGGET",
+            "name": "Nugget"
+        },
+        "effects": []
+    }
+]

@@ -116,6 +116,10 @@ const ItemEffectGenerator =
     require("../generators/reference/item-effect-generator");
 
 
+const Gen3ItemBehaviorGenerator =
+    require("../generators/reference/gen3-item-behavior-generator");
+
+
 const EvolutionMethodGenerator =
     require("../generators/reference/evolution-method-generator");
 
@@ -486,6 +490,10 @@ class BuildManager {
 
 
         new ItemEffectGenerator()
+            .generate();
+
+
+        new Gen3ItemBehaviorGenerator()
             .generate();
 
 

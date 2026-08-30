@@ -1,0 +1,3827 @@
+{
+    "MAP_BATTLE_COLOSSEUM_2P": {
+        "id": "MAP_BATTLE_COLOSSEUM_2P",
+        "folder": "BattleColosseum_2P",
+        "name": "Battle Colosseum 2P",
+        "region": "MAPSEC_SPECIAL_AREA",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_BATTLE_COLOSSEUM_4P": {
+        "id": "MAP_BATTLE_COLOSSEUM_4P",
+        "folder": "BattleColosseum_4P",
+        "name": "Battle Colosseum 4P",
+        "region": "MAPSEC_SPECIAL_AREA",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_BIRTH_ISLAND_EXTERIOR": {
+        "id": "MAP_BIRTH_ISLAND_EXTERIOR",
+        "folder": "BirthIsland_Exterior",
+        "name": "Birth Island Exterior",
+        "region": "MAPSEC_BIRTH_ISLAND",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_NONE"
+    },
+    "MAP_BIRTH_ISLAND_HARBOR": {
+        "id": "MAP_BIRTH_ISLAND_HARBOR",
+        "folder": "BirthIsland_Harbor",
+        "name": "Birth Island Harbor",
+        "region": "MAPSEC_BIRTH_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_NONE"
+    },
+    "MAP_CELADON_CITY": {
+        "id": "MAP_CELADON_CITY",
+        "folder": "CeladonCity",
+        "name": "Celadon City",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_CELADON"
+    },
+    "MAP_CELADON_CITY_CONDOMINIUMS_1F": {
+        "id": "MAP_CELADON_CITY_CONDOMINIUMS_1F",
+        "folder": "CeladonCity_Condominiums_1F",
+        "name": "Celadon City Condominiums 1F",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_CELADON"
+    },
+    "MAP_CELADON_CITY_CONDOMINIUMS_2F": {
+        "id": "MAP_CELADON_CITY_CONDOMINIUMS_2F",
+        "folder": "CeladonCity_Condominiums_2F",
+        "name": "Celadon City Condominiums 2F",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_CELADON"
+    },
+    "MAP_CELADON_CITY_CONDOMINIUMS_3F": {
+        "id": "MAP_CELADON_CITY_CONDOMINIUMS_3F",
+        "folder": "CeladonCity_Condominiums_3F",
+        "name": "Celadon City Condominiums 3F",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_CELADON"
+    },
+    "MAP_CELADON_CITY_CONDOMINIUMS_ROOF": {
+        "id": "MAP_CELADON_CITY_CONDOMINIUMS_ROOF",
+        "folder": "CeladonCity_Condominiums_Roof",
+        "name": "Celadon City Condominiums Roof",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_CELADON"
+    },
+    "MAP_CELADON_CITY_CONDOMINIUMS_ROOF_ROOM": {
+        "id": "MAP_CELADON_CITY_CONDOMINIUMS_ROOF_ROOM",
+        "folder": "CeladonCity_Condominiums_RoofRoom",
+        "name": "Celadon City Condominiums Roof Room",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_CELADON"
+    },
+    "MAP_CELADON_CITY_DEPARTMENT_STORE_1F": {
+        "id": "MAP_CELADON_CITY_DEPARTMENT_STORE_1F",
+        "folder": "CeladonCity_DepartmentStore_1F",
+        "name": "Celadon City Department Store 1F",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 1,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_CELADON_CITY_DEPARTMENT_STORE_2F": {
+        "id": "MAP_CELADON_CITY_DEPARTMENT_STORE_2F",
+        "folder": "CeladonCity_DepartmentStore_2F",
+        "name": "Celadon City Department Store 2F",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 2,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_CELADON_CITY_DEPARTMENT_STORE_3F": {
+        "id": "MAP_CELADON_CITY_DEPARTMENT_STORE_3F",
+        "folder": "CeladonCity_DepartmentStore_3F",
+        "name": "Celadon City Department Store 3F",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 3,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_CELADON_CITY_DEPARTMENT_STORE_4F": {
+        "id": "MAP_CELADON_CITY_DEPARTMENT_STORE_4F",
+        "folder": "CeladonCity_DepartmentStore_4F",
+        "name": "Celadon City Department Store 4F",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 4,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_CELADON_CITY_DEPARTMENT_STORE_5F": {
+        "id": "MAP_CELADON_CITY_DEPARTMENT_STORE_5F",
+        "folder": "CeladonCity_DepartmentStore_5F",
+        "name": "Celadon City Department Store 5F",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 5,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_CELADON_CITY_DEPARTMENT_STORE_ELEVATOR": {
+        "id": "MAP_CELADON_CITY_DEPARTMENT_STORE_ELEVATOR",
+        "folder": "CeladonCity_DepartmentStore_Elevator",
+        "name": "Celadon City Department Store Elevator",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_CELADON_CITY_DEPARTMENT_STORE_ROOF": {
+        "id": "MAP_CELADON_CITY_DEPARTMENT_STORE_ROOF",
+        "folder": "CeladonCity_DepartmentStore_Roof",
+        "name": "Celadon City Department Store Roof",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 127,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_CELADON_CITY_GAME_CORNER": {
+        "id": "MAP_CELADON_CITY_GAME_CORNER",
+        "folder": "CeladonCity_GameCorner",
+        "name": "Celadon City Game Corner",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_GAME_CORNER"
+    },
+    "MAP_CELADON_CITY_GAME_CORNER_PRIZE_ROOM": {
+        "id": "MAP_CELADON_CITY_GAME_CORNER_PRIZE_ROOM",
+        "folder": "CeladonCity_GameCorner_PrizeRoom",
+        "name": "Celadon City Game Corner Prize Room",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_CELADON"
+    },
+    "MAP_CELADON_CITY_GYM": {
+        "id": "MAP_CELADON_CITY_GYM",
+        "folder": "CeladonCity_Gym",
+        "name": "Celadon City Gym",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_GYM"
+    },
+    "MAP_CELADON_CITY_HOTEL": {
+        "id": "MAP_CELADON_CITY_HOTEL",
+        "folder": "CeladonCity_Hotel",
+        "name": "Celadon City Hotel",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_CELADON"
+    },
+    "MAP_CELADON_CITY_HOUSE1": {
+        "id": "MAP_CELADON_CITY_HOUSE1",
+        "folder": "CeladonCity_House1",
+        "name": "Celadon City House1",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_CELADON"
+    },
+    "MAP_CELADON_CITY_POKEMON_CENTER_1F": {
+        "id": "MAP_CELADON_CITY_POKEMON_CENTER_1F",
+        "folder": "CeladonCity_PokemonCenter_1F",
+        "name": "Celadon City Pokemon Center 1F",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_CELADON_CITY_POKEMON_CENTER_2F": {
+        "id": "MAP_CELADON_CITY_POKEMON_CENTER_2F",
+        "folder": "CeladonCity_PokemonCenter_2F",
+        "name": "Celadon City Pokemon Center 2F",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_CELADON_CITY_RESTAURANT": {
+        "id": "MAP_CELADON_CITY_RESTAURANT",
+        "folder": "CeladonCity_Restaurant",
+        "name": "Celadon City Restaurant",
+        "region": "MAPSEC_CELADON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_CELADON"
+    },
+    "MAP_CERULEAN_CAVE_1F": {
+        "id": "MAP_CERULEAN_CAVE_1F",
+        "folder": "CeruleanCave_1F",
+        "name": "Cerulean Cave 1F",
+        "region": "MAPSEC_CERULEAN_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_ROCKET_HIDEOUT"
+    },
+    "MAP_CERULEAN_CAVE_2F": {
+        "id": "MAP_CERULEAN_CAVE_2F",
+        "folder": "CeruleanCave_2F",
+        "name": "Cerulean Cave 2F",
+        "region": "MAPSEC_CERULEAN_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_ROCKET_HIDEOUT"
+    },
+    "MAP_CERULEAN_CAVE_B1F": {
+        "id": "MAP_CERULEAN_CAVE_B1F",
+        "folder": "CeruleanCave_B1F",
+        "name": "Cerulean Cave B1F",
+        "region": "MAPSEC_CERULEAN_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_ROCKET_HIDEOUT"
+    },
+    "MAP_CERULEAN_CITY": {
+        "id": "MAP_CERULEAN_CITY",
+        "folder": "CeruleanCity",
+        "name": "Cerulean City",
+        "region": "MAPSEC_CERULEAN_CITY",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_CERULEAN_CITY_BIKE_SHOP": {
+        "id": "MAP_CERULEAN_CITY_BIKE_SHOP",
+        "folder": "CeruleanCity_BikeShop",
+        "name": "Cerulean City Bike Shop",
+        "region": "MAPSEC_CERULEAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_CERULEAN_CITY_GYM": {
+        "id": "MAP_CERULEAN_CITY_GYM",
+        "folder": "CeruleanCity_Gym",
+        "name": "Cerulean City Gym",
+        "region": "MAPSEC_CERULEAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_GYM"
+    },
+    "MAP_CERULEAN_CITY_HOUSE1": {
+        "id": "MAP_CERULEAN_CITY_HOUSE1",
+        "folder": "CeruleanCity_House1",
+        "name": "Cerulean City House1",
+        "region": "MAPSEC_CERULEAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_CERULEAN_CITY_HOUSE2": {
+        "id": "MAP_CERULEAN_CITY_HOUSE2",
+        "folder": "CeruleanCity_House2",
+        "name": "Cerulean City House2",
+        "region": "MAPSEC_CERULEAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_CERULEAN_CITY_HOUSE3": {
+        "id": "MAP_CERULEAN_CITY_HOUSE3",
+        "folder": "CeruleanCity_House3",
+        "name": "Cerulean City House3",
+        "region": "MAPSEC_CERULEAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_CERULEAN_CITY_HOUSE4": {
+        "id": "MAP_CERULEAN_CITY_HOUSE4",
+        "folder": "CeruleanCity_House4",
+        "name": "Cerulean City House4",
+        "region": "MAPSEC_CERULEAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_CERULEAN_CITY_HOUSE5": {
+        "id": "MAP_CERULEAN_CITY_HOUSE5",
+        "folder": "CeruleanCity_House5",
+        "name": "Cerulean City House5",
+        "region": "MAPSEC_CERULEAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_CERULEAN_CITY_MART": {
+        "id": "MAP_CERULEAN_CITY_MART",
+        "folder": "CeruleanCity_Mart",
+        "name": "Cerulean City Mart",
+        "region": "MAPSEC_CERULEAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_CERULEAN_CITY_POKEMON_CENTER_1F": {
+        "id": "MAP_CERULEAN_CITY_POKEMON_CENTER_1F",
+        "folder": "CeruleanCity_PokemonCenter_1F",
+        "name": "Cerulean City Pokemon Center 1F",
+        "region": "MAPSEC_CERULEAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_CERULEAN_CITY_POKEMON_CENTER_2F": {
+        "id": "MAP_CERULEAN_CITY_POKEMON_CENTER_2F",
+        "folder": "CeruleanCity_PokemonCenter_2F",
+        "name": "Cerulean City Pokemon Center 2F",
+        "region": "MAPSEC_CERULEAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_CINNABAR_ISLAND": {
+        "id": "MAP_CINNABAR_ISLAND",
+        "folder": "CinnabarIsland",
+        "name": "Cinnabar Island",
+        "region": "MAPSEC_CINNABAR_ISLAND",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_CINNABAR"
+    },
+    "MAP_CINNABAR_ISLAND_GYM": {
+        "id": "MAP_CINNABAR_ISLAND_GYM",
+        "folder": "CinnabarIsland_Gym",
+        "name": "Cinnabar Island Gym",
+        "region": "MAPSEC_CINNABAR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_GYM"
+    },
+    "MAP_CINNABAR_ISLAND_MART": {
+        "id": "MAP_CINNABAR_ISLAND_MART",
+        "folder": "CinnabarIsland_Mart",
+        "name": "Cinnabar Island Mart",
+        "region": "MAPSEC_CINNABAR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_CINNABAR_ISLAND_POKEMON_CENTER_1F": {
+        "id": "MAP_CINNABAR_ISLAND_POKEMON_CENTER_1F",
+        "folder": "CinnabarIsland_PokemonCenter_1F",
+        "name": "Cinnabar Island Pokemon Center 1F",
+        "region": "MAPSEC_CINNABAR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_CINNABAR_ISLAND_POKEMON_CENTER_2F": {
+        "id": "MAP_CINNABAR_ISLAND_POKEMON_CENTER_2F",
+        "folder": "CinnabarIsland_PokemonCenter_2F",
+        "name": "Cinnabar Island Pokemon Center 2F",
+        "region": "MAPSEC_CINNABAR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_CINNABAR_ISLAND_POKEMON_LAB_ENTRANCE": {
+        "id": "MAP_CINNABAR_ISLAND_POKEMON_LAB_ENTRANCE",
+        "folder": "CinnabarIsland_PokemonLab_Entrance",
+        "name": "Cinnabar Island Pokemon Lab Entrance",
+        "region": "MAPSEC_CINNABAR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_CINNABAR"
+    },
+    "MAP_CINNABAR_ISLAND_POKEMON_LAB_EXPERIMENT_ROOM": {
+        "id": "MAP_CINNABAR_ISLAND_POKEMON_LAB_EXPERIMENT_ROOM",
+        "folder": "CinnabarIsland_PokemonLab_ExperimentRoom",
+        "name": "Cinnabar Island Pokemon Lab Experiment Room",
+        "region": "MAPSEC_CINNABAR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_CINNABAR"
+    },
+    "MAP_CINNABAR_ISLAND_POKEMON_LAB_LOUNGE": {
+        "id": "MAP_CINNABAR_ISLAND_POKEMON_LAB_LOUNGE",
+        "folder": "CinnabarIsland_PokemonLab_Lounge",
+        "name": "Cinnabar Island Pokemon Lab Lounge",
+        "region": "MAPSEC_CINNABAR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_CINNABAR"
+    },
+    "MAP_CINNABAR_ISLAND_POKEMON_LAB_RESEARCH_ROOM": {
+        "id": "MAP_CINNABAR_ISLAND_POKEMON_LAB_RESEARCH_ROOM",
+        "folder": "CinnabarIsland_PokemonLab_ResearchRoom",
+        "name": "Cinnabar Island Pokemon Lab Research Room",
+        "region": "MAPSEC_CINNABAR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_CINNABAR"
+    },
+    "MAP_DIGLETTS_CAVE_B1F": {
+        "id": "MAP_DIGLETTS_CAVE_B1F",
+        "folder": "DiglettsCave_B1F",
+        "name": "Digletts Cave B1F",
+        "region": "MAPSEC_DIGLETTS_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_VIRIDIAN_FOREST"
+    },
+    "MAP_DIGLETTS_CAVE_NORTH_ENTRANCE": {
+        "id": "MAP_DIGLETTS_CAVE_NORTH_ENTRANCE",
+        "folder": "DiglettsCave_NorthEntrance",
+        "name": "Digletts Cave North Entrance",
+        "region": "MAPSEC_DIGLETTS_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_VIRIDIAN_FOREST"
+    },
+    "MAP_DIGLETTS_CAVE_SOUTH_ENTRANCE": {
+        "id": "MAP_DIGLETTS_CAVE_SOUTH_ENTRANCE",
+        "folder": "DiglettsCave_SouthEntrance",
+        "name": "Digletts Cave South Entrance",
+        "region": "MAPSEC_DIGLETTS_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_VIRIDIAN_FOREST"
+    },
+    "MAP_FIVE_ISLAND": {
+        "id": "MAP_FIVE_ISLAND",
+        "folder": "FiveIsland",
+        "name": "Five Island",
+        "region": "MAPSEC_FIVE_ISLAND",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_SEVII_45"
+    },
+    "MAP_FIVE_ISLAND_HARBOR": {
+        "id": "MAP_FIVE_ISLAND_HARBOR",
+        "folder": "FiveIsland_Harbor",
+        "name": "Five Island Harbor",
+        "region": "MAPSEC_FIVE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_45"
+    },
+    "MAP_FIVE_ISLAND_HOUSE1": {
+        "id": "MAP_FIVE_ISLAND_HOUSE1",
+        "folder": "FiveIsland_House1",
+        "name": "Five Island House1",
+        "region": "MAPSEC_FIVE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_45"
+    },
+    "MAP_FIVE_ISLAND_HOUSE2": {
+        "id": "MAP_FIVE_ISLAND_HOUSE2",
+        "folder": "FiveIsland_House2",
+        "name": "Five Island House2",
+        "region": "MAPSEC_FIVE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_45"
+    },
+    "MAP_FIVE_ISLAND_LOST_CAVE_ENTRANCE": {
+        "id": "MAP_FIVE_ISLAND_LOST_CAVE_ENTRANCE",
+        "folder": "FiveIsland_LostCave_Entrance",
+        "name": "Five Island Lost Cave Entrance",
+        "region": "MAPSEC_LOST_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FIVE_ISLAND_LOST_CAVE_ROOM1": {
+        "id": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM1",
+        "folder": "FiveIsland_LostCave_Room1",
+        "name": "Five Island Lost Cave Room1",
+        "region": "MAPSEC_LOST_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FIVE_ISLAND_LOST_CAVE_ROOM10": {
+        "id": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM10",
+        "folder": "FiveIsland_LostCave_Room10",
+        "name": "Five Island Lost Cave Room10",
+        "region": "MAPSEC_LOST_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FIVE_ISLAND_LOST_CAVE_ROOM11": {
+        "id": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM11",
+        "folder": "FiveIsland_LostCave_Room11",
+        "name": "Five Island Lost Cave Room11",
+        "region": "MAPSEC_LOST_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FIVE_ISLAND_LOST_CAVE_ROOM12": {
+        "id": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM12",
+        "folder": "FiveIsland_LostCave_Room12",
+        "name": "Five Island Lost Cave Room12",
+        "region": "MAPSEC_LOST_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FIVE_ISLAND_LOST_CAVE_ROOM13": {
+        "id": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM13",
+        "folder": "FiveIsland_LostCave_Room13",
+        "name": "Five Island Lost Cave Room13",
+        "region": "MAPSEC_LOST_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FIVE_ISLAND_LOST_CAVE_ROOM14": {
+        "id": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM14",
+        "folder": "FiveIsland_LostCave_Room14",
+        "name": "Five Island Lost Cave Room14",
+        "region": "MAPSEC_LOST_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FIVE_ISLAND_LOST_CAVE_ROOM2": {
+        "id": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM2",
+        "folder": "FiveIsland_LostCave_Room2",
+        "name": "Five Island Lost Cave Room2",
+        "region": "MAPSEC_LOST_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FIVE_ISLAND_LOST_CAVE_ROOM3": {
+        "id": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM3",
+        "folder": "FiveIsland_LostCave_Room3",
+        "name": "Five Island Lost Cave Room3",
+        "region": "MAPSEC_LOST_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FIVE_ISLAND_LOST_CAVE_ROOM4": {
+        "id": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM4",
+        "folder": "FiveIsland_LostCave_Room4",
+        "name": "Five Island Lost Cave Room4",
+        "region": "MAPSEC_LOST_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FIVE_ISLAND_LOST_CAVE_ROOM5": {
+        "id": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM5",
+        "folder": "FiveIsland_LostCave_Room5",
+        "name": "Five Island Lost Cave Room5",
+        "region": "MAPSEC_LOST_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FIVE_ISLAND_LOST_CAVE_ROOM6": {
+        "id": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM6",
+        "folder": "FiveIsland_LostCave_Room6",
+        "name": "Five Island Lost Cave Room6",
+        "region": "MAPSEC_LOST_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FIVE_ISLAND_LOST_CAVE_ROOM7": {
+        "id": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM7",
+        "folder": "FiveIsland_LostCave_Room7",
+        "name": "Five Island Lost Cave Room7",
+        "region": "MAPSEC_LOST_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FIVE_ISLAND_LOST_CAVE_ROOM8": {
+        "id": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM8",
+        "folder": "FiveIsland_LostCave_Room8",
+        "name": "Five Island Lost Cave Room8",
+        "region": "MAPSEC_LOST_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FIVE_ISLAND_LOST_CAVE_ROOM9": {
+        "id": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM9",
+        "folder": "FiveIsland_LostCave_Room9",
+        "name": "Five Island Lost Cave Room9",
+        "region": "MAPSEC_LOST_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FIVE_ISLAND_MEADOW": {
+        "id": "MAP_FIVE_ISLAND_MEADOW",
+        "folder": "FiveIsland_Meadow",
+        "name": "Five Island Meadow",
+        "region": "MAPSEC_FIVE_ISLE_MEADOW",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_FIVE_ISLAND_MEMORIAL_PILLAR": {
+        "id": "MAP_FIVE_ISLAND_MEMORIAL_PILLAR",
+        "folder": "FiveIsland_MemorialPillar",
+        "name": "Five Island Memorial Pillar",
+        "region": "MAPSEC_MEMORIAL_PILLAR",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_FIVE_ISLAND_POKEMON_CENTER_1F": {
+        "id": "MAP_FIVE_ISLAND_POKEMON_CENTER_1F",
+        "folder": "FiveIsland_PokemonCenter_1F",
+        "name": "Five Island Pokemon Center 1F",
+        "region": "MAPSEC_FIVE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_FIVE_ISLAND_POKEMON_CENTER_2F": {
+        "id": "MAP_FIVE_ISLAND_POKEMON_CENTER_2F",
+        "folder": "FiveIsland_PokemonCenter_2F",
+        "name": "Five Island Pokemon Center 2F",
+        "region": "MAPSEC_FIVE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_FIVE_ISLAND_RESORT_GORGEOUS": {
+        "id": "MAP_FIVE_ISLAND_RESORT_GORGEOUS",
+        "folder": "FiveIsland_ResortGorgeous",
+        "name": "Five Island Resort Gorgeous",
+        "region": "MAPSEC_RESORT_GORGEOUS",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_FIVE_ISLAND_RESORT_GORGEOUS_HOUSE": {
+        "id": "MAP_FIVE_ISLAND_RESORT_GORGEOUS_HOUSE",
+        "folder": "FiveIsland_ResortGorgeous_House",
+        "name": "Five Island Resort Gorgeous House",
+        "region": "MAPSEC_RESORT_GORGEOUS",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_45"
+    },
+    "MAP_FIVE_ISLAND_ROCKET_WAREHOUSE": {
+        "id": "MAP_FIVE_ISLAND_ROCKET_WAREHOUSE",
+        "folder": "FiveIsland_RocketWarehouse",
+        "name": "Five Island Rocket Warehouse",
+        "region": "MAPSEC_ROCKET_WAREHOUSE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_ROCKET_HIDEOUT"
+    },
+    "MAP_FIVE_ISLAND_WATER_LABYRINTH": {
+        "id": "MAP_FIVE_ISLAND_WATER_LABYRINTH",
+        "folder": "FiveIsland_WaterLabyrinth",
+        "name": "Five Island Water Labyrinth",
+        "region": "MAPSEC_WATER_LABYRINTH",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_FOUR_ISLAND": {
+        "id": "MAP_FOUR_ISLAND",
+        "folder": "FourIsland",
+        "name": "Four Island",
+        "region": "MAPSEC_FOUR_ISLAND",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_SEVII_45"
+    },
+    "MAP_FOUR_ISLAND_HARBOR": {
+        "id": "MAP_FOUR_ISLAND_HARBOR",
+        "folder": "FourIsland_Harbor",
+        "name": "Four Island Harbor",
+        "region": "MAPSEC_FOUR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_45"
+    },
+    "MAP_FOUR_ISLAND_HOUSE1": {
+        "id": "MAP_FOUR_ISLAND_HOUSE1",
+        "folder": "FourIsland_House1",
+        "name": "Four Island House1",
+        "region": "MAPSEC_FOUR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_45"
+    },
+    "MAP_FOUR_ISLAND_HOUSE2": {
+        "id": "MAP_FOUR_ISLAND_HOUSE2",
+        "folder": "FourIsland_House2",
+        "name": "Four Island House2",
+        "region": "MAPSEC_FOUR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_45"
+    },
+    "MAP_FOUR_ISLAND_ICEFALL_CAVE_1F": {
+        "id": "MAP_FOUR_ISLAND_ICEFALL_CAVE_1F",
+        "folder": "FourIsland_IcefallCave_1F",
+        "name": "Four Island Icefall Cave 1F",
+        "region": "MAPSEC_ICEFALL_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FOUR_ISLAND_ICEFALL_CAVE_B1F": {
+        "id": "MAP_FOUR_ISLAND_ICEFALL_CAVE_B1F",
+        "folder": "FourIsland_IcefallCave_B1F",
+        "name": "Four Island Icefall Cave B1F",
+        "region": "MAPSEC_ICEFALL_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FOUR_ISLAND_ICEFALL_CAVE_BACK": {
+        "id": "MAP_FOUR_ISLAND_ICEFALL_CAVE_BACK",
+        "folder": "FourIsland_IcefallCave_Back",
+        "name": "Four Island Icefall Cave Back",
+        "region": "MAPSEC_ICEFALL_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FOUR_ISLAND_ICEFALL_CAVE_ENTRANCE": {
+        "id": "MAP_FOUR_ISLAND_ICEFALL_CAVE_ENTRANCE",
+        "folder": "FourIsland_IcefallCave_Entrance",
+        "name": "Four Island Icefall Cave Entrance",
+        "region": "MAPSEC_ICEFALL_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_FOUR_ISLAND_LORELEIS_HOUSE": {
+        "id": "MAP_FOUR_ISLAND_LORELEIS_HOUSE",
+        "folder": "FourIsland_LoreleisHouse",
+        "name": "Four Island Loreleis House",
+        "region": "MAPSEC_FOUR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_45"
+    },
+    "MAP_FOUR_ISLAND_MART": {
+        "id": "MAP_FOUR_ISLAND_MART",
+        "folder": "FourIsland_Mart",
+        "name": "Four Island Mart",
+        "region": "MAPSEC_FOUR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_FOUR_ISLAND_POKEMON_CENTER_1F": {
+        "id": "MAP_FOUR_ISLAND_POKEMON_CENTER_1F",
+        "folder": "FourIsland_PokemonCenter_1F",
+        "name": "Four Island Pokemon Center 1F",
+        "region": "MAPSEC_FOUR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_FOUR_ISLAND_POKEMON_CENTER_2F": {
+        "id": "MAP_FOUR_ISLAND_POKEMON_CENTER_2F",
+        "folder": "FourIsland_PokemonCenter_2F",
+        "name": "Four Island Pokemon Center 2F",
+        "region": "MAPSEC_FOUR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_FOUR_ISLAND_POKEMON_DAY_CARE": {
+        "id": "MAP_FOUR_ISLAND_POKEMON_DAY_CARE",
+        "folder": "FourIsland_PokemonDayCare",
+        "name": "Four Island Pokemon Day Care",
+        "region": "MAPSEC_FOUR_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_45"
+    },
+    "MAP_FUCHSIA_CITY": {
+        "id": "MAP_FUCHSIA_CITY",
+        "folder": "FuchsiaCity",
+        "name": "Fuchsia City",
+        "region": "MAPSEC_FUCHSIA_CITY",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_FUCHSIA_CITY_GYM": {
+        "id": "MAP_FUCHSIA_CITY_GYM",
+        "folder": "FuchsiaCity_Gym",
+        "name": "Fuchsia City Gym",
+        "region": "MAPSEC_FUCHSIA_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_GYM"
+    },
+    "MAP_FUCHSIA_CITY_HOUSE1": {
+        "id": "MAP_FUCHSIA_CITY_HOUSE1",
+        "folder": "FuchsiaCity_House1",
+        "name": "Fuchsia City House1",
+        "region": "MAPSEC_FUCHSIA_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_FUCHSIA_CITY_HOUSE2": {
+        "id": "MAP_FUCHSIA_CITY_HOUSE2",
+        "folder": "FuchsiaCity_House2",
+        "name": "Fuchsia City House2",
+        "region": "MAPSEC_FUCHSIA_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_FUCHSIA_CITY_HOUSE3": {
+        "id": "MAP_FUCHSIA_CITY_HOUSE3",
+        "folder": "FuchsiaCity_House3",
+        "name": "Fuchsia City House3",
+        "region": "MAPSEC_FUCHSIA_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_FUCHSIA_CITY_MART": {
+        "id": "MAP_FUCHSIA_CITY_MART",
+        "folder": "FuchsiaCity_Mart",
+        "name": "Fuchsia City Mart",
+        "region": "MAPSEC_FUCHSIA_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_FUCHSIA_CITY_POKEMON_CENTER_1F": {
+        "id": "MAP_FUCHSIA_CITY_POKEMON_CENTER_1F",
+        "folder": "FuchsiaCity_PokemonCenter_1F",
+        "name": "Fuchsia City Pokemon Center 1F",
+        "region": "MAPSEC_FUCHSIA_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_FUCHSIA_CITY_POKEMON_CENTER_2F": {
+        "id": "MAP_FUCHSIA_CITY_POKEMON_CENTER_2F",
+        "folder": "FuchsiaCity_PokemonCenter_2F",
+        "name": "Fuchsia City Pokemon Center 2F",
+        "region": "MAPSEC_FUCHSIA_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE": {
+        "id": "MAP_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE",
+        "folder": "FuchsiaCity_SafariZone_Entrance",
+        "name": "Fuchsia City Safari Zone Entrance",
+        "region": "MAPSEC_FUCHSIA_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_FUCHSIA_CITY_SAFARI_ZONE_OFFICE": {
+        "id": "MAP_FUCHSIA_CITY_SAFARI_ZONE_OFFICE",
+        "folder": "FuchsiaCity_SafariZone_Office",
+        "name": "Fuchsia City Safari Zone Office",
+        "region": "MAPSEC_FUCHSIA_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_FUCHSIA_CITY_WARDENS_HOUSE": {
+        "id": "MAP_FUCHSIA_CITY_WARDENS_HOUSE",
+        "folder": "FuchsiaCity_WardensHouse",
+        "name": "Fuchsia City Wardens House",
+        "region": "MAPSEC_FUCHSIA_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_INDIGO_PLATEAU_EXTERIOR": {
+        "id": "MAP_INDIGO_PLATEAU_EXTERIOR",
+        "folder": "IndigoPlateau_Exterior",
+        "name": "Indigo Plateau Exterior",
+        "region": "MAPSEC_INDIGO_PLATEAU",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_VICTORY_ROAD"
+    },
+    "MAP_INDIGO_PLATEAU_POKEMON_CENTER_1F": {
+        "id": "MAP_INDIGO_PLATEAU_POKEMON_CENTER_1F",
+        "folder": "IndigoPlateau_PokemonCenter_1F",
+        "name": "Indigo Plateau Pokemon Center 1F",
+        "region": "MAPSEC_INDIGO_PLATEAU",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_GYM"
+    },
+    "MAP_INDIGO_PLATEAU_POKEMON_CENTER_2F": {
+        "id": "MAP_INDIGO_PLATEAU_POKEMON_CENTER_2F",
+        "folder": "IndigoPlateau_PokemonCenter_2F",
+        "name": "Indigo Plateau Pokemon Center 2F",
+        "region": "MAPSEC_INDIGO_PLATEAU",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_LAVENDER_TOWN": {
+        "id": "MAP_LAVENDER_TOWN",
+        "folder": "LavenderTown",
+        "name": "Lavender Town",
+        "region": "MAPSEC_LAVENDER_TOWN",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_LAVENDER"
+    },
+    "MAP_LAVENDER_TOWN_HOUSE1": {
+        "id": "MAP_LAVENDER_TOWN_HOUSE1",
+        "folder": "LavenderTown_House1",
+        "name": "Lavender Town House1",
+        "region": "MAPSEC_LAVENDER_TOWN",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_LAVENDER"
+    },
+    "MAP_LAVENDER_TOWN_HOUSE2": {
+        "id": "MAP_LAVENDER_TOWN_HOUSE2",
+        "folder": "LavenderTown_House2",
+        "name": "Lavender Town House2",
+        "region": "MAPSEC_LAVENDER_TOWN",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_LAVENDER_TOWN_MART": {
+        "id": "MAP_LAVENDER_TOWN_MART",
+        "folder": "LavenderTown_Mart",
+        "name": "Lavender Town Mart",
+        "region": "MAPSEC_LAVENDER_TOWN",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_LAVENDER_TOWN_POKEMON_CENTER_1F": {
+        "id": "MAP_LAVENDER_TOWN_POKEMON_CENTER_1F",
+        "folder": "LavenderTown_PokemonCenter_1F",
+        "name": "Lavender Town Pokemon Center 1F",
+        "region": "MAPSEC_LAVENDER_TOWN",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_LAVENDER_TOWN_POKEMON_CENTER_2F": {
+        "id": "MAP_LAVENDER_TOWN_POKEMON_CENTER_2F",
+        "folder": "LavenderTown_PokemonCenter_2F",
+        "name": "Lavender Town Pokemon Center 2F",
+        "region": "MAPSEC_LAVENDER_TOWN",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_LAVENDER_TOWN_VOLUNTEER_POKEMON_HOUSE": {
+        "id": "MAP_LAVENDER_TOWN_VOLUNTEER_POKEMON_HOUSE",
+        "folder": "LavenderTown_VolunteerPokemonHouse",
+        "name": "Lavender Town Volunteer Pokemon House",
+        "region": "MAPSEC_LAVENDER_TOWN",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_LAVENDER"
+    },
+    "MAP_MT_EMBER_EXTERIOR": {
+        "id": "MAP_MT_EMBER_EXTERIOR",
+        "folder": "MtEmber_Exterior",
+        "name": "Mt Ember Exterior",
+        "region": "MAPSEC_MT_EMBER",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_MT_EMBER_RUBY_PATH_1F": {
+        "id": "MAP_MT_EMBER_RUBY_PATH_1F",
+        "folder": "MtEmber_RubyPath_1F",
+        "name": "Mt Ember Ruby Path 1F",
+        "region": "MAPSEC_MT_EMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_MT_EMBER_RUBY_PATH_B1F": {
+        "id": "MAP_MT_EMBER_RUBY_PATH_B1F",
+        "folder": "MtEmber_RubyPath_B1F",
+        "name": "Mt Ember Ruby Path B1F",
+        "region": "MAPSEC_MT_EMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_MT_EMBER_RUBY_PATH_B1F_STAIRS": {
+        "id": "MAP_MT_EMBER_RUBY_PATH_B1F_STAIRS",
+        "folder": "MtEmber_RubyPath_B1F_Stairs",
+        "name": "Mt Ember Ruby Path B1F Stairs",
+        "region": "MAPSEC_MT_EMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_MT_EMBER_RUBY_PATH_B2F": {
+        "id": "MAP_MT_EMBER_RUBY_PATH_B2F",
+        "folder": "MtEmber_RubyPath_B2F",
+        "name": "Mt Ember Ruby Path B2F",
+        "region": "MAPSEC_MT_EMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_MT_EMBER_RUBY_PATH_B2F_STAIRS": {
+        "id": "MAP_MT_EMBER_RUBY_PATH_B2F_STAIRS",
+        "folder": "MtEmber_RubyPath_B2F_Stairs",
+        "name": "Mt Ember Ruby Path B2F Stairs",
+        "region": "MAPSEC_MT_EMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_MT_EMBER_RUBY_PATH_B3F": {
+        "id": "MAP_MT_EMBER_RUBY_PATH_B3F",
+        "folder": "MtEmber_RubyPath_B3F",
+        "name": "Mt Ember Ruby Path B3F",
+        "region": "MAPSEC_MT_EMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_MT_EMBER_RUBY_PATH_B4F": {
+        "id": "MAP_MT_EMBER_RUBY_PATH_B4F",
+        "folder": "MtEmber_RubyPath_B4F",
+        "name": "Mt Ember Ruby Path B4F",
+        "region": "MAPSEC_MT_EMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_MT_EMBER_RUBY_PATH_B5F": {
+        "id": "MAP_MT_EMBER_RUBY_PATH_B5F",
+        "folder": "MtEmber_RubyPath_B5F",
+        "name": "Mt Ember Ruby Path B5F",
+        "region": "MAPSEC_MT_EMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_MT_EMBER_SUMMIT": {
+        "id": "MAP_MT_EMBER_SUMMIT",
+        "folder": "MtEmber_Summit",
+        "name": "Mt Ember Summit",
+        "region": "MAPSEC_MT_EMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_MT_EMBER_SUMMIT_PATH_1F": {
+        "id": "MAP_MT_EMBER_SUMMIT_PATH_1F",
+        "folder": "MtEmber_SummitPath_1F",
+        "name": "Mt Ember Summit Path 1F",
+        "region": "MAPSEC_MT_EMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_MT_EMBER_SUMMIT_PATH_2F": {
+        "id": "MAP_MT_EMBER_SUMMIT_PATH_2F",
+        "folder": "MtEmber_SummitPath_2F",
+        "name": "Mt Ember Summit Path 2F",
+        "region": "MAPSEC_MT_EMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_MT_EMBER_SUMMIT_PATH_3F": {
+        "id": "MAP_MT_EMBER_SUMMIT_PATH_3F",
+        "folder": "MtEmber_SummitPath_3F",
+        "name": "Mt Ember Summit Path 3F",
+        "region": "MAPSEC_MT_EMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_MT_MOON_1F": {
+        "id": "MAP_MT_MOON_1F",
+        "folder": "MtMoon_1F",
+        "name": "Mt Moon 1F",
+        "region": "MAPSEC_MT_MOON",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_MT_MOON"
+    },
+    "MAP_MT_MOON_B1F": {
+        "id": "MAP_MT_MOON_B1F",
+        "folder": "MtMoon_B1F",
+        "name": "Mt Moon B1F",
+        "region": "MAPSEC_MT_MOON",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_MT_MOON"
+    },
+    "MAP_MT_MOON_B2F": {
+        "id": "MAP_MT_MOON_B2F",
+        "folder": "MtMoon_B2F",
+        "name": "Mt Moon B2F",
+        "region": "MAPSEC_MT_MOON",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_MT_MOON"
+    },
+    "MAP_NAVEL_ROCK_1F": {
+        "id": "MAP_NAVEL_ROCK_1F",
+        "folder": "NavelRock_1F",
+        "name": "Navel Rock 1F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_B1F": {
+        "id": "MAP_NAVEL_ROCK_B1F",
+        "folder": "NavelRock_B1F",
+        "name": "Navel Rock B1F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_BASE": {
+        "id": "MAP_NAVEL_ROCK_BASE",
+        "folder": "NavelRock_Base",
+        "name": "Navel Rock Base",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_BASE_PATH_B10F": {
+        "id": "MAP_NAVEL_ROCK_BASE_PATH_B10F",
+        "folder": "NavelRock_BasePath_B10F",
+        "name": "Navel Rock Base Path B10F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_BASE_PATH_B11F": {
+        "id": "MAP_NAVEL_ROCK_BASE_PATH_B11F",
+        "folder": "NavelRock_BasePath_B11F",
+        "name": "Navel Rock Base Path B11F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_BASE_PATH_B1F": {
+        "id": "MAP_NAVEL_ROCK_BASE_PATH_B1F",
+        "folder": "NavelRock_BasePath_B1F",
+        "name": "Navel Rock Base Path B1F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_BASE_PATH_B2F": {
+        "id": "MAP_NAVEL_ROCK_BASE_PATH_B2F",
+        "folder": "NavelRock_BasePath_B2F",
+        "name": "Navel Rock Base Path B2F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_BASE_PATH_B3F": {
+        "id": "MAP_NAVEL_ROCK_BASE_PATH_B3F",
+        "folder": "NavelRock_BasePath_B3F",
+        "name": "Navel Rock Base Path B3F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_BASE_PATH_B4F": {
+        "id": "MAP_NAVEL_ROCK_BASE_PATH_B4F",
+        "folder": "NavelRock_BasePath_B4F",
+        "name": "Navel Rock Base Path B4F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_BASE_PATH_B5F": {
+        "id": "MAP_NAVEL_ROCK_BASE_PATH_B5F",
+        "folder": "NavelRock_BasePath_B5F",
+        "name": "Navel Rock Base Path B5F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_BASE_PATH_B6F": {
+        "id": "MAP_NAVEL_ROCK_BASE_PATH_B6F",
+        "folder": "NavelRock_BasePath_B6F",
+        "name": "Navel Rock Base Path B6F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_BASE_PATH_B7F": {
+        "id": "MAP_NAVEL_ROCK_BASE_PATH_B7F",
+        "folder": "NavelRock_BasePath_B7F",
+        "name": "Navel Rock Base Path B7F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_BASE_PATH_B8F": {
+        "id": "MAP_NAVEL_ROCK_BASE_PATH_B8F",
+        "folder": "NavelRock_BasePath_B8F",
+        "name": "Navel Rock Base Path B8F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_BASE_PATH_B9F": {
+        "id": "MAP_NAVEL_ROCK_BASE_PATH_B9F",
+        "folder": "NavelRock_BasePath_B9F",
+        "name": "Navel Rock Base Path B9F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_EXTERIOR": {
+        "id": "MAP_NAVEL_ROCK_EXTERIOR",
+        "folder": "NavelRock_Exterior",
+        "name": "Navel Rock Exterior",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_NAVEL_ROCK_FORK": {
+        "id": "MAP_NAVEL_ROCK_FORK",
+        "folder": "NavelRock_Fork",
+        "name": "Navel Rock Fork",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_HARBOR": {
+        "id": "MAP_NAVEL_ROCK_HARBOR",
+        "folder": "NavelRock_Harbor",
+        "name": "Navel Rock Harbor",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_NAVEL_ROCK_SUMMIT": {
+        "id": "MAP_NAVEL_ROCK_SUMMIT",
+        "folder": "NavelRock_Summit",
+        "name": "Navel Rock Summit",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_SUMMIT_PATH_2F": {
+        "id": "MAP_NAVEL_ROCK_SUMMIT_PATH_2F",
+        "folder": "NavelRock_SummitPath_2F",
+        "name": "Navel Rock Summit Path 2F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_SUMMIT_PATH_3F": {
+        "id": "MAP_NAVEL_ROCK_SUMMIT_PATH_3F",
+        "folder": "NavelRock_SummitPath_3F",
+        "name": "Navel Rock Summit Path 3F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_SUMMIT_PATH_4F": {
+        "id": "MAP_NAVEL_ROCK_SUMMIT_PATH_4F",
+        "folder": "NavelRock_SummitPath_4F",
+        "name": "Navel Rock Summit Path 4F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_NAVEL_ROCK_SUMMIT_PATH_5F": {
+        "id": "MAP_NAVEL_ROCK_SUMMIT_PATH_5F",
+        "folder": "NavelRock_SummitPath_5F",
+        "name": "Navel Rock Summit Path 5F",
+        "region": "MAPSEC_NAVEL_ROCK",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_ONE_ISLAND": {
+        "id": "MAP_ONE_ISLAND",
+        "folder": "OneIsland",
+        "name": "One Island",
+        "region": "MAPSEC_ONE_ISLAND",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_SEVII_123"
+    },
+    "MAP_ONE_ISLAND_HARBOR": {
+        "id": "MAP_ONE_ISLAND_HARBOR",
+        "folder": "OneIsland_Harbor",
+        "name": "One Island Harbor",
+        "region": "MAPSEC_ONE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_123"
+    },
+    "MAP_ONE_ISLAND_HOUSE1": {
+        "id": "MAP_ONE_ISLAND_HOUSE1",
+        "folder": "OneIsland_House1",
+        "name": "One Island House1",
+        "region": "MAPSEC_ONE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_123"
+    },
+    "MAP_ONE_ISLAND_HOUSE2": {
+        "id": "MAP_ONE_ISLAND_HOUSE2",
+        "folder": "OneIsland_House2",
+        "name": "One Island House2",
+        "region": "MAPSEC_ONE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_123"
+    },
+    "MAP_ONE_ISLAND_KINDLE_ROAD": {
+        "id": "MAP_ONE_ISLAND_KINDLE_ROAD",
+        "folder": "OneIsland_KindleRoad",
+        "name": "One Island Kindle Road",
+        "region": "MAPSEC_KINDLE_ROAD",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ONE_ISLAND_KINDLE_ROAD_EMBER_SPA": {
+        "id": "MAP_ONE_ISLAND_KINDLE_ROAD_EMBER_SPA",
+        "folder": "OneIsland_KindleRoad_EmberSpa",
+        "name": "One Island Kindle Road Ember Spa",
+        "region": "MAPSEC_EMBER_SPA",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_ONE_ISLAND_POKEMON_CENTER_1F": {
+        "id": "MAP_ONE_ISLAND_POKEMON_CENTER_1F",
+        "folder": "OneIsland_PokemonCenter_1F",
+        "name": "One Island Pokemon Center 1F",
+        "region": "MAPSEC_ONE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_NET_CENTER"
+    },
+    "MAP_ONE_ISLAND_POKEMON_CENTER_2F": {
+        "id": "MAP_ONE_ISLAND_POKEMON_CENTER_2F",
+        "folder": "OneIsland_PokemonCenter_2F",
+        "name": "One Island Pokemon Center 2F",
+        "region": "MAPSEC_ONE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_NET_CENTER"
+    },
+    "MAP_ONE_ISLAND_TREASURE_BEACH": {
+        "id": "MAP_ONE_ISLAND_TREASURE_BEACH",
+        "folder": "OneIsland_TreasureBeach",
+        "name": "One Island Treasure Beach",
+        "region": "MAPSEC_TREASURE_BEACH",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_PALLET_TOWN": {
+        "id": "MAP_PALLET_TOWN",
+        "folder": "PalletTown",
+        "name": "Pallet Town",
+        "region": "MAPSEC_PALLET_TOWN",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_PALLET"
+    },
+    "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F": {
+        "id": "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F",
+        "folder": "PalletTown_PlayersHouse_1F",
+        "name": "Pallet Town Players House 1F",
+        "region": "MAPSEC_PALLET_TOWN",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PALLET"
+    },
+    "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F": {
+        "id": "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F",
+        "folder": "PalletTown_PlayersHouse_2F",
+        "name": "Pallet Town Players House 2F",
+        "region": "MAPSEC_PALLET_TOWN",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PALLET"
+    },
+    "MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB": {
+        "id": "MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB",
+        "folder": "PalletTown_ProfessorOaksLab",
+        "name": "Pallet Town Professor Oaks Lab",
+        "region": "MAPSEC_PALLET_TOWN",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_OAK_LAB"
+    },
+    "MAP_PALLET_TOWN_RIVALS_HOUSE": {
+        "id": "MAP_PALLET_TOWN_RIVALS_HOUSE",
+        "folder": "PalletTown_RivalsHouse",
+        "name": "Pallet Town Rivals House",
+        "region": "MAPSEC_PALLET_TOWN",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PALLET"
+    },
+    "MAP_PEWTER_CITY": {
+        "id": "MAP_PEWTER_CITY",
+        "folder": "PewterCity",
+        "name": "Pewter City",
+        "region": "MAPSEC_PEWTER_CITY",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_PEWTER_CITY_GYM": {
+        "id": "MAP_PEWTER_CITY_GYM",
+        "folder": "PewterCity_Gym",
+        "name": "Pewter City Gym",
+        "region": "MAPSEC_PEWTER_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_GYM"
+    },
+    "MAP_PEWTER_CITY_HOUSE1": {
+        "id": "MAP_PEWTER_CITY_HOUSE1",
+        "folder": "PewterCity_House1",
+        "name": "Pewter City House1",
+        "region": "MAPSEC_PEWTER_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_PEWTER_CITY_HOUSE2": {
+        "id": "MAP_PEWTER_CITY_HOUSE2",
+        "folder": "PewterCity_House2",
+        "name": "Pewter City House2",
+        "region": "MAPSEC_PEWTER_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_PEWTER_CITY_MART": {
+        "id": "MAP_PEWTER_CITY_MART",
+        "folder": "PewterCity_Mart",
+        "name": "Pewter City Mart",
+        "region": "MAPSEC_PEWTER_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_PEWTER_CITY_MUSEUM_1F": {
+        "id": "MAP_PEWTER_CITY_MUSEUM_1F",
+        "folder": "PewterCity_Museum_1F",
+        "name": "Pewter City Museum 1F",
+        "region": "MAPSEC_PEWTER_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_PEWTER_CITY_MUSEUM_2F": {
+        "id": "MAP_PEWTER_CITY_MUSEUM_2F",
+        "folder": "PewterCity_Museum_2F",
+        "name": "Pewter City Museum 2F",
+        "region": "MAPSEC_PEWTER_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_PEWTER_CITY_POKEMON_CENTER_1F": {
+        "id": "MAP_PEWTER_CITY_POKEMON_CENTER_1F",
+        "folder": "PewterCity_PokemonCenter_1F",
+        "name": "Pewter City Pokemon Center 1F",
+        "region": "MAPSEC_PEWTER_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_PEWTER_CITY_POKEMON_CENTER_2F": {
+        "id": "MAP_PEWTER_CITY_POKEMON_CENTER_2F",
+        "folder": "PewterCity_PokemonCenter_2F",
+        "name": "Pewter City Pokemon Center 2F",
+        "region": "MAPSEC_PEWTER_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_POKEMON_LEAGUE_AGATHAS_ROOM": {
+        "id": "MAP_POKEMON_LEAGUE_AGATHAS_ROOM",
+        "folder": "PokemonLeague_AgathasRoom",
+        "name": "Pokemon League Agathas Room",
+        "region": "MAPSEC_POKEMON_LEAGUE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_TOWER"
+    },
+    "MAP_POKEMON_LEAGUE_BRUNOS_ROOM": {
+        "id": "MAP_POKEMON_LEAGUE_BRUNOS_ROOM",
+        "folder": "PokemonLeague_BrunosRoom",
+        "name": "Pokemon League Brunos Room",
+        "region": "MAPSEC_POKEMON_LEAGUE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_ROCKET_HIDEOUT"
+    },
+    "MAP_POKEMON_LEAGUE_CHAMPIONS_ROOM": {
+        "id": "MAP_POKEMON_LEAGUE_CHAMPIONS_ROOM",
+        "folder": "PokemonLeague_ChampionsRoom",
+        "name": "Pokemon League Champions Room",
+        "region": "MAPSEC_POKEMON_LEAGUE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_VICTORY_ROAD"
+    },
+    "MAP_POKEMON_LEAGUE_HALL_OF_FAME": {
+        "id": "MAP_POKEMON_LEAGUE_HALL_OF_FAME",
+        "folder": "PokemonLeague_HallOfFame",
+        "name": "Pokemon League Hall Of Fame",
+        "region": "MAPSEC_POKEMON_LEAGUE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SLOW_PALLET"
+    },
+    "MAP_POKEMON_LEAGUE_LANCES_ROOM": {
+        "id": "MAP_POKEMON_LEAGUE_LANCES_ROOM",
+        "folder": "PokemonLeague_LancesRoom",
+        "name": "Pokemon League Lances Room",
+        "region": "MAPSEC_POKEMON_LEAGUE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_VICTORY_ROAD"
+    },
+    "MAP_POKEMON_LEAGUE_LORELEIS_ROOM": {
+        "id": "MAP_POKEMON_LEAGUE_LORELEIS_ROOM",
+        "folder": "PokemonLeague_LoreleisRoom",
+        "name": "Pokemon League Loreleis Room",
+        "region": "MAPSEC_POKEMON_LEAGUE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_GYM"
+    },
+    "MAP_POKEMON_MANSION_1F": {
+        "id": "MAP_POKEMON_MANSION_1F",
+        "folder": "PokemonMansion_1F",
+        "name": "Pokemon Mansion 1F",
+        "region": "MAPSEC_POKEMON_MANSION",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_MANSION"
+    },
+    "MAP_POKEMON_MANSION_2F": {
+        "id": "MAP_POKEMON_MANSION_2F",
+        "folder": "PokemonMansion_2F",
+        "name": "Pokemon Mansion 2F",
+        "region": "MAPSEC_POKEMON_MANSION",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_MANSION"
+    },
+    "MAP_POKEMON_MANSION_3F": {
+        "id": "MAP_POKEMON_MANSION_3F",
+        "folder": "PokemonMansion_3F",
+        "name": "Pokemon Mansion 3F",
+        "region": "MAPSEC_POKEMON_MANSION",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_MANSION"
+    },
+    "MAP_POKEMON_MANSION_B1F": {
+        "id": "MAP_POKEMON_MANSION_B1F",
+        "folder": "PokemonMansion_B1F",
+        "name": "Pokemon Mansion B1F",
+        "region": "MAPSEC_POKEMON_MANSION",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_MANSION"
+    },
+    "MAP_POKEMON_TOWER_1F": {
+        "id": "MAP_POKEMON_TOWER_1F",
+        "folder": "PokemonTower_1F",
+        "name": "Pokemon Tower 1F",
+        "region": "MAPSEC_POKEMON_TOWER",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_TOWER"
+    },
+    "MAP_POKEMON_TOWER_2F": {
+        "id": "MAP_POKEMON_TOWER_2F",
+        "folder": "PokemonTower_2F",
+        "name": "Pokemon Tower 2F",
+        "region": "MAPSEC_POKEMON_TOWER",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_TOWER"
+    },
+    "MAP_POKEMON_TOWER_3F": {
+        "id": "MAP_POKEMON_TOWER_3F",
+        "folder": "PokemonTower_3F",
+        "name": "Pokemon Tower 3F",
+        "region": "MAPSEC_POKEMON_TOWER",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_TOWER"
+    },
+    "MAP_POKEMON_TOWER_4F": {
+        "id": "MAP_POKEMON_TOWER_4F",
+        "folder": "PokemonTower_4F",
+        "name": "Pokemon Tower 4F",
+        "region": "MAPSEC_POKEMON_TOWER",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_TOWER"
+    },
+    "MAP_POKEMON_TOWER_5F": {
+        "id": "MAP_POKEMON_TOWER_5F",
+        "folder": "PokemonTower_5F",
+        "name": "Pokemon Tower 5F",
+        "region": "MAPSEC_POKEMON_TOWER",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_TOWER"
+    },
+    "MAP_POKEMON_TOWER_6F": {
+        "id": "MAP_POKEMON_TOWER_6F",
+        "folder": "PokemonTower_6F",
+        "name": "Pokemon Tower 6F",
+        "region": "MAPSEC_POKEMON_TOWER",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_TOWER"
+    },
+    "MAP_POKEMON_TOWER_7F": {
+        "id": "MAP_POKEMON_TOWER_7F",
+        "folder": "PokemonTower_7F",
+        "name": "Pokemon Tower 7F",
+        "region": "MAPSEC_POKEMON_TOWER",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_TOWER"
+    },
+    "MAP_POWER_PLANT": {
+        "id": "MAP_POWER_PLANT",
+        "folder": "PowerPlant",
+        "name": "Power Plant",
+        "region": "MAPSEC_POWER_PLANT",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_MANSION"
+    },
+    "MAP_PROTOTYPE_SEVII_ISLE_6": {
+        "id": "MAP_PROTOTYPE_SEVII_ISLE_6",
+        "folder": "Prototype_SeviiIsle_6",
+        "name": "Prototype Sevii Isle 6",
+        "region": "MAPSEC_SEVII_ISLE_6",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_PROTOTYPE_SEVII_ISLE_7": {
+        "id": "MAP_PROTOTYPE_SEVII_ISLE_7",
+        "folder": "Prototype_SeviiIsle_7",
+        "name": "Prototype Sevii Isle 7",
+        "region": "MAPSEC_SEVII_ISLE_7",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_PROTOTYPE_SEVII_ISLE_8": {
+        "id": "MAP_PROTOTYPE_SEVII_ISLE_8",
+        "folder": "Prototype_SeviiIsle_8",
+        "name": "Prototype Sevii Isle 8",
+        "region": "MAPSEC_SEVII_ISLE_8",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_PROTOTYPE_SEVII_ISLE_9": {
+        "id": "MAP_PROTOTYPE_SEVII_ISLE_9",
+        "folder": "Prototype_SeviiIsle_9",
+        "name": "Prototype Sevii Isle 9",
+        "region": "MAPSEC_SEVII_ISLE_9",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_RECORD_CORNER": {
+        "id": "MAP_RECORD_CORNER",
+        "folder": "RecordCorner",
+        "name": "Record Corner",
+        "region": "MAPSEC_SPECIAL_AREA",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_ROCK_TUNNEL_1F": {
+        "id": "MAP_ROCK_TUNNEL_1F",
+        "folder": "RockTunnel_1F",
+        "name": "Rock Tunnel 1F",
+        "region": "MAPSEC_ROCK_TUNNEL",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_MT_MOON"
+    },
+    "MAP_ROCK_TUNNEL_B1F": {
+        "id": "MAP_ROCK_TUNNEL_B1F",
+        "folder": "RockTunnel_B1F",
+        "name": "Rock Tunnel B1F",
+        "region": "MAPSEC_ROCK_TUNNEL",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_MT_MOON"
+    },
+    "MAP_ROCKET_HIDEOUT_B1F": {
+        "id": "MAP_ROCKET_HIDEOUT_B1F",
+        "folder": "RocketHideout_B1F",
+        "name": "Rocket Hideout B1F",
+        "region": "MAPSEC_ROCKET_HIDEOUT",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": -1,
+        "music": "MUS_ROCKET_HIDEOUT"
+    },
+    "MAP_ROCKET_HIDEOUT_B2F": {
+        "id": "MAP_ROCKET_HIDEOUT_B2F",
+        "folder": "RocketHideout_B2F",
+        "name": "Rocket Hideout B2F",
+        "region": "MAPSEC_ROCKET_HIDEOUT",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": -2,
+        "music": "MUS_ROCKET_HIDEOUT"
+    },
+    "MAP_ROCKET_HIDEOUT_B3F": {
+        "id": "MAP_ROCKET_HIDEOUT_B3F",
+        "folder": "RocketHideout_B3F",
+        "name": "Rocket Hideout B3F",
+        "region": "MAPSEC_ROCKET_HIDEOUT",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": -3,
+        "music": "MUS_ROCKET_HIDEOUT"
+    },
+    "MAP_ROCKET_HIDEOUT_B4F": {
+        "id": "MAP_ROCKET_HIDEOUT_B4F",
+        "folder": "RocketHideout_B4F",
+        "name": "Rocket Hideout B4F",
+        "region": "MAPSEC_ROCKET_HIDEOUT",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": -4,
+        "music": "MUS_ROCKET_HIDEOUT"
+    },
+    "MAP_ROCKET_HIDEOUT_ELEVATOR": {
+        "id": "MAP_ROCKET_HIDEOUT_ELEVATOR",
+        "folder": "RocketHideout_Elevator",
+        "name": "Rocket Hideout Elevator",
+        "region": "MAPSEC_ROCKET_HIDEOUT",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_ROCKET_HIDEOUT"
+    },
+    "MAP_ROUTE1": {
+        "id": "MAP_ROUTE1",
+        "folder": "Route1",
+        "name": "Route1",
+        "region": "MAPSEC_ROUTE_1",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE1"
+    },
+    "MAP_ROUTE10": {
+        "id": "MAP_ROUTE10",
+        "folder": "Route10",
+        "name": "Route10",
+        "region": "MAPSEC_ROUTE_10",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE10_POKEMON_CENTER_1F": {
+        "id": "MAP_ROUTE10_POKEMON_CENTER_1F",
+        "folder": "Route10_PokemonCenter_1F",
+        "name": "Route10 Pokemon Center 1F",
+        "region": "MAPSEC_ROUTE_10",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_ROUTE10_POKEMON_CENTER_2F": {
+        "id": "MAP_ROUTE10_POKEMON_CENTER_2F",
+        "folder": "Route10_PokemonCenter_2F",
+        "name": "Route10 Pokemon Center 2F",
+        "region": "MAPSEC_ROUTE_10",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_ROUTE11": {
+        "id": "MAP_ROUTE11",
+        "folder": "Route11",
+        "name": "Route11",
+        "region": "MAPSEC_ROUTE_11",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE11"
+    },
+    "MAP_ROUTE11_EAST_ENTRANCE_1F": {
+        "id": "MAP_ROUTE11_EAST_ENTRANCE_1F",
+        "folder": "Route11_EastEntrance_1F",
+        "name": "Route11 East Entrance 1F",
+        "region": "MAPSEC_ROUTE_11",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_VERMILLION"
+    },
+    "MAP_ROUTE11_EAST_ENTRANCE_2F": {
+        "id": "MAP_ROUTE11_EAST_ENTRANCE_2F",
+        "folder": "Route11_EastEntrance_2F",
+        "name": "Route11 East Entrance 2F",
+        "region": "MAPSEC_ROUTE_11",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_VERMILLION"
+    },
+    "MAP_ROUTE12": {
+        "id": "MAP_ROUTE12",
+        "folder": "Route12",
+        "name": "Route12",
+        "region": "MAPSEC_ROUTE_12",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE11"
+    },
+    "MAP_ROUTE12_FISHING_HOUSE": {
+        "id": "MAP_ROUTE12_FISHING_HOUSE",
+        "folder": "Route12_FishingHouse",
+        "name": "Route12 Fishing House",
+        "region": "MAPSEC_ROUTE_12",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_CELADON"
+    },
+    "MAP_ROUTE12_NORTH_ENTRANCE_1F": {
+        "id": "MAP_ROUTE12_NORTH_ENTRANCE_1F",
+        "folder": "Route12_NorthEntrance_1F",
+        "name": "Route12 North Entrance 1F",
+        "region": "MAPSEC_ROUTE_12",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE12_NORTH_ENTRANCE_2F": {
+        "id": "MAP_ROUTE12_NORTH_ENTRANCE_2F",
+        "folder": "Route12_NorthEntrance_2F",
+        "name": "Route12 North Entrance 2F",
+        "region": "MAPSEC_ROUTE_12",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE13": {
+        "id": "MAP_ROUTE13",
+        "folder": "Route13",
+        "name": "Route13",
+        "region": "MAPSEC_ROUTE_13",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE11"
+    },
+    "MAP_ROUTE14": {
+        "id": "MAP_ROUTE14",
+        "folder": "Route14",
+        "name": "Route14",
+        "region": "MAPSEC_ROUTE_14",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE11"
+    },
+    "MAP_ROUTE15": {
+        "id": "MAP_ROUTE15",
+        "folder": "Route15",
+        "name": "Route15",
+        "region": "MAPSEC_ROUTE_15",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE11"
+    },
+    "MAP_ROUTE15_WEST_ENTRANCE_1F": {
+        "id": "MAP_ROUTE15_WEST_ENTRANCE_1F",
+        "folder": "Route15_WestEntrance_1F",
+        "name": "Route15 West Entrance 1F",
+        "region": "MAPSEC_ROUTE_15",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE15_WEST_ENTRANCE_2F": {
+        "id": "MAP_ROUTE15_WEST_ENTRANCE_2F",
+        "folder": "Route15_WestEntrance_2F",
+        "name": "Route15 West Entrance 2F",
+        "region": "MAPSEC_ROUTE_15",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE16": {
+        "id": "MAP_ROUTE16",
+        "folder": "Route16",
+        "name": "Route16",
+        "region": "MAPSEC_ROUTE_16",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE16_HOUSE": {
+        "id": "MAP_ROUTE16_HOUSE",
+        "folder": "Route16_House",
+        "name": "Route16 House",
+        "region": "MAPSEC_ROUTE_16",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_CELADON"
+    },
+    "MAP_ROUTE16_NORTH_ENTRANCE_1F": {
+        "id": "MAP_ROUTE16_NORTH_ENTRANCE_1F",
+        "folder": "Route16_NorthEntrance_1F",
+        "name": "Route16 North Entrance 1F",
+        "region": "MAPSEC_ROUTE_16",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE16_NORTH_ENTRANCE_2F": {
+        "id": "MAP_ROUTE16_NORTH_ENTRANCE_2F",
+        "folder": "Route16_NorthEntrance_2F",
+        "name": "Route16 North Entrance 2F",
+        "region": "MAPSEC_ROUTE_16",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE17": {
+        "id": "MAP_ROUTE17",
+        "folder": "Route17",
+        "name": "Route17",
+        "region": "MAPSEC_ROUTE_17",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE18": {
+        "id": "MAP_ROUTE18",
+        "folder": "Route18",
+        "name": "Route18",
+        "region": "MAPSEC_ROUTE_18",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE18_EAST_ENTRANCE_1F": {
+        "id": "MAP_ROUTE18_EAST_ENTRANCE_1F",
+        "folder": "Route18_EastEntrance_1F",
+        "name": "Route18 East Entrance 1F",
+        "region": "MAPSEC_ROUTE_18",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE18_EAST_ENTRANCE_2F": {
+        "id": "MAP_ROUTE18_EAST_ENTRANCE_2F",
+        "folder": "Route18_EastEntrance_2F",
+        "name": "Route18 East Entrance 2F",
+        "region": "MAPSEC_ROUTE_18",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE19": {
+        "id": "MAP_ROUTE19",
+        "folder": "Route19",
+        "name": "Route19",
+        "region": "MAPSEC_ROUTE_19",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE19_UNUSED_HOUSE": {
+        "id": "MAP_ROUTE19_UNUSED_HOUSE",
+        "folder": "Route19_UnusedHouse",
+        "name": "Route19 Unused House",
+        "region": "MAPSEC_ROUTE_19",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE2": {
+        "id": "MAP_ROUTE2",
+        "folder": "Route2",
+        "name": "Route2",
+        "region": "MAPSEC_ROUTE_2",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE1"
+    },
+    "MAP_ROUTE20": {
+        "id": "MAP_ROUTE20",
+        "folder": "Route20",
+        "name": "Route20",
+        "region": "MAPSEC_ROUTE_20",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE21_NORTH": {
+        "id": "MAP_ROUTE21_NORTH",
+        "folder": "Route21_North",
+        "name": "Route21 North",
+        "region": "MAPSEC_ROUTE_21",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE21_SOUTH": {
+        "id": "MAP_ROUTE21_SOUTH",
+        "folder": "Route21_South",
+        "name": "Route21 South",
+        "region": "MAPSEC_ROUTE_21",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE22": {
+        "id": "MAP_ROUTE22",
+        "folder": "Route22",
+        "name": "Route22",
+        "region": "MAPSEC_ROUTE_22",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE22_NORTH_ENTRANCE": {
+        "id": "MAP_ROUTE22_NORTH_ENTRANCE",
+        "folder": "Route22_NorthEntrance",
+        "name": "Route22 North Entrance",
+        "region": "MAPSEC_ROUTE_22",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_VIRIDIAN_FOREST"
+    },
+    "MAP_ROUTE23": {
+        "id": "MAP_ROUTE23",
+        "folder": "Route23",
+        "name": "Route23",
+        "region": "MAPSEC_ROUTE_23",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_VICTORY_ROAD"
+    },
+    "MAP_ROUTE23_UNUSED_HOUSE": {
+        "id": "MAP_ROUTE23_UNUSED_HOUSE",
+        "folder": "Route23_UnusedHouse",
+        "name": "Route23 Unused House",
+        "region": "MAPSEC_ROUTE_23",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_VICTORY_ROAD"
+    },
+    "MAP_ROUTE24": {
+        "id": "MAP_ROUTE24",
+        "folder": "Route24",
+        "name": "Route24",
+        "region": "MAPSEC_ROUTE_24",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE24"
+    },
+    "MAP_ROUTE25": {
+        "id": "MAP_ROUTE25",
+        "folder": "Route25",
+        "name": "Route25",
+        "region": "MAPSEC_ROUTE_25",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE24"
+    },
+    "MAP_ROUTE25_SEA_COTTAGE": {
+        "id": "MAP_ROUTE25_SEA_COTTAGE",
+        "folder": "Route25_SeaCottage",
+        "name": "Route25 Sea Cottage",
+        "region": "MAPSEC_ROUTE_25",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_ROUTE2_EAST_BUILDING": {
+        "id": "MAP_ROUTE2_EAST_BUILDING",
+        "folder": "Route2_EastBuilding",
+        "name": "Route2 East Building",
+        "region": "MAPSEC_ROUTE_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE2_HOUSE": {
+        "id": "MAP_ROUTE2_HOUSE",
+        "folder": "Route2_House",
+        "name": "Route2 House",
+        "region": "MAPSEC_ROUTE_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE2_VIRIDIAN_FOREST_NORTH_ENTRANCE": {
+        "id": "MAP_ROUTE2_VIRIDIAN_FOREST_NORTH_ENTRANCE",
+        "folder": "Route2_ViridianForest_NorthEntrance",
+        "name": "Route2 Viridian Forest North Entrance",
+        "region": "MAPSEC_ROUTE_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE2_VIRIDIAN_FOREST_SOUTH_ENTRANCE": {
+        "id": "MAP_ROUTE2_VIRIDIAN_FOREST_SOUTH_ENTRANCE",
+        "folder": "Route2_ViridianForest_SouthEntrance",
+        "name": "Route2 Viridian Forest South Entrance",
+        "region": "MAPSEC_ROUTE_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE3": {
+        "id": "MAP_ROUTE3",
+        "folder": "Route3",
+        "name": "Route3",
+        "region": "MAPSEC_ROUTE_3",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE4": {
+        "id": "MAP_ROUTE4",
+        "folder": "Route4",
+        "name": "Route4",
+        "region": "MAPSEC_ROUTE_4",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE4_POKEMON_CENTER_1F": {
+        "id": "MAP_ROUTE4_POKEMON_CENTER_1F",
+        "folder": "Route4_PokemonCenter_1F",
+        "name": "Route4 Pokemon Center 1F",
+        "region": "MAPSEC_ROUTE_4",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_ROUTE4_POKEMON_CENTER_2F": {
+        "id": "MAP_ROUTE4_POKEMON_CENTER_2F",
+        "folder": "Route4_PokemonCenter_2F",
+        "name": "Route4 Pokemon Center 2F",
+        "region": "MAPSEC_ROUTE_4",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_ROUTE5": {
+        "id": "MAP_ROUTE5",
+        "folder": "Route5",
+        "name": "Route5",
+        "region": "MAPSEC_ROUTE_5",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE5_POKEMON_DAY_CARE": {
+        "id": "MAP_ROUTE5_POKEMON_DAY_CARE",
+        "folder": "Route5_PokemonDayCare",
+        "name": "Route5 Pokemon Day Care",
+        "region": "MAPSEC_ROUTE_5",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE5_SOUTH_ENTRANCE": {
+        "id": "MAP_ROUTE5_SOUTH_ENTRANCE",
+        "folder": "Route5_SouthEntrance",
+        "name": "Route5 South Entrance",
+        "region": "MAPSEC_ROUTE_5",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE6": {
+        "id": "MAP_ROUTE6",
+        "folder": "Route6",
+        "name": "Route6",
+        "region": "MAPSEC_ROUTE_6",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE6_NORTH_ENTRANCE": {
+        "id": "MAP_ROUTE6_NORTH_ENTRANCE",
+        "folder": "Route6_NorthEntrance",
+        "name": "Route6 North Entrance",
+        "region": "MAPSEC_ROUTE_6",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE6_UNUSED_HOUSE": {
+        "id": "MAP_ROUTE6_UNUSED_HOUSE",
+        "folder": "Route6_UnusedHouse",
+        "name": "Route6 Unused House",
+        "region": "MAPSEC_ROUTE_6",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE7": {
+        "id": "MAP_ROUTE7",
+        "folder": "Route7",
+        "name": "Route7",
+        "region": "MAPSEC_ROUTE_7",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE7_EAST_ENTRANCE": {
+        "id": "MAP_ROUTE7_EAST_ENTRANCE",
+        "folder": "Route7_EastEntrance",
+        "name": "Route7 East Entrance",
+        "region": "MAPSEC_ROUTE_7",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE8": {
+        "id": "MAP_ROUTE8",
+        "folder": "Route8",
+        "name": "Route8",
+        "region": "MAPSEC_ROUTE_8",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_ROUTE8_WEST_ENTRANCE": {
+        "id": "MAP_ROUTE8_WEST_ENTRANCE",
+        "folder": "Route8_WestEntrance",
+        "name": "Route8 West Entrance",
+        "region": "MAPSEC_ROUTE_8",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_ROUTE9": {
+        "id": "MAP_ROUTE9",
+        "folder": "Route9",
+        "name": "Route9",
+        "region": "MAPSEC_ROUTE_9",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_SSANNE_1F_CORRIDOR": {
+        "id": "MAP_SSANNE_1F_CORRIDOR",
+        "folder": "SSAnne_1F_Corridor",
+        "name": "SS Anne 1F Corridor",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_1F_ROOM1": {
+        "id": "MAP_SSANNE_1F_ROOM1",
+        "folder": "SSAnne_1F_Room1",
+        "name": "SS Anne 1F Room1",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_1F_ROOM2": {
+        "id": "MAP_SSANNE_1F_ROOM2",
+        "folder": "SSAnne_1F_Room2",
+        "name": "SS Anne 1F Room2",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_1F_ROOM3": {
+        "id": "MAP_SSANNE_1F_ROOM3",
+        "folder": "SSAnne_1F_Room3",
+        "name": "SS Anne 1F Room3",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_1F_ROOM4": {
+        "id": "MAP_SSANNE_1F_ROOM4",
+        "folder": "SSAnne_1F_Room4",
+        "name": "SS Anne 1F Room4",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_1F_ROOM5": {
+        "id": "MAP_SSANNE_1F_ROOM5",
+        "folder": "SSAnne_1F_Room5",
+        "name": "SS Anne 1F Room5",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_1F_ROOM6": {
+        "id": "MAP_SSANNE_1F_ROOM6",
+        "folder": "SSAnne_1F_Room6",
+        "name": "SS Anne 1F Room6",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_1F_ROOM7": {
+        "id": "MAP_SSANNE_1F_ROOM7",
+        "folder": "SSAnne_1F_Room7",
+        "name": "SS Anne 1F Room7",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_2F_CORRIDOR": {
+        "id": "MAP_SSANNE_2F_CORRIDOR",
+        "folder": "SSAnne_2F_Corridor",
+        "name": "SS Anne 2F Corridor",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_2F_ROOM1": {
+        "id": "MAP_SSANNE_2F_ROOM1",
+        "folder": "SSAnne_2F_Room1",
+        "name": "SS Anne 2F Room1",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_2F_ROOM2": {
+        "id": "MAP_SSANNE_2F_ROOM2",
+        "folder": "SSAnne_2F_Room2",
+        "name": "SS Anne 2F Room2",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_2F_ROOM3": {
+        "id": "MAP_SSANNE_2F_ROOM3",
+        "folder": "SSAnne_2F_Room3",
+        "name": "SS Anne 2F Room3",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_2F_ROOM4": {
+        "id": "MAP_SSANNE_2F_ROOM4",
+        "folder": "SSAnne_2F_Room4",
+        "name": "SS Anne 2F Room4",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_2F_ROOM5": {
+        "id": "MAP_SSANNE_2F_ROOM5",
+        "folder": "SSAnne_2F_Room5",
+        "name": "SS Anne 2F Room5",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_2F_ROOM6": {
+        "id": "MAP_SSANNE_2F_ROOM6",
+        "folder": "SSAnne_2F_Room6",
+        "name": "SS Anne 2F Room6",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_3F_CORRIDOR": {
+        "id": "MAP_SSANNE_3F_CORRIDOR",
+        "folder": "SSAnne_3F_Corridor",
+        "name": "SS Anne 3F Corridor",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_B1F_CORRIDOR": {
+        "id": "MAP_SSANNE_B1F_CORRIDOR",
+        "folder": "SSAnne_B1F_Corridor",
+        "name": "SS Anne B1F Corridor",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_B1F_ROOM1": {
+        "id": "MAP_SSANNE_B1F_ROOM1",
+        "folder": "SSAnne_B1F_Room1",
+        "name": "SS Anne B1F Room1",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_B1F_ROOM2": {
+        "id": "MAP_SSANNE_B1F_ROOM2",
+        "folder": "SSAnne_B1F_Room2",
+        "name": "SS Anne B1F Room2",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_B1F_ROOM3": {
+        "id": "MAP_SSANNE_B1F_ROOM3",
+        "folder": "SSAnne_B1F_Room3",
+        "name": "SS Anne B1F Room3",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_B1F_ROOM4": {
+        "id": "MAP_SSANNE_B1F_ROOM4",
+        "folder": "SSAnne_B1F_Room4",
+        "name": "SS Anne B1F Room4",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_B1F_ROOM5": {
+        "id": "MAP_SSANNE_B1F_ROOM5",
+        "folder": "SSAnne_B1F_Room5",
+        "name": "SS Anne B1F Room5",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_CAPTAINS_OFFICE": {
+        "id": "MAP_SSANNE_CAPTAINS_OFFICE",
+        "folder": "SSAnne_CaptainsOffice",
+        "name": "SS Anne Captains Office",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_DECK": {
+        "id": "MAP_SSANNE_DECK",
+        "folder": "SSAnne_Deck",
+        "name": "SS Anne Deck",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_EXTERIOR": {
+        "id": "MAP_SSANNE_EXTERIOR",
+        "folder": "SSAnne_Exterior",
+        "name": "SS Anne Exterior",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SSANNE_KITCHEN": {
+        "id": "MAP_SSANNE_KITCHEN",
+        "folder": "SSAnne_Kitchen",
+        "name": "SS Anne Kitchen",
+        "region": "MAPSEC_S_S_ANNE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SS_ANNE"
+    },
+    "MAP_SAFARI_ZONE_CENTER": {
+        "id": "MAP_SAFARI_ZONE_CENTER",
+        "folder": "SafariZone_Center",
+        "name": "Safari Zone Center",
+        "region": "MAPSEC_KANTO_SAFARI_ZONE",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_EVOLUTION"
+    },
+    "MAP_SAFARI_ZONE_CENTER_REST_HOUSE": {
+        "id": "MAP_SAFARI_ZONE_CENTER_REST_HOUSE",
+        "folder": "SafariZone_Center_RestHouse",
+        "name": "Safari Zone Center Rest House",
+        "region": "MAPSEC_KANTO_SAFARI_ZONE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_EVOLUTION"
+    },
+    "MAP_SAFARI_ZONE_EAST": {
+        "id": "MAP_SAFARI_ZONE_EAST",
+        "folder": "SafariZone_East",
+        "name": "Safari Zone East",
+        "region": "MAPSEC_KANTO_SAFARI_ZONE",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_EVOLUTION"
+    },
+    "MAP_SAFARI_ZONE_EAST_REST_HOUSE": {
+        "id": "MAP_SAFARI_ZONE_EAST_REST_HOUSE",
+        "folder": "SafariZone_East_RestHouse",
+        "name": "Safari Zone East Rest House",
+        "region": "MAPSEC_KANTO_SAFARI_ZONE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_EVOLUTION"
+    },
+    "MAP_SAFARI_ZONE_NORTH": {
+        "id": "MAP_SAFARI_ZONE_NORTH",
+        "folder": "SafariZone_North",
+        "name": "Safari Zone North",
+        "region": "MAPSEC_KANTO_SAFARI_ZONE",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_EVOLUTION"
+    },
+    "MAP_SAFARI_ZONE_NORTH_REST_HOUSE": {
+        "id": "MAP_SAFARI_ZONE_NORTH_REST_HOUSE",
+        "folder": "SafariZone_North_RestHouse",
+        "name": "Safari Zone North Rest House",
+        "region": "MAPSEC_KANTO_SAFARI_ZONE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_EVOLUTION"
+    },
+    "MAP_SAFARI_ZONE_SECRET_HOUSE": {
+        "id": "MAP_SAFARI_ZONE_SECRET_HOUSE",
+        "folder": "SafariZone_SecretHouse",
+        "name": "Safari Zone Secret House",
+        "region": "MAPSEC_KANTO_SAFARI_ZONE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_EVOLUTION"
+    },
+    "MAP_SAFARI_ZONE_WEST": {
+        "id": "MAP_SAFARI_ZONE_WEST",
+        "folder": "SafariZone_West",
+        "name": "Safari Zone West",
+        "region": "MAPSEC_KANTO_SAFARI_ZONE",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_EVOLUTION"
+    },
+    "MAP_SAFARI_ZONE_WEST_REST_HOUSE": {
+        "id": "MAP_SAFARI_ZONE_WEST_REST_HOUSE",
+        "folder": "SafariZone_West_RestHouse",
+        "name": "Safari Zone West Rest House",
+        "region": "MAPSEC_KANTO_SAFARI_ZONE",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_EVOLUTION"
+    },
+    "MAP_SAFFRON_CITY": {
+        "id": "MAP_SAFFRON_CITY",
+        "folder": "SaffronCity",
+        "name": "Saffron City",
+        "region": "MAPSEC_SAFFRON_CITY",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_SAFFRON_CITY_CONNECTION": {
+        "id": "MAP_SAFFRON_CITY_CONNECTION",
+        "folder": "SaffronCity_Connection",
+        "name": "Saffron City Connection",
+        "region": "MAPSEC_SAFFRON_CITY",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_SAFFRON_CITY_COPYCATS_HOUSE_1F": {
+        "id": "MAP_SAFFRON_CITY_COPYCATS_HOUSE_1F",
+        "folder": "SaffronCity_CopycatsHouse_1F",
+        "name": "Saffron City Copycats House 1F",
+        "region": "MAPSEC_SAFFRON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_SAFFRON_CITY_COPYCATS_HOUSE_2F": {
+        "id": "MAP_SAFFRON_CITY_COPYCATS_HOUSE_2F",
+        "folder": "SaffronCity_CopycatsHouse_2F",
+        "name": "Saffron City Copycats House 2F",
+        "region": "MAPSEC_SAFFRON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_SAFFRON_CITY_DOJO": {
+        "id": "MAP_SAFFRON_CITY_DOJO",
+        "folder": "SaffronCity_Dojo",
+        "name": "Saffron City Dojo",
+        "region": "MAPSEC_SAFFRON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_SAFFRON_CITY_GYM": {
+        "id": "MAP_SAFFRON_CITY_GYM",
+        "folder": "SaffronCity_Gym",
+        "name": "Saffron City Gym",
+        "region": "MAPSEC_SAFFRON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_GYM"
+    },
+    "MAP_SAFFRON_CITY_HOUSE": {
+        "id": "MAP_SAFFRON_CITY_HOUSE",
+        "folder": "SaffronCity_House",
+        "name": "Saffron City House",
+        "region": "MAPSEC_SAFFRON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_SAFFRON_CITY_MART": {
+        "id": "MAP_SAFFRON_CITY_MART",
+        "folder": "SaffronCity_Mart",
+        "name": "Saffron City Mart",
+        "region": "MAPSEC_SAFFRON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_SAFFRON_CITY_MR_PSYCHICS_HOUSE": {
+        "id": "MAP_SAFFRON_CITY_MR_PSYCHICS_HOUSE",
+        "folder": "SaffronCity_MrPsychicsHouse",
+        "name": "Saffron City Mr Psychics House",
+        "region": "MAPSEC_SAFFRON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_SAFFRON_CITY_POKEMON_CENTER_1F": {
+        "id": "MAP_SAFFRON_CITY_POKEMON_CENTER_1F",
+        "folder": "SaffronCity_PokemonCenter_1F",
+        "name": "Saffron City Pokemon Center 1F",
+        "region": "MAPSEC_SAFFRON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_SAFFRON_CITY_POKEMON_CENTER_2F": {
+        "id": "MAP_SAFFRON_CITY_POKEMON_CENTER_2F",
+        "folder": "SaffronCity_PokemonCenter_2F",
+        "name": "Saffron City Pokemon Center 2F",
+        "region": "MAPSEC_SAFFRON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB": {
+        "id": "MAP_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB",
+        "folder": "SaffronCity_PokemonTrainerFanClub",
+        "name": "Saffron City Pokemon Trainer Fan Club",
+        "region": "MAPSEC_SAFFRON_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_SEAFOAM_ISLANDS_1F": {
+        "id": "MAP_SEAFOAM_ISLANDS_1F",
+        "folder": "SeafoamIslands_1F",
+        "name": "Seafoam Islands 1F",
+        "region": "MAPSEC_SEAFOAM_ISLANDS",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_VIRIDIAN_FOREST"
+    },
+    "MAP_SEAFOAM_ISLANDS_B1F": {
+        "id": "MAP_SEAFOAM_ISLANDS_B1F",
+        "folder": "SeafoamIslands_B1F",
+        "name": "Seafoam Islands B1F",
+        "region": "MAPSEC_SEAFOAM_ISLANDS",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_VIRIDIAN_FOREST"
+    },
+    "MAP_SEAFOAM_ISLANDS_B2F": {
+        "id": "MAP_SEAFOAM_ISLANDS_B2F",
+        "folder": "SeafoamIslands_B2F",
+        "name": "Seafoam Islands B2F",
+        "region": "MAPSEC_SEAFOAM_ISLANDS",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_VIRIDIAN_FOREST"
+    },
+    "MAP_SEAFOAM_ISLANDS_B3F": {
+        "id": "MAP_SEAFOAM_ISLANDS_B3F",
+        "folder": "SeafoamIslands_B3F",
+        "name": "Seafoam Islands B3F",
+        "region": "MAPSEC_SEAFOAM_ISLANDS",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_VIRIDIAN_FOREST"
+    },
+    "MAP_SEAFOAM_ISLANDS_B4F": {
+        "id": "MAP_SEAFOAM_ISLANDS_B4F",
+        "folder": "SeafoamIslands_B4F",
+        "name": "Seafoam Islands B4F",
+        "region": "MAPSEC_SEAFOAM_ISLANDS",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_VIRIDIAN_FOREST"
+    },
+    "MAP_SEVEN_ISLAND": {
+        "id": "MAP_SEVEN_ISLAND",
+        "folder": "SevenIsland",
+        "name": "Seven Island",
+        "region": "MAPSEC_SEVEN_ISLAND",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_SEVII_67"
+    },
+    "MAP_SEVEN_ISLAND_HARBOR": {
+        "id": "MAP_SEVEN_ISLAND_HARBOR",
+        "folder": "SevenIsland_Harbor",
+        "name": "Seven Island Harbor",
+        "region": "MAPSEC_SEVEN_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_67"
+    },
+    "MAP_SEVEN_ISLAND_HOUSE_ROOM1": {
+        "id": "MAP_SEVEN_ISLAND_HOUSE_ROOM1",
+        "folder": "SevenIsland_House_Room1",
+        "name": "Seven Island House Room1",
+        "region": "MAPSEC_SEVEN_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_67"
+    },
+    "MAP_SEVEN_ISLAND_HOUSE_ROOM2": {
+        "id": "MAP_SEVEN_ISLAND_HOUSE_ROOM2",
+        "folder": "SevenIsland_House_Room2",
+        "name": "Seven Island House Room2",
+        "region": "MAPSEC_SEVEN_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_67"
+    },
+    "MAP_SEVEN_ISLAND_MART": {
+        "id": "MAP_SEVEN_ISLAND_MART",
+        "folder": "SevenIsland_Mart",
+        "name": "Seven Island Mart",
+        "region": "MAPSEC_SEVEN_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_SEVEN_ISLAND_POKEMON_CENTER_1F": {
+        "id": "MAP_SEVEN_ISLAND_POKEMON_CENTER_1F",
+        "folder": "SevenIsland_PokemonCenter_1F",
+        "name": "Seven Island Pokemon Center 1F",
+        "region": "MAPSEC_SEVEN_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_SEVEN_ISLAND_POKEMON_CENTER_2F": {
+        "id": "MAP_SEVEN_ISLAND_POKEMON_CENTER_2F",
+        "folder": "SevenIsland_PokemonCenter_2F",
+        "name": "Seven Island Pokemon Center 2F",
+        "region": "MAPSEC_SEVEN_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_SEVEN_ISLAND_SEVAULT_CANYON": {
+        "id": "MAP_SEVEN_ISLAND_SEVAULT_CANYON",
+        "folder": "SevenIsland_SevaultCanyon",
+        "name": "Seven Island Sevault Canyon",
+        "region": "MAPSEC_SEVAULT_CANYON",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_SEVEN_ISLAND_SEVAULT_CANYON_ENTRANCE": {
+        "id": "MAP_SEVEN_ISLAND_SEVAULT_CANYON_ENTRANCE",
+        "folder": "SevenIsland_SevaultCanyon_Entrance",
+        "name": "Seven Island Sevault Canyon Entrance",
+        "region": "MAPSEC_CANYON_ENTRANCE",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_SEVEN_ISLAND_SEVAULT_CANYON_HOUSE": {
+        "id": "MAP_SEVEN_ISLAND_SEVAULT_CANYON_HOUSE",
+        "folder": "SevenIsland_SevaultCanyon_House",
+        "name": "Seven Island Sevault Canyon House",
+        "region": "MAPSEC_SEVAULT_CANYON",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_67"
+    },
+    "MAP_SEVEN_ISLAND_SEVAULT_CANYON_TANOBY_KEY": {
+        "id": "MAP_SEVEN_ISLAND_SEVAULT_CANYON_TANOBY_KEY",
+        "folder": "SevenIsland_SevaultCanyon_TanobyKey",
+        "name": "Seven Island Sevault Canyon Tanoby Key",
+        "region": "MAPSEC_TANOBY_KEY",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_DUNGEON"
+    },
+    "MAP_SEVEN_ISLAND_TANOBY_RUINS": {
+        "id": "MAP_SEVEN_ISLAND_TANOBY_RUINS",
+        "folder": "SevenIsland_TanobyRuins",
+        "name": "Seven Island Tanoby Ruins",
+        "region": "MAPSEC_TANOBY_RUINS",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_SEVEN_ISLAND_TANOBY_RUINS_DILFORD_CHAMBER": {
+        "id": "MAP_SEVEN_ISLAND_TANOBY_RUINS_DILFORD_CHAMBER",
+        "folder": "SevenIsland_TanobyRuins_DilfordChamber",
+        "name": "Seven Island Tanoby Ruins Dilford Chamber",
+        "region": "MAPSEC_DILFORD_CHAMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_DUNGEON"
+    },
+    "MAP_SEVEN_ISLAND_TANOBY_RUINS_LIPTOO_CHAMBER": {
+        "id": "MAP_SEVEN_ISLAND_TANOBY_RUINS_LIPTOO_CHAMBER",
+        "folder": "SevenIsland_TanobyRuins_LiptooChamber",
+        "name": "Seven Island Tanoby Ruins Liptoo Chamber",
+        "region": "MAPSEC_LIPTOO_CHAMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_DUNGEON"
+    },
+    "MAP_SEVEN_ISLAND_TANOBY_RUINS_MONEAN_CHAMBER": {
+        "id": "MAP_SEVEN_ISLAND_TANOBY_RUINS_MONEAN_CHAMBER",
+        "folder": "SevenIsland_TanobyRuins_MoneanChamber",
+        "name": "Seven Island Tanoby Ruins Monean Chamber",
+        "region": "MAPSEC_MONEAN_CHAMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_DUNGEON"
+    },
+    "MAP_SEVEN_ISLAND_TANOBY_RUINS_RIXY_CHAMBER": {
+        "id": "MAP_SEVEN_ISLAND_TANOBY_RUINS_RIXY_CHAMBER",
+        "folder": "SevenIsland_TanobyRuins_RixyChamber",
+        "name": "Seven Island Tanoby Ruins Rixy Chamber",
+        "region": "MAPSEC_RIXY_CHAMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_DUNGEON"
+    },
+    "MAP_SEVEN_ISLAND_TANOBY_RUINS_SCUFIB_CHAMBER": {
+        "id": "MAP_SEVEN_ISLAND_TANOBY_RUINS_SCUFIB_CHAMBER",
+        "folder": "SevenIsland_TanobyRuins_ScufibChamber",
+        "name": "Seven Island Tanoby Ruins Scufib Chamber",
+        "region": "MAPSEC_SCUFIB_CHAMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_DUNGEON"
+    },
+    "MAP_SEVEN_ISLAND_TANOBY_RUINS_VIAPOIS_CHAMBER": {
+        "id": "MAP_SEVEN_ISLAND_TANOBY_RUINS_VIAPOIS_CHAMBER",
+        "folder": "SevenIsland_TanobyRuins_ViapoisChamber",
+        "name": "Seven Island Tanoby Ruins Viapois Chamber",
+        "region": "MAPSEC_VIAPOIS_CHAMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_DUNGEON"
+    },
+    "MAP_SEVEN_ISLAND_TANOBY_RUINS_WEEPTH_CHAMBER": {
+        "id": "MAP_SEVEN_ISLAND_TANOBY_RUINS_WEEPTH_CHAMBER",
+        "folder": "SevenIsland_TanobyRuins_WeepthChamber",
+        "name": "Seven Island Tanoby Ruins Weepth Chamber",
+        "region": "MAPSEC_WEEPTH_CHAMBER",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_DUNGEON"
+    },
+    "MAP_SEVEN_ISLAND_TRAINER_TOWER": {
+        "id": "MAP_SEVEN_ISLAND_TRAINER_TOWER",
+        "folder": "SevenIsland_TrainerTower",
+        "name": "Seven Island Trainer Tower",
+        "region": "MAPSEC_TRAINER_TOWER",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_SEVEN_ISLAND_UNUSED_HOUSE": {
+        "id": "MAP_SEVEN_ISLAND_UNUSED_HOUSE",
+        "folder": "SevenIsland_UnusedHouse",
+        "name": "Seven Island Unused House",
+        "region": "MAPSEC_SEVEN_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_67"
+    },
+    "MAP_SILPH_CO_10F": {
+        "id": "MAP_SILPH_CO_10F",
+        "folder": "SilphCo_10F",
+        "name": "Silph Co 10F",
+        "region": "MAPSEC_SILPH_CO",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 10,
+        "music": "MUS_SILPH"
+    },
+    "MAP_SILPH_CO_11F": {
+        "id": "MAP_SILPH_CO_11F",
+        "folder": "SilphCo_11F",
+        "name": "Silph Co 11F",
+        "region": "MAPSEC_SILPH_CO",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 11,
+        "music": "MUS_SILPH"
+    },
+    "MAP_SILPH_CO_1F": {
+        "id": "MAP_SILPH_CO_1F",
+        "folder": "SilphCo_1F",
+        "name": "Silph Co 1F",
+        "region": "MAPSEC_SILPH_CO",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 1,
+        "music": "MUS_SILPH"
+    },
+    "MAP_SILPH_CO_2F": {
+        "id": "MAP_SILPH_CO_2F",
+        "folder": "SilphCo_2F",
+        "name": "Silph Co 2F",
+        "region": "MAPSEC_SILPH_CO",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 2,
+        "music": "MUS_SILPH"
+    },
+    "MAP_SILPH_CO_3F": {
+        "id": "MAP_SILPH_CO_3F",
+        "folder": "SilphCo_3F",
+        "name": "Silph Co 3F",
+        "region": "MAPSEC_SILPH_CO",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 3,
+        "music": "MUS_SILPH"
+    },
+    "MAP_SILPH_CO_4F": {
+        "id": "MAP_SILPH_CO_4F",
+        "folder": "SilphCo_4F",
+        "name": "Silph Co 4F",
+        "region": "MAPSEC_SILPH_CO",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 4,
+        "music": "MUS_SILPH"
+    },
+    "MAP_SILPH_CO_5F": {
+        "id": "MAP_SILPH_CO_5F",
+        "folder": "SilphCo_5F",
+        "name": "Silph Co 5F",
+        "region": "MAPSEC_SILPH_CO",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 5,
+        "music": "MUS_SILPH"
+    },
+    "MAP_SILPH_CO_6F": {
+        "id": "MAP_SILPH_CO_6F",
+        "folder": "SilphCo_6F",
+        "name": "Silph Co 6F",
+        "region": "MAPSEC_SILPH_CO",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 6,
+        "music": "MUS_SILPH"
+    },
+    "MAP_SILPH_CO_7F": {
+        "id": "MAP_SILPH_CO_7F",
+        "folder": "SilphCo_7F",
+        "name": "Silph Co 7F",
+        "region": "MAPSEC_SILPH_CO",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 7,
+        "music": "MUS_SILPH"
+    },
+    "MAP_SILPH_CO_8F": {
+        "id": "MAP_SILPH_CO_8F",
+        "folder": "SilphCo_8F",
+        "name": "Silph Co 8F",
+        "region": "MAPSEC_SILPH_CO",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 8,
+        "music": "MUS_SILPH"
+    },
+    "MAP_SILPH_CO_9F": {
+        "id": "MAP_SILPH_CO_9F",
+        "folder": "SilphCo_9F",
+        "name": "Silph Co 9F",
+        "region": "MAPSEC_SILPH_CO",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 9,
+        "music": "MUS_SILPH"
+    },
+    "MAP_SILPH_CO_ELEVATOR": {
+        "id": "MAP_SILPH_CO_ELEVATOR",
+        "folder": "SilphCo_Elevator",
+        "name": "Silph Co Elevator",
+        "region": "MAPSEC_SILPH_CO",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SILPH"
+    },
+    "MAP_SIX_ISLAND": {
+        "id": "MAP_SIX_ISLAND",
+        "folder": "SixIsland",
+        "name": "Six Island",
+        "region": "MAPSEC_SIX_ISLAND",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_SEVII_67"
+    },
+    "MAP_SIX_ISLAND_ALTERING_CAVE": {
+        "id": "MAP_SIX_ISLAND_ALTERING_CAVE",
+        "folder": "SixIsland_AlteringCave",
+        "name": "Six Island Altering Cave",
+        "region": "MAPSEC_ALTERING_CAVE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_CAVE"
+    },
+    "MAP_SIX_ISLAND_DOTTED_HOLE_1F": {
+        "id": "MAP_SIX_ISLAND_DOTTED_HOLE_1F",
+        "folder": "SixIsland_DottedHole_1F",
+        "name": "Six Island Dotted Hole 1F",
+        "region": "MAPSEC_DOTTED_HOLE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_DUNGEON"
+    },
+    "MAP_SIX_ISLAND_DOTTED_HOLE_B1F": {
+        "id": "MAP_SIX_ISLAND_DOTTED_HOLE_B1F",
+        "folder": "SixIsland_DottedHole_B1F",
+        "name": "Six Island Dotted Hole B1F",
+        "region": "MAPSEC_DOTTED_HOLE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_DUNGEON"
+    },
+    "MAP_SIX_ISLAND_DOTTED_HOLE_B2F": {
+        "id": "MAP_SIX_ISLAND_DOTTED_HOLE_B2F",
+        "folder": "SixIsland_DottedHole_B2F",
+        "name": "Six Island Dotted Hole B2F",
+        "region": "MAPSEC_DOTTED_HOLE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_DUNGEON"
+    },
+    "MAP_SIX_ISLAND_DOTTED_HOLE_B3F": {
+        "id": "MAP_SIX_ISLAND_DOTTED_HOLE_B3F",
+        "folder": "SixIsland_DottedHole_B3F",
+        "name": "Six Island Dotted Hole B3F",
+        "region": "MAPSEC_DOTTED_HOLE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_DUNGEON"
+    },
+    "MAP_SIX_ISLAND_DOTTED_HOLE_B4F": {
+        "id": "MAP_SIX_ISLAND_DOTTED_HOLE_B4F",
+        "folder": "SixIsland_DottedHole_B4F",
+        "name": "Six Island Dotted Hole B4F",
+        "region": "MAPSEC_DOTTED_HOLE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_DUNGEON"
+    },
+    "MAP_SIX_ISLAND_DOTTED_HOLE_SAPPHIRE_ROOM": {
+        "id": "MAP_SIX_ISLAND_DOTTED_HOLE_SAPPHIRE_ROOM",
+        "folder": "SixIsland_DottedHole_SapphireRoom",
+        "name": "Six Island Dotted Hole Sapphire Room",
+        "region": "MAPSEC_DOTTED_HOLE",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_SEVII_DUNGEON"
+    },
+    "MAP_SIX_ISLAND_GREEN_PATH": {
+        "id": "MAP_SIX_ISLAND_GREEN_PATH",
+        "folder": "SixIsland_GreenPath",
+        "name": "Six Island Green Path",
+        "region": "MAPSEC_GREEN_PATH",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_SIX_ISLAND_HARBOR": {
+        "id": "MAP_SIX_ISLAND_HARBOR",
+        "folder": "SixIsland_Harbor",
+        "name": "Six Island Harbor",
+        "region": "MAPSEC_SIX_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_67"
+    },
+    "MAP_SIX_ISLAND_HOUSE": {
+        "id": "MAP_SIX_ISLAND_HOUSE",
+        "folder": "SixIsland_House",
+        "name": "Six Island House",
+        "region": "MAPSEC_SIX_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_67"
+    },
+    "MAP_SIX_ISLAND_MART": {
+        "id": "MAP_SIX_ISLAND_MART",
+        "folder": "SixIsland_Mart",
+        "name": "Six Island Mart",
+        "region": "MAPSEC_SIX_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_SIX_ISLAND_OUTCAST_ISLAND": {
+        "id": "MAP_SIX_ISLAND_OUTCAST_ISLAND",
+        "folder": "SixIsland_OutcastIsland",
+        "name": "Six Island Outcast Island",
+        "region": "MAPSEC_OUTCAST_ISLAND",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_SIX_ISLAND_PATTERN_BUSH": {
+        "id": "MAP_SIX_ISLAND_PATTERN_BUSH",
+        "folder": "SixIsland_PatternBush",
+        "name": "Six Island Pattern Bush",
+        "region": "MAPSEC_PATTERN_BUSH",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_VIRIDIAN_FOREST"
+    },
+    "MAP_SIX_ISLAND_POKEMON_CENTER_1F": {
+        "id": "MAP_SIX_ISLAND_POKEMON_CENTER_1F",
+        "folder": "SixIsland_PokemonCenter_1F",
+        "name": "Six Island Pokemon Center 1F",
+        "region": "MAPSEC_SIX_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_SIX_ISLAND_POKEMON_CENTER_2F": {
+        "id": "MAP_SIX_ISLAND_POKEMON_CENTER_2F",
+        "folder": "SixIsland_PokemonCenter_2F",
+        "name": "Six Island Pokemon Center 2F",
+        "region": "MAPSEC_SIX_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_SIX_ISLAND_RUIN_VALLEY": {
+        "id": "MAP_SIX_ISLAND_RUIN_VALLEY",
+        "folder": "SixIsland_RuinValley",
+        "name": "Six Island Ruin Valley",
+        "region": "MAPSEC_RUIN_VALLEY",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_SIX_ISLAND_WATER_PATH": {
+        "id": "MAP_SIX_ISLAND_WATER_PATH",
+        "folder": "SixIsland_WaterPath",
+        "name": "Six Island Water Path",
+        "region": "MAPSEC_WATER_PATH",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_SEVII_ROUTE"
+    },
+    "MAP_SIX_ISLAND_WATER_PATH_HOUSE1": {
+        "id": "MAP_SIX_ISLAND_WATER_PATH_HOUSE1",
+        "folder": "SixIsland_WaterPath_House1",
+        "name": "Six Island Water Path House1",
+        "region": "MAPSEC_WATER_PATH",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_SIX_ISLAND_WATER_PATH_HOUSE2": {
+        "id": "MAP_SIX_ISLAND_WATER_PATH_HOUSE2",
+        "folder": "SixIsland_WaterPath_House2",
+        "name": "Six Island Water Path House2",
+        "region": "MAPSEC_WATER_PATH",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_THREE_ISLAND": {
+        "id": "MAP_THREE_ISLAND",
+        "folder": "ThreeIsland",
+        "name": "Three Island",
+        "region": "MAPSEC_THREE_ISLAND",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_SEVII_123"
+    },
+    "MAP_THREE_ISLAND_BERRY_FOREST": {
+        "id": "MAP_THREE_ISLAND_BERRY_FOREST",
+        "folder": "ThreeIsland_BerryForest",
+        "name": "Three Island Berry Forest",
+        "region": "MAPSEC_BERRY_FOREST",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_VIRIDIAN_FOREST"
+    },
+    "MAP_THREE_ISLAND_BOND_BRIDGE": {
+        "id": "MAP_THREE_ISLAND_BOND_BRIDGE",
+        "folder": "ThreeIsland_BondBridge",
+        "name": "Three Island Bond Bridge",
+        "region": "MAPSEC_BOND_BRIDGE",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_THREE_ISLAND_DUNSPARCE_TUNNEL": {
+        "id": "MAP_THREE_ISLAND_DUNSPARCE_TUNNEL",
+        "folder": "ThreeIsland_DunsparceTunnel",
+        "name": "Three Island Dunsparce Tunnel",
+        "region": "MAPSEC_THREE_ISLE_PATH",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_VIRIDIAN_FOREST"
+    },
+    "MAP_THREE_ISLAND_HARBOR": {
+        "id": "MAP_THREE_ISLAND_HARBOR",
+        "folder": "ThreeIsland_Harbor",
+        "name": "Three Island Harbor",
+        "region": "MAPSEC_THREE_ISLE_PORT",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_123"
+    },
+    "MAP_THREE_ISLAND_HOUSE1": {
+        "id": "MAP_THREE_ISLAND_HOUSE1",
+        "folder": "ThreeIsland_House1",
+        "name": "Three Island House1",
+        "region": "MAPSEC_THREE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_123"
+    },
+    "MAP_THREE_ISLAND_HOUSE2": {
+        "id": "MAP_THREE_ISLAND_HOUSE2",
+        "folder": "ThreeIsland_House2",
+        "name": "Three Island House2",
+        "region": "MAPSEC_THREE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_123"
+    },
+    "MAP_THREE_ISLAND_HOUSE3": {
+        "id": "MAP_THREE_ISLAND_HOUSE3",
+        "folder": "ThreeIsland_House3",
+        "name": "Three Island House3",
+        "region": "MAPSEC_THREE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_123"
+    },
+    "MAP_THREE_ISLAND_HOUSE4": {
+        "id": "MAP_THREE_ISLAND_HOUSE4",
+        "folder": "ThreeIsland_House4",
+        "name": "Three Island House4",
+        "region": "MAPSEC_THREE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_123"
+    },
+    "MAP_THREE_ISLAND_HOUSE5": {
+        "id": "MAP_THREE_ISLAND_HOUSE5",
+        "folder": "ThreeIsland_House5",
+        "name": "Three Island House5",
+        "region": "MAPSEC_THREE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_123"
+    },
+    "MAP_THREE_ISLAND_MART": {
+        "id": "MAP_THREE_ISLAND_MART",
+        "folder": "ThreeIsland_Mart",
+        "name": "Three Island Mart",
+        "region": "MAPSEC_THREE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_THREE_ISLAND_POKEMON_CENTER_1F": {
+        "id": "MAP_THREE_ISLAND_POKEMON_CENTER_1F",
+        "folder": "ThreeIsland_PokemonCenter_1F",
+        "name": "Three Island Pokemon Center 1F",
+        "region": "MAPSEC_THREE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_THREE_ISLAND_POKEMON_CENTER_2F": {
+        "id": "MAP_THREE_ISLAND_POKEMON_CENTER_2F",
+        "folder": "ThreeIsland_PokemonCenter_2F",
+        "name": "Three Island Pokemon Center 2F",
+        "region": "MAPSEC_THREE_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_THREE_ISLAND_PORT": {
+        "id": "MAP_THREE_ISLAND_PORT",
+        "folder": "ThreeIsland_Port",
+        "name": "Three Island Port",
+        "region": "MAPSEC_THREE_ISLE_PORT",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_TRADE_CENTER": {
+        "id": "MAP_TRADE_CENTER",
+        "folder": "TradeCenter",
+        "name": "Trade Center",
+        "region": "MAPSEC_SPECIAL_AREA",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_TRAINER_TOWER_1F": {
+        "id": "MAP_TRAINER_TOWER_1F",
+        "folder": "TrainerTower_1F",
+        "name": "Trainer Tower 1F",
+        "region": "MAPSEC_TRAINER_TOWER_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_TRAINER_TOWER"
+    },
+    "MAP_TRAINER_TOWER_2F": {
+        "id": "MAP_TRAINER_TOWER_2F",
+        "folder": "TrainerTower_2F",
+        "name": "Trainer Tower 2F",
+        "region": "MAPSEC_TRAINER_TOWER_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_TRAINER_TOWER"
+    },
+    "MAP_TRAINER_TOWER_3F": {
+        "id": "MAP_TRAINER_TOWER_3F",
+        "folder": "TrainerTower_3F",
+        "name": "Trainer Tower 3F",
+        "region": "MAPSEC_TRAINER_TOWER_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_TRAINER_TOWER"
+    },
+    "MAP_TRAINER_TOWER_4F": {
+        "id": "MAP_TRAINER_TOWER_4F",
+        "folder": "TrainerTower_4F",
+        "name": "Trainer Tower 4F",
+        "region": "MAPSEC_TRAINER_TOWER_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_TRAINER_TOWER"
+    },
+    "MAP_TRAINER_TOWER_5F": {
+        "id": "MAP_TRAINER_TOWER_5F",
+        "folder": "TrainerTower_5F",
+        "name": "Trainer Tower 5F",
+        "region": "MAPSEC_TRAINER_TOWER_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_TRAINER_TOWER"
+    },
+    "MAP_TRAINER_TOWER_6F": {
+        "id": "MAP_TRAINER_TOWER_6F",
+        "folder": "TrainerTower_6F",
+        "name": "Trainer Tower 6F",
+        "region": "MAPSEC_TRAINER_TOWER_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_TRAINER_TOWER"
+    },
+    "MAP_TRAINER_TOWER_7F": {
+        "id": "MAP_TRAINER_TOWER_7F",
+        "folder": "TrainerTower_7F",
+        "name": "Trainer Tower 7F",
+        "region": "MAPSEC_TRAINER_TOWER_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_TRAINER_TOWER"
+    },
+    "MAP_TRAINER_TOWER_8F": {
+        "id": "MAP_TRAINER_TOWER_8F",
+        "folder": "TrainerTower_8F",
+        "name": "Trainer Tower 8F",
+        "region": "MAPSEC_TRAINER_TOWER_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_TRAINER_TOWER"
+    },
+    "MAP_TRAINER_TOWER_ELEVATOR": {
+        "id": "MAP_TRAINER_TOWER_ELEVATOR",
+        "folder": "TrainerTower_Elevator",
+        "name": "Trainer Tower Elevator",
+        "region": "MAPSEC_TRAINER_TOWER_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_TRAINER_TOWER"
+    },
+    "MAP_TRAINER_TOWER_LOBBY": {
+        "id": "MAP_TRAINER_TOWER_LOBBY",
+        "folder": "TrainerTower_Lobby",
+        "name": "Trainer Tower Lobby",
+        "region": "MAPSEC_TRAINER_TOWER_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_TRAINER_TOWER"
+    },
+    "MAP_TRAINER_TOWER_ROOF": {
+        "id": "MAP_TRAINER_TOWER_ROOF",
+        "folder": "TrainerTower_Roof",
+        "name": "Trainer Tower Roof",
+        "region": "MAPSEC_TRAINER_TOWER_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_TRAINER_TOWER"
+    },
+    "MAP_TWO_ISLAND": {
+        "id": "MAP_TWO_ISLAND",
+        "folder": "TwoIsland",
+        "name": "Two Island",
+        "region": "MAPSEC_TWO_ISLAND",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_SEVII_123"
+    },
+    "MAP_TWO_ISLAND_CAPE_BRINK": {
+        "id": "MAP_TWO_ISLAND_CAPE_BRINK",
+        "folder": "TwoIsland_CapeBrink",
+        "name": "Two Island Cape Brink",
+        "region": "MAPSEC_CAPE_BRINK",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_ROUTE3"
+    },
+    "MAP_TWO_ISLAND_CAPE_BRINK_HOUSE": {
+        "id": "MAP_TWO_ISLAND_CAPE_BRINK_HOUSE",
+        "folder": "TwoIsland_CapeBrink_House",
+        "name": "Two Island Cape Brink House",
+        "region": "MAPSEC_CAPE_BRINK",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_123"
+    },
+    "MAP_TWO_ISLAND_HARBOR": {
+        "id": "MAP_TWO_ISLAND_HARBOR",
+        "folder": "TwoIsland_Harbor",
+        "name": "Two Island Harbor",
+        "region": "MAPSEC_TWO_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_123"
+    },
+    "MAP_TWO_ISLAND_HOUSE": {
+        "id": "MAP_TWO_ISLAND_HOUSE",
+        "folder": "TwoIsland_House",
+        "name": "Two Island House",
+        "region": "MAPSEC_TWO_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_SEVII_123"
+    },
+    "MAP_TWO_ISLAND_JOYFUL_GAME_CORNER": {
+        "id": "MAP_TWO_ISLAND_JOYFUL_GAME_CORNER",
+        "folder": "TwoIsland_JoyfulGameCorner",
+        "name": "Two Island Joyful Game Corner",
+        "region": "MAPSEC_TWO_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_GAME_CORNER"
+    },
+    "MAP_TWO_ISLAND_POKEMON_CENTER_1F": {
+        "id": "MAP_TWO_ISLAND_POKEMON_CENTER_1F",
+        "folder": "TwoIsland_PokemonCenter_1F",
+        "name": "Two Island Pokemon Center 1F",
+        "region": "MAPSEC_TWO_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_TWO_ISLAND_POKEMON_CENTER_2F": {
+        "id": "MAP_TWO_ISLAND_POKEMON_CENTER_2F",
+        "folder": "TwoIsland_PokemonCenter_2F",
+        "name": "Two Island Pokemon Center 2F",
+        "region": "MAPSEC_TWO_ISLAND",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_UNDERGROUND_PATH_EAST_ENTRANCE": {
+        "id": "MAP_UNDERGROUND_PATH_EAST_ENTRANCE",
+        "folder": "UndergroundPath_EastEntrance",
+        "name": "Underground Path East Entrance",
+        "region": "MAPSEC_UNDERGROUND_PATH_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_UNDERGROUND_PATH_EAST_WEST_TUNNEL": {
+        "id": "MAP_UNDERGROUND_PATH_EAST_WEST_TUNNEL",
+        "folder": "UndergroundPath_EastWestTunnel",
+        "name": "Underground Path East West Tunnel",
+        "region": "MAPSEC_UNDERGROUND_PATH_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_ROUTE1"
+    },
+    "MAP_UNDERGROUND_PATH_NORTH_ENTRANCE": {
+        "id": "MAP_UNDERGROUND_PATH_NORTH_ENTRANCE",
+        "folder": "UndergroundPath_NorthEntrance",
+        "name": "Underground Path North Entrance",
+        "region": "MAPSEC_UNDERGROUND_PATH",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL": {
+        "id": "MAP_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL",
+        "folder": "UndergroundPath_NorthSouthTunnel",
+        "name": "Underground Path North South Tunnel",
+        "region": "MAPSEC_UNDERGROUND_PATH",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_ROUTE1"
+    },
+    "MAP_UNDERGROUND_PATH_SOUTH_ENTRANCE": {
+        "id": "MAP_UNDERGROUND_PATH_SOUTH_ENTRANCE",
+        "folder": "UndergroundPath_SouthEntrance",
+        "name": "Underground Path South Entrance",
+        "region": "MAPSEC_UNDERGROUND_PATH",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_UNDERGROUND_PATH_WEST_ENTRANCE": {
+        "id": "MAP_UNDERGROUND_PATH_WEST_ENTRANCE",
+        "folder": "UndergroundPath_WestEntrance",
+        "name": "Underground Path West Entrance",
+        "region": "MAPSEC_UNDERGROUND_PATH_2",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_UNION_ROOM": {
+        "id": "MAP_UNION_ROOM",
+        "folder": "UnionRoom",
+        "name": "Union Room",
+        "region": "MAPSEC_SPECIAL_AREA",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_UNION_ROOM"
+    },
+    "MAP_VERMILION_CITY": {
+        "id": "MAP_VERMILION_CITY",
+        "folder": "VermilionCity",
+        "name": "Vermilion City",
+        "region": "MAPSEC_VERMILION_CITY",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_VERMILLION"
+    },
+    "MAP_VERMILION_CITY_GYM": {
+        "id": "MAP_VERMILION_CITY_GYM",
+        "folder": "VermilionCity_Gym",
+        "name": "Vermilion City Gym",
+        "region": "MAPSEC_VERMILION_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_GYM"
+    },
+    "MAP_VERMILION_CITY_HOUSE1": {
+        "id": "MAP_VERMILION_CITY_HOUSE1",
+        "folder": "VermilionCity_House1",
+        "name": "Vermilion City House1",
+        "region": "MAPSEC_VERMILION_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_FUCHSIA"
+    },
+    "MAP_VERMILION_CITY_HOUSE2": {
+        "id": "MAP_VERMILION_CITY_HOUSE2",
+        "folder": "VermilionCity_House2",
+        "name": "Vermilion City House2",
+        "region": "MAPSEC_VERMILION_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_VERMILLION"
+    },
+    "MAP_VERMILION_CITY_HOUSE3": {
+        "id": "MAP_VERMILION_CITY_HOUSE3",
+        "folder": "VermilionCity_House3",
+        "name": "Vermilion City House3",
+        "region": "MAPSEC_VERMILION_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_VERMILLION"
+    },
+    "MAP_VERMILION_CITY_MART": {
+        "id": "MAP_VERMILION_CITY_MART",
+        "folder": "VermilionCity_Mart",
+        "name": "Vermilion City Mart",
+        "region": "MAPSEC_VERMILION_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_VERMILION_CITY_POKEMON_CENTER_1F": {
+        "id": "MAP_VERMILION_CITY_POKEMON_CENTER_1F",
+        "folder": "VermilionCity_PokemonCenter_1F",
+        "name": "Vermilion City Pokemon Center 1F",
+        "region": "MAPSEC_VERMILION_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_VERMILION_CITY_POKEMON_CENTER_2F": {
+        "id": "MAP_VERMILION_CITY_POKEMON_CENTER_2F",
+        "folder": "VermilionCity_PokemonCenter_2F",
+        "name": "Vermilion City Pokemon Center 2F",
+        "region": "MAPSEC_VERMILION_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_VERMILION_CITY_POKEMON_FAN_CLUB": {
+        "id": "MAP_VERMILION_CITY_POKEMON_FAN_CLUB",
+        "folder": "VermilionCity_PokemonFanClub",
+        "name": "Vermilion City Pokemon Fan Club",
+        "region": "MAPSEC_VERMILION_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_VERMILLION"
+    },
+    "MAP_VICTORY_ROAD_1F": {
+        "id": "MAP_VICTORY_ROAD_1F",
+        "folder": "VictoryRoad_1F",
+        "name": "Victory Road 1F",
+        "region": "MAPSEC_KANTO_VICTORY_ROAD",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_MT_MOON"
+    },
+    "MAP_VICTORY_ROAD_2F": {
+        "id": "MAP_VICTORY_ROAD_2F",
+        "folder": "VictoryRoad_2F",
+        "name": "Victory Road 2F",
+        "region": "MAPSEC_KANTO_VICTORY_ROAD",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_MT_MOON"
+    },
+    "MAP_VICTORY_ROAD_3F": {
+        "id": "MAP_VICTORY_ROAD_3F",
+        "folder": "VictoryRoad_3F",
+        "name": "Victory Road 3F",
+        "region": "MAPSEC_KANTO_VICTORY_ROAD",
+        "mapType": "MAP_TYPE_UNDERGROUND",
+        "floor": 0,
+        "music": "MUS_MT_MOON"
+    },
+    "MAP_VIRIDIAN_CITY": {
+        "id": "MAP_VIRIDIAN_CITY",
+        "folder": "ViridianCity",
+        "name": "Viridian City",
+        "region": "MAPSEC_VIRIDIAN_CITY",
+        "mapType": "MAP_TYPE_TOWN",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_VIRIDIAN_CITY_GYM": {
+        "id": "MAP_VIRIDIAN_CITY_GYM",
+        "folder": "ViridianCity_Gym",
+        "name": "Viridian City Gym",
+        "region": "MAPSEC_VIRIDIAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_GYM"
+    },
+    "MAP_VIRIDIAN_CITY_HOUSE": {
+        "id": "MAP_VIRIDIAN_CITY_HOUSE",
+        "folder": "ViridianCity_House",
+        "name": "Viridian City House",
+        "region": "MAPSEC_VIRIDIAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_VIRIDIAN_CITY_MART": {
+        "id": "MAP_VIRIDIAN_CITY_MART",
+        "folder": "ViridianCity_Mart",
+        "name": "Viridian City Mart",
+        "region": "MAPSEC_VIRIDIAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_VIRIDIAN_CITY_POKEMON_CENTER_1F": {
+        "id": "MAP_VIRIDIAN_CITY_POKEMON_CENTER_1F",
+        "folder": "ViridianCity_PokemonCenter_1F",
+        "name": "Viridian City Pokemon Center 1F",
+        "region": "MAPSEC_VIRIDIAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_VIRIDIAN_CITY_POKEMON_CENTER_2F": {
+        "id": "MAP_VIRIDIAN_CITY_POKEMON_CENTER_2F",
+        "folder": "ViridianCity_PokemonCenter_2F",
+        "name": "Viridian City Pokemon Center 2F",
+        "region": "MAPSEC_VIRIDIAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_POKE_CENTER"
+    },
+    "MAP_VIRIDIAN_CITY_SCHOOL": {
+        "id": "MAP_VIRIDIAN_CITY_SCHOOL",
+        "folder": "ViridianCity_School",
+        "name": "Viridian City School",
+        "region": "MAPSEC_VIRIDIAN_CITY",
+        "mapType": "MAP_TYPE_INDOOR",
+        "floor": 0,
+        "music": "MUS_PEWTER"
+    },
+    "MAP_VIRIDIAN_FOREST": {
+        "id": "MAP_VIRIDIAN_FOREST",
+        "folder": "ViridianForest",
+        "name": "Viridian Forest",
+        "region": "MAPSEC_VIRIDIAN_FOREST",
+        "mapType": "MAP_TYPE_ROUTE",
+        "floor": 0,
+        "music": "MUS_VIRIDIAN_FOREST"
+    }
+}

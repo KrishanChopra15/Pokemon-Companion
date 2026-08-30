@@ -1,0 +1,22 @@
+{
+    "MAP_ROCK_TUNNEL_1F": {
+        "id": "MAP_ROCK_TUNNEL_1F",
+        "soft": [
+            {
+                "type": "FLASH",
+                "reason": "navigation"
+            }
+        ],
+        "hard": []
+    },
+    "MAP_ROCK_TUNNEL_B1F": {
+        "id": "MAP_ROCK_TUNNEL_B1F",
+        "soft": [
+            {
+                "type": "FLASH",
+                "reason": "navigation"
+            }
+        ],
+        "hard": []
+    }
+}

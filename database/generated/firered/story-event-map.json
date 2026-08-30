@@ -1,0 +1,20 @@
+{
+    "GET_OAK_PARCEL": {
+        "eventId": "ViridianCity_Mart_EventScript_ParcelScene",
+        "completionFlag": "OAK_PARCEL_DELIVERED",
+        "rewards": {
+            "addKeyItems": [
+                "OAKS_PARCEL"
+            ]
+        }
+    },
+    "RECEIVE_POKEDEX": {
+        "eventId": "PalletTown_ProfessorOaksLab_EventScript_Pokedex",
+        "completionFlag": "POKEDEX_RECEIVED",
+        "rewards": {
+            "addKeyItems": [
+                "POKEDEX"
+            ]
+        }
+    }
+}

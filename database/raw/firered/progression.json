@@ -1,0 +1,196 @@
+[
+    {
+        "id": "PEWTER_GYM_COMPLETE",
+        "location": "MAP_PEWTER_GYM",
+        "type": "GYM",
+        "requirement": {
+            "badges": [],
+            "keyItems": [],
+            "storyFlags": [],
+            "conditions": {}
+        },
+        "unlocks": [
+            "BOULDER_BADGE",
+            "TM34"
+        ]
+    },
+    {
+        "id": "CERULEAN_GYM_COMPLETE",
+        "location": "MAP_CERULEAN_GYM",
+        "type": "GYM",
+        "requirement": {
+            "badges": [
+                "BOULDER_BADGE"
+            ],
+            "keyItems": [],
+            "storyFlags": [],
+            "conditions": {}
+        },
+        "unlocks": [
+            "CASCADE_BADGE",
+            "TM29"
+        ]
+    },
+    {
+        "id": "VERMILION_GYM_COMPLETE",
+        "location": "MAP_VERMILION_GYM",
+        "type": "GYM",
+        "requirement": {
+            "badges": [
+                "BOULDER_BADGE",
+                "CASCADE_BADGE"
+            ],
+            "keyItems": [],
+            "storyFlags": [],
+            "conditions": {}
+        },
+        "unlocks": [
+            "THUNDER_BADGE"
+        ]
+    },
+    {
+        "id": "CUT_UNLOCK",
+        "location": "MAP_SSANNE",
+        "type": "HM",
+        "requirement": {
+            "badges": [
+                "CASCADE_BADGE"
+            ],
+            "keyItems": [
+                "HM01"
+            ],
+            "storyFlags": [],
+            "conditions": {}
+        },
+        "unlocks": [
+            "CAN_USE_CUT"
+        ]
+    },
+    {
+        "id": "FLASH_UNLOCK",
+        "location": "MAP_ROUTE_2",
+        "type": "HM",
+        "requirement": {
+            "badges": [
+                "BOULDER_BADGE"
+            ],
+            "keyItems": [
+                "HM05"
+            ],
+            "storyFlags": [],
+            "conditions": {}
+        },
+        "unlocks": [
+            "CAN_USE_FLASH"
+        ]
+    },
+    {
+        "id": "SURF_UNLOCK",
+        "location": "MAP_FUCHSIA_CITY",
+        "type": "HM",
+        "requirement": {
+            "badges": [
+                "SOUL_BADGE"
+            ],
+            "keyItems": [
+                "HM03"
+            ],
+            "storyFlags": [],
+            "conditions": {}
+        },
+        "unlocks": [
+            "CAN_USE_SURF"
+        ]
+    },
+    {
+        "id": "STRENGTH_UNLOCK",
+        "location": "MAP_FUCHSIA_CITY",
+        "type": "HM",
+        "requirement": {
+            "badges": [
+                "RAINBOW_BADGE"
+            ],
+            "keyItems": [
+                "HM04"
+            ],
+            "storyFlags": [],
+            "conditions": {}
+        },
+        "unlocks": [
+            "CAN_USE_STRENGTH"
+        ]
+    },
+    {
+        "id": "FLY_UNLOCK",
+        "location": "MAP_ROUTE_16",
+        "type": "HM",
+        "requirement": {
+            "badges": [
+                "THUNDER_BADGE"
+            ],
+            "keyItems": [
+                "HM02"
+            ],
+            "storyFlags": [],
+            "conditions": {}
+        },
+        "unlocks": [
+            "CAN_USE_FLY"
+        ]
+    },
+    {
+        "id": "SS_ANNE_ACCESS",
+        "location": "MAP_SSANNE_EXTERIOR",
+        "type": "STORY",
+        "requirement": {
+            "badges": [],
+            "keyItems": [
+                "SS_TICKET"
+            ],
+            "storyFlags": [],
+            "conditions": {}
+        },
+        "unlocks": [
+            "SS_ANNE_AVAILABLE"
+        ]
+    },
+    {
+        "id": "SILPH_CO_ACCESS",
+        "location": "MAP_SAFFRON_CITY",
+        "type": "STORY",
+        "requirement": {
+            "badges": [],
+            "keyItems": [
+                "TEA"
+            ],
+            "storyFlags": [],
+            "conditions": {}
+        },
+        "unlocks": [
+            "SAFFRON_CITY_ACCESS"
+        ]
+    },
+    {
+        "id": "VICTORY_ROAD_ACCESS",
+        "location": "MAP_VICTORY_ROAD_1F",
+        "type": "STORY",
+        "requirement": {
+            "badges": [
+                "BOULDER_BADGE",
+                "CASCADE_BADGE",
+                "THUNDER_BADGE",
+                "RAINBOW_BADGE",
+                "SOUL_BADGE",
+                "MARSH_BADGE",
+                "VOLCANO_BADGE",
+                "EARTH_BADGE"
+            ],
+            "keyItems": [],
+            "storyFlags": [],
+            "conditions": {}
+        },
+        "unlocks": [
+            "POKEMON_LEAGUE_ACCESS"
+        ]
+    }
+]

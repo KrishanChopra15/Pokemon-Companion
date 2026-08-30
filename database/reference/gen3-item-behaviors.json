@@ -457,6 +457,18 @@
             {
                 "type": "HEAL_HP",
                 "amount": 50
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": -5,
+                "mid": -5,
+                "high": -10,
+                "source": {
+                    "field": "ITEM5_FRIENDSHIP_ALL",
+                    "low": -5,
+                    "mid": -5,
+                    "high": -10
+                }
             }
         ],
         "source": {
@@ -487,6 +499,18 @@
             {
                 "type": "HEAL_HP",
                 "amount": 200
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": -10,
+                "mid": -10,
+                "high": -15,
+                "source": {
+                    "field": "ITEM5_FRIENDSHIP_ALL",
+                    "low": -10,
+                    "mid": -10,
+                    "high": -15
+                }
             }
         ],
         "source": {
@@ -517,6 +541,17 @@
             {
                 "type": "CURE_STATUS",
                 "status": "ALL"
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": -5,
+                "mid": -10,
+                "source": {
+                    "field": "ITEM5_FRIENDSHIP_ALL",
+                    "low": -5,
+                    "mid": -10,
+                    "high": null
+                }
             }
         ],
         "source": {
@@ -546,6 +581,18 @@
             {
                 "type": "REVIVE",
                 "hp": "FULL"
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": -15,
+                "mid": -15,
+                "high": -20,
+                "source": {
+                    "field": "ITEM5_FRIENDSHIP_ALL",
+                    "low": -15,
+                    "mid": -15,
+                    "high": -20
+                }
             }
         ],
         "source": {
@@ -761,6 +808,73 @@
                 "0": "ITEM0_SACRED_ASH",
                 "4": "ITEM4_REVIVE | ITEM4_HEAL_HP",
                 "6": "ITEM6_HEAL_HP_FULL"
+            }
+        }
+    },
+    {
+        "id": 69,
+        "itemConstant": "ITEM_PP_UP",
+        "name": "Pp Up",
+        "category": "PP_EXPANSION",
+        "behavior": "PP_UP",
+        "scope": "SINGLE_MOVE",
+        "item": {
+            "id": 69,
+            "constant": "ITEM_PP_UP",
+            "name": "Pp Up"
+        },
+        "effects": [
+            {
+                "type": "PP_UP"
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 5,
+                "mid": 3,
+                "high": 2
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_PPUp",
+            "rawFields": {
+                "4": "ITEM4_PP_UP",
+                "5": "ITEM5_FRIENDSHIP_ALL",
+                "__macros": [
+                    "VITAMIN_FRIENDSHIP_CHANGE"
+                ]
+            }
+        }
+    },
+    {
+        "id": 71,
+        "itemConstant": "ITEM_PP_MAX",
+        "name": "Pp Max",
+        "category": "PP_EXPANSION",
+        "behavior": "PP_MAX",
+        "scope": "SINGLE_MOVE",
+        "item": {
+            "id": 71,
+            "constant": "ITEM_PP_MAX",
+            "name": "Pp Max"
+        },
+        "effects": [
+            {
+                "type": "PP_MAX"
+            },
+            {
+                "type": "FRIENDSHIP_CHANGE",
+                "low": 5,
+                "mid": 3,
+                "high": 2
+            }
+        ],
+        "source": {
+            "effectDefinition": "sItemEffect_PPMax",
+            "rawFields": {
+                "5": "ITEM5_PP_MAX | ITEM5_FRIENDSHIP_ALL",
+                "__macros": [
+                    "VITAMIN_FRIENDSHIP_CHANGE"
+                ]
             }
         }
     },

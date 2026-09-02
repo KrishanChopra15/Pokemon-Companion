@@ -10,6 +10,7 @@
  * - Give Pokémon.
  * - Add story flags.
  * - Unlock HM field abilities.
+ * - Unlock general field abilities.
  * - Complete events.
  *
  * Does NOT:
@@ -187,6 +188,31 @@ class EventRewardService {
 
 
         //--------------------------------
+        // General field abilities
+        //--------------------------------
+
+
+        for(
+            const ability of rewards.abilities || []
+        ) {
+
+
+            trainerState.addAbility(
+
+                ability
+
+            );
+
+
+        }
+
+
+
+
+
+
+
+        //--------------------------------
         // Completed events
         //--------------------------------
 
@@ -272,6 +298,10 @@ class EventRewardService {
             ||
 
             (rewards.hmAbilities || []).length > 0
+
+            ||
+
+            (rewards.abilities || []).length > 0
 
             ||
 
@@ -392,9 +422,34 @@ class EventRewardService {
 
 
 
+
+
+    createAbilityReward(
+        ability
+    ) {
+
+
+        return {
+
+
+            abilities:[
+
+                ability
+
+            ]
+
+
+        };
+
+
+    }
+
+
+
 }
 
 
 
 module.exports =
     EventRewardService;
+

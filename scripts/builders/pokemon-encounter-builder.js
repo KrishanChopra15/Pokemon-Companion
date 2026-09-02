@@ -8,6 +8,8 @@
  * - Load raw encounter database.
  * - Resolve Pokémon species.
  * - Normalize encounter data.
+ * - Preserve encounter slot data.
+ * - Preserve fishing rod groups.
  * - Save generated encounter database.
  *
  * Does NOT:
@@ -62,7 +64,7 @@ class PokemonEncounterBuilder extends Builder {
 
 
             const key =
-                `${mon.species}-${mon.minLevel}-${mon.maxLevel}`;
+                `${mon.species}-${mon.minLevel}-${mon.maxLevel}-${mon.slotIndex ?? "null"}-${mon.slotEncounterRate ?? "null"}`;
 
 
 
@@ -166,6 +168,30 @@ class PokemonEncounterBuilder extends Builder {
 
 
 
+                    slotRates:
+                        Array.isArray(
+                            encounter.slotRates
+                        )
+                            ? [
+                                ...encounter.slotRates
+                            ]
+                            : [],
+
+
+
+                    rodGroups:
+                        encounter.rodGroups
+                            && typeof encounter.rodGroups === "object"
+                            && !Array.isArray(
+                                encounter.rodGroups
+                            )
+                                ? {
+                                    ...encounter.rodGroups
+                                }
+                                : null,
+
+
+
                     mons:
 
                         mons.map(mon => {
@@ -219,6 +245,16 @@ class PokemonEncounterBuilder extends Builder {
 
 
                                 },
+
+
+
+                                slotIndex:
+                                    mon.slotIndex ?? null,
+
+
+
+                                slotEncounterRate:
+                                    mon.slotEncounterRate ?? null,
 
 
 

@@ -8,11 +8,13 @@
  * - Store captures.
  * - Remove captures.
  * - Find captured Pokémon.
+ * - Preserve captured Pokémon metadata.
  *
  * Does NOT:
  * - Handle capture probability.
  * - Consume Poké Balls.
  * - Handle battles.
+ * - Execute friendship mechanics.
  */
 
 "use strict";
@@ -98,6 +100,66 @@ class CaptureManager {
             location:
 
                 pokemon.location || null,
+
+
+            metLocation:
+
+                pokemon.metLocation
+                ||
+                pokemon.location
+                ||
+                null,
+
+
+            friendship:
+
+                pokemon.friendship !== undefined
+
+                ?
+
+                pokemon.friendship
+
+                :
+
+                null,
+
+
+            ball:
+
+                pokemon.ball
+                ||
+                pokemon.captureBall
+                ||
+                null,
+
+
+            nickname:
+
+                pokemon.nickname
+                ||
+                null,
+
+
+            exp:
+
+                pokemon.exp
+                ||
+                0,
+
+
+            moves:
+
+                Array.isArray(
+                    pokemon.moves
+                )
+
+                ?
+
+                pokemon.moves
+
+                :
+
+                [],
 
 
             capturedAt:
@@ -259,7 +321,8 @@ class CaptureManager {
 
                 pokemon =>
 
-                    pokemon.species === species
+                    pokemon.species ===
+                    species
 
             );
 

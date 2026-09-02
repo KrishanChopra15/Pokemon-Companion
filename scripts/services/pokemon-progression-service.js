@@ -7,6 +7,7 @@
  * Responsibilities:
  * - Give EXP.
  * - Process level ups.
+ * - Process friendship gains from level ups.
  * - Process evolution.
  * - Return progression summary.
  *
@@ -32,7 +33,8 @@ class PokemonProgressionService {
     constructor(
         experienceService,
         levelUpService,
-        evolutionService
+        evolutionService,
+        friendshipService = null
     )
     {
 
@@ -47,6 +49,10 @@ class PokemonProgressionService {
 
         this.evolution =
             evolutionService;
+
+
+        this.friendship =
+            friendshipService;
 
 
     }
@@ -104,6 +110,10 @@ class PokemonProgressionService {
             null;
 
 
+        let friendshipResults =
+            [];
+
+
 
 
 
@@ -116,6 +126,11 @@ class PokemonProgressionService {
         {
 
 
+            //--------------------------------
+            // Apply actual level increases
+            //--------------------------------
+
+
             levelResult =
                 this.levelUp.levelUp(
 
@@ -125,6 +140,53 @@ class PokemonProgressionService {
 
                 );
 
+
+
+
+
+            //--------------------------------
+            // Apply friendship once for
+            // every level gained.
+            //--------------------------------
+
+
+            if(
+                this.friendship
+                &&
+                typeof this.friendship.applyLevelUp ===
+                    "function"
+            )
+            {
+
+                for(
+                    const level of
+                        expResult.levels
+                )
+                {
+
+                    const friendshipResult =
+                        this.friendship.applyLevelUp(
+
+                            pokemon
+
+                        );
+
+
+                    friendshipResults.push(
+
+                        {
+
+                            level,
+
+                            ...friendshipResult
+
+                        }
+
+                    );
+
+                }
+
+            }
 
         }
 
@@ -148,8 +210,12 @@ class PokemonProgressionService {
 
             levelUp:
 
-                levelResult
+                levelResult,
 
+
+            friendship:
+
+                friendshipResults
 
         };
 
@@ -170,14 +236,17 @@ class PokemonProgressionService {
 
 
     processEvolution(
-        pokemon
+        pokemon,
+        context = {}
     )
     {
 
 
         return this.evolution.checkEvolution(
 
-            pokemon
+            pokemon,
+
+            context
 
         );
 
@@ -199,7 +268,8 @@ class PokemonProgressionService {
 
     processProgression(
         pokemon,
-        amount
+        amount,
+        context = {}
     )
     {
 
@@ -243,15 +313,49 @@ class PokemonProgressionService {
 
 
 
+        //--------------------------------
+        // Evolution can only be checked
+        // after an actual level-up.
+        //--------------------------------
+
         if(
             progression.levelUp
+            &&
+            Array.isArray(
+                progression.levelUp.levels
+            )
+            &&
+            progression.levelUp.levels.length > 0
         )
         {
+
+
+            const evolutionContext =
+            {
+
+                ...context,
+
+
+                levelUp:
+                    true,
+
+
+                trigger:
+                    "LEVEL_UP",
+
+
+                evolutionTrigger:
+                    "LEVEL_UP"
+
+            };
+
 
             const evolutionResult =
                 this.processEvolution(
 
-                    pokemon
+                    pokemon,
+
+                    evolutionContext
 
                 );
 
@@ -297,8 +401,12 @@ class PokemonProgressionService {
                 progression.levelUp,
 
 
-            evolution
+            friendship:
 
+                progression.friendship,
+
+
+            evolution
 
         };
 
@@ -319,7 +427,7 @@ class PokemonProgressionService {
 
 
     getSummary(
-     pokemon
+        pokemon
     )
     {
 
@@ -336,6 +444,18 @@ class PokemonProgressionService {
 
             exp:
                 pokemon.exp,
+
+
+            friendship:
+                pokemon.friendship !== undefined
+
+                ?
+
+                pokemon.friendship
+
+                :
+
+                null,
 
 
             progress:

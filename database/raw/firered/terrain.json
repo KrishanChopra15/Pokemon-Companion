@@ -1,0 +1,6583 @@
+{
+    "LAYOUT_PALLET_TOWN_PLAYERS_HOUSE_1F": {
+        "width": 13,
+        "height": 10,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding1",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 122,
+            "101": 1,
+            "108": 1,
+            "134": 1,
+            "137": 2,
+            "138": 2,
+            "157": 1
+        }
+    },
+    "LAYOUT_PALLET_TOWN_PLAYERS_HOUSE_2F": {
+        "width": 12,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding1",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 100,
+            "50": 1,
+            "51": 1,
+            "111": 1,
+            "129": 2,
+            "132": 1,
+            "134": 1,
+            "139": 1
+        }
+    },
+    "LAYOUT_PALLET_TOWN_RIVALS_HOUSE": {
+        "width": 13,
+        "height": 10,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 120,
+            "101": 1,
+            "129": 2,
+            "134": 1,
+            "137": 2,
+            "138": 2,
+            "148": 1,
+            "157": 1
+        }
+    },
+    "LAYOUT_LITTLEROOT_TOWN_MAYS_HOUSE_2F": {
+        "width": 9,
+        "height": 8,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding1",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 54,
+            "108": 1,
+            "110": 1
+        }
+    },
+    "LAYOUT_PALLET_TOWN_PROFESSOR_OAKS_LAB": {
+        "width": 13,
+        "height": 14,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Lab",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 157,
+            "101": 1,
+            "129": 14,
+            "132": 2,
+            "149": 4,
+            "151": 1,
+            "156": 1,
+            "158": 2
+        }
+    },
+    "LAYOUT_HOUSE1": {
+        "width": 11,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding1",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 89,
+            "101": 1,
+            "133": 2,
+            "134": 1,
+            "137": 2,
+            "138": 2,
+            "156": 2
+        }
+    },
+    "LAYOUT_HOUSE2": {
+        "width": 11,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 90,
+            "101": 1,
+            "133": 2,
+            "134": 1,
+            "137": 2,
+            "138": 2,
+            "157": 1
+        }
+    },
+    "LAYOUT_POKEMON_CENTER_1F": {
+        "width": 15,
+        "height": 10,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonCenter",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 136,
+            "101": 1,
+            "106": 1,
+            "128": 7,
+            "129": 2,
+            "131": 1,
+            "133": 2
+        }
+    },
+    "LAYOUT_POKEMON_CENTER_2F": {
+        "width": 15,
+        "height": 10,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonCenter",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 134,
+            "48": 2,
+            "105": 2,
+            "107": 1,
+            "128": 8,
+            "131": 1,
+            "141": 1,
+            "142": 1
+        }
+    },
+    "LAYOUT_MART": {
+        "width": 11,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Mart",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 74,
+            "101": 1,
+            "128": 5,
+            "130": 12,
+            "143": 1,
+            "152": 1,
+            "159": 5
+        }
+    },
+    "LAYOUT_HOUSE3": {
+        "width": 11,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 91,
+            "101": 1,
+            "129": 1,
+            "137": 2,
+            "138": 2,
+            "144": 1,
+            "148": 1
+        }
+    },
+    "LAYOUT_CERULEAN_CITY_GYM": {
+        "width": 17,
+        "height": 20,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_CeruleanGym",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 24,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 209,
+            "21": 128,
+            "101": 1,
+            "132": 2
+        }
+    },
+    "LAYOUT_HOUSE4": {
+        "width": 11,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 93,
+            "101": 1,
+            "129": 1,
+            "137": 2,
+            "157": 2
+        }
+    },
+    "LAYOUT_LAVARIDGE_TOWN_HERB_SHOP": {
+        "width": 11,
+        "height": 8,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Mart",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 77,
+            "128": 3,
+            "130": 4
+        }
+    },
+    "LAYOUT_CELADON_CITY_GYM": {
+        "width": 13,
+        "height": 20,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_CeladonGym",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 253,
+            "101": 1,
+            "132": 2,
+            "157": 4
+        }
+    },
+    "LAYOUT_RS_POKEMON_CENTER_1F": {
+        "width": 14,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonCenter",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 108,
+            "48": 5,
+            "50": 2,
+            "51": 2,
+            "101": 2,
+            "106": 1,
+            "128": 4,
+            "129": 1,
+            "133": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_RESORT_GORGEOUS_HOUSE": {
+        "width": 11,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Museum",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 92,
+            "101": 1,
+            "129": 2,
+            "148": 2,
+            "156": 2
+        }
+    },
+    "LAYOUT_PACIFIDLOG_TOWN_HOUSE1": {
+        "width": 10,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 90
+        }
+    },
+    "LAYOUT_PACIFIDLOG_TOWN_HOUSE2": {
+        "width": 10,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 90
+        }
+    },
+    "LAYOUT_FUCHSIA_CITY_GYM": {
+        "width": 15,
+        "height": 23,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_FuchsiaGym",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 342,
+            "101": 1,
+            "132": 2
+        }
+    },
+    "LAYOUT_HOUSE5": {
+        "width": 11,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding1",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 90,
+            "101": 1,
+            "133": 2,
+            "134": 1,
+            "138": 2,
+            "144": 1,
+            "156": 2
+        }
+    },
+    "LAYOUT_VERMILION_CITY_GYM": {
+        "width": 11,
+        "height": 21,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_VermilionGym",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 226,
+            "101": 1,
+            "132": 2,
+            "158": 2
+        }
+    },
+    "LAYOUT_CERULEAN_CITY_BIKE_SHOP": {
+        "width": 11,
+        "height": 10,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_BikeShop",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 101,
+            "101": 1,
+            "128": 4,
+            "159": 4
+        }
+    },
+    "LAYOUT_CELADON_CITY_GAME_CORNER": {
+        "width": 18,
+        "height": 15,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GameCorner",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 253,
+            "101": 1,
+            "110": 1,
+            "128": 11,
+            "130": 4
+        }
+    },
+    "LAYOUT_PEWTER_CITY_GYM": {
+        "width": 13,
+        "height": 16,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PewterGym",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 205,
+            "101": 1,
+            "132": 2
+        }
+    },
+    "LAYOUT_FOUR_ISLAND_LORELEIS_HOUSE": {
+        "width": 11,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SafariZoneBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 92,
+            "101": 1,
+            "129": 2,
+            "137": 2,
+            "139": 1,
+            "157": 1
+        }
+    },
+    "LAYOUT_THREE_ISLAND_HOUSE1": {
+        "width": 11,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Lab",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 92,
+            "101": 1,
+            "129": 2,
+            "138": 2,
+            "144": 1,
+            "157": 1
+        }
+    },
+    "LAYOUT_RUSTBORO_CITY_CUTTERS_HOUSE": {
+        "width": 11,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 95,
+            "96": 1,
+            "128": 3
+        }
+    },
+    "LAYOUT_FORTREE_CITY_HOUSE1": {
+        "width": 8,
+        "height": 6,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 42,
+            "101": 2,
+            "224": 4
+        }
+    },
+    "LAYOUT_SAFFRON_CITY_GYM": {
+        "width": 29,
+        "height": 25,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SaffronGym",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 692,
+            "101": 1,
+            "103": 30,
+            "132": 2
+        }
+    },
+    "LAYOUT_FORTREE_CITY_HOUSE2": {
+        "width": 8,
+        "height": 6,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 43,
+            "101": 2,
+            "224": 3
+        }
+    },
+    "LAYOUT_CINNABAR_ISLAND_GYM": {
+        "width": 30,
+        "height": 25,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_CinnabarGym",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 747,
+            "101": 1,
+            "132": 2
+        }
+    },
+    "LAYOUT_VIRIDIAN_CITY_GYM": {
+        "width": 20,
+        "height": 24,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_ViridianGym",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 453,
+            "84": 3,
+            "85": 3,
+            "86": 3,
+            "87": 3,
+            "88": 12,
+            "101": 1,
+            "132": 2
+        }
+    },
+    "LAYOUT_RS_SAFARI_ZONE_ENTRANCE": {
+        "width": 18,
+        "height": 14,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Mart",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 230,
+            "109": 4,
+            "110": 1,
+            "128": 1,
+            "130": 2,
+            "143": 1
+        }
+    },
+    "LAYOUT_BATTLE_COLOSSEUM_2P": {
+        "width": 14,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_CableClub",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 124,
+            "101": 2
+        }
+    },
+    "LAYOUT_TRADE_CENTER": {
+        "width": 12,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_CableClub",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 106,
+            "101": 2
+        }
+    },
+    "LAYOUT_RECORD_CORNER": {
+        "width": 20,
+        "height": 10,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_CableClub",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 192,
+            "101": 4,
+            "128": 4
+        }
+    },
+    "LAYOUT_BATTLE_COLOSSEUM_4P": {
+        "width": 14,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_CableClub",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 122,
+            "101": 4
+        }
+    },
+    "LAYOUT_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE": {
+        "width": 9,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SafariZoneBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 67,
+            "96": 1,
+            "101": 1,
+            "128": 12
+        }
+    },
+    "LAYOUT_RS_SAFARI_ZONE_NORTHEAST": {
+        "width": 40,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CinnabarIsland",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 17,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 738,
+            "2": 156,
+            "21": 400,
+            "33": 161,
+            "42": 52,
+            "56": 1,
+            "57": 1,
+            "59": 4,
+            "96": 56,
+            "132": 21
+        }
+    },
+    "LAYOUT_RS_SAFARI_ZONE_SOUTHWEST": {
+        "width": 40,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CinnabarIsland",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 14,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 711,
+            "2": 99,
+            "21": 413,
+            "33": 277,
+            "42": 18,
+            "57": 3,
+            "59": 44,
+            "80": 4,
+            "81": 4,
+            "132": 25
+        }
+    },
+    "LAYOUT_RS_SAFARI_ZONE_SOUTHEAST": {
+        "width": 40,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CinnabarIsland",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 14,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 489,
+            "2": 143,
+            "21": 574,
+            "33": 301,
+            "42": 3,
+            "56": 1,
+            "57": 1,
+            "59": 12,
+            "80": 1,
+            "81": 1
+        }
+    },
+    "LAYOUT_FORTREE_CITY_DECORATION_SHOP": {
+        "width": 8,
+        "height": 6,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 42,
+            "101": 2,
+            "224": 4
+        }
+    },
+    "LAYOUT_RS_BATTLE_TOWER": {
+        "width": 29,
+        "height": 30,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_PewterCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 37,
+        "surfableBehaviorCount": 2,
+        "surfableBehaviors": [
+            17,
+            21
+        ],
+        "behaviorCounts": {
+            "0": 655,
+            "12": 8,
+            "17": 47,
+            "21": 35,
+            "23": 67,
+            "33": 4,
+            "42": 23,
+            "96": 28,
+            "101": 2,
+            "132": 1
+        }
+    },
+    "LAYOUT_SS_TIDAL_CORRIDOR": {
+        "width": 18,
+        "height": 13,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SSAnne",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 8,
+        "surfableBehaviorCount": 2,
+        "surfableBehaviors": [
+            16,
+            21
+        ],
+        "behaviorCounts": {
+            "0": 188,
+            "16": 12,
+            "21": 30,
+            "101": 3,
+            "109": 1
+        }
+    },
+    "LAYOUT_SS_TIDAL_LOWER_DECK": {
+        "width": 17,
+        "height": 13,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SSAnne",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 4,
+        "surfableBehaviorCount": 2,
+        "surfableBehaviors": [
+            17,
+            21
+        ],
+        "behaviorCounts": {
+            "0": 142,
+            "17": 3,
+            "21": 4,
+            "23": 44,
+            "133": 8,
+            "138": 13,
+            "153": 7
+        }
+    },
+    "LAYOUT_SS_TIDAL_ROOMS": {
+        "width": 36,
+        "height": 18,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SSAnne",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 29,
+        "surfableBehaviorCount": 2,
+        "surfableBehaviors": [
+            17,
+            21
+        ],
+        "behaviorCounts": {
+            "0": 304,
+            "17": 116,
+            "21": 168,
+            "23": 37,
+            "33": 23
+        }
+    },
+    "LAYOUT_RUSTBORO_CITY_FLAT2_1F": {
+        "width": 14,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 125,
+            "134": 1
+        }
+    },
+    "LAYOUT_RUSTBORO_CITY_FLAT2_2F": {
+        "width": 14,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 124,
+            "96": 1,
+            "134": 1
+        }
+    },
+    "LAYOUT_RUSTBORO_CITY_FLAT2_3F": {
+        "width": 14,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 124,
+            "128": 1,
+            "134": 1
+        }
+    },
+    "LAYOUT_EVER_GRANDE_CITY_HALL_OF_FAME": {
+        "width": 15,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_CableClub",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 255
+        }
+    },
+    "LAYOUT_MOSSDEEP_CITY_EREADER_TRAINER_HOUSE_1F": {
+        "width": 11,
+        "height": 8,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 88
+        }
+    },
+    "LAYOUT_MOSSDEEP_CITY_EREADER_TRAINER_HOUSE_2F": {
+        "width": 12,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 104,
+            "96": 1,
+            "101": 3
+        }
+    },
+    "LAYOUT_SOOTOPOLIS_CITY_HOUSE1": {
+        "width": 8,
+        "height": 7,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 56
+        }
+    },
+    "LAYOUT_SOOTOPOLIS_CITY_HOUSE2": {
+        "width": 8,
+        "height": 7,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 56
+        }
+    },
+    "LAYOUT_SOOTOPOLIS_CITY_HOUSE3": {
+        "width": 8,
+        "height": 7,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 56
+        }
+    },
+    "LAYOUT_RUSTBORO_CITY_FLAT1_1F": {
+        "width": 14,
+        "height": 8,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 109,
+            "128": 3
+        }
+    },
+    "LAYOUT_RUSTBORO_CITY_FLAT1_2F": {
+        "width": 14,
+        "height": 8,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 109,
+            "128": 3
+        }
+    },
+    "LAYOUT_RS_SAFARI_ZONE_REST_HOUSE": {
+        "width": 10,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HoennBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 90
+        }
+    },
+    "LAYOUT_PALLET_TOWN": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_PalletTown",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 6,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 460,
+            "21": 12,
+            "105": 3,
+            "132": 5
+        }
+    },
+    "LAYOUT_VIRIDIAN_CITY": {
+        "width": 48,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_ViridianCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 6,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            16
+        ],
+        "behaviorCounts": {
+            "0": 1838,
+            "16": 30,
+            "59": 39,
+            "105": 5,
+            "132": 4,
+            "135": 2,
+            "136": 2
+        }
+    },
+    "LAYOUT_PEWTER_CITY": {
+        "width": 48,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_PewterCity",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 1869,
+            "59": 35,
+            "96": 1,
+            "105": 6,
+            "132": 5,
+            "135": 2,
+            "136": 2
+        }
+    },
+    "LAYOUT_CERULEAN_CITY": {
+        "width": 48,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeruleanCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 11,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 1690,
+            "21": 187,
+            "42": 3,
+            "59": 19,
+            "96": 3,
+            "101": 2,
+            "105": 8,
+            "132": 4,
+            "135": 2,
+            "136": 2
+        }
+    },
+    "LAYOUT_LAVENDER_TOWN": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_LavenderTown",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 466,
+            "96": 1,
+            "105": 5,
+            "132": 4,
+            "135": 2,
+            "136": 2
+        }
+    },
+    "LAYOUT_VERMILION_CITY": {
+        "width": 48,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_VermilionCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 51,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 871,
+            "21": 892,
+            "33": 132,
+            "48": 3,
+            "49": 3,
+            "101": 3,
+            "105": 7,
+            "132": 5,
+            "135": 2,
+            "136": 2
+        }
+    },
+    "LAYOUT_CELADON_CITY": {
+        "width": 60,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeladonCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 9,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            16
+        ],
+        "behaviorCounts": {
+            "0": 2347,
+            "16": 18,
+            "59": 14,
+            "101": 1,
+            "105": 10,
+            "132": 8,
+            "135": 2
+        }
+    },
+    "LAYOUT_FUCHSIA_CITY": {
+        "width": 48,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_FuchsiaCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 9,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            16
+        ],
+        "behaviorCounts": {
+            "0": 1836,
+            "16": 45,
+            "56": 5,
+            "57": 5,
+            "59": 10,
+            "101": 1,
+            "105": 9,
+            "132": 5,
+            "135": 2,
+            "136": 2
+        }
+    },
+    "LAYOUT_CINNABAR_ISLAND": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CinnabarIsland",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 24,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 243,
+            "21": 224,
+            "96": 1,
+            "105": 4,
+            "132": 4,
+            "135": 2,
+            "136": 2
+        }
+    },
+    "LAYOUT_INDIGO_PLATEAU_EXTERIOR": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_IndigoPlateau",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 464,
+            "42": 9,
+            "105": 1,
+            "145": 3,
+            "146": 3
+        }
+    },
+    "LAYOUT_SAFFRON_CITY_CONNECTION": {
+        "width": 48,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SaffronCity",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 1896,
+            "96": 1,
+            "101": 2,
+            "105": 8,
+            "132": 9,
+            "135": 2,
+            "136": 2
+        }
+    },
+    "LAYOUT_ROUTE1": {
+        "width": 24,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_PalletTown",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 720,
+            "2": 178,
+            "59": 61,
+            "132": 1
+        }
+    },
+    "LAYOUT_ROUTE2": {
+        "width": 24,
+        "height": 80,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_ViridianCity",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 1780,
+            "2": 84,
+            "59": 44,
+            "96": 5,
+            "101": 4,
+            "105": 1,
+            "132": 2
+        }
+    },
+    "LAYOUT_ROUTE3": {
+        "width": 84,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_PewterCity",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 1520,
+            "2": 117,
+            "59": 42,
+            "132": 1
+        }
+    },
+    "LAYOUT_ROUTE4": {
+        "width": 108,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeruleanCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 4,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 1853,
+            "2": 84,
+            "21": 30,
+            "56": 9,
+            "57": 17,
+            "59": 160,
+            "96": 2,
+            "105": 1,
+            "132": 2,
+            "135": 2
+        }
+    },
+    "LAYOUT_ROUTE5": {
+        "width": 48,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeruleanCity",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 1823,
+            "2": 48,
+            "59": 42,
+            "96": 2,
+            "101": 2,
+            "105": 2,
+            "132": 1
+        }
+    },
+    "LAYOUT_ROUTE6": {
+        "width": 24,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_VermilionCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 14,
+        "surfableBehaviorCount": 2,
+        "surfableBehaviors": [
+            16,
+            21
+        ],
+        "behaviorCounts": {
+            "0": 725,
+            "2": 134,
+            "16": 52,
+            "21": 18,
+            "59": 27,
+            "96": 2,
+            "105": 1,
+            "132": 1
+        }
+    },
+    "LAYOUT_ROUTE7": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeladonCity",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 422,
+            "2": 36,
+            "56": 6,
+            "59": 12,
+            "98": 1,
+            "99": 1,
+            "105": 1,
+            "132": 1
+        }
+    },
+    "LAYOUT_ROUTE8": {
+        "width": 72,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_LavenderTown",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 1361,
+            "2": 65,
+            "59": 10,
+            "98": 1,
+            "99": 1,
+            "105": 1,
+            "132": 1
+        }
+    },
+    "LAYOUT_ROUTE9": {
+        "width": 72,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeruleanCity",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 1280,
+            "2": 67,
+            "59": 92,
+            "132": 1
+        }
+    },
+    "LAYOUT_ROUTE10": {
+        "width": 24,
+        "height": 80,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_LavenderTown",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 8,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 1576,
+            "2": 55,
+            "21": 251,
+            "59": 28,
+            "96": 3,
+            "98": 1,
+            "105": 1,
+            "132": 3,
+            "135": 2
+        }
+    },
+    "LAYOUT_ROUTE11": {
+        "width": 72,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_VermilionCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 6,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 1112,
+            "2": 285,
+            "21": 39,
+            "96": 1,
+            "98": 1,
+            "99": 1,
+            "132": 1
+        }
+    },
+    "LAYOUT_ROUTE12": {
+        "width": 24,
+        "height": 120,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_LavenderTown",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 30,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 1669,
+            "2": 28,
+            "21": 1178,
+            "96": 1,
+            "101": 1,
+            "105": 1,
+            "132": 2
+        }
+    },
+    "LAYOUT_ROUTE13": {
+        "width": 72,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_LavenderTown",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 27,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 905,
+            "2": 40,
+            "21": 492,
+            "132": 3
+        }
+    },
+    "LAYOUT_ROUTE14": {
+        "width": 24,
+        "height": 60,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_LavenderTown",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 10,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 1301,
+            "2": 30,
+            "21": 102,
+            "56": 1,
+            "59": 5,
+            "132": 1
+        }
+    },
+    "LAYOUT_ROUTE15": {
+        "width": 72,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_FuchsiaCity",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 1336,
+            "2": 46,
+            "59": 55,
+            "98": 1,
+            "99": 1,
+            "132": 1
+        }
+    },
+    "LAYOUT_ROUTE16": {
+        "width": 48,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeladonCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 5,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 903,
+            "2": 27,
+            "21": 23,
+            "98": 2,
+            "99": 2,
+            "105": 1,
+            "132": 2
+        }
+    },
+    "LAYOUT_ROUTE17": {
+        "width": 24,
+        "height": 160,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeladonCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 28,
+        "surfableBehaviorCount": 2,
+        "surfableBehaviors": [
+            21,
+            27
+        ],
+        "behaviorCounts": {
+            "0": 372,
+            "21": 596,
+            "27": 751,
+            "59": 8,
+            "132": 6,
+            "208": 2041,
+            "209": 66
+        }
+    },
+    "LAYOUT_ROUTE18": {
+        "width": 60,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeladonCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 32,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 633,
+            "2": 24,
+            "21": 539,
+            "98": 1,
+            "99": 1,
+            "132": 2
+        }
+    },
+    "LAYOUT_ROUTE19": {
+        "width": 24,
+        "height": 60,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_FuchsiaCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 24,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 132,
+            "21": 1188,
+            "33": 98,
+            "59": 21,
+            "132": 1
+        }
+    },
+    "LAYOUT_ROUTE20": {
+        "width": 120,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CinnabarIsland",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 30,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 160,
+            "21": 2068,
+            "23": 44,
+            "33": 124,
+            "96": 2,
+            "132": 2
+        }
+    },
+    "LAYOUT_ROUTE21_NORTH": {
+        "width": 24,
+        "height": 50,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_PalletTown",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 25,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 212,
+            "2": 36,
+            "21": 877,
+            "23": 41,
+            "33": 34
+        }
+    },
+    "LAYOUT_ROUTE22": {
+        "width": 48,
+        "height": 24,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_ViridianCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 6,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            16
+        ],
+        "behaviorCounts": {
+            "0": 994,
+            "2": 65,
+            "16": 24,
+            "59": 67,
+            "105": 1,
+            "132": 1
+        }
+    },
+    "LAYOUT_ROUTE23": {
+        "width": 24,
+        "height": 160,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_IndigoPlateau",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 16,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 3195,
+            "2": 70,
+            "21": 396,
+            "23": 121,
+            "33": 16,
+            "42": 3,
+            "96": 2,
+            "101": 1,
+            "132": 1,
+            "145": 18,
+            "146": 17
+        }
+    },
+    "LAYOUT_ROUTE24": {
+        "width": 24,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeruleanCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 9,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 732,
+            "2": 39,
+            "21": 166,
+            "42": 3,
+            "56": 3,
+            "57": 3,
+            "59": 14
+        }
+    },
+    "LAYOUT_ROUTE25": {
+        "width": 72,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeruleanCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 17,
+        "surfableBehaviorCount": 2,
+        "surfableBehaviors": [
+            16,
+            21
+        ],
+        "behaviorCounts": {
+            "0": 1106,
+            "2": 16,
+            "16": 36,
+            "21": 270,
+            "59": 10,
+            "105": 1,
+            "132": 1
+        }
+    },
+    "LAYOUT_MT_MOON_1F": {
+        "width": 48,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 549,
+            "8": 1130,
+            "43": 143,
+            "50": 89,
+            "97": 3,
+            "101": 5,
+            "132": 1
+        }
+    },
+    "LAYOUT_MT_MOON_B1F": {
+        "width": 49,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 1657,
+            "8": 255,
+            "43": 40,
+            "97": 8
+        }
+    },
+    "LAYOUT_MT_MOON_B2F": {
+        "width": 48,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 927,
+            "8": 883,
+            "42": 12,
+            "50": 27,
+            "59": 66,
+            "97": 4,
+            "101": 1
+        }
+    },
+    "LAYOUT_VIRIDIAN_FOREST": {
+        "width": 54,
+        "height": 69,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_ViridianForest",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 2935,
+            "2": 779,
+            "96": 3,
+            "101": 3,
+            "132": 6
+        }
+    },
+    "LAYOUT_SSANNE_EXTERIOR": {
+        "width": 70,
+        "height": 32,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_VermilionCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 37,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 187,
+            "21": 2048,
+            "100": 1,
+            "101": 4
+        }
+    },
+    "LAYOUT_SSANNE_1F_CORRIDOR": {
+        "width": 31,
+        "height": 21,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SSAnne",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 634,
+            "101": 8,
+            "105": 1,
+            "109": 1,
+            "111": 1,
+            "156": 6
+        }
+    },
+    "LAYOUT_SSANNE_2F_CORRIDOR": {
+        "width": 34,
+        "height": 16,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SSAnne",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 530,
+            "105": 6,
+            "108": 1,
+            "109": 1,
+            "110": 1,
+            "156": 5
+        }
+    },
+    "LAYOUT_SSANNE_3F_CORRIDOR": {
+        "width": 22,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SSAnne",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 146,
+            "99": 1,
+            "110": 1,
+            "156": 6
+        }
+    },
+    "LAYOUT_SSANNE_B1F_CORRIDOR": {
+        "width": 23,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SSAnne",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 149,
+            "105": 5,
+            "108": 2,
+            "154": 1,
+            "156": 4
+        }
+    },
+    "LAYOUT_SSANNE_DECK": {
+        "width": 24,
+        "height": 19,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SSAnne",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 3,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 339,
+            "21": 112,
+            "98": 2,
+            "156": 3
+        }
+    },
+    "LAYOUT_DIGLETTS_CAVE_B1F": {
+        "width": 85,
+        "height": 80,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_DiglettsCave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 1160,
+            "8": 5304,
+            "50": 334,
+            "97": 2
+        }
+    },
+    "LAYOUT_VICTORY_ROAD_1F": {
+        "width": 48,
+        "height": 22,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 241,
+            "8": 770,
+            "32": 1,
+            "42": 3,
+            "50": 39,
+            "97": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_VICTORY_ROAD_2F": {
+        "width": 51,
+        "height": 22,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 287,
+            "8": 709,
+            "32": 2,
+            "42": 3,
+            "43": 43,
+            "50": 72,
+            "97": 5,
+            "101": 1
+        }
+    },
+    "LAYOUT_VICTORY_ROAD_3F": {
+        "width": 45,
+        "height": 22,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 299,
+            "8": 618,
+            "32": 1,
+            "42": 2,
+            "50": 65,
+            "97": 4,
+            "102": 1
+        }
+    },
+    "LAYOUT_ROCKET_HIDEOUT_B1F": {
+        "width": 28,
+        "height": 34,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 928,
+            "105": 1,
+            "109": 1,
+            "110": 2,
+            "147": 10,
+            "150": 1,
+            "151": 5,
+            "158": 4
+        }
+    },
+    "LAYOUT_ROCKET_HIDEOUT_B2F": {
+        "width": 32,
+        "height": 22,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 642,
+            "84": 9,
+            "85": 12,
+            "86": 15,
+            "87": 6,
+            "88": 12,
+            "105": 1,
+            "108": 2,
+            "110": 1,
+            "150": 1,
+            "158": 3
+        }
+    },
+    "LAYOUT_ROCKET_HIDEOUT_B3F": {
+        "width": 22,
+        "height": 27,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 559,
+            "84": 8,
+            "85": 1,
+            "86": 5,
+            "87": 2,
+            "88": 6,
+            "108": 1,
+            "111": 1,
+            "149": 4,
+            "150": 1,
+            "158": 6
+        }
+    },
+    "LAYOUT_ROCKET_HIDEOUT_B4F": {
+        "width": 24,
+        "height": 26,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 594,
+            "50": 3,
+            "51": 3,
+            "105": 1,
+            "108": 1,
+            "149": 6,
+            "150": 2,
+            "151": 5,
+            "158": 9
+        }
+    },
+    "LAYOUT_SILPH_CO_1F": {
+        "width": 36,
+        "height": 22,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 21,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            22
+        ],
+        "behaviorCounts": {
+            "0": 670,
+            "22": 88,
+            "48": 8,
+            "49": 8,
+            "101": 1,
+            "105": 1,
+            "108": 1,
+            "128": 10,
+            "148": 4,
+            "151": 1
+        }
+    },
+    "LAYOUT_SILPH_CO_2F": {
+        "width": 36,
+        "height": 22,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 761,
+            "103": 4,
+            "105": 1,
+            "109": 1,
+            "110": 1,
+            "147": 8,
+            "148": 6,
+            "150": 3,
+            "151": 2,
+            "158": 5
+        }
+    },
+    "LAYOUT_SILPH_CO_3F": {
+        "width": 36,
+        "height": 22,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 762,
+            "103": 7,
+            "105": 1,
+            "108": 1,
+            "111": 1,
+            "147": 4,
+            "148": 6,
+            "150": 3,
+            "151": 3,
+            "158": 4
+        }
+    },
+    "LAYOUT_SILPH_CO_4F": {
+        "width": 36,
+        "height": 22,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 770,
+            "103": 4,
+            "105": 1,
+            "109": 1,
+            "110": 1,
+            "147": 2,
+            "148": 2,
+            "150": 2,
+            "151": 5,
+            "158": 4
+        }
+    },
+    "LAYOUT_SILPH_CO_5F": {
+        "width": 36,
+        "height": 22,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 767,
+            "103": 4,
+            "105": 1,
+            "108": 1,
+            "111": 1,
+            "148": 5,
+            "150": 3,
+            "151": 2,
+            "158": 8
+        }
+    },
+    "LAYOUT_SILPH_CO_6F": {
+        "width": 31,
+        "height": 19,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 570,
+            "103": 2,
+            "105": 1,
+            "109": 1,
+            "110": 1,
+            "148": 3,
+            "150": 2,
+            "151": 3,
+            "158": 6
+        }
+    },
+    "LAYOUT_SILPH_CO_7F": {
+        "width": 31,
+        "height": 19,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 558,
+            "48": 2,
+            "103": 3,
+            "105": 1,
+            "108": 1,
+            "111": 1,
+            "128": 6,
+            "148": 7,
+            "150": 3,
+            "151": 2,
+            "158": 5
+        }
+    },
+    "LAYOUT_SILPH_CO_8F": {
+        "width": 31,
+        "height": 19,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 566,
+            "103": 4,
+            "105": 1,
+            "109": 1,
+            "110": 1,
+            "148": 7,
+            "150": 2,
+            "151": 3,
+            "158": 4
+        }
+    },
+    "LAYOUT_SILPH_CO_9F": {
+        "width": 31,
+        "height": 19,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 571,
+            "103": 2,
+            "105": 1,
+            "108": 1,
+            "111": 1,
+            "148": 8,
+            "150": 3,
+            "158": 2
+        }
+    },
+    "LAYOUT_SILPH_CO_10F": {
+        "width": 17,
+        "height": 19,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 311,
+            "103": 3,
+            "105": 1,
+            "109": 1,
+            "110": 1,
+            "148": 3,
+            "150": 2,
+            "158": 1
+        }
+    },
+    "LAYOUT_SILPH_CO_11F": {
+        "width": 17,
+        "height": 20,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 325,
+            "50": 3,
+            "51": 3,
+            "103": 1,
+            "105": 1,
+            "111": 1,
+            "131": 1,
+            "148": 3,
+            "150": 2
+        }
+    },
+    "LAYOUT_POKEMON_MANSION_1F": {
+        "width": 38,
+        "height": 35,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonMansion",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 474,
+            "8": 840,
+            "101": 2,
+            "108": 1,
+            "111": 1,
+            "157": 12
+        }
+    },
+    "LAYOUT_POKEMON_MANSION_2F": {
+        "width": 38,
+        "height": 38,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonMansion",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 762,
+            "8": 660,
+            "108": 3,
+            "111": 1,
+            "157": 10,
+            "158": 8
+        }
+    },
+    "LAYOUT_POKEMON_MANSION_3F": {
+        "width": 38,
+        "height": 35,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonMansion",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 830,
+            "8": 479,
+            "102": 5,
+            "111": 3,
+            "157": 8,
+            "158": 5
+        }
+    },
+    "LAYOUT_POKEMON_MANSION_B1F": {
+        "width": 38,
+        "height": 35,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonMansion",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 560,
+            "8": 751,
+            "108": 1,
+            "158": 18
+        }
+    },
+    "LAYOUT_SAFARI_ZONE_CENTER": {
+        "width": 51,
+        "height": 36,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_FuchsiaCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 10,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 1512,
+            "2": 232,
+            "21": 80,
+            "98": 2,
+            "99": 2,
+            "100": 2,
+            "101": 2,
+            "105": 1,
+            "132": 3
+        }
+    },
+    "LAYOUT_SAFARI_ZONE_EAST": {
+        "width": 54,
+        "height": 35,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_FuchsiaCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 14,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 1590,
+            "2": 208,
+            "12": 22,
+            "21": 52,
+            "42": 10,
+            "99": 4,
+            "105": 1,
+            "132": 3
+        }
+    },
+    "LAYOUT_SAFARI_ZONE_NORTH": {
+        "width": 57,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_FuchsiaCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 9,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 1936,
+            "2": 228,
+            "12": 26,
+            "21": 68,
+            "42": 8,
+            "98": 2,
+            "101": 6,
+            "105": 1,
+            "132": 5
+        }
+    },
+    "LAYOUT_SAFARI_ZONE_WEST": {
+        "width": 48,
+        "height": 36,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_FuchsiaCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 6,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 1574,
+            "2": 69,
+            "12": 25,
+            "21": 44,
+            "42": 4,
+            "98": 2,
+            "100": 4,
+            "105": 2,
+            "132": 4
+        }
+    },
+    "LAYOUT_CERULEAN_CAVE_1F": {
+        "width": 40,
+        "height": 23,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeruleanCave",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 10,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 297,
+            "8": 426,
+            "21": 153,
+            "42": 6,
+            "50": 30,
+            "97": 7,
+            "101": 1
+        }
+    },
+    "LAYOUT_CERULEAN_CAVE_2F": {
+        "width": 40,
+        "height": 23,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeruleanCave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 378,
+            "8": 515,
+            "50": 21,
+            "97": 6
+        }
+    },
+    "LAYOUT_CERULEAN_CAVE_B1F": {
+        "width": 40,
+        "height": 23,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeruleanCave",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 9,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 287,
+            "8": 472,
+            "21": 107,
+            "42": 6,
+            "50": 47,
+            "97": 1
+        }
+    },
+    "LAYOUT_ROCK_TUNNEL_1F": {
+        "width": 48,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_RockTunnel",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 465,
+            "8": 1334,
+            "50": 114,
+            "97": 5,
+            "101": 1,
+            "132": 1
+        }
+    },
+    "LAYOUT_ROCK_TUNNEL_B1F": {
+        "width": 48,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_RockTunnel",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 561,
+            "8": 1244,
+            "50": 111,
+            "97": 4
+        }
+    },
+    "LAYOUT_SEAFOAM_ISLANDS_1F": {
+        "width": 38,
+        "height": 24,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeafoamIslands",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 277,
+            "8": 603,
+            "42": 4,
+            "50": 21,
+            "97": 3,
+            "101": 2,
+            "102": 2
+        }
+    },
+    "LAYOUT_SEAFOAM_ISLANDS_B1F": {
+        "width": 38,
+        "height": 23,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeafoamIslands",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 294,
+            "8": 537,
+            "42": 6,
+            "50": 28,
+            "97": 7,
+            "102": 2
+        }
+    },
+    "LAYOUT_SEAFOAM_ISLANDS_B2F": {
+        "width": 38,
+        "height": 24,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeafoamIslands",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 307,
+            "8": 569,
+            "42": 6,
+            "50": 21,
+            "97": 7,
+            "102": 2
+        }
+    },
+    "LAYOUT_SEAFOAM_ISLANDS_B3F": {
+        "width": 38,
+        "height": 24,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeafoamIslands",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 9,
+        "surfableBehaviorCount": 3,
+        "surfableBehaviors": [
+            17,
+            19,
+            21
+        ],
+        "behaviorCounts": {
+            "0": 396,
+            "8": 373,
+            "17": 4,
+            "19": 20,
+            "21": 2,
+            "23": 2,
+            "42": 8,
+            "50": 44,
+            "80": 11,
+            "83": 45,
+            "97": 5,
+            "102": 2
+        }
+    },
+    "LAYOUT_SEAFOAM_ISLANDS_B4F": {
+        "width": 38,
+        "height": 24,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeafoamIslands",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 9,
+        "surfableBehaviorCount": 2,
+        "surfableBehaviors": [
+            17,
+            21
+        ],
+        "behaviorCounts": {
+            "0": 225,
+            "8": 335,
+            "17": 3,
+            "21": 146,
+            "23": 2,
+            "42": 6,
+            "50": 18,
+            "80": 31,
+            "82": 142,
+            "97": 2,
+            "132": 2
+        }
+    },
+    "LAYOUT_POKEMON_TOWER_1F": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 246,
+            "8": 222,
+            "101": 1,
+            "108": 1,
+            "128": 10
+        }
+    },
+    "LAYOUT_POKEMON_TOWER_2F": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 341,
+            "8": 137,
+            "109": 1,
+            "110": 1
+        }
+    },
+    "LAYOUT_POKEMON_TOWER_3F": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 316,
+            "8": 162,
+            "108": 1,
+            "111": 1
+        }
+    },
+    "LAYOUT_POKEMON_TOWER_4F": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 318,
+            "8": 160,
+            "109": 1,
+            "110": 1
+        }
+    },
+    "LAYOUT_POKEMON_TOWER_5F": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 323,
+            "8": 155,
+            "108": 1,
+            "111": 1
+        }
+    },
+    "LAYOUT_POKEMON_TOWER_6F": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 334,
+            "8": 144,
+            "109": 1,
+            "110": 1
+        }
+    },
+    "LAYOUT_POKEMON_TOWER_7F": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 401,
+            "8": 78,
+            "111": 1
+        }
+    },
+    "LAYOUT_POWER_PLANT": {
+        "width": 49,
+        "height": 40,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PowerPlant",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "8": 1933,
+            "99": 1,
+            "101": 1,
+            "149": 12,
+            "158": 13
+        }
+    },
+    "LAYOUT_ROUTE25_SEA_COTTAGE": {
+        "width": 15,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SeaCottage",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 159,
+            "101": 1,
+            "105": 2,
+            "147": 1,
+            "158": 2
+        }
+    },
+    "LAYOUT_SSANNE_KITCHEN": {
+        "width": 16,
+        "height": 14,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SSAnne",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 197,
+            "105": 1,
+            "138": 8,
+            "153": 11,
+            "154": 3,
+            "156": 4
+        }
+    },
+    "LAYOUT_SSANNE_CAPTAINS_OFFICE": {
+        "width": 9,
+        "height": 10,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SSAnne",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 85,
+            "111": 1,
+            "129": 1,
+            "133": 2,
+            "154": 1
+        }
+    },
+    "LAYOUT_UNDERGROUND_PATH_ENTRANCE": {
+        "width": 13,
+        "height": 10,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 124,
+            "101": 1,
+            "111": 1,
+            "128": 4
+        }
+    },
+    "LAYOUT_UNDERGROUND_PATH_EAST_WEST_TUNNEL": {
+        "width": 80,
+        "height": 7,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_UndergroundPath",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 555,
+            "108": 1,
+            "109": 1,
+            "110": 3
+        }
+    },
+    "LAYOUT_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL": {
+        "width": 8,
+        "height": 63,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_UndergroundPath",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 443,
+            "108": 1,
+            "109": 1,
+            "110": 59
+        }
+    },
+    "LAYOUT_ROUTE12_NORTH_ENTRANCE_1F": {
+        "width": 11,
+        "height": 13,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 122,
+            "96": 1,
+            "101": 1,
+            "108": 1,
+            "128": 16,
+            "156": 1,
+            "157": 1
+        }
+    },
+    "LAYOUT_SSANNE_ROOM1": {
+        "width": 6,
+        "height": 8,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SSAnne",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 45,
+            "105": 1,
+            "155": 1,
+            "156": 1
+        }
+    },
+    "LAYOUT_SSANNE_ROOM2": {
+        "width": 6,
+        "height": 9,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SSAnne",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 50,
+            "101": 1,
+            "155": 1,
+            "156": 2
+        }
+    },
+    "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_ELEVATOR": {
+        "width": 5,
+        "height": 7,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 34,
+            "101": 1
+        }
+    },
+    "LAYOUT_PEWTER_CITY_MUSEUM_1F": {
+        "width": 28,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Museum",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 281,
+            "101": 2,
+            "108": 1,
+            "128": 12,
+            "129": 8,
+            "151": 2,
+            "156": 2
+        }
+    },
+    "LAYOUT_PEWTER_CITY_MUSEUM_2F": {
+        "width": 19,
+        "height": 10,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Museum",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 182,
+            "111": 1,
+            "128": 3,
+            "156": 4
+        }
+    },
+    "LAYOUT_CERULEAN_CITY_HOUSE2": {
+        "width": 10,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_BurgledHouse",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 74,
+            "96": 1,
+            "101": 1,
+            "138": 2,
+            "156": 1,
+            "162": 11
+        }
+    },
+    "LAYOUT_CERULEAN_CITY_HOUSE1": {
+        "width": 10,
+        "height": 10,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 94,
+            "96": 1,
+            "101": 1,
+            "137": 2,
+            "156": 2
+        }
+    },
+    "LAYOUT_CELADON_CITY_CONDOMINIUMS_1F": {
+        "width": 15,
+        "height": 20,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Condominiums",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 285,
+            "96": 1,
+            "101": 1,
+            "108": 2,
+            "132": 2,
+            "148": 4,
+            "150": 1,
+            "157": 2,
+            "159": 2
+        }
+    },
+    "LAYOUT_CELADON_CITY_CONDOMINIUMS_2F": {
+        "width": 15,
+        "height": 20,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Condominiums",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 277,
+            "48": 2,
+            "50": 7,
+            "109": 2,
+            "110": 2,
+            "129": 2,
+            "132": 2,
+            "148": 2,
+            "157": 4
+        }
+    },
+    "LAYOUT_CELADON_CITY_CONDOMINIUMS_3F": {
+        "width": 15,
+        "height": 20,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Condominiums",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 278,
+            "50": 3,
+            "108": 2,
+            "111": 2,
+            "129": 4,
+            "132": 2,
+            "148": 4,
+            "150": 1,
+            "157": 4
+        }
+    },
+    "LAYOUT_CELADON_CITY_CONDOMINIUMS_ROOF": {
+        "width": 14,
+        "height": 23,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Condominiums",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 319,
+            "96": 1,
+            "110": 2
+        }
+    },
+    "LAYOUT_CELADON_CITY_CONDOMINIUMS_ROOF_ROOM": {
+        "width": 10,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_School",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 84,
+            "101": 1,
+            "129": 2,
+            "133": 1,
+            "157": 2
+        }
+    },
+    "LAYOUT_CELADON_CITY_GAME_CORNER_PRIZE_ROOM": {
+        "width": 9,
+        "height": 10,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GameCorner",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 70,
+            "101": 1,
+            "128": 11,
+            "130": 8
+        }
+    },
+    "LAYOUT_CELADON_CITY_RESTAURANT": {
+        "width": 15,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_RestaurantHotel",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 148,
+            "101": 1,
+            "128": 9,
+            "138": 2,
+            "139": 2,
+            "153": 2,
+            "155": 1
+        }
+    },
+    "LAYOUT_CELADON_CITY_HOTEL": {
+        "width": 17,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_RestaurantHotel",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 177,
+            "101": 1,
+            "128": 8,
+            "132": 1
+        }
+    },
+    "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_1F": {
+        "width": 13,
+        "height": 16,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_DepartmentStore",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 183,
+            "101": 2,
+            "105": 1,
+            "109": 1,
+            "128": 17,
+            "132": 2,
+            "150": 2
+        }
+    },
+    "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_2F": {
+        "width": 13,
+        "height": 15,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_DepartmentStore",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 151,
+            "105": 1,
+            "108": 1,
+            "111": 1,
+            "128": 7,
+            "130": 30,
+            "132": 1,
+            "159": 3
+        }
+    },
+    "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_3F": {
+        "width": 13,
+        "height": 15,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_DepartmentStore",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 171,
+            "105": 1,
+            "109": 1,
+            "110": 1,
+            "128": 20,
+            "132": 1
+        }
+    },
+    "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_4F": {
+        "width": 13,
+        "height": 15,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_DepartmentStore",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 161,
+            "105": 1,
+            "108": 1,
+            "111": 1,
+            "128": 9,
+            "130": 18,
+            "132": 1,
+            "159": 3
+        }
+    },
+    "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_5F": {
+        "width": 13,
+        "height": 15,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_DepartmentStore",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 154,
+            "105": 1,
+            "109": 1,
+            "110": 1,
+            "128": 6,
+            "130": 28,
+            "132": 1,
+            "159": 3
+        }
+    },
+    "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_ROOF": {
+        "width": 19,
+        "height": 14,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_DepartmentStore",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 264,
+            "98": 1,
+            "132": 1
+        }
+    },
+    "LAYOUT_SAFARI_ZONE_REST_HOUSE": {
+        "width": 13,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SafariZoneBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 132,
+            "101": 1,
+            "128": 6,
+            "129": 4
+        }
+    },
+    "LAYOUT_SAFARI_ZONE_SECRET_HOUSE": {
+        "width": 13,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SafariZoneBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 132,
+            "101": 1,
+            "129": 8,
+            "151": 2
+        }
+    },
+    "LAYOUT_FUCHSIA_CITY_SAFARI_ZONE_OFFICE": {
+        "width": 20,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SafariZoneBuilding",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 211,
+            "101": 1,
+            "129": 6,
+            "157": 2
+        }
+    },
+    "LAYOUT_FUCHSIA_CITY_WARDENS_HOUSE": {
+        "width": 13,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Museum",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 132,
+            "101": 1,
+            "128": 1,
+            "129": 5,
+            "148": 4
+        }
+    },
+    "LAYOUT_FUCHSIA_CITY_HOUSE2": {
+        "width": 10,
+        "height": 10,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Museum",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 94,
+            "96": 1,
+            "101": 1,
+            "137": 2,
+            "156": 2
+        }
+    },
+    "LAYOUT_CINNABAR_ISLAND_POKEMON_LAB_ENTRANCE": {
+        "width": 28,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Lab",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 294,
+            "96": 3,
+            "101": 1,
+            "128": 5,
+            "132": 3,
+            "156": 2
+        }
+    },
+    "LAYOUT_CINNABAR_ISLAND_POKEMON_LAB_LOUNGE": {
+        "width": 15,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Lab",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 149,
+            "48": 2,
+            "49": 2,
+            "101": 1,
+            "129": 4,
+            "130": 4,
+            "148": 1,
+            "156": 2
+        }
+    },
+    "LAYOUT_CINNABAR_ISLAND_POKEMON_LAB_RESEARCH_ROOM": {
+        "width": 15,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Lab",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 146,
+            "101": 1,
+            "129": 6,
+            "130": 4,
+            "131": 1,
+            "151": 5,
+            "155": 2
+        }
+    },
+    "LAYOUT_CINNABAR_ISLAND_POKEMON_LAB_EXPERIMENT_ROOM": {
+        "width": 15,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_Lab",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 141,
+            "101": 1,
+            "131": 1,
+            "149": 12,
+            "151": 8,
+            "155": 1,
+            "158": 1
+        }
+    },
+    "LAYOUT_SAFFRON_CITY": {
+        "width": 66,
+        "height": 55,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SaffronCity",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 3573,
+            "2": 21,
+            "59": 4,
+            "96": 5,
+            "98": 2,
+            "99": 2,
+            "101": 2,
+            "105": 8,
+            "132": 9,
+            "135": 2,
+            "136": 2
+        }
+    },
+    "LAYOUT_SAFFRON_CITY_NORTH_SOUTH_ENTRANCE": {
+        "width": 9,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 79,
+            "96": 1,
+            "101": 1,
+            "128": 16,
+            "156": 2
+        }
+    },
+    "LAYOUT_SAFFRON_CITY_EAST_WEST_ENTRANCE": {
+        "width": 13,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 99,
+            "98": 1,
+            "99": 1,
+            "128": 14,
+            "156": 2
+        }
+    },
+    "LAYOUT_DIGLETTS_CAVE_NORTH_ENTRANCE": {
+        "width": 10,
+        "height": 8,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_DiglettsCave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 28,
+            "8": 46,
+            "43": 1,
+            "50": 3,
+            "97": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_DIGLETTS_CAVE_SOUTH_ENTRANCE": {
+        "width": 10,
+        "height": 8,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_DiglettsCave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 26,
+            "8": 48,
+            "43": 1,
+            "50": 3,
+            "97": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_INDIGO_PLATEAU_POKEMON_CENTER_1F": {
+        "width": 25,
+        "height": 18,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonCenter",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 430,
+            "96": 1,
+            "101": 1,
+            "106": 1,
+            "128": 10,
+            "129": 2,
+            "131": 1,
+            "133": 2,
+            "145": 1,
+            "146": 1
+        }
+    },
+    "LAYOUT_POKEMON_LEAGUE_LORELEIS_ROOM": {
+        "width": 13,
+        "height": 13,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonLeague",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 169
+        }
+    },
+    "LAYOUT_POKEMON_LEAGUE_BRUNOS_ROOM": {
+        "width": 13,
+        "height": 13,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonLeague",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 169
+        }
+    },
+    "LAYOUT_POKEMON_LEAGUE_AGATHAS_ROOM": {
+        "width": 13,
+        "height": 13,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonLeague",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 169
+        }
+    },
+    "LAYOUT_POKEMON_LEAGUE_LANCES_ROOM": {
+        "width": 28,
+        "height": 24,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonLeague",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 672
+        }
+    },
+    "LAYOUT_POKEMON_LEAGUE_CHAMPIONS_ROOM": {
+        "width": 13,
+        "height": 20,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonLeague",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 253,
+            "96": 1,
+            "101": 6
+        }
+    },
+    "LAYOUT_POKEMON_LEAGUE_HALL_OF_FAME": {
+        "width": 11,
+        "height": 13,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HallOfFame",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 24,
+            "35": 119
+        }
+    },
+    "LAYOUT_ROUTE21_SOUTH": {
+        "width": 24,
+        "height": 50,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CinnabarIsland",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 18,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 24,
+            "21": 1081,
+            "23": 52,
+            "33": 43
+        }
+    },
+    "LAYOUT_ENTRANCE_2F": {
+        "width": 13,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 140,
+            "111": 1,
+            "157": 2
+        }
+    },
+    "LAYOUT_ROUTE2_ENTRANCE": {
+        "width": 15,
+        "height": 12,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 176,
+            "96": 1,
+            "101": 1,
+            "156": 2
+        }
+    },
+    "LAYOUT_ROUTE22_NORTH_ENTRANCE": {
+        "width": 15,
+        "height": 12,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 176,
+            "96": 1,
+            "101": 1,
+            "156": 2
+        }
+    },
+    "LAYOUT_ROUTE16_NORTH_ENTRANCE_1F": {
+        "width": 13,
+        "height": 18,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 211,
+            "98": 2,
+            "99": 2,
+            "108": 1,
+            "128": 16,
+            "156": 1,
+            "157": 1
+        }
+    },
+    "LAYOUT_ENTRANCE_1F": {
+        "width": 13,
+        "height": 12,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 137,
+            "98": 1,
+            "99": 1,
+            "108": 1,
+            "128": 14,
+            "156": 1,
+            "157": 1
+        }
+    },
+    "LAYOUT_ROCKET_HIDEOUT_ELEVATOR": {
+        "width": 5,
+        "height": 7,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 34,
+            "101": 1
+        }
+    },
+    "LAYOUT_SAFFRON_CITY_COPYCATS_HOUSE_1F": {
+        "width": 13,
+        "height": 10,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding1",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 120,
+            "101": 1,
+            "108": 1,
+            "134": 1,
+            "137": 2,
+            "138": 2,
+            "144": 1,
+            "156": 2
+        }
+    },
+    "LAYOUT_SAFFRON_CITY_COPYCATS_HOUSE_2F": {
+        "width": 12,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding1",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 99,
+            "111": 1,
+            "129": 1,
+            "134": 1,
+            "139": 1,
+            "148": 3,
+            "156": 2
+        }
+    },
+    "LAYOUT_SAFFRON_CITY_DOJO": {
+        "width": 13,
+        "height": 16,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PewterGym",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 205,
+            "101": 1,
+            "132": 2
+        }
+    },
+    "LAYOUT_SILPH_CO_ELEVATOR": {
+        "width": 5,
+        "height": 7,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 34,
+            "101": 1
+        }
+    },
+    "LAYOUT_ONE_ISLAND": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands123",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 21,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 380,
+            "21": 73,
+            "23": 1,
+            "33": 11,
+            "42": 9,
+            "101": 1,
+            "105": 3,
+            "132": 2
+        }
+    },
+    "LAYOUT_TWO_ISLAND": {
+        "width": 48,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands123",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 30,
+        "surfableBehaviorCount": 2,
+        "surfableBehaviors": [
+            17,
+            21
+        ],
+        "behaviorCounts": {
+            "0": 724,
+            "17": 198,
+            "21": 20,
+            "42": 7,
+            "101": 1,
+            "105": 3,
+            "132": 3,
+            "135": 2,
+            "154": 2
+        }
+    },
+    "LAYOUT_THREE_ISLAND": {
+        "width": 24,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands123",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 948,
+            "105": 7,
+            "132": 1,
+            "135": 2,
+            "136": 2
+        }
+    },
+    "LAYOUT_FOUR_ISLAND": {
+        "width": 48,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands45",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 49,
+        "surfableBehaviorCount": 4,
+        "surfableBehaviors": [
+            16,
+            17,
+            21,
+            22
+        ],
+        "behaviorCounts": {
+            "0": 1299,
+            "2": 9,
+            "16": 76,
+            "17": 368,
+            "21": 20,
+            "22": 28,
+            "33": 101,
+            "42": 5,
+            "96": 1,
+            "101": 1,
+            "105": 6,
+            "132": 2,
+            "135": 2,
+            "136": 2
+        }
+    },
+    "LAYOUT_FIVE_ISLAND": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands45",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 44,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 139,
+            "21": 288,
+            "33": 43,
+            "42": 3,
+            "101": 1,
+            "105": 3,
+            "132": 1,
+            "135": 2
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands67",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 33,
+        "surfableBehaviorCount": 2,
+        "surfableBehaviors": [
+            17,
+            21
+        ],
+        "behaviorCounts": {
+            "0": 298,
+            "17": 147,
+            "21": 20,
+            "42": 6,
+            "101": 1,
+            "105": 3,
+            "132": 1,
+            "135": 2,
+            "136": 2
+        }
+    },
+    "LAYOUT_SIX_ISLAND": {
+        "width": 24,
+        "height": 30,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands67",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 28,
+        "surfableBehaviorCount": 2,
+        "surfableBehaviors": [
+            17,
+            21
+        ],
+        "behaviorCounts": {
+            "0": 530,
+            "17": 150,
+            "21": 20,
+            "42": 3,
+            "59": 8,
+            "101": 1,
+            "105": 3,
+            "132": 1,
+            "135": 2,
+            "136": 2
+        }
+    },
+    "LAYOUT_ONE_ISLAND_KINDLE_ROAD": {
+        "width": 24,
+        "height": 140,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands123",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 36,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 1402,
+            "2": 89,
+            "12": 111,
+            "21": 1393,
+            "23": 104,
+            "33": 240,
+            "42": 12,
+            "57": 2,
+            "59": 2,
+            "96": 1,
+            "100": 2,
+            "132": 2
+        }
+    },
+    "LAYOUT_ONE_ISLAND_TREASURE_BEACH": {
+        "width": 24,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands123",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 40,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 273,
+            "2": 44,
+            "21": 513,
+            "23": 35,
+            "33": 95
+        }
+    },
+    "LAYOUT_TWO_ISLAND_CAPE_BRINK": {
+        "width": 24,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands123",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 25,
+        "surfableBehaviorCount": 3,
+        "surfableBehaviors": [
+            16,
+            17,
+            19
+        ],
+        "behaviorCounts": {
+            "0": 439,
+            "2": 32,
+            "12": 38,
+            "16": 80,
+            "17": 355,
+            "19": 9,
+            "42": 6,
+            "105": 1
+        }
+    },
+    "LAYOUT_THREE_ISLAND_BOND_BRIDGE": {
+        "width": 96,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands123",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 31,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 1296,
+            "2": 78,
+            "21": 366,
+            "23": 26,
+            "33": 128,
+            "42": 15,
+            "56": 2,
+            "59": 5,
+            "100": 2,
+            "132": 2
+        }
+    },
+    "LAYOUT_THREE_ISLAND_PORT": {
+        "width": 48,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands123",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 42,
+        "surfableBehaviorCount": 2,
+        "surfableBehaviors": [
+            17,
+            21
+        ],
+        "behaviorCounts": {
+            "0": 338,
+            "2": 16,
+            "17": 503,
+            "21": 20,
+            "33": 77,
+            "42": 3,
+            "96": 2,
+            "101": 1
+        }
+    },
+    "LAYOUT_PROTOTYPE_SEVII_ISLE_6": {
+        "width": 1,
+        "height": 1,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeladonCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 1,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "21": 1
+        }
+    },
+    "LAYOUT_PROTOTYPE_SEVII_ISLE_7": {
+        "width": 1,
+        "height": 1,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeladonCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 1,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "21": 1
+        }
+    },
+    "LAYOUT_PROTOTYPE_SEVII_ISLE_8": {
+        "width": 84,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeladonCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 5,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 56,
+            "21": 1582,
+            "23": 28,
+            "33": 14
+        }
+    },
+    "LAYOUT_PROTOTYPE_SEVII_ISLE_9": {
+        "width": 24,
+        "height": 60,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_CeladonCity",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 6,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 41,
+            "21": 1399
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_RESORT_GORGEOUS": {
+        "width": 72,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands45",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 20,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 138,
+            "21": 1096,
+            "23": 86,
+            "33": 108,
+            "56": 3,
+            "57": 3,
+            "59": 3,
+            "96": 1,
+            "105": 1,
+            "132": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_WATER_LABYRINTH": {
+        "width": 72,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands45",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 27,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 66,
+            "21": 1374
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_MEADOW": {
+        "width": 24,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands45",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 32,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 443,
+            "2": 101,
+            "21": 397,
+            "33": 12,
+            "42": 7
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_MEMORIAL_PILLAR": {
+        "width": 24,
+        "height": 60,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands45",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 31,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 313,
+            "2": 61,
+            "21": 966,
+            "23": 42,
+            "33": 46,
+            "42": 12
+        }
+    },
+    "LAYOUT_SIX_ISLAND_OUTCAST_ISLAND": {
+        "width": 24,
+        "height": 80,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands67",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 37,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 219,
+            "21": 1664,
+            "23": 5,
+            "33": 31,
+            "96": 1
+        }
+    },
+    "LAYOUT_SIX_ISLAND_GREEN_PATH": {
+        "width": 72,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands67",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 37,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 491,
+            "21": 918,
+            "23": 12,
+            "33": 11,
+            "42": 2,
+            "100": 4,
+            "132": 2
+        }
+    },
+    "LAYOUT_SIX_ISLAND_WATER_PATH": {
+        "width": 24,
+        "height": 100,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands67",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 34,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 1154,
+            "2": 82,
+            "12": 44,
+            "21": 1103,
+            "42": 10,
+            "59": 3,
+            "105": 2,
+            "132": 2
+        }
+    },
+    "LAYOUT_SIX_ISLAND_RUIN_VALLEY": {
+        "width": 48,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands67",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 11,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            16
+        ],
+        "behaviorCounts": {
+            "0": 1418,
+            "2": 339,
+            "12": 102,
+            "16": 43,
+            "42": 12,
+            "56": 6
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND_TRAINER_TOWER": {
+        "width": 120,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands67",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 34,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 692,
+            "21": 4033,
+            "23": 11,
+            "33": 50,
+            "42": 11,
+            "96": 1,
+            "132": 2
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND_SEVAULT_CANYON_ENTRANCE": {
+        "width": 24,
+        "height": 40,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands67",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 17,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            17
+        ],
+        "behaviorCounts": {
+            "0": 550,
+            "2": 130,
+            "12": 3,
+            "17": 264,
+            "42": 12,
+            "132": 1
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND_SEVAULT_CANYON": {
+        "width": 24,
+        "height": 80,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands67",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 15,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 1402,
+            "2": 163,
+            "12": 254,
+            "21": 73,
+            "42": 25,
+            "96": 1,
+            "105": 1,
+            "132": 1
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS": {
+        "width": 144,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands67",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 33,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 245,
+            "12": 12,
+            "21": 2356,
+            "23": 163,
+            "33": 91,
+            "42": 6,
+            "96": 7
+        }
+    },
+    "LAYOUT_PROTOTYPE_SEVII_ISLE_22": {
+        "width": 24,
+        "height": 60,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_PalletTown",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 5,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "21": 1139,
+            "23": 61,
+            "33": 240
+        }
+    },
+    "LAYOUT_PROTOTYPE_SEVII_ISLE_23_EAST": {
+        "width": 144,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_PalletTown",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 5,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 188,
+            "21": 2357,
+            "23": 91,
+            "33": 244
+        }
+    },
+    "LAYOUT_PROTOTYPE_SEVII_ISLE_23_WEST": {
+        "width": 24,
+        "height": 60,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_PalletTown",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 5,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 111,
+            "21": 1151,
+            "23": 55,
+            "33": 123
+        }
+    },
+    "LAYOUT_PROTOTYPE_SEVII_ISLE_24": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_PalletTown",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 13,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 195,
+            "21": 285
+        }
+    },
+    "LAYOUT_UNION_ROOM": {
+        "width": 15,
+        "height": 12,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_HallOfFame",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 179,
+            "113": 1
+        }
+    },
+    "LAYOUT_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB": {
+        "width": 11,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_FanClubDaycare",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 157,
+            "48": 8,
+            "49": 8,
+            "101": 1,
+            "129": 4,
+            "134": 1,
+            "137": 2,
+            "139": 2,
+            "156": 4
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND_HOUSE_ROOM1_DOOR_OPEN": {
+        "width": 11,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 92,
+            "96": 1,
+            "101": 1,
+            "129": 4,
+            "148": 1
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND_HOUSE_ROOM2": {
+        "width": 12,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 100,
+            "96": 1,
+            "148": 7
+        }
+    },
+    "LAYOUT_VIRIDIAN_CITY_SCHOOL": {
+        "width": 10,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_School",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 84,
+            "101": 1,
+            "129": 2,
+            "133": 1,
+            "157": 2
+        }
+    },
+    "LAYOUT_CELADON_CITY_RESTAURANT_DUPLICATE": {
+        "width": 15,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_RestaurantHotel",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 148,
+            "101": 1,
+            "128": 9,
+            "138": 2,
+            "139": 2,
+            "153": 2,
+            "155": 1
+        }
+    },
+    "LAYOUT_CELADON_CITY_HOTEL_DUPLICATE": {
+        "width": 17,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_RestaurantHotel",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 177,
+            "101": 1,
+            "128": 8,
+            "132": 1
+        }
+    },
+    "LAYOUT_MT_EMBER_RUBY_PATH_B4F": {
+        "width": 18,
+        "height": 16,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_MtEmber",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 96,
+            "8": 71,
+            "43": 101,
+            "50": 18,
+            "97": 2
+        }
+    },
+    "LAYOUT_THREE_ISLAND_BERRY_FOREST": {
+        "width": 57,
+        "height": 47,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_BerryForest",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 9,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            16
+        ],
+        "behaviorCounts": {
+            "0": 2316,
+            "2": 248,
+            "16": 93,
+            "59": 17,
+            "101": 3,
+            "132": 2
+        }
+    },
+    "LAYOUT_ONE_ISLAND_POKEMON_CENTER_1F": {
+        "width": 19,
+        "height": 11,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonCenter",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 197,
+            "101": 1,
+            "106": 1,
+            "128": 7,
+            "131": 1,
+            "133": 2
+        }
+    },
+    "LAYOUT_TWO_ISLAND_JOYFUL_GAME_CORNER": {
+        "width": 12,
+        "height": 10,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GameCorner",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 108,
+            "96": 1,
+            "101": 1,
+            "128": 9,
+            "131": 1
+        }
+    },
+    "LAYOUT_VERMILION_CITY_POKEMON_FAN_CLUB": {
+        "width": 12,
+        "height": 12,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_FanClubDaycare",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 127,
+            "48": 4,
+            "49": 4,
+            "50": 2,
+            "51": 2,
+            "101": 1,
+            "129": 4
+        }
+    },
+    "LAYOUT_LAVENDER_TOWN_VOLUNTEER_POKEMON_HOUSE": {
+        "width": 12,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_FanClubDaycare",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 100,
+            "101": 1,
+            "129": 2,
+            "134": 1,
+            "138": 2,
+            "156": 2
+        }
+    },
+    "LAYOUT_ROUTE5_POKEMON_DAY_CARE": {
+        "width": 12,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_FanClubDaycare",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 102,
+            "101": 1,
+            "131": 1,
+            "156": 4
+        }
+    },
+    "LAYOUT_VIRIDIAN_CITY_HOUSE": {
+        "width": 11,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 92,
+            "101": 1,
+            "134": 1,
+            "137": 2,
+            "138": 2,
+            "157": 1
+        }
+    },
+    "LAYOUT_FOUR_ISLAND_POKEMON_DAY_CARE": {
+        "width": 12,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_FanClubDaycare",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 97,
+            "96": 1,
+            "101": 1,
+            "128": 6,
+            "131": 1,
+            "156": 2
+        }
+    },
+    "LAYOUT_SEAFOAM_ISLANDS_B3F_CURRENT_STOPPED": {
+        "width": 38,
+        "height": 24,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeafoamIslands",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 14,
+        "surfableBehaviorCount": 3,
+        "surfableBehaviors": [
+            19,
+            21,
+            22
+        ],
+        "behaviorCounts": {
+            "0": 402,
+            "8": 377,
+            "19": 12,
+            "21": 32,
+            "22": 6,
+            "23": 2,
+            "42": 8,
+            "50": 44,
+            "80": 6,
+            "83": 16,
+            "97": 5,
+            "102": 2
+        }
+    },
+    "LAYOUT_SEAFOAM_ISLANDS_B4F_CURRENT_STOPPED": {
+        "width": 38,
+        "height": 24,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeafoamIslands",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 8,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 225,
+            "8": 335,
+            "21": 307,
+            "23": 2,
+            "42": 6,
+            "50": 18,
+            "82": 15,
+            "97": 2,
+            "132": 2
+        }
+    },
+    "LAYOUT_MT_EMBER_EXTERIOR": {
+        "width": 57,
+        "height": 54,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands123",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 2617,
+            "2": 63,
+            "12": 326,
+            "42": 47,
+            "56": 4,
+            "59": 16,
+            "96": 2,
+            "100": 1,
+            "101": 2
+        }
+    },
+    "LAYOUT_MT_EMBER_SUMMIT": {
+        "width": 19,
+        "height": 22,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands123",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 302,
+            "12": 97,
+            "42": 18,
+            "101": 1
+        }
+    },
+    "LAYOUT_MT_EMBER_SUMMIT_PATH_1F": {
+        "width": 15,
+        "height": 18,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_MtEmber",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 102,
+            "8": 143,
+            "50": 23,
+            "96": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_MT_EMBER_SUMMIT_PATH_2F": {
+        "width": 48,
+        "height": 46,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_MtEmber",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 1801,
+            "8": 133,
+            "42": 8,
+            "50": 264,
+            "96": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_MT_EMBER_SUMMIT_PATH_3F": {
+        "width": 15,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_MtEmber",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 79,
+            "8": 67,
+            "50": 17,
+            "101": 2
+        }
+    },
+    "LAYOUT_MT_EMBER_RUBY_PATH_1F": {
+        "width": 27,
+        "height": 19,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_MtEmber",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 92,
+            "8": 388,
+            "50": 24,
+            "57": 2,
+            "59": 4,
+            "97": 2,
+            "101": 1
+        }
+    },
+    "LAYOUT_MT_EMBER_RUBY_PATH_B1F": {
+        "width": 11,
+        "height": 23,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_MtEmber",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 71,
+            "8": 169,
+            "50": 11,
+            "97": 2
+        }
+    },
+    "LAYOUT_MT_EMBER_RUBY_PATH_B2F": {
+        "width": 16,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_MtEmber",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 58,
+            "8": 103,
+            "50": 13,
+            "97": 2
+        }
+    },
+    "LAYOUT_MT_EMBER_RUBY_PATH_B3F": {
+        "width": 31,
+        "height": 23,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_MtEmber",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 211,
+            "8": 437,
+            "42": 2,
+            "50": 50,
+            "59": 10,
+            "97": 3
+        }
+    },
+    "LAYOUT_MT_EMBER_RUBY_PATH_B1F_STAIRS": {
+        "width": 6,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_MtEmber",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 22,
+            "8": 13,
+            "50": 5,
+            "97": 2
+        }
+    },
+    "LAYOUT_MT_EMBER_RUBY_PATH_B2F_STAIRS": {
+        "width": 8,
+        "height": 6,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_MtEmber",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 23,
+            "8": 18,
+            "50": 5,
+            "97": 2
+        }
+    },
+    "LAYOUT_MT_EMBER_RUBY_PATH_B5F": {
+        "width": 16,
+        "height": 15,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_MtEmber",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 61,
+            "8": 157,
+            "43": 8,
+            "50": 13,
+            "97": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_ROCKET_WAREHOUSE": {
+        "width": 29,
+        "height": 27,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 630,
+            "50": 2,
+            "84": 18,
+            "85": 29,
+            "86": 28,
+            "87": 41,
+            "88": 19,
+            "101": 1,
+            "149": 2,
+            "150": 5,
+            "151": 3,
+            "158": 5
+        }
+    },
+    "LAYOUT_FOUR_ISLAND_ICEFALL_CAVE_ENTRANCE": {
+        "width": 30,
+        "height": 36,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeafoamIslands",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 15,
+        "surfableBehaviorCount": 2,
+        "surfableBehaviors": [
+            16,
+            19
+        ],
+        "behaviorCounts": {
+            "0": 459,
+            "8": 436,
+            "16": 138,
+            "19": 35,
+            "50": 9,
+            "96": 1,
+            "97": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_FOUR_ISLAND_ICEFALL_CAVE_1F": {
+        "width": 20,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeafoamIslands",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 211,
+            "8": 136,
+            "38": 9,
+            "50": 29,
+            "57": 6,
+            "59": 3,
+            "96": 1,
+            "97": 4,
+            "101": 1
+        }
+    },
+    "LAYOUT_FOUR_ISLAND_ICEFALL_CAVE_B1F": {
+        "width": 24,
+        "height": 20,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeafoamIslands",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 179,
+            "8": 209,
+            "35": 70,
+            "50": 19,
+            "97": 3
+        }
+    },
+    "LAYOUT_FOUR_ISLAND_ICEFALL_CAVE_BACK": {
+        "width": 25,
+        "height": 26,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeafoamIslands",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 9,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 115,
+            "8": 321,
+            "21": 198,
+            "50": 15,
+            "101": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_LOBBY": {
+        "width": 19,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 291,
+            "101": 1,
+            "105": 1,
+            "108": 1,
+            "128": 28,
+            "131": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_1F": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_2F": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_3F": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_4F": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_5F": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_6F": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_7F": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_8F": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_ROOF": {
+        "width": 18,
+        "height": 16,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 286,
+            "105": 1,
+            "111": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_ELEVATOR": {
+        "width": 5,
+        "height": 7,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SilphCo",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 34,
+            "101": 1
+        }
+    },
+    "LAYOUT_CERULEAN_CITY_HOUSE5": {
+        "width": 11,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_GenericBuilding2",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 91,
+            "101": 1,
+            "129": 4,
+            "139": 1,
+            "156": 2
+        }
+    },
+    "LAYOUT_SIX_ISLAND_DOTTED_HOLE_1F": {
+        "width": 16,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 55,
+            "8": 105,
+            "50": 7,
+            "57": 3,
+            "59": 3,
+            "97": 1,
+            "101": 1,
+            "102": 1
+        }
+    },
+    "LAYOUT_SIX_ISLAND_DOTTED_HOLE_B1F": {
+        "width": 13,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 33,
+            "8": 94,
+            "32": 1,
+            "50": 11,
+            "102": 4
+        }
+    },
+    "LAYOUT_SIX_ISLAND_DOTTED_HOLE_B2F": {
+        "width": 13,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 36,
+            "8": 91,
+            "32": 1,
+            "50": 11,
+            "102": 4
+        }
+    },
+    "LAYOUT_SIX_ISLAND_DOTTED_HOLE_B3F": {
+        "width": 13,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 32,
+            "8": 95,
+            "32": 1,
+            "50": 11,
+            "102": 4
+        }
+    },
+    "LAYOUT_SIX_ISLAND_DOTTED_HOLE_B4F": {
+        "width": 13,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 35,
+            "8": 92,
+            "32": 1,
+            "50": 11,
+            "102": 4
+        }
+    },
+    "LAYOUT_SIX_ISLAND_DOTTED_HOLE_SAPPHIRE_ROOM": {
+        "width": 16,
+        "height": 15,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 59,
+            "8": 167,
+            "50": 13,
+            "97": 1
+        }
+    },
+    "LAYOUT_ISLAND_HARBOR": {
+        "width": 17,
+        "height": 13,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_IslandHarbor",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 12,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            21
+        ],
+        "behaviorCounts": {
+            "0": 111,
+            "21": 109,
+            "96": 1
+        }
+    },
+    "LAYOUT_ONE_ISLAND_POKEMON_CENTER_2F": {
+        "width": 15,
+        "height": 10,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_PokemonCenter",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 134,
+            "48": 2,
+            "105": 2,
+            "107": 1,
+            "128": 8,
+            "131": 1,
+            "141": 1,
+            "142": 1
+        }
+    },
+    "LAYOUT_SIX_ISLAND_PATTERN_BUSH": {
+        "width": 60,
+        "height": 32,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_ViridianForest",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 1177,
+            "2": 737,
+            "101": 6
+        }
+    },
+    "LAYOUT_THREE_ISLAND_DUNSPARCE_TUNNEL": {
+        "width": 30,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 38,
+            "8": 164,
+            "50": 7,
+            "101": 1
+        }
+    },
+    "LAYOUT_THREE_ISLAND_DUNSPARCE_TUNNEL_DUG_OUT": {
+        "width": 30,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 105,
+            "8": 86,
+            "42": 1,
+            "50": 16,
+            "101": 2
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_LOST_CAVE_ENTRANCE": {
+        "width": 11,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 66,
+            "8": 50,
+            "50": 3,
+            "97": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM1": {
+        "width": 11,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 68,
+            "8": 45,
+            "50": 3,
+            "96": 1,
+            "97": 1,
+            "98": 1,
+            "99": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM2": {
+        "width": 11,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 77,
+            "8": 37,
+            "50": 3,
+            "96": 1,
+            "98": 1,
+            "99": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM3": {
+        "width": 11,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 71,
+            "8": 43,
+            "50": 3,
+            "96": 1,
+            "98": 1,
+            "99": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM4": {
+        "width": 11,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 71,
+            "8": 43,
+            "50": 3,
+            "96": 1,
+            "98": 1,
+            "99": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM5": {
+        "width": 11,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 68,
+            "8": 46,
+            "50": 3,
+            "96": 1,
+            "98": 1,
+            "99": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM6": {
+        "width": 11,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 74,
+            "8": 40,
+            "50": 3,
+            "96": 1,
+            "98": 1,
+            "99": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM7": {
+        "width": 11,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 71,
+            "8": 43,
+            "50": 3,
+            "96": 1,
+            "98": 1,
+            "99": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM8": {
+        "width": 11,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 68,
+            "8": 46,
+            "50": 3,
+            "96": 1,
+            "98": 1,
+            "99": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM9": {
+        "width": 11,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 77,
+            "8": 37,
+            "50": 3,
+            "96": 1,
+            "98": 1,
+            "99": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM10": {
+        "width": 11,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 68,
+            "8": 49,
+            "50": 3,
+            "101": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM11": {
+        "width": 11,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 62,
+            "8": 56,
+            "43": 1,
+            "50": 1,
+            "96": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM12": {
+        "width": 11,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 66,
+            "8": 50,
+            "43": 1,
+            "50": 3,
+            "101": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM13": {
+        "width": 11,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 64,
+            "8": 53,
+            "43": 1,
+            "50": 2,
+            "99": 1
+        }
+    },
+    "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM14": {
+        "width": 11,
+        "height": 11,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_Cave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 64,
+            "8": 53,
+            "43": 1,
+            "50": 2,
+            "98": 1
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS_MONEAN_CHAMBER": {
+        "width": 23,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TanobyRuins",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 44,
+            "8": 346,
+            "101": 1
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS_LIPTOO_CHAMBER": {
+        "width": 23,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TanobyRuins",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 47,
+            "8": 343,
+            "101": 1
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS_WEEPTH_CHAMBER": {
+        "width": 23,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TanobyRuins",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 54,
+            "8": 336,
+            "101": 1
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS_DILFORD_CHAMBER": {
+        "width": 23,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TanobyRuins",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 48,
+            "8": 342,
+            "101": 1
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS_SCUFIB_CHAMBER": {
+        "width": 23,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TanobyRuins",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 53,
+            "8": 337,
+            "101": 1
+        }
+    },
+    "LAYOUT_SIX_ISLAND_ALTERING_CAVE": {
+        "width": 32,
+        "height": 24,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_RockTunnel",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 142,
+            "8": 590,
+            "42": 2,
+            "50": 33,
+            "101": 1
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND_SEVAULT_CANYON_TANOBY_KEY": {
+        "width": 15,
+        "height": 16,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_DiglettsCave",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 81,
+            "8": 103,
+            "32": 7,
+            "43": 36,
+            "50": 9,
+            "59": 3,
+            "101": 1
+        }
+    },
+    "LAYOUT_BIRTH_ISLAND_EXTERIOR": {
+        "width": 30,
+        "height": 30,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands67",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 39,
+        "surfableBehaviorCount": 2,
+        "surfableBehaviors": [
+            17,
+            21
+        ],
+        "behaviorCounts": {
+            "0": 270,
+            "12": 59,
+            "17": 547,
+            "21": 20,
+            "42": 3,
+            "101": 1
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_EXTERIOR": {
+        "width": 20,
+        "height": 23,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_SeviiIslands123",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 38,
+        "surfableBehaviorCount": 2,
+        "surfableBehaviors": [
+            17,
+            21
+        ],
+        "behaviorCounts": {
+            "0": 182,
+            "17": 253,
+            "21": 20,
+            "42": 3,
+            "96": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_1F": {
+        "width": 17,
+        "height": 26,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 125,
+            "8": 301,
+            "50": 14,
+            "97": 1,
+            "101": 1
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_SUMMIT": {
+        "width": 19,
+        "height": 25,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 412,
+            "8": 59,
+            "42": 2,
+            "50": 1,
+            "97": 1
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_BASE": {
+        "width": 21,
+        "height": 23,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 1,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            17
+        ],
+        "behaviorCounts": {
+            "0": 400,
+            "8": 29,
+            "17": 39,
+            "42": 1,
+            "50": 13,
+            "97": 1
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_SUMMIT_PATH_2F": {
+        "width": 7,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 28,
+            "8": 7,
+            "50": 12,
+            "97": 2
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_SUMMIT_PATH_3F": {
+        "width": 7,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 29,
+            "8": 6,
+            "50": 12,
+            "97": 2
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_SUMMIT_PATH_4F": {
+        "width": 7,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 28,
+            "8": 7,
+            "50": 12,
+            "97": 2
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_SUMMIT_PATH_5F": {
+        "width": 7,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 29,
+            "8": 6,
+            "50": 12,
+            "97": 2
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_BASE_PATH_B1F": {
+        "width": 7,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 28,
+            "8": 7,
+            "50": 12,
+            "97": 2
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_BASE_PATH_B2F": {
+        "width": 7,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 29,
+            "8": 6,
+            "50": 12,
+            "97": 2
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_BASE_PATH_B3F": {
+        "width": 7,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 28,
+            "8": 7,
+            "50": 12,
+            "97": 2
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_BASE_PATH_B4F": {
+        "width": 7,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 29,
+            "8": 6,
+            "50": 12,
+            "97": 2
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_BASE_PATH_B5F": {
+        "width": 7,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 28,
+            "8": 7,
+            "50": 12,
+            "97": 2
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_BASE_PATH_B6F": {
+        "width": 7,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 29,
+            "8": 6,
+            "50": 12,
+            "97": 2
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_BASE_PATH_B7F": {
+        "width": 7,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 28,
+            "8": 7,
+            "50": 12,
+            "97": 2
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_BASE_PATH_B8F": {
+        "width": 7,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 29,
+            "8": 6,
+            "50": 12,
+            "97": 2
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_BASE_PATH_B9F": {
+        "width": 7,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 28,
+            "8": 7,
+            "50": 12,
+            "97": 2
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_BASE_PATH_B10F": {
+        "width": 7,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 29,
+            "8": 6,
+            "50": 12,
+            "97": 2
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_BASE_PATH_B11F": {
+        "width": 7,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 28,
+            "8": 7,
+            "50": 12,
+            "97": 2
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS_RIXY_CHAMBER": {
+        "width": 23,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TanobyRuins",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 61,
+            "8": 329,
+            "101": 1
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS_VIAPOIS_CHAMBER": {
+        "width": 23,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TanobyRuins",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 66,
+            "8": 324,
+            "101": 1
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_B1F": {
+        "width": 17,
+        "height": 7,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 44,
+            "8": 59,
+            "50": 14,
+            "97": 2
+        }
+    },
+    "LAYOUT_NAVEL_ROCK_FORK": {
+        "width": 30,
+        "height": 100,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_NavelRock",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 731,
+            "8": 2208,
+            "42": 1,
+            "50": 57,
+            "97": 3
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_1F_DOUBLES": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_2F_DOUBLES": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_3F_DOUBLES": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_4F_DOUBLES": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_5F_DOUBLES": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_6F_DOUBLES": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_7F_DOUBLES": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_8F_DOUBLES": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_1F_KNOCKOUT": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_2F_KNOCKOUT": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_3F_KNOCKOUT": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_4F_KNOCKOUT": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_5F_KNOCKOUT": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_6F_KNOCKOUT": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_7F_KNOCKOUT": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_TRAINER_TOWER_8F_KNOCKOUT": {
+        "width": 18,
+        "height": 17,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_TrainerTower",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 303,
+            "109": 1,
+            "111": 1,
+            "163": 1
+        }
+    },
+    "LAYOUT_SEVEN_ISLAND_HOUSE_ROOM1": {
+        "width": 11,
+        "height": 9,
+        "primaryTileset": "gTileset_Building",
+        "secondaryTileset": "gTileset_SeafoamIslands",
+        "hasSurfableTerrain": false,
+        "surfableMetatileCount": 0,
+        "surfableBehaviorCount": 0,
+        "surfableBehaviors": [],
+        "behaviorCounts": {
+            "0": 92,
+            "101": 1,
+            "129": 4,
+            "148": 2
+        }
+    },
+    "LAYOUT_ONE_ISLAND_KINDLE_ROAD_EMBER_SPA": {
+        "width": 27,
+        "height": 39,
+        "primaryTileset": "gTileset_General",
+        "secondaryTileset": "gTileset_MtEmber",
+        "hasSurfableTerrain": true,
+        "surfableMetatileCount": 3,
+        "surfableBehaviorCount": 1,
+        "surfableBehaviors": [
+            19
+        ],
+        "behaviorCounts": {
+            "0": 492,
+            "8": 296,
+            "19": 16,
+            "40": 37,
+            "42": 3,
+            "43": 139,
+            "50": 69,
+            "101": 1
+        }
+    }
+}

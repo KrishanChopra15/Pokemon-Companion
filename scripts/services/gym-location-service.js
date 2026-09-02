@@ -8,12 +8,13 @@
  * - Combine gym progression and map graph.
  * - Find reachable locations before a gym.
  * - Respect location gates.
+ * - Respect progression requirements.
  * - Respect field obstacles.
  *
  * Does NOT:
  * - Analyze Pokémon.
  * - Build databases.
- * - Handle complete progression rules.
+ * - Create progression rules.
  */
 
 "use strict";
@@ -26,7 +27,8 @@ class GymLocationService {
         gymProgressionService,
         locationGraphService,
         locationGateService = null,
-        fieldObstacleService = null
+        fieldObstacleService = null,
+        progressionService = null
     ) {
 
 
@@ -44,6 +46,10 @@ class GymLocationService {
 
         this.fieldObstacle =
             fieldObstacleService;
+
+
+        this.progression =
+            progressionService;
 
 
     }
@@ -87,9 +93,9 @@ class GymLocationService {
 
 
         const queue =
-            [
-                startLocation
-            ];
+        [
+            startLocation
+        ];
 
 
 
@@ -130,13 +136,48 @@ class GymLocationService {
 
 
             for (
-                const next of connections
+                const connection of
+                    connections
             ) {
+
+
+                const nextLocation =
+                    typeof connection ===
+                        "string"
+                        ?
+                        connection
+                        :
+                        connection.location;
+
+
+
+                const requirements =
+                    typeof connection ===
+                        "string"
+                        ?
+                        []
+                        :
+                        (
+                            connection.requirements
+                            ||
+                            []
+                        );
+
+
+
+                if (
+                    !nextLocation
+                ) {
+
+                    continue;
+
+                }
+
 
 
                 if (
                     visited.has(
-                        next
+                        nextLocation
                     )
                 ) {
 
@@ -147,19 +188,35 @@ class GymLocationService {
 
 
                 if (
-                    this.canEnterLocation(
-                        next,
+                    !this.canTraverseConnection(
+                        requirements,
+                        connection,
                         playerState
                     )
                 ) {
 
-
-                    queue.push(
-                        next
-                    );
-
+                    continue;
 
                 }
+
+
+
+                if (
+                    !this.canEnterLocation(
+                        nextLocation,
+                        playerState
+                    )
+                ) {
+
+                    continue;
+
+                }
+
+
+
+                queue.push(
+                    nextLocation
+                );
 
 
             }
@@ -172,6 +229,253 @@ class GymLocationService {
         return [
             ...visited
         ];
+
+    }
+
+
+
+
+    //--------------------------------
+    // Connection requirements
+    //--------------------------------
+
+
+    canTraverseConnection(
+        requirements,
+        connection,
+        playerState = {}
+    ) {
+
+
+        if (
+            !requirements
+            ||
+            requirements.length === 0
+        ) {
+
+            return true;
+
+        }
+
+
+
+        if (
+            !this.progression
+        ) {
+
+            return false;
+
+        }
+
+
+
+        for (
+            const requirement of
+                requirements
+        ) {
+
+
+            if (
+                !requirement
+            ) {
+
+                continue;
+
+            }
+
+
+
+            const progressionRequirement =
+                this.convertConnectionRequirement(
+                    requirement
+                );
+
+
+
+            const result =
+                this.progression
+                    .checkRequirement(
+                        progressionRequirement,
+                        playerState
+                    );
+
+
+
+            if (
+                !result.allowed
+            ) {
+
+                return false;
+
+            }
+
+
+        }
+
+
+
+        return true;
+
+    }
+
+
+
+
+    //--------------------------------
+    // Convert connection requirement
+    //--------------------------------
+
+
+    convertConnectionRequirement(
+        requirement
+    ) {
+
+
+        if (
+            typeof requirement ===
+                "string"
+        ) {
+
+            return {
+
+                abilities:
+                [
+                    requirement
+                ]
+
+            };
+
+        }
+
+
+
+        if (
+            !requirement
+            ||
+            typeof requirement !==
+                "object"
+        ) {
+
+            return {
+
+                abilities:
+                []
+
+            };
+
+        }
+
+
+
+        const type =
+            String(
+
+                requirement.type
+
+                ||
+
+                ""
+
+            )
+            .toUpperCase();
+
+
+
+        if (
+            !type
+        ) {
+
+            return {
+
+                abilities:
+                []
+
+            };
+
+        }
+
+
+
+        //--------------------------------
+        // Explicit ability
+        //--------------------------------
+
+        if (
+            type.startsWith(
+                "CAN_USE_"
+            )
+        ) {
+
+            return {
+
+                abilities:
+                [
+                    type
+                ]
+
+            };
+
+        }
+
+
+
+        //--------------------------------
+        // Common field abilities
+        //--------------------------------
+
+        const abilityMap =
+        {
+
+            CUT:
+                "CAN_USE_CUT",
+
+            FLASH:
+                "CAN_USE_FLASH",
+
+            SURF:
+                "CAN_USE_SURF",
+
+            STRENGTH:
+                "CAN_USE_STRENGTH",
+
+            FLY:
+                "CAN_USE_FLY",
+
+            ROCK_SMASH:
+                "CAN_USE_ROCK_SMASH",
+
+            POKE_FLUTE:
+                "CAN_USE_POKE_FLUTE"
+
+        };
+
+
+
+        if (
+            abilityMap[type]
+        ) {
+
+            return {
+
+                abilities:
+                [
+                    abilityMap[type]
+                ]
+
+            };
+
+        }
+
+
+
+        return {
+
+            abilities:
+            [
+                type
+            ]
+
+        };
 
     }
 
@@ -219,6 +523,52 @@ class GymLocationService {
 
 
         //--------------------------------
+        // Progression
+        //--------------------------------
+
+        if (
+            this.progression
+        ) {
+
+
+            const rules =
+                this.progression
+                    .getLocationProgression(
+                        location
+                    );
+
+
+
+            for (
+                const rule of
+                    rules
+            ) {
+
+
+                const result =
+                    this.progression
+                        .canUnlock(
+                            rule,
+                            playerState
+                        );
+
+
+
+                if (
+                    !result.allowed
+                ) {
+
+                    return false;
+
+                }
+
+            }
+
+        }
+
+
+
+        //--------------------------------
         // Field obstacles
         //--------------------------------
 
@@ -235,26 +585,29 @@ class GymLocationService {
 
 
 
-            const moves =
-                playerState.moves || [];
-
-
-
             for (
-                const obstacle of obstacles
+                const obstacle of
+                    obstacles
             ) {
 
 
+                const result =
+                    this.fieldObstacle
+                        .canClearObstacle(
+                            location,
+                            obstacle.type,
+                            playerState
+                        );
+
+
+
                 if (
-                    !moves.includes(
-                        obstacle.type
-                    )
+                    !result.clearable
                 ) {
 
                     return false;
 
                 }
-
 
             }
 
@@ -266,7 +619,6 @@ class GymLocationService {
         return true;
 
     }
-
 
 
 

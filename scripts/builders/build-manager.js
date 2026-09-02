@@ -9,15 +9,27 @@
  * - Generate gym databases.
  * - Generate progression databases.
  * - Generate reference databases.
+ * - Generate movement databases.
  * - Build generated databases.
+ * - Build trainer database.
+ * - Build NPC database from events and trainers.
  *
  * Does NOT:
  * - Read ROMs.
  * - Extract ROM data.
  * - Parse binary data.
+ * - Execute application services.
  */
 
 "use strict";
+
+
+const fs =
+    require("fs");
+
+
+const path =
+    require("path");
 
 
 //========================================
@@ -74,6 +86,14 @@ const ProgressionGenerator =
 
 const GymGenerator =
     require("../generators/raw/gym-generator");
+
+
+const BackgroundEventGenerator =
+    require("../generators/raw/background-event-generator");
+
+
+const MovementScriptGenerator =
+    require("../generators/raw/movement-script-generator");
 
 
 //========================================
@@ -161,13 +181,28 @@ const StoryEventMapGenerator =
 
 
 //========================================
+// NPC Generator
+//========================================
+
+const NPCEventGenerator =
+    require("../generators/raw/npc-event-generator");
+
+
+//========================================
 // Rules
 //========================================
 
 const ProgressionRules =
 {
     firered:
-        require("../rules/firered-progression-rules")
+        require("../rules/firered")
+};
+
+
+const WorldGates =
+{
+    firered:
+        require("../rules/firered/world-gates")
 };
 
 
@@ -233,7 +268,8 @@ const GymBuilder =
 // Build Manager
 //========================================
 
-class BuildManager {
+class BuildManager
+{
 
 
     constructor()
@@ -241,11 +277,13 @@ class BuildManager {
 
         this.built =
         {
+
             progression:
                 false,
 
             gyms:
                 false
+
         };
 
     }
@@ -263,13 +301,16 @@ class BuildManager {
 
         console.log();
 
+
         console.log(
             "========================================"
         );
 
+
         console.log(
             "Build Manager"
         );
+
 
         console.log(
             "========================================"
@@ -292,7 +333,9 @@ class BuildManager {
 
             new PokemonSpeciesGenerator()
                 .generate(
+
                     data.species
+
                 );
 
         }
@@ -305,7 +348,9 @@ class BuildManager {
 
             new PokemonMoveGenerator()
                 .generate(
+
                     data.moves
+
                 );
 
         }
@@ -313,13 +358,17 @@ class BuildManager {
 
         new PokemonEvolutionGenerator()
             .generate(
+
                 game
+
             );
 
 
         new PokemonLearnsetGenerator()
             .generate(
+
                 game
+
             );
 
 
@@ -330,8 +379,11 @@ class BuildManager {
 
             new PokemonEncounterGenerator()
                 .generate(
+
                     data.encounters,
+
                     game
+
                 );
 
         }
@@ -339,25 +391,33 @@ class BuildManager {
 
         new PokemonMachineGenerator()
             .generate(
+
                 game
+
             );
 
 
         new PokemonEggMoveGenerator()
             .generate(
+
                 game
+
             );
 
 
         new TrainerGenerator()
             .generate(
+
                 game
+
             );
 
 
         new TrainerPartyGenerator()
             .generate(
+
                 game
+
             );
 
 
@@ -368,7 +428,61 @@ class BuildManager {
 
             new LocationGenerator()
                 .generate(
+
                     data.locations
+
+                );
+
+        }
+
+
+        //========================================
+        // Background Event Database
+        //========================================
+
+        if(
+            data.backgroundEvents
+        )
+        {
+
+            console.log(
+                "Generating background event database..."
+            );
+
+
+            new BackgroundEventGenerator()
+                .generate(
+
+                    data.backgroundEvents,
+
+                    game
+
+                );
+
+        }
+
+
+        //========================================
+        // Movement Script Database
+        //========================================
+
+        if(
+            data.movementScripts
+        )
+        {
+
+            console.log(
+                "Generating movement script database..."
+            );
+
+
+            new MovementScriptGenerator()
+                .generate(
+
+                    data.movementScripts,
+
+                    game
+
                 );
 
         }
@@ -396,8 +510,11 @@ class BuildManager {
 
             new GymGenerator()
                 .generate(
+
                     gyms,
+
                     game
+
                 );
 
         }
@@ -411,8 +528,16 @@ class BuildManager {
             ProgressionRules[game];
 
 
+        const worldGates =
+            WorldGates[game];
+
+
         if(
-            rules
+            (
+                rules
+                ||
+                worldGates
+            )
             &&
             !this.built.progression
         )
@@ -423,10 +548,77 @@ class BuildManager {
             );
 
 
+            //----------------------------------------
+            // World gates are authoritative for
+            // access rules when their IDs overlap
+            // with general progression rules.
+            //----------------------------------------
+
+            const worldGateIds =
+                new Set(
+
+                    Array.isArray(worldGates)
+                        ?
+                        worldGates
+                            .map(
+                                rule =>
+                                    rule
+                                    &&
+                                    rule.id
+                                    ?
+                                    rule.id
+                                    :
+                                    null
+                            )
+                            .filter(
+                                Boolean
+                            )
+                        :
+                        []
+
+                );
+
+
+            const baseRules =
+                Array.isArray(rules)
+                    ?
+                    rules.filter(
+
+                        rule =>
+
+                            !rule
+                            ||
+                            !worldGateIds.has(
+                                rule.id
+                            )
+
+                    )
+                    :
+                    [];
+
+
+            const progressionRules =
+            [
+
+                ...(Array.isArray(worldGates)
+                    ?
+                    worldGates
+                    :
+                    []),
+
+
+                ...baseRules
+
+            ];
+
+
             new ProgressionGenerator()
                 .generate(
-                    rules,
+
+                    progressionRules,
+
                     game
+
                 );
 
         }
@@ -529,7 +721,9 @@ class BuildManager {
 
             new PokemonSpeciesBuilder()
                 .build(
+
                     game
+
                 );
 
         }
@@ -542,7 +736,9 @@ class BuildManager {
 
             new PokemonMoveBuilder()
                 .build(
+
                     game
+
                 );
 
         }
@@ -555,10 +751,29 @@ class BuildManager {
 
             new PokemonEncounterBuilder()
                 .build(
+
                     game
+
                 );
 
         }
+
+
+        //========================================
+        // Location Database
+        //========================================
+
+        // Build locations before Pokémon
+        // availability so the availability
+        // builder can use the generated
+        // location graph, gates, and encounters.
+
+        new LocationBuilder()
+            .build(
+
+                game
+
+            );
 
 
         //========================================
@@ -577,6 +792,120 @@ class BuildManager {
             );
 
 
+            //====================================
+            // Evolution database
+            //====================================
+
+            const evolutionDatabasePath =
+                path.join(
+
+                    process.cwd(),
+
+                    "database",
+
+                    "raw",
+
+                    game,
+
+                    "pokemon-evolutions.json"
+
+                );
+
+
+            if(
+                !fs.existsSync(
+                    evolutionDatabasePath
+                )
+            )
+            {
+
+                throw new Error(
+
+                    `Evolution database missing: ${evolutionDatabasePath}`
+
+                );
+
+            }
+
+
+            const evolutionDatabase =
+                JSON.parse(
+
+                    fs.readFileSync(
+
+                        evolutionDatabasePath,
+
+                        "utf8"
+
+                    )
+
+                );
+
+
+            //====================================
+            // Event database
+            //====================================
+
+            const eventDatabase =
+                data.events
+                ||
+                {};
+
+
+            //====================================
+            // Location database
+            //====================================
+
+            const locationDatabasePath =
+                path.join(
+
+                    process.cwd(),
+
+                    "database",
+
+                    "generated",
+
+                    game,
+
+                    "locations.json"
+
+                );
+
+
+            if(
+                !fs.existsSync(
+                    locationDatabasePath
+                )
+            )
+            {
+
+                throw new Error(
+
+                    `Location database missing: ${locationDatabasePath}`
+
+                );
+
+            }
+
+
+            const locationDatabase =
+                JSON.parse(
+
+                    fs.readFileSync(
+
+                        locationDatabasePath,
+
+                        "utf8"
+
+                    )
+
+                );
+
+
+            //====================================
+            // Availability builder
+            //====================================
+
             const availabilityBuilder =
                 new PokemonAvailabilityBuilder(
 
@@ -584,9 +913,19 @@ class BuildManager {
 
                     data.encounters,
 
+                    evolutionDatabase,
+
                     null,
 
-                    null
+                    ProgressionRules[game],
+
+                    null,
+
+                    null,
+
+                    eventDatabase,
+
+                    locationDatabase
 
                 );
 
@@ -610,28 +949,22 @@ class BuildManager {
 
 
         //========================================
-        // Location Database
-        //========================================
-
-        new LocationBuilder()
-            .build(
-                game
-            );
-
-
-        //========================================
         // Move Learner Database
         //========================================
 
         new MoveLearnerGenerator()
             .generate(
+
                 game
+
             );
 
 
         new MoveLearnerBuilder()
             .build(
+
                 game
+
             );
 
 
@@ -641,8 +974,110 @@ class BuildManager {
 
         new TrainerBuilder()
             .build(
+
                 game
+
             );
+
+
+        //========================================
+        // NPC Database
+        //
+        // TrainerBuilder has now created:
+        //
+        // database/generated/<game>/full-trainers.json
+        //
+        // NPCEventGenerator receives:
+        // - extracted NPC objects
+        // - extracted event scripts
+        // - complete trainer database
+        // - extracted map objects
+        // - extracted map scripts
+        // - extracted coordinate events
+        //
+        // Map objects, map scripts, and coordinate
+        // events allow NPC classification to resolve
+        // scene-driven characters and coordinate-triggered
+        // battles that do not originate from a direct
+        // object interaction.
+        //========================================
+
+        if(
+            data.npcs
+            &&
+            data.events
+        )
+        {
+
+            console.log(
+                "Building NPC database..."
+            );
+
+
+            const trainerPath =
+                path.join(
+
+                    __dirname,
+
+                    "../../database/generated",
+
+                    game,
+
+                    "full-trainers.json"
+
+                );
+
+
+            if(
+                !fs.existsSync(
+                    trainerPath
+                )
+            )
+            {
+
+                throw new Error(
+
+                    `Trainer database missing: ${trainerPath}`
+
+                );
+
+            }
+
+
+            const trainers =
+                JSON.parse(
+
+                    fs.readFileSync(
+
+                        trainerPath,
+
+                        "utf8"
+
+                    )
+
+                );
+
+
+            new NPCEventGenerator()
+                .generate(
+
+                    data.npcs,
+
+                    data.events,
+
+                    trainers,
+
+                    game,
+
+                    data.objects || [],
+
+                    data.mapScripts || {},
+
+                    data.coordinateEvents || {}
+
+                );
+
+        }
 
 
         //========================================
@@ -663,7 +1098,9 @@ class BuildManager {
 
             new GymBuilder()
                 .build(
+
                     game
+
                 );
 
 
@@ -678,7 +1115,11 @@ class BuildManager {
         //========================================
 
         if(
-            rules
+            (
+                rules
+                ||
+                worldGates
+            )
             &&
             !this.built.progression
         )
@@ -691,7 +1132,9 @@ class BuildManager {
 
             new ProgressionBuilder()
                 .build(
+
                     game
+
                 );
 
 
@@ -716,8 +1159,11 @@ class BuildManager {
 
             new StoryEventMapGenerator()
                 .generate(
+
                     eventMappings,
+
                     game
+
                 );
 
         }
@@ -734,8 +1180,11 @@ class BuildManager {
 
             new DialogueBuilder()
                 .build(
+
                     data.dialogues,
+
                     game
+
                 );
 
         }
@@ -747,9 +1196,11 @@ class BuildManager {
 
         console.log();
 
+
         console.log(
             "Build Manager completed."
         );
+
 
         console.log();
 

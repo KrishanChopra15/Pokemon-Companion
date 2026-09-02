@@ -257,6 +257,36 @@ const Gen3ItemBehaviors =
 
 
     //================================
+    // PP expansion
+    //================================
+
+    ITEM_PP_UP:
+    {
+        category:
+            "PP_EXPANSION",
+
+        behavior:
+            "PP_UP",
+
+        scope:
+            "SINGLE_MOVE"
+    },
+
+
+    ITEM_PP_MAX:
+    {
+        category:
+            "PP_EXPANSION",
+
+        behavior:
+            "PP_MAX",
+
+        scope:
+            "SINGLE_MOVE"
+    },
+
+
+    //================================
     // Status healing
     //================================
 

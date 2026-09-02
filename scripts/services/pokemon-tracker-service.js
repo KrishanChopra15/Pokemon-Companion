@@ -11,6 +11,7 @@
  * - Mark Pokémon as seen/caught.
  * - Find tracked Pokémon.
  * - Provide collection summaries.
+ * - Preserve individual Pokémon state.
  *
  * Does NOT:
  * - Calculate EXP.
@@ -18,6 +19,7 @@
  * - Handle evolution.
  * - Recommend teams.
  * - Load ROM data.
+ * - Execute friendship mechanics.
  */
 
 "use strict";
@@ -80,18 +82,59 @@ class PokemonTrackerService {
         }
 
 
+        if(
+            !pokemon.species
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Missing Pokemon species"
+
+            };
+
+        }
 
 
 
 
 
+
+
+
+        //--------------------------------
+        // Preserve individual Pokémon
+        // state.
+        //--------------------------------
 
         const trackedPokemon =
         {
 
-            id:
+            ...pokemon,
+
+
+            //--------------------------------
+            // Tracker-specific ID
+            //--------------------------------
+
+            trackerId:
 
                 this.nextId++,
+
+
+            //--------------------------------
+            // Preserve existing Pokémon ID
+            // when one exists.
+            //--------------------------------
+
+            id:
+
+                pokemon.id
+                ??
+                null,
 
 
             species:
@@ -101,38 +144,84 @@ class PokemonTrackerService {
 
             nickname:
 
-                pokemon.nickname || null,
+                pokemon.nickname
+                ??
+                null,
 
 
             level:
 
-                pokemon.level || 1,
+                pokemon.level
+                ??
+                1,
 
 
             exp:
 
-                pokemon.exp || 0,
+                pokemon.exp
+                ??
+                0,
+
+
+            friendship:
+
+                pokemon.friendship
+                ??
+                70,
+
+
+            ball:
+
+                pokemon.ball
+                ??
+                pokemon.captureBall
+                ??
+                null,
+
+
+            metLocation:
+
+                pokemon.metLocation
+                ??
+                pokemon.location
+                ??
+                null,
 
 
             moves:
 
-                pokemon.moves || [],
+                Array.isArray(
+                    pokemon.moves
+                )
+
+                ?
+
+                pokemon.moves
+
+                :
+
+                [],
 
 
             seen:
 
+                pokemon.seen
+                ??
                 true,
 
 
             caught:
 
+                pokemon.caught
+                ??
                 true,
 
 
             favorite:
 
+                pokemon.favorite
+                ??
                 false
-
 
         };
 
@@ -192,19 +281,9 @@ class PokemonTrackerService {
 
 
         const index =
-            this.pokemon.findIndex(
-
-                pokemon =>
-
-                    pokemon.id === id
-
+            this.findIndexById(
+                id
             );
-
-
-
-
-
-
 
 
         if(
@@ -301,13 +380,25 @@ class PokemonTrackerService {
     {
 
 
+        if(
+            !species
+        )
+        {
+
+            return [];
+
+        }
+
+
         return this.pokemon.filter(
 
             pokemon =>
 
                 pokemon.species ===
 
-                species.toUpperCase()
+                String(
+                    species
+                ).toUpperCase()
 
         );
 
@@ -333,11 +424,41 @@ class PokemonTrackerService {
     {
 
 
+        //--------------------------------
+        // Support tracker ID
+        //--------------------------------
+
+        const trackerPokemon =
+            this.pokemon.find(
+
+                pokemon =>
+
+                    pokemon.trackerId ===
+                    id
+
+            );
+
+
+        if(
+            trackerPokemon
+        )
+        {
+
+            return trackerPokemon;
+
+        }
+
+
+        //--------------------------------
+        // Support Pokémon ID
+        //--------------------------------
+
         return this.pokemon.find(
 
             pokemon =>
 
-                pokemon.id === id
+                pokemon.id ===
+                id
 
         )
 
@@ -345,6 +466,56 @@ class PokemonTrackerService {
 
         null;
 
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Find internal index
+    //--------------------------------
+
+
+    findIndexById(
+        id
+    )
+    {
+
+
+        const trackerIndex =
+            this.pokemon.findIndex(
+
+                pokemon =>
+
+                    pokemon.trackerId ===
+                    id
+
+            );
+
+
+        if(
+            trackerIndex !== -1
+        )
+        {
+
+            return trackerIndex;
+
+        }
+
+
+        return this.pokemon.findIndex(
+
+            pokemon =>
+
+                pokemon.id ===
+                id
+
+        );
 
     }
 
@@ -405,6 +576,32 @@ class PokemonTrackerService {
 
 
 
+        if(
+            !updates
+            ||
+            typeof updates !==
+                "object"
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Invalid updates"
+
+            };
+
+        }
+
+
+
+
+
+
+
+
         Object.assign(
 
             pokemon,
@@ -412,6 +609,58 @@ class PokemonTrackerService {
             updates
 
         );
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Normalize friendship after an
+        // update when one is supplied.
+        //--------------------------------
+
+        if(
+            updates.friendship !==
+                undefined
+        )
+        {
+
+            const friendship =
+                Number(
+                    updates.friendship
+                );
+
+
+            if(
+                Number.isFinite(
+                    friendship
+                )
+            )
+            {
+
+                pokemon.friendship =
+                    Math.min(
+
+                        255,
+
+                        Math.max(
+
+                            0,
+
+                            Math.floor(
+                                friendship
+                            )
+
+                        )
+
+                    );
+
+            }
+
+        }
 
 
 
@@ -575,6 +824,56 @@ class PokemonTrackerService {
 
         };
 
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Count different caught species
+    //--------------------------------
+
+    getCaughtSpeciesCount()
+    {
+
+        const species =
+            new Set();
+
+
+        for(
+            const pokemon of
+                this.pokemon
+        )
+        {
+
+            if(
+                !pokemon
+                ||
+                !pokemon.caught
+                ||
+                !pokemon.species
+            )
+            {
+
+                continue;
+
+            }
+
+
+            species.add(
+                pokemon.species
+            );
+
+        }
+
+
+        return species.size;
 
     }
 

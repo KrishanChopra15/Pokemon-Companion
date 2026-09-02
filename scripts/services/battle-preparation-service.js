@@ -11,6 +11,7 @@
  * - Prepare AI configuration.
  * - Validate battle participants.
  * - Calculate battle stats.
+ * - Preserve individual Pokémon runtime state.
  *
  * Does NOT:
  * - Execute battles.
@@ -22,11 +23,12 @@
 "use strict";
 
 
+const PokemonMoveSlot =
+    require("../domain/pokemon-move-slot");
 
 
-
-class BattlePreparationService {
-
+class BattlePreparationService
+{
 
 
     constructor(
@@ -37,7 +39,6 @@ class BattlePreparationService {
         moveDatabaseService = null
     )
     {
-
 
         this.trainers =
             trainerDatabaseService;
@@ -54,24 +55,16 @@ class BattlePreparationService {
         this.statProvider =
             pokemonStatProviderService;
 
+
         this.moves =
             moveDatabaseService;
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Prepare trainer battle
     //--------------------------------
-
 
     prepareTrainerBattle(
         trainerId,
@@ -79,13 +72,10 @@ class BattlePreparationService {
     )
     {
 
-
         const trainer =
-
             this.getTrainer(
                 trainerId
             );
-
 
 
         if(
@@ -95,7 +85,8 @@ class BattlePreparationService {
 
             return {
 
-                success:false,
+                success:
+                    false,
 
                 reason:
                     "Unknown trainer"
@@ -105,18 +96,10 @@ class BattlePreparationService {
         }
 
 
-
-
-
-
-
-
         const playerParty =
-
             this.getPlayerParty(
                 playerState
             )
-
             .map(
 
                 pokemon =>
@@ -126,14 +109,7 @@ class BattlePreparationService {
                     )
 
             )
-
             .filter(Boolean);
-
-
-
-
-
-
 
 
         if(
@@ -143,7 +119,8 @@ class BattlePreparationService {
 
             return {
 
-                success:false,
+                success:
+                    false,
 
                 reason:
                     "Player has no Pokémon"
@@ -153,18 +130,10 @@ class BattlePreparationService {
         }
 
 
-
-
-
-
-
-
         const opponentParty =
-
             this.getTrainerParty(
                 trainerId
             )
-
             .map(
 
                 pokemon =>
@@ -174,14 +143,7 @@ class BattlePreparationService {
                     )
 
             )
-
             .filter(Boolean);
-
-
-
-
-
-
 
 
         if(
@@ -191,7 +153,8 @@ class BattlePreparationService {
 
             return {
 
-                success:false,
+                success:
+                    false,
 
                 reason:
                     "Trainer has no Pokémon"
@@ -201,98 +164,60 @@ class BattlePreparationService {
         }
 
 
-
-
-
-
-
-
         return {
 
-
-            success:true,
-
+            success:
+                true,
 
             battleType:
-
                 "TRAINER",
-
 
             trainerId,
 
-
             trainer,
-
-
 
             player:
             {
 
                 party:
-
                     playerParty,
 
-
                 active:
-
                     0
 
             },
-
-
 
             opponent:
             {
 
                 party:
-
                     opponentParty,
 
-
                 active:
-
                     0,
 
-
                 trainerClass:
-
                     trainer.trainerClass,
 
-
                 trainerPic:
-
                     trainer.trainerPic,
 
-
                 aiFlags:
-
                     trainer.aiFlags,
 
-
                 encounterMusic:
-
                     trainer.encounterMusic
 
             }
 
-
         };
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Get trainer
     //--------------------------------
-
 
     getTrainer(
         trainerId
@@ -303,52 +228,42 @@ class BattlePreparationService {
             !this.trainers
         )
         {
-            return null;
-        }
 
+            return null;
+
+        }
 
 
         return this.trainers.getTrainer(
             trainerId
         );
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Get trainer party
     //--------------------------------
 
-
     getTrainerParty(
         trainerId
     )
     {
 
-
         const trainer =
-
             this.getTrainer(
                 trainerId
             );
-
 
 
         if(
             !trainer
         )
         {
-            return [];
-        }
 
+            return [];
+
+        }
 
 
         if(
@@ -357,9 +272,10 @@ class BattlePreparationService {
             )
         )
         {
-            return trainer.party;
-        }
 
+            return trainer.party;
+
+        }
 
 
         if(
@@ -370,9 +286,10 @@ class BattlePreparationService {
             )
         )
         {
-            return trainer.party.pokemon;
-        }
 
+            return trainer.party.pokemon;
+
+        }
 
 
         return [];
@@ -380,33 +297,23 @@ class BattlePreparationService {
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
     // Player party
     //--------------------------------
-
 
     getPlayerParty(
         playerState
     )
     {
 
-
         if(
             !playerState
         )
         {
+
             return [];
+
         }
-
-
-
 
 
         if(
@@ -415,11 +322,10 @@ class BattlePreparationService {
             )
         )
         {
+
             return playerState.pokemon;
+
         }
-
-
-
 
 
         if(
@@ -428,11 +334,10 @@ class BattlePreparationService {
             )
         )
         {
+
             return playerState.team;
+
         }
-
-
-
 
 
         if(
@@ -441,11 +346,10 @@ class BattlePreparationService {
             )
         )
         {
+
             return playerState.party;
+
         }
-
-
-
 
 
         return [];
@@ -453,38 +357,27 @@ class BattlePreparationService {
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
     // Prepare Pokémon
     //--------------------------------
-
 
     preparePokemon(
         pokemon
     )
     {
 
-
         if(
             !pokemon
         )
         {
+
             return null;
+
         }
 
 
-
-
-
-
-        let basePokemon = null;
-
+        let basePokemon =
+            null;
 
 
         if(
@@ -495,39 +388,21 @@ class BattlePreparationService {
         {
 
             basePokemon =
-
                 this.pokemon.getPokemon(
-
                     pokemon.species
-
                 );
 
         }
 
 
-
-
-
-
-
-
         const level =
-
             pokemon.level
-
             ||
-
             1;
 
 
-
-
-
-
-
-
-        let types = [];
-
+        let types =
+            [];
 
 
         if(
@@ -544,7 +419,6 @@ class BattlePreparationService {
             pokemon.type
         )
         {
-
 
             types =
 
@@ -564,7 +438,6 @@ class BattlePreparationService {
 
                 ];
 
-
         }
 
         else if(
@@ -572,9 +445,7 @@ class BattlePreparationService {
         )
         {
 
-
             types =
-
             [
 
                 basePokemon.type1?.name?.toUpperCase(),
@@ -582,21 +453,16 @@ class BattlePreparationService {
                 basePokemon.type2?.name?.toUpperCase()
 
             ]
-
             .filter(Boolean);
-
 
         }
 
 
-
-
-
-
-
+        //--------------------------------
+        // Preserve incoming Pokémon state
+        //--------------------------------
 
         const cleanPokemon =
-
         {
 
             ...(basePokemon || {}),
@@ -606,102 +472,87 @@ class BattlePreparationService {
         };
 
 
-
-
-
         delete cleanPokemon.type;
 
 
+        //--------------------------------
+        // Friendship
+        //
+        // This preserves the individual's
+        // existing friendship value.
+        //
+        // Battle runtime falls back to
+        // the same default already used by
+        // friendship-based move mechanics.
+        //--------------------------------
 
-
-
-
-
-
+        const friendship =
+            this.resolveFriendship(
+                pokemon
+            );
+                
+                
         let prepared =
-
         {
-
-
             ...cleanPokemon,
-
-
-
+        
+            sourcePokemon:
+                pokemon,
+        
             species:
-
                 pokemon.species
-
                 ||
-
                 basePokemon?.name
-
                 ||
-
                 "UNKNOWN",
-
-
-
+        
             level,
-
-
-
+        
+            friendship,
+        
             types,
-
-
-
+        
             status:
-
                 pokemon.status
-
                 ||
-
                 null,
-
-
-
+        
             statStages:
-
             {
-
-                attack:0,
-
-                defense:0,
-
-                speed:0,
-
-                spAttack:0,
-
-                spDefense:0,
-
-                accuracy:0,
-
-                evasion:0
-
+                attack:
+                    0,
+            
+                defense:
+                    0,
+            
+                speed:
+                    0,
+            
+                spAttack:
+                    0,
+            
+                spDefense:
+                    0,
+            
+                accuracy:
+                    0,
+            
+                evasion:
+                    0
             }
-
         };
-
-
-
-
-
-
-
 
 
         //--------------------------------
         // Calculate battle stats
         //--------------------------------
 
-
         if(
             this.statProvider
         )
         {
 
-
             const stats =
-
                 this.statProvider.getBattleStats(
 
                     prepared,
@@ -711,17 +562,10 @@ class BattlePreparationService {
                 );
 
 
-
-
-
             prepared =
-
             {
 
-
                 ...prepared,
-
-
 
                 hp:
 
@@ -735,8 +579,6 @@ class BattlePreparationService {
 
                     1,
 
-
-
                 maxHP:
 
                     pokemon.maxHP
@@ -749,8 +591,6 @@ class BattlePreparationService {
 
                     1,
 
-
-
                 attack:
 
                     stats.attack
@@ -758,8 +598,6 @@ class BattlePreparationService {
                     ||
 
                     1,
-
-
 
                 defense:
 
@@ -769,8 +607,6 @@ class BattlePreparationService {
 
                     1,
 
-
-
                 spAttack:
 
                     stats.spAttack
@@ -778,8 +614,6 @@ class BattlePreparationService {
                     ||
 
                     1,
-
-
 
                 spDefense:
 
@@ -789,8 +623,6 @@ class BattlePreparationService {
 
                     1,
 
-
-
                 speed:
 
                     stats.speed
@@ -799,15 +631,12 @@ class BattlePreparationService {
 
                     1
 
-
             };
-
 
         }
 
         else
         {
-
 
             prepared.hp =
 
@@ -826,7 +655,6 @@ class BattlePreparationService {
                 );
 
 
-
             prepared.maxHP =
 
                 pokemon.maxHP
@@ -834,7 +662,6 @@ class BattlePreparationService {
                 ||
 
                 prepared.hp;
-
 
 
             prepared.attack =
@@ -850,7 +677,6 @@ class BattlePreparationService {
                 1;
 
 
-
             prepared.defense =
 
                 pokemon.defense
@@ -862,7 +688,6 @@ class BattlePreparationService {
                 ||
 
                 1;
-
 
 
             prepared.spAttack =
@@ -878,7 +703,6 @@ class BattlePreparationService {
                 1;
 
 
-
             prepared.spDefense =
 
                 pokemon.spDefense
@@ -890,7 +714,6 @@ class BattlePreparationService {
                 ||
 
                 1;
-
 
 
             prepared.speed =
@@ -905,31 +728,20 @@ class BattlePreparationService {
 
                 1;
 
-
         }
-
-
-
-
-
-
-
 
 
         //--------------------------------
         // Prepare moves
         //--------------------------------
 
-
-        let moveSource = [];
-
-
+        let moveSource =
+            [];
 
 
         //--------------------------------
         // Use supplied moves
         //--------------------------------
-
 
         if(
             Array.isArray(
@@ -939,21 +751,16 @@ class BattlePreparationService {
             pokemon.moves.length > 0
         )
         {
-        
+
             moveSource =
                 pokemon.moves;
-        
+
         }
-
-
-
-
 
 
         //--------------------------------
         // Load level-up moves
         //--------------------------------
-
 
         else if(
             basePokemon
@@ -963,193 +770,49 @@ class BattlePreparationService {
             )
         )
         {
-        
+
             moveSource =
-        
+
                 basePokemon.learnset
-        
+
                     .filter(
-                    
+
                         entry =>
-                        
-                            entry.level <= level
+
+                            entry.level <=
+                            level
 
                     )
-                
+
                     .slice(-4)
-                
+
                     .map(
-                    
+
                         entry =>
-                        
+
                             entry.move
 
                     );
-                
+
         }
 
 
-
-
-
+        //--------------------------------
+        // Build runtime moves
+        //--------------------------------
 
         prepared.moves =
 
             moveSource.map(
-            
+
                 move =>
-                {
-                
 
-                    const constant =
+                    this.prepareMove(
+                        move
+                    )
 
-                        move.constant
-
-                        ||
-
-                        move.move?.constant
-
-                        ||
-
-                        (
-                            move.name
-                        
-                            ?
-                        
-                            (
-                                move.name.startsWith("MOVE_")
-                            
-                                ?
-                            
-                                move.name
-                            
-                                :
-                            
-                                `MOVE_${move.name.toUpperCase()}`
-                            )
-                        
-                            :
-                        
-                            null
-                        );
-                
-                
-                
-                    const databaseMove =
-                
-                        this.moves
-                
-                        &&
-                
-                        constant
-                
-                        ?
-                
-                        this.moves.getMoveByConstant(
-                        
-                            constant
-                        
-                        )
-                    
-                        :
-                    
-                        null;
-                    
-                    
-                    
-                    
-                    
-                    return {
-                    
-                    
-                        name:
-                                        
-                            databaseMove?.name
-                                        
-                            ||
-                                        
-                            move.name
-                                        
-                            ||
-                                        
-                            constant
-                                        
-                            ||
-                                        
-                            "UNKNOWN",
-                    
-                    
-                    
-                    
-                        constant:
-                    
-                    
-                    
-                            constant,
-                    
-                    
-                    
-                    
-                        type:
-                    
-                            databaseMove?.type
-                    
-                            ||
-                    
-                            "NORMAL",
-                    
-                    
-                    
-                    
-                        category:
-                            databaseMove?.category
-                            || "PHYSICAL",
-                    
-                    
-                    
-                    
-                        power:
-                    
-                            databaseMove?.power
-                    
-                            ||
-                    
-                            0,
-                    
-                    
-                    
-                    
-                        accuracy:
-                    
-                            databaseMove?.accuracy
-                    
-                            ||
-                    
-                            100,
-                    
-                    
-                    
-                    
-                        pp:
-                    
-                            databaseMove?.pp
-                    
-                            ||
-                    
-                            20
-                    
-                    
-                    };
-                
-                
-                }
-            
-            );
-
-
-
-
-
+            )
+            .filter(Boolean);
 
 
         console.log(
@@ -1163,6 +826,9 @@ class BattlePreparationService {
 
                 hp:
                     prepared.hp,
+
+                friendship:
+                    prepared.friendship,
 
                 attack:
                     prepared.attack,
@@ -1184,85 +850,651 @@ class BattlePreparationService {
         );
 
 
-
-
-
         return prepared;
 
-
     }
 
 
+    //--------------------------------
+    // Prepare runtime move
+    //--------------------------------
 
-
-
-
-
-
-
-//--------------------------------
-// Resolve Gen 3 move category
-//--------------------------------
-
-getMoveCategory(
-    type
-)
-{
-
-    const specialTypes =
-
-    [
-        "FIRE",
-        "WATER",
-        "GRASS",
-        "ELECTRIC",
-        "ICE",
-        "PSYCHIC",
-        "DRAGON",
-        "DARK"
-    ];
-
-
-
-    if(
-        !type
+    prepareMove(
+        move
     )
     {
-        return "PHYSICAL";
+
+        if(
+            !move
+        )
+        {
+
+            return null;
+
+        }
+
+
+        //--------------------------------
+        // Resolve move constant
+        //--------------------------------
+
+        const constant =
+
+            move.constant
+
+            ||
+
+            move.move?.constant
+
+            ||
+
+            (
+
+                move.name
+
+                ?
+
+                (
+
+                    move.name.startsWith(
+                        "MOVE_"
+                    )
+
+                    ?
+
+                    move.name
+
+                    :
+
+                    `MOVE_${
+                        move.name.toUpperCase()
+                    }`
+
+                )
+
+                :
+
+                null
+
+            );
+
+
+        if(
+            !constant
+        )
+        {
+
+            return null;
+
+        }
+
+
+        //--------------------------------
+        // Resolve database move
+        //--------------------------------
+
+        const databaseMove =
+
+            this.moves
+
+            &&
+
+            constant
+
+            ?
+
+            this.moves.getMoveByConstant(
+                constant
+            )
+
+            :
+
+            null;
+
+
+        //--------------------------------
+        // Resolve base PP
+        //--------------------------------
+
+        const basePP =
+            this.resolveBasePP(
+
+                move,
+
+                databaseMove
+
+            );
+
+
+        //--------------------------------
+        // Resolve PP Up count
+        //--------------------------------
+
+        const ppUps =
+            this.resolvePPUps(
+                move,
+                basePP
+            );
+
+
+        //--------------------------------
+        // Resolve current PP
+        //--------------------------------
+
+        const currentPP =
+            this.resolveCurrentPP(
+
+                move,
+
+                basePP,
+
+                ppUps
+
+            );
+
+
+        //--------------------------------
+        // Create runtime move slot
+        //--------------------------------
+
+        const slot =
+            new PokemonMoveSlot({
+
+                constant:
+                    constant,
+
+                basePP:
+                    basePP,
+
+                ppUps:
+                    ppUps,
+
+                currentPP:
+                    currentPP
+
+            });
+
+
+        //--------------------------------
+        // Attach battle move metadata
+        //
+        // PokemonMoveSlot remains the
+        // authoritative owner of PP state.
+        //--------------------------------
+
+        slot.name =
+
+            databaseMove?.name
+
+            ||
+
+            move.name
+
+            ||
+
+            constant
+
+            ||
+
+            "UNKNOWN";
+
+
+        slot.type =
+
+            databaseMove?.type
+
+            ||
+
+            move.type
+
+            ||
+
+            "NORMAL";
+
+
+        slot.category =
+
+            databaseMove?.category
+
+            ||
+
+            move.category
+
+            ||
+
+            "PHYSICAL";
+
+
+        slot.power =
+
+            databaseMove?.power
+
+            ||
+
+            move.power
+
+            ||
+
+            0;
+
+
+        slot.accuracy =
+
+            databaseMove?.accuracy
+
+            ??
+
+            move.accuracy
+
+            ??
+
+            100;
+
+
+        slot.effect =
+
+            databaseMove?.effect
+
+            ??
+
+            move.effect
+
+            ??
+
+            null;
+
+
+        //--------------------------------
+        // Preserve any existing runtime
+        // move state that is not handled
+        // by the move slot.
+        //--------------------------------
+
+        if(
+            move.target !==
+            undefined
+        )
+        {
+
+            slot.target =
+                move.target;
+
+        }
+
+
+        if(
+            move.priority !==
+            undefined
+        )
+        {
+
+            slot.priority =
+                move.priority;
+
+        }
+
+
+        if(
+            move.flags !==
+            undefined
+        )
+        {
+
+            slot.flags =
+                move.flags;
+
+        }
+
+
+        return slot;
+
     }
 
 
+    //--------------------------------
+    // Resolve friendship
+    //--------------------------------
 
-    return specialTypes.includes(
-
-        String(type)
-        .toUpperCase()
-
+    resolveFriendship(
+        pokemon
     )
+    {
 
-    ?
-
-    "SPECIAL"
-
-    :
-
-    "PHYSICAL";
+        const friendship =
+            Number(
+                pokemon.friendship
+            );
 
 
-}
+        if(
+            Number.isFinite(
+                friendship
+            )
+        )
+        {
+
+            return Math.min(
+
+                255,
+
+                Math.max(
+                    0,
+                    Math.floor(
+                        friendship
+                    )
+                )
+
+            );
+
+        }
 
 
+        return 70;
+
+    }
 
 
+    //--------------------------------
+    // Resolve base PP
+    //--------------------------------
+
+    resolveBasePP(
+        move,
+        databaseMove
+    )
+    {
+
+        const values =
+        [
+
+            move.basePP,
+
+            databaseMove?.pp
+
+        ];
 
 
+        for(
+            const value of values
+        )
+        {
 
+            const numeric =
+                Number(
+                    value
+                );
+
+
+            if(
+                Number.isFinite(
+                    numeric
+                )
+                &&
+                numeric >= 0
+            )
+            {
+
+                return Math.floor(
+                    numeric
+                );
+
+            }
+
+        }
+
+
+        return 20;
+
+    }
+
+
+    //--------------------------------
+    // Resolve PP Ups
+    //--------------------------------
+
+    resolvePPUps(
+        move,
+        basePP
+    )
+    {
+
+        const explicit =
+            Number(
+                move.ppUps
+            );
+
+
+        if(
+            Number.isFinite(
+                explicit
+            )
+        )
+        {
+
+            return Math.min(
+
+                3,
+
+                Math.max(
+                    0,
+                    Math.floor(
+                        explicit
+                    )
+                )
+
+            );
+
+        }
+
+
+        //--------------------------------
+        // Infer from stored maximum PP
+        //--------------------------------
+
+        const storedMaxPP =
+            Number(
+                move.maxPP
+            );
+
+
+        if(
+            Number.isFinite(
+                storedMaxPP
+            )
+            &&
+            basePP > 0
+        )
+        {
+
+            const increase =
+                Math.floor(
+                    basePP / 5
+                );
+
+
+            if(
+                increase > 0
+            )
+            {
+
+                return Math.min(
+
+                    3,
+
+                    Math.max(
+
+                        0,
+
+                        Math.round(
+
+                            (
+                                storedMaxPP -
+                                basePP
+                            )
+                            /
+                            increase
+
+                        )
+
+                    )
+
+                );
+
+            }
+
+        }
+
+
+        return 0;
+
+    }
+
+
+    //--------------------------------
+    // Resolve current PP
+    //--------------------------------
+
+    resolveCurrentPP(
+        move,
+        basePP,
+        ppUps
+    )
+    {
+
+        const currentPP =
+            Number(
+                move.currentPP
+            );
+
+
+        if(
+            Number.isFinite(
+                currentPP
+            )
+        )
+        {
+
+            return Math.max(
+                0,
+                currentPP
+            );
+
+        }
+
+
+        //--------------------------------
+        // Legacy PP compatibility
+        //--------------------------------
+
+        const legacyPP =
+            Number(
+                move.pp
+            );
+
+
+        if(
+            Number.isFinite(
+                legacyPP
+            )
+        )
+        {
+
+            return Math.max(
+                0,
+                legacyPP
+            );
+
+        }
+
+
+        //--------------------------------
+        // New move
+        //--------------------------------
+
+        const maxPP =
+            basePP
+            +
+            (
+                Math.floor(
+                    basePP / 5
+                )
+                *
+                ppUps
+            );
+
+
+        return Math.max(
+            0,
+            maxPP
+        );
+
+    }
+
+
+    //--------------------------------
+    // Resolve Gen 3 move category
+    //--------------------------------
+
+    getMoveCategory(
+        type
+    )
+    {
+
+        const specialTypes =
+        [
+
+            "FIRE",
+
+            "WATER",
+
+            "GRASS",
+
+            "ELECTRIC",
+
+            "ICE",
+
+            "PSYCHIC",
+
+            "DRAGON",
+
+            "DARK"
+
+        ];
+
+
+        if(
+            !type
+        )
+        {
+
+            return "PHYSICAL";
+
+        }
+
+
+        return specialTypes.includes(
+
+            String(
+                type
+            )
+            .toUpperCase()
+
+        )
+
+        ?
+
+        "SPECIAL"
+
+        :
+
+        "PHYSICAL";
+
+    }
 
 
     //--------------------------------
     // Check battle ready
     //--------------------------------
-
 
     canBattle(
         trainerId,
@@ -1270,9 +1502,7 @@ getMoveCategory(
     )
     {
 
-
         const result =
-
             this.prepareTrainerBattle(
 
                 trainerId,
@@ -1282,87 +1512,60 @@ getMoveCategory(
             );
 
 
-
         return result.success;
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Battle summary
     //--------------------------------
 
-
     getBattleSummary(
         trainerId
     )
     {
 
-
         const trainer =
-
             this.getTrainer(
                 trainerId
             );
-
 
 
         if(
             !trainer
         )
         {
-            return null;
-        }
 
+            return null;
+
+        }
 
 
         return {
 
-
             trainerId,
 
-
             name:
-
                 trainer.trainerName,
 
-
             type:
-
                 trainer.trainerType,
 
-
             class:
-
                 trainer.trainerClass,
 
-
             party:
-
                 this.getTrainerParty(
                     trainerId
                 )
 
-
         };
-
 
     }
 
 
-
 }
-
-
-
 
 
 module.exports =

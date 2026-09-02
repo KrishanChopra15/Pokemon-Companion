@@ -5,11 +5,19 @@
  * Extracts map object events.
  *
  * Responsibilities:
- * - Read events.inc
- * - Extract object graphics
- * - Extract script references
- * - Extract hide flags
- * - Extract positions
+ * - Read map event data.
+ * - Extract object graphics.
+ * - Extract local object IDs.
+ * - Extract numeric object IDs.
+ * - Extract clone event references.
+ * - Extract script references.
+ * - Extract hide flags.
+ * - Extract positions.
+ *
+ * Does NOT:
+ * - Resolve event logic.
+ * - Classify NPCs.
+ * - Handle progression.
  */
 
 "use strict";
@@ -24,33 +32,39 @@ const path =
 
 
 
-class ObjectEventExtractor {
+class ObjectEventExtractor
+{
 
 
+    //--------------------------------
+    // Extract all object events
+    //--------------------------------
 
     extract(
         referencePath
     )
     {
 
-
         const mapsPath =
             path.join(
+
                 referencePath,
+
                 "data/maps"
+
             );
 
 
-
-        const objects = [];
-
+        const objects =
+            [];
 
 
         const maps =
             fs.readdirSync(
-                mapsPath
-            );
 
+                mapsPath
+
+            );
 
 
         for(
@@ -58,83 +72,182 @@ class ObjectEventExtractor {
         )
         {
 
-
             const file =
                 path.join(
+
                     mapsPath,
+
                     map,
+
                     "events.inc"
+
                 );
 
 
-
             if(
-                !fs.existsSync(file)
+                !fs.existsSync(
+                    file
+                )
             )
+            {
+
                 continue;
 
+            }
+
+
+            const mapFile =
+                path.join(
+
+                    mapsPath,
+
+                    map,
+
+                    "map.json"
+
+                );
+
+
+            const localIds =
+                this.extractLocalIds(
+                    mapFile
+                );
 
 
             const data =
                 this.extractFile(
-                    file,
-                    map
-                );
 
+                    file,
+
+                    map,
+
+                    localIds
+
+                );
 
 
             objects.push(
                 ...data
             );
 
-
         }
-
 
 
         return objects;
 
+    }
+
+
+    //--------------------------------
+    // Extract local IDs from map.json
+    //--------------------------------
+
+    extractLocalIds(
+        mapFile
+    )
+    {
+
+        if(
+            !fs.existsSync(
+                mapFile
+            )
+        )
+        {
+
+            return [];
+
+        }
+
+
+        const data =
+            JSON.parse(
+
+                fs.readFileSync(
+
+                    mapFile,
+
+                    "utf8"
+
+                )
+
+            );
+
+
+        if(
+            !Array.isArray(
+                data.object_events
+            )
+        )
+        {
+
+            return [];
+
+        }
+
+
+        return data.object_events.map(
+
+            object =>
+
+                object.local_id
+                ||
+                null
+
+        );
 
     }
 
 
-
-
-
-
+    //--------------------------------
+    // Extract objects from events.inc
+    //--------------------------------
 
     extractFile(
         file,
-        map
+        map,
+        localIds = []
     )
     {
 
-
         const content =
             fs.readFileSync(
+
                 file,
+
                 "utf8"
+
             );
 
 
+        const objects =
+            [];
 
-        const objects = [];
 
+        //--------------------------------
+        // Normal object events
+        //--------------------------------
 
-
-        const regex =
-        /object_event\s+(\d+),\s*([A-Z0-9_]+),\s*(\d+),\s*(\d+),\s*(\d+),\s*[A-Z0-9_]+,\s*\d+,\s*\d+,\s*[A-Z0-9_]+,\s*0,\s*([A-Za-z0-9_]+),\s*([A-Z0-9_]+)/g;
-
+        const objectRegex =
+            /object_event\s+(\d+),\s*([A-Z0-9_]+),\s*(\d+),\s*(\d+),\s*(\d+),\s*[A-Z0-9_]+,\s*\d+,\s*\d+,\s*[A-Z0-9_]+,\s*0,\s*([A-Za-z0-9_]+),\s*([A-Z0-9_]+)/g;
 
 
         let match;
 
 
-
         while(
-            (match = regex.exec(content))
+            (
+                match =
+                    objectRegex.exec(
+                        content
+                    )
+            )
         )
         {
+
+            const id =
+                Number(
+                    match[1]
+                );
 
 
             objects.push({
@@ -142,8 +255,17 @@ class ObjectEventExtractor {
                 map,
 
 
-                id:
-                    Number(match[1]),
+                id,
+
+
+                eventType:
+                    "OBJECT_EVENT",
+
+
+                localId:
+                    localIds[id - 1]
+                    ||
+                    null,
 
 
                 graphics:
@@ -154,15 +276,19 @@ class ObjectEventExtractor {
                 {
 
                     x:
-                        Number(match[3]),
-
+                        Number(
+                            match[3]
+                        ),
 
                     y:
-                        Number(match[4]),
-
+                        Number(
+                            match[4]
+                        ),
 
                     elevation:
-                        Number(match[5])
+                        Number(
+                            match[5]
+                        )
 
                 },
 
@@ -174,16 +300,98 @@ class ObjectEventExtractor {
                 hideFlag:
                     match[7]
 
-
             });
-
 
         }
 
 
+        //--------------------------------
+        // Clone events
+        //--------------------------------
+        //
+        // FireRed clone_event syntax:
+        //
+        // clone_event <id>, <graphics>, <x>, <y>, <localId>, <sourceMap>
+        //
+        // Example:
+        //
+        // clone_event 10, OBJ_EVENT_GFX_CUT_TREE, 50, 18,
+        // LOCALID_ROUTE9_CUT_TREE, MAP_ROUTE9
+        //--------------------------------
+            
+        const cloneRegex =
+            /clone_event\s+(\d+),\s*([A-Z0-9_]+),\s*(-?\d+),\s*(-?\d+),\s*([A-Za-z0-9_]+),\s*(MAP_[A-Z0-9_]+)/g;
+            
+            
+        while(
+            (
+                match =
+                    cloneRegex.exec(
+                        content
+                    )
+            )
+        )
+        {
+        
+            const id =
+                Number(
+                    match[1]
+                );
+            
+            
+            objects.push({
+            
+                map,
+            
+            
+                id,
+            
+            
+                eventType:
+                    "CLONE_EVENT",
+            
+            
+                localId:
+                    match[5],
+            
+            
+                graphics:
+                    match[2],
+            
+            
+                position:
+                {
+                
+                    x:
+                        Number(
+                            match[3]
+                        ),
+                    
+                    y:
+                        Number(
+                            match[4]
+                        )
+                    
+                },
+            
+            
+                script:
+                    null,
+            
+            
+                hideFlag:
+                    null,
+            
+            
+                sourceMap:
+                    match[6]
+            
+            });
+        
+        }
+
 
         return objects;
-
 
     }
 
@@ -191,6 +399,5 @@ class ObjectEventExtractor {
 }
 
 
-
 module.exports =
-ObjectEventExtractor;
+    ObjectEventExtractor;

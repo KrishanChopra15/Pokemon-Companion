@@ -8,6 +8,7 @@
  * - Load progression database.
  * - Find progression rules.
  * - Check requirements.
+ * - Apply progression unlocks.
  * - Evaluate unlocks.
  * - Check trainer state.
  *
@@ -24,6 +25,7 @@
 const fs =
     require("fs");
 
+
 const path =
     require("path");
 
@@ -36,13 +38,18 @@ class ProgressionService {
 
 
     constructor(
-        game = "firered"
+        game = "firered",
+        progressionUnlockService = null
     )
     {
 
 
         this.game =
             game;
+
+
+        this.progressionUnlock =
+            progressionUnlockService;
 
 
         this.progression =
@@ -197,7 +204,8 @@ class ProgressionService {
 
     canUnlock(
         id,
-        trainerState
+        trainerState,
+        context = {}
     )
     {
 
@@ -229,7 +237,9 @@ class ProgressionService {
 
             progression.requirement,
 
-            trainerState
+            trainerState,
+
+            context
 
         );
 
@@ -244,9 +254,171 @@ class ProgressionService {
 
 
 
+    //--------------------------------
+    // Complete progression
+    //--------------------------------
+    //
+    // Checks the progression requirement
+    // and applies the declared unlocks.
+    //
+    // This method mutates trainer state.
+    //--------------------------------
+
+
+    complete(
+        id,
+        trainerState,
+        context = {}
+    )
+    {
+
+
+        const progression =
+            this.getProgression(id);
+
+
+
+        if(
+            !progression
+        )
+        {
+
+            return {
+
+                success:false,
+
+                allowed:false,
+
+                reason:
+                    "Unknown progression"
+
+            };
+
+        }
+
+
+
+        const check =
+            this.checkRequirement(
+
+                progression.requirement,
+
+                trainerState,
+
+                context
+
+            );
+
+
+
+        if(
+            !check.allowed
+        )
+        {
+
+            return {
+
+                success:false,
+
+                allowed:false,
+
+                reason:
+                    check.reason,
+
+                progression:
+                    progression.id
+
+            };
+
+        }
+
+
+
+        //--------------------------------
+        // No unlock service
+        //--------------------------------
+
+
+        if(
+            !this.progressionUnlock
+        )
+        {
+
+            return {
+
+                success:false,
+
+                allowed:true,
+
+                reason:
+                    "Progression unlock service unavailable",
+
+                progression:
+                    progression.id,
+
+                unlocks:
+                    progression.unlocks || []
+
+            };
+
+        }
+
+
+
+        const result =
+            this.progressionUnlock.apply(
+
+                progression,
+
+                trainerState
+
+            );
+
+
+
+        return {
+
+            success:
+                result.success,
+
+            allowed:true,
+
+            progression:
+                progression.id,
+
+            unlocks:
+                progression.unlocks || [],
+
+            applied:
+                result.applied || [],
+
+            skipped:
+                result.skipped || [],
+
+            reason:
+                result.reason || null
+
+        };
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Requirement evaluation
+    //--------------------------------
+
+
     checkRequirement(
         requirement,
-        trainerState
+        trainerState,
+        context = {}
     )
     {
 
@@ -263,8 +435,6 @@ class ProgressionService {
             };
 
         }
-
-
 
 
 
@@ -647,6 +817,178 @@ class ProgressionService {
 
 
 
+        //--------------------------------
+        // Multiple Abilities
+        //--------------------------------
+
+
+        if(
+            requirement.abilities
+        )
+        {
+
+
+            for(
+                const ability of requirement.abilities
+            )
+            {
+
+
+                if(
+                    !this.hasAbility(
+
+                        ability,
+
+                        trainerState
+
+                    )
+                )
+                {
+
+                    return {
+
+                        allowed:false,
+
+                        reason:
+                            `Requires ability ${ability}`
+
+                    };
+
+                }
+
+
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Conditions
+        //--------------------------------
+
+
+        const conditions =
+            requirement.conditions
+            &&
+            typeof requirement.conditions ===
+                "object"
+            ?
+            requirement.conditions
+            :
+            {};
+
+
+
+
+
+        //--------------------------------
+        // Caught Pokémon condition
+        //--------------------------------
+
+
+        if(
+            conditions.caughtPokemon !==
+                undefined
+        )
+        {
+
+
+            const required =
+                Number(
+
+                    conditions.caughtPokemon
+
+                );
+
+
+
+            if(
+                !Number.isFinite(
+                    required
+                )
+                ||
+                required < 0
+            )
+            {
+
+                return {
+
+                    allowed:false,
+
+                    reason:
+                        "Invalid caught Pokémon requirement"
+
+                };
+
+            }
+
+
+
+            const tracker =
+                context.pokemonTracker;
+
+
+
+            if(
+                !tracker
+                ||
+                typeof tracker.getCaughtSpeciesCount !==
+                    "function"
+            )
+            {
+
+                return {
+
+                    allowed:false,
+
+                    reason:
+                        "Pokémon tracker unavailable"
+
+                };
+
+            }
+
+
+
+            const caught =
+                tracker.getCaughtSpeciesCount();
+
+
+
+            if(
+                caught < required
+            )
+            {
+
+                return {
+
+                    allowed:false,
+
+                    reason:
+                        `Requires at least ${required} different caught Pokémon`
+
+                };
+
+            }
+
+        }
+
+
+
+
+
+
+
+
+
         return {
 
             allowed:true
@@ -796,6 +1138,150 @@ class ProgressionService {
 
         return false;
 
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Ability helpers
+    //--------------------------------
+
+
+    hasAbility(
+        ability,
+        trainerState
+    )
+    {
+
+
+        const normalized =
+            String(
+                ability
+            )
+            .toUpperCase();
+
+
+
+        //--------------------------------
+        // Trainer state ability method
+        //--------------------------------
+
+
+        if(
+            trainerState.hasAbility
+            &&
+            trainerState.hasAbility(
+                normalized
+            )
+        )
+        {
+
+            return true;
+
+        }
+
+
+
+
+
+        //--------------------------------
+        // Generic abilities
+        //--------------------------------
+
+
+        if(
+            trainerState.abilities
+            &&
+            trainerState.abilities.some(
+
+                value =>
+
+                    String(
+                        value
+                    )
+                    .toUpperCase()
+                    ===
+                    normalized
+
+            )
+        )
+        {
+
+            return true;
+
+        }
+
+
+
+
+
+        //--------------------------------
+        // HM usage abilities
+        //--------------------------------
+
+
+        if(
+            trainerState.hmAbilities
+            &&
+            trainerState.hmAbilities.some(
+
+                value =>
+
+                    String(
+                        value
+                    )
+                    .toUpperCase()
+                    ===
+                    normalized
+
+            )
+        )
+        {
+
+            return true;
+
+        }
+
+
+
+
+
+        //--------------------------------
+        // FireRed progression mappings
+        //--------------------------------
+        //
+        // These abilities represent
+        // capabilities unlocked by actual
+        // FireRed story state.
+        //--------------------------------
+
+
+        if(
+            normalized ===
+                "CAN_USE_POKE_FLUTE"
+        )
+        {
+
+            return this.hasStoryFlag(
+
+                "GOT_POKE_FLUTE",
+
+                trainerState
+
+            );
+
+        }
+
+
+
+        return false;
 
     }
 

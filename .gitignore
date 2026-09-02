@@ -45,8 +45,3 @@ coverage/
 
 config/config.local.json
 
-# ==========================
-# Generated Database Files
-# ==========================
-database/raw/
-database/generated/

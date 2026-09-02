@@ -47,38 +47,37 @@ class GameSession {
 
         this.state =
         {
-
-            started:false,
-
-
+        
+            started:
+                false,
+        
             currentLocation:
                 "MAP_PALLET_TOWN",
-
-
+        
             visitedLocations:
                 [],
-
-
+        
             badges:
                 [],
-
-
+        
             team:
                 [],
-
-
+        
             inventory:
                 [],
-
-
+        
             storyFlags:
                 [],
-
-
+        
+            walkingSteps:
+                0,
+        
+            totalSteps:
+                0,
+        
             playTime:
                 0
-
-
+        
         };
 
 

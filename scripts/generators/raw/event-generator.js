@@ -6,6 +6,18 @@
  *
  * Output:
  * database/generated/{game}/events.json
+ *
+ * Responsibilities:
+ * - Convert extracted scripts into event records.
+ * - Preserve event map/location information.
+ * - Preserve requirements and conditions.
+ * - Preserve event effects and rewards.
+ * - Associate events with NPC/object data when available.
+ *
+ * Does NOT:
+ * - Execute scripts.
+ * - Calculate progression.
+ * - Modify player state.
  */
 
 "use strict";
@@ -20,8 +32,10 @@ const path =
 
 
 
-class EventGenerator {
 
+
+class EventGenerator
+{
 
 
     generate(
@@ -32,7 +46,6 @@ class EventGenerator {
     )
     {
 
-
         const events = [];
 
 
@@ -41,22 +54,34 @@ class EventGenerator {
         // Convert scripts into events
         //--------------------------------
 
-
         for(
-            const script of Object.values(
-                scripts
-            )
+            const script of
+                Object.values(
+                    scripts
+                )
         )
         {
+
+            if(
+                !script
+            )
+            {
+
+                continue;
+
+            }
 
 
             const relatedNPC =
                 this.findNPC(
-                    npcs,
-                    objects,
-                    script.id
-                );
 
+                    npcs,
+
+                    objects,
+
+                    script.id
+
+                );
 
 
             const npcData =
@@ -67,14 +92,34 @@ class EventGenerator {
                 null;
 
 
+            //--------------------------------
+            // Resolve event location
+            //
+            // Prefer the actual location from
+            // NPC/object association.
+            //
+            // Otherwise use the canonical map
+            // captured by EventScriptExtractor.
+            //--------------------------------
 
             const location =
-                relatedNPC
-                ?
-                relatedNPC.location
-                :
+                relatedNPC?.location
+                ||
+                script.map
+                ||
+                script.location
+                ||
                 null;
 
+
+            const sourceLocation =
+                script.map
+                ||
+                relatedNPC?.location
+                ||
+                script.location
+                ||
+                null;
 
 
             const effects =
@@ -83,15 +128,15 @@ class EventGenerator {
                 {};
 
 
-
-
+            //--------------------------------
+            // Create event
+            //--------------------------------
 
             events.push({
 
                 //--------------------------------
                 // Identity
                 //--------------------------------
-
 
                 id:
                     script.id,
@@ -108,9 +153,12 @@ class EventGenerator {
                 // NPC reference
                 //--------------------------------
 
-
                 npc:
-                    script.id,
+                    relatedNPC?.npc
+                    ?
+                    script.id
+                    :
+                    null,
 
 
                 npcData,
@@ -123,16 +171,22 @@ class EventGenerator {
                 // Location
                 //--------------------------------
 
-
                 location:
                     this.normalizeLocation(
+
                         location
+
                     ),
 
 
+                sourceLocation,
 
-                sourceLocation:
-                    location,
+
+
+                map:
+                    script.map
+                    ||
+                    null,
 
 
 
@@ -151,7 +205,6 @@ class EventGenerator {
                 // Trigger
                 //--------------------------------
 
-
                 trigger:
                     "interaction",
 
@@ -163,24 +216,20 @@ class EventGenerator {
                 // Progression
                 //--------------------------------
 
-
                 requirements:
-                    script.requirements
-                    ||
-                    {
-                        storyFlags: [],
-                        items: [],
-                        badges: []
-                    },
+                    this.normalizeRequirements(
+
+                        script.requirements
+
+                    ),
 
 
                 conditions:
-                    script.conditions
-                    ||
-                    {
-                        requireStoryFlags: [],
-                        excludeStoryFlags: []
-                    },
+                    this.normalizeConditions(
+
+                        script.conditions
+
+                    ),
 
 
 
@@ -195,10 +244,74 @@ class EventGenerator {
                 // Dialogue
                 //--------------------------------
 
-
                 dialogues:
+                    Array.isArray(
+                        script.dialogues
+                    )
+                    ?
                     script.dialogues
-                    ||
+                    :
+                    [],
+
+
+
+
+
+                //--------------------------------
+                // Script calls
+                //--------------------------------
+
+                calls:
+                    Array.isArray(
+                        script.calls
+                    )
+                    ?
+                    script.calls
+                    :
+                    [],
+
+
+
+
+
+                //--------------------------------
+                // Script jumps
+                //--------------------------------
+
+                jumps:
+                    Array.isArray(
+                        script.jumps
+                    )
+                    ?
+                    script.jumps
+                    :
+                    [],
+
+
+
+
+
+                //--------------------------------
+                // Specials
+                //--------------------------------
+
+                specials:
+                    Array.isArray(
+                        script.specials
+                    )
+                    ?
+                    script.specials
+                    :
+                    [],
+
+
+                specialVars:
+                    Array.isArray(
+                        script.specialVars
+                    )
+                    ?
+                    script.specialVars
+                    :
                     [],
 
 
@@ -208,7 +321,6 @@ class EventGenerator {
                 //--------------------------------
                 // Effects
                 //--------------------------------
-
 
                 effects,
 
@@ -220,10 +332,11 @@ class EventGenerator {
                 // Rewards
                 //--------------------------------
 
-
                 rewards:
                     this.convertRewards(
+
                         effects
+
                     ),
 
 
@@ -234,13 +347,10 @@ class EventGenerator {
                 // Choices
                 //--------------------------------
 
-
                 choices:
                     []
 
             });
-
-
 
         }
 
@@ -252,44 +362,55 @@ class EventGenerator {
         // Save
         //--------------------------------
 
-
         const output =
             path.join(
+
                 __dirname,
+
                 "../../../database/generated",
+
                 game,
+
                 "events.json"
+
             );
 
 
-
-
-
         fs.mkdirSync(
-            path.dirname(output),
+
+            path.dirname(
+                output
+            ),
+
             {
-                recursive:true
+                recursive:
+                    true
             }
+
         );
-
-
-
 
 
         fs.writeFileSync(
+
             output,
+
             JSON.stringify(
+
                 events,
+
                 null,
+
                 4
-            )
+
+            ),
+
+            "utf8"
+
         );
 
 
-
-
-
         console.log();
+
 
         console.log(
             "Generated event database."
@@ -304,9 +425,7 @@ class EventGenerator {
         console.log();
 
 
-
         return events;
-
 
     }
 
@@ -318,27 +437,180 @@ class EventGenerator {
     // Normalize location names
     //--------------------------------
 
-
     normalizeLocation(
         location
     )
     {
 
-
         if(
             !location
         )
+        {
+
             return null;
 
+        }
 
 
-        return location
-            .replace(
-                "MAP_",
-                ""
-            )
-            .toLowerCase();
+        return String(
+            location
+        )
+        .replace(
+            /^MAP_/,
+            ""
+        )
+        .toLowerCase();
 
+    }
+
+
+
+
+
+    //--------------------------------
+    // Normalize requirements
+    //--------------------------------
+
+    normalizeRequirements(
+        requirements
+    )
+    {
+
+        if(
+            !requirements
+            ||
+            typeof requirements !==
+                "object"
+        )
+        {
+
+            return {
+
+                storyFlags:
+                    [],
+
+                items:
+                    [],
+
+                badges:
+                    []
+
+            };
+
+        }
+
+
+        return {
+
+            storyFlags:
+                Array.isArray(
+                    requirements.storyFlags
+                )
+                ?
+                [
+                    ...new Set(
+                        requirements.storyFlags
+                    )
+                ]
+                :
+                [],
+
+
+            items:
+                Array.isArray(
+                    requirements.items
+                )
+                ?
+                [
+                    ...new Set(
+                        requirements.items
+                    )
+                ]
+                :
+                [],
+
+
+            badges:
+                Array.isArray(
+                    requirements.badges
+                )
+                ?
+                [
+                    ...new Set(
+                        requirements.badges
+                    )
+                ]
+                :
+                []
+
+        };
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Normalize conditions
+    //--------------------------------
+
+    normalizeConditions(
+        conditions
+    )
+    {
+
+        if(
+            !conditions
+            ||
+            typeof conditions !==
+                "object"
+        )
+        {
+
+            return {
+
+                requireStoryFlags:
+                    [],
+
+                excludeStoryFlags:
+                    []
+
+            };
+
+        }
+
+
+        return {
+
+            requireStoryFlags:
+                Array.isArray(
+                    conditions.requireStoryFlags
+                )
+                ?
+                [
+                    ...new Set(
+                        conditions.requireStoryFlags
+                    )
+                ]
+                :
+                [],
+
+
+            excludeStoryFlags:
+                Array.isArray(
+                    conditions.excludeStoryFlags
+                )
+                ?
+                [
+                    ...new Set(
+                        conditions.excludeStoryFlags
+                    )
+                ]
+                :
+                []
+
+        };
 
     }
 
@@ -350,12 +622,10 @@ class EventGenerator {
     // Convert effects → rewards
     //--------------------------------
 
-
     convertRewards(
         effects = {}
     )
     {
-
 
         const rewards = [];
 
@@ -367,12 +637,11 @@ class EventGenerator {
         // Items
         //--------------------------------
 
-
         for(
-            const item of effects.addItems || []
+            const item of
+                effects.addItems || []
         )
         {
-
 
             rewards.push({
 
@@ -393,7 +662,6 @@ class EventGenerator {
 
             });
 
-
         }
 
 
@@ -404,12 +672,11 @@ class EventGenerator {
         // Pokémon
         //--------------------------------
 
-
         for(
-            const pokemon of effects.addPokemon || []
+            const pokemon of
+                effects.addPokemon || []
         )
         {
-
 
             rewards.push({
 
@@ -421,7 +688,6 @@ class EventGenerator {
 
             });
 
-
         }
 
 
@@ -432,12 +698,11 @@ class EventGenerator {
         // Eggs
         //--------------------------------
 
-
         for(
-            const egg of effects.addEggs || []
+            const egg of
+                effects.addEggs || []
         )
         {
-
 
             rewards.push({
 
@@ -450,7 +715,6 @@ class EventGenerator {
 
             });
 
-
         }
 
 
@@ -461,12 +725,10 @@ class EventGenerator {
         // Money
         //--------------------------------
 
-
         if(
             effects.addMoney > 0
         )
         {
-
 
             rewards.push({
 
@@ -479,7 +741,6 @@ class EventGenerator {
 
             });
 
-
         }
 
 
@@ -490,12 +751,11 @@ class EventGenerator {
         // TMs
         //--------------------------------
 
-
         for(
-            const tm of effects.addTMs || []
+            const tm of
+                effects.addTMs || []
         )
         {
-
 
             rewards.push({
 
@@ -507,7 +767,6 @@ class EventGenerator {
 
             });
 
-
         }
 
 
@@ -518,12 +777,11 @@ class EventGenerator {
         // Key Items
         //--------------------------------
 
-
         for(
-            const item of effects.addKeyItems || []
+            const item of
+                effects.addKeyItems || []
         )
         {
-
 
             rewards.push({
 
@@ -535,7 +793,6 @@ class EventGenerator {
 
             });
 
-
         }
 
 
@@ -543,7 +800,6 @@ class EventGenerator {
 
 
         return rewards;
-
 
     }
 
@@ -555,7 +811,6 @@ class EventGenerator {
     // Find NPC / Object / Script
     //--------------------------------
 
-
     findNPC(
         npcs,
         objects,
@@ -563,30 +818,47 @@ class EventGenerator {
     )
     {
 
-
         //--------------------------------
         // NPC database
         //--------------------------------
 
-
         for(
-            const [location,npcList]
-            of Object.entries(npcs)
+            const [
+                location,
+                npcList
+            ]
+            of
+                Object.entries(
+                    npcs || {}
+                )
         )
         {
 
-
-            for(
-                const npc of npcList
+            if(
+                !Array.isArray(
+                    npcList
+                )
             )
             {
 
+                continue;
+
+            }
+
+
+            for(
+                const npc of
+                    npcList
+            )
+            {
 
                 if(
-                    npc.script === scriptId
+                    npc
+                    &&
+                    npc.script ===
+                        scriptId
                 )
                 {
-
 
                     return {
 
@@ -596,12 +868,9 @@ class EventGenerator {
 
                     };
 
-
                 }
 
-
             }
-
 
         }
 
@@ -613,18 +882,19 @@ class EventGenerator {
         // Object events
         //--------------------------------
 
-
         for(
-            const object of objects || []
+            const object of
+                objects || []
         )
         {
 
-
             if(
-                object.script === scriptId
+                object
+                &&
+                object.script ===
+                    scriptId
             )
             {
-
 
                 return {
 
@@ -639,9 +909,7 @@ class EventGenerator {
 
                 };
 
-
             }
-
 
         }
 
@@ -653,15 +921,7 @@ class EventGenerator {
         // Script-only event
         //--------------------------------
 
-
-        return {
-
-            location:null,
-
-            npc:null
-
-        };
-
+        return null;
 
     }
 
@@ -669,5 +929,8 @@ class EventGenerator {
 }
 
 
+
+
+
 module.exports =
-EventGenerator;
+    EventGenerator;

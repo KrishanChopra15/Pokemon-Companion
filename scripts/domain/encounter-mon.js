@@ -2,12 +2,14 @@
  * Pokémon Companion
  * Encounter Pokémon
  *
- * Represents one Pokémon available in an encounter.
+ * Represents one Pokémon available in an encounter slot.
  *
  * Responsibilities:
  * - Store Pokémon species.
  * - Store minimum level.
  * - Store maximum level.
+ * - Store encounter slot index.
+ * - Store encounter slot probability.
  * - Provide encounter information helpers.
  *
  * Does NOT:
@@ -40,6 +42,14 @@ class EncounterMon {
 
         this.maxLevel =
             data.maxLevel ?? 0;
+
+
+        this.slotIndex =
+            data.slotIndex ?? null;
+
+
+        this.slotEncounterRate =
+            data.slotEncounterRate ?? null;
 
 
     }
@@ -78,7 +88,7 @@ class EncounterMon {
 
 
     /**
-     * Check if Pokémon has fixed level.
+     * Check if Pokémon has a fixed level.
      *
      * Example:
      * Unown Lv25
@@ -92,6 +102,48 @@ class EncounterMon {
 
             this.minLevel ===
             this.maxLevel
+
+        );
+
+
+    }
+
+
+
+
+
+    /**
+     * Check if this encounter has a slot.
+     *
+     * @returns {boolean}
+     */
+    hasSlot() {
+
+
+        return (
+
+            this.slotIndex !== null
+
+        );
+
+
+    }
+
+
+
+
+
+    /**
+     * Check if this encounter has a slot encounter rate.
+     *
+     * @returns {boolean}
+     */
+    hasSlotEncounterRate() {
+
+
+        return (
+
+            this.slotEncounterRate !== null
 
         );
 

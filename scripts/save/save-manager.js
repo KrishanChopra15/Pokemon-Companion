@@ -8,6 +8,7 @@
  * - Create save data.
  * - Store saves in memory.
  * - Restore session state.
+ * - Reconstruct runtime Pokémon move slots.
  *
  * Does NOT:
  * - Handle filesystem.
@@ -22,16 +23,16 @@ const SaveData =
     require("./save-data");
 
 
+const PokemonMoveSlot =
+    require("../domain/pokemon-move-slot");
 
 
-
-class SaveManager {
-
+class SaveManager
+{
 
 
     constructor()
     {
-
 
         this.saves =
             [];
@@ -40,27 +41,17 @@ class SaveManager {
         this.nextId =
             1;
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Create save
     //--------------------------------
 
-
     createSave(
         session
     )
     {
-
 
         const save =
             new SaveData(
@@ -68,35 +59,27 @@ class SaveManager {
             );
 
 
-
         const record =
         {
 
             id:
-
                 this.nextId++,
 
-
             data:
-
                 save.toJSON()
-
 
         };
 
 
-
         this.saves.push(
-
             record
-
         );
-
 
 
         return {
 
-            success:true,
+            success:
+                true,
 
             saveId:
                 record.id,
@@ -106,21 +89,12 @@ class SaveManager {
 
         };
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Load save
     //--------------------------------
-
 
     loadSave(
         id,
@@ -128,16 +102,15 @@ class SaveManager {
     )
     {
 
-
         const record =
             this.saves.find(
 
                 save =>
 
-                    save.id === id
+                    save.id ===
+                    id
 
             );
-
 
 
         if(
@@ -147,7 +120,8 @@ class SaveManager {
 
             return {
 
-                success:false,
+                success:
+                    false,
 
                 reason:
                     "Save not found"
@@ -157,50 +131,171 @@ class SaveManager {
         }
 
 
-
-
-
-
-
-
         session.game =
             record.data.game;
 
 
-
         session.player =
-            record.data.player;
-
+            this.rehydrateState(
+                record.data.player
+            );
 
 
         session.state =
-            record.data.state;
-
+            this.rehydrateState(
+                record.data.state
+            );
 
 
         return {
 
-            success:true,
+            success:
+                true,
 
             session
 
         };
 
-
     }
 
 
+    //--------------------------------
+    // Rehydrate saved state
+    //--------------------------------
+
+    rehydrateState(
+        value
+    )
+    {
+
+        //--------------------------------
+        // Arrays
+        //--------------------------------
+
+        if(
+            Array.isArray(
+                value
+            )
+        )
+        {
+
+            return value.map(
+
+                item =>
+
+                    this.rehydrateState(
+                        item
+                    )
+
+            );
+
+        }
 
 
+        //--------------------------------
+        // Non-object values
+        //--------------------------------
+
+        if(
+            !value
+            ||
+            typeof value !==
+                "object"
+        )
+        {
+
+            return value;
+
+        }
 
 
+        //--------------------------------
+        // Saved move slot
+        //
+        // Identify by the PP-state fields
+        // introduced for runtime move slots.
+        //--------------------------------
 
+        if(
+            typeof value.constant ===
+                "string"
+            &&
+            (
+                Object.prototype.hasOwnProperty.call(
+                    value,
+                    "basePP"
+                )
+                ||
+                Object.prototype.hasOwnProperty.call(
+                    value,
+                    "ppUps"
+                )
+                ||
+                Object.prototype.hasOwnProperty.call(
+                    value,
+                    "currentPP"
+                )
+                ||
+                Object.prototype.hasOwnProperty.call(
+                    value,
+                    "maxPP"
+                )
+            )
+        )
+        {
+
+            return new PokemonMoveSlot({
+
+                constant:
+                    value.constant,
+
+                basePP:
+                    value.basePP,
+
+                ppUps:
+                    value.ppUps,
+
+                currentPP:
+                    value.currentPP,
+
+                maxPP:
+                    value.maxPP
+
+            });
+
+        }
+
+
+        //--------------------------------
+        // Generic object
+        //--------------------------------
+
+        const result =
+            {};
+
+
+        for(
+            const key of
+                Object.keys(value)
+        )
+        {
+
+            result[key] =
+                this.rehydrateState(
+                    value[key]
+                );
+
+        }
+
+
+        return result;
+
+    }
 
 
     //--------------------------------
     // List saves
     //--------------------------------
-
 
     getSaves()
     {
@@ -210,11 +305,7 @@ class SaveManager {
     }
 
 
-
 }
-
-
-
 
 
 module.exports =

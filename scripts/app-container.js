@@ -64,6 +64,9 @@ const ProgressionService =
 const ProgressionRequirementService =
     require("./services/progression-requirement-service");
 
+const ProgressionUnlockService =
+    require("./services/progression-unlock-service");
+
 const GymProgressionService =
     require("./services/gym-progression-service");
 
@@ -158,6 +161,9 @@ const BattleOpponentFlow =
 
 const EvolutionService =
     require("./services/evolution-service");
+
+const FriendshipService =
+    require("./services/friendship-service");
 
 const ExperienceService =
     require("./services/experience-service");
@@ -563,12 +569,19 @@ class AppContainer {
 
 
         //================================
+        // Pokémon Information
+        //================================
+
+        this.registerPokemonInformationServices();
+
+
+        //================================
         // Event Services
         //================================
         //
-        // Registered before Gameplay because
-        // BattleRewardService depends on
-        // RewardService.
+        // Registered after Pokémon Information
+        // because EventService depends on the
+        // shared PokemonTrackerService.
         //
         //================================
 
@@ -585,8 +598,6 @@ class AppContainer {
         //================================
         // Remaining Systems
         //================================
-
-        this.registerPokemonInformationServices();
 
         this.registerActionServices();
 
@@ -673,9 +684,14 @@ class AppContainer {
             new ProgressionRequirementService();
 
 
+        const progressionUnlock =
+            new ProgressionUnlockService();
+            
+            
         const progression =
             new ProgressionService(
-                this.game
+                this.game,
+                progressionUnlock
             );
 
 
@@ -702,6 +718,12 @@ class AppContainer {
         this.container.register(
             "progression",
             progression
+        );
+
+
+        this.container.register(
+            "progressionUnlock",
+            progressionUnlock
         );
 
 
@@ -839,18 +861,27 @@ class AppContainer {
 
         const gymLocation =
             new GymLocationService(
+
                 this.get(
                     "gymProgression"
                 ),
+
                 this.get(
                     "locationGraph"
                 ),
+
                 this.get(
                     "locationGate"
                 ),
+
                 this.get(
                     "fieldObstacle"
+                ),
+
+                this.get(
+                    "progression"
                 )
+
             );
 
 
@@ -860,12 +891,6 @@ class AppContainer {
                     "gymDatabase"
                 )
             );
-
-
-        this.container.register(
-            "gymEventService",
-            gymEventService
-        );
 
 
         const gym =
@@ -879,6 +904,12 @@ class AppContainer {
                     "trainerDatabase"
                 )
             );
+
+
+        this.container.register(
+            "gymEventService",
+            gymEventService
+        );
 
 
         this.container.register(
@@ -972,7 +1003,7 @@ class AppContainer {
 
 
     //================================
-    // Battle Support Layer
+    // Battle Support Services
     //================================
 
     registerBattleSupportServices()
@@ -1235,11 +1266,11 @@ class AppContainer {
 
         const faint =
             new BattleFaintService(
-
                 pokemon,
-
-                pokemonSwitch
-
+                pokemonSwitch,
+                this.get(
+                    "friendship"
+                )
             );
 
 
@@ -1330,17 +1361,38 @@ class AppContainer {
     registerPokemonUtilityServices()
     {
 
+        //--------------------------------
+        // Friendship
+        //--------------------------------
+
+        const friendship =
+            new FriendshipService();
+
+
+        //--------------------------------
+        // Evolution
+        //--------------------------------
+
         const evolution =
             new EvolutionService(
                 this.get(
                     "pokemonDatabase"
-                )
+                ),
+                friendship
             );
 
+
+        //--------------------------------
+        // Growth rate
+        //--------------------------------
 
         const growthRate =
             new GrowthRateService();
 
+
+        //--------------------------------
+        // Experience
+        //--------------------------------
 
         const experience =
             new ExperienceService(
@@ -1348,29 +1400,48 @@ class AppContainer {
             );
 
 
+        //--------------------------------
+        // Level up
+        //--------------------------------
+
         const levelUp =
             new LevelUpService();
 
+
+        //--------------------------------
+        // Evolution requirement
+        //--------------------------------
 
         const evolutionRequirement =
             new EvolutionRequirementService();
 
 
+        //--------------------------------
+        // Pokémon progression
+        //--------------------------------
+
         const pokemonProgression =
             new PokemonProgressionService(
-
                 experience,
-
                 levelUp,
-
-                evolution
-
+                evolution,
+                friendship
             );
 
+
+        //--------------------------------
+        // Register
+        //--------------------------------
 
         this.container.register(
             "evolutionRequirement",
             evolutionRequirement
+        );
+
+
+        this.container.register(
+            "friendship",
+            friendship
         );
 
 
@@ -1413,31 +1484,77 @@ class AppContainer {
     registerEventServices()
     {
 
+        //--------------------------------
+        // Reward service
+        //--------------------------------
+
+        const rewardService =
+            new RewardService(
+                this.get(
+                    "pokemonDatabase"
+                )
+            );
+
+
+        //--------------------------------
+        // Event reward service
+        //--------------------------------
+
+        const eventRewardService =
+            new EventRewardService();
+
+
+        //--------------------------------
+        // Event service
+        //--------------------------------
+
+        const eventService =
+            new EventService(
+                this.game,
+                this.get(
+                    "progression"
+                ),
+                this.get(
+                    "pokemonTracker"
+                )
+            );
+
+
+        //--------------------------------
+        // Story event service
+        //--------------------------------
+
+        const storyEventService =
+            new StoryEventService(
+                this.game
+            );
+
+
+        //--------------------------------
+        // Register
+        //--------------------------------
+
         this.container.register(
             "rewardService",
-            new RewardService()
+            rewardService
         );
 
 
         this.container.register(
             "eventRewardService",
-            new EventRewardService()
+            eventRewardService
         );
 
 
         this.container.register(
             "eventService",
-            new EventService(
-                this.game
-            )
+            eventService
         );
 
 
         this.container.register(
             "storyEventService",
-            new StoryEventService(
-                this.game
-            )
+            storyEventService
         );
 
     }
@@ -1468,25 +1585,19 @@ class AppContainer {
 
         const battlePreparation =
             new BattlePreparationService(
-
                 trainer,
-
                 this.get(
                     "pokemonDatabase"
                 ),
-
                 this.get(
                     "statCalculation"
                 ),
-
                 this.get(
                     "pokemonStatProvider"
                 ),
-
                 this.get(
                     "moveDatabase"
                 )
-
             );
 
 
@@ -1496,19 +1607,21 @@ class AppContainer {
 
         const battleReward =
             new BattleRewardService(
-
                 this.get(
                     "experience"
                 ),
-
+                this.get(
+                    "levelUp"
+                ),
                 this.get(
                     "evolution"
                 ),
-
+                this.get(
+                    "friendship"
+                ),
                 this.get(
                     "rewardService"
                 )
-
             );
 
 
@@ -1518,15 +1631,12 @@ class AppContainer {
 
         const battleEngine =
             new BattleEngineService(
-
                 this.get(
                     "battleFlow"
                 ),
-
                 this.get(
                     "battlePokemon"
                 )
-
             );
 
 
@@ -1536,13 +1646,9 @@ class AppContainer {
 
         const battle =
             new BattleService(
-
                 battlePreparation,
-
                 battleEngine,
-
                 battleReward
-
             );
 
 
@@ -1589,9 +1695,7 @@ class AppContainer {
 
         const battleState =
             new BattleStateService(
-
                 battle
-
             );
 
 
@@ -1601,13 +1705,10 @@ class AppContainer {
 
         const battleActive =
             new BattleActiveFlow(
-
                 battleState,
-
                 this.get(
                     "pokemonSwitch"
                 )
-
             );
 
 
@@ -1617,9 +1718,7 @@ class AppContainer {
 
         const battleOpponent =
             new BattleOpponentFlow(
-
                 battleState
-
             );
 
 
@@ -1651,13 +1750,10 @@ class AppContainer {
 
         const battlePrediction =
             new BattlePredictionService(
-
                 this.get(
                     "battleSimulation"
                 ),
-
                 battlePreparation
-
             );
 
 
@@ -1667,19 +1763,15 @@ class AppContainer {
 
         const availability =
             new PokemonAvailabilityService(
-
                 this.get(
                     "pokemonDatabase"
                 ),
-
                 this.get(
                     "locationDatabase"
                 ),
-
                 this.get(
                     "evolution"
                 )
-
             );
 
 
@@ -1689,9 +1781,7 @@ class AppContainer {
 
         const obtainability =
             new PokemonObtainabilityService(
-
                 availability
-
             );
 
 
@@ -1701,9 +1791,7 @@ class AppContainer {
 
         const recommendation =
             new TeamRecommendationService(
-
                 availability
-
             );
 
 
@@ -1750,19 +1838,12 @@ class AppContainer {
 
         const captureReferencePath =
             path.join(
-
                 __dirname,
-
                 "..",
-
                 "database",
-
                 "reference",
-
                 this.game,
-
                 "capture.json"
-
             );
 
 
@@ -1774,9 +1855,7 @@ class AppContainer {
         {
 
             throw new Error(
-
                 `Capture reference database not found: ${captureReferencePath}`
-
             );
 
         }
@@ -1784,15 +1863,10 @@ class AppContainer {
 
         const captureReference =
             JSON.parse(
-
                 fs.readFileSync(
-
                     captureReferencePath,
-
                     "utf8"
-
                 )
-
             );
 
 
@@ -1810,9 +1884,7 @@ class AppContainer {
 
         const captureService =
             new CaptureService(
-
                 captureReference
-
             );
 
 
@@ -1822,9 +1894,7 @@ class AppContainer {
 
         const safariCaptureService =
             new SafariCaptureService(
-
                 captureReference
-
             );
 
 
@@ -1850,31 +1920,29 @@ class AppContainer {
 
         const captureFlow =
             new CaptureFlow(
-
                 captureService,
-
                 captureManager,
-
                 this.get(
                     "teamFlow"
                 ),
-
                 this.get(
                     "storageFlow"
                 ),
-
                 this.get(
                     "inventoryFlow"
                 ),
-
                 this.get(
                     "pokemonTracker"
                 ),
-
                 this.get(
                     "actionFlow"
+                ),
+                this.get(
+                    "pokemonDatabase"
+                ),
+                this.get(
+                    "friendship"
                 )
-
             );
 
 
@@ -1933,25 +2001,19 @@ class AppContainer {
 
         const encounterFlow =
             new EncounterFlow(
-
                 encounterManager,
-
                 this.get(
                     "locationDatabase"
                 )
-
             );
 
 
         const encounterBattleFlow =
             new EncounterBattleFlow(
-
                 encounterFlow,
-
                 this.get(
                     "wildBattleService"
                 )
-
             );
 
 
@@ -1988,9 +2050,7 @@ class AppContainer {
 
         const actionFlow =
             new ActionFlow(
-
                 actionManager
-
             );
 
 
@@ -2021,9 +2081,7 @@ class AppContainer {
 
         const teamFlow =
             new TeamFlow(
-
                 teamManager
-
             );
 
 
@@ -2054,13 +2112,10 @@ class AppContainer {
 
         const activePokemonFlow =
             new ActivePokemonFlow(
-
                 activePokemonManager,
-
                 this.get(
                     "teamFlow"
                 )
-
             );
 
 
@@ -2091,13 +2146,10 @@ class AppContainer {
 
         const sourceResolver =
             new PokemonSourceResolverService(
-
                 [],
-
                 this.get(
                     "evolution"
                 )
-
             );
 
 
@@ -2138,13 +2190,10 @@ class AppContainer {
 
         const storageFlow =
             new StorageFlow(
-
                 storageManager,
-
                 this.get(
                     "teamFlow"
                 )
-
             );
 
 
@@ -2243,15 +2292,12 @@ class AppContainer {
 
         const trainerAnalysis =
             new TrainerAnalysisService(
-
                 this.get(
                     "trainerDatabase"
                 ),
-
                 this.get(
                     "pokemonDatabase"
                 )
-
             );
 
 
@@ -2261,11 +2307,9 @@ class AppContainer {
 
         const trainerRecommendation =
             new TrainerRecommendationService(
-
                 this.get(
                     "pokemonDatabase"
                 )
-
             );
 
 
@@ -2298,9 +2342,7 @@ class AppContainer {
 
         const session =
             new GameSession(
-
                 this.game
-
             );
 
 
@@ -2321,27 +2363,27 @@ class AppContainer {
 
         const worldManager =
             new WorldManager(
-
                 this.get(
                     "session"
                 )
-
             );
 
 
         const worldFlow =
             new WorldFlow(
-
                 worldManager,
-
                 this.get(
                     "locationAccess"
                 ),
-
                 this.get(
                     "mapAccess"
+                ),
+                this.get(
+                    "teamFlow"
+                ),
+                this.get(
+                    "friendship"
                 )
-
             );
 
 
@@ -2362,119 +2404,106 @@ class AppContainer {
     //================================
     // Inventory Layer
     //================================
-    
+
     registerInventoryServices()
     {
-    
+
         //--------------------------------
         // Inventory manager
         //--------------------------------
-    
+
         const inventoryManager =
             new InventoryManager();
-    
-    
+
+
         //--------------------------------
         // Load Gen III item behavior database
         //--------------------------------
-    
+
         const itemBehaviorPath =
             path.join(
-            
                 __dirname,
-            
                 "..",
-            
                 "database",
-            
                 "reference",
-            
                 "gen3-item-behaviors.json"
-            
             );
-        
-        
+
+
         if(
             !fs.existsSync(
                 itemBehaviorPath
             )
         )
         {
-        
+
             throw new Error(
-            
                 `Gen III item behavior database not found: ${itemBehaviorPath}`
-            
             );
-        
+
         }
-    
-    
+
+
         const itemBehaviors =
             JSON.parse(
-            
                 fs.readFileSync(
-                
                     itemBehaviorPath,
-                
                     "utf8"
-                
                 )
-            
             );
-        
-        
+
+
         //--------------------------------
         // Item effect service
         //--------------------------------
-        
+
         const itemEffect =
             new ItemEffectService(
-            
                 this.get(
                     "statusEffect"
+                ),
+                this.get(
+                    "friendship"
+                ),
+                this.get(
+                    "statStage"
                 )
-            
             );
-        
-        
+
+
         //--------------------------------
         // Inventory flow
         //--------------------------------
-        
+
         const inventoryFlow =
             new InventoryFlow(
-            
                 inventoryManager,
-            
                 itemEffect,
-            
                 itemBehaviors
-            
             );
-        
-        
+
+
         //--------------------------------
         // Register
         //--------------------------------
-        
+
         this.container.register(
             "inventoryManager",
             inventoryManager
         );
-    
-    
+
+
         this.container.register(
             "itemEffect",
             itemEffect
         );
-    
-    
+
+
         this.container.register(
             "inventoryFlow",
             inventoryFlow
         );
-    
+
     }
 
 
@@ -2507,9 +2536,7 @@ class AppContainer {
     {
 
         return this.container.get(
-
             name
-
         );
 
     }
@@ -2518,7 +2545,11 @@ class AppContainer {
     getContainer()
     {
 
-        return this.container;
+        return this.container.getContainer
+            ? 
+            this.container.getContainer()
+            :
+            this.container;
 
     }
 

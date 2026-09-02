@@ -16,25 +16,31 @@
  * - Handle map traversal.
  * - Parse ROM data.
  * - Modify trainer state.
+ *
+ * Important:
+ * - Story objectives describe milestones.
+ * - Actual event requirements are resolved by the
+ *   event/world-state systems.
+ * - This service must not impose artificial gym-order
+ *   restrictions on alternate FireRed routes.
  */
 
 "use strict";
 
 
-class StoryProgressionService {
+class StoryProgressionService
+{
 
 
+    constructor()
+    {
 
-    constructor() {
-
-
-        this.storyRules = [
-
+        this.storyRules =
+        [
 
             //--------------------------------
             // Beginning
             //--------------------------------
-
 
             {
                 id:
@@ -55,7 +61,6 @@ class StoryProgressionService {
             },
 
 
-
             {
                 id:
                     "RECEIVE_POKEDEX",
@@ -67,10 +72,11 @@ class StoryProgressionService {
                     "PALLET_TOWN",
 
                 requirement:
-                    {
-                        storyFlag:
-                            "OAK_PARCEL_DELIVERED"
-                    },
+                {
+                    storyFlag:
+                        "OAK_PARCEL_DELIVERED"
+
+                },
 
                 completionFlag:
                     "POKEDEX_RECEIVED"
@@ -78,12 +84,9 @@ class StoryProgressionService {
             },
 
 
-
-
             //--------------------------------
             // Mt Moon
             //--------------------------------
-
 
             {
                 id:
@@ -96,10 +99,11 @@ class StoryProgressionService {
                     "MAP_MT_MOON_1F",
 
                 requirement:
-                    {
-                        badge:
-                            "BOULDER_BADGE"
-                    },
+                {
+                    badge:
+                        "BOULDER_BADGE"
+
+                },
 
                 completionFlag:
                     "MT_MOON_COMPLETED"
@@ -107,12 +111,9 @@ class StoryProgressionService {
             },
 
 
-
-
             //--------------------------------
             // Bill
             //--------------------------------
-
 
             {
                 id:
@@ -125,10 +126,11 @@ class StoryProgressionService {
                     "MAP_BILLS_HOUSE",
 
                 requirement:
-                    {
-                        storyFlag:
-                            "MT_MOON_COMPLETED"
-                    },
+                {
+                    storyFlag:
+                        "MT_MOON_COMPLETED"
+
+                },
 
                 completionFlag:
                     "BILL_EVENT_COMPLETED"
@@ -136,12 +138,9 @@ class StoryProgressionService {
             },
 
 
-
-
             //--------------------------------
-            // SS Anne
+            // S.S. Anne
             //--------------------------------
-
 
             {
                 id:
@@ -154,16 +153,16 @@ class StoryProgressionService {
                     "MAP_SSANNE_EXTERIOR",
 
                 requirement:
-                    {
-                        keyItem:
-                            "SS_TICKET"
-                    },
+                {
+                    keyItem:
+                        "SS_TICKET"
+
+                },
 
                 completionFlag:
                     "SS_ANNE_ENTERED"
 
             },
-
 
 
             {
@@ -177,10 +176,11 @@ class StoryProgressionService {
                     "MAP_SSANNE",
 
                 requirement:
-                    {
-                        storyFlag:
-                            "SS_ANNE_ENTERED"
-                    },
+                {
+                    storyFlag:
+                        "SS_ANNE_ENTERED"
+
+                },
 
                 completionFlag:
                     "SS_ANNE_DEPARTED"
@@ -188,12 +188,23 @@ class StoryProgressionService {
             },
 
 
-
-
             //--------------------------------
-            // Silph Co
+            // Silph Co.
+            //
+            // IMPORTANT:
+            //
+            // Do not require RAINBOW_BADGE here.
+            //
+            // FireRed's world progression allows the
+            // player to reach Saffron and Silph Co.
+            // through an alternate route before
+            // completing Gym 3 or Gym 4.
+            //
+            // The actual event scripts and world-state
+            // system are responsible for determining
+            // whether the player can enter and complete
+            // the event.
             //--------------------------------
-
 
             {
                 id:
@@ -206,10 +217,7 @@ class StoryProgressionService {
                     "MAP_SILPH_CO_1F",
 
                 requirement:
-                    {
-                        badge:
-                            "RAINBOW_BADGE"
-                    },
+                    null,
 
                 completionFlag:
                     "SILPH_CO_COMPLETED"
@@ -217,12 +225,9 @@ class StoryProgressionService {
             },
 
 
-
-
             //--------------------------------
             // Elite Four
             //--------------------------------
-
 
             {
                 id:
@@ -235,34 +240,37 @@ class StoryProgressionService {
                     "MAP_POKEMON_LEAGUE",
 
                 requirement:
-                    {
-                        badges:[
+                {
+                    badges:
+                    [
 
-                            "BOULDER_BADGE",
-                            "CASCADE_BADGE",
-                            "THUNDER_BADGE",
-                            "RAINBOW_BADGE",
-                            "SOUL_BADGE",
-                            "MARSH_BADGE",
-                            "VOLCANO_BADGE",
-                            "EARTH_BADGE"
+                        "BOULDER_BADGE",
 
-                        ]
-                    },
+                        "CASCADE_BADGE",
+
+                        "THUNDER_BADGE",
+
+                        "RAINBOW_BADGE",
+
+                        "SOUL_BADGE",
+
+                        "MARSH_BADGE",
+
+                        "VOLCANO_BADGE",
+
+                        "EARTH_BADGE"
+
+                    ]
+                },
 
                 completionFlag:
                     "ELITE_FOUR_UNLOCKED"
 
             }
 
-
         ];
 
-
     }
-
-
-
 
 
 
@@ -271,7 +279,6 @@ class StoryProgressionService {
     //--------------------------------
     // Get rules
     //--------------------------------
-
 
     getAllRules()
     {
@@ -284,13 +291,9 @@ class StoryProgressionService {
 
 
 
-
-
-
     //--------------------------------
     // Get rule
     //--------------------------------
-
 
     getRule(
         id
@@ -318,13 +321,9 @@ class StoryProgressionService {
 
 
 
-
-
-
     //--------------------------------
     // Can objective start?
     //--------------------------------
-
 
     canComplete(
         id,
@@ -332,18 +331,21 @@ class StoryProgressionService {
     )
     {
 
-
         const rule =
-            this.getRule(id);
+            this.getRule(
+                id
+            );
 
 
-
-        if(!rule)
+        if(
+            !rule
+        )
         {
 
             return {
 
-                allowed:false,
+                allowed:
+                    false,
 
                 reason:
                     "Unknown story objective"
@@ -353,43 +355,46 @@ class StoryProgressionService {
         }
 
 
-
-
-
         const requirement =
             rule.requirement;
 
 
-
-        if(!requirement)
+        if(
+            !requirement
+        )
         {
 
             return {
 
-                allowed:true
+                allowed:
+                    true
 
             };
 
         }
 
 
-
-
-
+        //--------------------------------
+        // Single badge
+        //--------------------------------
 
         if(
             requirement.badge
             &&
             !this.hasBadge(
+
                 requirement.badge,
+
                 trainerState
+
             )
         )
         {
 
             return {
 
-                allowed:false,
+                allowed:
+                    false,
 
                 reason:
                     `Requires ${requirement.badge}`
@@ -399,10 +404,9 @@ class StoryProgressionService {
         }
 
 
-
-
-
-
+        //--------------------------------
+        // Multiple badges
+        //--------------------------------
 
         if(
             requirement.badges
@@ -410,21 +414,26 @@ class StoryProgressionService {
         {
 
             for(
-                const badge of requirement.badges
+                const badge of
+                    requirement.badges
             )
             {
 
                 if(
                     !this.hasBadge(
+
                         badge,
+
                         trainerState
+
                     )
                 )
                 {
 
                     return {
 
-                        allowed:false,
+                        allowed:
+                            false,
 
                         reason:
                             `Requires ${badge}`
@@ -438,24 +447,27 @@ class StoryProgressionService {
         }
 
 
-
-
-
-
+        //--------------------------------
+        // Single key item
+        //--------------------------------
 
         if(
             requirement.keyItem
             &&
             !this.hasKeyItem(
+
                 requirement.keyItem,
+
                 trainerState
+
             )
         )
         {
 
             return {
 
-                allowed:false,
+                allowed:
+                    false,
 
                 reason:
                     `Requires ${requirement.keyItem}`
@@ -465,25 +477,27 @@ class StoryProgressionService {
         }
 
 
-
-
-
-
-
+        //--------------------------------
+        // Single story flag
+        //--------------------------------
 
         if(
             requirement.storyFlag
             &&
             !this.hasStoryFlag(
+
                 requirement.storyFlag,
+
                 trainerState
+
             )
         )
         {
 
             return {
 
-                allowed:false,
+                allowed:
+                    false,
 
                 reason:
                     `Requires ${requirement.storyFlag}`
@@ -493,20 +507,14 @@ class StoryProgressionService {
         }
 
 
-
-
         return {
 
-            allowed:true
+            allowed:
+                true
 
         };
 
-
     }
-
-
-
-
 
 
 
@@ -516,22 +524,27 @@ class StoryProgressionService {
     // Next objectives
     //--------------------------------
 
-
     getNextObjectives(
         trainerState
     )
     {
 
-
         return this.storyRules.filter(
 
-            rule => {
+            rule =>
+            {
 
+                //--------------------------------
+                // Already completed
+                //--------------------------------
 
                 if(
                     this.isCompleted(
+
                         rule,
+
                         trainerState
+
                     )
                 )
                 {
@@ -541,8 +554,9 @@ class StoryProgressionService {
                 }
 
 
-
-
+                //--------------------------------
+                // Requirement satisfied
+                //--------------------------------
 
                 return this.canComplete(
 
@@ -553,17 +567,11 @@ class StoryProgressionService {
                 )
                 .allowed;
 
-
             }
 
         );
 
-
     }
-
-
-
-
 
 
 
@@ -573,83 +581,74 @@ class StoryProgressionService {
     // Completion check
     //--------------------------------
 
-
     isCompleted(
         rule,
         trainerState
     )
     {
-    
-    
+
         //--------------------------------
         // Story flag completed
         //--------------------------------
-    
+
         if(
             this.hasStoryFlag(
+
                 rule.completionFlag,
+
                 trainerState
+
             )
         )
         {
-        
+
             return true;
-        
+
         }
-    
-    
-    
-    
-    
-    
+
+
         //--------------------------------
         // Event completed
         //--------------------------------
-    
+
         if(
             trainerState.completedEvents
         )
         {
-        
+
             if(
                 trainerState.completedEvents.includes(
+
                     rule.id
+
                 )
             )
             {
-            
+
                 return true;
-            
+
             }
-        
-        
-        
+
+
             if(
                 trainerState.completedEvents.includes(
+
                     rule.completionFlag
+
                 )
             )
             {
-            
+
                 return true;
-            
+
             }
-        
-        
+
         }
-    
-    
-    
-    
-    
+
+
         return false;
-    
-    
+
     }
-
-
-
-
 
 
 
@@ -659,17 +658,33 @@ class StoryProgressionService {
     // State helpers
     //--------------------------------
 
-
     hasBadge(
         badge,
         trainerState
     )
     {
 
+        if(
+            trainerState
+            &&
+            typeof trainerState.hasBadge ===
+                "function"
+        )
+        {
+
+            return trainerState.hasBadge(
+                badge
+            );
+
+        }
+
+
         return (
 
             trainerState.badges
+
             ||
+
             []
 
         )
@@ -689,10 +704,27 @@ class StoryProgressionService {
     )
     {
 
+        if(
+            trainerState
+            &&
+            typeof trainerState.hasKeyItem ===
+                "function"
+        )
+        {
+
+            return trainerState.hasKeyItem(
+                item
+            );
+
+        }
+
+
         return (
 
             trainerState.keyItems
+
             ||
+
             []
 
         )
@@ -712,10 +744,27 @@ class StoryProgressionService {
     )
     {
 
+        if(
+            trainerState
+            &&
+            typeof trainerState.hasStoryFlag ===
+                "function"
+        )
+        {
+
+            return trainerState.hasStoryFlag(
+                flag
+            );
+
+        }
+
+
         return (
 
             trainerState.storyFlags
+
             ||
+
             []
 
         )
@@ -726,8 +775,9 @@ class StoryProgressionService {
     }
 
 
-
 }
+
+
 
 
 

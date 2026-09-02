@@ -10,12 +10,14 @@
  * - Remove Pokémon.
  * - Swap Pokémon positions.
  * - Check team capacity.
+ * - Preserve individual Pokémon state.
  *
  * Does NOT:
  * - Capture Pokémon.
  * - Execute battles.
  * - Calculate stats.
  * - Handle evolution.
+ * - Copy or strip Pokémon state.
  */
 
 "use strict";
@@ -47,6 +49,16 @@ class TeamManager {
 
     //--------------------------------
     // Add Pokemon
+    //
+    // Stores the same Pokémon object.
+    // This preserves:
+    // - friendship
+    // - capture ball
+    // - met location
+    // - moves
+    // - PP state
+    // - evolution history
+    // - other individual state
     //--------------------------------
 
 
@@ -54,6 +66,29 @@ class TeamManager {
         pokemon
     )
     {
+
+
+        if(
+            !pokemon
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Invalid Pokemon"
+
+            };
+
+        }
+
+
+
+
+
+
 
 
         if(

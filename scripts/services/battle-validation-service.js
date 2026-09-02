@@ -18,11 +18,8 @@
 "use strict";
 
 
-
-
-
-class BattleValidationService {
-
+class BattleValidationService
+{
 
 
     constructor()
@@ -34,24 +31,15 @@ class BattleValidationService {
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
     // Validate move
     //--------------------------------
-
 
     validateMove(
         pokemon,
         move
     )
     {
-
 
         if(
             !pokemon
@@ -60,7 +48,8 @@ class BattleValidationService {
 
             return {
 
-                success:false,
+                success:
+                    false,
 
                 reason:
                     "Invalid Pokémon"
@@ -70,38 +59,20 @@ class BattleValidationService {
         }
 
 
-
-
-
-
-
-
         const usableMoves =
-
             this.getUsableMoves(
-
                 pokemon
-
             );
-
-
-
-
-
-
-
 
 
         //--------------------------------
         // No move selected
         //--------------------------------
 
-
         if(
             !move
         )
         {
-
 
             if(
                 usableMoves.length === 0
@@ -110,60 +81,40 @@ class BattleValidationService {
 
                 return {
 
-                    success:true,
+                    success:
+                        true,
 
-                    struggle:true
+                    struggle:
+                        true
 
                 };
 
             }
 
 
-
-
-
             return {
 
-                success:false,
+                success:
+                    false,
 
                 reason:
                     "No move selected"
 
             };
 
-
         }
-
-
-
-
-
-
-
 
 
         //--------------------------------
         // Manual STRUGGLE
         //--------------------------------
 
-
         const moveConstant =
-
             typeof move === "string"
-
             ?
-
             move
-
             :
-
             move.constant;
-
-
-
-
-
-
 
 
         if(
@@ -172,7 +123,6 @@ class BattleValidationService {
         )
         {
 
-
             if(
                 usableMoves.length === 0
             )
@@ -180,53 +130,36 @@ class BattleValidationService {
 
                 return {
 
-                    success:true
+                    success:
+                        true
 
                 };
 
             }
 
 
-
-
-
             return {
 
-                success:false,
+                success:
+                    false,
 
                 reason:
                     "Cannot use STRUGGLE while moves remain"
 
             };
 
-
         }
-
-
-
-
-
-
-
 
 
         //--------------------------------
         // Find known move
         //--------------------------------
 
-
         const selectedMove =
-
             this.getKnownMove(
-
                 pokemon,
-
                 move
-
             );
-
-
-
 
 
         if(
@@ -236,7 +169,8 @@ class BattleValidationService {
 
             return {
 
-                success:false,
+                success:
+                    false,
 
                 reason:
                     "Move not known by Pokémon"
@@ -246,83 +180,51 @@ class BattleValidationService {
         }
 
 
-
-
-
-
-
-
-
         //--------------------------------
         // PP check
         //--------------------------------
 
-
         if(
-            typeof selectedMove.pp ===
-            "number"
-
-            &&
-
-            selectedMove.pp <= 0
+            this.getCurrentPP(
+                selectedMove
+            ) <= 0
         )
         {
 
-
             return {
 
-                success:false,
+                success:
+                    false,
 
                 reason:
                     "No PP remaining",
 
-
                 struggle:
-
                     this.hasNoPP(
-
                         pokemon
-
                     )
 
             };
 
-
         }
-
-
-
-
-
-
-
 
 
         return {
 
-            success:true,
+            success:
+                true,
 
             move:
-
                 selectedMove
 
         };
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Find move owned by Pokémon
     //--------------------------------
-
 
     getKnownMove(
         pokemon,
@@ -330,77 +232,41 @@ class BattleValidationService {
     )
     {
 
-
         const moves =
-
             pokemon.moves || [];
-
-
-
-
-
-
 
 
         if(
             !move
         )
         {
+
             return null;
+
         }
 
 
-
-
-
-
-
-
         const moveName =
-
             typeof move === "string"
-
             ?
-
             move
-
             :
-
             move.name;
 
 
-
-
-
-
-
-
         const moveConstant =
-
             typeof move === "string"
-
             ?
-
             move
-
             :
-
             move.constant;
-
-
-
-
-
-
 
 
         return moves.find(
 
             knownMove =>
 
-
                 (
-
                     knownMove.constant
 
                     &&
@@ -413,13 +279,11 @@ class BattleValidationService {
                 ||
 
                 (
-
                     knownMove.name
 
                     &&
 
                     (
-
                         knownMove.name ===
                         moveName
 
@@ -441,27 +305,17 @@ class BattleValidationService {
 
         );
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Get usable moves
     //--------------------------------
 
-
     getUsableMoves(
         pokemon
     )
     {
-
 
         if(
             !pokemon
@@ -479,63 +333,111 @@ class BattleValidationService {
         }
 
 
-
-
-
         return pokemon.moves.filter(
 
             move =>
 
-                typeof move.pp !==
-                "number"
-
-                ||
-
-                move.pp > 0
+                this.getCurrentPP(
+                    move
+                ) > 0
 
         );
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Check all PP exhausted
     //--------------------------------
 
-
     hasNoPP(
         pokemon
     )
     {
 
-
         return (
 
             this.getUsableMoves(
-
                 pokemon
-
             )
             .length === 0
 
         );
 
+    }
+
+
+    //--------------------------------
+    // Get current PP
+    //--------------------------------
+
+    getCurrentPP(
+        move
+    )
+    {
+
+        if(
+            !move
+        )
+        {
+
+            return 0;
+
+        }
+
+
+        const currentPP =
+            Number(
+                move.currentPP
+            );
+
+
+        if(
+            Number.isFinite(
+                currentPP
+            )
+        )
+        {
+
+            return Math.max(
+                0,
+                currentPP
+            );
+
+        }
+
+
+        //--------------------------------
+        // Legacy compatibility
+        //--------------------------------
+
+        const legacyPP =
+            Number(
+                move.pp
+            );
+
+
+        if(
+            Number.isFinite(
+                legacyPP
+            )
+        )
+        {
+
+            return Math.max(
+                0,
+                legacyPP
+            );
+
+        }
+
+
+        return 0;
 
     }
 
 
 }
-
-
-
 
 
 module.exports =

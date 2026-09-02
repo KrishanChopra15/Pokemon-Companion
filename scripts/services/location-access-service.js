@@ -62,9 +62,21 @@ class LocationAccessService {
         const reachable =
             this.locationGraph
                 .isReachable(
+
                     startLocation,
+
                     location,
-                    playerState
+
+                    (
+                        requirements,
+                        connection
+                    ) =>
+                        this.canTraverseConnection(
+                            requirements,
+                            connection,
+                            playerState
+                        )
+
                 );
 
 
@@ -134,6 +146,262 @@ class LocationAccessService {
 
         };
 
+
+    }
+
+
+
+
+
+
+
+    //--------------------------------
+    // Connection traversal
+    //--------------------------------
+
+
+    canTraverseConnection(
+        requirements,
+        connection,
+        playerState
+    ) {
+
+
+        if(
+            !requirements
+            ||
+            requirements.length === 0
+        )
+        {
+
+            return true;
+
+        }
+
+
+        if(
+            !this.progression
+        )
+        {
+
+            return false;
+
+        }
+
+
+        for(
+            const requirement of
+                requirements
+        )
+        {
+
+
+            if(
+                !requirement
+            )
+            {
+
+                continue;
+
+            }
+
+
+            const progressionRequirement =
+                this.convertConnectionRequirement(
+                    requirement
+                );
+
+
+            const result =
+                this.progression
+                    .checkRequirement(
+                        progressionRequirement,
+                        playerState
+                    );
+
+
+            if(
+                !result.allowed
+            )
+            {
+
+                return false;
+
+            }
+
+        }
+
+
+        return true;
+
+    }
+
+
+
+
+
+
+
+    //--------------------------------
+    // Convert graph connection
+    // requirement to progression
+    // requirement.
+    //--------------------------------
+
+
+    convertConnectionRequirement(
+        requirement
+    )
+    {
+
+
+        if(
+            typeof requirement ===
+                "string"
+        )
+        {
+
+            return {
+
+                abilities:
+                [
+                    requirement
+                ]
+
+            };
+
+        }
+
+
+        if(
+            !requirement
+            ||
+            typeof requirement !==
+                "object"
+        )
+        {
+
+            return {
+
+                abilities:
+                []
+
+            };
+
+        }
+
+
+        const type =
+            String(
+
+                requirement.type
+
+                ||
+
+                ""
+
+            )
+            .toUpperCase();
+
+
+        if(
+            !type
+        )
+        {
+
+            return {
+
+                abilities:
+                []
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Explicit CAN_USE ability
+        //--------------------------------
+
+        if(
+            type.startsWith(
+                "CAN_USE_"
+            )
+        )
+        {
+
+            return {
+
+                abilities:
+                [
+                    type
+                ]
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Common field ability names
+        //--------------------------------
+
+        const abilityMap =
+        {
+
+            CUT:
+                "CAN_USE_CUT",
+
+            FLASH:
+                "CAN_USE_FLASH",
+
+            SURF:
+                "CAN_USE_SURF",
+
+            STRENGTH:
+                "CAN_USE_STRENGTH",
+
+            FLY:
+                "CAN_USE_FLY",
+
+            ROCK_SMASH:
+                "CAN_USE_ROCK_SMASH",
+
+            POKE_FLUTE:
+                "CAN_USE_POKE_FLUTE"
+
+        };
+
+
+        if(
+            abilityMap[type]
+        )
+        {
+
+            return {
+
+                abilities:
+                [
+                    abilityMap[type]
+                ]
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Generic named requirement
+        //--------------------------------
+
+        return {
+
+            abilities:
+            [
+                type
+            ]
+
+        };
 
     }
 

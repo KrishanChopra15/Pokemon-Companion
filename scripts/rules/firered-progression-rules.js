@@ -9,6 +9,7 @@
  * - Define badge requirements.
  * - Define HM unlock requirements.
  * - Define key item gates.
+ * - Define hard progression gates.
  *
  * Does NOT:
  * - Generate databases.
@@ -52,7 +53,6 @@ module.exports = [
     },
 
 
-
     {
         id:
             "CERULEAN_GYM_COMPLETE",
@@ -80,13 +80,12 @@ module.exports = [
     },
 
 
-
     {
         id:
             "VERMILION_GYM_COMPLETE",
 
         location:
-            "MAP_VERMILION_GYM",
+            "MAP_VERMILION_CITY_GYM",
 
         type:
             "GYM",
@@ -108,6 +107,250 @@ module.exports = [
     },
 
 
+    {
+        id:
+            "CELADON_GYM_COMPLETE",
+
+        location:
+            "MAP_CELADON_CITY_GYM",
+
+        type:
+            "GYM",
+
+        requirement:
+        {
+            badges:
+            [
+                "BOULDER_BADGE",
+                "CASCADE_BADGE",
+                "THUNDER_BADGE"
+            ]
+        },
+
+        unlocks:
+        [
+            "RAINBOW_BADGE"
+        ]
+
+    },
+
+
+    {
+        id:
+            "FUCHSIA_GYM_COMPLETE",
+
+        location:
+            "MAP_FUCHSIA_CITY_GYM",
+
+        type:
+            "GYM",
+
+        requirement:
+        {
+            badges:
+            [
+                "BOULDER_BADGE",
+                "CASCADE_BADGE",
+                "THUNDER_BADGE",
+                "RAINBOW_BADGE"
+            ]
+        },
+
+        unlocks:
+        [
+            "SOUL_BADGE"
+        ]
+
+    },
+
+
+    {
+        id:
+            "SAFFRON_GYM_COMPLETE",
+
+        location:
+            "MAP_SAFFRON_CITY_GYM",
+
+        type:
+            "GYM",
+
+        requirement:
+        {
+            badges:
+            [
+                "BOULDER_BADGE",
+                "CASCADE_BADGE",
+                "THUNDER_BADGE",
+                "RAINBOW_BADGE",
+                "SOUL_BADGE"
+            ],
+
+            storyFlags:
+            [
+                "SILPH_CO_COMPLETED"
+            ]
+        },
+
+        unlocks:
+        [
+            "MARSH_BADGE"
+        ]
+
+    },
+
+
+    //----------------------------------------
+    // Gym 7 hard gate
+    //
+    // Cinnabar Island requires access to
+    // the island. Surf is the hard traversal
+    // requirement.
+    //----------------------------------------
+
+
+    {
+        id:
+            "CINNABAR_GYM_ACCESS",
+
+        location:
+            "MAP_CINNABAR_ISLAND_GYM",
+
+        type:
+            "HARD_GATE",
+
+        requirement:
+        {
+            abilities:
+            [
+                "CAN_USE_SURF"
+            ]
+        },
+
+        unlocks:
+        [
+            "CINNABAR_GYM_AVAILABLE"
+        ]
+
+    },
+
+
+    {
+        id:
+            "CINNABAR_GYM_COMPLETE",
+
+        location:
+            "MAP_CINNABAR_ISLAND_GYM",
+
+        type:
+            "GYM",
+
+        requirement:
+        {
+            badges:
+            [
+                "BOULDER_BADGE",
+                "CASCADE_BADGE",
+                "THUNDER_BADGE",
+                "RAINBOW_BADGE",
+                "SOUL_BADGE",
+                "MARSH_BADGE"
+            ],
+
+            abilities:
+            [
+                "CAN_USE_SURF"
+            ]
+        },
+
+        unlocks:
+        [
+            "VOLCANO_BADGE"
+        ]
+
+    },
+
+
+    //----------------------------------------
+    // Gym 8 hard gate
+    //
+    // Viridian Gym becomes available only
+    // after the Silph Co. story event and
+    // after the first seven badges.
+    //----------------------------------------
+
+
+    {
+        id:
+            "VIRIDIAN_GYM_ACCESS",
+
+        location:
+            "MAP_VIRIDIAN_CITY_GYM",
+
+        type:
+            "HARD_GATE",
+
+        requirement:
+        {
+            badges:
+            [
+                "BOULDER_BADGE",
+                "CASCADE_BADGE",
+                "THUNDER_BADGE",
+                "RAINBOW_BADGE",
+                "SOUL_BADGE",
+                "MARSH_BADGE",
+                "VOLCANO_BADGE"
+            ],
+
+            storyFlags:
+            [
+                "SILPH_CO_COMPLETED"
+            ]
+        },
+
+        unlocks:
+        [
+            "VIRIDIAN_GYM_AVAILABLE"
+        ]
+
+    },
+
+
+    {
+        id:
+            "VIRIDIAN_GYM_COMPLETE",
+
+        location:
+            "MAP_VIRIDIAN_CITY_GYM",
+
+        type:
+            "GYM",
+
+        requirement:
+        {
+            badges:
+            [
+                "BOULDER_BADGE",
+                "CASCADE_BADGE",
+                "THUNDER_BADGE",
+                "RAINBOW_BADGE",
+                "SOUL_BADGE",
+                "MARSH_BADGE",
+                "VOLCANO_BADGE"
+            ],
+
+            storyFlags:
+            [
+                "SILPH_CO_COMPLETED"
+            ]
+        },
+
+        unlocks:
+        [
+            "EARTH_BADGE"
+        ]
+
+    },
 
 
     //----------------------------------------
@@ -146,13 +389,12 @@ module.exports = [
     },
 
 
-
     {
         id:
             "FLASH_UNLOCK",
 
         location:
-            "MAP_ROUTE_2",
+            "MAP_ROUTE2",
 
         type:
             "HM",
@@ -176,7 +418,6 @@ module.exports = [
         ]
 
     },
-
 
 
     {
@@ -210,7 +451,6 @@ module.exports = [
     },
 
 
-
     {
         id:
             "STRENGTH_UNLOCK",
@@ -240,7 +480,6 @@ module.exports = [
         ]
 
     },
-
 
 
     {
@@ -274,9 +513,6 @@ module.exports = [
     },
 
 
-
-
-
     //----------------------------------------
     // Story gates
     //----------------------------------------
@@ -308,16 +544,24 @@ module.exports = [
     },
 
 
+    //----------------------------------------
+    // Saffron City access
+    //
+    // Tea opens the Saffron City gates.
+    // This is NOT the same thing as
+    // completing Silph Co.
+    //----------------------------------------
+
 
     {
         id:
-            "SILPH_CO_ACCESS",
+            "SAFFRON_CITY_ACCESS",
 
         location:
             "MAP_SAFFRON_CITY",
 
         type:
-            "STORY",
+            "HARD_GATE",
 
         requirement:
         {
@@ -335,6 +579,46 @@ module.exports = [
     },
 
 
+    //----------------------------------------
+    // Silph Co. completion
+    //
+    // The story event itself establishes
+    // the flag used by later progression.
+    //----------------------------------------
+
+
+    {
+        id:
+            "SILPH_CO_COMPLETION",
+
+        location:
+            "MAP_SILPH_CO_7F",
+
+        type:
+            "STORY",
+
+        requirement:
+        {
+            keyItems:
+            [
+                "TEA"
+            ]
+        },
+
+        unlocks:
+        [
+            "SILPH_CO_COMPLETED"
+        ]
+
+    },
+
+
+    //----------------------------------------
+    // Victory Road hard gate
+    //
+    // The player must have all eight badges.
+    //----------------------------------------
+
 
     {
         id:
@@ -344,7 +628,7 @@ module.exports = [
             "MAP_VICTORY_ROAD_1F",
 
         type:
-            "STORY",
+            "HARD_GATE",
 
         requirement:
         {
@@ -363,11 +647,56 @@ module.exports = [
 
         unlocks:
         [
-            "POKEMON_LEAGUE_ACCESS"
+            "POKEMON_LEAGUE_ACCESS",
+            "VICTORY_ROAD_AVAILABLE"
+        ]
+
+    },
+
+
+    //----------------------------------------
+    // Elite Four hard gate
+    //
+    // The player must have all eight badges
+    // and access to Victory Road.
+    //----------------------------------------
+
+
+    {
+        id:
+            "ELITE_FOUR_ACCESS",
+
+        location:
+            "MAP_POKEMON_LEAGUE_ENTRANCE",
+
+        type:
+            "HARD_GATE",
+
+        requirement:
+        {
+            badges:
+            [
+                "BOULDER_BADGE",
+                "CASCADE_BADGE",
+                "THUNDER_BADGE",
+                "RAINBOW_BADGE",
+                "SOUL_BADGE",
+                "MARSH_BADGE",
+                "VOLCANO_BADGE",
+                "EARTH_BADGE"
+            ],
+
+            flags:
+            [
+                "POKEMON_LEAGUE_ACCESS"
+            ]
+        },
+
+        unlocks:
+        [
+            "ELITE_FOUR_AVAILABLE"
         ]
 
     }
-
-
 
 ];

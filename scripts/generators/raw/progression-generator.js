@@ -18,13 +18,19 @@
 "use strict";
 
 
-const fs = require("fs");
-const path = require("path");
+const fs =
+    require("fs");
+
+
+const path =
+    require("path");
 
 
 
-class ProgressionGenerator {
 
+
+class ProgressionGenerator
+{
 
 
     /**
@@ -39,107 +45,183 @@ class ProgressionGenerator {
     )
     {
 
+        //----------------------------------------
+        // Validate rules
+        //----------------------------------------
+
+        if(
+            !Array.isArray(
+                rules
+            )
+        )
+        {
+
+            throw new Error(
+                "Invalid progression rules"
+            );
+
+        }
 
 
         //----------------------------------------
         // Normalize rules
         //----------------------------------------
 
-
         const output =
+            rules.map(
+            
+                rule =>
+                ({
+                
+                    id:
+                        rule.id
+                        ||
+                        null,
+                
+                
+                    eventId:
+                        rule.eventId
+                        ||
+                        null,
+                
+                
+                    location:
+                        rule.location
+                        ||
+                        null,
+                
+                
+                    type:
+                        rule.type
+                        ||
+                        null,
+                
+                
+                    requirement:
+                        this.normalizeRequirement(
+                        
+                            rule.requirement
+                        
+                        ),
+                    
+                    
+                    unlocks:
+                        Array.isArray(
+                            rule.unlocks
+                        )
+                        ?
+                        [
+                            ...new Set(
+                                rule.unlocks
+                            )
+                        ]
+                        :
+                        []
+                    
+                })
+            
+            );
 
-            rules.map(rule => ({
+
+        //----------------------------------------
+        // Remove duplicate IDs
+        //----------------------------------------
+
+        const unique = [];
 
 
-                id:
-                    rule.id || null,
+        const seen =
+            new Set();
 
 
-                location:
-                    rule.location || null,
+        for(
+            const rule of
+                output
+        )
+        {
+
+            if(
+                !rule.id
+            )
+            {
+
+                continue;
+
+            }
 
 
-                type:
-                    rule.type || null,
+            if(
+                seen.has(
+                    rule.id
+                )
+            )
+            {
+
+                console.warn(
+
+                    `Duplicate progression id skipped: ${rule.id}`
+
+                );
 
 
-                requirement:
-                    this.normalizeRequirement(
-                        rule.requirement
-                    ),
+                continue;
+
+            }
 
 
-                unlocks:
-                    rule.unlocks || []
+            seen.add(
+                rule.id
+            );
 
 
+            unique.push(
+                rule
+            );
 
-            }));
-
-
-
-
-
-
+        }
 
 
         //----------------------------------------
         // Save raw database
         //----------------------------------------
 
+        const file =
+            path.join(
 
-        const file = path.join(
+                process.cwd(),
 
+                "database",
 
-            process.cwd(),
+                "raw",
 
+                game,
 
-            "database",
+                "progression.json"
 
-
-            "raw",
-
-
-            game,
-
-
-            "progression.json"
-
-
-        );
-
-
-
+            );
 
 
         fs.mkdirSync(
 
-
-            path.dirname(file),
-
+            path.dirname(
+                file
+            ),
 
             {
-                recursive:true
+                recursive:
+                    true
             }
-
 
         );
 
 
-
-
-
-
-
         fs.writeFileSync(
-
 
             file,
 
-
             JSON.stringify(
 
-                output,
+                unique,
 
                 null,
 
@@ -147,17 +229,14 @@ class ProgressionGenerator {
 
             ),
 
-
             "utf8"
-
 
         );
 
 
-
-
-
-
+        //----------------------------------------
+        // Report
+        //----------------------------------------
 
         console.log();
 
@@ -173,17 +252,13 @@ class ProgressionGenerator {
 
 
         console.log(
-            `Progression records: ${output.length}`
+            `Progression records: ${unique.length}`
         );
 
 
         console.log();
 
-
-
     }
-
-
 
 
 
@@ -192,10 +267,11 @@ class ProgressionGenerator {
     /**
      * Normalize requirement object.
      *
-     * Future support:
+     * Supports:
      * - badges
-     * - items
+     * - key items
      * - story flags
+     * - abilities
      * - conditions
      *
      * @param {Object|null} requirement
@@ -205,7 +281,6 @@ class ProgressionGenerator {
         requirement
     )
     {
-
 
         if(
             !requirement
@@ -217,50 +292,84 @@ class ProgressionGenerator {
         }
 
 
-
         return {
 
-
             badges:
-
-                requirement.badges
-                ||
+                Array.isArray(
+                    requirement.badges
+                )
+                ?
+                [
+                    ...new Set(
+                        requirement.badges
+                    )
+                ]
+                :
                 [],
-
 
 
             keyItems:
-
-                requirement.keyItems
-                ||
+                Array.isArray(
+                    requirement.keyItems
+                )
+                ?
+                [
+                    ...new Set(
+                        requirement.keyItems
+                    )
+                ]
+                :
                 [],
-
 
 
             storyFlags:
-
-                requirement.storyFlags
-                ||
+                Array.isArray(
+                    requirement.storyFlags
+                )
+                ?
+                [
+                    ...new Set(
+                        requirement.storyFlags
+                    )
+                ]
+                :
                 [],
 
 
+            abilities:
+                Array.isArray(
+                    requirement.abilities
+                )
+                ?
+                [
+                    ...new Set(
+                        requirement.abilities
+                    )
+                ]
+                :
+                [],
+
 
             conditions:
-
                 requirement.conditions
-                ||
+                &&
+                typeof requirement.conditions ===
+                    "object"
+                ?
+                {
+                    ...requirement.conditions
+                }
+                :
                 {}
 
-
-
         };
-
 
     }
 
 
-
 }
+
+
 
 
 

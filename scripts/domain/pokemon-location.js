@@ -8,6 +8,8 @@
  * - Store Pokémon species.
  * - Store available locations.
  * - Provide location lookup helpers.
+ * - Provide encounter method helpers.
+ * - Provide fishing rod helpers.
  *
  * Does NOT:
  * - Read JSON.
@@ -40,7 +42,9 @@ class PokemonLocation {
 
 
         this.locations =
-            locations;
+            Array.isArray(locations)
+                ? locations
+                : [];
 
 
     }
@@ -170,16 +174,141 @@ class PokemonLocation {
 
             ...new Set(
 
-                this.locations.map(
+                this.locations
+                    .map(
 
-                    location =>
-                        location.displayMethod
+                        location =>
+                            location.displayMethod
 
-                )
+                    )
+                    .filter(Boolean)
 
             )
 
         ];
+
+
+    }
+
+
+
+
+
+    /**
+     * Get locations using a specific encounter method.
+     *
+     * @param {string} method
+     * @returns {Object[]}
+     */
+    getLocationsByMethod(method) {
+
+
+        if(!method){
+
+            return [];
+
+        }
+
+
+        return this.locations.filter(
+
+            location =>
+                location.method === method
+
+        );
+
+
+    }
+
+
+
+
+
+    /**
+     * Get fishing locations.
+     *
+     * @returns {Object[]}
+     */
+    getFishingLocations() {
+
+
+        return this.getLocationsByMethod(
+            "fishing_mons"
+        );
+
+
+    }
+
+
+
+
+
+    /**
+     * Get rods available at a location.
+     *
+     * @param {string} locationId
+     * @returns {string[]}
+     */
+    getRods(locationId) {
+
+
+        const location =
+            this.findLocation(
+                locationId
+            );
+
+
+        if(
+            !location
+            ||
+            !location.rodGroups
+        ) {
+
+            return [];
+
+        }
+
+
+        return Object.keys(
+            location.rodGroups
+        );
+
+
+    }
+
+
+
+
+
+    /**
+     * Get encounter slots for a location.
+     *
+     * @param {string} locationId
+     * @returns {Object[]}
+     */
+    getSlots(locationId) {
+
+
+        const location =
+            this.findLocation(
+                locationId
+            );
+
+
+        if(
+            !location
+            ||
+            !Array.isArray(
+                location.slots
+            )
+        ) {
+
+            return [];
+
+        }
+
+
+        return location.slots;
 
 
     }

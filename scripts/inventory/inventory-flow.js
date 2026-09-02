@@ -142,12 +142,19 @@ class InventoryFlow
     //
     // Applies the item behavior first.
     // The item is consumed only when
-    // the effect succeeds.
+    // the complete effect succeeds.
+    //
+    // Optional move is used by:
+    // - Ether
+    // - Max Ether
+    // - PP Up
+    // - PP Max
     //--------------------------------
 
     useItemOnPokemon(
         item,
-        pokemon
+        pokemon,
+        move = null
     )
     {
 
@@ -282,7 +289,9 @@ class InventoryFlow
 
                 behavior,
 
-                pokemon
+                pokemon,
+
+                move
 
             );
 
@@ -379,10 +388,25 @@ class InventoryFlow
 
             pokemon:
                 pokemon.species ||
-                null
+                null,
+
+            move:
+                move
+                &&
+                (
+                    move.constant
+                    ||
+                    move.name
+                    ||
+                    null
+                )
 
         });
 
+
+        //--------------------------------
+        // Return successful result
+        //--------------------------------
 
         return {
 
@@ -395,6 +419,10 @@ class InventoryFlow
                 behavior.behavior,
 
             pokemon,
+
+            move:
+                move ||
+                null,
 
             effect:
                 effectResult,
@@ -658,6 +686,10 @@ class InventoryFlow
         });
 
 
+        //--------------------------------
+        // Return successful result
+        //--------------------------------
+
         return {
 
             success:
@@ -706,6 +738,7 @@ class InventoryFlow
                 this.itemBehaviors.find(
 
                     behavior =>
+
                         behavior.itemConstant ===
                         item
 

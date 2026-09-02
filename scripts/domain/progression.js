@@ -41,6 +41,11 @@ class Progression {
 
 
 
+        this.eventId =
+            data.eventId || null;
+
+
+
         this.type =
             data.type || null;
 

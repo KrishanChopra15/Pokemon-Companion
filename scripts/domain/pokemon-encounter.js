@@ -8,6 +8,8 @@
  * - Store encounter map information.
  * - Store encounter method.
  * - Store encounter rate.
+ * - Store encounter slot rates.
+ * - Store fishing rod groups.
  * - Store possible Pokémon.
  *
  * Does NOT:
@@ -52,6 +54,24 @@ class PokemonEncounter {
 
         this.encounterRate =
             data.encounterRate ?? 0;
+
+
+
+        this.slotRates =
+            Array.isArray(data.slotRates)
+                ? [...data.slotRates]
+                : [];
+
+
+
+        this.rodGroups =
+            data.rodGroups
+                && typeof data.rodGroups === "object"
+                && !Array.isArray(data.rodGroups)
+                    ? {
+                        ...data.rodGroups
+                    }
+                    : null;
 
 
 
@@ -128,6 +148,77 @@ class PokemonEncounter {
         return (
             this.mons.length > 0
         );
+
+
+    }
+
+
+
+
+
+    /**
+     * Check if encounter has slot rates.
+     *
+     * @returns {boolean}
+     */
+    hasSlotRates() {
+
+
+        return (
+            this.slotRates.length > 0
+        );
+
+
+    }
+
+
+
+
+
+    /**
+     * Check if encounter has fishing rod groups.
+     *
+     * @returns {boolean}
+     */
+    hasRodGroups() {
+
+
+        return (
+            this.rodGroups !== null
+        );
+
+
+    }
+
+
+
+
+
+    /**
+     * Get fishing slots for a rod.
+     *
+     * @param {string} rod
+     * @returns {number[]}
+     */
+    getRodSlots(rod) {
+
+
+        if(
+            !this.rodGroups
+        ) {
+
+            return [];
+
+        }
+
+
+        const slots =
+            this.rodGroups[rod];
+
+
+        return Array.isArray(slots)
+            ? [...slots]
+            : [];
 
 
     }

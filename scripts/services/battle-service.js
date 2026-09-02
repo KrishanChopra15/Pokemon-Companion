@@ -26,7 +26,8 @@
 "use strict";
 
 
-class BattleService {
+class BattleService
+{
 
 
     constructor(
@@ -35,7 +36,6 @@ class BattleService {
         battleRewardService
     )
     {
-
 
         this.preparation =
             battlePreparationService;
@@ -60,7 +60,6 @@ class BattleService {
         this.nextBattleId =
             1;
 
-
     }
 
 
@@ -71,9 +70,7 @@ class BattleService {
     createBattleId()
     {
 
-
         return `BATTLE_${this.nextBattleId++}`;
-
 
     }
 
@@ -87,7 +84,6 @@ class BattleService {
         playerState
     )
     {
-
 
         if(
             !this.preparation
@@ -147,42 +143,33 @@ class BattleService {
             id:
                 battleId,
 
-
             type:
                 preparation.battleType
                 ||
                 "TRAINER",
 
-
             status:
                 "ACTIVE",
 
-
             trainerId:
                 trainerId,
-
 
             trainer:
                 preparation.trainer
                 ||
                 null,
 
-
             player:
                 preparation.player,
-
 
             opponent:
                 preparation.opponent,
 
-
             turn:
                 1,
 
-
             result:
                 null,
-
 
             winner:
                 null
@@ -235,7 +222,9 @@ class BattleService {
 
         const initialization =
             this.initializeBattle(
+
                 battle
+
             );
 
 
@@ -264,7 +253,6 @@ class BattleService {
 
         };
 
-
     }
 
 
@@ -277,7 +265,6 @@ class BattleService {
         wildPokemon
     )
     {
-
 
         if(
             !wildPokemon
@@ -318,7 +305,6 @@ class BattleService {
         //--------------------------------
 
         const playerParty =
-
             this.preparation.getPlayerParty(
 
                 playerState
@@ -350,7 +336,6 @@ class BattleService {
         //--------------------------------
 
         const preparedPlayerParty =
-
             playerParty
                 .map(
 
@@ -388,7 +373,6 @@ class BattleService {
         //--------------------------------
 
         const preparedWildPokemon =
-
             this.preparation.preparePokemon(
 
                 wildPokemon
@@ -427,22 +411,17 @@ class BattleService {
             id:
                 battleId,
 
-
             type:
                 "WILD",
-
 
             status:
                 "ACTIVE",
 
-
             trainerId:
                 null,
 
-
             trainer:
                 null,
-
 
             player:
             {
@@ -450,12 +429,10 @@ class BattleService {
                 party:
                     preparedPlayerParty,
 
-
                 active:
                     0
 
             },
-
 
             opponent:
             {
@@ -467,20 +444,16 @@ class BattleService {
 
                 ],
 
-
                 active:
                     0
 
             },
 
-
             turn:
                 1,
 
-
             result:
                 null,
-
 
             winner:
                 null
@@ -502,7 +475,9 @@ class BattleService {
 
         const initialization =
             this.initializeBattle(
+
                 battle
+
             );
 
 
@@ -531,7 +506,6 @@ class BattleService {
 
         };
 
-
     }
 
 
@@ -543,7 +517,6 @@ class BattleService {
         battle
     )
     {
-
 
         if(
             !battle
@@ -585,7 +558,6 @@ class BattleService {
 
         );
 
-
     }
 
 
@@ -598,7 +570,6 @@ class BattleService {
     )
     {
 
-
         return (
 
             this.activeBattles[battleId]
@@ -608,7 +579,6 @@ class BattleService {
             null
 
         );
-
 
     }
 
@@ -620,13 +590,11 @@ class BattleService {
     getBattles()
     {
 
-
         return Object.values(
 
             this.activeBattles
 
         );
-
 
     }
 
@@ -637,7 +605,6 @@ class BattleService {
 
     getActiveBattles()
     {
-
 
         return Object.values(
 
@@ -653,7 +620,6 @@ class BattleService {
 
         );
 
-
     }
 
 
@@ -666,7 +632,6 @@ class BattleService {
     )
     {
 
-
         const battle =
             this.getBattle(
 
@@ -678,14 +643,11 @@ class BattleService {
         return !!(
 
             battle
-
             &&
-
             battle.status ===
                 "ACTIVE"
 
         );
-
 
     }
 
@@ -699,7 +661,6 @@ class BattleService {
         playerMove
     )
     {
-
 
         const battle =
             this.getBattle(
@@ -728,7 +689,7 @@ class BattleService {
 
         if(
             battle.status !==
-            "ACTIVE"
+                "ACTIVE"
         )
         {
 
@@ -794,21 +755,22 @@ class BattleService {
 
         if(
             battle.status !==
-            "ACTIVE"
+                "ACTIVE"
             &&
             !battle.result
         )
         {
 
             this.resolveBattleResult(
+
                 battle
+
             );
 
         }
 
 
         return result;
-
 
     }
 
@@ -822,7 +784,6 @@ class BattleService {
     )
     {
 
-
         if(
             !battle
         )
@@ -834,10 +795,10 @@ class BattleService {
 
 
         const playerAlive =
-
             battle.player.party.some(
 
                 pokemon =>
+
                     pokemon
                     &&
                     pokemon.hp > 0
@@ -846,10 +807,10 @@ class BattleService {
 
 
         const opponentAlive =
-
             battle.opponent.party.some(
 
                 pokemon =>
+
                     pokemon
                     &&
                     pokemon.hp > 0
@@ -878,12 +839,10 @@ class BattleService {
                 winner:
                     "OPPONENT",
 
-
                 outcome:
                     "DEFEAT"
 
             };
-
 
         }
 
@@ -909,7 +868,6 @@ class BattleService {
                 winner:
                     "PLAYER",
 
-
                 outcome:
                     "VICTORY"
 
@@ -923,16 +881,13 @@ class BattleService {
             status:
                 battle.status,
 
-
             winner:
                 battle.winner,
-
 
             result:
                 battle.result
 
         };
-
 
     }
 
@@ -946,7 +901,6 @@ class BattleService {
         result = {}
     )
     {
-
 
         const battle =
             this.getBattle(
@@ -975,7 +929,7 @@ class BattleService {
 
         if(
             battle.status ===
-            "COMPLETED"
+                "COMPLETED"
         )
         {
 
@@ -1021,8 +975,6 @@ class BattleService {
             ...result,
 
             winner:
-
-
                 winner
                 ||
                 result.winner
@@ -1042,15 +994,13 @@ class BattleService {
 
         if(
             winner ===
-            "PLAYER"
+                "PLAYER"
             &&
             this.rewards
         )
         {
 
-
             const defeatedPokemon =
-
                 battle.opponent.party.find(
 
                     pokemon =>
@@ -1063,7 +1013,6 @@ class BattleService {
 
 
             const playerPokemon =
-
                 battle.player.party.find(
 
                     pokemon =>
@@ -1082,26 +1031,53 @@ class BattleService {
             )
             {
 
+                //--------------------------------
+                // Determine major battle
+                //--------------------------------
+
+                const majorBattle =
+                    this.isMajorTrainerBattle(
+
+                        battle.trainer
+
+                    );
+
+
+                //--------------------------------
+                // Preserve player party
+                //--------------------------------
+
+                const playerParty =
+                    Array.isArray(
+                        battle.player.party
+                    )
+
+                    ?
+
+                    battle.player.party
+
+                    :
+
+                    [playerPokemon];
+
 
                 rewardResult =
-
                     this.rewards.processBattleRewards(
 
                         playerPokemon,
 
-
                         defeatedPokemon,
-
 
                         battle.trainer
                         ?
+
                         battle.trainer.rewards
+
                         :
+
                         null,
 
-
                         battle.player,
-
 
                         battle.type ===
                         "WILD"
@@ -1112,7 +1088,32 @@ class BattleService {
 
                         :
 
-                        "TRAINER"
+                        "TRAINER",
+
+                        {
+
+                            majorBattle,
+
+                            playerParty,
+
+                            trainer:
+                                battle.trainer,
+
+                            trainerType:
+                                battle.trainer
+                                ?
+                                battle.trainer.trainerType
+                                :
+                                null,
+
+                            trainerClass:
+                                battle.trainer
+                                ?
+                                battle.trainer.trainerClass
+                                :
+                                null
+
+                        }
 
                     );
 
@@ -1136,6 +1137,128 @@ class BattleService {
 
         };
 
+    }
+
+
+    //--------------------------------
+    // Determine major trainer battle
+    //--------------------------------
+
+    isMajorTrainerBattle(
+        trainer
+    )
+    {
+
+        if(
+            !trainer
+        )
+        {
+
+            return false;
+
+        }
+
+
+        //--------------------------------
+        // Trainer type
+        //--------------------------------
+
+        const trainerType =
+            trainer.trainerType
+            ?
+            String(
+                trainer.trainerType
+            ).toUpperCase()
+            :
+            "";
+
+
+        //--------------------------------
+        // Trainer class
+        //--------------------------------
+
+        const trainerClass =
+            trainer.trainerClass
+            ?
+            String(
+                trainer.trainerClass
+            ).toUpperCase()
+            :
+            "";
+
+
+        //--------------------------------
+        // Gym Leader
+        //--------------------------------
+
+        if(
+            trainerType ===
+                "GYM_LEADER"
+            ||
+            trainerType.includes(
+                "GYM_LEADER"
+            )
+            ||
+            trainerClass.includes(
+                "LEADER"
+            )
+        )
+        {
+
+            return true;
+
+        }
+
+
+        //--------------------------------
+        // Elite Four
+        //--------------------------------
+
+        if(
+            trainerType.includes(
+                "ELITE_FOUR"
+            )
+            ||
+            trainerType.includes(
+                "ELITE4"
+            )
+            ||
+            trainerClass.includes(
+                "ELITE_FOUR"
+            )
+            ||
+            trainerClass.includes(
+                "ELITE4"
+            )
+        )
+        {
+
+            return true;
+
+        }
+
+
+        //--------------------------------
+        // Champion
+        //--------------------------------
+
+        if(
+            trainerType.includes(
+                "CHAMPION"
+            )
+            ||
+            trainerClass.includes(
+                "CHAMPION"
+            )
+        )
+        {
+
+            return true;
+
+        }
+
+
+        return false;
 
     }
 
@@ -1149,7 +1272,6 @@ class BattleService {
     )
     {
 
-
         return this.completeBattle(
 
             battleId,
@@ -1159,14 +1281,12 @@ class BattleService {
                 winner:
                     "PLAYER",
 
-
                 outcome:
                     "VICTORY"
 
             }
 
         );
-
 
     }
 
@@ -1180,7 +1300,6 @@ class BattleService {
     )
     {
 
-
         return this.completeBattle(
 
             battleId,
@@ -1190,14 +1309,12 @@ class BattleService {
                 winner:
                     "OPPONENT",
 
-
                 outcome:
                     "DEFEAT"
 
             }
 
         );
-
 
     }
 
@@ -1210,7 +1327,6 @@ class BattleService {
         battleId
     )
     {
-
 
         if(
             !this.activeBattles[battleId]
@@ -1229,7 +1345,6 @@ class BattleService {
 
         return true;
 
-
     }
 
 
@@ -1240,14 +1355,12 @@ class BattleService {
     getBattleCount()
     {
 
-
         return Object.keys(
 
             this.activeBattles
 
         )
         .length;
-
 
     }
 

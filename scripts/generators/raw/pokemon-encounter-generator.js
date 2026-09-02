@@ -7,6 +7,8 @@
  * Responsibilities:
  * - Receive extracted encounters.
  * - Convert domain objects into JSON.
+ * - Preserve encounter slot data.
+ * - Preserve fishing rod groups.
  * - Save raw database.
  *
  * Does NOT:
@@ -66,6 +68,30 @@ class PokemonEncounterGenerator {
 
 
 
+                slotRates:
+                    Array.isArray(
+                        encounter.slotRates
+                    )
+                        ? [
+                            ...encounter.slotRates
+                        ]
+                        : [],
+
+
+
+                rodGroups:
+                    encounter.rodGroups
+                        && typeof encounter.rodGroups === "object"
+                        && !Array.isArray(
+                            encounter.rodGroups
+                        )
+                            ? {
+                                ...encounter.rodGroups
+                            }
+                            : null,
+
+
+
                 mons:
 
                     (encounter.mons || [])
@@ -75,6 +101,16 @@ class PokemonEncounterGenerator {
 
                             species:
                                 mon.species || null,
+
+
+
+                            slotIndex:
+                                mon.slotIndex ?? null,
+
+
+
+                            slotEncounterRate:
+                                mon.slotEncounterRate ?? null,
 
 
 

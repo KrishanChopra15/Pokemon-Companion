@@ -8,6 +8,7 @@
  * - Store badges.
  * - Store HM items.
  * - Store HM usage permissions.
+ * - Store general field abilities.
  * - Store key items.
  * - Store story flags.
  * - Store inventory items.
@@ -74,6 +75,15 @@ class TrainerState {
 
         this.hmAbilities =
             data.hmAbilities || [];
+
+
+
+        //--------------------------------
+        // General field abilities
+        //--------------------------------
+
+        this.abilities =
+            data.abilities || [];
 
 
 
@@ -320,6 +330,46 @@ class TrainerState {
 
         return this.hmAbilities.includes(
             move
+        );
+
+    }
+
+
+
+
+
+
+
+    //--------------------------------
+    // General Field Abilities
+    //--------------------------------
+
+
+    addAbility(ability)
+    {
+
+        if(
+            !this.hasAbility(ability)
+        )
+        {
+
+            this.abilities.push(
+                ability
+            );
+
+        }
+
+    }
+
+
+
+
+
+    hasAbility(ability)
+    {
+
+        return this.abilities.includes(
+            ability
         );
 
     }
@@ -768,6 +818,10 @@ class TrainerState {
                 this.hmAbilities,
         
         
+            abilities:
+                this.abilities,
+        
+        
             keyItems:
                 this.keyItems,
         
@@ -810,3 +864,4 @@ class TrainerState {
 
 module.exports =
     TrainerState;
+

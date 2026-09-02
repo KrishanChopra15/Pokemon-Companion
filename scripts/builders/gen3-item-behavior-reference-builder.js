@@ -9,6 +9,7 @@
  * - Combine item identity.
  * - Combine normalized item effects.
  * - Apply Generation III semantic behavior rules.
+ * - Normalize friendship effects from source fields.
  * - Produce normalized behavior records.
  *
  * Does NOT:
@@ -84,7 +85,8 @@ class Gen3ItemBehaviorReferenceBuilder
         {
 
             if(
-                !effect ||
+                !effect
+                ||
                 !effect.constant
             )
             {
@@ -116,7 +118,8 @@ class Gen3ItemBehaviorReferenceBuilder
         {
 
             if(
-                !item ||
+                !item
+                ||
                 !item.constant
             )
             {
@@ -292,6 +295,10 @@ class Gen3ItemBehaviorReferenceBuilder
 
         //--------------------------------
         // Existing normalized effects
+        //
+        // Clone the array so semantic
+        // normalization does not mutate
+        // the original item-effect database.
         //--------------------------------
 
         record.effects =
@@ -301,9 +308,46 @@ class Gen3ItemBehaviorReferenceBuilder
                 effect.effects
             )
             ?
-            effect.effects
+
+            effect.effects.map(
+
+                effectEntry =>
+
+                    (
+
+                        effectEntry
+                        &&
+                        typeof effectEntry ===
+                            "object"
+
+                    )
+
+                    ?
+
+                    {
+                        ...effectEntry
+                    }
+
+                    :
+
+                    effectEntry
+
+            )
+
             :
+
             [];
+
+
+        //--------------------------------
+        // Normalize friendship effects
+        // from Generation III source fields.
+        //--------------------------------
+
+        this.addSourceFriendshipEffect(
+            record,
+            effect
+        );
 
 
         //--------------------------------
@@ -330,6 +374,393 @@ class Gen3ItemBehaviorReferenceBuilder
 
 
         return record;
+
+    }
+
+
+    //----------------------------------------
+    // Add friendship effect from source
+    //
+    // Generation III uses:
+    //
+    // ITEM5_FRIENDSHIP_ALL
+    //
+    // with the friendship values stored in:
+    //
+    // field 7 = LOW
+    // field 8 = MID
+    // field 9 = HIGH
+    //
+    // Example:
+    //
+    // -10
+    // -10
+    // -15
+    //
+    //----------------------------------------
+
+    addSourceFriendshipEffect(
+        record,
+        effect
+    )
+    {
+
+        if(
+            !record
+            ||
+            !effect
+        )
+        {
+
+            return;
+
+        }
+
+
+        const rawFields =
+            effect.rawFields;
+
+
+        if(
+            !rawFields
+            ||
+            typeof rawFields !==
+                "object"
+        )
+        {
+
+            return;
+
+        }
+
+
+        //--------------------------------
+        // Friendship trigger
+        //--------------------------------
+
+        const friendshipField =
+            this.getRawField(
+
+                rawFields,
+
+                5
+
+            );
+
+
+        if(
+            !this.contains(
+                friendshipField,
+                "ITEM5_FRIENDSHIP_ALL"
+            )
+        )
+        {
+
+            return;
+
+        }
+
+
+        //--------------------------------
+        // Resolve friendship values
+        //--------------------------------
+
+        const low =
+            this.toInteger(
+
+                this.getRawField(
+                    rawFields,
+                    7
+                )
+
+            );
+
+
+        const mid =
+            this.toInteger(
+
+                this.getRawField(
+                    rawFields,
+                    8
+                )
+
+            );
+
+
+        const high =
+            this.toInteger(
+
+                this.getRawField(
+                    rawFields,
+                    9
+                )
+
+            );
+
+
+        //--------------------------------
+        // Require at least one valid
+        // friendship value.
+        //--------------------------------
+
+        if(
+            low ===
+                null
+            &&
+            mid ===
+                null
+            &&
+            high ===
+                null
+        )
+        {
+
+            return;
+
+        }
+
+
+        //--------------------------------
+        // Find existing friendship effect
+        //--------------------------------
+
+        let friendshipEffect =
+            record.effects.find(
+
+                effectEntry =>
+
+                    effectEntry
+                    &&
+                    effectEntry.type ===
+                        "FRIENDSHIP_CHANGE"
+
+            );
+
+
+        //--------------------------------
+        // Create effect when missing
+        //--------------------------------
+
+        if(
+            !friendshipEffect
+        )
+        {
+
+            friendshipEffect =
+            {
+
+                type:
+                    "FRIENDSHIP_CHANGE"
+
+            };
+
+
+            record.effects.push(
+                friendshipEffect
+            );
+
+        }
+
+
+        //--------------------------------
+        // Apply resolved values
+        //--------------------------------
+
+        if(
+            low !==
+                null
+        )
+        {
+
+            friendshipEffect.low =
+                low;
+
+        }
+
+
+        if(
+            mid !==
+                null
+        )
+        {
+
+            friendshipEffect.mid =
+                mid;
+
+        }
+
+
+        if(
+            high !==
+                null
+        )
+        {
+
+            friendshipEffect.high =
+                high;
+
+        }
+
+
+        //--------------------------------
+        // Preserve source arguments for
+        // debugging and future mechanics.
+        //--------------------------------
+
+        friendshipEffect.source =
+        {
+
+            field:
+                "ITEM5_FRIENDSHIP_ALL",
+
+            low,
+            mid,
+            high
+
+        };
+
+    }
+
+
+    //----------------------------------------
+    // Read raw field
+    //----------------------------------------
+
+    getRawField(
+        rawFields,
+        index
+    )
+    {
+
+        if(
+            !rawFields
+        )
+        {
+
+            return undefined;
+
+        }
+
+
+        //--------------------------------
+        // Numeric object key
+        //--------------------------------
+
+        if(
+            Object.prototype.hasOwnProperty.call(
+                rawFields,
+                index
+            )
+        )
+        {
+
+            return rawFields[
+                index
+            ];
+
+        }
+
+
+        //--------------------------------
+        // String object key
+        //--------------------------------
+
+        const key =
+            String(
+                index
+            );
+
+
+        if(
+            Object.prototype.hasOwnProperty.call(
+                rawFields,
+                key
+            )
+        )
+        {
+
+            return rawFields[
+                key
+            ];
+
+        }
+
+
+        return undefined;
+
+    }
+
+
+    //----------------------------------------
+    // Check string contents
+    //----------------------------------------
+
+    contains(
+        value,
+        text
+    )
+    {
+
+        return (
+
+            typeof value ===
+                "string"
+
+            &&
+
+            value.includes(
+                text
+            )
+
+        );
+
+    }
+
+
+    //----------------------------------------
+    // Convert value to integer
+    //----------------------------------------
+
+    toInteger(
+        value
+    )
+    {
+
+        if(
+            value ===
+                undefined
+            ||
+            value ===
+                null
+        )
+        {
+
+            return null;
+
+        }
+
+
+        const number =
+            Number(
+                value
+            );
+
+
+        if(
+            !Number.isFinite(
+                number
+            )
+        )
+        {
+
+            return null;
+
+        }
+
+
+        return Math.trunc(
+            number
+        );
 
     }
 

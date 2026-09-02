@@ -8,11 +8,14 @@
  * - Load Pokémon database.
  * - Query Pokémon data.
  * - Query evolution data.
+ * - Query base friendship.
+ * - Resolve all evolution options.
  *
  * Does NOT:
  * - Parse source files.
  * - Generate databases.
  * - Build databases.
+ * - Execute evolution logic.
  */
 
 "use strict";
@@ -37,6 +40,9 @@ class PokemonDatabaseService {
         game
     )
     {
+
+        this.game =
+            game;
 
 
         const databasePath =
@@ -91,13 +97,25 @@ class PokemonDatabaseService {
     {
 
 
+        if(
+            !name
+        )
+        {
+
+            return null;
+
+        }
+
+
         return this.pokemon.find(
 
             pokemon =>
 
                 pokemon.name ===
 
-                name.toUpperCase()
+                String(
+                    name
+                ).toUpperCase()
 
         )
 
@@ -186,11 +204,11 @@ class PokemonDatabaseService {
 
 
     //--------------------------------
-    // Get evolution data
+    // Get base friendship
     //--------------------------------
 
 
-    getEvolution(
+    getBaseFriendship(
         species
     )
     {
@@ -204,18 +222,8 @@ class PokemonDatabaseService {
             );
 
 
-
-
-
-
-
-
         if(
             !pokemon
-            ||
-            !pokemon.evolutions
-            ||
-            pokemon.evolutions.length === 0
         )
         {
 
@@ -224,104 +232,673 @@ class PokemonDatabaseService {
         }
 
 
+        const friendship =
+            Number(
+                pokemon.friendship
+            );
 
 
-
-
-
-
-        const evolution =
-            pokemon.evolutions[0];
-
-
-
-
-
-
-
-
-        let method =
-            null;
-
-
-
-
-
-
-
-
-        switch(
-            evolution.method.constant
+        if(
+            !Number.isFinite(
+                friendship
+            )
         )
         {
 
-
-            case "EVO_LEVEL":
-
-                method =
-                    "LEVEL";
-
-                break;
-
-
-
-
-            case "EVO_ITEM":
-
-                method =
-                    "ITEM";
-
-                break;
-
-
-
-
-            case "EVO_TRADE":
-
-                method =
-                    "TRADE";
-
-                break;
-
-
-
-
-            default:
-
-                return null;
-
+            return null;
 
         }
 
 
+        return Math.min(
+
+            255,
+
+            Math.max(
+
+                0,
+
+                Math.floor(
+                    friendship
+                )
+
+            )
+
+        );
+
+    }
 
 
 
 
 
 
-        return {
-
-
-            method,
-
-
-            value:
-
-                evolution.level
-
-                ||
-
-                null,
 
 
 
-            target:
+    //--------------------------------
+    // Get all evolution data
+    //--------------------------------
 
+
+    getEvolutions(
+        species
+    )
+    {
+
+
+        const pokemon =
+            this.getPokemon(
+
+                species
+
+            );
+
+
+        if(
+            !pokemon
+            ||
+            !Array.isArray(
+                pokemon.evolutions
+            )
+            ||
+            pokemon.evolutions.length === 0
+        )
+        {
+
+            return [];
+
+        }
+
+
+        return pokemon.evolutions
+
+            .map(
+
+                evolution =>
+
+                    this.normalizeEvolution(
+                        evolution
+                    )
+
+            )
+
+            .filter(
+
+                evolution =>
+
+                    evolution !== null
+
+            );
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Get first evolution
+    //
+    // Preserves compatibility with
+    // callers that expect one result.
+    //--------------------------------
+
+
+    getEvolution(
+        species
+    )
+    {
+
+
+        const evolutions =
+            this.getEvolutions(
+                species
+            );
+
+
+        return (
+
+            evolutions[0]
+
+            ||
+
+            null
+
+        );
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Normalize evolution
+    //--------------------------------
+
+
+    normalizeEvolution(
+        evolution
+    )
+    {
+
+
+        if(
+            !evolution
+            ||
+            !evolution.method
+        )
+        {
+
+            return null;
+
+        }
+
+
+        const methodConstant =
+
+            typeof evolution.method ===
+                "string"
+
+            ?
+
+            evolution.method
+
+            :
+
+            evolution.method.constant;
+
+
+        if(
+            !methodConstant
+        )
+        {
+
+            return null;
+
+        }
+
+
+        //--------------------------------
+        // Target
+        //--------------------------------
+
+        const target =
+            evolution.targetSpecies
+            &&
+            (
                 evolution.targetSpecies.name
+                ||
+                evolution.targetSpecies
+            );
 
-        };
 
+        if(
+            !target
+        )
+        {
+
+            return null;
+
+        }
+
+
+        //--------------------------------
+        // Normalize target name
+        //--------------------------------
+
+        const targetSpecies =
+            String(
+                target
+            ).toUpperCase();
+
+
+        //--------------------------------
+        // Level evolution
+        //--------------------------------
+
+        if(
+            methodConstant ===
+                "EVO_LEVEL"
+        )
+        {
+
+            return {
+
+                method:
+                    "LEVEL",
+
+                value:
+                    this.getEvolutionLevel(
+                        evolution
+                    ),
+
+                target:
+                    targetSpecies
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Stone/item evolution
+        //--------------------------------
+
+        if(
+            methodConstant ===
+                "EVO_ITEM"
+        )
+        {
+
+            const item =
+                this.getEvolutionItem(
+                    evolution
+                );
+
+
+            return {
+
+                method:
+                    this.isEvolutionStone(
+                        item
+                    )
+
+                    ?
+
+                    "EVOLUTION_STONE"
+
+                    :
+
+                    "ITEM",
+
+                value:
+                    item,
+
+                item:
+                    item,
+
+                target:
+                    targetSpecies
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Trade evolution
+        //--------------------------------
+
+        if(
+            methodConstant ===
+                "EVO_TRADE"
+        )
+        {
+
+            return {
+
+                method:
+                    "TRADE",
+
+                value:
+                    null,
+
+                target:
+                    targetSpecies
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Friendship evolution
+        //
+        // Generation III friendship
+        // evolution requirement:
+        // 220 friendship.
+        //--------------------------------
+
+        if(
+            methodConstant ===
+                "EVO_FRIENDSHIP"
+        )
+        {
+
+            return {
+
+                method:
+                    "FRIENDSHIP",
+
+                value:
+                    220,
+
+                target:
+                    targetSpecies
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Friendship day evolution
+        //
+        // The friendship threshold is
+        // still 220. Day handling is
+        // resolved by EvolutionService.
+        //--------------------------------
+
+        if(
+            methodConstant ===
+                "EVO_FRIENDSHIP_DAY"
+        )
+        {
+
+            return {
+
+                method:
+                    "FRIENDSHIP_DAY",
+
+                value:
+                    220,
+
+                target:
+                    targetSpecies
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Friendship night evolution
+        //
+        // The friendship threshold is
+        // still 220. Night handling is
+        // resolved by EvolutionService.
+        //--------------------------------
+
+        if(
+            methodConstant ===
+                "EVO_FRIENDSHIP_NIGHT"
+        )
+        {
+
+            return {
+
+                method:
+                    "FRIENDSHIP_NIGHT",
+
+                value:
+                    220,
+
+                target:
+                    targetSpecies
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Trade with item
+        //--------------------------------
+
+        if(
+            methodConstant ===
+                "EVO_TRADE_ITEM"
+        )
+        {
+
+            const item =
+                this.getEvolutionItem(
+                    evolution
+                );
+
+
+            return {
+
+                method:
+                    "TRADE_ITEM",
+
+                value:
+                    item,
+
+                item:
+                    item,
+
+                target:
+                    targetSpecies
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Unknown method
+        //--------------------------------
+
+        return null;
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Get evolution level
+    //--------------------------------
+
+
+    getEvolutionLevel(
+        evolution
+    )
+    {
+
+
+        if(
+            evolution.level !==
+                undefined
+        )
+        {
+
+            const level =
+                Number(
+                    evolution.level
+                );
+
+
+            if(
+                Number.isFinite(
+                    level
+                )
+            )
+            {
+
+                return level;
+
+            }
+
+        }
+
+
+        if(
+            evolution.parameter !==
+                undefined
+        )
+        {
+
+            const parameter =
+                Number(
+                    evolution.parameter
+                );
+
+
+            if(
+                Number.isFinite(
+                    parameter
+                )
+            )
+            {
+
+                return parameter;
+
+            }
+
+        }
+
+
+        return null;
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Get evolution item
+    //--------------------------------
+
+
+    getEvolutionItem(
+        evolution
+    )
+    {
+
+
+        if(
+            evolution.item
+        )
+        {
+
+            if(
+                typeof evolution.item ===
+                    "string"
+            )
+            {
+
+                return evolution.item;
+
+            }
+
+
+            if(
+                evolution.item.constant
+            )
+            {
+
+                return evolution.item.constant;
+
+            }
+
+
+            if(
+                evolution.item.name
+            )
+            {
+
+                return evolution.item.name;
+
+            }
+
+        }
+
+
+        if(
+            evolution.parameter
+        )
+        {
+
+            return evolution.parameter;
+
+        }
+
+
+        return null;
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Check whether evolution item
+    // is an evolution stone
+    //--------------------------------
+
+
+    isEvolutionStone(
+        item
+    )
+    {
+
+
+        if(
+            !item
+        )
+        {
+
+            return false;
+
+        }
+
+
+        const value =
+            String(
+                item
+            )
+            .trim()
+            .toUpperCase();
+
+
+        const stones =
+        [
+
+            "ITEM_FIRE_STONE",
+
+            "ITEM_THUNDER_STONE",
+
+            "ITEM_WATER_STONE",
+
+            "ITEM_LEAF_STONE",
+
+            "ITEM_MOON_STONE",
+
+            "ITEM_SUN_STONE"
+
+        ];
+
+
+        return stones.includes(
+            value
+        );
 
     }
 

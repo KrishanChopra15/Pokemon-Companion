@@ -7,12 +7,15 @@
  * Responsibilities:
  * - Check location access.
  * - Move player.
+ * - Record walking steps.
+ * - Apply walking friendship to active party.
  * - Update world state.
  *
  * Does NOT:
  * - Build maps.
  * - Handle battles.
  * - Handle encounters.
+ * - Calculate friendship rules.
  */
 
 "use strict";
@@ -28,7 +31,9 @@ class WorldFlow {
     constructor(
         worldManager,
         locationAccess = null,
-        mapAccess = null
+        mapAccess = null,
+        teamFlow = null,
+        friendshipService = null
     )
     {
 
@@ -43,6 +48,14 @@ class WorldFlow {
 
         this.mapAccess =
             mapAccess;
+
+
+        this.team =
+            teamFlow;
+
+
+        this.friendship =
+            friendshipService;
 
 
     }
@@ -100,7 +113,8 @@ class WorldFlow {
 
                 return {
 
-                    success:false,
+                    success:
+                        false,
 
                     reason:
                         "Location inaccessible",
@@ -142,7 +156,8 @@ class WorldFlow {
 
             return {
 
-                success:false,
+                success:
+                    false,
 
                 reason:
                     "Failed to move",
@@ -186,12 +201,284 @@ class WorldFlow {
 
         return {
 
-            success:true,
+            success:
+                true,
 
             location
 
         };
 
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Record walking steps
+    //--------------------------------
+
+
+    recordSteps(
+        steps,
+        options = {}
+    )
+    {
+
+
+        const result =
+            this.world
+                .addWalkingSteps(
+                    steps
+                );
+
+
+        if(
+            !result.success
+        )
+        {
+
+            return result;
+
+        }
+
+
+        //--------------------------------
+        // No completed 128-step interval
+        //--------------------------------
+
+
+        if(
+            result.intervals <= 0
+        )
+        {
+
+            return {
+
+                success:
+                    true,
+
+                steps:
+                    result,
+
+                friendship:
+                    [],
+
+                applied:
+                    false
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Get active party
+        //--------------------------------
+
+
+        if(
+            !this.team
+            ||
+            typeof this.team.getTeam !==
+                "function"
+        )
+        {
+
+            return {
+
+                success:
+                    false,
+
+                reason:
+                    "Team unavailable",
+
+                steps:
+                    result
+
+            };
+
+        }
+
+
+        const team =
+            this.team.getTeam();
+
+
+        if(
+            !Array.isArray(
+                team
+            )
+            ||
+            team.length === 0
+        )
+        {
+
+            return {
+
+                success:
+                    true,
+
+                steps:
+                    result,
+
+                friendship:
+                    [],
+
+                applied:
+                    false,
+
+                reason:
+                    "No active Pokemon"
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Friendship service
+        //--------------------------------
+
+
+        if(
+            !this.friendship
+            ||
+            typeof this.friendship.applyWalking !==
+                "function"
+        )
+        {
+
+            return {
+
+                success:
+                    false,
+
+                reason:
+                    "Friendship service unavailable",
+
+                steps:
+                    result
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Apply walking friendship
+        //
+        // applyWalking() expects a number
+        // of steps and performs one random
+        // check for each 128-step interval.
+        //--------------------------------
+
+
+        const friendshipResults =
+            [];
+
+
+        for(
+            const pokemon of team
+        )
+        {
+
+            const friendshipResult =
+                this.friendship.applyWalking(
+
+                    pokemon,
+
+                    {
+
+                        steps:
+                            result.intervals *
+                            128,
+
+                        ...options
+
+                    }
+
+                );
+
+
+            friendshipResults.push(
+
+                {
+
+                    species:
+                        pokemon.species,
+
+                    ...friendshipResult
+
+                }
+
+            );
+
+        }
+
+
+        return {
+
+            success:
+                true,
+
+            steps:
+                result,
+
+            friendship:
+                friendshipResults,
+
+            applied:
+                true
+
+        };
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Get current walking steps
+    //--------------------------------
+
+
+    getWalkingSteps()
+    {
+
+        return this.world
+            .getWalkingSteps();
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Get total steps
+    //--------------------------------
+
+
+    getTotalSteps()
+    {
+
+        return this.world
+            .getTotalSteps();
 
     }
 
@@ -223,8 +510,19 @@ class WorldFlow {
             visited:
 
                 this.world
-                    .getVisitedLocations()
+                    .getVisitedLocations(),
 
+
+            walkingSteps:
+
+                this.world
+                    .getWalkingSteps(),
+
+
+            totalSteps:
+
+                this.world
+                    .getTotalSteps()
 
         };
 

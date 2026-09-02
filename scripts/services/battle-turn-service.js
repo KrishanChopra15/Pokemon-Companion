@@ -23,7 +23,8 @@
 "use strict";
 
 
-class BattleTurnService {
+class BattleTurnService
+{
 
 
     constructor(
@@ -141,7 +142,8 @@ class BattleTurnService {
     {
 
         if(
-            !battle ||
+            !battle
+            ||
             !this.pokemon
         )
         {
@@ -156,7 +158,6 @@ class BattleTurnService {
         //--------------------------------
 
         const attackerParticipant =
-
             this.getSide(
 
                 battle,
@@ -167,7 +168,6 @@ class BattleTurnService {
 
 
         const defenderParticipant =
-
             this.getSide(
 
                 battle,
@@ -178,7 +178,8 @@ class BattleTurnService {
 
 
         if(
-            !attackerParticipant ||
+            !attackerParticipant
+            ||
             !defenderParticipant
         )
         {
@@ -193,7 +194,6 @@ class BattleTurnService {
         //--------------------------------
 
         const attacker =
-
             this.pokemon.getActivePokemon(
 
                 attackerParticipant
@@ -202,7 +202,6 @@ class BattleTurnService {
 
 
         const defender =
-
             this.pokemon.getActivePokemon(
 
                 defenderParticipant
@@ -211,8 +210,10 @@ class BattleTurnService {
 
 
         if(
-            !attacker ||
-            !defender ||
+            !attacker
+            ||
+            !defender
+            ||
             !move
         )
         {
@@ -241,9 +242,13 @@ class BattleTurnService {
                     (
 
                         knownMove.constant
+
                         &&
+
                         move.constant
+
                         &&
+
                         knownMove.constant ===
                             move.constant
 
@@ -254,9 +259,13 @@ class BattleTurnService {
                     (
 
                         knownMove.name
+
                         &&
+
                         move.name
+
                         &&
+
                         knownMove.name ===
                             move.name
 
@@ -315,7 +324,6 @@ class BattleTurnService {
 
 
         const moveResult =
-
             this.moves.executeMove(
 
                 attacker,
@@ -497,18 +505,32 @@ class BattleTurnService {
     {
 
         if(
-            !pokemon ||
+            !pokemon
+            ||
             !Array.isArray(
                 pokemon.moves
-            ) ||
+            )
+            ||
             !move
         )
         {
 
-            return;
+            return {
+
+                success:
+                    false,
+
+                reason:
+                    "Invalid Pokémon or move"
+
+            };
 
         }
 
+
+        //--------------------------------
+        // Find move slot
+        //--------------------------------
 
         const selected =
 
@@ -548,14 +570,80 @@ class BattleTurnService {
         )
         {
 
-            return;
+            return {
+
+                success:
+                    false,
+
+                reason:
+                    "Move not found"
+
+            };
 
         }
 
 
+        //--------------------------------
+        // Use PokemonMoveSlot API
+        //--------------------------------
+
+        if(
+            typeof selected.usePP ===
+                "function"
+        )
+        {
+
+            const consumed =
+                selected.usePP();
+
+
+            if(
+                consumed
+            )
+            {
+
+                return {
+
+                    success:
+                        true,
+
+                    currentPP:
+                        selected.currentPP,
+
+                    maxPP:
+                        selected.maxPP
+
+                };
+
+            }
+
+
+            return {
+
+                success:
+                    false,
+
+                reason:
+                    "No PP remaining",
+
+                currentPP:
+                    selected.currentPP,
+
+                maxPP:
+                    selected.maxPP
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Legacy compatibility
+        //--------------------------------
+
         if(
             typeof selected.pp ===
-            "number"
+                "number"
         )
         {
 
@@ -572,7 +660,37 @@ class BattleTurnService {
 
             }
 
+
+            return {
+
+                success:
+                    true,
+
+                currentPP:
+                    selected.pp,
+
+                maxPP:
+                    typeof selected.maxPP ===
+                        "number"
+                    ?
+                    selected.maxPP
+                    :
+                    null
+
+            };
+
         }
+
+
+        return {
+
+            success:
+                false,
+
+            reason:
+                "Move does not support PP tracking"
+
+        };
 
     }
 
@@ -588,7 +706,8 @@ class BattleTurnService {
     {
 
         if(
-            !battle ||
+            !battle
+            ||
             !this.pokemon
         )
         {
@@ -623,7 +742,8 @@ class BattleTurnService {
         {
 
             if(
-                !pokemon ||
+                !pokemon
+                ||
                 pokemon.hp <= 0
             )
             {

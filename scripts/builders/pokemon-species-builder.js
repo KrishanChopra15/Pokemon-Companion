@@ -168,423 +168,468 @@ class PokemonSpeciesBuilder
         //------------------------------------------------------
 
         const generatedSpecies =
-            rawSpecies.map(
-                (
-                    species,
-                    index
-                ) =>
-                {
+            rawSpecies
 
-                    const reference =
-                        references.speciesNames.get(
-                            index + 1
-                        );
+                //----------------------------------------------
+                // SPECIES_NONE is an internal placeholder and
+                // must not become a generated Pokémon record.
+                //----------------------------------------------
 
+                .filter(
 
-                    const evolutionData =
-                        reference
-                        ?
-                        evolutionsBySpecies.get(
-                            reference.constant
-                        )
-                        :
-                        null;
-
-
-                    const learnsetData =
-                        reference
-                        ?
-                        learnsetsBySpecies.get(
-                            reference.constant
-                        )
-                        :
-                        null;
-
-
-                    const machineData =
-                        reference
-                        ?
-                        machinesBySpecies.get(
-                            reference.constant
-                        )
-                        :
-                        null;
-
-
-                    const eggMoveData =
-                        reference
-                        ?
-                        eggMovesBySpecies.get(
-                            reference.constant
-                        )
-                        :
-                        null;
-
-
-                    const ability1 =
-                        references.abilities.get(
-                            species.ability1
-                        );
-
-
-                    const ability2 =
-                        references.abilities.get(
-                            species.ability2
-                        );
-
-
-                    const growthRate =
-                        references.growthRates.get(
-                            species.growthRate
-                        );
-
-
-                    const eggGroup1 =
-                        references.eggGroups.get(
-                            species.eggGroup1
-                        );
-
-
-                    const eggGroup2 =
-                        references.eggGroups.get(
-                            species.eggGroup2
-                        );
-
-
-                    const bodyColor =
-                        references.bodyColors.get(
-                            species.bodyColor
-                        );
-
-
-                    const type1 =
-                        references.types.get(
-                            species.type1
-                        );
-
-
-                    let type2 =
-                        references.types.get(
-                            species.type2
-                        );
-
-
-                    //------------------------------------------
-                    // Pokédex reference
-                    //------------------------------------------
-
-                    const pokedex =
-                        reference
-                        ?
-                        references.pokedex.getByConstant(
-                            reference.constant
-                        )
-                        :
-                        null;
-
-
-                    //------------------------------------------
-                    // Remove duplicate secondary type
-                    //------------------------------------------
-
-                    if(
-                        type1
+                    species =>
+                        species
                         &&
-                        type2
-                        &&
-                        type1.id === type2.id
-                    )
+                        species.constant !==
+                        "SPECIES_NONE"
+
+                )
+
+                .map(
+
+                    (
+                        species
+                    ) =>
                     {
 
-                        type2 =
+                        //------------------------------------------
+                        // Resolve the reference by constant.
+                        //
+                        // Do NOT use array index because raw
+                        // extraction includes SPECIES_NONE.
+                        //------------------------------------------
+
+                        const reference =
+                            references.speciesNames.getByConstant(
+                                species.constant
+                            );
+
+
+                        const evolutionData =
+                            reference
+                            ?
+                            evolutionsBySpecies.get(
+                                reference.constant
+                            )
+                            :
                             null;
+
+
+                        const learnsetData =
+                            reference
+                            ?
+                            learnsetsBySpecies.get(
+                                reference.constant
+                            )
+                            :
+                            null;
+
+
+                        const machineData =
+                            reference
+                            ?
+                            machinesBySpecies.get(
+                                reference.constant
+                            )
+                            :
+                            null;
+
+
+                        const eggMoveData =
+                            reference
+                            ?
+                            eggMovesBySpecies.get(
+                                reference.constant
+                            )
+                            :
+                            null;
+
+
+                        const ability1 =
+                            references.abilities.get(
+                                species.ability1
+                            );
+
+
+                        const ability2 =
+                            references.abilities.get(
+                                species.ability2
+                            );
+
+
+                        const growthRate =
+                            references.growthRates.get(
+                                species.growthRate
+                            );
+
+
+                        const eggGroup1 =
+                            references.eggGroups.get(
+                                species.eggGroup1
+                            );
+
+
+                        const eggGroup2 =
+                            references.eggGroups.get(
+                                species.eggGroup2
+                            );
+
+
+                        const bodyColor =
+                            references.bodyColors.get(
+                                species.bodyColor
+                            );
+
+
+                        const type1 =
+                            references.types.get(
+                                species.type1
+                            );
+
+
+                        let type2 =
+                            references.types.get(
+                                species.type2
+                            );
+
+
+                        //------------------------------------------
+                        // Pokédex reference
+                        //------------------------------------------
+
+                        const pokedex =
+                            reference
+                            ?
+                            references.pokedex.getByConstant(
+                                reference.constant
+                            )
+                            :
+                            null;
+
+
+                        //------------------------------------------
+                        // Remove duplicate secondary type
+                        //------------------------------------------
+
+                        if(
+                            type1
+                            &&
+                            type2
+                            &&
+                            type1.id ===
+                            type2.id
+                        )
+                        {
+
+                            type2 =
+                                null;
+
+                        }
+
+
+                        //------------------------------------------
+                        // Generated species record
+                        //------------------------------------------
+
+                        return {
+
+                            ...species,
+
+
+                            //----------------------------------
+                            // Held items
+                            //----------------------------------
+
+                            itemCommon:
+                                this.buildHeldItem(
+                                    species.itemCommon,
+                                    references
+                                ),
+
+
+                            itemRare:
+                                this.buildHeldItem(
+                                    species.itemRare,
+                                    references
+                                ),
+
+
+                            //----------------------------------
+                            // Identity
+                            //----------------------------------
+
+                            id:
+                                reference
+                                ?
+                                String(
+                                    reference.id
+                                ).padStart(
+                                    4,
+                                    "0"
+                                )
+                                :
+                                String(
+                                    species.id
+                                ).padStart(
+                                    4,
+                                    "0"
+                                ),
+
+
+                            nationalDexNumber:
+                                reference
+                                ?
+                                String(
+                                    reference.id
+                                ).padStart(
+                                    4,
+                                    "0"
+                                )
+                                :
+                                String(
+                                    species.id
+                                ).padStart(
+                                    4,
+                                    "0"
+                                ),
+
+
+                            name:
+                                reference
+                                ?
+                                reference.name
+                                :
+                                species.constant
+
+                                    .replace(
+                                        /^SPECIES_/,
+                                        ""
+                                    ),
+
+
+                            constant:
+                                species.constant,
+
+
+                            //----------------------------------
+                            // Types
+                            //----------------------------------
+
+                            type1:
+                                this.buildType(
+                                    type1
+                                ),
+
+
+                            type2:
+                                this.buildType(
+                                    type2
+                                ),
+
+
+                            //----------------------------------
+                            // Abilities
+                            //----------------------------------
+
+                            ability1:
+                                this.buildAbility(
+                                    ability1
+                                ),
+
+
+                            ability2:
+                                this.buildAbility(
+                                    ability2
+                                ),
+
+
+                            //----------------------------------
+                            // Growth
+                            //----------------------------------
+
+                            growthRate:
+                                this.buildGrowthRate(
+                                    growthRate
+                                ),
+
+
+                            //----------------------------------
+                            // Egg groups
+                            //----------------------------------
+
+                            eggGroup1:
+                                this.buildEggGroup(
+                                    eggGroup1
+                                ),
+
+
+                            eggGroup2:
+                                this.buildEggGroup(
+                                    eggGroup2
+                                ),
+
+
+                            //----------------------------------
+                            // Body color
+                            //----------------------------------
+
+                            bodyColor:
+                                this.buildBodyColor(
+                                    bodyColor
+                                ),
+
+
+                            //----------------------------------
+                            // Pokédex
+                            //----------------------------------
+
+                            pokedex:
+                                this.buildPokedex(
+                                    pokedex
+                                ),
+
+
+                            //----------------------------------
+                            // Pickup
+                            //----------------------------------
+
+                            pickup:
+                                this.hasPickupAbility(
+                                    species
+                                ),
+
+
+                            //----------------------------------
+                            // Evolutions
+                            //----------------------------------
+
+                            evolutions:
+                                evolutionData
+                                ?
+                                evolutionData.evolutions.map(
+                                    evolution =>
+                                        this.buildEvolution(
+                                            evolution,
+                                            references
+                                        )
+                                )
+                                :
+                                [],
+
+
+                            //----------------------------------
+                            // Level-up moves
+                            //----------------------------------
+
+                            learnset:
+                                learnsetData
+                                ?
+                                learnsetData.moves.map(
+                                    move =>
+                                    ({
+
+                                        level:
+                                            move.level,
+
+                                        move:
+                                            references.moveNames
+                                                .getByConstant(
+                                                    move.move
+                                                )
+
+                                    })
+                                )
+                                :
+                                [],
+
+
+                            //----------------------------------
+                            // Machines
+                            //----------------------------------
+
+                            machines:
+                                machineData
+                                ?
+                                machineData.machines
+                                    .map(
+                                        machine =>
+                                        {
+
+                                            const reference =
+                                                references.machines
+                                                    .getByConstant(
+                                                        machine
+                                                    );
+
+
+                                            if(
+                                                !reference
+                                            )
+                                            {
+
+                                                return null;
+
+                                            }
+
+
+                                            return {
+
+                                                constant:
+                                                    reference.constant,
+
+                                                name:
+                                                    reference.name,
+
+                                                itemConstant:
+                                                    reference.itemConstant,
+
+                                                move:
+                                                    references.moveNames
+                                                        .getByConstant(
+                                                            reference.move.constant
+                                                        )
+
+                                            };
+
+                                        }
+                                    )
+                                    .filter(
+                                        Boolean
+                                    )
+                                :
+                                [],
+
+
+                            //----------------------------------
+                            // Egg moves
+                            //----------------------------------
+
+                            eggMoves:
+                                eggMoveData
+                                ?
+                                eggMoveData.moves.map(
+                                    move =>
+                                        references.moveNames
+                                            .getByConstant(
+                                                move
+                                            )
+                                )
+                                :
+                                [],
+
+
+                            //----------------------------------
+                            // Evolution-exclusive moves
+                            //----------------------------------
+
+                            evolutionLostMoves:
+                                []
+
+                        };
 
                     }
 
-
-                    //------------------------------------------
-                    // Generated species record
-                    //------------------------------------------
-
-                    return {
-
-                        ...species,
-
-
-                        //----------------------------------
-                        // Held items
-                        //----------------------------------
-
-                        itemCommon:
-                            this.buildHeldItem(
-                                species.itemCommon,
-                                references
-                            ),
-
-
-                        itemRare:
-                            this.buildHeldItem(
-                                species.itemRare,
-                                references
-                            ),
-
-
-                        //----------------------------------
-                        // Identity
-                        //----------------------------------
-
-                        id:
-                            String(
-                                index + 1
-                            ).padStart(
-                                4,
-                                "0"
-                            ),
-
-
-                        nationalDexNumber:
-                            String(
-                                index + 1
-                            ).padStart(
-                                4,
-                                "0"
-                            ),
-
-
-                        name:
-                            reference
-                            ?
-                            reference.name
-                            :
-                            null,
-
-
-                        constant:
-                            reference
-                            ?
-                            reference.constant
-                            :
-                            null,
-
-
-                        //----------------------------------
-                        // Types
-                        //----------------------------------
-
-                        type1:
-                            this.buildType(
-                                type1
-                            ),
-
-
-                        type2:
-                            this.buildType(
-                                type2
-                            ),
-
-
-                        //----------------------------------
-                        // Abilities
-                        //----------------------------------
-
-                        ability1:
-                            this.buildAbility(
-                                ability1
-                            ),
-
-
-                        ability2:
-                            this.buildAbility(
-                                ability2
-                            ),
-
-
-                        //----------------------------------
-                        // Growth
-                        //----------------------------------
-
-                        growthRate:
-                            this.buildGrowthRate(
-                                growthRate
-                            ),
-
-
-                        //----------------------------------
-                        // Egg groups
-                        //----------------------------------
-
-                        eggGroup1:
-                            this.buildEggGroup(
-                                eggGroup1
-                            ),
-
-
-                        eggGroup2:
-                            this.buildEggGroup(
-                                eggGroup2
-                            ),
-
-
-                        //----------------------------------
-                        // Body color
-                        //----------------------------------
-
-                        bodyColor:
-                            this.buildBodyColor(
-                                bodyColor
-                            ),
-
-
-                        //----------------------------------
-                        // Pokédex
-                        //----------------------------------
-
-                        pokedex:
-                            this.buildPokedex(
-                                pokedex
-                            ),
-
-
-                        //----------------------------------
-                        // Pickup
-                        //----------------------------------
-
-                        pickup:
-                            this.hasPickupAbility(
-                                species
-                            ),
-
-
-                        //----------------------------------
-                        // Evolutions
-                        //----------------------------------
-
-                        evolutions:
-                            evolutionData
-                            ?
-                            evolutionData.evolutions.map(
-                                evolution =>
-                                    this.buildEvolution(
-                                        evolution,
-                                        references
-                                    )
-                            )
-                            :
-                            [],
-
-
-                        //----------------------------------
-                        // Level-up moves
-                        //----------------------------------
-
-                        learnset:
-                            learnsetData
-                            ?
-                            learnsetData.moves.map(
-                                move =>
-                                ({
-
-                                    level:
-                                        move.level,
-
-                                    move:
-                                        references.moveNames
-                                            .getByConstant(
-                                                move.move
-                                            )
-
-                                })
-                            )
-                            :
-                            [],
-
-
-                        //----------------------------------
-                        // Machines
-                        //----------------------------------
-
-                        machines:
-                            machineData
-                            ?
-                            machineData.machines
-                                .map(
-                                    machine =>
-                                    {
-
-                                        const reference =
-                                            references.machines
-                                                .getByConstant(
-                                                    machine
-                                                );
-
-
-                                        if(
-                                            !reference
-                                        )
-                                        {
-
-                                            return null;
-
-                                        }
-
-
-                                        return {
-
-                                            constant:
-                                                reference.constant,
-
-                                            name:
-                                                reference.name,
-
-                                            itemConstant:
-                                                reference.itemConstant,
-
-                                            move:
-                                                references.moveNames
-                                                    .getByConstant(
-                                                        reference.move.constant
-                                                    )
-
-                                        };
-
-                                    }
-                                )
-                                .filter(
-                                    Boolean
-                                )
-                            :
-                            [],
-
-
-                        //----------------------------------
-                        // Egg moves
-                        //----------------------------------
-
-                        eggMoves:
-                            eggMoveData
-                            ?
-                            eggMoveData.moves.map(
-                                move =>
-                                    references.moveNames
-                                        .getByConstant(
-                                            move
-                                        )
-                            )
-                            :
-                            [],
-
-
-                        //----------------------------------
-                        // Evolution-exclusive moves
-                        //----------------------------------
-
-                        evolutionLostMoves:
-                            []
-
-                    };
-
-                }
-            );
+                );
 
 
         //------------------------------------------------------
@@ -809,12 +854,19 @@ class PokemonSpeciesBuilder
             //----------------------------------------------
 
             case "EVO_LEVEL":
+
             case "EVO_LEVEL_ATK_GT_DEF":
+
             case "EVO_LEVEL_ATK_EQ_DEF":
+
             case "EVO_LEVEL_ATK_LT_DEF":
+
             case "EVO_LEVEL_SILCOON":
+
             case "EVO_LEVEL_CASCOON":
+
             case "EVO_LEVEL_NINJASK":
+
             case "EVO_LEVEL_SHEDINJA":
 
                 result.level =
@@ -830,6 +882,7 @@ class PokemonSpeciesBuilder
             //----------------------------------------------
 
             case "EVO_ITEM":
+
             case "EVO_TRADE_ITEM":
 
                 result.item =

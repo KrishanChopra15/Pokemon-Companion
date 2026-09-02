@@ -2,312 +2,153 @@
  * Pokémon Companion
  * Map Access Service
  *
- * Handles world location unlock rules.
+ * Handles world location access rules.
  *
  * Responsibilities:
- * - Check location accessibility.
- * - Evaluate HM requirements.
- * - Evaluate story requirements.
+ * - Load generated location data.
+ * - Evaluate hard location gates.
+ * - Evaluate progression rules attached to locations.
  * - Evaluate badge requirements.
+ * - Evaluate HM / ability requirements.
  * - Evaluate key item requirements.
+ * - Evaluate story flag requirements.
+ * - Preserve soft gates as navigation warnings.
+ * - Determine whether a location is reachable from visited locations.
  *
  * Does NOT:
- * - Move player.
- * - Load maps.
+ * - Move the player automatically.
  * - Modify trainer state.
+ * - Parse ROM data.
+ * - Infer story progression from gym order.
+ * - Treat soft gates as hard access requirements.
  */
 
 "use strict";
 
 
-class MapAccessService {
+const fs =
+    require("fs");
 
 
-    constructor()
-    {
+const path =
+    require("path");
 
 
-        this.locations = [
 
 
-            //--------------------------------
-            // Starting areas
-            //--------------------------------
 
+class MapAccessService
+{
 
-            {
-                id:
-                    "PALLET_TOWN",
 
-                requirement:
-                    null
-
-            },
-
-
-            {
-                id:
-                    "VIRIDIAN_CITY",
-
-                requirement:
-                    null
-
-            },
-
-
-
-
-
-            //--------------------------------
-            // Early game
-            //--------------------------------
-
-
-            {
-                id:
-                    "PEWTER_CITY",
-
-                requirement:
-                {
-                    storyFlags:
-                    [
-                        "POKEDEX_RECEIVED"
-                    ]
-                }
-
-            },
-
-
-
-
-
-            {
-                id:
-                    "MT_MOON",
-
-                requirement:
-                {
-                    badges:
-                    [
-                        "BOULDER_BADGE"
-                    ]
-                }
-
-            },
-
-
-
-
-
-            {
-                id:
-                    "CERULEAN_CITY",
-
-                requirement:
-                {
-                    badges:
-                    [
-                        "BOULDER_BADGE"
-                    ]
-                }
-
-            },
-
-
-
-
-
-
-
-
-            //--------------------------------
-            // Cut progression
-            //--------------------------------
-
-
-            {
-                id:
-                    "VERMILION_CITY",
-
-                requirement:
-                {
-                    hm:
-                        "CUT"
-                }
-
-            },
-
-
-
-
-
-
-
-            {
-                id:
-                    "ROCK_TUNNEL",
-
-                requirement:
-                {
-                    hm:
-                        "FLASH",
-
-                    badges:
-                    [
-                        "BOULDER_BADGE"
-                    ]
-
-                }
-
-            },
-
-
-
-
-
-
-
-
-            //--------------------------------
-            // Mid game
-            //--------------------------------
-
-
-            {
-                id:
-                    "CELADON_CITY",
-
-                requirement:
-                {
-                    badges:
-                    [
-                        "BOULDER_BADGE"
-                    ]
-                }
-
-            },
-
-
-
-
-
-            {
-                id:
-                    "FUCHSIA_CITY",
-
-                requirement:
-                {
-                    access:
-                        "CELADON_CITY"
-                }
-
-            },
-
-
-
-
-
-
-
-            //--------------------------------
-            // Saffron
-            //--------------------------------
-
-
-            {
-                id:
-                    "SAFFRON_CITY",
-
-                requirement:
-                {
-                    storyFlags:
-                    [
-                        "SILPH_CO_COMPLETED"
-                    ]
-                }
-
-            },
-
-
-
-
-
-
-
-
-            //--------------------------------
-            // Cinnabar
-            //--------------------------------
-
-
-            {
-                id:
-                    "CINNABAR_ISLAND",
-
-                requirement:
-                {
-                    hm:
-                        "SURF"
-                }
-
-            }
-
-
-        ];
-
-    }
-
-
-
-
-
-
-
-
-
-    //--------------------------------
-    // Get all locations
-    //--------------------------------
-
-
-    getAllLocations()
-    {
-
-        return this.locations;
-
-    }
-
-
-
-
-
-
-
-
-
-    //--------------------------------
-    // Find location
-    //--------------------------------
-
-
-    getLocation(
-        id
+    constructor(
+        game = "firered",
+        locationDatabase = null,
+        progressionDatabase = null
     )
     {
 
-        return (
+        this.game =
+            game;
 
-            this.locations.find(
 
-                location =>
+        //--------------------------------
+        // Load location database
+        //--------------------------------
 
-                    location.id === id
+        this.locations =
+            locationDatabase
+            ||
+            this.loadDatabase(
+
+                "generated",
+
+                "locations.json",
+
+                {}
+
+            );
+
+
+        //--------------------------------
+        // Load progression database
+        //--------------------------------
+
+        this.progression =
+            progressionDatabase
+            ||
+            this.loadDatabase(
+
+                "generated",
+
+                "progression.json",
+
+                {}
+
+            );
+
+
+        //--------------------------------
+        // Build progression index
+        //--------------------------------
+
+        this.progressionByLocation =
+            this.buildProgressionIndex();
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Load database
+    //--------------------------------
+
+    loadDatabase(
+        directoryType,
+        file,
+        defaultValue
+    )
+    {
+
+        const filePath =
+            path.join(
+
+                process.cwd(),
+
+                "database",
+
+                directoryType,
+
+                this.game,
+
+                file
+
+            );
+
+
+        if(
+            !fs.existsSync(
+                filePath
+            )
+        )
+        {
+
+            return defaultValue;
+
+        }
+
+
+        return JSON.parse(
+
+            fs.readFileSync(
+
+                filePath,
+
+                "utf8"
 
             )
-
-            ||
-
-            null
 
         );
 
@@ -317,6 +158,171 @@ class MapAccessService {
 
 
 
+    //--------------------------------
+    // Build progression index
+    //--------------------------------
+
+    buildProgressionIndex()
+    {
+
+        const index = {};
+
+
+        const records =
+            Array.isArray(
+                this.progression
+            )
+            ?
+            this.progression
+            :
+            Object.values(
+                this.progression
+            );
+
+
+        for(
+            const record of
+                records
+        )
+        {
+
+            if(
+                !record
+                ||
+                !record.location
+            )
+            {
+
+                continue;
+
+            }
+
+
+            if(
+                !index[record.location]
+            )
+            {
+
+                index[record.location] =
+                    [];
+
+            }
+
+
+            index[record.location].push(
+                record
+            );
+
+        }
+
+
+        return index;
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Get all locations
+    //--------------------------------
+
+    getAllLocations()
+    {
+
+        if(
+            Array.isArray(
+                this.locations
+            )
+        )
+        {
+
+            return this.locations;
+
+        }
+
+
+        return Object.values(
+            this.locations
+        );
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Find location
+    //--------------------------------
+
+    getLocation(
+        id
+    )
+    {
+
+        if(
+            !id
+        )
+        {
+
+            return null;
+
+        }
+
+
+        //--------------------------------
+        // Direct lookup
+        //--------------------------------
+
+        if(
+            this.locations
+            &&
+            this.locations[id]
+        )
+        {
+
+            return this.locations[id];
+
+        }
+
+
+        //--------------------------------
+        // Array database fallback
+        //--------------------------------
+
+        if(
+            Array.isArray(
+                this.locations
+            )
+        )
+        {
+
+            return (
+
+                this.locations.find(
+
+                    location =>
+                        location
+                        &&
+                        location.id === id
+
+                )
+
+                ||
+
+                null
+
+            );
+
+        }
+
+
+        return null;
+
+    }
+
 
 
 
@@ -325,19 +331,16 @@ class MapAccessService {
     // Access check
     //--------------------------------
 
-
     canAccess(
         locationId,
         trainerState
     )
     {
 
-
         const location =
             this.getLocation(
                 locationId
             );
-
 
 
         if(
@@ -347,7 +350,8 @@ class MapAccessService {
 
             return {
 
-                allowed:false,
+                allowed:
+                    false,
 
                 reason:
                     "Unknown location"
@@ -357,15 +361,284 @@ class MapAccessService {
         }
 
 
+        //--------------------------------
+        // Trainer state
+        //--------------------------------
+
+        const state =
+            trainerState
+            ||
+            {};
+
+
+        //--------------------------------
+        // Location hard gates
+        //--------------------------------
+
+        const locationResult =
+            this.checkLocationHardGates(
+
+                location,
+
+                state
+
+            );
+
+
+        if(
+            !locationResult.allowed
+        )
+        {
+
+            return locationResult;
+
+        }
+
+
+        //--------------------------------
+        // Progression rules attached to
+        // this location
+        //--------------------------------
+
+        const progressionResult =
+            this.checkProgressionRules(
+
+                locationId,
+
+                state
+
+            );
+
+
+        if(
+            !progressionResult.allowed
+        )
+        {
+
+            return progressionResult;
+
+        }
+
+
+        //--------------------------------
+        // No blocking requirements
+        //--------------------------------
+
+        return {
+
+            allowed:
+                true
+
+        };
+
+    }
 
 
 
 
 
-        const requirement =
-            location.requirement;
+    //--------------------------------
+    // Location hard gates
+    //--------------------------------
+
+    checkLocationHardGates(
+        location,
+        trainerState
+    )
+    {
+
+        const gates =
+            location.gates
+            ||
+            {};
 
 
+        const hard =
+            Array.isArray(
+                gates.hard
+            )
+            ?
+            gates.hard
+            :
+            [];
+
+
+        for(
+            const gate of
+                hard
+        )
+        {
+
+            const result =
+                this.checkRequirement(
+
+                    gate,
+
+                    trainerState
+
+                );
+
+
+            if(
+                !result.allowed
+            )
+            {
+
+                return result;
+
+            }
+
+        }
+
+
+        //--------------------------------
+        // Soft gates are intentionally
+        // ignored for access.
+        //--------------------------------
+
+        return {
+
+            allowed:
+                true
+
+        };
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Progression rules for location
+    //--------------------------------
+
+    checkProgressionRules(
+        locationId,
+        trainerState
+    )
+    {
+
+        const rules =
+            this.progressionByLocation[
+                locationId
+            ]
+            ||
+            [];
+
+
+        //--------------------------------
+        // No progression rules
+        //--------------------------------
+
+        if(
+            rules.length ===
+                0
+        )
+        {
+
+            return {
+
+                allowed:
+                    true
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // A location may have several
+        // records.
+        //
+        // A HARD_GATE / STORY / GYM rule
+        // is only blocking when its own
+        // requirement represents actual
+        // access to that location.
+        //--------------------------------
+
+        for(
+            const rule of
+                rules
+        )
+        {
+
+            const type =
+                String(
+
+                    rule.type
+
+                    ||
+
+                    ""
+
+                )
+                .toUpperCase();
+
+
+            //--------------------------------
+            // Ignore completion records when
+            // evaluating basic location access.
+            //--------------------------------
+
+            if(
+                type ===
+                    "GYM"
+                ||
+                type ===
+                    "HM"
+            )
+            {
+
+                continue;
+
+            }
+
+
+            const result =
+                this.checkRequirement(
+
+                    rule.requirement,
+
+                    trainerState
+
+                );
+
+
+            if(
+                !result.allowed
+            )
+            {
+
+                return result;
+
+            }
+
+        }
+
+
+        return {
+
+            allowed:
+                true
+
+        };
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Requirement check
+    //--------------------------------
+
+    checkRequirement(
+        requirement,
+        trainerState
+    )
+    {
 
         if(
             !requirement
@@ -374,42 +647,358 @@ class MapAccessService {
 
             return {
 
-                allowed:true
+                allowed:
+                    true
 
             };
 
         }
 
 
-
-
-
-
-
-
         //--------------------------------
-        // Story flags
+        // Badges
         //--------------------------------
-
 
         if(
-            requirement.storyFlags
+            Array.isArray(
+                requirement.badges
+            )
+        )
+        {
+
+            if(
+                !this.hasBadges(
+
+                    requirement.badges,
+
+                    trainerState
+
+                )
+            )
+            {
+
+                return {
+
+                    allowed:
+                        false,
+
+                    reason:
+                        "Missing required badges"
+
+                };
+
+            }
+
+        }
+
+
+        //--------------------------------
+        // Single badge
+        //--------------------------------
+
+        if(
+            requirement.badge
+        )
+        {
+
+            if(
+                !this.hasBadge(
+
+                    requirement.badge,
+
+                    trainerState
+
+                )
+            )
+            {
+
+                return {
+
+                    allowed:
+                        false,
+
+                    reason:
+                        `Requires ${requirement.badge}`
+
+                };
+
+            }
+
+        }
+
+
+        //--------------------------------
+        // Multiple HMs
+        //--------------------------------
+
+        if(
+            Array.isArray(
+                requirement.hms
+            )
         )
         {
 
             for(
-                const flag of requirement.storyFlags
+                const hm of
+                    requirement.hms
             )
             {
 
                 if(
-                    !trainerState.hasStoryFlag(flag)
+                    !this.hasHM(
+
+                        hm,
+
+                        trainerState
+
+                    )
                 )
                 {
 
                     return {
 
-                        allowed:false,
+                        allowed:
+                            false,
+
+                        reason:
+                            `Requires HM ${hm}`
+
+                    };
+
+                }
+
+            }
+
+        }
+
+
+        //--------------------------------
+        // Single HM
+        //--------------------------------
+
+        if(
+            requirement.hm
+        )
+        {
+
+            if(
+                !this.hasHM(
+
+                    requirement.hm,
+
+                    trainerState
+
+                )
+            )
+            {
+
+                return {
+
+                    allowed:
+                        false,
+
+                    reason:
+                        `Requires HM ${requirement.hm}`
+
+                };
+
+            }
+
+        }
+
+
+        //--------------------------------
+        // Abilities
+        //--------------------------------
+
+        if(
+            Array.isArray(
+                requirement.abilities
+            )
+        )
+        {
+
+            for(
+                const ability of
+                    requirement.abilities
+            )
+            {
+
+                if(
+                    !this.hasAbility(
+
+                        ability,
+
+                        trainerState
+
+                    )
+                )
+                {
+
+                    return {
+
+                        allowed:
+                            false,
+
+                        reason:
+                            `Requires ability ${ability}`
+
+                    };
+
+                }
+
+            }
+
+        }
+
+
+        //--------------------------------
+        // Single ability
+        //--------------------------------
+
+        if(
+            requirement.ability
+        )
+        {
+
+            if(
+                !this.hasAbility(
+
+                    requirement.ability,
+
+                    trainerState
+
+                )
+            )
+            {
+
+                return {
+
+                    allowed:
+                        false,
+
+                    reason:
+                        `Requires ability ${requirement.ability}`
+
+                };
+
+            }
+
+        }
+
+
+        //--------------------------------
+        // Multiple key items
+        //--------------------------------
+
+        if(
+            Array.isArray(
+                requirement.keyItems
+            )
+        )
+        {
+
+            for(
+                const item of
+                    requirement.keyItems
+            )
+            {
+
+                if(
+                    !this.hasKeyItem(
+
+                        item,
+
+                        trainerState
+
+                    )
+                )
+                {
+
+                    return {
+
+                        allowed:
+                            false,
+
+                        reason:
+                            `Requires key item ${item}`
+
+                    };
+
+                }
+
+            }
+
+        }
+
+
+        //--------------------------------
+        // Single key item
+        //--------------------------------
+
+        if(
+            requirement.keyItem
+        )
+        {
+
+            if(
+                !this.hasKeyItem(
+
+                    requirement.keyItem,
+
+                    trainerState
+
+                )
+            )
+            {
+
+                return {
+
+                    allowed:
+                        false,
+
+                    reason:
+                        `Requires ${requirement.keyItem}`
+
+                };
+
+            }
+
+        }
+
+
+        //--------------------------------
+        // Multiple story flags
+        //--------------------------------
+
+        if(
+            Array.isArray(
+                requirement.storyFlags
+            )
+        )
+        {
+
+            for(
+                const flag of
+                    requirement.storyFlags
+            )
+            {
+
+                if(
+                    !this.hasStoryFlag(
+
+                        flag,
+
+                        trainerState
+
+                    )
+                )
+                {
+
+                    return {
+
+                        allowed:
+                            false,
 
                         reason:
                             `Requires story flag ${flag}`
@@ -423,115 +1012,65 @@ class MapAccessService {
         }
 
 
-
-
-
-
-
-
         //--------------------------------
-        // Badges
+        // Single story flag
         //--------------------------------
-
 
         if(
-            requirement.badges
+            requirement.storyFlag
         )
         {
-
-            for(
-                const badge of requirement.badges
-            )
-            {
-
-                if(
-                    !trainerState.hasBadge(badge)
-                )
-                {
-
-                    return {
-
-                        allowed:false,
-
-                        reason:
-                            `Requires badge ${badge}`
-
-                    };
-
-                }
-
-            }
-
-        }
-
-
-
-
-
-
-
-
-        //--------------------------------
-        // HM requirements
-        //--------------------------------
-
-
-        if(
-            requirement.hm
-        )
-        {
-
 
             if(
-                !this.hasHM(
-                    requirement.hm,
+                !this.hasStoryFlag(
+
+                    requirement.storyFlag,
+
                     trainerState
+
                 )
             )
             {
 
                 return {
 
-                    allowed:false,
+                    allowed:
+                        false,
 
                     reason:
-                        `Requires HM ${requirement.hm}`
+                        `Requires ${requirement.storyFlag}`
 
                 };
 
             }
 
-
         }
 
 
-
-
-
-
-
-
         //--------------------------------
-        // Connected access
+        // Access to another location
         //--------------------------------
-
 
         if(
             requirement.access
         )
         {
 
-
             if(
-                !trainerState.hasVisited(
-                    requirement.access
+                !this.hasVisited(
+
+                    requirement.access,
+
+                    trainerState
+
                 )
             )
             {
 
                 return {
 
-                    allowed:false,
+                    allowed:
+                        false,
 
                     reason:
                         `Requires access to ${requirement.access}`
@@ -543,18 +1082,12 @@ class MapAccessService {
         }
 
 
-
-
-
-
-
-
         return {
 
-            allowed:true
+            allowed:
+                true
 
         };
-
 
     }
 
@@ -562,14 +1095,79 @@ class MapAccessService {
 
 
 
+    //--------------------------------
+    // Badge helpers
+    //--------------------------------
+
+    hasBadge(
+        badge,
+        trainerState
+    )
+    {
+
+        if(
+            trainerState
+            &&
+            typeof trainerState.hasBadge ===
+                "function"
+        )
+        {
+
+            return trainerState.hasBadge(
+                badge
+            );
+
+        }
+
+
+        return (
+
+            trainerState.badges
+
+            ||
+
+            []
+
+        )
+        .includes(
+            badge
+        );
+
+    }
+
+
+
+
+
+    hasBadges(
+        badges,
+        trainerState
+    )
+    {
+
+        return badges.every(
+
+            badge =>
+
+                this.hasBadge(
+
+                    badge,
+
+                    trainerState
+
+                )
+
+        );
+
+    }
+
 
 
 
 
     //--------------------------------
-    // HM check
+    // HM helpers
     //--------------------------------
-
 
     hasHM(
         hm,
@@ -577,11 +1175,15 @@ class MapAccessService {
     )
     {
 
-
         if(
-            trainerState.hasHM
+            trainerState
             &&
-            trainerState.hasHM(hm)
+            typeof trainerState.hasHM ===
+                "function"
+            &&
+            trainerState.hasHM(
+                hm
+            )
         )
         {
 
@@ -590,11 +1192,16 @@ class MapAccessService {
         }
 
 
-
         if(
-            trainerState.hms
+            trainerState
             &&
-            trainerState.hms.includes(hm)
+            Array.isArray(
+                trainerState.hms
+            )
+            &&
+            trainerState.hms.includes(
+                hm
+            )
         )
         {
 
@@ -603,11 +1210,16 @@ class MapAccessService {
         }
 
 
-
         if(
-            trainerState.hmAbilities
+            trainerState
             &&
-            trainerState.hmAbilities.includes(hm)
+            Array.isArray(
+                trainerState.hmAbilities
+            )
+            &&
+            trainerState.hmAbilities.includes(
+                hm
+            )
         )
         {
 
@@ -615,6 +1227,42 @@ class MapAccessService {
 
         }
 
+
+        //--------------------------------
+        // Normalize common HM ability
+        // names.
+        //--------------------------------
+
+        const normalized =
+            String(
+                hm
+            )
+            .toUpperCase();
+
+
+        if(
+            trainerState
+            &&
+            Array.isArray(
+                trainerState.hmAbilities
+            )
+        )
+        {
+
+            return trainerState.hmAbilities.some(
+
+                ability =>
+
+                    String(
+                        ability
+                    )
+                    .toUpperCase()
+                    ===
+                    normalized
+
+            );
+
+        }
 
 
         return false;
@@ -625,6 +1273,266 @@ class MapAccessService {
 
 
 
+    //--------------------------------
+    // Ability helpers
+    //--------------------------------
+
+    hasAbility(
+        ability,
+        trainerState
+    )
+    {
+
+        if(
+            !ability
+        )
+        {
+
+            return true;
+
+        }
+
+
+        const normalized =
+            String(
+                ability
+            )
+            .toUpperCase();
+
+
+        if(
+            trainerState
+            &&
+            Array.isArray(
+                trainerState.abilities
+            )
+        )
+        {
+
+            if(
+                trainerState.abilities.some(
+
+                    value =>
+
+                        String(
+                            value
+                        )
+                        .toUpperCase()
+                        ===
+                        normalized
+
+                )
+            )
+            {
+
+                return true;
+
+            }
+
+        }
+
+
+        if(
+            trainerState
+            &&
+            Array.isArray(
+                trainerState.hmAbilities
+            )
+        )
+        {
+
+            if(
+                trainerState.hmAbilities.some(
+
+                    value =>
+
+                        String(
+                            value
+                        )
+                        .toUpperCase()
+                        ===
+                        normalized
+
+                )
+            )
+            {
+
+                return true;
+
+            }
+
+        }
+
+
+        //--------------------------------
+        // CAN_USE_* abilities may also be
+        // represented as HMs.
+        //--------------------------------
+
+        if(
+            normalized.startsWith(
+                "CAN_USE_"
+            )
+        )
+        {
+
+            const hm =
+                normalized.replace(
+
+                    /^CAN_USE_/,
+
+                    ""
+
+                );
+
+
+            return this.hasHM(
+
+                hm,
+
+                trainerState
+
+            );
+
+        }
+
+
+        return false;
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Key item helpers
+    //--------------------------------
+
+    hasKeyItem(
+        item,
+        trainerState
+    )
+    {
+
+        if(
+            trainerState
+            &&
+            typeof trainerState.hasKeyItem ===
+                "function"
+        )
+        {
+
+            return trainerState.hasKeyItem(
+                item
+            );
+
+        }
+
+
+        return (
+
+            trainerState.keyItems
+
+            ||
+
+            []
+
+        )
+        .includes(
+            item
+        );
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Story flag helpers
+    //--------------------------------
+
+    hasStoryFlag(
+        flag,
+        trainerState
+    )
+    {
+
+        if(
+            trainerState
+            &&
+            typeof trainerState.hasStoryFlag ===
+                "function"
+        )
+        {
+
+            return trainerState.hasStoryFlag(
+                flag
+            );
+
+        }
+
+
+        return (
+
+            trainerState.storyFlags
+
+            ||
+
+            []
+
+        )
+        .includes(
+            flag
+        );
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Visited location helpers
+    //--------------------------------
+
+    hasVisited(
+        location,
+        trainerState
+    )
+    {
+
+        if(
+            trainerState
+            &&
+            typeof trainerState.hasVisited ===
+                "function"
+        )
+        {
+
+            return trainerState.hasVisited(
+                location
+            );
+
+        }
+
+
+        return (
+
+            trainerState.visitedLocations
+
+            ||
+
+            []
+
+        )
+        .includes(
+            location
+        );
+
+    }
+
 
 
 
@@ -633,33 +1541,29 @@ class MapAccessService {
     // Available locations
     //--------------------------------
 
-
     getAvailableLocations(
         trainerState
     )
     {
 
+        return this.getAllLocations()
 
-        return this.locations.filter(
+            .filter(
 
-            location =>
+                location =>
 
-                this.canAccess(
+                    this.canAccess(
 
-                    location.id,
+                        location.id,
 
-                    trainerState
+                        trainerState
 
-                )
-                .allowed
+                    )
+                    .allowed
 
-        );
+            );
 
     }
-
-
-
-
 
 
 
@@ -669,13 +1573,11 @@ class MapAccessService {
     // Unlock location
     //--------------------------------
 
-
     unlockLocation(
         locationId,
         trainerState
     )
     {
-
 
         const result =
             this.canAccess(
@@ -687,7 +1589,6 @@ class MapAccessService {
             );
 
 
-
         if(
             !result.allowed
         )
@@ -695,7 +1596,8 @@ class MapAccessService {
 
             return {
 
-                success:false,
+                success:
+                    false,
 
                 reason:
                     result.reason
@@ -705,31 +1607,88 @@ class MapAccessService {
         }
 
 
+        //--------------------------------
+        // Do not mutate state when the
+        // trainer state does not expose
+        // a visit method.
+        //--------------------------------
 
+        if(
+            trainerState
+            &&
+            typeof trainerState.visitLocation ===
+                "function"
+        )
+        {
 
+            trainerState.visitLocation(
+                locationId
+            );
 
-        trainerState.visitLocation(
-            locationId
-        );
-
-
-
+        }
 
 
         return {
 
-            success:true,
+            success:
+                true,
 
             location:
                 locationId
 
         };
 
+    }
+
+
+
+
+
+    //--------------------------------
+    // Soft gate warnings
+    //--------------------------------
+
+    getSoftGates(
+        locationId
+    )
+    {
+
+        const location =
+            this.getLocation(
+                locationId
+            );
+
+
+        if(
+            !location
+        )
+        {
+
+            return [];
+
+        }
+
+
+        const gates =
+            location.gates
+            ||
+            {};
+
+
+        return Array.isArray(
+            gates.soft
+        )
+        ?
+        gates.soft
+        :
+        [];
 
     }
 
 
 }
+
+
 
 
 

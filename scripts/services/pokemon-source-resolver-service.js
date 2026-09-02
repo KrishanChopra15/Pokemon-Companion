@@ -36,7 +36,11 @@ class PokemonSourceResolverService {
 
 
         this.encounters =
-            encounterDatabase;
+            Array.isArray(
+                encounterDatabase
+            )
+                ? encounterDatabase
+                : [];
 
 
         this.evolution =
@@ -120,36 +124,128 @@ class PokemonSourceResolverService {
     {
 
 
-        return this.encounters
+        const normalizedSpecies =
+            this.normalizeSpecies(
+                species
+            );
 
-            .filter(
 
-                encounter =>
+        const sources = [];
 
-                    encounter.species === species
 
+        for(
+            const encounter of
+                this.encounters
+        )
+        {
+
+
+            if(
+                !encounter
+                ||
+                !Array.isArray(
+                    encounter.mons
+                )
             )
+            {
 
-            .map(
+                continue;
 
-                encounter =>
+            }
 
-                ({
+
+            for(
+                const mon of
+                    encounter.mons
+            )
+            {
+
+
+                const monSpecies =
+                    this.normalizeSpecies(
+                        this.getSpeciesValue(
+                            mon?.species
+                        )
+                    );
+
+
+                if(
+                    monSpecies !==
+                    normalizedSpecies
+                )
+                {
+
+                    continue;
+
+                }
+
+
+                sources.push({
 
                     method:
+                        encounter.method ||
                         "WILD",
 
 
+                    displayMethod:
+                        encounter.displayMethod ||
+                        this.getDisplayMethod(
+                            encounter.method
+                        ),
+
+
                     location:
-                        encounter.location,
+                        encounter.map ||
+                        encounter.location ||
+                        null,
 
 
-                    level:
-                        encounter.level || null
+                    baseLabel:
+                        encounter.baseLabel ||
+                        null,
 
-                })
 
-            );
+                    encounterRate:
+                        encounter.encounterRate ??
+                        null,
+
+
+                    slotIndex:
+                        mon.slotIndex ??
+                        null,
+
+
+                    slotEncounterRate:
+                        mon.slotEncounterRate ??
+                        null,
+
+
+                    rod:
+                        this.getRodForSlot(
+                            encounter,
+                            mon.slotIndex
+                        ),
+
+
+                    minLevel:
+                        mon.minLevel ??
+                        null,
+
+
+                    maxLevel:
+                        mon.maxLevel ??
+                        null
+
+                });
+
+
+            }
+
+
+        }
+
+
+        return sources;
 
 
     }
@@ -266,7 +362,9 @@ class PokemonSourceResolverService {
 
         if(
             starters.includes(
-                species
+                this.normalizeSpecies(
+                    species
+                )
             )
         )
         {
@@ -350,6 +448,228 @@ class PokemonSourceResolverService {
 
 
     //--------------------------------
+    // Resolve species value
+    //--------------------------------
+
+
+    getSpeciesValue(
+        species
+    )
+    {
+
+
+        if(
+            typeof species ===
+                "object"
+            &&
+            species !== null
+        )
+        {
+
+            return (
+
+                species.name
+
+                ||
+
+                species.constant
+
+                ||
+
+                null
+
+            );
+
+        }
+
+
+
+        return species || null;
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Normalize species
+    //--------------------------------
+
+
+    normalizeSpecies(
+        species
+    )
+    {
+
+
+        if(
+            !species
+        )
+        {
+
+            return null;
+
+        }
+
+
+
+        return String(
+            species
+        )
+            .replace(
+                /^SPECIES_/,
+                ""
+            )
+            .toUpperCase();
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Get display method
+    //--------------------------------
+
+
+    getDisplayMethod(
+        method
+    )
+    {
+
+
+        const methods =
+        {
+
+            land_mons:
+                "Grass",
+
+            water_mons:
+                "Surf",
+
+            fishing_mons:
+                "Fishing",
+
+            rock_smash_mons:
+                "Rock Smash"
+
+        };
+
+
+        return (
+
+            methods[method]
+
+            ||
+
+            method
+
+            ||
+
+            "Wild"
+
+        );
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Resolve fishing rod
+    //--------------------------------
+
+
+    getRodForSlot(
+        encounter,
+        slotIndex
+    )
+    {
+
+
+        if(
+            encounter?.method !==
+                "fishing_mons"
+        )
+        {
+
+            return null;
+
+        }
+
+
+        if(
+            !encounter.rodGroups
+            ||
+            slotIndex === null
+            ||
+            slotIndex === undefined
+        )
+        {
+
+            return null;
+
+        }
+
+
+        for(
+            const [rod, slots] of
+                Object.entries(
+                    encounter.rodGroups
+                )
+        )
+        {
+
+
+            if(
+                Array.isArray(
+                    slots
+                )
+                &&
+                slots.includes(
+                    slotIndex
+                )
+            )
+            {
+
+                return rod;
+
+            }
+
+        }
+
+
+        return null;
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
     // Normalize constant
     //--------------------------------
 
@@ -361,13 +681,29 @@ class PokemonSourceResolverService {
 
 
         if(
-            species.startsWith(
+            !species
+        )
+        {
+
+            return null;
+
+        }
+
+
+        const value =
+            String(
+                species
+            );
+
+
+        if(
+            value.startsWith(
                 "SPECIES_"
             )
         )
         {
 
-            return species;
+            return value;
 
         }
 
@@ -377,7 +713,7 @@ class PokemonSourceResolverService {
 
             "SPECIES_" +
 
-            species.toUpperCase()
+            value.toUpperCase()
 
         );
 

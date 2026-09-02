@@ -4,6 +4,41 @@
         "constant": "SPECIES_NONE",
         "name": null,
         "generation": 1,
+        "baseHP": 0,
+        "baseAttack": 0,
+        "baseDefense": 0,
+        "baseSpeed": 0,
+        "baseSpAttack": 0,
+        "baseSpDefense": 0,
+        "type1": null,
+        "type2": null,
+        "catchRate": 0,
+        "expYield": 0,
+        "evYieldHP": 0,
+        "evYieldAttack": 0,
+        "evYieldDefense": 0,
+        "evYieldSpeed": 0,
+        "evYieldSpAttack": 0,
+        "evYieldSpDefense": 0,
+        "itemCommon": null,
+        "itemRare": null,
+        "genderRatio": null,
+        "eggCycles": 0,
+        "friendship": 0,
+        "growthRate": null,
+        "eggGroup1": null,
+        "eggGroup2": null,
+        "ability1": null,
+        "ability2": null,
+        "safariZoneFleeRate": 0,
+        "bodyColor": null,
+        "noFlip": null
+    },
+    {
+        "id": 1,
+        "constant": "SPECIES_BULBASAUR",
+        "name": null,
+        "generation": 1,
         "baseHP": 45,
         "baseAttack": 49,
         "baseDefense": 49,
@@ -35,7 +70,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 1,
+        "id": 2,
         "constant": "SPECIES_IVYSAUR",
         "name": null,
         "generation": 1,
@@ -70,7 +105,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 2,
+        "id": 3,
         "constant": "SPECIES_VENUSAUR",
         "name": null,
         "generation": 1,
@@ -105,7 +140,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 3,
+        "id": 4,
         "constant": "SPECIES_CHARMANDER",
         "name": null,
         "generation": 1,
@@ -140,7 +175,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 4,
+        "id": 5,
         "constant": "SPECIES_CHARMELEON",
         "name": null,
         "generation": 1,
@@ -175,7 +210,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 5,
+        "id": 6,
         "constant": "SPECIES_CHARIZARD",
         "name": null,
         "generation": 1,
@@ -210,7 +245,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 6,
+        "id": 7,
         "constant": "SPECIES_SQUIRTLE",
         "name": null,
         "generation": 1,
@@ -245,7 +280,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 7,
+        "id": 8,
         "constant": "SPECIES_WARTORTLE",
         "name": null,
         "generation": 1,
@@ -280,7 +315,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 8,
+        "id": 9,
         "constant": "SPECIES_BLASTOISE",
         "name": null,
         "generation": 1,
@@ -315,7 +350,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 9,
+        "id": 10,
         "constant": "SPECIES_CATERPIE",
         "name": null,
         "generation": 1,
@@ -350,7 +385,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 10,
+        "id": 11,
         "constant": "SPECIES_METAPOD",
         "name": null,
         "generation": 1,
@@ -385,7 +420,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 11,
+        "id": 12,
         "constant": "SPECIES_BUTTERFREE",
         "name": null,
         "generation": 1,
@@ -420,7 +455,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 12,
+        "id": 13,
         "constant": "SPECIES_WEEDLE",
         "name": null,
         "generation": 1,
@@ -455,7 +490,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 13,
+        "id": 14,
         "constant": "SPECIES_KAKUNA",
         "name": null,
         "generation": 1,
@@ -490,7 +525,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 14,
+        "id": 15,
         "constant": "SPECIES_BEEDRILL",
         "name": null,
         "generation": 1,
@@ -525,7 +560,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 15,
+        "id": 16,
         "constant": "SPECIES_PIDGEY",
         "name": null,
         "generation": 1,
@@ -560,7 +595,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 16,
+        "id": 17,
         "constant": "SPECIES_PIDGEOTTO",
         "name": null,
         "generation": 1,
@@ -595,7 +630,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 17,
+        "id": 18,
         "constant": "SPECIES_PIDGEOT",
         "name": null,
         "generation": 1,
@@ -630,7 +665,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 18,
+        "id": 19,
         "constant": "SPECIES_RATTATA",
         "name": null,
         "generation": 1,
@@ -665,7 +700,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 19,
+        "id": 20,
         "constant": "SPECIES_RATICATE",
         "name": null,
         "generation": 1,
@@ -700,7 +735,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 20,
+        "id": 21,
         "constant": "SPECIES_SPEAROW",
         "name": null,
         "generation": 1,
@@ -735,7 +770,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 21,
+        "id": 22,
         "constant": "SPECIES_FEAROW",
         "name": null,
         "generation": 1,
@@ -770,7 +805,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 22,
+        "id": 23,
         "constant": "SPECIES_EKANS",
         "name": null,
         "generation": 1,
@@ -805,7 +840,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 23,
+        "id": 24,
         "constant": "SPECIES_ARBOK",
         "name": null,
         "generation": 1,
@@ -840,7 +875,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 24,
+        "id": 25,
         "constant": "SPECIES_PIKACHU",
         "name": null,
         "generation": 1,
@@ -875,7 +910,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 25,
+        "id": 26,
         "constant": "SPECIES_RAICHU",
         "name": null,
         "generation": 1,
@@ -910,7 +945,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 26,
+        "id": 27,
         "constant": "SPECIES_SANDSHREW",
         "name": null,
         "generation": 1,
@@ -945,7 +980,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 27,
+        "id": 28,
         "constant": "SPECIES_SANDSLASH",
         "name": null,
         "generation": 1,
@@ -980,7 +1015,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 28,
+        "id": 29,
         "constant": "SPECIES_NIDORAN_F",
         "name": null,
         "generation": 1,
@@ -1015,7 +1050,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 29,
+        "id": 30,
         "constant": "SPECIES_NIDORINA",
         "name": null,
         "generation": 1,
@@ -1050,7 +1085,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 30,
+        "id": 31,
         "constant": "SPECIES_NIDOQUEEN",
         "name": null,
         "generation": 1,
@@ -1085,7 +1120,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 31,
+        "id": 32,
         "constant": "SPECIES_NIDORAN_M",
         "name": null,
         "generation": 1,
@@ -1120,7 +1155,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 32,
+        "id": 33,
         "constant": "SPECIES_NIDORINO",
         "name": null,
         "generation": 1,
@@ -1155,7 +1190,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 33,
+        "id": 34,
         "constant": "SPECIES_NIDOKING",
         "name": null,
         "generation": 1,
@@ -1190,7 +1225,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 34,
+        "id": 35,
         "constant": "SPECIES_CLEFAIRY",
         "name": null,
         "generation": 1,
@@ -1225,7 +1260,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 35,
+        "id": 36,
         "constant": "SPECIES_CLEFABLE",
         "name": null,
         "generation": 1,
@@ -1260,7 +1295,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 36,
+        "id": 37,
         "constant": "SPECIES_VULPIX",
         "name": null,
         "generation": 1,
@@ -1295,7 +1330,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 37,
+        "id": 38,
         "constant": "SPECIES_NINETALES",
         "name": null,
         "generation": 1,
@@ -1330,7 +1365,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 38,
+        "id": 39,
         "constant": "SPECIES_JIGGLYPUFF",
         "name": null,
         "generation": 1,
@@ -1365,7 +1400,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 39,
+        "id": 40,
         "constant": "SPECIES_WIGGLYTUFF",
         "name": null,
         "generation": 1,
@@ -1400,7 +1435,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 40,
+        "id": 41,
         "constant": "SPECIES_ZUBAT",
         "name": null,
         "generation": 1,
@@ -1435,7 +1470,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 41,
+        "id": 42,
         "constant": "SPECIES_GOLBAT",
         "name": null,
         "generation": 1,
@@ -1470,7 +1505,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 42,
+        "id": 43,
         "constant": "SPECIES_ODDISH",
         "name": null,
         "generation": 1,
@@ -1505,7 +1540,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 43,
+        "id": 44,
         "constant": "SPECIES_GLOOM",
         "name": null,
         "generation": 1,
@@ -1540,7 +1575,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 44,
+        "id": 45,
         "constant": "SPECIES_VILEPLUME",
         "name": null,
         "generation": 1,
@@ -1575,7 +1610,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 45,
+        "id": 46,
         "constant": "SPECIES_PARAS",
         "name": null,
         "generation": 1,
@@ -1610,7 +1645,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 46,
+        "id": 47,
         "constant": "SPECIES_PARASECT",
         "name": null,
         "generation": 1,
@@ -1645,7 +1680,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 47,
+        "id": 48,
         "constant": "SPECIES_VENONAT",
         "name": null,
         "generation": 1,
@@ -1680,7 +1715,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 48,
+        "id": 49,
         "constant": "SPECIES_VENOMOTH",
         "name": null,
         "generation": 1,
@@ -1715,7 +1750,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 49,
+        "id": 50,
         "constant": "SPECIES_DIGLETT",
         "name": null,
         "generation": 1,
@@ -1750,7 +1785,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 50,
+        "id": 51,
         "constant": "SPECIES_DUGTRIO",
         "name": null,
         "generation": 1,
@@ -1785,7 +1820,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 51,
+        "id": 52,
         "constant": "SPECIES_MEOWTH",
         "name": null,
         "generation": 1,
@@ -1820,7 +1855,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 52,
+        "id": 53,
         "constant": "SPECIES_PERSIAN",
         "name": null,
         "generation": 1,
@@ -1855,7 +1890,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 53,
+        "id": 54,
         "constant": "SPECIES_PSYDUCK",
         "name": null,
         "generation": 1,
@@ -1890,7 +1925,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 54,
+        "id": 55,
         "constant": "SPECIES_GOLDUCK",
         "name": null,
         "generation": 1,
@@ -1925,7 +1960,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 55,
+        "id": 56,
         "constant": "SPECIES_MANKEY",
         "name": null,
         "generation": 1,
@@ -1960,7 +1995,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 56,
+        "id": 57,
         "constant": "SPECIES_PRIMEAPE",
         "name": null,
         "generation": 1,
@@ -1995,7 +2030,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 57,
+        "id": 58,
         "constant": "SPECIES_GROWLITHE",
         "name": null,
         "generation": 1,
@@ -2030,7 +2065,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 58,
+        "id": 59,
         "constant": "SPECIES_ARCANINE",
         "name": null,
         "generation": 1,
@@ -2065,7 +2100,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 59,
+        "id": 60,
         "constant": "SPECIES_POLIWAG",
         "name": null,
         "generation": 1,
@@ -2100,7 +2135,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 60,
+        "id": 61,
         "constant": "SPECIES_POLIWHIRL",
         "name": null,
         "generation": 1,
@@ -2135,7 +2170,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 61,
+        "id": 62,
         "constant": "SPECIES_POLIWRATH",
         "name": null,
         "generation": 1,
@@ -2170,7 +2205,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 62,
+        "id": 63,
         "constant": "SPECIES_ABRA",
         "name": null,
         "generation": 1,
@@ -2205,7 +2240,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 63,
+        "id": 64,
         "constant": "SPECIES_KADABRA",
         "name": null,
         "generation": 1,
@@ -2240,7 +2275,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 64,
+        "id": 65,
         "constant": "SPECIES_ALAKAZAM",
         "name": null,
         "generation": 1,
@@ -2275,7 +2310,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 65,
+        "id": 66,
         "constant": "SPECIES_MACHOP",
         "name": null,
         "generation": 1,
@@ -2310,7 +2345,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 66,
+        "id": 67,
         "constant": "SPECIES_MACHOKE",
         "name": null,
         "generation": 1,
@@ -2345,7 +2380,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 67,
+        "id": 68,
         "constant": "SPECIES_MACHAMP",
         "name": null,
         "generation": 1,
@@ -2380,7 +2415,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 68,
+        "id": 69,
         "constant": "SPECIES_BELLSPROUT",
         "name": null,
         "generation": 1,
@@ -2415,7 +2450,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 69,
+        "id": 70,
         "constant": "SPECIES_WEEPINBELL",
         "name": null,
         "generation": 1,
@@ -2450,7 +2485,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 70,
+        "id": 71,
         "constant": "SPECIES_VICTREEBEL",
         "name": null,
         "generation": 1,
@@ -2485,7 +2520,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 71,
+        "id": 72,
         "constant": "SPECIES_TENTACOOL",
         "name": null,
         "generation": 1,
@@ -2520,7 +2555,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 72,
+        "id": 73,
         "constant": "SPECIES_TENTACRUEL",
         "name": null,
         "generation": 1,
@@ -2555,7 +2590,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 73,
+        "id": 74,
         "constant": "SPECIES_GEODUDE",
         "name": null,
         "generation": 1,
@@ -2590,7 +2625,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 74,
+        "id": 75,
         "constant": "SPECIES_GRAVELER",
         "name": null,
         "generation": 1,
@@ -2625,7 +2660,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 75,
+        "id": 76,
         "constant": "SPECIES_GOLEM",
         "name": null,
         "generation": 1,
@@ -2660,7 +2695,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 76,
+        "id": 77,
         "constant": "SPECIES_PONYTA",
         "name": null,
         "generation": 1,
@@ -2695,7 +2730,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 77,
+        "id": 78,
         "constant": "SPECIES_RAPIDASH",
         "name": null,
         "generation": 1,
@@ -2730,7 +2765,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 78,
+        "id": 79,
         "constant": "SPECIES_SLOWPOKE",
         "name": null,
         "generation": 1,
@@ -2765,7 +2800,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 79,
+        "id": 80,
         "constant": "SPECIES_SLOWBRO",
         "name": null,
         "generation": 1,
@@ -2800,7 +2835,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 80,
+        "id": 81,
         "constant": "SPECIES_MAGNEMITE",
         "name": null,
         "generation": 1,
@@ -2835,7 +2870,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 81,
+        "id": 82,
         "constant": "SPECIES_MAGNETON",
         "name": null,
         "generation": 1,
@@ -2870,7 +2905,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 82,
+        "id": 83,
         "constant": "SPECIES_FARFETCHD",
         "name": null,
         "generation": 1,
@@ -2905,7 +2940,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 83,
+        "id": 84,
         "constant": "SPECIES_DODUO",
         "name": null,
         "generation": 1,
@@ -2940,7 +2975,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 84,
+        "id": 85,
         "constant": "SPECIES_DODRIO",
         "name": null,
         "generation": 1,
@@ -2975,7 +3010,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 85,
+        "id": 86,
         "constant": "SPECIES_SEEL",
         "name": null,
         "generation": 1,
@@ -3010,7 +3045,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 86,
+        "id": 87,
         "constant": "SPECIES_DEWGONG",
         "name": null,
         "generation": 1,
@@ -3045,7 +3080,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 87,
+        "id": 88,
         "constant": "SPECIES_GRIMER",
         "name": null,
         "generation": 1,
@@ -3080,7 +3115,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 88,
+        "id": 89,
         "constant": "SPECIES_MUK",
         "name": null,
         "generation": 1,
@@ -3115,7 +3150,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 89,
+        "id": 90,
         "constant": "SPECIES_SHELLDER",
         "name": null,
         "generation": 1,
@@ -3150,7 +3185,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 90,
+        "id": 91,
         "constant": "SPECIES_CLOYSTER",
         "name": null,
         "generation": 1,
@@ -3185,7 +3220,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 91,
+        "id": 92,
         "constant": "SPECIES_GASTLY",
         "name": null,
         "generation": 1,
@@ -3220,7 +3255,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 92,
+        "id": 93,
         "constant": "SPECIES_HAUNTER",
         "name": null,
         "generation": 1,
@@ -3255,7 +3290,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 93,
+        "id": 94,
         "constant": "SPECIES_GENGAR",
         "name": null,
         "generation": 1,
@@ -3290,7 +3325,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 94,
+        "id": 95,
         "constant": "SPECIES_ONIX",
         "name": null,
         "generation": 1,
@@ -3325,7 +3360,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 95,
+        "id": 96,
         "constant": "SPECIES_DROWZEE",
         "name": null,
         "generation": 1,
@@ -3360,7 +3395,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 96,
+        "id": 97,
         "constant": "SPECIES_HYPNO",
         "name": null,
         "generation": 1,
@@ -3395,7 +3430,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 97,
+        "id": 98,
         "constant": "SPECIES_KRABBY",
         "name": null,
         "generation": 1,
@@ -3430,7 +3465,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 98,
+        "id": 99,
         "constant": "SPECIES_KINGLER",
         "name": null,
         "generation": 1,
@@ -3465,7 +3500,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 99,
+        "id": 100,
         "constant": "SPECIES_VOLTORB",
         "name": null,
         "generation": 1,
@@ -3500,7 +3535,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 100,
+        "id": 101,
         "constant": "SPECIES_ELECTRODE",
         "name": null,
         "generation": 1,
@@ -3535,7 +3570,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 101,
+        "id": 102,
         "constant": "SPECIES_EXEGGCUTE",
         "name": null,
         "generation": 1,
@@ -3570,7 +3605,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 102,
+        "id": 103,
         "constant": "SPECIES_EXEGGUTOR",
         "name": null,
         "generation": 1,
@@ -3605,7 +3640,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 103,
+        "id": 104,
         "constant": "SPECIES_CUBONE",
         "name": null,
         "generation": 1,
@@ -3640,7 +3675,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 104,
+        "id": 105,
         "constant": "SPECIES_MAROWAK",
         "name": null,
         "generation": 1,
@@ -3675,7 +3710,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 105,
+        "id": 106,
         "constant": "SPECIES_HITMONLEE",
         "name": null,
         "generation": 1,
@@ -3710,7 +3745,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 106,
+        "id": 107,
         "constant": "SPECIES_HITMONCHAN",
         "name": null,
         "generation": 1,
@@ -3745,7 +3780,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 107,
+        "id": 108,
         "constant": "SPECIES_LICKITUNG",
         "name": null,
         "generation": 1,
@@ -3780,7 +3815,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 108,
+        "id": 109,
         "constant": "SPECIES_KOFFING",
         "name": null,
         "generation": 1,
@@ -3815,7 +3850,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 109,
+        "id": 110,
         "constant": "SPECIES_WEEZING",
         "name": null,
         "generation": 1,
@@ -3850,7 +3885,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 110,
+        "id": 111,
         "constant": "SPECIES_RHYHORN",
         "name": null,
         "generation": 1,
@@ -3885,7 +3920,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 111,
+        "id": 112,
         "constant": "SPECIES_RHYDON",
         "name": null,
         "generation": 1,
@@ -3920,7 +3955,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 112,
+        "id": 113,
         "constant": "SPECIES_CHANSEY",
         "name": null,
         "generation": 1,
@@ -3955,7 +3990,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 113,
+        "id": 114,
         "constant": "SPECIES_TANGELA",
         "name": null,
         "generation": 1,
@@ -3990,7 +4025,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 114,
+        "id": 115,
         "constant": "SPECIES_KANGASKHAN",
         "name": null,
         "generation": 1,
@@ -4025,7 +4060,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 115,
+        "id": 116,
         "constant": "SPECIES_HORSEA",
         "name": null,
         "generation": 1,
@@ -4060,7 +4095,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 116,
+        "id": 117,
         "constant": "SPECIES_SEADRA",
         "name": null,
         "generation": 1,
@@ -4095,7 +4130,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 117,
+        "id": 118,
         "constant": "SPECIES_GOLDEEN",
         "name": null,
         "generation": 1,
@@ -4130,7 +4165,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 118,
+        "id": 119,
         "constant": "SPECIES_SEAKING",
         "name": null,
         "generation": 1,
@@ -4165,7 +4200,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 119,
+        "id": 120,
         "constant": "SPECIES_STARYU",
         "name": null,
         "generation": 1,
@@ -4200,7 +4235,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 120,
+        "id": 121,
         "constant": "SPECIES_STARMIE",
         "name": null,
         "generation": 1,
@@ -4235,7 +4270,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 121,
+        "id": 122,
         "constant": "SPECIES_MR_MIME",
         "name": null,
         "generation": 1,
@@ -4270,7 +4305,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 122,
+        "id": 123,
         "constant": "SPECIES_SCYTHER",
         "name": null,
         "generation": 1,
@@ -4305,7 +4340,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 123,
+        "id": 124,
         "constant": "SPECIES_JYNX",
         "name": null,
         "generation": 1,
@@ -4340,7 +4375,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 124,
+        "id": 125,
         "constant": "SPECIES_ELECTABUZZ",
         "name": null,
         "generation": 1,
@@ -4375,7 +4410,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 125,
+        "id": 126,
         "constant": "SPECIES_MAGMAR",
         "name": null,
         "generation": 1,
@@ -4410,7 +4445,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 126,
+        "id": 127,
         "constant": "SPECIES_PINSIR",
         "name": null,
         "generation": 1,
@@ -4445,7 +4480,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 127,
+        "id": 128,
         "constant": "SPECIES_TAUROS",
         "name": null,
         "generation": 1,
@@ -4480,7 +4515,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 128,
+        "id": 129,
         "constant": "SPECIES_MAGIKARP",
         "name": null,
         "generation": 1,
@@ -4515,7 +4550,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 129,
+        "id": 130,
         "constant": "SPECIES_GYARADOS",
         "name": null,
         "generation": 1,
@@ -4550,7 +4585,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 130,
+        "id": 131,
         "constant": "SPECIES_LAPRAS",
         "name": null,
         "generation": 1,
@@ -4585,7 +4620,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 131,
+        "id": 132,
         "constant": "SPECIES_DITTO",
         "name": null,
         "generation": 1,
@@ -4620,7 +4655,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 132,
+        "id": 133,
         "constant": "SPECIES_EEVEE",
         "name": null,
         "generation": 1,
@@ -4655,7 +4690,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 133,
+        "id": 134,
         "constant": "SPECIES_VAPOREON",
         "name": null,
         "generation": 1,
@@ -4690,7 +4725,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 134,
+        "id": 135,
         "constant": "SPECIES_JOLTEON",
         "name": null,
         "generation": 1,
@@ -4725,7 +4760,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 135,
+        "id": 136,
         "constant": "SPECIES_FLAREON",
         "name": null,
         "generation": 1,
@@ -4760,7 +4795,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 136,
+        "id": 137,
         "constant": "SPECIES_PORYGON",
         "name": null,
         "generation": 1,
@@ -4795,7 +4830,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 137,
+        "id": 138,
         "constant": "SPECIES_OMANYTE",
         "name": null,
         "generation": 1,
@@ -4830,7 +4865,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 138,
+        "id": 139,
         "constant": "SPECIES_OMASTAR",
         "name": null,
         "generation": 1,
@@ -4865,7 +4900,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 139,
+        "id": 140,
         "constant": "SPECIES_KABUTO",
         "name": null,
         "generation": 1,
@@ -4900,7 +4935,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 140,
+        "id": 141,
         "constant": "SPECIES_KABUTOPS",
         "name": null,
         "generation": 1,
@@ -4935,7 +4970,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 141,
+        "id": 142,
         "constant": "SPECIES_AERODACTYL",
         "name": null,
         "generation": 1,
@@ -4970,7 +5005,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 142,
+        "id": 143,
         "constant": "SPECIES_SNORLAX",
         "name": null,
         "generation": 1,
@@ -5005,7 +5040,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 143,
+        "id": 144,
         "constant": "SPECIES_ARTICUNO",
         "name": null,
         "generation": 1,
@@ -5040,7 +5075,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 144,
+        "id": 145,
         "constant": "SPECIES_ZAPDOS",
         "name": null,
         "generation": 1,
@@ -5075,7 +5110,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 145,
+        "id": 146,
         "constant": "SPECIES_MOLTRES",
         "name": null,
         "generation": 1,
@@ -5110,7 +5145,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 146,
+        "id": 147,
         "constant": "SPECIES_DRATINI",
         "name": null,
         "generation": 1,
@@ -5145,7 +5180,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 147,
+        "id": 148,
         "constant": "SPECIES_DRAGONAIR",
         "name": null,
         "generation": 1,
@@ -5180,7 +5215,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 148,
+        "id": 149,
         "constant": "SPECIES_DRAGONITE",
         "name": null,
         "generation": 1,
@@ -5215,7 +5250,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 149,
+        "id": 150,
         "constant": "SPECIES_MEWTWO",
         "name": null,
         "generation": 1,
@@ -5250,7 +5285,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 150,
+        "id": 151,
         "constant": "SPECIES_MEW",
         "name": null,
         "generation": 1,
@@ -5285,7 +5320,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 151,
+        "id": 152,
         "constant": "SPECIES_CHIKORITA",
         "name": null,
         "generation": 1,
@@ -5320,7 +5355,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 152,
+        "id": 153,
         "constant": "SPECIES_BAYLEEF",
         "name": null,
         "generation": 1,
@@ -5355,7 +5390,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 153,
+        "id": 154,
         "constant": "SPECIES_MEGANIUM",
         "name": null,
         "generation": 1,
@@ -5390,7 +5425,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 154,
+        "id": 155,
         "constant": "SPECIES_CYNDAQUIL",
         "name": null,
         "generation": 1,
@@ -5425,7 +5460,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 155,
+        "id": 156,
         "constant": "SPECIES_QUILAVA",
         "name": null,
         "generation": 1,
@@ -5460,7 +5495,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 156,
+        "id": 157,
         "constant": "SPECIES_TYPHLOSION",
         "name": null,
         "generation": 1,
@@ -5495,7 +5530,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 157,
+        "id": 158,
         "constant": "SPECIES_TOTODILE",
         "name": null,
         "generation": 1,
@@ -5530,7 +5565,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 158,
+        "id": 159,
         "constant": "SPECIES_CROCONAW",
         "name": null,
         "generation": 1,
@@ -5565,7 +5600,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 159,
+        "id": 160,
         "constant": "SPECIES_FERALIGATR",
         "name": null,
         "generation": 1,
@@ -5600,7 +5635,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 160,
+        "id": 161,
         "constant": "SPECIES_SENTRET",
         "name": null,
         "generation": 1,
@@ -5635,7 +5670,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 161,
+        "id": 162,
         "constant": "SPECIES_FURRET",
         "name": null,
         "generation": 1,
@@ -5670,7 +5705,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 162,
+        "id": 163,
         "constant": "SPECIES_HOOTHOOT",
         "name": null,
         "generation": 1,
@@ -5705,7 +5740,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 163,
+        "id": 164,
         "constant": "SPECIES_NOCTOWL",
         "name": null,
         "generation": 1,
@@ -5740,7 +5775,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 164,
+        "id": 165,
         "constant": "SPECIES_LEDYBA",
         "name": null,
         "generation": 1,
@@ -5775,7 +5810,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 165,
+        "id": 166,
         "constant": "SPECIES_LEDIAN",
         "name": null,
         "generation": 1,
@@ -5810,7 +5845,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 166,
+        "id": 167,
         "constant": "SPECIES_SPINARAK",
         "name": null,
         "generation": 1,
@@ -5845,7 +5880,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 167,
+        "id": 168,
         "constant": "SPECIES_ARIADOS",
         "name": null,
         "generation": 1,
@@ -5880,7 +5915,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 168,
+        "id": 169,
         "constant": "SPECIES_CROBAT",
         "name": null,
         "generation": 1,
@@ -5915,7 +5950,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 169,
+        "id": 170,
         "constant": "SPECIES_CHINCHOU",
         "name": null,
         "generation": 1,
@@ -5950,7 +5985,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 170,
+        "id": 171,
         "constant": "SPECIES_LANTURN",
         "name": null,
         "generation": 1,
@@ -5985,7 +6020,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 171,
+        "id": 172,
         "constant": "SPECIES_PICHU",
         "name": null,
         "generation": 1,
@@ -6020,7 +6055,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 172,
+        "id": 173,
         "constant": "SPECIES_CLEFFA",
         "name": null,
         "generation": 1,
@@ -6055,7 +6090,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 173,
+        "id": 174,
         "constant": "SPECIES_IGGLYBUFF",
         "name": null,
         "generation": 1,
@@ -6090,7 +6125,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 174,
+        "id": 175,
         "constant": "SPECIES_TOGEPI",
         "name": null,
         "generation": 1,
@@ -6125,7 +6160,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 175,
+        "id": 176,
         "constant": "SPECIES_TOGETIC",
         "name": null,
         "generation": 1,
@@ -6160,7 +6195,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 176,
+        "id": 177,
         "constant": "SPECIES_NATU",
         "name": null,
         "generation": 1,
@@ -6195,7 +6230,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 177,
+        "id": 178,
         "constant": "SPECIES_XATU",
         "name": null,
         "generation": 1,
@@ -6230,7 +6265,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 178,
+        "id": 179,
         "constant": "SPECIES_MAREEP",
         "name": null,
         "generation": 1,
@@ -6265,7 +6300,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 179,
+        "id": 180,
         "constant": "SPECIES_FLAAFFY",
         "name": null,
         "generation": 1,
@@ -6300,7 +6335,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 180,
+        "id": 181,
         "constant": "SPECIES_AMPHAROS",
         "name": null,
         "generation": 1,
@@ -6335,7 +6370,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 181,
+        "id": 182,
         "constant": "SPECIES_BELLOSSOM",
         "name": null,
         "generation": 1,
@@ -6370,7 +6405,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 182,
+        "id": 183,
         "constant": "SPECIES_MARILL",
         "name": null,
         "generation": 1,
@@ -6405,7 +6440,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 183,
+        "id": 184,
         "constant": "SPECIES_AZUMARILL",
         "name": null,
         "generation": 1,
@@ -6440,7 +6475,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 184,
+        "id": 185,
         "constant": "SPECIES_SUDOWOODO",
         "name": null,
         "generation": 1,
@@ -6475,7 +6510,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 185,
+        "id": 186,
         "constant": "SPECIES_POLITOED",
         "name": null,
         "generation": 1,
@@ -6510,7 +6545,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 186,
+        "id": 187,
         "constant": "SPECIES_HOPPIP",
         "name": null,
         "generation": 1,
@@ -6545,7 +6580,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 187,
+        "id": 188,
         "constant": "SPECIES_SKIPLOOM",
         "name": null,
         "generation": 1,
@@ -6580,7 +6615,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 188,
+        "id": 189,
         "constant": "SPECIES_JUMPLUFF",
         "name": null,
         "generation": 1,
@@ -6615,7 +6650,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 189,
+        "id": 190,
         "constant": "SPECIES_AIPOM",
         "name": null,
         "generation": 1,
@@ -6650,7 +6685,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 190,
+        "id": 191,
         "constant": "SPECIES_SUNKERN",
         "name": null,
         "generation": 1,
@@ -6685,7 +6720,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 191,
+        "id": 192,
         "constant": "SPECIES_SUNFLORA",
         "name": null,
         "generation": 1,
@@ -6720,7 +6755,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 192,
+        "id": 193,
         "constant": "SPECIES_YANMA",
         "name": null,
         "generation": 1,
@@ -6755,7 +6790,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 193,
+        "id": 194,
         "constant": "SPECIES_WOOPER",
         "name": null,
         "generation": 1,
@@ -6790,7 +6825,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 194,
+        "id": 195,
         "constant": "SPECIES_QUAGSIRE",
         "name": null,
         "generation": 1,
@@ -6825,7 +6860,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 195,
+        "id": 196,
         "constant": "SPECIES_ESPEON",
         "name": null,
         "generation": 1,
@@ -6860,7 +6895,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 196,
+        "id": 197,
         "constant": "SPECIES_UMBREON",
         "name": null,
         "generation": 1,
@@ -6895,7 +6930,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 197,
+        "id": 198,
         "constant": "SPECIES_MURKROW",
         "name": null,
         "generation": 1,
@@ -6930,7 +6965,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 198,
+        "id": 199,
         "constant": "SPECIES_SLOWKING",
         "name": null,
         "generation": 1,
@@ -6965,7 +7000,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 199,
+        "id": 200,
         "constant": "SPECIES_MISDREAVUS",
         "name": null,
         "generation": 1,
@@ -7000,7 +7035,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 200,
+        "id": 201,
         "constant": "SPECIES_UNOWN",
         "name": null,
         "generation": 1,
@@ -7035,7 +7070,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 201,
+        "id": 202,
         "constant": "SPECIES_WOBBUFFET",
         "name": null,
         "generation": 1,
@@ -7070,7 +7105,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 202,
+        "id": 203,
         "constant": "SPECIES_GIRAFARIG",
         "name": null,
         "generation": 1,
@@ -7105,7 +7140,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 203,
+        "id": 204,
         "constant": "SPECIES_PINECO",
         "name": null,
         "generation": 1,
@@ -7140,7 +7175,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 204,
+        "id": 205,
         "constant": "SPECIES_FORRETRESS",
         "name": null,
         "generation": 1,
@@ -7175,7 +7210,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 205,
+        "id": 206,
         "constant": "SPECIES_DUNSPARCE",
         "name": null,
         "generation": 1,
@@ -7210,7 +7245,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 206,
+        "id": 207,
         "constant": "SPECIES_GLIGAR",
         "name": null,
         "generation": 1,
@@ -7245,7 +7280,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 207,
+        "id": 208,
         "constant": "SPECIES_STEELIX",
         "name": null,
         "generation": 1,
@@ -7280,7 +7315,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 208,
+        "id": 209,
         "constant": "SPECIES_SNUBBULL",
         "name": null,
         "generation": 1,
@@ -7315,7 +7350,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 209,
+        "id": 210,
         "constant": "SPECIES_GRANBULL",
         "name": null,
         "generation": 1,
@@ -7350,7 +7385,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 210,
+        "id": 211,
         "constant": "SPECIES_QWILFISH",
         "name": null,
         "generation": 1,
@@ -7385,7 +7420,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 211,
+        "id": 212,
         "constant": "SPECIES_SCIZOR",
         "name": null,
         "generation": 1,
@@ -7420,7 +7455,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 212,
+        "id": 213,
         "constant": "SPECIES_SHUCKLE",
         "name": null,
         "generation": 1,
@@ -7455,7 +7490,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 213,
+        "id": 214,
         "constant": "SPECIES_HERACROSS",
         "name": null,
         "generation": 1,
@@ -7490,7 +7525,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 214,
+        "id": 215,
         "constant": "SPECIES_SNEASEL",
         "name": null,
         "generation": 1,
@@ -7525,7 +7560,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 215,
+        "id": 216,
         "constant": "SPECIES_TEDDIURSA",
         "name": null,
         "generation": 1,
@@ -7560,7 +7595,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 216,
+        "id": 217,
         "constant": "SPECIES_URSARING",
         "name": null,
         "generation": 1,
@@ -7595,7 +7630,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 217,
+        "id": 218,
         "constant": "SPECIES_SLUGMA",
         "name": null,
         "generation": 1,
@@ -7630,7 +7665,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 218,
+        "id": 219,
         "constant": "SPECIES_MAGCARGO",
         "name": null,
         "generation": 1,
@@ -7665,7 +7700,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 219,
+        "id": 220,
         "constant": "SPECIES_SWINUB",
         "name": null,
         "generation": 1,
@@ -7700,7 +7735,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 220,
+        "id": 221,
         "constant": "SPECIES_PILOSWINE",
         "name": null,
         "generation": 1,
@@ -7735,7 +7770,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 221,
+        "id": 222,
         "constant": "SPECIES_CORSOLA",
         "name": null,
         "generation": 1,
@@ -7770,7 +7805,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 222,
+        "id": 223,
         "constant": "SPECIES_REMORAID",
         "name": null,
         "generation": 1,
@@ -7805,7 +7840,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 223,
+        "id": 224,
         "constant": "SPECIES_OCTILLERY",
         "name": null,
         "generation": 1,
@@ -7840,7 +7875,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 224,
+        "id": 225,
         "constant": "SPECIES_DELIBIRD",
         "name": null,
         "generation": 1,
@@ -7875,7 +7910,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 225,
+        "id": 226,
         "constant": "SPECIES_MANTINE",
         "name": null,
         "generation": 1,
@@ -7910,7 +7945,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 226,
+        "id": 227,
         "constant": "SPECIES_SKARMORY",
         "name": null,
         "generation": 1,
@@ -7945,7 +7980,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 227,
+        "id": 228,
         "constant": "SPECIES_HOUNDOUR",
         "name": null,
         "generation": 1,
@@ -7980,7 +8015,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 228,
+        "id": 229,
         "constant": "SPECIES_HOUNDOOM",
         "name": null,
         "generation": 1,
@@ -8015,7 +8050,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 229,
+        "id": 230,
         "constant": "SPECIES_KINGDRA",
         "name": null,
         "generation": 1,
@@ -8050,7 +8085,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 230,
+        "id": 231,
         "constant": "SPECIES_PHANPY",
         "name": null,
         "generation": 1,
@@ -8085,7 +8120,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 231,
+        "id": 232,
         "constant": "SPECIES_DONPHAN",
         "name": null,
         "generation": 1,
@@ -8120,7 +8155,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 232,
+        "id": 233,
         "constant": "SPECIES_PORYGON2",
         "name": null,
         "generation": 1,
@@ -8155,7 +8190,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 233,
+        "id": 234,
         "constant": "SPECIES_STANTLER",
         "name": null,
         "generation": 1,
@@ -8190,7 +8225,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 234,
+        "id": 235,
         "constant": "SPECIES_SMEARGLE",
         "name": null,
         "generation": 1,
@@ -8225,7 +8260,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 235,
+        "id": 236,
         "constant": "SPECIES_TYROGUE",
         "name": null,
         "generation": 1,
@@ -8260,7 +8295,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 236,
+        "id": 237,
         "constant": "SPECIES_HITMONTOP",
         "name": null,
         "generation": 1,
@@ -8295,7 +8330,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 237,
+        "id": 238,
         "constant": "SPECIES_SMOOCHUM",
         "name": null,
         "generation": 1,
@@ -8330,7 +8365,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 238,
+        "id": 239,
         "constant": "SPECIES_ELEKID",
         "name": null,
         "generation": 1,
@@ -8365,7 +8400,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 239,
+        "id": 240,
         "constant": "SPECIES_MAGBY",
         "name": null,
         "generation": 1,
@@ -8400,7 +8435,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 240,
+        "id": 241,
         "constant": "SPECIES_MILTANK",
         "name": null,
         "generation": 1,
@@ -8435,7 +8470,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 241,
+        "id": 242,
         "constant": "SPECIES_BLISSEY",
         "name": null,
         "generation": 1,
@@ -8470,7 +8505,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 242,
+        "id": 243,
         "constant": "SPECIES_RAIKOU",
         "name": null,
         "generation": 1,
@@ -8505,7 +8540,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 243,
+        "id": 244,
         "constant": "SPECIES_ENTEI",
         "name": null,
         "generation": 1,
@@ -8540,7 +8575,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 244,
+        "id": 245,
         "constant": "SPECIES_SUICUNE",
         "name": null,
         "generation": 1,
@@ -8575,7 +8610,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 245,
+        "id": 246,
         "constant": "SPECIES_LARVITAR",
         "name": null,
         "generation": 1,
@@ -8610,7 +8645,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 246,
+        "id": 247,
         "constant": "SPECIES_PUPITAR",
         "name": null,
         "generation": 1,
@@ -8645,7 +8680,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 247,
+        "id": 248,
         "constant": "SPECIES_TYRANITAR",
         "name": null,
         "generation": 1,
@@ -8680,7 +8715,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 248,
+        "id": 249,
         "constant": "SPECIES_LUGIA",
         "name": null,
         "generation": 1,
@@ -8715,7 +8750,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 249,
+        "id": 250,
         "constant": "SPECIES_HO_OH",
         "name": null,
         "generation": 1,
@@ -8750,7 +8785,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 250,
+        "id": 251,
         "constant": "SPECIES_CELEBI",
         "name": null,
         "generation": 1,
@@ -8785,7 +8820,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 251,
+        "id": 252,
         "constant": "SPECIES_TREECKO",
         "name": null,
         "generation": 1,
@@ -8820,7 +8855,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 252,
+        "id": 253,
         "constant": "SPECIES_GROVYLE",
         "name": null,
         "generation": 1,
@@ -8855,7 +8890,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 253,
+        "id": 254,
         "constant": "SPECIES_SCEPTILE",
         "name": null,
         "generation": 1,
@@ -8890,7 +8925,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 254,
+        "id": 255,
         "constant": "SPECIES_TORCHIC",
         "name": null,
         "generation": 1,
@@ -8925,7 +8960,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 255,
+        "id": 256,
         "constant": "SPECIES_COMBUSKEN",
         "name": null,
         "generation": 1,
@@ -8960,7 +8995,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 256,
+        "id": 257,
         "constant": "SPECIES_BLAZIKEN",
         "name": null,
         "generation": 1,
@@ -8995,7 +9030,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 257,
+        "id": 258,
         "constant": "SPECIES_MUDKIP",
         "name": null,
         "generation": 1,
@@ -9030,7 +9065,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 258,
+        "id": 259,
         "constant": "SPECIES_MARSHTOMP",
         "name": null,
         "generation": 1,
@@ -9065,7 +9100,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 259,
+        "id": 260,
         "constant": "SPECIES_SWAMPERT",
         "name": null,
         "generation": 1,
@@ -9100,7 +9135,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 260,
+        "id": 261,
         "constant": "SPECIES_POOCHYENA",
         "name": null,
         "generation": 1,
@@ -9135,7 +9170,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 261,
+        "id": 262,
         "constant": "SPECIES_MIGHTYENA",
         "name": null,
         "generation": 1,
@@ -9170,7 +9205,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 262,
+        "id": 263,
         "constant": "SPECIES_ZIGZAGOON",
         "name": null,
         "generation": 1,
@@ -9205,7 +9240,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 263,
+        "id": 264,
         "constant": "SPECIES_LINOONE",
         "name": null,
         "generation": 1,
@@ -9240,7 +9275,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 264,
+        "id": 265,
         "constant": "SPECIES_WURMPLE",
         "name": null,
         "generation": 1,
@@ -9275,7 +9310,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 265,
+        "id": 266,
         "constant": "SPECIES_SILCOON",
         "name": null,
         "generation": 1,
@@ -9310,7 +9345,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 266,
+        "id": 267,
         "constant": "SPECIES_BEAUTIFLY",
         "name": null,
         "generation": 1,
@@ -9345,7 +9380,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 267,
+        "id": 268,
         "constant": "SPECIES_CASCOON",
         "name": null,
         "generation": 1,
@@ -9380,7 +9415,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 268,
+        "id": 269,
         "constant": "SPECIES_DUSTOX",
         "name": null,
         "generation": 1,
@@ -9415,7 +9450,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 269,
+        "id": 270,
         "constant": "SPECIES_LOTAD",
         "name": null,
         "generation": 1,
@@ -9450,7 +9485,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 270,
+        "id": 271,
         "constant": "SPECIES_LOMBRE",
         "name": null,
         "generation": 1,
@@ -9485,7 +9520,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 271,
+        "id": 272,
         "constant": "SPECIES_LUDICOLO",
         "name": null,
         "generation": 1,
@@ -9520,7 +9555,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 272,
+        "id": 273,
         "constant": "SPECIES_SEEDOT",
         "name": null,
         "generation": 1,
@@ -9555,7 +9590,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 273,
+        "id": 274,
         "constant": "SPECIES_NUZLEAF",
         "name": null,
         "generation": 1,
@@ -9590,7 +9625,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 274,
+        "id": 275,
         "constant": "SPECIES_SHIFTRY",
         "name": null,
         "generation": 1,
@@ -9625,7 +9660,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 275,
+        "id": 276,
         "constant": "SPECIES_NINCADA",
         "name": null,
         "generation": 1,
@@ -9660,7 +9695,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 276,
+        "id": 277,
         "constant": "SPECIES_NINJASK",
         "name": null,
         "generation": 1,
@@ -9695,7 +9730,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 277,
+        "id": 278,
         "constant": "SPECIES_SHEDINJA",
         "name": null,
         "generation": 1,
@@ -9730,7 +9765,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 278,
+        "id": 279,
         "constant": "SPECIES_TAILLOW",
         "name": null,
         "generation": 1,
@@ -9765,7 +9800,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 279,
+        "id": 280,
         "constant": "SPECIES_SWELLOW",
         "name": null,
         "generation": 1,
@@ -9800,7 +9835,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 280,
+        "id": 281,
         "constant": "SPECIES_SHROOMISH",
         "name": null,
         "generation": 1,
@@ -9835,7 +9870,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 281,
+        "id": 282,
         "constant": "SPECIES_BRELOOM",
         "name": null,
         "generation": 1,
@@ -9870,7 +9905,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 282,
+        "id": 283,
         "constant": "SPECIES_SPINDA",
         "name": null,
         "generation": 1,
@@ -9905,7 +9940,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 283,
+        "id": 284,
         "constant": "SPECIES_WINGULL",
         "name": null,
         "generation": 1,
@@ -9940,7 +9975,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 284,
+        "id": 285,
         "constant": "SPECIES_PELIPPER",
         "name": null,
         "generation": 1,
@@ -9975,7 +10010,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 285,
+        "id": 286,
         "constant": "SPECIES_SURSKIT",
         "name": null,
         "generation": 1,
@@ -10010,7 +10045,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 286,
+        "id": 287,
         "constant": "SPECIES_MASQUERAIN",
         "name": null,
         "generation": 1,
@@ -10045,7 +10080,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 287,
+        "id": 288,
         "constant": "SPECIES_WAILMER",
         "name": null,
         "generation": 1,
@@ -10080,7 +10115,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 288,
+        "id": 289,
         "constant": "SPECIES_WAILORD",
         "name": null,
         "generation": 1,
@@ -10115,7 +10150,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 289,
+        "id": 290,
         "constant": "SPECIES_SKITTY",
         "name": null,
         "generation": 1,
@@ -10150,7 +10185,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 290,
+        "id": 291,
         "constant": "SPECIES_DELCATTY",
         "name": null,
         "generation": 1,
@@ -10185,7 +10220,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 291,
+        "id": 292,
         "constant": "SPECIES_KECLEON",
         "name": null,
         "generation": 1,
@@ -10220,7 +10255,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 292,
+        "id": 293,
         "constant": "SPECIES_BALTOY",
         "name": null,
         "generation": 1,
@@ -10255,7 +10290,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 293,
+        "id": 294,
         "constant": "SPECIES_CLAYDOL",
         "name": null,
         "generation": 1,
@@ -10290,7 +10325,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 294,
+        "id": 295,
         "constant": "SPECIES_NOSEPASS",
         "name": null,
         "generation": 1,
@@ -10325,7 +10360,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 295,
+        "id": 296,
         "constant": "SPECIES_TORKOAL",
         "name": null,
         "generation": 1,
@@ -10360,7 +10395,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 296,
+        "id": 297,
         "constant": "SPECIES_SABLEYE",
         "name": null,
         "generation": 1,
@@ -10395,7 +10430,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 297,
+        "id": 298,
         "constant": "SPECIES_BARBOACH",
         "name": null,
         "generation": 1,
@@ -10430,7 +10465,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 298,
+        "id": 299,
         "constant": "SPECIES_WHISCASH",
         "name": null,
         "generation": 1,
@@ -10465,7 +10500,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 299,
+        "id": 300,
         "constant": "SPECIES_LUVDISC",
         "name": null,
         "generation": 1,
@@ -10500,7 +10535,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 300,
+        "id": 301,
         "constant": "SPECIES_CORPHISH",
         "name": null,
         "generation": 1,
@@ -10535,7 +10570,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 301,
+        "id": 302,
         "constant": "SPECIES_CRAWDAUNT",
         "name": null,
         "generation": 1,
@@ -10570,7 +10605,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 302,
+        "id": 303,
         "constant": "SPECIES_FEEBAS",
         "name": null,
         "generation": 1,
@@ -10605,7 +10640,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 303,
+        "id": 304,
         "constant": "SPECIES_MILOTIC",
         "name": null,
         "generation": 1,
@@ -10640,7 +10675,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 304,
+        "id": 305,
         "constant": "SPECIES_CARVANHA",
         "name": null,
         "generation": 1,
@@ -10675,7 +10710,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 305,
+        "id": 306,
         "constant": "SPECIES_SHARPEDO",
         "name": null,
         "generation": 1,
@@ -10710,7 +10745,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 306,
+        "id": 307,
         "constant": "SPECIES_TRAPINCH",
         "name": null,
         "generation": 1,
@@ -10745,7 +10780,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 307,
+        "id": 308,
         "constant": "SPECIES_VIBRAVA",
         "name": null,
         "generation": 1,
@@ -10780,7 +10815,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 308,
+        "id": 309,
         "constant": "SPECIES_FLYGON",
         "name": null,
         "generation": 1,
@@ -10815,7 +10850,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 309,
+        "id": 310,
         "constant": "SPECIES_MAKUHITA",
         "name": null,
         "generation": 1,
@@ -10850,7 +10885,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 310,
+        "id": 311,
         "constant": "SPECIES_HARIYAMA",
         "name": null,
         "generation": 1,
@@ -10885,7 +10920,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 311,
+        "id": 312,
         "constant": "SPECIES_ELECTRIKE",
         "name": null,
         "generation": 1,
@@ -10920,7 +10955,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 312,
+        "id": 313,
         "constant": "SPECIES_MANECTRIC",
         "name": null,
         "generation": 1,
@@ -10955,7 +10990,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 313,
+        "id": 314,
         "constant": "SPECIES_NUMEL",
         "name": null,
         "generation": 1,
@@ -10990,7 +11025,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 314,
+        "id": 315,
         "constant": "SPECIES_CAMERUPT",
         "name": null,
         "generation": 1,
@@ -11025,7 +11060,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 315,
+        "id": 316,
         "constant": "SPECIES_SPHEAL",
         "name": null,
         "generation": 1,
@@ -11060,7 +11095,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 316,
+        "id": 317,
         "constant": "SPECIES_SEALEO",
         "name": null,
         "generation": 1,
@@ -11095,7 +11130,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 317,
+        "id": 318,
         "constant": "SPECIES_WALREIN",
         "name": null,
         "generation": 1,
@@ -11130,7 +11165,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 318,
+        "id": 319,
         "constant": "SPECIES_CACNEA",
         "name": null,
         "generation": 1,
@@ -11165,7 +11200,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 319,
+        "id": 320,
         "constant": "SPECIES_CACTURNE",
         "name": null,
         "generation": 1,
@@ -11200,7 +11235,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 320,
+        "id": 321,
         "constant": "SPECIES_SNORUNT",
         "name": null,
         "generation": 1,
@@ -11235,7 +11270,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 321,
+        "id": 322,
         "constant": "SPECIES_GLALIE",
         "name": null,
         "generation": 1,
@@ -11270,7 +11305,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 322,
+        "id": 323,
         "constant": "SPECIES_LUNATONE",
         "name": null,
         "generation": 1,
@@ -11305,7 +11340,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 323,
+        "id": 324,
         "constant": "SPECIES_SOLROCK",
         "name": null,
         "generation": 1,
@@ -11340,7 +11375,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 324,
+        "id": 325,
         "constant": "SPECIES_AZURILL",
         "name": null,
         "generation": 1,
@@ -11375,7 +11410,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 325,
+        "id": 326,
         "constant": "SPECIES_SPOINK",
         "name": null,
         "generation": 1,
@@ -11410,7 +11445,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 326,
+        "id": 327,
         "constant": "SPECIES_GRUMPIG",
         "name": null,
         "generation": 1,
@@ -11445,7 +11480,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 327,
+        "id": 328,
         "constant": "SPECIES_PLUSLE",
         "name": null,
         "generation": 1,
@@ -11480,7 +11515,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 328,
+        "id": 329,
         "constant": "SPECIES_MINUN",
         "name": null,
         "generation": 1,
@@ -11515,7 +11550,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 329,
+        "id": 330,
         "constant": "SPECIES_MAWILE",
         "name": null,
         "generation": 1,
@@ -11550,7 +11585,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 330,
+        "id": 331,
         "constant": "SPECIES_MEDITITE",
         "name": null,
         "generation": 1,
@@ -11585,7 +11620,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 331,
+        "id": 332,
         "constant": "SPECIES_MEDICHAM",
         "name": null,
         "generation": 1,
@@ -11620,7 +11655,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 332,
+        "id": 333,
         "constant": "SPECIES_SWABLU",
         "name": null,
         "generation": 1,
@@ -11655,7 +11690,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 333,
+        "id": 334,
         "constant": "SPECIES_ALTARIA",
         "name": null,
         "generation": 1,
@@ -11690,7 +11725,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 334,
+        "id": 335,
         "constant": "SPECIES_WYNAUT",
         "name": null,
         "generation": 1,
@@ -11725,7 +11760,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 335,
+        "id": 336,
         "constant": "SPECIES_DUSKULL",
         "name": null,
         "generation": 1,
@@ -11760,7 +11795,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 336,
+        "id": 337,
         "constant": "SPECIES_DUSCLOPS",
         "name": null,
         "generation": 1,
@@ -11795,7 +11830,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 337,
+        "id": 338,
         "constant": "SPECIES_ROSELIA",
         "name": null,
         "generation": 1,
@@ -11830,7 +11865,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 338,
+        "id": 339,
         "constant": "SPECIES_SLAKOTH",
         "name": null,
         "generation": 1,
@@ -11865,7 +11900,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 339,
+        "id": 340,
         "constant": "SPECIES_VIGOROTH",
         "name": null,
         "generation": 1,
@@ -11900,7 +11935,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 340,
+        "id": 341,
         "constant": "SPECIES_SLAKING",
         "name": null,
         "generation": 1,
@@ -11935,7 +11970,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 341,
+        "id": 342,
         "constant": "SPECIES_GULPIN",
         "name": null,
         "generation": 1,
@@ -11970,7 +12005,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 342,
+        "id": 343,
         "constant": "SPECIES_SWALOT",
         "name": null,
         "generation": 1,
@@ -12005,7 +12040,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 343,
+        "id": 344,
         "constant": "SPECIES_TROPIUS",
         "name": null,
         "generation": 1,
@@ -12040,7 +12075,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 344,
+        "id": 345,
         "constant": "SPECIES_WHISMUR",
         "name": null,
         "generation": 1,
@@ -12075,7 +12110,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 345,
+        "id": 346,
         "constant": "SPECIES_LOUDRED",
         "name": null,
         "generation": 1,
@@ -12110,7 +12145,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 346,
+        "id": 347,
         "constant": "SPECIES_EXPLOUD",
         "name": null,
         "generation": 1,
@@ -12145,7 +12180,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 347,
+        "id": 348,
         "constant": "SPECIES_CLAMPERL",
         "name": null,
         "generation": 1,
@@ -12180,7 +12215,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 348,
+        "id": 349,
         "constant": "SPECIES_HUNTAIL",
         "name": null,
         "generation": 1,
@@ -12215,7 +12250,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 349,
+        "id": 350,
         "constant": "SPECIES_GOREBYSS",
         "name": null,
         "generation": 1,
@@ -12250,7 +12285,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 350,
+        "id": 351,
         "constant": "SPECIES_ABSOL",
         "name": null,
         "generation": 1,
@@ -12285,7 +12320,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 351,
+        "id": 352,
         "constant": "SPECIES_SHUPPET",
         "name": null,
         "generation": 1,
@@ -12320,7 +12355,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 352,
+        "id": 353,
         "constant": "SPECIES_BANETTE",
         "name": null,
         "generation": 1,
@@ -12355,7 +12390,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 353,
+        "id": 354,
         "constant": "SPECIES_SEVIPER",
         "name": null,
         "generation": 1,
@@ -12390,7 +12425,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 354,
+        "id": 355,
         "constant": "SPECIES_ZANGOOSE",
         "name": null,
         "generation": 1,
@@ -12425,7 +12460,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 355,
+        "id": 356,
         "constant": "SPECIES_RELICANTH",
         "name": null,
         "generation": 1,
@@ -12460,7 +12495,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 356,
+        "id": 357,
         "constant": "SPECIES_ARON",
         "name": null,
         "generation": 1,
@@ -12495,7 +12530,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 357,
+        "id": 358,
         "constant": "SPECIES_LAIRON",
         "name": null,
         "generation": 1,
@@ -12530,7 +12565,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 358,
+        "id": 359,
         "constant": "SPECIES_AGGRON",
         "name": null,
         "generation": 1,
@@ -12565,7 +12600,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 359,
+        "id": 360,
         "constant": "SPECIES_CASTFORM",
         "name": null,
         "generation": 1,
@@ -12600,7 +12635,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 360,
+        "id": 361,
         "constant": "SPECIES_VOLBEAT",
         "name": null,
         "generation": 1,
@@ -12635,7 +12670,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 361,
+        "id": 362,
         "constant": "SPECIES_ILLUMISE",
         "name": null,
         "generation": 1,
@@ -12670,7 +12705,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 362,
+        "id": 363,
         "constant": "SPECIES_LILEEP",
         "name": null,
         "generation": 1,
@@ -12705,7 +12740,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 363,
+        "id": 364,
         "constant": "SPECIES_CRADILY",
         "name": null,
         "generation": 1,
@@ -12740,7 +12775,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 364,
+        "id": 365,
         "constant": "SPECIES_ANORITH",
         "name": null,
         "generation": 1,
@@ -12775,7 +12810,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 365,
+        "id": 366,
         "constant": "SPECIES_ARMALDO",
         "name": null,
         "generation": 1,
@@ -12810,7 +12845,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 366,
+        "id": 367,
         "constant": "SPECIES_RALTS",
         "name": null,
         "generation": 1,
@@ -12845,7 +12880,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 367,
+        "id": 368,
         "constant": "SPECIES_KIRLIA",
         "name": null,
         "generation": 1,
@@ -12880,7 +12915,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 368,
+        "id": 369,
         "constant": "SPECIES_GARDEVOIR",
         "name": null,
         "generation": 1,
@@ -12915,7 +12950,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 369,
+        "id": 370,
         "constant": "SPECIES_BAGON",
         "name": null,
         "generation": 1,
@@ -12950,7 +12985,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 370,
+        "id": 371,
         "constant": "SPECIES_SHELGON",
         "name": null,
         "generation": 1,
@@ -12985,7 +13020,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 371,
+        "id": 372,
         "constant": "SPECIES_SALAMENCE",
         "name": null,
         "generation": 1,
@@ -13020,7 +13055,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 372,
+        "id": 373,
         "constant": "SPECIES_BELDUM",
         "name": null,
         "generation": 1,
@@ -13055,7 +13090,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 373,
+        "id": 374,
         "constant": "SPECIES_METANG",
         "name": null,
         "generation": 1,
@@ -13090,7 +13125,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 374,
+        "id": 375,
         "constant": "SPECIES_METAGROSS",
         "name": null,
         "generation": 1,
@@ -13125,7 +13160,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 375,
+        "id": 376,
         "constant": "SPECIES_REGIROCK",
         "name": null,
         "generation": 1,
@@ -13160,7 +13195,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 376,
+        "id": 377,
         "constant": "SPECIES_REGICE",
         "name": null,
         "generation": 1,
@@ -13195,7 +13230,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 377,
+        "id": 378,
         "constant": "SPECIES_REGISTEEL",
         "name": null,
         "generation": 1,
@@ -13230,7 +13265,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 378,
+        "id": 379,
         "constant": "SPECIES_KYOGRE",
         "name": null,
         "generation": 1,
@@ -13265,7 +13300,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 379,
+        "id": 380,
         "constant": "SPECIES_GROUDON",
         "name": null,
         "generation": 1,
@@ -13300,7 +13335,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 380,
+        "id": 381,
         "constant": "SPECIES_RAYQUAZA",
         "name": null,
         "generation": 1,
@@ -13335,7 +13370,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 381,
+        "id": 382,
         "constant": "SPECIES_LATIAS",
         "name": null,
         "generation": 1,
@@ -13370,7 +13405,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 382,
+        "id": 383,
         "constant": "SPECIES_LATIOS",
         "name": null,
         "generation": 1,
@@ -13405,7 +13440,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 383,
+        "id": 384,
         "constant": "SPECIES_JIRACHI",
         "name": null,
         "generation": 1,
@@ -13440,7 +13475,7 @@
         "noFlip": "FALSE"
     },
     {
-        "id": 384,
+        "id": 385,
         "constant": "SPECIES_DEOXYS",
         "name": null,
         "generation": 1,
@@ -13475,7 +13510,7 @@
         "noFlip": "TRUE"
     },
     {
-        "id": 385,
+        "id": 386,
         "constant": "SPECIES_CHIMECHO",
         "name": null,
         "generation": 1,

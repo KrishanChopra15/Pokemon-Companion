@@ -2,35 +2,95 @@
  * Pokémon Companion
  * Location Graph Builder
  *
- * Builds map connection graph.
+ * Builds final map connection graph.
  *
  * Responsibilities:
- * - Read location metadata.
- * - Read map warp connections.
- * - Build location adjacency graph.
+ * - Read extracted location graph.
+ * - Normalize connection records.
+ * - Preserve traversal requirements.
+ * - Remove invalid destinations.
+ * - Remove duplicate connections.
+ * - Save generated location graph.
  *
  * Does NOT:
  * - Parse ROM data.
- * - Handle progression.
+ * - Extract map connections.
+ * - Infer progression.
+ * - Handle player state.
+ * - Handle obstacles.
  */
 
 "use strict";
 
-const fs = require("fs");
-const path = require("path");
+
+const fs =
+    require("fs");
 
 
-class LocationGraphBuilder {
+const path =
+    require("path");
 
 
-    build(sourcePath, game) {
 
 
-        const mapsPath =
+
+class LocationGraphBuilder
+{
+
+
+    build(
+        sourcePath,
+        game
+    )
+    {
+
+        //--------------------------------
+        // Raw graph
+        //--------------------------------
+
+        const rawGraphPath =
             path.join(
-                sourcePath,
-                "data",
-                "maps"
+
+                process.cwd(),
+
+                "database",
+
+                "raw",
+
+                game,
+
+                "location-graph.json"
+
+            );
+
+
+        if(
+            !fs.existsSync(
+                rawGraphPath
+            )
+        )
+        {
+
+            throw new Error(
+
+                `Raw location graph missing: ${rawGraphPath}`
+
+            );
+
+        }
+
+
+        const rawGraph =
+            JSON.parse(
+
+                fs.readFileSync(
+
+                    rawGraphPath,
+
+                    "utf8"
+
+                )
+
             );
 
 
@@ -38,121 +98,97 @@ class LocationGraphBuilder {
 
 
 
-        const maps =
-            fs.readdirSync(
-                mapsPath
-            );
 
 
+        //--------------------------------
+        // Normalize graph
+        //--------------------------------
 
-        for (const map of maps) {
+        for(
+            const [
+                locationId,
+                connections
+            ]
+            of
+                Object.entries(
+                    rawGraph
+                )
+        )
+        {
 
-
-            const mapFile =
-                path.join(
-                    mapsPath,
-                    map,
-                    "map.json"
-                );
-
-
-
-            if (!fs.existsSync(mapFile)) {
-
-                continue;
-
-            }
-
-
-
-            const data =
-                JSON.parse(
-                    fs.readFileSync(
-                        mapFile,
-                        "utf8"
-                    )
-                );
-
-
-
-            const locationId =
-                data.id;
-
-
-
-            if (!locationId) {
+            if(
+                !locationId
+            )
+            {
 
                 continue;
 
             }
 
 
+            graph[locationId] =
+                [];
 
-            if (!graph[locationId]) {
 
-                graph[locationId] = [];
+            if(
+                !Array.isArray(
+                    connections
+                )
+            )
+            {
+
+                continue;
 
             }
 
 
+            for(
+                const connection of
+                    connections
+            )
+            {
 
-            //--------------------------------
-            // Warp connections
-            //--------------------------------
+                const normalized =
+                    this.normalizeConnection(
 
-            if (data.warp_events) {
+                        connection
 
-
-                for (const warp of data.warp_events) {
-
-
-                    const destination =
-                        warp.dest_map;
-
+                    );
 
 
-                    if (
-                        isValidDestination(destination) &&
-                        !graph[locationId].includes(destination)
-                    ) {
+                if(
+                    !normalized
+                )
+                {
 
-
-                        graph[locationId]
-                            .push(destination);
-
-                    }
-
+                    continue;
 
                 }
 
-            }
 
+                if(
+                    !graph[locationId]
+                        .some(
 
+                            existing =>
 
-            //--------------------------------
-            // Map connections
-            //--------------------------------
+                                this.connectionKey(
+                                    existing
+                                )
+                                ===
+                                this.connectionKey(
+                                    normalized
+                                )
 
-            if (data.connections) {
+                        )
+                )
+                {
 
+                    graph[locationId].push(
 
-                for (const connection of data.connections) {
+                        normalized
 
-
-                    const destination =
-                        connection.map;
-
-
-
-                    if (
-                        isValidDestination(destination) &&
-                        !graph[locationId].includes(destination)
-                    ) {
-
-                        graph[locationId]
-                            .push(destination);
-
-                    }
+                    );
 
                 }
 
@@ -162,64 +198,370 @@ class LocationGraphBuilder {
 
 
 
+
+
+        //--------------------------------
+        // Save
+        //--------------------------------
+
         const output =
             path.join(
-                __dirname,
-                "../../database/generated",
+
+                process.cwd(),
+
+                "database",
+
+                "generated",
+
                 game,
+
                 "location-graph.json"
+
             );
 
 
+        fs.mkdirSync(
 
-        fs.writeFileSync(
-            output,
-            JSON.stringify(
-                graph,
-                null,
-                2
-            )
+            path.dirname(
+                output
+            ),
+
+            {
+                recursive:
+                    true
+            }
+
         );
 
+
+        fs.writeFileSync(
+
+            output,
+
+            JSON.stringify(
+
+                graph,
+
+                null,
+
+                2
+
+            ),
+
+            "utf8"
+
+        );
 
 
         console.log(
+
             `Generated location graph: ${Object.keys(graph).length} locations`
+
         );
 
 
-    }
-
-
-}
-
-
-
-function isValidDestination(destination) {
-
-
-    if (!destination) {
-
-        return false;
+        return graph;
 
     }
 
 
 
-    const invalidMaps = [
-
-        "MAP_DYNAMIC"
-
-    ];
 
 
+    //--------------------------------
+    // Normalize connection
+    //--------------------------------
 
-    return !invalidMaps.includes(
+    normalizeConnection(
+        connection
+    )
+    {
+
+        //--------------------------------
+        // Backward compatibility with old
+        // string-based raw graph.
+        //--------------------------------
+
+        if(
+            typeof connection ===
+                "string"
+        )
+        {
+
+            if(
+                !this.isValidDestination(
+                    connection
+                )
+            )
+            {
+
+                return null;
+
+            }
+
+
+            return {
+
+                location:
+                    connection,
+
+                type:
+                    "UNKNOWN",
+
+                requirements:
+                    [],
+
+                metadata:
+                    {}
+
+            };
+
+        }
+
+
+        //--------------------------------
+        // Object connection
+        //--------------------------------
+
+        if(
+            !connection
+            ||
+            typeof connection !==
+                "object"
+        )
+        {
+
+            return null;
+
+        }
+
+
+        if(
+            !this.isValidDestination(
+                connection.location
+            )
+        )
+        {
+
+            return null;
+
+        }
+
+
+        const requirements =
+            Array.isArray(
+                connection.requirements
+            )
+            ?
+            connection.requirements
+            :
+            [];
+
+
+        const normalizedRequirements =
+            [];
+
+
+        for(
+            const requirement of
+                requirements
+        )
+        {
+
+            if(
+                !requirement
+            )
+            {
+
+                continue;
+
+            }
+
+
+            if(
+                typeof requirement ===
+                    "string"
+            )
+            {
+
+                if(
+                    !normalizedRequirements.includes(
+                        requirement
+                    )
+                )
+                {
+
+                    normalizedRequirements.push(
+                        requirement
+                    );
+
+                }
+
+                continue;
+
+            }
+
+
+            if(
+                typeof requirement !==
+                    "object"
+            )
+            {
+
+                continue;
+
+            }
+
+
+            const normalized =
+            {
+
+                ...requirement
+
+            };
+
+
+            const key =
+                JSON.stringify(
+                    normalized
+                );
+
+
+            const exists =
+                normalizedRequirements.some(
+
+                    existing =>
+
+                        JSON.stringify(
+                            existing
+                        )
+                        ===
+                        key
+
+                );
+
+
+            if(
+                !exists
+            )
+            {
+
+                normalizedRequirements.push(
+                    normalized
+                );
+
+            }
+
+        }
+
+
+        return {
+
+            location:
+                connection.location,
+
+            type:
+                connection.type
+                ||
+                "UNKNOWN",
+
+            requirements:
+                normalizedRequirements,
+
+            metadata:
+                connection.metadata
+                &&
+                typeof connection.metadata ===
+                    "object"
+                ?
+                {
+                    ...connection.metadata
+                }
+                :
+                {}
+
+        };
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Connection identity
+    //--------------------------------
+
+    connectionKey(
+        connection
+    )
+    {
+
+        return [
+
+            connection.location,
+
+            connection.type
+            ||
+            "UNKNOWN",
+
+            JSON.stringify(
+
+                connection.requirements
+                ||
+                []
+
+            )
+
+        ]
+        .join("|");
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Destination validation
+    //--------------------------------
+
+    isValidDestination(
         destination
-    );
+    )
+    {
+
+        if(
+            !destination
+        )
+        {
+
+            return false;
+
+        }
+
+
+        if(
+            destination ===
+                "MAP_DYNAMIC"
+        )
+        {
+
+            return false;
+
+        }
+
+
+        return true;
+
+    }
+
 
 }
 
 
 
-module.exports = LocationGraphBuilder;
+
+
+module.exports =
+    LocationGraphBuilder;

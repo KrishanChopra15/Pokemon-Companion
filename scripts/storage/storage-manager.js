@@ -9,6 +9,7 @@
  * - Remove boxed Pokémon.
  * - Find stored Pokémon.
  * - Provide storage data.
+ * - Preserve individual Pokémon state.
  *
  * Does NOT:
  * - Decide when Pokémon enters storage.
@@ -19,48 +20,39 @@
 "use strict";
 
 
-
-
-
-class StorageManager {
-
+class StorageManager
+{
 
 
     constructor()
     {
 
-        this.storage = [];
+        this.storage =
+            [];
 
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Add Pokémon to storage
     //--------------------------------
 
-
     addPokemon(
         pokemon
     )
     {
 
-
         if(
-            !pokemon ||
+            !pokemon
+            ||
             !pokemon.species
         )
         {
 
             return {
 
-                success:false,
+                success:
+                    false,
 
                 reason:
                     "Invalid Pokemon"
@@ -70,49 +62,33 @@ class StorageManager {
         }
 
 
-
-
-
-
-
-
+        //--------------------------------
+        // Preserve Pokémon state
+        //--------------------------------
 
         const storedPokemon =
         {
 
-            id:
+            ...pokemon,
 
+            id:
+                pokemon.id
+                ??
                 Date.now(),
 
-
             species:
-
                 pokemon.species,
 
-
             level:
-
                 pokemon.level || 1,
 
-
             location:
-
                 pokemon.location || null,
 
-
             box:
-
                 this.getNextBox()
 
-
         };
-
-
-
-
-
-
-
 
 
         this.storage.push(
@@ -120,43 +96,27 @@ class StorageManager {
         );
 
 
-
-
-
-
-
-
-
         return {
 
-            success:true,
+            success:
+                true,
 
             pokemon:
                 storedPokemon
 
         };
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Remove Pokémon
     //--------------------------------
 
-
     removePokemon(
         id
     )
     {
-
 
         const index =
             this.storage
@@ -164,10 +124,10 @@ class StorageManager {
 
                     pokemon =>
 
-                        pokemon.id === id
+                        pokemon.id ===
+                        id
 
                 );
-
 
 
         if(
@@ -177,7 +137,8 @@ class StorageManager {
 
             return {
 
-                success:false,
+                success:
+                    false,
 
                 reason:
                     "Pokemon not found"
@@ -187,46 +148,33 @@ class StorageManager {
         }
 
 
-
-
-
-
-
-
-
         const removed =
             this.storage
                 .splice(
-                    index,
-                    1
-                )[0];
 
+                    index,
+
+                    1
+
+                )[0];
 
 
         return {
 
-            success:true,
+            success:
+                true,
 
             pokemon:
                 removed
 
         };
 
-
     }
-
-
-
-
-
-
-
 
 
     //--------------------------------
     // Find Pokémon
     //--------------------------------
-
 
     findPokemon(
         id
@@ -238,24 +186,17 @@ class StorageManager {
 
                 pokemon =>
 
-                    pokemon.id === id
+                    pokemon.id ===
+                    id
 
             );
 
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
     // Get all storage
     //--------------------------------
-
 
     getStorage()
     {
@@ -265,17 +206,9 @@ class StorageManager {
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
     // Storage count
     //--------------------------------
-
 
     getCount()
     {
@@ -285,59 +218,39 @@ class StorageManager {
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
     // Box calculation
     //--------------------------------
 
-
     getNextBox()
     {
 
-
         const boxSize =
             30;
-
 
 
         const boxNumber =
             Math.floor(
 
                 this.storage.length /
-
                 boxSize
 
             )
-
             +
-
             1;
-
 
 
         return (
 
             "BOX_" +
-
             boxNumber
 
         );
 
-
     }
 
 
-
 }
-
-
-
 
 
 module.exports =

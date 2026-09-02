@@ -1,179 +1,245 @@
 {
-  "PEWTER_GYM_COMPLETE": {
-    "id": "PEWTER_GYM_COMPLETE",
-    "location": "MAP_PEWTER_GYM",
-    "type": "GYM",
-    "requirement": {
-      "badges": [],
-      "keyItems": [],
-      "storyFlags": [],
-      "conditions": {}
-    },
-    "unlocks": [
-      "BOULDER_BADGE",
-      "TM34"
-    ]
-  },
-  "CERULEAN_GYM_COMPLETE": {
-    "id": "CERULEAN_GYM_COMPLETE",
-    "location": "MAP_CERULEAN_GYM",
-    "type": "GYM",
-    "requirement": {
-      "badges": [
-        "BOULDER_BADGE"
-      ],
-      "keyItems": [],
-      "storyFlags": [],
-      "conditions": {}
-    },
-    "unlocks": [
-      "CASCADE_BADGE",
-      "TM29"
-    ]
-  },
-  "VERMILION_GYM_COMPLETE": {
-    "id": "VERMILION_GYM_COMPLETE",
-    "location": "MAP_VERMILION_GYM",
-    "type": "GYM",
-    "requirement": {
-      "badges": [
-        "BOULDER_BADGE",
-        "CASCADE_BADGE"
-      ],
-      "keyItems": [],
-      "storyFlags": [],
-      "conditions": {}
-    },
-    "unlocks": [
-      "THUNDER_BADGE"
-    ]
-  },
-  "CUT_UNLOCK": {
-    "id": "CUT_UNLOCK",
-    "location": "MAP_SSANNE",
-    "type": "HM",
-    "requirement": {
-      "badges": [
-        "CASCADE_BADGE"
-      ],
-      "keyItems": [
-        "HM01"
-      ],
-      "storyFlags": [],
-      "conditions": {}
-    },
-    "unlocks": [
-      "CAN_USE_CUT"
-    ]
-  },
-  "FLASH_UNLOCK": {
-    "id": "FLASH_UNLOCK",
-    "location": "MAP_ROUTE_2",
-    "type": "HM",
-    "requirement": {
-      "badges": [
-        "BOULDER_BADGE"
-      ],
-      "keyItems": [
-        "HM05"
-      ],
-      "storyFlags": [],
-      "conditions": {}
-    },
-    "unlocks": [
-      "CAN_USE_FLASH"
-    ]
-  },
-  "SURF_UNLOCK": {
-    "id": "SURF_UNLOCK",
-    "location": "MAP_FUCHSIA_CITY",
-    "type": "HM",
-    "requirement": {
-      "badges": [
-        "SOUL_BADGE"
-      ],
-      "keyItems": [
-        "HM03"
-      ],
-      "storyFlags": [],
-      "conditions": {}
-    },
-    "unlocks": [
-      "CAN_USE_SURF"
-    ]
-  },
-  "STRENGTH_UNLOCK": {
-    "id": "STRENGTH_UNLOCK",
-    "location": "MAP_FUCHSIA_CITY",
-    "type": "HM",
-    "requirement": {
-      "badges": [
-        "RAINBOW_BADGE"
-      ],
-      "keyItems": [
-        "HM04"
-      ],
-      "storyFlags": [],
-      "conditions": {}
-    },
-    "unlocks": [
-      "CAN_USE_STRENGTH"
-    ]
-  },
-  "FLY_UNLOCK": {
-    "id": "FLY_UNLOCK",
-    "location": "MAP_ROUTE_16",
-    "type": "HM",
-    "requirement": {
-      "badges": [
-        "THUNDER_BADGE"
-      ],
-      "keyItems": [
-        "HM02"
-      ],
-      "storyFlags": [],
-      "conditions": {}
-    },
-    "unlocks": [
-      "CAN_USE_FLY"
-    ]
-  },
-  "SS_ANNE_ACCESS": {
-    "id": "SS_ANNE_ACCESS",
-    "location": "MAP_SSANNE_EXTERIOR",
-    "type": "STORY",
+  "CERULEAN_CITY_EXIT_ACCESS": {
+    "id": "CERULEAN_CITY_EXIT_ACCESS",
+    "eventId": null,
+    "location": "MAP_CERULEAN_CITY",
+    "type": "HARD_GATE",
     "requirement": {
       "badges": [],
       "keyItems": [
         "SS_TICKET"
       ],
       "storyFlags": [],
+      "abilities": [],
       "conditions": {}
     },
     "unlocks": [
-      "SS_ANNE_AVAILABLE"
+      "CERULEAN_CITY_EXIT_ACCESS"
     ]
   },
-  "SILPH_CO_ACCESS": {
-    "id": "SILPH_CO_ACCESS",
+  "SAFFRON_CITY_ACCESS": {
+    "id": "SAFFRON_CITY_ACCESS",
+    "eventId": null,
     "location": "MAP_SAFFRON_CITY",
-    "type": "STORY",
+    "type": "HARD_GATE",
     "requirement": {
       "badges": [],
       "keyItems": [
         "TEA"
       ],
       "storyFlags": [],
+      "abilities": [],
       "conditions": {}
     },
     "unlocks": [
-      "SAFFRON_CITY_ACCESS"
+      "SAFFRON_CITY_AVAILABLE"
+    ]
+  },
+  "CYCLING_ROAD_ACCESS": {
+    "id": "CYCLING_ROAD_ACCESS",
+    "eventId": null,
+    "location": "MAP_ROUTE16",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [
+        "BICYCLE"
+      ],
+      "storyFlags": [],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "CYCLING_ROAD_AVAILABLE"
+    ]
+  },
+  "ROUTE12_SNORLAX_ACCESS": {
+    "id": "ROUTE12_SNORLAX_ACCESS",
+    "eventId": null,
+    "location": "MAP_ROUTE12",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [
+        "CAN_USE_POKE_FLUTE"
+      ],
+      "conditions": {}
+    },
+    "unlocks": [
+      "ROUTE12_SNORLAX_CLEARED"
+    ]
+  },
+  "ROUTE16_SNORLAX_ACCESS": {
+    "id": "ROUTE16_SNORLAX_ACCESS",
+    "eventId": null,
+    "location": "MAP_ROUTE16",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [
+        "CAN_USE_POKE_FLUTE"
+      ],
+      "conditions": {}
+    },
+    "unlocks": [
+      "ROUTE16_SNORLAX_CLEARED"
+    ]
+  },
+  "VERMILION_GYM_ACCESS": {
+    "id": "VERMILION_GYM_ACCESS",
+    "eventId": null,
+    "location": "MAP_VERMILION_CITY_GYM",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [
+        "CAN_USE_CUT"
+      ],
+      "conditions": {}
+    },
+    "unlocks": [
+      "VERMILION_GYM_AVAILABLE"
+    ]
+  },
+  "CELADON_GYM_ACCESS": {
+    "id": "CELADON_GYM_ACCESS",
+    "eventId": null,
+    "location": "MAP_CELADON_CITY_GYM",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [
+        "CAN_USE_CUT"
+      ],
+      "conditions": {}
+    },
+    "unlocks": [
+      "CELADON_GYM_AVAILABLE"
+    ]
+  },
+  "ROCK_TUNNEL_FLASH_WARNING": {
+    "id": "ROCK_TUNNEL_FLASH_WARNING",
+    "eventId": null,
+    "location": "MAP_ROCK_TUNNEL_1F",
+    "type": "SOFT_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [
+        "CAN_USE_FLASH"
+      ],
+      "conditions": {}
+    },
+    "unlocks": []
+  },
+  "CINNABAR_ISLAND_SURF_ACCESS": {
+    "id": "CINNABAR_ISLAND_SURF_ACCESS",
+    "eventId": null,
+    "location": "MAP_CINNABAR_ISLAND",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [
+        "CAN_USE_SURF"
+      ],
+      "conditions": {}
+    },
+    "unlocks": []
+  },
+  "SEAFOAM_ISLANDS_SURF_ACCESS": {
+    "id": "SEAFOAM_ISLANDS_SURF_ACCESS",
+    "eventId": null,
+    "location": "MAP_SEAFOAM_ISLANDS_1F",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [
+        "CAN_USE_SURF"
+      ],
+      "conditions": {}
+    },
+    "unlocks": []
+  },
+  "POWER_PLANT_SURF_ACCESS": {
+    "id": "POWER_PLANT_SURF_ACCESS",
+    "eventId": null,
+    "location": "MAP_POWER_PLANT",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [
+        "CAN_USE_SURF"
+      ],
+      "conditions": {}
+    },
+    "unlocks": []
+  },
+  "CINNABAR_GYM_ACCESS": {
+    "id": "CINNABAR_GYM_ACCESS",
+    "eventId": null,
+    "location": "MAP_CINNABAR_ISLAND_GYM",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [
+        "SECRET_KEY"
+      ],
+      "storyFlags": [],
+      "abilities": [
+        "CAN_USE_SURF"
+      ],
+      "conditions": {}
+    },
+    "unlocks": [
+      "CINNABAR_GYM_AVAILABLE"
+    ]
+  },
+  "VIRIDIAN_GYM_ACCESS": {
+    "id": "VIRIDIAN_GYM_ACCESS",
+    "eventId": null,
+    "location": "MAP_VIRIDIAN_CITY_GYM",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [
+        "BOULDER_BADGE",
+        "CASCADE_BADGE",
+        "THUNDER_BADGE",
+        "RAINBOW_BADGE",
+        "SOUL_BADGE",
+        "MARSH_BADGE",
+        "VOLCANO_BADGE"
+      ],
+      "keyItems": [],
+      "storyFlags": [
+        "SILPH_CO_COMPLETED"
+      ],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "VIRIDIAN_GYM_AVAILABLE"
     ]
   },
   "VICTORY_ROAD_ACCESS": {
     "id": "VICTORY_ROAD_ACCESS",
+    "eventId": null,
     "location": "MAP_VICTORY_ROAD_1F",
-    "type": "STORY",
+    "type": "HARD_GATE",
     "requirement": {
       "badges": [
         "BOULDER_BADGE",
@@ -187,10 +253,388 @@
       ],
       "keyItems": [],
       "storyFlags": [],
+      "abilities": [],
       "conditions": {}
     },
     "unlocks": [
-      "POKEMON_LEAGUE_ACCESS"
+      "POKEMON_LEAGUE_ACCESS",
+      "VICTORY_ROAD_AVAILABLE"
+    ]
+  },
+  "ELITE_FOUR_ACCESS": {
+    "id": "ELITE_FOUR_ACCESS",
+    "eventId": null,
+    "location": "MAP_POKEMON_LEAGUE_ENTRANCE",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [
+        "BOULDER_BADGE",
+        "CASCADE_BADGE",
+        "THUNDER_BADGE",
+        "RAINBOW_BADGE",
+        "SOUL_BADGE",
+        "MARSH_BADGE",
+        "VOLCANO_BADGE",
+        "EARTH_BADGE"
+      ],
+      "keyItems": [],
+      "storyFlags": [
+        "POKEMON_LEAGUE_ACCESS"
+      ],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "ELITE_FOUR_AVAILABLE"
+    ]
+  },
+  "PEWTER_GYM_COMPLETE": {
+    "id": "PEWTER_GYM_COMPLETE",
+    "eventId": null,
+    "location": "MAP_PEWTER_GYM",
+    "type": "GYM",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "BOULDER_BADGE"
+    ]
+  },
+  "CERULEAN_GYM_COMPLETE": {
+    "id": "CERULEAN_GYM_COMPLETE",
+    "eventId": null,
+    "location": "MAP_CERULEAN_CITY_GYM",
+    "type": "GYM",
+    "requirement": {
+      "badges": [
+        "BOULDER_BADGE"
+      ],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "CASCADE_BADGE"
+    ]
+  },
+  "VERMILION_GYM_COMPLETE": {
+    "id": "VERMILION_GYM_COMPLETE",
+    "eventId": null,
+    "location": "MAP_VERMILION_CITY_GYM",
+    "type": "GYM",
+    "requirement": {
+      "badges": [
+        "BOULDER_BADGE",
+        "CASCADE_BADGE"
+      ],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "THUNDER_BADGE"
+    ]
+  },
+  "CELADON_GYM_COMPLETE": {
+    "id": "CELADON_GYM_COMPLETE",
+    "eventId": null,
+    "location": "MAP_CELADON_CITY_GYM",
+    "type": "GYM",
+    "requirement": {
+      "badges": [
+        "BOULDER_BADGE",
+        "CASCADE_BADGE"
+      ],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "RAINBOW_BADGE"
+    ]
+  },
+  "FUCHSIA_GYM_COMPLETE": {
+    "id": "FUCHSIA_GYM_COMPLETE",
+    "eventId": null,
+    "location": "MAP_FUCHSIA_CITY_GYM",
+    "type": "GYM",
+    "requirement": {
+      "badges": [
+        "BOULDER_BADGE",
+        "CASCADE_BADGE"
+      ],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "SOUL_BADGE"
+    ]
+  },
+  "SAFFRON_GYM_COMPLETE": {
+    "id": "SAFFRON_GYM_COMPLETE",
+    "eventId": null,
+    "location": "MAP_SAFFRON_CITY_GYM",
+    "type": "GYM",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [
+        "SILPH_CO_COMPLETED"
+      ],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "MARSH_BADGE"
+    ]
+  },
+  "CINNABAR_GYM_COMPLETE": {
+    "id": "CINNABAR_GYM_COMPLETE",
+    "eventId": null,
+    "location": "MAP_CINNABAR_ISLAND_GYM",
+    "type": "GYM",
+    "requirement": {
+      "badges": [],
+      "keyItems": [
+        "SECRET_KEY"
+      ],
+      "storyFlags": [],
+      "abilities": [
+        "CAN_USE_SURF"
+      ],
+      "conditions": {}
+    },
+    "unlocks": [
+      "VOLCANO_BADGE"
+    ]
+  },
+  "VIRIDIAN_GYM_COMPLETE": {
+    "id": "VIRIDIAN_GYM_COMPLETE",
+    "eventId": null,
+    "location": "MAP_VIRIDIAN_CITY_GYM",
+    "type": "GYM",
+    "requirement": {
+      "badges": [
+        "BOULDER_BADGE",
+        "CASCADE_BADGE",
+        "THUNDER_BADGE",
+        "RAINBOW_BADGE",
+        "SOUL_BADGE",
+        "MARSH_BADGE",
+        "VOLCANO_BADGE"
+      ],
+      "keyItems": [],
+      "storyFlags": [
+        "SILPH_CO_COMPLETED"
+      ],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "EARTH_BADGE"
+    ]
+  },
+  "CUT_UNLOCK": {
+    "id": "CUT_UNLOCK",
+    "eventId": null,
+    "location": "MAP_SSANNE",
+    "type": "HM",
+    "requirement": {
+      "badges": [
+        "CASCADE_BADGE"
+      ],
+      "keyItems": [
+        "HM01"
+      ],
+      "storyFlags": [],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "CAN_USE_CUT"
+    ]
+  },
+  "FLASH_UNLOCK": {
+    "id": "FLASH_UNLOCK",
+    "eventId": null,
+    "location": "MAP_ROUTE2",
+    "type": "HM",
+    "requirement": {
+      "badges": [
+        "BOULDER_BADGE"
+      ],
+      "keyItems": [
+        "HM05"
+      ],
+      "storyFlags": [],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "CAN_USE_FLASH"
+    ]
+  },
+  "FLY_UNLOCK": {
+    "id": "FLY_UNLOCK",
+    "eventId": null,
+    "location": "MAP_ROUTE_16",
+    "type": "HM",
+    "requirement": {
+      "badges": [
+        "THUNDER_BADGE"
+      ],
+      "keyItems": [
+        "HM02"
+      ],
+      "storyFlags": [],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "CAN_USE_FLY"
+    ]
+  },
+  "SURF_UNLOCK": {
+    "id": "SURF_UNLOCK",
+    "eventId": null,
+    "location": "MAP_FUCHSIA_CITY",
+    "type": "HM",
+    "requirement": {
+      "badges": [
+        "SOUL_BADGE"
+      ],
+      "keyItems": [
+        "HM03"
+      ],
+      "storyFlags": [],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "CAN_USE_SURF"
+    ]
+  },
+  "STRENGTH_UNLOCK": {
+    "id": "STRENGTH_UNLOCK",
+    "eventId": null,
+    "location": "MAP_FUCHSIA_CITY",
+    "type": "HM",
+    "requirement": {
+      "badges": [
+        "RAINBOW_BADGE"
+      ],
+      "keyItems": [
+        "HM04"
+      ],
+      "storyFlags": [],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "CAN_USE_STRENGTH"
+    ]
+  },
+  "HM05_ACQUISITION": {
+    "id": "HM05_ACQUISITION",
+    "eventId": "Route2_EastBuilding_EventScript_Aide",
+    "location": "MAP_ROUTE2_EAST_BUILDING",
+    "type": "STORY",
+    "requirement": {
+      "badges": [
+        "BOULDER_BADGE"
+      ],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [
+        "CAN_USE_CUT"
+      ],
+      "conditions": {
+        "caughtPokemon": 10
+      }
+    },
+    "unlocks": [
+      "HM05"
+    ]
+  },
+  "HM03_ACQUISITION": {
+    "id": "HM03_ACQUISITION",
+    "eventId": "SafariZone_SecretHouse_EventScript_Attendant",
+    "location": "MAP_SAFARI_ZONE_SECRET_HOUSE",
+    "type": "STORY",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "HM03"
+    ]
+  },
+  "POKE_FLUTE_UNLOCK": {
+    "id": "POKE_FLUTE_UNLOCK",
+    "eventId": null,
+    "location": null,
+    "type": "STORY",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [
+        "POKEMON_TOWER_COMPLETED"
+      ],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "CAN_USE_POKE_FLUTE"
+    ]
+  },
+  "NATIONAL_DEX_ACCESS": {
+    "id": "NATIONAL_DEX_ACCESS",
+    "eventId": null,
+    "location": "MAP_PALLET_TOWN",
+    "type": "POST_GAME",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [
+        "HALL_OF_FAME"
+      ],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "NATIONAL_DEX"
+    ]
+  },
+  "HOENN_TRADE_ACCESS": {
+    "id": "HOENN_TRADE_ACCESS",
+    "eventId": null,
+    "location": "MAP_ONE_ISLAND_CELIO",
+    "type": "POST_GAME",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [
+        "NATIONAL_DEX",
+        "RUBY_OBTAINED",
+        "SAPPHIRE_OBTAINED"
+      ],
+      "abilities": [],
+      "conditions": {}
+    },
+    "unlocks": [
+      "RUBY_SAPPHIRE_TRADE"
     ]
   }
 }

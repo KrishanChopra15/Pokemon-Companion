@@ -10,6 +10,7 @@
  * - Check story flags.
  * - Check items.
  * - Check locations.
+ * - Check abilities.
  * - Check Champion status.
  * - Check National Dex.
  *
@@ -81,6 +82,12 @@ class ProgressionRequirementService {
 
             this.checkLocations(
                 requirements.locations,
+                playerState
+            ),
+
+
+            this.checkAbilities(
+                requirements.abilities,
                 playerState
             ),
 
@@ -449,6 +456,91 @@ class ProgressionRequirementService {
 
                     reason:
                     "Location unavailable: " + location
+
+                };
+
+            }
+
+        }
+
+
+
+
+
+        return {
+
+            available:true
+
+        };
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Abilities
+    //--------------------------------
+
+
+    checkAbilities(
+        abilities,
+        playerState
+    )
+    {
+
+
+        if(
+            !abilities
+            ||
+            abilities.length === 0
+        )
+        {
+
+            return {
+
+                available:true
+
+            };
+
+        }
+
+
+
+
+
+        const owned =
+            playerState.abilities || [];
+
+
+
+
+
+        for(
+            const ability of
+                abilities
+        )
+        {
+
+            if(
+                !owned.includes(
+                    ability
+                )
+            )
+            {
+
+                return {
+
+                    available:false,
+
+                    reason:
+                    "Missing ability: " + ability
 
                 };
 

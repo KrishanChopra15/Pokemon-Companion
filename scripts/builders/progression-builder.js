@@ -256,31 +256,34 @@ class ProgressionBuilder {
 
             const entry =
                 new Progression({
-
+                
                     id:
                         record.id,
-
-
+                
+                
+                    eventId:
+                        record.eventId || null,
+                
+                
                     location:
                         record.location || null,
-
-
+                
+                
                     type:
                         record.type || null,
-
-
+                
+                
                     requirement:
                         this.normalizeRequirement(
-
+                        
                             record.requirement
-
+                        
                         ),
-
-
+                    
+                    
                     unlocks:
                         record.unlocks || []
-
-
+                    
                 });
 
 
@@ -298,32 +301,30 @@ class ProgressionBuilder {
 
             progression[entry.id] =
             {
-
-
+            
                 id:
                     entry.id,
-
-
+            
+            
+                eventId:
+                    entry.eventId,
+            
+            
                 location:
                     entry.location,
-
-
-
+            
+            
                 type:
                     entry.type,
-
-
-
+            
+            
                 requirement:
                     entry.requirement,
-
-
-
+            
+            
                 unlocks:
                     entry.unlocks
-
-
-
+            
             };
 
 

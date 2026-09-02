@@ -88,19 +88,12 @@ class ExperienceService {
         }
 
 
-
-
-
-
         const base =
             defeatedPokemon.baseExp
 
             ||
 
             50;
-
-
-
 
 
         const level =
@@ -111,20 +104,12 @@ class ExperienceService {
             1;
 
 
-
-
-
-
         const multiplier =
             this.baseExp[source]
 
             ||
 
             1;
-
-
-
-
 
 
         return Math.floor(
@@ -185,11 +170,40 @@ class ExperienceService {
         }
 
 
+        //--------------------------------
+        // Validate amount
+        //--------------------------------
+
+        const gained =
+            Number(
+                amount
+            );
 
 
+        if(
+            !Number.isFinite(
+                gained
+            )
+            ||
+            gained < 0
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Invalid EXP amount"
+
+            };
+
+        }
 
 
-
+        //--------------------------------
+        // Initialize EXP
+        //--------------------------------
 
         if(
             pokemon.exp === undefined
@@ -202,11 +216,9 @@ class ExperienceService {
         }
 
 
-
-
-
-
-
+        //--------------------------------
+        // Initialize level
+        //--------------------------------
 
         if(
             !pokemon.level
@@ -219,50 +231,36 @@ class ExperienceService {
         }
 
 
-
-
-
-
-
+        //--------------------------------
+        // Preserve actual level
+        //--------------------------------
 
         const oldLevel =
             pokemon.level;
 
 
-
-
-
-
-
+        //--------------------------------
+        // Add EXP
+        //--------------------------------
 
         pokemon.exp +=
-            amount;
+            gained;
 
 
-
-
-
-
-
+        //--------------------------------
+        // Calculate pending levels
+        //
+        // IMPORTANT:
+        // ExperienceService does NOT
+        // mutate pokemon.level.
+        //--------------------------------
 
         const levels =
             [];
 
 
-
-
-
-
-
-
         let checkLevel =
             oldLevel;
-
-
-
-
-
-
 
 
         while(
@@ -298,44 +296,47 @@ class ExperienceService {
         }
 
 
-
-
-
-
-
-
-        pokemon.level =
-            checkLevel;
-
-
+        //--------------------------------
+        // Return pending level changes
+        //--------------------------------
 
         return {
-        
-        
-            success:true,
-        
-        
+
+
+            success:
+                true,
+
+
             gained:
-        
-                amount,
-        
-        
+
+
+                gained,
+
+
             total:
-        
+
+
                 pokemon.exp,
-        
-        
+
+
             oldLevel,
-        
-        
+
+
             currentLevel:
-        
-                pokemon.level,
-        
-        
+
+
+                oldLevel,
+
+
+            pendingLevel:
+
+
+                checkLevel,
+
+
             levels
-        
-        
+
+
         };
 
 
@@ -378,11 +379,6 @@ class ExperienceService {
         }
 
 
-
-
-
-
-
         return Math.pow(
 
             level,
@@ -423,22 +419,12 @@ class ExperienceService {
         }
 
 
-
-
-
-
         const currentExp =
             pokemon.exp
 
             ||
 
             0;
-
-
-
-
-
-
 
 
         const growthRate =
@@ -449,25 +435,12 @@ class ExperienceService {
             "GROWTH_MEDIUM_FAST";
 
 
-
-
-
-
-
-
         //--------------------------------
         // Calculate actual level
         //--------------------------------
 
-
         let calculatedLevel =
             1;
-
-
-
-
-
-
 
 
         while(
@@ -494,12 +467,6 @@ class ExperienceService {
         }
 
 
-
-
-
-
-
-
         const levelStart =
             this.getExpRequired(
 
@@ -508,12 +475,6 @@ class ExperienceService {
                 growthRate
 
             );
-
-
-
-
-
-
 
 
         const levelEnd =
@@ -526,12 +487,6 @@ class ExperienceService {
             );
 
 
-
-
-
-
-
-
         const progress =
             Math.max(
 
@@ -540,12 +495,6 @@ class ExperienceService {
                 currentExp - levelStart
 
             );
-
-
-
-
-
-
 
 
         const needed =
@@ -558,12 +507,6 @@ class ExperienceService {
             );
 
 
-
-
-
-
-
-
         const remaining =
             Math.max(
 
@@ -572,12 +515,6 @@ class ExperienceService {
                 levelEnd - currentExp
 
             );
-
-
-
-
-
-
 
 
         const percentage =
@@ -602,12 +539,6 @@ class ExperienceService {
                 )
 
             );
-
-
-
-
-
-
 
 
         return {
@@ -673,7 +604,6 @@ class ExperienceService {
             );
 
 
-
         return {
 
 
@@ -688,7 +618,6 @@ class ExperienceService {
 
 
             exp
-
 
         };
 

@@ -7,6 +7,9 @@
  * Responsibilities:
  * - Validate capture.
  * - Consume capture items.
+ * - Initialize Pokémon friendship.
+ * - Preserve capture ball.
+ * - Preserve met location.
  * - Store captured Pokémon.
  * - Update tracker.
  * - Add Pokémon to team.
@@ -16,12 +19,11 @@
  * Does NOT:
  * - Detect wild encounters.
  * - Execute battle mechanics.
+ * - Calculate capture probability.
+ * - Execute friendship mechanics.
  */
 
 "use strict";
-
-
-
 
 
 class CaptureFlow {
@@ -35,7 +37,9 @@ class CaptureFlow {
         storageFlow,
         inventoryFlow,
         pokemonTracker,
-        actionFlow
+        actionFlow,
+        pokemonDatabase = null,
+        friendshipService = null
     )
     {
 
@@ -68,6 +72,14 @@ class CaptureFlow {
             actionFlow;
 
 
+        this.pokemonDatabase =
+            pokemonDatabase;
+
+
+        this.friendship =
+            friendshipService;
+
+
     }
 
 
@@ -84,7 +96,8 @@ class CaptureFlow {
 
 
     confirmCapture(
-        pokemon
+        pokemon,
+        ball = "POKE_BALL"
     )
     {
 
@@ -97,7 +110,8 @@ class CaptureFlow {
 
             return {
 
-                success:false,
+                success:
+                    false,
 
                 reason:
                     "Invalid Pokemon"
@@ -107,56 +121,53 @@ class CaptureFlow {
         }
 
 
+        //--------------------------------
+        // Normalize ball
+        //--------------------------------
 
-
-
-
-
+        const captureBall =
+            this.normalizeBall(
+                ball
+            );
 
 
         //--------------------------------
-        // Check Pokeball
+        // Check capture item
         //--------------------------------
-
 
         if(
             !this.inventory
-                .hasItem(
-                    "POKE_BALL"
-                )
+            ||
+            typeof this.inventory.hasItem !==
+                "function"
+            ||
+            !this.inventory.hasItem(
+                captureBall
+            )
         )
         {
 
             return {
 
-                success:false,
+                success:
+                    false,
 
                 reason:
-                    "No Poke Balls available"
+                    `No ${captureBall} available`
 
             };
 
         }
 
 
-
-
-
-
-
-
-
         //--------------------------------
-        // Consume Pokeball
+        // Consume capture ball
         //--------------------------------
-
 
         const usedBall =
-            this.inventory
-                .useItem(
-                    "POKE_BALL"
-                );
-
+            this.inventory.useItem(
+                captureBall
+            );
 
 
         if(
@@ -169,12 +180,19 @@ class CaptureFlow {
         }
 
 
+        //--------------------------------
+        // Resolve base friendship
+        //--------------------------------
+
+        const baseFriendship =
+            this.getBaseFriendship(
+                pokemon.species
+            );
 
 
-
-
-
-
+        //--------------------------------
+        // Build actual owned Pokémon
+        //--------------------------------
 
         const pokemonData =
         {
@@ -187,31 +205,74 @@ class CaptureFlow {
                 pokemon.level || 1,
 
 
-            location:
-                pokemon.location || null
+            friendship:
+                baseFriendship,
 
+
+            ball:
+                captureBall,
+
+
+            metLocation:
+                pokemon.metLocation
+                ||
+                pokemon.location
+                ||
+                null,
+
+
+            location:
+                pokemon.location
+                ||
+                null
 
         };
 
 
+        //--------------------------------
+        // Initialize friendship through
+        // the central friendship service.
+        //--------------------------------
+
+        if(
+            this.friendship
+            &&
+            typeof this.friendship.initialize ===
+                "function"
+        )
+        {
+
+            const friendshipResult =
+                this.friendship.initialize(
+
+                    pokemonData,
+
+                    baseFriendship
+
+                );
 
 
+            if(
+                !friendshipResult.success
+            )
+            {
 
+                return friendshipResult;
 
+            }
 
+        }
 
 
         //--------------------------------
         // Store Capture History
         //--------------------------------
 
-
         const captured =
             this.captures
                 .addCapture(
                     pokemonData
                 );
-
 
 
         if(
@@ -224,29 +285,17 @@ class CaptureFlow {
         }
 
 
-
-
-
-
-
-
         const storedPokemon =
-            captured.capture ||
-            captured.pokemon ||
+            captured.capture
+            ||
+            captured.pokemon
+            ||
             pokemonData;
-
-
-
-
-
-
-
 
 
         //--------------------------------
         // Update Tracker
         //--------------------------------
-
 
         const tracked =
             this.tracker
@@ -255,28 +304,20 @@ class CaptureFlow {
                 );
 
 
-
-
-
-
-
-
-
         //--------------------------------
         // Add To Team
         //--------------------------------
 
-
         let teamResult =
         {
 
-            success:false,
+            success:
+                false,
 
             reason:
                 "Team Full"
 
         };
-
 
 
         if(
@@ -288,36 +329,22 @@ class CaptureFlow {
 
             teamResult =
                 this.team
-                    .addToTeam({
-
-                        species:
-                            pokemon.species,
-
-
-                        level:
-                            pokemon.level || 1
-
-                    });
+                    .addToTeam(
+                        pokemonData
+                    );
 
         }
-
-
-
-
-
-
-
 
 
         //--------------------------------
         // Overflow Storage
         //--------------------------------
 
-
         let storageResult =
         {
 
-            success:false,
+            success:
+                false,
 
             reason:
                 "Added To Team"
@@ -325,12 +352,10 @@ class CaptureFlow {
         };
 
 
-
         if(
             !teamResult.success
         )
         {
-
 
             if(
                 this.storage
@@ -352,7 +377,8 @@ class CaptureFlow {
                 storageResult =
                 {
 
-                    success:false,
+                    success:
+                        false,
 
                     reason:
                         "Storage unavailable"
@@ -361,21 +387,12 @@ class CaptureFlow {
 
             }
 
-
         }
-
-
-
-
-
-
-
 
 
         //--------------------------------
         // Action History
         //--------------------------------
-
 
         const action =
             this.actions
@@ -385,50 +402,310 @@ class CaptureFlow {
 
                     pokemon.level || 1,
 
-                    pokemon.location || null
+                    pokemon.location
+                    ||
+                    null
 
                 );
 
 
-
-
-
-
-
-
+        //--------------------------------
+        // Return result
+        //--------------------------------
 
         return {
 
-
-            success:true,
-
+            success:
+                true,
 
             capture:
                 storedPokemon,
 
-
             tracked:
                 tracked.success,
-
 
             team:
                 teamResult.success,
 
-
             stored:
                 storageResult.success,
-
 
             storage:
                 storageResult,
 
+            ball:
+                captureBall,
+
+            friendship:
+                pokemonData.friendship,
+
+            metLocation:
+                pokemonData.metLocation,
 
             action:
                 action.action
 
+        };
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Resolve base friendship
+    //--------------------------------
+
+
+    getBaseFriendship(
+        species
+    )
+    {
+
+        if(
+            this.pokemonDatabase
+            &&
+            typeof this.pokemonDatabase.getBaseFriendship ===
+                "function"
+        )
+        {
+
+            const friendship =
+                this.pokemonDatabase.getBaseFriendship(
+                    species
+                );
+
+
+            if(
+                friendship !== null
+                &&
+                friendship !== undefined
+            )
+            {
+
+                return friendship;
+
+            }
+
+        }
+
+
+        //--------------------------------
+        // Defensive fallback
+        //--------------------------------
+
+        return 70;
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Normalize capture ball
+    //--------------------------------
+
+
+    normalizeBall(
+        ball
+    )
+    {
+
+        if(
+            !ball
+        )
+        {
+
+            return "ITEM_POKE_BALL";
+
+        }
+
+
+        const value =
+            String(
+                ball
+            )
+            .trim()
+            .toUpperCase();
+
+
+        const aliases =
+        {
+
+            POKEBALL:
+                "ITEM_POKE_BALL",
+
+
+            POKE_BALL:
+                "ITEM_POKE_BALL",
+
+
+            ITEM_POKE_BALL:
+                "ITEM_POKE_BALL",
+
+
+            GREATBALL:
+                "ITEM_GREAT_BALL",
+
+
+            GREAT_BALL:
+                "ITEM_GREAT_BALL",
+
+
+            ITEM_GREAT_BALL:
+                "ITEM_GREAT_BALL",
+
+
+            ULTRABALL:
+                "ITEM_ULTRA_BALL",
+
+
+            ULTRA_BALL:
+                "ITEM_ULTRA_BALL",
+
+
+            ITEM_ULTRA_BALL:
+                "ITEM_ULTRA_BALL",
+
+
+            MASTERBALL:
+                "ITEM_MASTER_BALL",
+
+
+            MASTER_BALL:
+                "ITEM_MASTER_BALL",
+
+
+            ITEM_MASTER_BALL:
+                "ITEM_MASTER_BALL",
+
+
+            SAFARIBALL:
+                "ITEM_SAFARI_BALL",
+
+
+            SAFARI_BALL:
+                "ITEM_SAFARI_BALL",
+
+
+            ITEM_SAFARI_BALL:
+                "ITEM_SAFARI_BALL",
+
+
+            LUXURYBALL:
+                "ITEM_LUXURY_BALL",
+
+
+            LUXURY_BALL:
+                "ITEM_LUXURY_BALL",
+
+
+            ITEM_LUXURY_BALL:
+                "ITEM_LUXURY_BALL",
+
+
+            NETBALL:
+                "ITEM_NET_BALL",
+
+
+            NET_BALL:
+                "ITEM_NET_BALL",
+
+
+            ITEM_NET_BALL:
+                "ITEM_NET_BALL",
+
+
+            DIVEBALL:
+                "ITEM_DIVE_BALL",
+
+
+            DIVE_BALL:
+                "ITEM_DIVE_BALL",
+
+
+            ITEM_DIVE_BALL:
+                "ITEM_DIVE_BALL",
+
+
+            NESTBALL:
+                "ITEM_NEST_BALL",
+
+
+            NEST_BALL:
+                "ITEM_NEST_BALL",
+
+
+            ITEM_NEST_BALL:
+                "ITEM_NEST_BALL",
+
+
+            REPEATBALL:
+                "ITEM_REPEAT_BALL",
+
+
+            REPEAT_BALL:
+                "ITEM_REPEAT_BALL",
+
+
+            ITEM_REPEAT_BALL:
+                "ITEM_REPEAT_BALL",
+
+
+            TIMERBALL:
+                "ITEM_TIMER_BALL",
+
+
+            TIMER_BALL:
+                "ITEM_TIMER_BALL",
+
+
+            ITEM_TIMER_BALL:
+                "ITEM_TIMER_BALL",
+
+
+            PREMIERBALL:
+                "ITEM_PREMIER_BALL",
+
+
+            PREMIER_BALL:
+                "ITEM_PREMIER_BALL",
+
+
+            ITEM_PREMIER_BALL:
+                "ITEM_PREMIER_BALL"
 
         };
 
+
+        return (
+
+            aliases[value]
+            ||
+            value.startsWith(
+                "ITEM_"
+            )
+
+                ?
+
+                value
+
+                :
+
+                "ITEM_" +
+                value
+
+        );
 
     }
 

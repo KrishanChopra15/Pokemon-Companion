@@ -8,12 +8,14 @@
  * - Load location graph.
  * - Find connected locations.
  * - Find reachable locations.
+ * - Respect connection requirements supplied by the caller.
  *
  * Does NOT:
  * - Build graphs.
  * - Handle progression.
- * - Handle HM requirements.
+ * - Define HM requirements.
  * - Handle obstacles.
+ * - Determine whether a requirement is satisfied.
  */
 
 "use strict";
@@ -71,7 +73,8 @@ class LocationGraphService {
 
 
     getReachableLocations(
-        startLocation
+        startLocation,
+        canTraverse = () => true
     ) {
 
 
@@ -126,20 +129,65 @@ class LocationGraphService {
             {
 
 
+                const destination =
+                    typeof connection === "string"
+                        ? connection
+                        : connection.location;
+
+
+
+                const requirements =
+                    typeof connection === "string"
+                        ? []
+                        : (
+                            connection.requirements
+                            ||
+                            []
+                        );
+
+
+
                 if(
-                    !visited.has(
-                        connection.location
+                    !destination
+                )
+                {
+
+                    continue;
+
+                }
+
+
+
+                if(
+                    visited.has(
+                        destination
                     )
                 )
                 {
 
-
-                    queue.push(
-                        connection.location
-                    );
-
+                    continue;
 
                 }
+
+
+
+                if(
+                    !canTraverse(
+                        requirements,
+                        connection
+                    )
+                )
+                {
+
+                    continue;
+
+                }
+
+
+
+                queue.push(
+                    destination
+                );
 
 
             }
@@ -161,14 +209,16 @@ class LocationGraphService {
 
     isReachable(
         from,
-        to
+        to,
+        canTraverse = () => true
     )
     {
 
 
         return this
             .getReachableLocations(
-                from
+                from,
+                canTraverse
             )
             .includes(
                 to

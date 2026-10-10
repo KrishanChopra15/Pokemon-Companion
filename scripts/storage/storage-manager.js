@@ -10,6 +10,7 @@
  * - Find stored Pokémon.
  * - Provide storage data.
  * - Preserve individual Pokémon state.
+ * - Use the active adventure's storage.
  *
  * Does NOT:
  * - Decide when Pokémon enters storage.
@@ -23,12 +24,50 @@
 class StorageManager
 {
 
-
-    constructor()
+    constructor(session)
     {
 
-        this.storage =
-            [];
+        if(
+            !session ||
+            typeof session.getState !== "function"
+        )
+        {
+
+            throw new Error(
+                "StorageManager requires a valid session"
+            );
+
+        }
+
+
+        this.session =
+            session;
+
+    }
+
+
+    //--------------------------------
+    // Get current adventure storage
+    //--------------------------------
+
+    getStorage()
+    {
+
+        const state =
+            this.session.getState();
+
+
+        if(
+            !Array.isArray(state.storage)
+        )
+        {
+
+            state.storage = [];
+
+        }
+
+
+        return state.storage;
 
     }
 
@@ -37,25 +76,52 @@ class StorageManager
     // Add Pokémon to storage
     //--------------------------------
 
-    addPokemon(
-        pokemon
-    )
+    addPokemon(pokemon)
     {
 
         if(
-            !pokemon
-            ||
+            !pokemon ||
             !pokemon.species
         )
         {
 
             return {
 
-                success:
-                    false,
+                success: false,
 
-                reason:
-                    "Invalid Pokemon"
+                reason: "Invalid Pokemon"
+
+            };
+
+        }
+
+
+        const storage =
+            this.getStorage();
+
+
+        //--------------------------------
+        // Prevent duplicate storage entries
+        //--------------------------------
+
+        if(
+            storage.some(
+                storedPokemon =>
+                    storedPokemon === pokemon ||
+                    (
+                        storedPokemon.id != null &&
+                        pokemon.id != null &&
+                        storedPokemon.id === pokemon.id
+                    )
+            )
+        )
+        {
+
+            return {
+
+                success: false,
+
+                reason: "Pokemon already in storage"
 
             };
 
@@ -63,46 +129,56 @@ class StorageManager
 
 
         //--------------------------------
-        // Preserve Pokémon state
+        // Assign an ID when necessary
         //--------------------------------
 
-        const storedPokemon =
+        if(
+            pokemon.id == null
+        )
         {
 
-            ...pokemon,
-
-            id:
-                pokemon.id
-                ??
-                Date.now(),
-
-            species:
-                pokemon.species,
-
-            level:
-                pokemon.level || 1,
-
-            location:
-                pokemon.location || null,
-
-            box:
-                this.getNextBox()
-
-        };
+            const state =
+                this.session.getState();
 
 
-        this.storage.push(
-            storedPokemon
+            if(
+                !Number.isInteger(state.nextPokemonId) ||
+                state.nextPokemonId < 1
+            )
+            {
+
+                state.nextPokemonId = 1;
+
+            }
+
+
+            pokemon.id =
+                state.nextPokemonId++;
+
+        }
+
+
+        //--------------------------------
+        // Assign a PC box
+        //
+        // Preserve the original Pokémon
+        // object and its existing properties.
+        //--------------------------------
+
+        pokemon.box =
+            this.getNextBox();
+
+
+        storage.push(
+            pokemon
         );
 
 
         return {
 
-            success:
-                true,
+            success: true,
 
-            pokemon:
-                storedPokemon
+            pokemon
 
         };
 
@@ -113,21 +189,20 @@ class StorageManager
     // Remove Pokémon
     //--------------------------------
 
-    removePokemon(
-        id
-    )
+    removePokemon(id)
     {
 
+        const storage =
+            this.getStorage();
+
+
         const index =
-            this.storage
-                .findIndex(
+            storage.findIndex(
 
-                    pokemon =>
+                pokemon =>
+                    pokemon.id === id
 
-                        pokemon.id ===
-                        id
-
-                );
+            );
 
 
         if(
@@ -137,11 +212,9 @@ class StorageManager
 
             return {
 
-                success:
-                    false,
+                success: false,
 
-                reason:
-                    "Pokemon not found"
+                reason: "Pokemon not found"
 
             };
 
@@ -149,23 +222,17 @@ class StorageManager
 
 
         const removed =
-            this.storage
-                .splice(
-
-                    index,
-
-                    1
-
-                )[0];
+            storage.splice(
+                index,
+                1
+            )[0];
 
 
         return {
 
-            success:
-                true,
+            success: true,
 
-            pokemon:
-                removed
+            pokemon: removed
 
         };
 
@@ -176,32 +243,15 @@ class StorageManager
     // Find Pokémon
     //--------------------------------
 
-    findPokemon(
-        id
-    )
+    findPokemon(id)
     {
 
-        return this.storage
-            .find(
+        return this.getStorage().find(
 
-                pokemon =>
+            pokemon =>
+                pokemon.id === id
 
-                    pokemon.id ===
-                    id
-
-            );
-
-    }
-
-
-    //--------------------------------
-    // Get all storage
-    //--------------------------------
-
-    getStorage()
-    {
-
-        return this.storage;
+        );
 
     }
 
@@ -213,7 +263,7 @@ class StorageManager
     getCount()
     {
 
-        return this.storage.length;
+        return this.getStorage().length;
 
     }
 
@@ -231,24 +281,13 @@ class StorageManager
 
         const boxNumber =
             Math.floor(
-
-                this.storage.length /
-                boxSize
-
-            )
-            +
-            1;
+                this.getStorage().length / boxSize
+            ) + 1;
 
 
-        return (
-
-            "BOX_" +
-            boxNumber
-
-        );
+        return "BOX_" + boxNumber;
 
     }
-
 
 }
 

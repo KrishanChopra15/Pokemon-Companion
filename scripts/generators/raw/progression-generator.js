@@ -350,6 +350,35 @@ class ProgressionGenerator
                 [],
 
 
+            anyOf:
+                Array.isArray(
+                    requirement.anyOf
+                )
+                ?
+                requirement.anyOf.map(
+                    condition =>
+                        this.normalizeRequirement(
+                            condition
+                        )
+                )
+                :
+                [],
+
+
+            locations:
+                Array.isArray(
+                    requirement.locations
+                )
+                ?
+                [
+                    ...new Set(
+                        requirement.locations
+                    )
+                ]
+                :
+                [],
+
+
             conditions:
                 requirement.conditions
                 &&

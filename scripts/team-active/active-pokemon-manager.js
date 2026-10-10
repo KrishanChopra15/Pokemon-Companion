@@ -25,12 +25,14 @@ class ActivePokemonManager {
 
 
 
-    constructor()
+    constructor(
+        session
+    )
     {
 
 
-        this.active =
-            null;
+        this.session =
+            session;
 
 
     }
@@ -78,8 +80,10 @@ class ActivePokemonManager {
 
 
 
-        this.active =
-            pokemon;
+        this.session
+            .getState()
+            .activePokemon =
+                pokemon;
 
 
 
@@ -93,7 +97,7 @@ class ActivePokemonManager {
             success:true,
 
             pokemon:
-                this.active
+                pokemon
 
         };
 
@@ -117,7 +121,9 @@ class ActivePokemonManager {
     {
 
 
-        return this.active;
+        return this.session
+            .getState()
+            .activePokemon;
 
 
     }
@@ -139,8 +145,10 @@ class ActivePokemonManager {
     {
 
 
-        this.active =
-            null;
+        this.session
+            .getState()
+            .activePokemon =
+                null;
 
 
 
@@ -170,7 +178,10 @@ class ActivePokemonManager {
     {
 
 
-        return this.active !== null;
+        return this.session
+            .getState()
+            .activePokemon !==
+                null;
 
 
     }

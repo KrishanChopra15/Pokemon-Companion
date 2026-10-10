@@ -9,11 +9,13 @@
  * - Combine evolution requirements.
  * - Combine item requirements.
  * - Combine Pokémon gift events.
+ * - Combine special/static encounters.
  * - Create availability rules.
  * - Generate cumulative progression availability.
  * - Track starter selection restrictions.
  * - Track FireRed-specific availability restrictions.
  * - Track external trade routes.
+ * - Track cross-game availability.
  *
  * Does NOT:
  * - Recommend teams.
@@ -36,6 +38,10 @@ const path =
 
 const EvolutionRequirementService =
     require("../services/evolution-requirement-service");
+
+
+const PokemonAvailabilityProgressionBuilder =
+    require("./availability/pokemon-availability-progression-builder");
 
 
 
@@ -112,59 +118,109 @@ class PokemonAvailabilityBuilder
             progressionRules
             :
             [];
-        
-        
-        this.progressionRulesByLocation =
-            this.buildProgressionRuleIndex();
 
 
         //--------------------------------
-        // Stage definitions
+        // Build-time progression coordinator.
         //
-        // These are cumulative snapshots.
-        //
-        // They do NOT mean:
-        //
-        // "the player has exactly this gym
-        // and nothing else."
-        //
-        // They mean:
-        //
-        // "the player can have reached this
-        // point in a valid FireRed playthrough."
+        // The detailed stage graph, requirement
+        // evaluation, cumulative states, and
+        // progression calculations live in the
+        // dedicated progression builder.
+        //--------------------------------
+
+        this.progressionBuilder =
+            new PokemonAvailabilityProgressionBuilder(
+
+                this.rules,
+
+                this.locations,
+
+                this.evolutionService,
+
+                {
+                    getSpeciesName:
+                        pokemon =>
+                            this.getSpeciesName(
+                                pokemon
+                            ),
+
+                    getLocations:
+                        species =>
+                            this.getProgressionLocations(
+                                species
+                            ),
+
+                    getGiftEvents:
+                        pokemon =>
+                            this.getGiftEvents(
+                                pokemon
+                            ),
+
+                    getRestriction:
+                        (pokemon, evolution) =>
+                            this.getRestriction(
+                                pokemon,
+                                evolution
+                            ),
+
+                    hasExternalTradeRoute:
+                        pokemon =>
+                            this.hasExternalTradeRoute(
+                                pokemon
+                            ),
+
+                    getExternalTradeGames:
+                        pokemon =>
+                            this.getExternalTradeGames(
+                                pokemon
+                            ),
+
+                    getExternalTradeReason:
+                        pokemon =>
+                            this.getExternalTradeReason(
+                                pokemon
+                            ),
+
+                    isStarter:
+                        species =>
+                            this.isStarter(
+                                species
+                            ),
+
+                    isTradeEvolution:
+                        evolution =>
+                            this.isTradeEvolution(
+                                evolution
+                            )
+                }
+
+            );
+
+
+        //--------------------------------
+        // Preserve the public stage collection
+        // used by older callers.
         //--------------------------------
 
         this.stages =
-        [
+            this.progressionBuilder.stages
+            ||
+            [
+                "PRE_BROCK",
+                "BROCK",
+                "MISTY",
+                "LT_SURGE",
+                "ERIKA",
+                "KOGA",
+                "SABRINA",
+                "BLAINE",
+                "GIOVANNI",
+                "ELITE_FOUR",
+                "CHAMPION",
+                "POST_GAME"
+            ];
 
-            "BROCK",
-
-            "MISTY",
-
-            "LT_SURGE",
-
-            "ERIKA",
-
-            "KOGA",
-
-            "SABRINA",
-
-            "BLAINE",
-
-            "GIOVANNI",
-
-            "ELITE_FOUR",
-
-            "CHAMPION",
-
-            "POST_GAME"
-
-        ];
-
-
-        //--------------------------------
-        // Cache cumulative stage states.
-        //--------------------------------
 
         this.stageStates =
             null;
@@ -250,6 +306,18 @@ class PokemonAvailabilityBuilder
             );
 
 
+        const specialEncounters =
+            this.getSpecialEncounterEvents(
+                pokemon
+            );
+
+
+        const gameAvailability =
+            this.getGameAvailability(
+                pokemon
+            );
+
+
         return {
 
             species,
@@ -267,7 +335,8 @@ class PokemonAvailabilityBuilder
                     pokemon,
                     evolution,
                     locations,
-                    gifts
+                    gifts,
+                    specialEncounters
                 ),
 
             locations,
@@ -278,7 +347,16 @@ class PokemonAvailabilityBuilder
                     evolution,
                     species,
                     locations,
-                    gifts
+                    gifts,
+                    specialEncounters
+                ),
+
+            gameAvailability,
+
+            forms: 
+                this.getFormAvailability( 
+                    pokemon, 
+                    species 
                 ),
 
             restriction:
@@ -298,7 +376,8 @@ class PokemonAvailabilityBuilder
                     pokemon,
                     species,
                     locations,
-                    gifts
+                    gifts,
+                    specialEncounters
                 )
 
         };
@@ -319,12 +398,18 @@ class PokemonAvailabilityBuilder
     {
 
         if(
+
             pokemon
+
             &&
+
             typeof pokemon.name ===
                 "string"
+
             &&
+
             pokemon.name.trim()
+
         )
         {
 
@@ -336,10 +421,14 @@ class PokemonAvailabilityBuilder
 
 
         if(
+
             pokemon
+
             &&
+
             typeof pokemon.constant ===
                 "string"
+
         )
         {
 
@@ -371,7 +460,8 @@ class PokemonAvailabilityBuilder
         pokemon,
         evolution,
         locations = null,
-        gifts = null
+        gifts = null,
+        specialEncounters = null
     )
     {
 
@@ -396,6 +486,14 @@ class PokemonAvailabilityBuilder
             gifts
             ||
             this.getGiftEvents(
+                pokemon
+            );
+
+
+        const resolvedSpecialEncounters =
+            specialEncounters
+            ||
+            this.getSpecialEncounterEvents(
                 pokemon
             );
 
@@ -539,6 +637,9 @@ class PokemonAvailabilityBuilder
                 method:
                     "GIFT",
 
+                encounterCount:
+                    1,
+
                 script:
                     gift.script,
 
@@ -548,6 +649,103 @@ class PokemonAvailabilityBuilder
                 location:
                     gift.location
 
+            });
+
+        }
+
+
+        //--------------------------------
+        // Special / static encounters
+        //
+        // Every separate event is preserved.
+        //
+        // Example:
+        //
+        // Route 12 Snorlax = 1
+        // Route 16 Snorlax = 1
+        //
+        // These remain two sources rather
+        // than becoming encounterCount: 2.
+        //--------------------------------
+
+        const seenSpecialSources =
+            new Set();
+
+
+        for(
+            const special of
+                resolvedSpecialEncounters
+        )
+        {
+
+            const key =
+            [
+                special.script,
+                special.species,
+                special.location,
+                special.level
+
+            ]
+            .join("|");
+
+
+            if(
+                seenSpecialSources.has(
+                    key
+                )
+            )
+            {
+
+                continue;
+
+            }
+
+
+            seenSpecialSources.add(
+                key
+            );
+
+
+            sources.push({
+            
+                method:
+                    "SPECIAL",
+            
+                encounterCount:
+                    1,
+            
+                script:
+                    special.script,
+            
+                species:
+                    special.species,
+            
+                location:
+                    special.location,
+            
+                level:
+                    special.level,
+            
+                form:
+                    special.form,
+            
+                requirements:
+                    special.requirements
+                    ||
+                    {
+                        storyFlags: [],
+                        items: [],
+                        badges: []
+                    },
+                
+                conditions:
+                    special.conditions
+                    ||
+                    {
+                        requireStoryFlags: [],
+                        excludeStoryFlags: []
+                    }
+                
             });
 
         }
@@ -889,9 +1087,7 @@ class PokemonAvailabilityBuilder
 
         for(
             const event of
-                Object.values(
-                    this.events
-                )
+                this.getEventRecords()
         )
         {
 
@@ -967,6 +1163,10 @@ class PokemonAvailabilityBuilder
                 const script =
                     event.id
                     ||
+                    event.eventId
+                    ||
+                    event.script
+                    ||
                     null;
 
 
@@ -1038,6 +1238,1162 @@ class PokemonAvailabilityBuilder
             })
 
         );
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Special / static encounters
+    //--------------------------------
+
+    getSpecialEncounterEvents(
+        pokemon
+    )
+    {
+
+        if(
+            !pokemon
+            ||
+            !this.events
+            ||
+            typeof this.events !==
+                "object"
+        )
+        {
+
+            return [];
+
+        }
+
+
+        const targetSpecies =
+            this.normalizeSpeciesValue(
+                pokemon.constant
+            );
+
+
+        if(
+            !targetSpecies
+        )
+        {
+
+            return [];
+
+        }
+
+
+        const encounters = [];
+
+
+        for(
+            const event of
+                this.getEventRecords()
+        )
+        {
+
+            if(
+                !event
+            )
+            {
+
+                continue;
+
+            }
+
+
+            const entityType =
+                String(
+                    event.entityType
+                    ||
+                    ""
+                )
+                .trim()
+                .toUpperCase();
+
+
+            const roles =
+                Array.isArray(
+                    event.roles
+                )
+                ?
+                event.roles
+                :
+                [];
+
+
+            const normalizedRoles =
+                roles.map(
+
+                    role =>
+                        String(
+                            role
+                            ||
+                            ""
+                        )
+                        .trim()
+                        .toUpperCase()
+
+                );
+
+
+            const isClassifiedSpecial =
+                entityType ===
+                    "SPECIAL_ENCOUNTER"
+                ||
+                normalizedRoles.includes(
+                    "SPECIAL_ENCOUNTER"
+                );
+
+
+            //--------------------------------
+            // Classified NPC/event records
+            //--------------------------------
+
+            if(
+                isClassifiedSpecial
+            )
+            {
+
+                const interactions =
+                    Array.isArray(
+                        event.interactions
+                    )
+                    ?
+                    event.interactions
+                    :
+                    [];
+
+
+                for(
+                    const interaction of
+                        interactions
+                )
+                {
+
+                    if(
+                        !interaction
+                    )
+                    {
+
+                        continue;
+
+                    }
+
+
+                    const interactionType =
+                        String(
+                            interaction.type
+                            ||
+                            ""
+                        )
+                        .trim()
+                        .toUpperCase();
+
+
+                    if(
+                        interactionType !==
+                            "WILD_BATTLE"
+                    )
+                    {
+
+                        continue;
+
+                    }
+
+
+                    const species =
+                        this.normalizeSpeciesValue(
+                            interaction.species
+                        );
+
+
+                    if(
+                        species !==
+                            targetSpecies
+                    )
+                    {
+
+                        continue;
+
+                    }
+
+
+                    encounters.push(
+                        this.createSpecialEncounterRecord(
+                            event,
+                            species,
+                            interaction.level,
+                            interaction.form || null
+                        )
+                    );
+
+                }
+
+
+                continue;
+
+            }
+
+
+            //--------------------------------
+            // Raw event fallback
+            //
+            // EventScriptExtractor represents
+            // setwildbattle calls as:
+            //
+            // effects.battles = [
+            //     {
+            //         type: "wild",
+            //         species: "...",
+            //         level: ...
+            //     }
+            // ]
+            //
+            // These are scripted/static
+            // encounters, not normal encounter
+            // table encounters.
+            //--------------------------------
+
+            const battles =
+                Array.isArray(
+                    event.effects?.battles
+                )
+                ?
+                event.effects.battles
+                :
+                [];
+
+
+            for(
+                const battle of
+                    battles
+            )
+            {
+
+                if(
+                    !battle
+                )
+                {
+
+                    continue;
+
+                }
+
+
+                const battleType =
+                    String(
+                        battle.type
+                        ||
+                        ""
+                    )
+                    .trim()
+                    .toLowerCase();
+
+
+                if(
+                    battleType !==
+                        "wild"
+                )
+                {
+
+                    continue;
+
+                }
+
+
+                const species =
+                    this.normalizeSpeciesValue(
+                        battle.species
+                    );
+
+
+                if(
+                    species !==
+                        targetSpecies
+                )
+                {
+
+                    continue;
+
+                }
+
+
+                encounters.push(
+                    this.createSpecialEncounterRecord(
+                        event,
+                        species,
+                        battle.level,
+                        battle.form || null
+                    )
+                );
+
+            }
+
+        }
+
+
+        //--------------------------------
+        // Remove duplicate records
+        //--------------------------------
+
+        const unique =
+            [];
+
+        const seen =
+            new Set();
+
+
+        for(
+            const encounter of
+                encounters
+        )
+        {
+
+            const key =
+                [
+                    encounter.script,
+                    encounter.species,
+                    encounter.location,
+                    encounter.level,
+                    encounter.form
+                ]
+                .join("|");
+
+
+            if(
+                seen.has(
+                    key
+                )
+            )
+            {
+
+                continue;
+
+            }
+
+
+            seen.add(
+                key
+            );
+
+
+            unique.push(
+                encounter
+            );
+
+        }
+
+
+        return unique;
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Create special encounter record
+    //--------------------------------
+
+    createSpecialEncounterRecord(
+        event,
+        species,
+        level,
+        form = null
+    )
+    {
+
+        const normalizedLevel =
+            level !== undefined
+            &&
+            level !== null
+                ?
+                Number(level)
+                :
+                null;
+
+
+        const script =
+            event.id
+            ||
+            event.eventId
+            ||
+            event.script
+            ||
+            null;
+
+
+        const resolvedForm =
+            form
+            ||
+            this.getSpecialEncounterForm(
+                species,
+                event
+            );
+
+
+        return {
+
+            script,
+
+            species,
+
+            location:
+                this.getSpecialEncounterLocation(
+                    event,
+                    script,
+                    species
+                ),
+
+            level:
+                Number.isFinite(
+                    normalizedLevel
+                )
+                    ?
+                    normalizedLevel
+                    :
+                    null,
+
+            form:
+                resolvedForm,
+
+            requirements:
+                event.requirements
+                &&
+                typeof event.requirements ===
+                    "object"
+                    ?
+                    {
+                        ...event.requirements
+                    }
+                    :
+                    {
+                        storyFlags: [],
+                        items: [],
+                        badges: []
+                    },
+
+            conditions:
+                event.conditions
+                &&
+                typeof event.conditions ===
+                    "object"
+                    ?
+                    {
+                        ...event.conditions
+                    }
+                    :
+                    {
+                        requireStoryFlags: [],
+                        excludeStoryFlags: []
+                    }
+
+        };
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Special encounter form
+    //--------------------------------
+
+    getSpecialEncounterForm(
+        species,
+        event
+    )
+    {
+
+        if(
+            species ===
+                "DEOXYS"
+            &&
+            String(
+                event?.game
+                ||
+                "FIRERED"
+            )
+            .toUpperCase() ===
+                "FIRERED"
+        )
+        {
+
+            return "ATTACK";
+
+        }
+
+
+        return null;
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Special encounter location
+    //--------------------------------
+
+    getSpecialEncounterLocation(
+        event,
+        script,
+        species
+    )
+    {
+
+        const directLocation =
+            this.getEventLocation(
+                event
+            );
+
+
+        if(
+            directLocation
+        )
+        {
+
+            return directLocation;
+
+        }
+
+
+        //--------------------------------
+        // Known FireRed static encounter
+        // script locations used only when
+        // the raw event has no location.
+        //--------------------------------
+
+        const locationByScript =
+        {
+
+            Route12_EventScript_Snorlax:
+                "MAP_ROUTE12",
+
+            Route16_EventScript_Snorlax:
+                "MAP_ROUTE16",
+
+            SeafoamIslands_B4F_EventScript_Articuno:
+                "MAP_SEAFOAM_ISLANDS_B4F",
+
+            PowerPlant_EventScript_Zapdos:
+                "MAP_POWER_PLANT",
+
+            MtEmber_Summit_EventScript_Moltres:
+                "MAP_MT_EMBER_SUMMIT",
+
+            CeruleanCave_B1F_EventScript_Mewtwo:
+                "MAP_CERULEAN_CAVE_B1F",
+
+            ThreeIsland_BerryForest_EventScript_Lostelle:
+                "MAP_THREE_ISLAND_BERRY_FOREST",
+
+            BirthIsland_EventScript_Deoxys:
+                "MAP_BIRTH_ISLAND"
+
+        };
+
+
+        if(
+            script
+            &&
+            locationByScript[script]
+        )
+        {
+
+            return locationByScript[script];
+
+        }
+
+
+        //--------------------------------
+        // Common FireRed script prefix
+        // fallback.
+        //--------------------------------
+
+        if(
+            typeof script ===
+                "string"
+        )
+        {
+
+            const marker =
+                "_EventScript_";
+
+
+            const markerIndex =
+                script.indexOf(
+                    marker
+                );
+
+
+            if(
+                markerIndex > 0
+            )
+            {
+
+                const prefix =
+                    script.substring(
+                        0,
+                        markerIndex
+                    );
+
+
+                const commonLocation =
+                    this.mapScriptPrefixToLocation(
+                        prefix
+                    );
+
+
+                if(
+                    commonLocation
+                )
+                {
+
+                    return commonLocation;
+
+                }
+
+            }
+
+        }
+
+
+        return null;
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Map script prefix fallback
+    //--------------------------------
+
+    mapScriptPrefixToLocation(
+        prefix
+    )
+    {
+
+        if(
+            !prefix
+        )
+        {
+
+            return null;
+
+        }
+
+
+        const known =
+        {
+
+            Route12:
+                "MAP_ROUTE12",
+
+            Route16:
+                "MAP_ROUTE16",
+
+            PowerPlant:
+                "MAP_POWER_PLANT",
+
+            MtEmber_Summit:
+                "MAP_MT_EMBER_SUMMIT",
+
+            CeruleanCave_B1F:
+                "MAP_CERULEAN_CAVE_B1F",
+
+            SeafoamIslands_B4F:
+                "MAP_SEAFOAM_ISLANDS_B4F",
+
+            ThreeIsland_BerryForest:
+                "MAP_THREE_ISLAND_BERRY_FOREST",
+
+            BirthIsland:
+                "MAP_BIRTH_ISLAND"
+
+        };
+
+
+        return known[prefix]
+            ||
+            null;
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Resolve event records
+    //
+    // Event data may be:
+    //
+    // - an array
+    // - an object keyed by ID
+    // - a wrapper object
+    // - nested category collections
+    //
+    // Search recursively so the availability
+    // builder does not depend on one specific
+    // event database layout.
+    //--------------------------------
+
+    getEventRecords()
+    {
+
+        if(
+            !this.events
+            ||
+            typeof this.events !==
+                "object"
+        )
+        {
+
+            return [];
+
+        }
+
+
+        const records = [];
+
+        const visited =
+            new Set();
+
+
+        const visit =
+            value =>
+            {
+
+                if(
+                    !value
+                    ||
+                    typeof value !==
+                        "object"
+                    ||
+                    visited.has(
+                        value
+                    )
+                )
+                {
+
+                    return;
+
+                }
+
+
+                visited.add(
+                    value
+                );
+
+
+                if(
+                    Array.isArray(
+                        value
+                    )
+                )
+                {
+
+                    for(
+                        const item of
+                            value
+                    )
+                    {
+
+                        visit(
+                            item
+                        );
+
+                    }
+
+                    return;
+
+                }
+
+
+                const looksLikeEvent =
+                    Boolean(
+
+                        value.entityType
+
+                        ||
+
+                        value.roles
+
+                        ||
+
+                        value.interactions
+
+                        ||
+
+                        value.eventId
+
+                        ||
+
+                        value.id
+
+                        ||
+
+                        value.effects?.battles
+
+                        ||
+
+                        value.effects?.addPokemon
+
+                    );
+
+
+                if(
+                    looksLikeEvent
+                )
+                {
+
+                    records.push(
+                        value
+                    );
+
+                }
+
+
+                for(
+                    const child of
+                        Object.values(
+                            value
+                        )
+                )
+                {
+
+                    if(
+                        child
+                        &&
+                        typeof child ===
+                            "object"
+                    )
+                    {
+
+                        visit(
+                            child
+                        );
+
+                    }
+
+                }
+
+            };
+
+
+        visit(
+            this.events
+        );
+
+
+        return records;
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Cross-game availability
+    //
+    // gameAvailability answers:
+    //
+    // "In which games can this exact
+    // Pokémon/form be obtained natively?"
+    //
+    // tradeAvailability answers:
+    //
+    // "Does obtaining it require a
+    // trade route in FireRed?"
+    //--------------------------------
+
+    getGameAvailability(
+        pokemon
+    )
+    {
+
+        const species =
+            this.normalizeSpeciesValue(
+                pokemon?.constant
+            );
+
+
+        const knownGames =
+        {
+
+            RAYQUAZA:
+            {
+                games:
+                [
+                    "RUBY",
+                    "SAPPHIRE",
+                    "EMERALD"
+                ],
+
+                locations:
+                {
+                    RUBY:
+                        "SKY_PILLAR",
+
+                    SAPPHIRE:
+                        "SKY_PILLAR",
+
+                    EMERALD:
+                        "SKY_PILLAR"
+                }
+            },
+
+
+            KYOGRE:
+            {
+                games:
+                [
+                    "SAPPHIRE",
+                    "EMERALD"
+                ],
+
+                locations:
+                {
+                    SAPPHIRE:
+                        "CAVE_OF_ORIGIN",
+
+                    EMERALD:
+                        "MARINE_CAVE"
+                }
+            },
+
+
+            GROUDON:
+            {
+                games:
+                [
+                    "RUBY",
+                    "EMERALD"
+                ],
+
+                locations:
+                {
+                    RUBY:
+                        "CAVE_OF_ORIGIN",
+
+                    EMERALD:
+                        "TERRA_CAVE"
+                }
+            },
+
+
+            LATIAS:
+            {
+                games:
+                [
+                    "RUBY",
+                    "SAPPHIRE",
+                    "EMERALD"
+                ]
+            },
+
+
+            LATIOS:
+            {
+                games:
+                [
+                    "RUBY",
+                    "SAPPHIRE",
+                    "EMERALD"
+                ]
+            },
+
+
+            REGIROCK:
+            {
+                games:
+                [
+                    "RUBY",
+                    "SAPPHIRE",
+                    "EMERALD"
+                ]
+            },
+
+
+            REGICE:
+            {
+                games:
+                [
+                    "RUBY",
+                    "SAPPHIRE",
+                    "EMERALD"
+                ]
+            },
+
+
+            REGISTEEL:
+            {
+                games:
+                [
+                    "RUBY",
+                    "SAPPHIRE",
+                    "EMERALD"
+                ]
+            },
+
+
+            JIRACHI:
+            {
+                games:
+                    []
+            },
+
+
+            //--------------------------------
+            // Deoxys is form-specific in
+            // Generation III.
+            //--------------------------------
+
+            DEOXYS:
+            {
+                games:
+                [
+                    "FIRERED"
+                ],
+
+                locations:
+                {
+                    FIRERED:
+                        "BIRTH_ISLAND"
+                },
+
+                forms:
+                {
+                    NORMAL:
+                    {
+                        games:
+                        [
+                            "RUBY",
+                            "SAPPHIRE"
+                        ],
+
+                        location:
+                            "BIRTH_ISLAND",
+
+                        method:
+                            "SPECIAL"
+                    },
+
+                    ATTACK:
+                    {
+                        games:
+                        [
+                            "FIRERED"
+                        ],
+
+                        location:
+                            "BIRTH_ISLAND",
+
+                        method:
+                            "SPECIAL"
+                    },
+
+                    DEFENSE:
+                    {
+                        games:
+                        [
+                            "LEAFGREEN"
+                        ],
+
+                        location:
+                            "BIRTH_ISLAND",
+
+                        method:
+                            "SPECIAL",
+
+                        tradeFrom:
+                            "LEAFGREEN"
+                    },
+
+                    SPEED:
+                    {
+                        games:
+                        [
+                            "EMERALD"
+                        ],
+
+                        location:
+                            "BIRTH_ISLAND",
+
+                        method:
+                            "SPECIAL",
+
+                        tradeFrom:
+                            "EMERALD"
+                    }
+                }
+            }
+
+        };
+
+
+        const known =
+            knownGames[
+                species
+            ];
+
+
+        if(
+            !known
+        )
+        {
+
+            return {
+
+                available:
+                    false,
+
+                games:
+                    [],
+
+                locations:
+                    {},
+
+                forms:
+                    {}
+
+            };
+
+        }
+
+
+        return {
+
+            available:
+                known.games.length >
+                    0,
+
+            games:
+                [
+                    ...known.games
+                ],
+
+            locations:
+                known.locations
+                ||
+                {},
+
+            forms:
+                known.forms
+                ||
+                {}
+
+        };
 
     }
 
@@ -1160,7 +2516,8 @@ class PokemonAvailabilityBuilder
         evolution,
         species = null,
         locations = null,
-        gifts = null
+        gifts = null,
+        specialEncounters = null
     )
     {
 
@@ -1184,6 +2541,14 @@ class PokemonAvailabilityBuilder
             gifts
             ||
             this.getGiftEvents(
+                pokemon
+            );
+
+
+        const resolvedSpecialEncounters =
+            specialEncounters
+            ||
+            this.getSpecialEncounterEvents(
                 pokemon
             );
 
@@ -1225,6 +2590,10 @@ class PokemonAvailabilityBuilder
 
             gift:
                 resolvedGifts.length >
+                    0,
+
+            special:
+                resolvedSpecialEncounters.length >
                     0
 
         };
@@ -1544,6 +2913,142 @@ class PokemonAvailabilityBuilder
 
 
     //--------------------------------
+    // Form availability
+    //--------------------------------
+
+    getFormAvailability(
+        pokemon,
+        species = null
+    )
+    {
+
+        const resolvedSpecies =
+            species
+            ||
+            this.getSpeciesName(
+                pokemon
+            );
+
+
+        if(
+            resolvedSpecies !==
+                "DEOXYS"
+        )
+        {
+
+            return null;
+
+        }
+
+
+        return {
+
+            description:
+                "Deoxys has game-specific forms in Generation III. FireRed natively provides Attack Form. The Defense Form comes from LeafGreen, the Speed Form comes from Emerald, and the Normal Form comes from Ruby or Sapphire.",
+
+            currentGame:
+            {
+                game:
+                    "FIRERED",
+
+                nativeForm:
+                    "ATTACK",
+
+                location:
+                    "BIRTH_ISLAND",
+
+                level:
+                    30,
+
+                method:
+                    "SPECIAL"
+            },
+
+            forms:
+            {
+                NORMAL:
+                {
+                    nativeGames:
+                    [
+                        "RUBY",
+                        "SAPPHIRE"
+                    ],
+
+                    location:
+                        "BIRTH_ISLAND",
+
+                    tradeRequiredInFireRed:
+                        true,
+
+                    tradeFrom:
+                    [
+                        "RUBY",
+                        "SAPPHIRE"
+                    ]
+                },
+
+                ATTACK:
+                {
+                    nativeGames:
+                    [
+                        "FIRERED"
+                    ],
+
+                    location:
+                        "BIRTH_ISLAND",
+
+                    tradeRequiredInFireRed:
+                        false
+                },
+
+                DEFENSE:
+                {
+                    nativeGames:
+                    [
+                        "LEAFGREEN"
+                    ],
+
+                    location:
+                        "BIRTH_ISLAND",
+
+                    tradeRequiredInFireRed:
+                        true,
+
+                    tradeFrom:
+                    [
+                        "LEAFGREEN"
+                    ]
+                },
+
+                SPEED:
+                {
+                    nativeGames:
+                    [
+                        "EMERALD"
+                    ],
+
+                    location:
+                        "BIRTH_ISLAND",
+
+                    tradeRequiredInFireRed:
+                        true,
+
+                    tradeFrom:
+                    [
+                        "EMERALD"
+                    ]
+                }
+            }
+
+        };
+
+    }
+
+
+
+
+
+    //--------------------------------
     // Trade availability
     //--------------------------------
 
@@ -1574,6 +3079,37 @@ class PokemonAvailabilityBuilder
         }
 
 
+        //--------------------------------
+        // Deoxys form trade routes
+        //--------------------------------
+
+        if(
+            pokemon.constant ===
+                "SPECIES_DEOXYS"
+        )
+        {
+
+            return {
+
+                available:
+                    true,
+
+                games:
+                [
+                    "RUBY",
+                    "SAPPHIRE",
+                    "LEAFGREEN",
+                    "EMERALD"
+                ],
+
+                reason:
+                    "FireRed natively provides Deoxys Attack Form. The Normal Form comes from Ruby or Sapphire, the Defense Form from LeafGreen, and the Speed Form from Emerald. Those other forms require trading the Deoxys back to FireRed."
+
+            };
+
+        }
+
+        
         //--------------------------------
         // External trade
         //--------------------------------
@@ -1670,78 +3206,99 @@ class PokemonAvailabilityBuilder
     //--------------------------------
     // Progression
     //--------------------------------
-
+    
     calculateProgression(
         pokemon,
         species = null,
         locations = null,
-        gifts = null
+        gifts = null,
+        specialEncounters = null
     )
     {
-
-        const progression = {};
-
-
         const resolvedSpecies =
             species
             ||
             this.getSpeciesName(
                 pokemon
             );
-
-
+        
+        
         const resolvedLocations =
-            locations
-            ||
-            this.getLocations(
-                resolvedSpecies
+            this.normalizeProgressionLocations(
+                locations
+                ||
+                this.getLocations(
+                    resolvedSpecies
+                )
             );
-
-
+        
+        
         const resolvedGifts =
             gifts
             ||
             this.getGiftEvents(
                 pokemon
             );
-
-
+        
+        
+        const resolvedSpecialEncounters =
+            specialEncounters
+            ||
+            this.getSpecialEncounterEvents(
+                pokemon
+            );
+        
+        
+        const progression =
+            this.progressionBuilder.calculateProgression(
+            
+                pokemon,
+            
+                resolvedSpecies,
+            
+                resolvedLocations,
+            
+                resolvedGifts,
+            
+                resolvedSpecialEncounters
+            
+            );
+        
+        
         //--------------------------------
-        // Build cumulative stage states
+        // Special/static encounters
+        //
+        // Static legendary encounters that
+        // belong to the post-game should
+        // become obtainable at POST_GAME.
+        //
+        // Do not mark every SPECIAL encounter
+        // as post-game. Snorlax, Lostelle's
+        // Hypno, etc. have different timing.
         //--------------------------------
-
-        const states =
-            this.buildCumulativeStageStates();
-
-
-        for(
-            const stage of
-                this.stages
+        
+        const postGameSpecialSpecies =
+        [
+            "ARTICUNO",
+            "ZAPDOS",
+            "MOLTRES"
+        ];
+    
+    
+        if(
+            resolvedSpecialEncounters.length > 0
+            &&
+            postGameSpecialSpecies.includes(
+                resolvedSpecies
+            )
         )
         {
-
-            progression[stage] =
-                this.canExistByStage(
-
-                    pokemon,
-
-                    resolvedSpecies,
-
-                    stage,
-
-                    resolvedLocations,
-
-                    resolvedGifts,
-
-                    states[stage]
-
-                );
-
+            progression.POST_GAME =
+                true;
         }
-
-
+    
+    
         return progression;
-
     }
 
 
@@ -1762,250 +3319,29 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        //--------------------------------
-        // Mewtwo
-        //--------------------------------
+        return this.progressionBuilder.canExistByStage(
 
-        if(
-            species ===
-                "MEWTWO"
-        )
-        {
+            pokemon,
 
-            return stage ===
-                "POST_GAME";
+            species,
 
-        }
+            stage,
 
-
-        //--------------------------------
-        // Starter
-        //--------------------------------
-
-        if(
-            this.isStarter(
-                species
-            )
-        )
-        {
-
-            return true;
-
-        }
-
-
-        //--------------------------------
-        // Evolution restriction
-        //--------------------------------
-
-        const restriction =
-            this.getRestriction(
-                pokemon,
-
-                this.evolutionService.getEvolutionSource(
-
-                    pokemon.constant
-
+            this.normalizeProgressionLocations(
+                locations
+                ||
+                this.getLocations(
+                    species
                 )
+            ),
 
-            );
-
-
-        if(
-            restriction.blocked
-        )
-        {
-
-            //--------------------------------
-            // Espeon / Umbreon can still be
-            // obtained by their documented
-            // external trade route.
-            //--------------------------------
-
-            if(
-                this.hasExternalTradeRoute(
-                    pokemon
-                )
-            )
-            {
-
-                return true;
-
-            }
-
-        }
-
-
-        //--------------------------------
-        // Wild
-        //--------------------------------
-
-        const resolvedLocations =
-            locations
-            ||
-            this.getLocations(
-                species
-            );
-
-
-        const wildAvailable =
-            resolvedLocations.length >
-                0
-            &&
-            this.canAccessWildPokemonAtStage(
-
-                resolvedLocations,
-
-                stage,
-
-                state
-
-            );
-
-
-        //--------------------------------
-        // Gift
-        //--------------------------------
-
-        const resolvedGifts =
             gifts
             ||
             this.getGiftEvents(
                 pokemon
-            );
+            ),
 
-
-        const giftAvailable =
-            resolvedGifts.length >
-                0
-            &&
-            this.canAccessGiftPokemonAtStage(
-
-                resolvedGifts,
-
-                stage,
-
-                state
-
-            );
-
-
-        //--------------------------------
-        // Evolution
-        //--------------------------------
-
-        const evolution =
-            this.evolutionService.getEvolutionSource(
-
-                pokemon.constant
-
-            );
-
-
-        let evolutionAvailable =
-            false;
-
-
-        if(
-            evolution
-        )
-        {
-
-            const evolutionState =
-                state
-                ||
-                {
-
-                    maxReasonableLevel:
-                        this.getStageMaxLevel(
-                            stage
-                        )
-
-                };
-
-
-            const result =
-                this.evolutionService.canEvolveBeforeStage(
-
-                    pokemon.constant,
-
-                    evolutionState
-
-                );
-
-
-            evolutionAvailable =
-                result.available;
-
-        }
-
-
-        //--------------------------------
-        // Trade evolution
-        //--------------------------------
-
-        const tradeEvolutionAvailable =
-            this.isTradeEvolution(
-                evolution
-            )
-            &&
-            this.canPerformTradeEvolutionAtStage(
-
-                pokemon,
-
-                stage,
-
-                state
-
-            );
-
-
-        //--------------------------------
-        // External trade
-        //
-        // Espeon/Umbreon are represented as
-        // documented cross-game routes.
-        //--------------------------------
-
-        const externalTradeAvailable =
-            this.hasExternalTradeRoute(
-                pokemon
-            )
-            &&
-            this.canPerformExternalTradeAtStage(
-
-                pokemon,
-
-                stage,
-
-                state
-
-            );
-
-
-        //--------------------------------
-        // Any valid route
-        //--------------------------------
-
-        return (
-
-            wildAvailable
-
-            ||
-
-            giftAvailable
-
-            ||
-
-            evolutionAvailable
-
-            ||
-
-            tradeEvolutionAvailable
-
-            ||
-
-            externalTradeAvailable
+            state
 
         );
 
@@ -2026,48 +3362,17 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        if(
-            !Array.isArray(
+        return this.progressionBuilder.canAccessWildPokemonAtStage(
+
+            this.normalizeProgressionLocations(
                 locations
-            )
-            ||
-            locations.length ===
-                0
-        )
-        {
+            ),
 
-            return false;
+            stage,
 
-        }
+            state
 
-
-        for(
-            const locationId of
-                locations
-        )
-        {
-
-            if(
-                this.canAccessLocationAtStage(
-
-                    locationId,
-
-                    stage,
-
-                    state
-
-                )
-            )
-            {
-
-                return true;
-
-            }
-
-        }
-
-
-        return false;
+        );
 
     }
 
@@ -2086,58 +3391,15 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        if(
-            !Array.isArray(
-                gifts
-            )
-            ||
-            gifts.length ===
-                0
-        )
-        {
+        return this.progressionBuilder.canAccessGiftPokemonAtStage(
 
-            return false;
+            gifts,
 
-        }
+            stage,
 
+            state
 
-        for(
-            const gift of
-                gifts
-        )
-        {
-
-            if(
-                !gift.location
-            )
-            {
-
-                continue;
-
-            }
-
-
-            if(
-                this.canAccessLocationAtStage(
-
-                    gift.location,
-
-                    stage,
-
-                    state
-
-                )
-            )
-            {
-
-                return true;
-
-            }
-
-        }
-
-
-        return false;
+        );
 
     }
 
@@ -2152,46 +3414,11 @@ class PokemonAvailabilityBuilder
     buildProgressionRuleIndex()
     {
 
-        const index = {};
-
-
-        for(
-            const rule of
-                this.rules
-        )
-        {
-
-            if(
-                !rule
-                ||
-                !rule.location
-            )
-            {
-
-                continue;
-
-            }
-
-
-            if(
-                !index[rule.location]
-            )
-            {
-
-                index[rule.location] =
-                    [];
-
-            }
-
-
-            index[rule.location].push(
-                rule
-            );
-
-        }
-
-
-        return index;
+        return this.progressionBuilder
+            ?
+            this.progressionBuilder.buildProgressionRuleIndex()
+            :
+            {};
 
     }
 
@@ -2200,233 +3427,25 @@ class PokemonAvailabilityBuilder
 
 
     //--------------------------------
-    // Location progression
+    // Location stage availability
     //--------------------------------
 
     canAccessLocationAtStage(
-        locationId,
+        location,
         stage,
         state = null
     )
     {
 
-        if(
-            !locationId
-            ||
-            !this.locations
-            ||
-            typeof this.locations !==
-                "object"
-        )
-        {
+        return this.progressionBuilder.canAccessLocationAtStage(
 
-            return false;
+            location,
 
-        }
+            stage,
 
-
-        if(
-            !this.locations[locationId]
-        )
-        {
-
-            return false;
-
-        }
-
-
-        //--------------------------------
-        // Use cumulative state when supplied.
-        //--------------------------------
-
-        const resolvedState =
             state
-            ||
-            this.buildStageState(
-                stage
-            );
 
-
-        //--------------------------------
-        // Starting maps
-        //--------------------------------
-
-        const startingLocations =
-            this.getStartingLocations();
-
-
-        if(
-            startingLocations.includes(
-                locationId
-            )
-        )
-        {
-
-            return true;
-
-        }
-
-
-        //--------------------------------
-        // Traverse from every legitimate
-        // starting location.
-        //--------------------------------
-
-        const visited =
-            new Set();
-
-
-        const queue =
-        [
-
-            ...startingLocations
-
-        ];
-
-
-        while(
-            queue.length >
-                0
-        )
-        {
-
-            const current =
-                queue.shift();
-
-
-            if(
-                visited.has(
-                    current
-                )
-            )
-            {
-
-                continue;
-
-            }
-
-
-            visited.add(
-                current
-            );
-
-
-            if(
-                current ===
-                    locationId
-            )
-            {
-
-                return true;
-
-            }
-
-
-            const location =
-                this.locations[current];
-
-
-            if(
-                !location
-            )
-            {
-
-                continue;
-
-            }
-
-
-            //--------------------------------
-            // A soft gate never blocks
-            // traversal.
-            //--------------------------------
-
-            if(
-                !this.isLocationUsableAtStage(
-
-                    location,
-
-                    stage,
-
-                    resolvedState
-
-                )
-            )
-            {
-
-                continue;
-
-            }
-
-
-            const connections =
-                Array.isArray(
-                    location.connections
-                )
-                ?
-                location.connections
-                :
-                [];
-
-
-            for(
-                const connection of
-                    connections
-            )
-            {
-
-                if(
-                    !connection
-                    ||
-                    !connection.location
-                )
-                {
-
-                    continue;
-
-                }
-
-
-                if(
-                    visited.has(
-                        connection.location
-                    )
-                )
-                {
-
-                    continue;
-
-                }
-
-
-                if(
-                    !this.isConnectionUsableAtStage(
-
-                        connection,
-
-                        stage,
-
-                        resolvedState
-
-                    )
-                )
-                {
-
-                    continue;
-
-                }
-
-
-                queue.push(
-                    connection.location
-                );
-
-            }
-
-        }
-
-
-        return false;
+        );
 
     }
 
@@ -2437,178 +3456,24 @@ class PokemonAvailabilityBuilder
     //--------------------------------
     // Location usability
     //--------------------------------
-    
+
     isLocationUsableAtStage(
         location,
         stage,
         state = null
     )
     {
-    
-        if(
-            !location
-        )
-        {
-        
-            return false;
-        
-        }
-    
-    
-        const resolvedState =
+
+        return this.progressionBuilder.isLocationUsableAtStage(
+
+            location,
+
+            stage,
+
             state
-            ||
-            this.buildStageState(
-                stage
-            );
-        
-        
-        //--------------------------------
-        // Generated location hard gates
-        //--------------------------------
-        
-        const gates =
-            location.gates
-            ||
-            {};
-        
-        
-        const hardGates =
-            Array.isArray(
-                gates.hard
-            )
-            ?
-            gates.hard
-            :
-            [];
-        
-        
-        for(
-            const gate of
-                hardGates
-        )
-        {
-        
-            if(
-                !this.isGateSatisfiedAtStage(
-                
-                    gate,
-                
-                    stage,
-                
-                    resolvedState
-                
-                )
-            )
-            {
-            
-                return false;
-            
-            }
-        
-        }
-    
-    
-        //--------------------------------
-        // FireRed progression rules
-        //--------------------------------
-        //
-        // These are separate from physical
-        // map gates.
-        //
-        // Example:
-        //
-        // MAP_SAFFRON_CITY
-        //     requires TEA
-        //
-        // This prevents the unrestricted
-        // world graph from bypassing the
-        // actual story route.
-        //--------------------------------
-    
-        const rules =
-            this.progressionRulesByLocation[
-                location.id
-            ]
-            ||
-            [];
-        
-        
-        for(
-            const rule of
-                rules
-        )
-        {
-        
-            const type =
-                String(
-                
-                    rule.type
-                
-                    ||
-                
-                    ""
-                
-                )
-                .toUpperCase();
-            
-            
-            //--------------------------------
-            // Completion rules do not block
-            // entering the location.
-            //--------------------------------
-            
-            if(
-                type ===
-                    "GYM"
-                ||
-                type ===
-                    "HM"
-            )
-            {
-            
-                continue;
-            
-            }
-        
-        
-            //--------------------------------
-            // Only rules with real
-            // requirements can block.
-            //--------------------------------
-        
-            if(
-                !rule.requirement
-            )
-            {
-            
-                continue;
-            
-            }
-        
-        
-            if(
-                !this.isRequirementSatisfiedAtStage(
-                
-                    rule.requirement,
-                
-                    stage,
-                
-                    resolvedState
-                
-                )
-            )
-            {
-            
-                return false;
-            
-            }
-        
-        }
-    
-    
-        return true;
-    
+
+        );
+
     }
 
 
@@ -2626,53 +3491,15 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        if(
-            !connection
-        )
-        {
+        return this.progressionBuilder.isConnectionUsableAtStage(
 
-            return false;
+            connection,
 
-        }
+            stage,
 
+            state
 
-        const requirements =
-            Array.isArray(
-                connection.requirements
-            )
-            ?
-            connection.requirements
-            :
-            [];
-
-
-        for(
-            const requirement of
-                requirements
-        )
-        {
-
-            if(
-                !this.isRequirementSatisfiedAtStage(
-
-                    requirement,
-
-                    stage,
-
-                    state
-
-                )
-            )
-            {
-
-                return false;
-
-            }
-
-        }
-
-
-        return true;
+        );
 
     }
 
@@ -2691,17 +3518,7 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        if(
-            !gate
-        )
-        {
-
-            return true;
-
-        }
-
-
-        return this.isRequirementSatisfiedAtStage(
+        return this.progressionBuilder.isGateSatisfiedAtStage(
 
             gate,
 
@@ -2728,256 +3545,15 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        if(
-            !requirement
-        )
-        {
+        return this.progressionBuilder.isRequirementSatisfiedAtStage(
 
-            return true;
+            requirement,
 
-        }
+            stage,
 
+            state
 
-        //--------------------------------
-        // String requirement
-        //--------------------------------
-
-        if(
-            typeof requirement ===
-                "string"
-        )
-        {
-
-            return this.isNamedRequirementSatisfiedAtStage(
-
-                requirement,
-
-                stage,
-
-                state
-
-            );
-
-        }
-
-
-        //--------------------------------
-        // Named requirement
-        //--------------------------------
-
-        const type =
-            requirement.type
-            ||
-            requirement.kind
-            ||
-            requirement.requirement;
-
-
-        if(
-            type
-        )
-        {
-
-            return this.isNamedRequirementSatisfiedAtStage(
-
-                type,
-
-                stage,
-
-                state
-
-            );
-
-        }
-
-
-        //--------------------------------
-        // Abilities
-        //--------------------------------
-
-        if(
-            Array.isArray(
-                requirement.abilities
-            )
-        )
-        {
-
-            return requirement.abilities.every(
-
-                ability =>
-
-                    this.isNamedRequirementSatisfiedAtStage(
-
-                        ability,
-
-                        stage,
-
-                        state
-
-                    )
-
-            );
-
-        }
-
-
-        //--------------------------------
-        // HM requirements
-        //--------------------------------
-
-        if(
-            Array.isArray(
-                requirement.hms
-            )
-        )
-        {
-
-            return requirement.hms.every(
-
-                hm =>
-
-                    this.isNamedRequirementSatisfiedAtStage(
-
-                        hm,
-
-                        stage,
-
-                        state
-
-                    )
-
-            );
-
-        }
-
-
-        //--------------------------------
-        // Badges
-        //--------------------------------
-
-        if(
-            Array.isArray(
-                requirement.badges
-            )
-        )
-        {
-
-            return this.areBadgesSatisfiedAtStage(
-
-                requirement.badges,
-
-                stage,
-
-                state
-
-            );
-
-        }
-
-
-        //--------------------------------
-        // Key items
-        //--------------------------------
-
-        if(
-            Array.isArray(
-                requirement.keyItems
-            )
-        )
-        {
-
-            return this.areKeyItemsSatisfiedAtStage(
-
-                requirement.keyItems,
-
-                stage,
-
-                state
-
-            );
-
-        }
-
-
-        //--------------------------------
-        // Single badge
-        //--------------------------------
-
-        if(
-            requirement.badge
-        )
-        {
-
-            return this.isBadgeSatisfiedAtStage(
-
-                requirement.badge,
-
-                stage,
-
-                state
-
-            );
-
-        }
-
-
-        //--------------------------------
-        // Single key item
-        //--------------------------------
-
-        if(
-            requirement.keyItem
-        )
-        {
-
-            return this.isKeyItemSatisfiedAtStage(
-
-                requirement.keyItem,
-
-                stage,
-
-                state
-
-            );
-
-        }
-
-
-        //--------------------------------
-        // Story flags
-        //--------------------------------
-
-        if(
-            Array.isArray(
-                requirement.storyFlags
-            )
-        )
-        {
-
-            return requirement.storyFlags.every(
-
-                flag =>
-
-                    this.isStoryFlagSatisfiedAtStage(
-
-                        flag,
-
-                        stage,
-
-                        state
-
-                    )
-
-            );
-
-        }
-
-
-        //--------------------------------
-        // Unknown requirement
-        //--------------------------------
-
-        return true;
+        );
 
     }
 
@@ -2986,7 +3562,7 @@ class PokemonAvailabilityBuilder
 
 
     //--------------------------------
-    // Named requirement
+    // Named requirement stage evaluation
     //--------------------------------
 
     isNamedRequirementSatisfiedAtStage(
@@ -2996,153 +3572,15 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        if(
-            !requirement
-        )
-        {
+        return this.progressionBuilder.isNamedRequirementSatisfiedAtStage(
 
-            return true;
+            requirement,
 
-        }
+            stage,
 
-
-        const value =
-            String(
-                requirement
-            )
-            .toUpperCase();
-
-
-        const resolvedState =
             state
-            ||
-            this.buildStageState(
-                stage
-            );
 
-
-        //--------------------------------
-        // Always available
-        //--------------------------------
-
-        if(
-            value ===
-                "NONE"
-        )
-        {
-
-            return true;
-
-        }
-
-
-        //--------------------------------
-        // Abilities
-        //--------------------------------
-
-        if(
-            resolvedState.abilities.includes(
-                value
-            )
-        )
-        {
-
-            return true;
-
-        }
-
-
-        //--------------------------------
-        // HM aliases
-        //--------------------------------
-
-        const hmAbilityMap =
-        {
-
-            CUT:
-                "CAN_USE_CUT",
-
-            FLASH:
-                "CAN_USE_FLASH",
-
-            SURF:
-                "CAN_USE_SURF",
-
-            STRENGTH:
-                "CAN_USE_STRENGTH",
-
-            FLY:
-                "CAN_USE_FLY",
-
-            ROCK_SMASH:
-                "CAN_USE_ROCK_SMASH"
-
-        };
-
-
-        if(
-            hmAbilityMap[value]
-            &&
-            resolvedState.abilities.includes(
-                hmAbilityMap[value]
-            )
-        )
-        {
-
-            return true;
-
-        }
-
-
-        //--------------------------------
-        // Badges
-        //--------------------------------
-
-        if(
-            resolvedState.badges.includes(
-                value
-            )
-        )
-        {
-
-            return true;
-
-        }
-
-
-        //--------------------------------
-        // Key items
-        //--------------------------------
-
-        if(
-            resolvedState.keyItems.includes(
-                value
-            )
-        )
-        {
-
-            return true;
-
-        }
-
-
-        //--------------------------------
-        // Story flags
-        //--------------------------------
-
-        if(
-            resolvedState.storyFlags.includes(
-                value
-            )
-        )
-        {
-
-            return true;
-
-        }
-
-
-        return false;
+        );
 
     }
 
@@ -3151,7 +3589,7 @@ class PokemonAvailabilityBuilder
 
 
     //--------------------------------
-    // Badge list
+    // Badge requirements
     //--------------------------------
 
     areBadgesSatisfiedAtStage(
@@ -3161,19 +3599,13 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        return badges.every(
+        return this.progressionBuilder.areBadgesSatisfiedAtStage(
 
-            badge =>
+            badges,
 
-                this.isBadgeSatisfiedAtStage(
+            stage,
 
-                    badge,
-
-                    stage,
-
-                    state
-
-                )
+            state
 
         );
 
@@ -3184,7 +3616,7 @@ class PokemonAvailabilityBuilder
 
 
     //--------------------------------
-    // Single badge
+    // Single badge requirement
     //--------------------------------
 
     isBadgeSatisfiedAtStage(
@@ -3194,30 +3626,13 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        if(
-            !badge
-        )
-        {
+        return this.progressionBuilder.isBadgeSatisfiedAtStage(
 
-            return true;
+            badge,
 
-        }
+            stage,
 
-
-        const resolvedState =
             state
-            ||
-            this.buildStageState(
-                stage
-            );
-
-
-        return resolvedState.badges.includes(
-
-            String(
-                badge
-            )
-            .toUpperCase()
 
         );
 
@@ -3228,7 +3643,7 @@ class PokemonAvailabilityBuilder
 
 
     //--------------------------------
-    // Key item list
+    // Key item requirements
     //--------------------------------
 
     areKeyItemsSatisfiedAtStage(
@@ -3238,19 +3653,13 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        return keyItems.every(
+        return this.progressionBuilder.areKeyItemsSatisfiedAtStage(
 
-            keyItem =>
+            keyItems,
 
-                this.isKeyItemSatisfiedAtStage(
+            stage,
 
-                    keyItem,
-
-                    stage,
-
-                    state
-
-                )
+            state
 
         );
 
@@ -3261,7 +3670,7 @@ class PokemonAvailabilityBuilder
 
 
     //--------------------------------
-    // Single key item
+    // Single key item requirement
     //--------------------------------
 
     isKeyItemSatisfiedAtStage(
@@ -3271,30 +3680,13 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        if(
-            !keyItem
-        )
-        {
+        return this.progressionBuilder.isKeyItemSatisfiedAtStage(
 
-            return true;
+            keyItem,
 
-        }
+            stage,
 
-
-        const resolvedState =
             state
-            ||
-            this.buildStageState(
-                stage
-            );
-
-
-        return resolvedState.keyItems.includes(
-
-            String(
-                keyItem
-            )
-            .toUpperCase()
 
         );
 
@@ -3305,7 +3697,7 @@ class PokemonAvailabilityBuilder
 
 
     //--------------------------------
-    // Story flag
+    // Story flag requirement
     //--------------------------------
 
     isStoryFlagSatisfiedAtStage(
@@ -3315,30 +3707,13 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        if(
-            !flag
-        )
-        {
+        return this.progressionBuilder.isStoryFlagSatisfiedAtStage(
 
-            return true;
+            flag,
 
-        }
+            stage,
 
-
-        const resolvedState =
             state
-            ||
-            this.buildStageState(
-                stage
-            );
-
-
-        return resolvedState.storyFlags.includes(
-
-            String(
-                flag
-            )
-            .toUpperCase()
 
         );
 
@@ -3349,7 +3724,7 @@ class PokemonAvailabilityBuilder
 
 
     //--------------------------------
-    // Stage max evolution level
+    // Stage max level
     //--------------------------------
 
     getStageMaxLevel(
@@ -3357,48 +3732,9 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        const levels =
-        {
-
-            BROCK:
-                20,
-
-            MISTY:
-                30,
-
-            LT_SURGE:
-                35,
-
-            ERIKA:
-                40,
-
-            KOGA:
-                45,
-
-            SABRINA:
-                50,
-
-            BLAINE:
-                55,
-
-            GIOVANNI:
-                55,
-
-            ELITE_FOUR:
-                60,
-
-            CHAMPION:
-                65,
-
-            POST_GAME:
-                100
-
-        };
-
-
-        return levels[stage]
-            ||
-            100;
+        return this.progressionBuilder.getStageMaxLevel(
+            stage
+        );
 
     }
 
@@ -3413,91 +3749,7 @@ class PokemonAvailabilityBuilder
     buildCumulativeStageStates()
     {
 
-        if(
-            this.stageStates
-        )
-        {
-
-            return this.stageStates;
-
-        }
-
-
-        const states = {};
-
-
-        //--------------------------------
-        // Start with the absolute minimum
-        // state.
-        //--------------------------------
-
-        let current =
-        {
-
-            badges:
-                [],
-
-            keyItems:
-                [],
-
-            abilities:
-                [],
-
-            storyFlags:
-                []
-
-        };
-
-
-        for(
-            const stage of
-                this.stages
-        )
-        {
-
-            current =
-                this.buildStageState(
-
-                    stage,
-
-                    current
-
-                );
-
-
-            states[stage] =
-            {
-
-                badges:
-                    [
-                        ...current.badges
-                    ],
-
-                keyItems:
-                    [
-                        ...current.keyItems
-                    ],
-
-                abilities:
-                    [
-                        ...current.abilities
-                    ],
-
-                storyFlags:
-                    [
-                        ...current.storyFlags
-                    ]
-
-            };
-
-        }
-
-
-        this.stageStates =
-            states;
-
-
-        return states;
+        return this.progressionBuilder.buildCumulativeStageStates();
 
     }
 
@@ -3506,348 +3758,17 @@ class PokemonAvailabilityBuilder
 
 
     //--------------------------------
-    // Build one stage state
+    // Single stage state
     //--------------------------------
 
     buildStageState(
-        stage,
-        previousState = null
+        stage
     )
     {
 
-        const base =
-            previousState
-            ?
-            {
-
-                badges:
-                    [
-                        ...(previousState.badges || [])
-                    ],
-
-                keyItems:
-                    [
-                        ...(previousState.keyItems || [])
-                    ],
-
-                abilities:
-                    [
-                        ...(previousState.abilities || [])
-                    ],
-
-                storyFlags:
-                    [
-                        ...(previousState.storyFlags || [])
-                    ]
-
-            }
-            :
-            {
-
-                badges:
-                    [],
-
-                keyItems:
-                    [],
-
-                abilities:
-                    [],
-
-                storyFlags:
-                    []
-
-            };
-
-
-        //--------------------------------
-        // Stage badge
-        //
-        // Each stage is cumulative.
-        //--------------------------------
-
-        const badgeByStage =
-        [
-
-            "BOULDER_BADGE",
-
-            "CASCADE_BADGE",
-
-            "THUNDER_BADGE",
-
-            "RAINBOW_BADGE",
-
-            "SOUL_BADGE",
-
-            "MARSH_BADGE",
-
-            "VOLCANO_BADGE",
-
-            "EARTH_BADGE"
-
-        ];
-
-
-        const stageIndex =
-            this.stages.indexOf(
-                stage
-            );
-
-
-        if(
-            stageIndex >= 0
-        )
-        {
-
-            const badgeCount =
-                Math.min(
-
-                    stageIndex + 1,
-
-                    badgeByStage.length
-
-                );
-
-
-            for(
-                let index = 0;
-                index < badgeCount;
-                index++
-            )
-            {
-
-                this.addUnique(
-
-                    base.badges,
-
-                    badgeByStage[index]
-
-                );
-
-            }
-
-        }
-
-
-        //--------------------------------
-        // Story/event progression
-        //--------------------------------
-        //
-        // Only add story milestones that
-        // are actually known to occur by
-        // this stage.
-        //
-        // These are intentionally kept
-        // separate from gym completion.
-        //--------------------------------
-
-        if(
-            stageIndex >=
-                this.stages.indexOf(
-                    "BROCK"
-                )
-        )
-        {
-
-            this.addUnique(
-
-                base.storyFlags,
-
-                "POKEDEX_RECEIVED"
-
-            );
-
-        }
-
-
-        //--------------------------------
-        // HM / ability progression
-        //
-        // Cut becomes usable after Cascade.
-        // Flash becomes usable after Boulder.
-        // Surf becomes usable after Koga.
-        // Strength becomes usable after Erika.
-        // Fly becomes usable after Lt. Surge.
-        //--------------------------------
-
-        if(
-            stageIndex >=
-                this.stages.indexOf(
-                    "BROCK"
-                )
-        )
-        {
-
-            this.addUnique(
-
-                base.abilities,
-
-                "CAN_USE_FLASH"
-
-            );
-
-        }
-
-
-        if(
-            stageIndex >=
-                this.stages.indexOf(
-                    "MISTY"
-                )
-        )
-        {
-
-            this.addUnique(
-
-                base.abilities,
-
-                "CAN_USE_CUT"
-
-            );
-
-        }
-
-
-        if(
-            stageIndex >=
-                this.stages.indexOf(
-                    "LT_SURGE"
-                )
-        )
-        {
-
-            this.addUnique(
-
-                base.abilities,
-
-                "CAN_USE_FLY"
-
-            );
-
-        }
-
-
-        if(
-            stageIndex >=
-                this.stages.indexOf(
-                    "KOGA"
-                )
-        )
-        {
-
-            this.addUnique(
-
-                base.abilities,
-
-                "CAN_USE_SURF"
-
-            );
-
-        }
-
-
-        if(
-            stageIndex >=
-                this.stages.indexOf(
-                    "ERIKA"
-                )
-        )
-        {
-
-            this.addUnique(
-
-                base.abilities,
-
-                "CAN_USE_STRENGTH"
-
-            );
-
-        }
-
-
-        //--------------------------------
-        // S.S. Ticket
-        //--------------------------------
-
-        if(
-            stageIndex >=
-                this.stages.indexOf(
-                    "MISTY"
-                )
-        )
-        {
-
-            this.addUnique(
-
-                base.keyItems,
-
-                "SS_TICKET"
-
-            );
-
-        }
-
-
-        //--------------------------------
-        // Tea / Saffron access
-        //
-        // Tea is obtainable after reaching
-        // Celadon. It is NOT inherently tied
-        // to Sabrina.
-        //
-        // For the availability snapshot,
-        // we model it as obtainable by the
-        // earliest stage where the alternate
-        // Celadon → Saffron route is possible.
-        //--------------------------------
-
-        if(
-            stageIndex >=
-                this.stages.indexOf(
-                    "MISTY"
-                )
-        )
-        {
-
-            this.addUnique(
-
-                base.keyItems,
-
-                "TEA"
-
-            );
-
-        }
-
-
-        //--------------------------------
-        // Silph Co. event
-        //
-        // Once the state reaches the point
-        // where Saffron and Silph Co. are
-        // reachable, this milestone can be
-        // available independently from Gym 4.
-        //--------------------------------
-
-        if(
-            stageIndex >=
-                this.stages.indexOf(
-                    "MISTY"
-                )
-        )
-        {
-
-            this.addUnique(
-
-                base.storyFlags,
-
-                "SILPH_CO_COMPLETED"
-
-            );
-
-        }
-
-
-        return base;
+        return this.progressionBuilder.buildStageState(
+            stage
+        );
 
     }
 
@@ -3866,34 +3787,14 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        const resolvedState =
+        return this.progressionBuilder.canPerformTradeEvolutionAtStage(
+
+            pokemon,
+
+            stage,
+
             state
-            ||
-            this.buildStageState(
-                stage
-            );
 
-
-        //--------------------------------
-        // A trade route exists only when
-        // the game is already at a point
-        // where trading is possible.
-        //
-        // FireRed trade access is not treated
-        // as a universal "Brock" property.
-        //--------------------------------
-
-        return (
-
-            resolvedState.keyItems.includes(
-                "SS_TICKET"
-            )
-            ||
-            stage ===
-                "POST_GAME"
-            ||
-            stage ===
-                "CHAMPION"
         );
 
     }
@@ -3913,43 +3814,14 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        if(
-            !this.hasExternalTradeRoute(
-                pokemon
-            )
-        )
-        {
+        return this.progressionBuilder.canPerformExternalTradeAtStage(
 
-            return false;
+            pokemon,
 
-        }
+            stage,
 
-
-        //--------------------------------
-        // External trade is represented
-        // as a post-early-game capability.
-        //
-        // The important distinction is
-        // that this is a trade route, not
-        // native FireRed evolution.
-        //--------------------------------
-
-        const resolvedState =
             state
-            ||
-            this.buildStageState(
-                stage
-            );
 
-
-        return (
-
-            resolvedState.keyItems.includes(
-                "SS_TICKET"
-            )
-            ||
-            stage ===
-                "POST_GAME"
         );
 
     }
@@ -3968,32 +3840,13 @@ class PokemonAvailabilityBuilder
     )
     {
 
-        if(
-            !Array.isArray(
-                array
-            )
-            ||
-            !value
-        )
-        {
+        return this.progressionBuilder.addUnique(
 
-            return;
+            array,
 
-        }
+            value
 
-
-        if(
-            !array.includes(
-                value
-            )
-        )
-        {
-
-            array.push(
-                value
-            );
-
-        }
+        );
 
     }
 
@@ -4008,26 +3861,123 @@ class PokemonAvailabilityBuilder
     getStartingLocations()
     {
 
-        const candidates =
-        [
+        return this.progressionBuilder.getStartingLocations();
 
-            "MAP_PALLET_TOWN",
-
-            "MAP_ROUTE1"
-
-        ];
+    }
 
 
-        return candidates.filter(
 
-            location =>
-                Boolean(
-                    this.locations[
-                        location
-                    ]
-                )
+
+
+    //--------------------------------
+    // Progression location adapter
+    //--------------------------------
+
+    getProgressionLocations(
+        species
+    )
+    {
+
+        return this.normalizeProgressionLocations(
+
+            this.getLocations(
+                species
+            )
 
         );
+
+    }
+
+
+
+
+
+    //--------------------------------
+    // Normalize progression locations
+    //--------------------------------
+
+    normalizeProgressionLocations(
+        locations = []
+    )
+    {
+
+        if(
+            !Array.isArray(
+                locations
+            )
+        )
+        {
+
+            return [];
+
+        }
+
+
+        return locations
+
+            .map(
+
+                location =>
+
+                {
+
+                    if(
+                        typeof location ===
+                            "string"
+                    )
+                    {
+
+                        return location;
+
+                    }
+
+
+                    if(
+                        location
+                        &&
+                        typeof location.location ===
+                            "string"
+                    )
+                    {
+
+                        return {
+
+                            ...location
+
+                        };
+
+                    }
+
+
+                    if(
+                        location
+                        &&
+                        typeof location.id ===
+                            "string"
+                    )
+                    {
+
+                        return {
+
+                            ...location,
+
+                            location:
+                                location.id
+
+                        };
+
+                    }
+
+
+                    return null;
+
+                }
+
+            )
+
+            .filter(
+                Boolean
+            );
 
     }
 

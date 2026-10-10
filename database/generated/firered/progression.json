@@ -11,6 +11,8 @@
       ],
       "storyFlags": [],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -29,6 +31,8 @@
       ],
       "storyFlags": [],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -47,6 +51,8 @@
       ],
       "storyFlags": [],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -65,6 +71,8 @@
       "abilities": [
         "CAN_USE_POKE_FLUTE"
       ],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -83,6 +91,8 @@
       "abilities": [
         "CAN_USE_POKE_FLUTE"
       ],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -101,6 +111,8 @@
       "abilities": [
         "CAN_USE_CUT"
       ],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -119,6 +131,8 @@
       "abilities": [
         "CAN_USE_CUT"
       ],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -137,6 +151,8 @@
       "abilities": [
         "CAN_USE_FLASH"
       ],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": []
@@ -153,6 +169,8 @@
       "abilities": [
         "CAN_USE_SURF"
       ],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": []
@@ -169,6 +187,8 @@
       "abilities": [
         "CAN_USE_SURF"
       ],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": []
@@ -185,6 +205,8 @@
       "abilities": [
         "CAN_USE_SURF"
       ],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": []
@@ -203,6 +225,8 @@
       "abilities": [
         "CAN_USE_SURF"
       ],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -229,11 +253,167 @@
         "SILPH_CO_COMPLETED"
       ],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
       "VIRIDIAN_GYM_AVAILABLE"
     ]
+  },
+  "TWO_ISLAND_ACCESS": {
+    "id": "TWO_ISLAND_ACCESS",
+    "eventId": null,
+    "location": "MAP_TWO_ISLAND",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [],
+      "anyOf": [
+        {
+          "badges": [],
+          "keyItems": [
+            "TRI_PASS"
+          ],
+          "storyFlags": [],
+          "abilities": [],
+          "anyOf": [],
+          "locations": [],
+          "conditions": {}
+        },
+        {
+          "badges": [],
+          "keyItems": [
+            "RAINBOW_PASS"
+          ],
+          "storyFlags": [],
+          "abilities": [],
+          "anyOf": [],
+          "locations": [],
+          "conditions": {}
+        }
+      ],
+      "locations": [],
+      "conditions": {}
+    },
+    "unlocks": []
+  },
+  "THREE_ISLAND_ACCESS": {
+    "id": "THREE_ISLAND_ACCESS",
+    "eventId": null,
+    "location": "MAP_THREE_ISLAND",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [],
+      "anyOf": [
+        {
+          "badges": [],
+          "keyItems": [
+            "TRI_PASS"
+          ],
+          "storyFlags": [],
+          "abilities": [],
+          "anyOf": [],
+          "locations": [],
+          "conditions": {}
+        },
+        {
+          "badges": [],
+          "keyItems": [
+            "RAINBOW_PASS"
+          ],
+          "storyFlags": [],
+          "abilities": [],
+          "anyOf": [],
+          "locations": [],
+          "conditions": {}
+        }
+      ],
+      "locations": [],
+      "conditions": {}
+    },
+    "unlocks": []
+  },
+  "FOUR_ISLAND_ACCESS": {
+    "id": "FOUR_ISLAND_ACCESS",
+    "eventId": null,
+    "location": "MAP_FOUR_ISLAND",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [
+        "RAINBOW_PASS"
+      ],
+      "storyFlags": [],
+      "abilities": [],
+      "anyOf": [],
+      "locations": [],
+      "conditions": {}
+    },
+    "unlocks": []
+  },
+  "FIVE_ISLAND_ACCESS": {
+    "id": "FIVE_ISLAND_ACCESS",
+    "eventId": null,
+    "location": "MAP_FIVE_ISLAND",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [
+        "RAINBOW_PASS"
+      ],
+      "storyFlags": [],
+      "abilities": [],
+      "anyOf": [],
+      "locations": [],
+      "conditions": {}
+    },
+    "unlocks": []
+  },
+  "SIX_ISLAND_ACCESS": {
+    "id": "SIX_ISLAND_ACCESS",
+    "eventId": null,
+    "location": "MAP_SIX_ISLAND",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [
+        "RAINBOW_PASS"
+      ],
+      "storyFlags": [
+        "FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE"
+      ],
+      "abilities": [],
+      "anyOf": [],
+      "locations": [],
+      "conditions": {}
+    },
+    "unlocks": []
+  },
+  "SEVEN_ISLAND_ACCESS": {
+    "id": "SEVEN_ISLAND_ACCESS",
+    "eventId": null,
+    "location": "MAP_SEVEN_ISLAND",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [
+        "RAINBOW_PASS"
+      ],
+      "storyFlags": [
+        "FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE"
+      ],
+      "abilities": [],
+      "anyOf": [],
+      "locations": [],
+      "conditions": {}
+    },
+    "unlocks": []
   },
   "VICTORY_ROAD_ACCESS": {
     "id": "VICTORY_ROAD_ACCESS",
@@ -254,12 +434,47 @@
       "keyItems": [],
       "storyFlags": [],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
-    "unlocks": [
-      "POKEMON_LEAGUE_ACCESS",
-      "VICTORY_ROAD_AVAILABLE"
-    ]
+    "unlocks": []
+  },
+  "VICTORY_ROAD_2F_ACCESS": {
+    "id": "VICTORY_ROAD_2F_ACCESS",
+    "eventId": null,
+    "location": "MAP_VICTORY_ROAD_2F",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [],
+      "anyOf": [],
+      "locations": [
+        "MAP_VICTORY_ROAD_1F"
+      ],
+      "conditions": {}
+    },
+    "unlocks": []
+  },
+  "VICTORY_ROAD_3F_ACCESS": {
+    "id": "VICTORY_ROAD_3F_ACCESS",
+    "eventId": null,
+    "location": "MAP_VICTORY_ROAD_3F",
+    "type": "HARD_GATE",
+    "requirement": {
+      "badges": [],
+      "keyItems": [],
+      "storyFlags": [],
+      "abilities": [],
+      "anyOf": [],
+      "locations": [
+        "MAP_VICTORY_ROAD_2F"
+      ],
+      "conditions": {}
+    },
+    "unlocks": []
   },
   "ELITE_FOUR_ACCESS": {
     "id": "ELITE_FOUR_ACCESS",
@@ -282,6 +497,8 @@
         "POKEMON_LEAGUE_ACCESS"
       ],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -298,6 +515,8 @@
       "keyItems": [],
       "storyFlags": [],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -316,6 +535,8 @@
       "keyItems": [],
       "storyFlags": [],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -335,6 +556,8 @@
       "keyItems": [],
       "storyFlags": [],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -354,6 +577,8 @@
       "keyItems": [],
       "storyFlags": [],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -373,6 +598,8 @@
       "keyItems": [],
       "storyFlags": [],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -391,6 +618,8 @@
         "SILPH_CO_COMPLETED"
       ],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -411,6 +640,8 @@
       "abilities": [
         "CAN_USE_SURF"
       ],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -437,6 +668,8 @@
         "SILPH_CO_COMPLETED"
       ],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -457,6 +690,8 @@
       ],
       "storyFlags": [],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -477,6 +712,8 @@
       ],
       "storyFlags": [],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -497,6 +734,8 @@
       ],
       "storyFlags": [],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -517,6 +756,8 @@
       ],
       "storyFlags": [],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -537,6 +778,8 @@
       ],
       "storyFlags": [],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -557,6 +800,8 @@
       "abilities": [
         "CAN_USE_CUT"
       ],
+      "anyOf": [],
+      "locations": [],
       "conditions": {
         "caughtPokemon": 10
       }
@@ -575,6 +820,8 @@
       "keyItems": [],
       "storyFlags": [],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -593,6 +840,8 @@
         "POKEMON_TOWER_COMPLETED"
       ],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -611,6 +860,8 @@
         "HALL_OF_FAME"
       ],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [
@@ -631,6 +882,8 @@
         "SAPPHIRE_OBTAINED"
       ],
       "abilities": [],
+      "anyOf": [],
+      "locations": [],
       "conditions": {}
     },
     "unlocks": [

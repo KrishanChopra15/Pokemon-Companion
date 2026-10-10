@@ -688,24 +688,27 @@ class CaptureFlow {
         };
 
 
-        return (
-
+        if(
             aliases[value]
-            ||
-            value.startsWith(
-                "ITEM_"
-            )
+        )
+        {
 
-                ?
+            return aliases[value];
 
-                value
+        }
 
-                :
 
-                "ITEM_" +
-                value
+        if(
+            value.startsWith("ITEM_")
+        )
+        {
 
-        );
+            return value;
+
+        }
+
+
+        return "ITEM_" + value;
 
     }
 

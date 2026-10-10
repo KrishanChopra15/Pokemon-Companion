@@ -17927,13 +17927,15 @@
                 "y": 15,
                 "elevation": 3
             },
-            "entityType": "HUMAN_NPC",
+            "entityType": "SPECIAL_ENCOUNTER",
             "significance": "HIGH",
             "roles": [
+                "SPECIAL_ENCOUNTER",
                 "STORY",
                 "PROGRESSION"
             ],
             "interactionTypes": [
+                "WILD_BATTLE",
                 "STORY_EVENT",
                 "CONDITIONAL"
             ],
@@ -17950,6 +17952,11 @@
                 "money": 0
             },
             "interactions": [
+                {
+                    "type": "WILD_BATTLE",
+                    "species": "LUGIA",
+                    "level": 70
+                },
                 {
                     "type": "STORY_EVENT",
                     "addStoryFlags": [

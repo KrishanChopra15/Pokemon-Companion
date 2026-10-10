@@ -349,6 +349,38 @@ class EventScriptEffectExtractor
 
 
         //--------------------------------
+        // Event Pokémon battles
+        //--------------------------------
+
+        for(
+            const battle of
+                body.matchAll(
+
+                    /seteventmon\s+SPECIES_([A-Z0-9_]+),\s*(\d+)/g
+
+                )
+        )
+        {
+
+            effects.battles.push({
+
+                type:
+                    "wild",
+
+                species:
+                    battle[1],
+
+                level:
+                    Number(
+                        battle[2]
+                    )
+
+            });
+
+        }
+
+
+        //--------------------------------
         // Trainer battles
         //--------------------------------
 

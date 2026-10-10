@@ -5,6 +5,9 @@
 
 "use strict";
 
+const requirements =
+    require("./requirements");
+
 
 module.exports =
 [
@@ -264,6 +267,9 @@ module.exports =
         type:
             "HARD_GATE",
 
+        accessRoot:
+            true,
+
         requirement:
         {
             abilities:
@@ -287,13 +293,16 @@ module.exports =
     {
         id:
             "SEAFOAM_ISLANDS_SURF_ACCESS",
-
+    
         location:
             "MAP_SEAFOAM_ISLANDS_1F",
-
+    
         type:
             "HARD_GATE",
-
+    
+        accessRoot:
+            true,
+    
         requirement:
         {
             abilities:
@@ -301,7 +310,7 @@ module.exports =
                 "CAN_USE_SURF"
             ]
         },
-
+    
         unlocks:
         []
     },
@@ -317,13 +326,16 @@ module.exports =
     {
         id:
             "POWER_PLANT_SURF_ACCESS",
-
+    
         location:
             "MAP_POWER_PLANT",
-
+    
         type:
             "HARD_GATE",
-
+    
+        accessRoot:
+            true,
+    
         requirement:
         {
             abilities:
@@ -331,7 +343,7 @@ module.exports =
                 "CAN_USE_SURF"
             ]
         },
-
+    
         unlocks:
         []
     },
@@ -412,12 +424,154 @@ module.exports =
 
 
     //--------------------------------
-    // Victory Road
+    // Sevii Islands
     //--------------------------------
 
     {
+        id: "TWO_ISLAND_ACCESS",
+        location: "MAP_TWO_ISLAND",
+        type: "HARD_GATE",
+        accessRoot: true,
+        requirement: {
+            anyOf: [
+                {
+                    keyItems: ["TRI_PASS"]
+                },
+                {
+                    keyItems: ["RAINBOW_PASS"]
+                }
+            ]
+        }
+    },
+    {
+        id: "THREE_ISLAND_ACCESS",
+        location: "MAP_THREE_ISLAND",
+        type: "HARD_GATE",
+        accessRoot: true,
+        requirement: {
+            anyOf: [
+                {
+                    keyItems: ["TRI_PASS"]
+                },
+                {
+                    keyItems: ["RAINBOW_PASS"]
+                }
+            ]
+        }
+    },
+
+
+    {
+        id: "FOUR_ISLAND_ACCESS",
+        location: "MAP_FOUR_ISLAND",
+        type: "HARD_GATE",
+        accessRoot: true,        
+        requirement:
+        {
+            keyItems:
+            [
+                "RAINBOW_PASS"
+            ]
+        },
+        unlocks: []
+    },
+
+
+    {
         id:
-            "VICTORY_ROAD_ACCESS",
+            "FIVE_ISLAND_ACCESS",
+
+        location:
+            "MAP_FIVE_ISLAND",
+
+        type:
+            "HARD_GATE",
+
+        accessRoot:
+            true,    
+
+        requirement:
+        {
+            keyItems:
+            [
+                "RAINBOW_PASS"
+            ]
+        },
+
+        unlocks:
+        []
+    },
+
+
+    {
+        id:
+            "SIX_ISLAND_ACCESS",
+
+        location:
+            "MAP_SIX_ISLAND",
+
+        type:
+            "HARD_GATE",
+
+        accessRoot:
+            true,    
+
+        requirement:
+        {
+            keyItems:
+            [
+                "RAINBOW_PASS"
+            ],
+        
+            storyFlags:
+            [
+                "FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE"
+            ]
+        },
+
+        unlocks:
+        []
+    },
+
+
+    {
+        id:
+            "SEVEN_ISLAND_ACCESS",
+
+        location:
+            "MAP_SEVEN_ISLAND",
+
+        type:
+            "HARD_GATE",
+
+        accessRoot:
+            true,    
+
+        requirement:
+        {
+            keyItems:
+            [
+                "RAINBOW_PASS"
+            ],
+        
+            storyFlags:
+            [
+                "FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE"
+            ]
+        },
+
+        unlocks:
+        []
+    },
+
+
+    //--------------------------------
+    // Victory Road
+    //--------------------------------
+
+
+    {
+        id: "VICTORY_ROAD_ACCESS",
 
         location:
             "MAP_VICTORY_ROAD_1F",
@@ -438,13 +592,43 @@ module.exports =
                 "VOLCANO_BADGE",
                 "EARTH_BADGE"
             ]
-        },
+        }
+    },
 
-        unlocks:
-        [
-            "POKEMON_LEAGUE_ACCESS",
-            "VICTORY_ROAD_AVAILABLE"
-        ]
+    {
+        id: "VICTORY_ROAD_2F_ACCESS",
+
+        location:
+            "MAP_VICTORY_ROAD_2F",
+
+        type:
+            "HARD_GATE",
+
+        requirement:
+        {
+            locations:
+            [
+                "MAP_VICTORY_ROAD_1F"
+            ]
+        }
+    },
+
+    {
+        id: "VICTORY_ROAD_3F_ACCESS",
+
+        location:
+            "MAP_VICTORY_ROAD_3F",
+
+        type:
+            "HARD_GATE",
+
+        requirement:
+        {
+            locations:
+            [
+                "MAP_VICTORY_ROAD_2F"
+            ]
+        }
     },
 
 

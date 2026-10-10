@@ -180,7 +180,7 @@ class BattleResultService {
     {
 
 
-        return (
+        return !!(
 
             battle
             &&

@@ -2257,7 +2257,11 @@
       },
       {
         "location": "MAP_ROUTE4",
-        "requirements": []
+        "requirements": [
+          {
+            "type": "BOULDER_BADGE"
+          }
+        ]
       },
       {
         "location": "MAP_ROUTE9",
@@ -3663,7 +3667,32 @@
     "music": "MUS_SEVII_45",
     "gates": {
       "soft": [],
-      "hard": []
+      "hard": [
+        {
+          "id": "FIVE_ISLAND_ACCESS",
+          "type": "HARD_GATE",
+          "scope": "PHYSICAL_ACCESS",
+          "accessRoot": true,
+          "requirement": {
+            "keyItems": [
+              "RAINBOW_PASS"
+            ]
+          },
+          "source": {
+            "type": "PRET_POKEFIRERED",
+            "repository": "pret/pokefirered",
+            "files": [
+              "data/maps/VermilionCity/scripts.inc",
+              "data/scripts/seagallop.inc",
+              "data/maps/OneIsland_PokemonCenter_1F/scripts.inc"
+            ],
+            "evidence": {
+              "rainbowState": "VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F >= 5",
+              "destination": "EventScript_SailToFiveIsland"
+            }
+          }
+        }
+      ]
     },
     "connections": [
       {
@@ -9176,7 +9205,32 @@
     "music": "MUS_SEVII_45",
     "gates": {
       "soft": [],
-      "hard": []
+      "hard": [
+        {
+          "id": "FOUR_ISLAND_ACCESS",
+          "type": "HARD_GATE",
+          "scope": "PHYSICAL_ACCESS",
+          "accessRoot": true,
+          "requirement": {
+            "keyItems": [
+              "RAINBOW_PASS"
+            ]
+          },
+          "source": {
+            "type": "PRET_POKEFIRERED",
+            "repository": "pret/pokefirered",
+            "files": [
+              "data/maps/VermilionCity/scripts.inc",
+              "data/scripts/seagallop.inc",
+              "data/maps/OneIsland_PokemonCenter_1F/scripts.inc"
+            ],
+            "evidence": {
+              "rainbowState": "VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F >= 5",
+              "destination": "EventScript_SailToFourIsland"
+            }
+          }
+        }
+      ]
     },
     "connections": [
       {
@@ -28912,7 +28966,11 @@
       },
       {
         "location": "MAP_CERULEAN_CITY",
-        "requirements": []
+        "requirements": [
+          {
+            "type": "BOULDER_BADGE"
+          }
+        ]
       },
       {
         "location": "MAP_MT_MOON_1F",
@@ -36927,7 +36985,32 @@
     "music": "MUS_SEVII_67",
     "gates": {
       "soft": [],
-      "hard": []
+      "hard": [
+        {
+          "id": "SEVEN_ISLAND_PHYSICAL_ACCESS",
+          "type": "HARD_GATE",
+          "scope": "PHYSICAL_ACCESS",
+          "accessRoot": true,
+          "requirement": {
+            "keyItems": [
+              "RAINBOW_PASS"
+            ]
+          },
+          "source": {
+            "type": "PRET_POKEFIRERED",
+            "repository": "pret/pokefirered",
+            "files": [
+              "data/maps/VermilionCity/scripts.inc",
+              "data/scripts/seagallop.inc",
+              "data/maps/OneIsland_PokemonCenter_1F/scripts.inc"
+            ],
+            "evidence": {
+              "rainbowState": "VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F >= 5",
+              "destination": "EventScript_SailToSevenIsland"
+            }
+          }
+        }
+      ]
     },
     "connections": [
       {
@@ -39916,7 +39999,32 @@
     "music": "MUS_SEVII_67",
     "gates": {
       "soft": [],
-      "hard": []
+      "hard": [
+        {
+          "id": "SIX_ISLAND_PHYSICAL_ACCESS",
+          "type": "HARD_GATE",
+          "scope": "PHYSICAL_ACCESS",
+          "accessRoot": true,
+          "requirement": {
+            "keyItems": [
+              "RAINBOW_PASS"
+            ]
+          },
+          "source": {
+            "type": "PRET_POKEFIRERED",
+            "repository": "pret/pokefirered",
+            "files": [
+              "data/maps/VermilionCity/scripts.inc",
+              "data/scripts/seagallop.inc",
+              "data/maps/OneIsland_PokemonCenter_1F/scripts.inc"
+            ],
+            "evidence": {
+              "rainbowState": "VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F >= 5",
+              "destination": "EventScript_SailToSixIsland"
+            }
+          }
+        }
+      ]
     },
     "connections": [
       {
@@ -44566,7 +44674,40 @@
     "music": "MUS_SEVII_123",
     "gates": {
       "soft": [],
-      "hard": []
+      "hard": [
+        {
+          "id": "THREE_ISLAND_ACCESS",
+          "type": "HARD_GATE",
+          "scope": "PHYSICAL_ACCESS",
+          "accessRoot": true,
+          "requirement": {
+            "anyOf": [
+              {
+                "keyItems": [
+                  "TRI_PASS"
+                ]
+              },
+              {
+                "keyItems": [
+                  "RAINBOW_PASS"
+                ]
+              }
+            ]
+          },
+          "source": {
+            "type": "PRET_POKEFIRERED",
+            "repository": "pret/pokefirered",
+            "files": [
+              "data/maps/VermilionCity/scripts.inc",
+              "data/scripts/seagallop.inc"
+            ],
+            "evidence": {
+              "preRainbowDestination": "EventScript_SailToThreeIsland2",
+              "rainbowDestination": "EventScript_SailToThreeIsland"
+            }
+          }
+        }
+      ]
     },
     "connections": [
       {
@@ -46548,7 +46689,40 @@
     "music": "MUS_SEVII_123",
     "gates": {
       "soft": [],
-      "hard": []
+      "hard": [
+        {
+          "id": "TWO_ISLAND_ACCESS",
+          "type": "HARD_GATE",
+          "scope": "PHYSICAL_ACCESS",
+          "accessRoot": true,
+          "requirement": {
+            "anyOf": [
+              {
+                "keyItems": [
+                  "TRI_PASS"
+                ]
+              },
+              {
+                "keyItems": [
+                  "RAINBOW_PASS"
+                ]
+              }
+            ]
+          },
+          "source": {
+            "type": "PRET_POKEFIRERED",
+            "repository": "pret/pokefirered",
+            "files": [
+              "data/maps/VermilionCity/scripts.inc",
+              "data/scripts/seagallop.inc"
+            ],
+            "evidence": {
+              "preRainbowDestination": "EventScript_SailToTwoIsland2",
+              "rainbowDestination": "EventScript_SailToTwoIsland"
+            }
+          }
+        }
+      ]
     },
     "connections": [
       {
@@ -48144,7 +48318,91 @@
     "music": "MUS_MT_MOON",
     "gates": {
       "soft": [],
-      "hard": []
+      "hard": [
+        {
+          "id": "VICTORY_ROAD_ACCESS",
+          "type": "HARD_GATE",
+          "scope": "PHYSICAL_ACCESS",
+          "requirement": {
+            "badges": [
+              "BOULDER_BADGE",
+              "CASCADE_BADGE",
+              "THUNDER_BADGE",
+              "RAINBOW_BADGE",
+              "SOUL_BADGE",
+              "MARSH_BADGE",
+              "VOLCANO_BADGE",
+              "EARTH_BADGE"
+            ]
+          },
+          "source": {
+            "type": "PRET_POKEFIRERED",
+            "repository": "pret/pokefirered",
+            "files": [
+              "data/scripts/route23.inc",
+              "data/maps/Route23/map.json",
+              "data/maps/Route22_NorthEntrance/scripts.inc",
+              "data/maps/Route22_NorthEntrance/map.json"
+            ],
+            "evidence": {
+              "route23BadgeCases": {
+                "1": {
+                  "badge": "BOULDER_BADGE",
+                  "script": "BoulderBadge",
+                  "flag": "FLAG_BADGE01_GET"
+                },
+                "2": {
+                  "badge": "CASCADE_BADGE",
+                  "script": "CascadeBadge",
+                  "flag": "FLAG_BADGE02_GET"
+                },
+                "3": {
+                  "badge": "THUNDER_BADGE",
+                  "script": "ThunderBadge",
+                  "flag": "FLAG_BADGE03_GET"
+                },
+                "4": {
+                  "badge": "RAINBOW_BADGE",
+                  "script": "RainbowBadge",
+                  "flag": "FLAG_BADGE04_GET"
+                },
+                "5": {
+                  "badge": "SOUL_BADGE",
+                  "script": "SoulBadge",
+                  "flag": "FLAG_BADGE05_GET"
+                },
+                "6": {
+                  "badge": "MARSH_BADGE",
+                  "script": "MarshBadge",
+                  "flag": "FLAG_BADGE06_GET"
+                },
+                "7": {
+                  "badge": "VOLCANO_BADGE",
+                  "script": "VolcanoBadge",
+                  "flag": "FLAG_BADGE07_GET"
+                },
+                "8": {
+                  "badge": "EARTH_BADGE",
+                  "script": "EarthBadge",
+                  "flag": "FLAG_BADGE08_GET"
+                }
+              },
+              "route23VictoryRoadWarp": {
+                "x": 5,
+                "y": 28,
+                "elevation": 3,
+                "destination": "MAP_VICTORY_ROAD_1F",
+                "destinationWarp": "1"
+              },
+              "boulderEntrance": {
+                "map": "MAP_ROUTE22_NORTH_ENTRANCE",
+                "script": "Route22_NorthEntrance_EventScript_BoulderBadgeGuard",
+                "varValue": 1
+              }
+            }
+          }
+        }
+      ]
     },
     "connections": [
       {

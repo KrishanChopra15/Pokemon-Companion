@@ -32,16 +32,14 @@ class PokemonTrackerService {
 
 
 
-    constructor()
+    constructor(
+        session
+    )
     {
 
 
-        this.pokemon =
-            [];
-
-
-        this.nextId =
-            1;
+        this.session =
+            session;
 
 
     }
@@ -105,125 +103,97 @@ class PokemonTrackerService {
 
 
 
+        const state =
+            this.session
+                .getState();
+
+
         //--------------------------------
         // Preserve individual Pokémon
-        // state.
+        // state on the same object.
         //--------------------------------
 
-        const trackedPokemon =
-        {
 
-            ...pokemon,
-
-
-            //--------------------------------
-            // Tracker-specific ID
-            //--------------------------------
-
-            trackerId:
-
-                this.nextId++,
+        pokemon.trackerId =
+            state.nextPokemonId++;
 
 
-            //--------------------------------
-            // Preserve existing Pokémon ID
-            // when one exists.
-            //--------------------------------
-
-            id:
-
-                pokemon.id
-                ??
-                null,
+        pokemon.id =
+            pokemon.id
+            ??
+            null;
 
 
-            species:
-
-                pokemon.species,
-
-
-            nickname:
-
-                pokemon.nickname
-                ??
-                null,
+        pokemon.species =
+            pokemon.species;
 
 
-            level:
-
-                pokemon.level
-                ??
-                1,
-
-
-            exp:
-
-                pokemon.exp
-                ??
-                0,
+        pokemon.nickname =
+            pokemon.nickname
+            ??
+            null;
 
 
-            friendship:
-
-                pokemon.friendship
-                ??
-                70,
-
-
-            ball:
-
-                pokemon.ball
-                ??
-                pokemon.captureBall
-                ??
-                null,
+        pokemon.level =
+            pokemon.level
+            ??
+            1;
 
 
-            metLocation:
-
-                pokemon.metLocation
-                ??
-                pokemon.location
-                ??
-                null,
+        pokemon.exp =
+            pokemon.exp
+            ??
+            0;
 
 
-            moves:
+        pokemon.friendship =
+            pokemon.friendship
+            ??
+            70;
 
-                Array.isArray(
-                    pokemon.moves
-                )
 
-                ?
+        pokemon.ball =
+            pokemon.ball
+            ??
+            pokemon.captureBall
+            ??
+            null;
 
+
+        pokemon.metLocation =
+            pokemon.metLocation
+            ??
+            pokemon.location
+            ??
+            null;
+
+
+        pokemon.moves =
+            Array.isArray(
                 pokemon.moves
-
-                :
-
-                [],
-
-
-            seen:
-
-                pokemon.seen
-                ??
-                true,
+            )
+            ?
+            pokemon.moves
+            :
+            [];
 
 
-            caught:
+        pokemon.seen =
+            pokemon.seen
+            ??
+            true;
 
-                pokemon.caught
-                ??
-                true,
+
+        pokemon.caught =
+            pokemon.caught
+            ??
+            true;
 
 
-            favorite:
-
-                pokemon.favorite
-                ??
-                false
-
-        };
+        pokemon.favorite =
+            pokemon.favorite
+            ??
+            false;
 
 
 
@@ -232,10 +202,14 @@ class PokemonTrackerService {
 
 
 
-        this.pokemon.push(
+        //--------------------------------
+        // Store the same Pokémon object
+        // in the session.
+        //--------------------------------
 
-            trackedPokemon
 
+        state.pokemon.push(
+            pokemon
         );
 
 
@@ -247,14 +221,9 @@ class PokemonTrackerService {
 
         return {
 
-
             success:true,
 
-
-            pokemon:
-
-                trackedPokemon
-
+            pokemon
 
         };
 
@@ -280,9 +249,37 @@ class PokemonTrackerService {
     {
 
 
-        const index =
-            this.findIndexById(
+        const state =
+            this.session
+                .getState();
+
+
+        const pokemon =
+            this.getPokemon(
                 id
+            );
+
+
+        if(
+            !pokemon
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Pokemon not found"
+
+            };
+
+        }
+
+
+        const index =
+            state.pokemon.indexOf(
+                pokemon
             );
 
 
@@ -310,7 +307,7 @@ class PokemonTrackerService {
 
 
         const removed =
-            this.pokemon.splice(
+            state.pokemon.splice(
 
                 index,
 
@@ -327,14 +324,10 @@ class PokemonTrackerService {
 
         return {
 
-
             success:true,
 
-
             pokemon:
-
                 removed
-
 
         };
 
@@ -357,7 +350,11 @@ class PokemonTrackerService {
     getAll()
     {
 
-        return this.pokemon;
+
+        return this.session
+            .getState()
+            .pokemon;
+
 
     }
 
@@ -390,11 +387,17 @@ class PokemonTrackerService {
         }
 
 
-        return this.pokemon.filter(
+        const pokemon =
+            this.session
+                .getState()
+                .pokemon;
 
-            pokemon =>
 
-                pokemon.species ===
+        return pokemon.filter(
+
+            item =>
+
+                item.species ===
 
                 String(
                     species
@@ -424,16 +427,23 @@ class PokemonTrackerService {
     {
 
 
+        const pokemon =
+            this.session
+                .getState()
+                .pokemon;
+
+
         //--------------------------------
         // Support tracker ID
         //--------------------------------
 
+
         const trackerPokemon =
-            this.pokemon.find(
+            pokemon.find(
 
-                pokemon =>
+                item =>
 
-                    pokemon.trackerId ===
+                    item.trackerId ===
                     id
 
             );
@@ -449,15 +459,22 @@ class PokemonTrackerService {
         }
 
 
+
+
+
+
+
+
         //--------------------------------
         // Support Pokémon ID
         //--------------------------------
 
-        return this.pokemon.find(
 
-            pokemon =>
+        return pokemon.find(
 
-                pokemon.id ===
+            item =>
+
+                item.id ===
                 id
 
         )
@@ -465,6 +482,7 @@ class PokemonTrackerService {
         ||
 
         null;
+
 
     }
 
@@ -487,12 +505,18 @@ class PokemonTrackerService {
     {
 
 
+        const pokemon =
+            this.session
+                .getState()
+                .pokemon;
+
+
         const trackerIndex =
-            this.pokemon.findIndex(
+            pokemon.findIndex(
 
-                pokemon =>
+                item =>
 
-                    pokemon.trackerId ===
+                    item.trackerId ===
                     id
 
             );
@@ -508,14 +532,15 @@ class PokemonTrackerService {
         }
 
 
-        return this.pokemon.findIndex(
+        return pokemon.findIndex(
 
-            pokemon =>
+            item =>
 
-                pokemon.id ===
+                item.id ===
                 id
 
         );
+
 
     }
 
@@ -541,16 +566,8 @@ class PokemonTrackerService {
 
         const pokemon =
             this.getPokemon(
-
                 id
-
             );
-
-
-
-
-
-
 
 
         if(
@@ -622,6 +639,7 @@ class PokemonTrackerService {
         // update when one is supplied.
         //--------------------------------
 
+
         if(
             updates.friendship !==
                 undefined
@@ -671,12 +689,9 @@ class PokemonTrackerService {
 
         return {
 
-
             success:true,
 
-
             pokemon
-
 
         };
 
@@ -704,16 +719,8 @@ class PokemonTrackerService {
 
         const pokemon =
             this.getPokemon(
-
                 id
-
             );
-
-
-
-
-
-
 
 
         if(
@@ -751,12 +758,9 @@ class PokemonTrackerService {
 
         return {
 
-
             success:true,
 
-
             pokemon
-
 
         };
 
@@ -784,16 +788,8 @@ class PokemonTrackerService {
 
         const pokemon =
             this.findPokemon(
-
                 species
-
             );
-
-
-
-
-
-
 
 
         pokemon.forEach(
@@ -813,14 +809,10 @@ class PokemonTrackerService {
 
         return {
 
-
             success:true,
 
-
             count:
-
                 pokemon.length
-
 
         };
 
@@ -839,25 +831,33 @@ class PokemonTrackerService {
     // Count different caught species
     //--------------------------------
 
+
     getCaughtSpeciesCount()
     {
+
 
         const species =
             new Set();
 
 
+        const pokemon =
+            this.session
+                .getState()
+                .pokemon;
+
+
         for(
-            const pokemon of
-                this.pokemon
+            const item of
+                pokemon
         )
         {
 
             if(
-                !pokemon
+                !item
                 ||
-                !pokemon.caught
+                !item.caught
                 ||
-                !pokemon.species
+                !item.species
             )
             {
 
@@ -867,13 +867,14 @@ class PokemonTrackerService {
 
 
             species.add(
-                pokemon.species
+                item.species
             );
 
         }
 
 
         return species.size;
+
 
     }
 
@@ -894,40 +895,43 @@ class PokemonTrackerService {
     {
 
 
+        const pokemon =
+            this.session
+                .getState()
+                .pokemon;
+
+
         return {
 
-
             total:
-
-                this.pokemon.length,
-
+                pokemon.length,
 
             caught:
+                pokemon.filter(
 
-                this.pokemon.filter(
+                    item =>
 
-                    pokemon =>
-
-                        pokemon.caught
+                        item.caught
 
                 ).length,
 
-
             favorites:
+                pokemon.filter(
 
-                this.pokemon.filter(
+                    item =>
 
-                    pokemon =>
-
-                        pokemon.favorite
+                        item.favorite
 
                 ).length
-
 
         };
 
 
     }
+
+
+
+
 
 
 

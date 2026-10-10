@@ -35,24 +35,172 @@ class SaveData {
             1;
 
 
-
         this.createdAt =
             Date.now();
-
 
 
         this.game =
             session.game;
 
 
+        //--------------------------------
+        // Capture an independent snapshot
+        //--------------------------------
+
+        const seen =
+            new WeakMap();
+
 
         this.player =
-            session.getPlayer();
+            this.cloneSnapshot(
 
+                session.getPlayer(),
+
+                seen
+
+            );
 
 
         this.state =
-            session.getState();
+            this.cloneSnapshot(
+
+                session.getState(),
+
+                seen
+
+            );
+
+
+    }
+
+
+
+
+
+
+
+
+
+    //--------------------------------
+    // Clone snapshot
+    //
+    // Copies state without retaining
+    // references to live game objects.
+    //
+    // WeakMap preserves shared references
+    // between Pokémon, team, and active
+    // Pokémon state.
+    //--------------------------------
+
+
+    cloneSnapshot(
+        value,
+        seen
+    )
+    {
+
+
+        //--------------------------------
+        // Primitive values
+        //--------------------------------
+
+        if(
+            value === null
+            ||
+            typeof value !== "object"
+        )
+        {
+
+            return value;
+
+        }
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Previously cloned object
+        //--------------------------------
+
+        if(
+            seen.has(
+                value
+            )
+        )
+        {
+
+            return seen.get(
+                value
+            );
+
+        }
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Create matching container
+        //--------------------------------
+
+        const result =
+            Array.isArray(
+                value
+            )
+            ?
+            []
+            :
+            {};
+
+
+        seen.set(
+            value,
+            result
+        );
+
+
+
+
+
+
+
+
+        //--------------------------------
+        // Copy properties recursively
+        //--------------------------------
+
+        for(
+            const key of
+                Object.keys(value)
+        )
+        {
+
+            result[key] =
+                this.cloneSnapshot(
+
+                    value[key],
+
+                    seen
+
+                );
+
+        }
+
+
+
+
+
+
+
+
+        return result;
 
 
     }

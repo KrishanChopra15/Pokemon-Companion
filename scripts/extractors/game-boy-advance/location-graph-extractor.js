@@ -850,6 +850,45 @@ class LocationGraphExtractor
 
 
 
+        //--------------------------------
+        // Route 4 east exit
+        //
+        // Route 4 is represented as one
+        // map even though Mt. Moon sits
+        // between its western and eastern
+        // portions.
+        //
+        // Reaching Cerulean from Route 4
+        // therefore requires the Boulder
+        // Badge, which represents having
+        // completed the Mt. Moon passage.
+        //--------------------------------
+
+        if(
+            (
+                sourceLocation ===
+                    "MAP_ROUTE4"
+                &&
+                destinationLocation ===
+                    "MAP_CERULEAN_CITY"
+            )
+            ||
+            (
+                sourceLocation ===
+                    "MAP_CERULEAN_CITY"
+                &&
+                destinationLocation ===
+                    "MAP_ROUTE4"
+            )
+        )
+        {
+
+            return "BOULDER_BADGE";
+
+        }
+
+
+
         return null;
 
     }

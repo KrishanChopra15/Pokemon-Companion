@@ -28,10 +28,16 @@ class WorldStateService {
 
 
 
-    constructor(game = "firered") {
+    constructor(
+        game = "firered",
+        progressionService = null
+    )
+    {
 
 
         this.progressionService =
+            progressionService
+            ||
             new ProgressionService(
                 game
             );
@@ -52,14 +58,14 @@ class WorldStateService {
     canShowEvent(
         event,
         trainerState
-    ) {
-
+    )
+    {
 
 
         if(
             !event
-        ) {
-
+        )
+        {
 
             return {
 
@@ -69,7 +75,6 @@ class WorldStateService {
                     "No event data"
 
             };
-
 
         }
 
@@ -88,8 +93,8 @@ class WorldStateService {
             trainerState.hasCompletedEvent(
                 event.id
             )
-        ) {
-
+        )
+        {
 
             return {
 
@@ -99,7 +104,6 @@ class WorldStateService {
                     "Event completed"
 
             };
-
 
         }
 
@@ -125,32 +129,27 @@ class WorldStateService {
 
         for(
             const flag of
-            conditions.requireStoryFlags || []
-        ) {
-
+                conditions.requireStoryFlags || []
+        )
+        {
 
             if(
                 !trainerState.hasStoryFlag(
                     flag
                 )
-            ) {
-
+            )
+            {
 
                 return {
 
-
                     visible:false,
-
 
                     reason:
                         `Missing ${flag}`
 
-
                 };
 
-
             }
-
 
         }
 
@@ -167,32 +166,27 @@ class WorldStateService {
 
         for(
             const flag of
-            conditions.excludeStoryFlags || []
-        ) {
-
+                conditions.excludeStoryFlags || []
+        )
+        {
 
             if(
                 trainerState.hasStoryFlag(
                     flag
                 )
-            ) {
-
+            )
+            {
 
                 return {
 
-
                     visible:false,
-
 
                     reason:
                         `Blocked by ${flag}`
 
-
                 };
 
-
             }
-
 
         }
 
@@ -209,8 +203,8 @@ class WorldStateService {
 
         if(
             conditions.progression
-        ) {
-
+        )
+        {
 
             const result =
                 this.progressionService.canUnlock(
@@ -222,27 +216,21 @@ class WorldStateService {
                 );
 
 
-
             if(
                 !result.allowed
-            ) {
-
+            )
+            {
 
                 return {
 
-
                     visible:false,
-
 
                     reason:
                         result.reason
 
-
                 };
 
-
             }
-
 
         }
 
@@ -253,9 +241,7 @@ class WorldStateService {
 
         return {
 
-
             visible:true
-
 
         };
 
@@ -278,26 +264,23 @@ class WorldStateService {
     canShowNPC(
         npc,
         trainerState
-    ) {
+    )
+    {
 
 
         if(
             !npc
-        ) {
-
+        )
+        {
 
             return {
 
-
                 visible:false,
-
 
                 reason:
                     "No NPC data"
 
-
             };
-
 
         }
 
@@ -314,21 +297,17 @@ class WorldStateService {
                 npc.hiddenAfterEvent
 
             )
-        ) {
-
+        )
+        {
 
             return {
 
-
                 visible:false,
-
 
                 reason:
                     "NPC removed after event"
 
-
             };
-
 
         }
 
@@ -338,8 +317,8 @@ class WorldStateService {
 
         if(
             npc.conditions
-        ) {
-
+        )
+        {
 
             return this.checkConditions(
 
@@ -349,7 +328,6 @@ class WorldStateService {
 
             );
 
-
         }
 
 
@@ -358,9 +336,7 @@ class WorldStateService {
 
         return {
 
-
             visible:true
-
 
         };
 
@@ -382,26 +358,23 @@ class WorldStateService {
     canShowObject(
         object,
         trainerState
-    ) {
+    )
+    {
 
 
         if(
             !object
-        ) {
-
+        )
+        {
 
             return {
 
-
                 visible:false,
-
 
                 reason:
                     "No object data"
 
-
             };
-
 
         }
 
@@ -417,21 +390,17 @@ class WorldStateService {
                 object.hiddenAfterEvent
 
             )
-        ) {
-
+        )
+        {
 
             return {
 
-
                 visible:false,
-
 
                 reason:
                     "Object removed after event"
 
-
             };
-
 
         }
 
@@ -441,8 +410,8 @@ class WorldStateService {
 
         if(
             object.conditions
-        ) {
-
+        )
+        {
 
             return this.checkConditions(
 
@@ -452,7 +421,6 @@ class WorldStateService {
 
             );
 
-
         }
 
 
@@ -461,9 +429,7 @@ class WorldStateService {
 
         return {
 
-
             visible:true
-
 
         };
 
@@ -485,38 +451,33 @@ class WorldStateService {
     checkConditions(
         conditions,
         trainerState
-    ) {
-
+    )
+    {
 
 
         for(
             const flag of
-            conditions.requireStoryFlags || []
-        ) {
-
+                conditions.requireStoryFlags || []
+        )
+        {
 
             if(
                 !trainerState.hasStoryFlag(
                     flag
                 )
-            ) {
-
+            )
+            {
 
                 return {
 
-
                     visible:false,
-
 
                     reason:
                         `Missing ${flag}`
 
-
                 };
 
-
             }
-
 
         }
 
@@ -527,32 +488,27 @@ class WorldStateService {
 
         for(
             const flag of
-            conditions.excludeStoryFlags || []
-        ) {
-
+                conditions.excludeStoryFlags || []
+        )
+        {
 
             if(
                 trainerState.hasStoryFlag(
                     flag
                 )
-            ) {
-
+            )
+            {
 
                 return {
 
-
                     visible:false,
-
 
                     reason:
                         `Blocked by ${flag}`
 
-
                 };
 
-
             }
-
 
         }
 
@@ -563,9 +519,7 @@ class WorldStateService {
 
         return {
 
-
             visible:true
-
 
         };
 
@@ -586,29 +540,20 @@ class WorldStateService {
 
     getWorldState(
         trainerState
-    ) {
+    )
+    {
 
 
         return {
 
-
             completedEvents:
-
                 trainerState.completedEvents || [],
 
-
-
             storyFlags:
-
                 trainerState.storyFlags || [],
 
-
-
             eventStates:
-
                 trainerState.eventStates || {}
-
-
 
         };
 

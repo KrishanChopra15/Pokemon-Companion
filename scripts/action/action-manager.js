@@ -47,18 +47,18 @@ class ActionManager {
 
         const record =
         {
-
+        
+            ...action,
+        
+        
             id:
                 this.nextId++,
-
-
+        
+        
             timestamp:
-                Date.now(),
-
-
-            ...action
-
-
+                Date.now()
+        
+        
         };
 
 

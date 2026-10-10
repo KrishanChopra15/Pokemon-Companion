@@ -27,12 +27,15 @@ class PlayerManager {
 
 
 
-    constructor()
+    constructor(
+        session
+    )
     {
 
-        this.players = [];
 
-        this.nextId = 1;
+        this.session =
+            session;
+
 
     }
 
@@ -84,42 +87,19 @@ class PlayerManager {
         {
 
             id:
-
-                this.nextId++,
+                1,
 
 
             name:
-
                 name,
 
 
             createdAt:
-
                 Date.now(),
 
 
             starter:
-
-                null,
-
-
-            trainerState:
-
-            {
-
-                badges:[],
-
-                team:[],
-
-                inventory:[],
-
-                storyFlags:[],
-
-                currentLocation:
-                    "PALLET_TOWN"
-
-            }
-
+                null
 
         };
 
@@ -130,11 +110,10 @@ class PlayerManager {
 
 
 
-        this.players.push(
-
-            player
-
-        );
+        this.session
+            .setPlayer(
+                player
+            );
 
 
 
@@ -172,17 +151,35 @@ class PlayerManager {
     )
     {
 
-        return this.players.find(
 
-            player =>
+        const player =
+            this.session
+                .getPlayer();
 
-                player.id === id
 
+        if(
+            !player
         )
+        {
 
-        ||
+            return null;
 
-        null;
+        }
+
+
+        if(
+            id !== undefined
+            &&
+            player.id !== id
+        )
+        {
+
+            return null;
+
+        }
+
+
+        return player;
 
     }
 
@@ -202,7 +199,25 @@ class PlayerManager {
     getAllPlayers()
     {
 
-        return this.players;
+
+        const player =
+            this.session
+                .getPlayer();
+
+
+        if(
+            !player
+        )
+        {
+
+            return [];
+
+        }
+
+
+        return [
+            player
+        ];
 
     }
 
@@ -295,7 +310,6 @@ class PlayerManager {
             );
 
 
-
         if(
             !player
         )
@@ -307,6 +321,32 @@ class PlayerManager {
 
                 reason:
                     "Player not found"
+
+            };
+
+        }
+
+
+
+
+
+
+
+
+        if(
+            !updates
+            ||
+            typeof updates !==
+                "object"
+        )
+        {
+
+            return {
+
+                success:false,
+
+                reason:
+                    "Invalid updates"
 
             };
 

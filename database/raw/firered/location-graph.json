@@ -351,7 +351,11 @@
         {
             "location": "MAP_ROUTE4",
             "type": "CONNECTION",
-            "requirements": [],
+            "requirements": [
+                {
+                    "type": "BOULDER_BADGE"
+                }
+            ],
             "metadata": {
                 "direction": "left",
                 "offset": 10,
@@ -5040,7 +5044,11 @@
         {
             "location": "MAP_CERULEAN_CITY",
             "type": "CONNECTION",
-            "requirements": [],
+            "requirements": [
+                {
+                    "type": "BOULDER_BADGE"
+                }
+            ],
             "metadata": {
                 "direction": "right",
                 "offset": -10,

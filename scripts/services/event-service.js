@@ -24,50 +24,37 @@
 
 "use strict";
 
-
 const fs =
     require("fs");
-
 
 const path =
     require("path");
 
-
 const GameEvent =
     require("../domain/game-event");
-
 
 const EventChoice =
     require("../domain/event-choice");
 
-
 const RewardService =
     require("./reward-service");
-
 
 const WorldStateService =
     require("./world-state-service");
 
-
-
-
-
 class EventService {
-
-
 
     constructor(
         game = "firered",
         progressionService = null,
-        pokemonTracker = null
+        pokemonTracker = null,
+        worldStateService = null
     )
     {
-
 
         //--------------------------------
         // Events database
         //--------------------------------
-
 
         const eventFile =
             path.join(
@@ -84,8 +71,6 @@ class EventService {
 
             );
 
-
-
         if(
             !fs.existsSync(eventFile)
         )
@@ -96,10 +81,6 @@ class EventService {
             );
 
         }
-
-
-
-
 
         const data =
             JSON.parse(
@@ -114,10 +95,6 @@ class EventService {
 
             );
 
-
-
-
-
         this.events =
             data.map(
 
@@ -129,16 +106,9 @@ class EventService {
 
             );
 
-
-
-
-
-
-
         //--------------------------------
         // Story Event Mapping
         //--------------------------------
-
 
         const mappingFile =
             path.join(
@@ -154,10 +124,6 @@ class EventService {
                 "story-event-map.json"
 
             );
-
-
-
-
 
         this.storyEventMap =
             fs.existsSync(mappingFile)
@@ -180,50 +146,32 @@ class EventService {
 
             {};
 
-
-
-
-
-
-
-
         //--------------------------------
         // Services
         //--------------------------------
 
-
         this.rewardService =
             new RewardService();
 
-
-
         this.worldStateService =
-            new WorldStateService();
-
-
+            worldStateService
+            ||
+            new WorldStateService(
+                game,
+                progressionService
+            );
 
         this.progression =
             progressionService;
-
-
 
         this.pokemonTracker =
             pokemonTracker;
 
     }
 
-
-
-
-
-
-
-
-
     //--------------------------------
     // Create domain objects
     //--------------------------------
-
 
     createEvent(
         data
@@ -236,10 +184,6 @@ class EventService {
 
     }
 
-
-
-
-
     createChoice(
         data
     )
@@ -251,40 +195,26 @@ class EventService {
 
     }
 
-
-
-
-
-
-
-
-
     //--------------------------------
     // Find events
     //--------------------------------
-
 
     getEvent(
         id
     )
     {
 
-
         //--------------------------------
         // Story alias lookup
         //--------------------------------
 
-
         const mapped =
             this.storyEventMap[id];
-
-
 
         if(
             mapped
         )
         {
-
 
             return (
 
@@ -302,19 +232,11 @@ class EventService {
 
             );
 
-
         }
-
-
-
-
-
-
 
         //--------------------------------
         // Direct ROM event lookup
         //--------------------------------
-
 
         return (
 
@@ -332,16 +254,7 @@ class EventService {
 
         );
 
-
     }
-
-
-
-
-
-
-
-
 
     getEventsByLocation(
         location
@@ -358,12 +271,6 @@ class EventService {
 
     }
 
-
-
-
-
-
-
     getEventsByNPC(
         npc
     )
@@ -379,14 +286,6 @@ class EventService {
 
     }
 
-
-
-
-
-
-
-
-
     //--------------------------------
     // Find progression for event
     //--------------------------------
@@ -399,12 +298,10 @@ class EventService {
     // data-driven.
     //--------------------------------
 
-
     getEventProgression(
         event
     )
     {
-
 
         if(
             !event
@@ -421,8 +318,6 @@ class EventService {
 
         }
 
-
-
         const progressions =
             Object.values(
 
@@ -430,8 +325,6 @@ class EventService {
                     .getAllProgression()
 
             );
-
-
 
         return (
 
@@ -456,18 +349,9 @@ class EventService {
 
     }
 
-
-
-
-
-
-
-
-
     //--------------------------------
     // Check event progression
     //--------------------------------
-
 
     checkEventProgression(
         event,
@@ -475,13 +359,10 @@ class EventService {
     )
     {
 
-
         const progression =
             this.getEventProgression(
                 event
             );
-
-
 
         //--------------------------------
         // No mapped progression
@@ -490,7 +371,6 @@ class EventService {
         // Ordinary ROM events continue
         // normally.
         //--------------------------------
-
 
         if(
             !progression
@@ -507,12 +387,9 @@ class EventService {
 
         }
 
-
-
         //--------------------------------
         // Build requirement context
         //--------------------------------
-
 
         const context =
         {
@@ -522,12 +399,9 @@ class EventService {
 
         };
 
-
-
         //--------------------------------
         // Evaluate requirement
         //--------------------------------
-
 
         if(
             !this.progression
@@ -552,8 +426,6 @@ class EventService {
 
         }
 
-
-
         const result =
             this.progression
                 .checkRequirement(
@@ -565,8 +437,6 @@ class EventService {
                     context
 
                 );
-
-
 
         if(
             !result.allowed
@@ -587,8 +457,6 @@ class EventService {
 
         }
 
-
-
         return {
 
             allowed:true,
@@ -602,18 +470,9 @@ class EventService {
 
     }
 
-
-
-
-
-
-
-
-
     //--------------------------------
     // Execute event
     //--------------------------------
-
 
     executeEvent(
         event,
@@ -621,11 +480,9 @@ class EventService {
     )
     {
 
-
         //--------------------------------
         // Validate event
         //--------------------------------
-
 
         if(
             !event
@@ -643,8 +500,6 @@ class EventService {
 
         }
 
-
-
         if(
             !trainerState
         )
@@ -661,16 +516,9 @@ class EventService {
 
         }
 
-
-
-
-
-
-
         //--------------------------------
         // World visibility
         //--------------------------------
-
 
         const visibility =
             this.worldStateService.canShowEvent(
@@ -680,8 +528,6 @@ class EventService {
                 trainerState
 
             );
-
-
 
         if(
             !visibility.visible
@@ -699,16 +545,9 @@ class EventService {
 
         }
 
-
-
-
-
-
-
         //--------------------------------
         // Normal event requirements
         //--------------------------------
-
 
         const check =
             this.canTrigger(
@@ -718,8 +557,6 @@ class EventService {
                 trainerState
 
             );
-
-
 
         if(
             !check.allowed
@@ -737,12 +574,6 @@ class EventService {
 
         }
 
-
-
-
-
-
-
         //--------------------------------
         // Companion progression requirement
         //--------------------------------
@@ -759,7 +590,6 @@ class EventService {
         // ROM-derived rewards/effects.
         //--------------------------------
 
-
         const progressionCheck =
             this.checkEventProgression(
 
@@ -768,8 +598,6 @@ class EventService {
                 trainerState
 
             );
-
-
 
         if(
             !progressionCheck.allowed
@@ -790,23 +618,14 @@ class EventService {
 
         }
 
-
-
-
-
-
-
-
         //--------------------------------
         // Rewards
         //--------------------------------
-
 
         for(
             const reward of event.rewards || []
         )
         {
-
 
             this.rewardService.execute(
 
@@ -816,32 +635,18 @@ class EventService {
 
             );
 
-
         }
-
-
-
-
-
-
-
 
         //--------------------------------
         // Effects
         //--------------------------------
 
-
         const effects =
             event.effects || {};
-
-
-
-
 
         //--------------------------------
         // Key items
         //--------------------------------
-
 
         for(
             const item of
@@ -858,7 +663,6 @@ class EventService {
 
             }
 
-
             trainerState.addKeyItem(
 
                 item
@@ -867,17 +671,9 @@ class EventService {
 
         }
 
-
-
-
-
-
-
-
         //--------------------------------
         // Normal items
         //--------------------------------
-
 
         for(
             const item of
@@ -893,8 +689,6 @@ class EventService {
                 continue;
 
             }
-
-
 
             if(
                 typeof item ===
@@ -914,8 +708,6 @@ class EventService {
 
             }
 
-
-
             trainerState.addItem(
 
                 item.id
@@ -930,17 +722,9 @@ class EventService {
 
         }
 
-
-
-
-
-
-
-
         //--------------------------------
         // Pokémon
         //--------------------------------
-
 
         for(
             const pokemon of
@@ -957,8 +741,6 @@ class EventService {
 
             }
 
-
-
             trainerState.addPokemon(
 
                 pokemon
@@ -967,17 +749,9 @@ class EventService {
 
         }
 
-
-
-
-
-
-
-
         //--------------------------------
         // Money
         //--------------------------------
-
 
         if(
             effects.addMoney
@@ -992,8 +766,6 @@ class EventService {
 
         }
 
-
-
         if(
             effects.removeMoney
         )
@@ -1007,17 +779,9 @@ class EventService {
 
         }
 
-
-
-
-
-
-
-
         //--------------------------------
         // Story flags
         //--------------------------------
-
 
         for(
             const flag of
@@ -1033,10 +797,6 @@ class EventService {
 
         }
 
-
-
-
-
         for(
             const flag of
                 effects.removeStoryFlags || []
@@ -1051,17 +811,9 @@ class EventService {
 
         }
 
-
-
-
-
-
-
-
         //--------------------------------
         // Battles
         //--------------------------------
-
 
         for(
             const battle of
@@ -1076,13 +828,6 @@ class EventService {
             );
 
         }
-
-
-
-
-
-
-
 
         //--------------------------------
         // Progression unlocks
@@ -1101,20 +846,11 @@ class EventService {
         // explicitly by the progression system.
         //--------------------------------
 
-
         const progressionResults = [];
-
-
-
-
-
-
-
 
         //--------------------------------
         // Complete event
         //--------------------------------
-
 
         if(
             trainerState.completeEvent
@@ -1129,12 +865,6 @@ class EventService {
 
         }
 
-
-
-
-
-
-
         return {
 
             success:true,
@@ -1142,14 +872,11 @@ class EventService {
             event:
                 event.id,
 
-
             progression:
                 progressionResults,
 
-
             eventProgression:
                 progressionCheck.progression,
-
 
             state:
 
@@ -1163,31 +890,19 @@ class EventService {
 
                 trainerState
 
-
         };
 
-
     }
-
-
-
-
-
-
-
-
 
     //--------------------------------
     // Choices
     //--------------------------------
-
 
     getChoices(
         event,
         trainerState
     )
     {
-
 
         const check =
             this.canTrigger(
@@ -1198,8 +913,6 @@ class EventService {
 
             );
 
-
-
         if(
             !check.allowed
         )
@@ -1208,10 +921,6 @@ class EventService {
             return [];
 
         }
-
-
-
-
 
         const progressionCheck =
             this.checkEventProgression(
@@ -1222,8 +931,6 @@ class EventService {
 
             );
 
-
-
         if(
             !progressionCheck.allowed
         )
@@ -1232,10 +939,6 @@ class EventService {
             return [];
 
         }
-
-
-
-
 
         return (
 
@@ -1252,14 +955,7 @@ class EventService {
 
         );
 
-
     }
-
-
-
-
-
-
 
     executeChoice(
         choice,
@@ -1275,28 +971,17 @@ class EventService {
 
         );
 
-
     }
-
-
-
-
-
-
-
-
 
     //--------------------------------
     // Requirements
     //--------------------------------
-
 
     canTrigger(
         event,
         trainerState
     )
     {
-
 
         if(
             !event
@@ -1313,8 +998,6 @@ class EventService {
             };
 
         }
-
-
 
         if(
 
@@ -1344,21 +1027,8 @@ class EventService {
 
         }
 
-
-
-
-
-
-
         const requirements =
             event.requirements || {};
-
-
-
-
-
-
-
 
         for(
             const flag of
@@ -1384,13 +1054,6 @@ class EventService {
 
         }
 
-
-
-
-
-
-
-
         for(
             const item of
                 requirements.items || []
@@ -1414,13 +1077,6 @@ class EventService {
             }
 
         }
-
-
-
-
-
-
-
 
         for(
             const item of
@@ -1446,13 +1102,6 @@ class EventService {
 
         }
 
-
-
-
-
-
-
-
         for(
             const badge of
                 requirements.badges || []
@@ -1477,33 +1126,17 @@ class EventService {
 
         }
 
-
-
-
-
-
-
         return {
 
             allowed:true
 
         };
 
-
     }
-
-
-
-
-
-
-
-
 
     //--------------------------------
     // Visibility
     //--------------------------------
-
 
     canShowEvent(
         event,
@@ -1521,11 +1154,7 @@ class EventService {
 
     }
 
-
-
 }
-
-
 
 module.exports =
     EventService;

@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "node -e \"const FireRedBuildPipeline = require('./scripts/pipelines/build-firered'); new FireRedBuildPipeline().run();\"",
-    "test": "echo \"No tests configured yet.\""
+    "test": "node --test tests/*.test.js"
   },
   "dependencies": {
     "axios": "^1.18.1",

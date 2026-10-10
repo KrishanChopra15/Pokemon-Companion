@@ -22,7 +22,8 @@
 "use strict";
 
 
-
+const TrainerState =
+    require("../domain/trainer-state");
 
 
 class GameSession {
@@ -45,40 +46,65 @@ class GameSession {
 
 
 
+        this.trainerState =
+            new TrainerState({
+
+                currentLocation:
+                    "MAP_PALLET_TOWN",
+
+                visitedLocations:
+                    []
+
+            });
+
+
+
+        //--------------------------------
+        // Attach runtime state to the
+        // canonical TrainerState object.
+        //--------------------------------
+
+        Object.assign(
+
+            this.trainerState,
+
+            {
+
+                started:
+                    false,
+
+                nextPokemonId:
+                    1,
+
+                team:
+                    [],
+
+                activePokemon:
+                    null,
+
+                inventory:
+                    this.trainerState.items,
+
+                walkingSteps:
+                    0,
+
+                totalSteps:
+                    0,
+
+                playTime:
+                    0
+
+            }
+
+        );
+
+
+        //--------------------------------
+        // Shared state reference
+        //--------------------------------
+
         this.state =
-        {
-        
-            started:
-                false,
-        
-            currentLocation:
-                "MAP_PALLET_TOWN",
-        
-            visitedLocations:
-                [],
-        
-            badges:
-                [],
-        
-            team:
-                [],
-        
-            inventory:
-                [],
-        
-            storyFlags:
-                [],
-        
-            walkingSteps:
-                0,
-        
-            totalSteps:
-                0,
-        
-            playTime:
-                0
-        
-        };
+            this.trainerState;
 
 
     }
@@ -385,43 +411,67 @@ class GameSession {
             null;
 
 
+        //--------------------------------
+        // Create fresh adventure state
+        //--------------------------------
+
+        this.trainerState =
+            new TrainerState({
+
+                currentLocation:
+                    "MAP_PALLET_TOWN",
+
+                visitedLocations:
+                    []
+
+            });
+
+
+        //--------------------------------
+        // Add runtime session fields
+        //--------------------------------
+
+        Object.assign(
+
+            this.trainerState,
+
+            {
+
+                started:
+                    false,
+
+                nextPokemonId:
+                    1,
+
+                team:
+                    [],
+
+                activePokemon:
+                    null,
+
+                inventory:
+                    this.trainerState.items,
+
+                walkingSteps:
+                    0,
+
+                totalSteps:
+                    0,
+
+                playTime:
+                    0
+
+            }
+
+        );
+
+
+        //--------------------------------
+        // Restore shared state reference
+        //--------------------------------
 
         this.state =
-        {
-
-            started:false,
-
-
-            currentLocation:
-                "MAP_PALLET_TOWN",
-
-
-            visitedLocations:
-                [],
-
-
-            badges:
-                [],
-
-
-            team:
-                [],
-
-
-            inventory:
-                [],
-
-
-            storyFlags:
-                [],
-
-
-            playTime:
-                0
-
-
-        };
-
+            this.trainerState;
 
 
         return {

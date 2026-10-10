@@ -86,7 +86,8 @@ class BattleService
     {
 
         if(
-            !this.preparation
+            !this.preparation ||
+            typeof this.preparation.prepareTrainerBattle !== "function"
         )
         {
 
@@ -284,7 +285,9 @@ class BattleService
 
 
         if(
-            !this.preparation
+            !this.preparation ||
+            typeof this.preparation.getPlayerParty !== "function" ||
+            typeof this.preparation.preparePokemon !== "function"
         )
         {
 
@@ -536,7 +539,8 @@ class BattleService
 
 
         if(
-            !this.engine
+            !this.engine ||
+            typeof this.engine.initializeBattle !== "function"
         )
         {
 
@@ -706,7 +710,8 @@ class BattleService
 
 
         if(
-            !this.engine
+            !this.engine ||
+            typeof this.engine.processTurn !== "function"
         )
         {
 

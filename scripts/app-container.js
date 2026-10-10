@@ -400,6 +400,19 @@ const StarterSelectionService =
 
 
 //================================
+// Player and Adventure Services
+//================================
+
+const PlayerManager =
+    require("./player/player-manager");
+
+const PlayerFlow =
+    require("./player/player-flow");
+
+const AdventureInitializer =
+    require("./adventure/adventure-initializer");
+
+//================================
 // Pokémon Utility Services
 //================================
 
@@ -494,6 +507,13 @@ class AppContainer {
 
         this.game =
             game;
+
+
+        //================================
+        // Session
+        //================================
+
+        this.registerSessionServices();
 
 
         //================================
@@ -611,11 +631,11 @@ class AppContainer {
 
         this.registerStarterServices();
 
+        this.registerPlayerServices();
+
         this.registerNPCServices();
 
         this.registerTrainerAnalysisServices();
-
-        this.registerSessionServices();
 
         this.registerWorldRuntimeServices();
 
@@ -774,7 +794,10 @@ class AppContainer {
 
         const worldState =
             new WorldStateService(
-                this.game
+                this.game,
+                this.get(
+                    "progression"
+                )
             );
 
 
@@ -1516,6 +1539,9 @@ class AppContainer {
                 ),
                 this.get(
                     "pokemonTracker"
+                ),
+                this.get(
+                    "worldState"
                 )
             );
 
@@ -2076,7 +2102,11 @@ class AppContainer {
     {
 
         const teamManager =
-            new TeamManager();
+            new TeamManager(
+                this.get(
+                    "session"
+                )
+            );
 
 
         const teamFlow =
@@ -2107,7 +2137,11 @@ class AppContainer {
     {
 
         const activePokemonManager =
-            new ActivePokemonManager();
+            new ActivePokemonManager(
+                this.get(
+                    "session"
+                )
+            );
 
 
         const activePokemonFlow =
@@ -2154,7 +2188,11 @@ class AppContainer {
 
 
         const tracker =
-            new PokemonTrackerService();
+            new PokemonTrackerService(
+                this.get(
+                    "session"
+                )
+            );
 
 
         this.container.register(
@@ -2185,7 +2223,11 @@ class AppContainer {
     {
 
         const storageManager =
-            new StorageManager();
+            new StorageManager(
+                this.get(
+                    "session"
+                )
+            );
 
 
         const storageFlow =
@@ -2225,6 +2267,64 @@ class AppContainer {
         this.container.register(
             "starterSelection",
             starterSelection
+        );
+
+    }
+
+
+    //================================
+    // Player and Adventure Services
+    //================================
+
+    registerPlayerServices()
+    {
+
+        const session =
+            this.get("session");
+
+
+        const playerManager =
+            new PlayerManager(
+                session
+            );
+
+
+        const playerFlow =
+            new PlayerFlow(
+                playerManager,
+                this.get("starterSelection"),
+                session,
+                this.get("pokemonDatabase"),
+                this.get("moveDatabase"),
+                this.get("pokemonTracker"),
+                this.get("teamFlow"),
+                this.get("activePokemonManager")
+            );
+
+
+        const adventureInitializer =
+            new AdventureInitializer(
+                playerFlow,
+                session,
+                this.get("worldState")
+            );
+
+
+        this.container.register(
+            "playerManager",
+            playerManager
+        );
+
+
+        this.container.register(
+            "playerFlow",
+            playerFlow
+        );
+
+
+        this.container.register(
+            "adventureInitializer",
+            adventureInitializer
         );
 
     }
@@ -2413,7 +2513,11 @@ class AppContainer {
         //--------------------------------
 
         const inventoryManager =
-            new InventoryManager();
+            new InventoryManager(
+                this.get(
+                    "session"
+                )
+            );
 
 
         //--------------------------------

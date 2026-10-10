@@ -561,17 +561,22 @@ class BuildManager
                         ?
                         worldGates
                             .map(
+
                                 rule =>
+
                                     rule
                                     &&
                                     rule.id
-                                    ?
-                                    rule.id
-                                    :
-                                    null
+                                        ?
+                                        rule.id
+                                        :
+                                        null
+
                             )
                             .filter(
+
                                 Boolean
+
                             )
                         :
                         []
@@ -605,7 +610,6 @@ class BuildManager
                     worldGates
                     :
                     []),
-
 
                 ...baseRules
 
@@ -774,6 +778,122 @@ class BuildManager
                 game
 
             );
+
+
+        //========================================
+        // Trainer Database
+        //========================================
+
+        new TrainerBuilder()
+            .build(
+
+                game
+
+            );
+
+
+        //========================================
+        // NPC Database
+        //
+        // TrainerBuilder has now created:
+        //
+        // database/generated/<game>/full-trainers.json
+        //
+        // NPCEventGenerator receives:
+        // - extracted NPC objects
+        // - extracted event scripts
+        // - complete trainer database
+        // - extracted map objects
+        // - extracted map scripts
+        // - extracted coordinate events
+        //
+        // Map objects, map scripts, and coordinate
+        // events allow NPC classification to resolve
+        // scene-driven characters and coordinate-triggered
+        // battles that do not originate from a direct
+        // object interaction.
+        //
+        // This must run before Pokémon availability
+        // because availability consumes the classified
+        // special encounter information produced here.
+        //========================================
+
+        if(
+            data.npcs
+            &&
+            data.events
+        )
+        {
+
+            console.log(
+                "Building NPC database..."
+            );
+
+
+            const trainerPath =
+                path.join(
+
+                    __dirname,
+
+                    "../../database/generated",
+
+                    game,
+
+                    "full-trainers.json"
+
+                );
+
+
+            if(
+                !fs.existsSync(
+                    trainerPath
+                )
+            )
+            {
+
+                throw new Error(
+
+                    `Trainer database missing: ${trainerPath}`
+
+                );
+
+            }
+
+
+            const trainers =
+                JSON.parse(
+
+                    fs.readFileSync(
+
+                        trainerPath,
+
+                        "utf8"
+
+                    )
+
+                );
+
+
+            new NPCEventGenerator()
+                .generate(
+
+                    data.npcs,
+
+                    data.events,
+
+                    trainers,
+
+                    game,
+
+                    data.objects || [],
+
+                    data.mapScripts || {},
+
+                    data.coordinateEvents || {}
+
+                );
+
+        }
 
 
         //========================================
@@ -966,118 +1086,6 @@ class BuildManager
                 game
 
             );
-
-
-        //========================================
-        // Trainer Database
-        //========================================
-
-        new TrainerBuilder()
-            .build(
-
-                game
-
-            );
-
-
-        //========================================
-        // NPC Database
-        //
-        // TrainerBuilder has now created:
-        //
-        // database/generated/<game>/full-trainers.json
-        //
-        // NPCEventGenerator receives:
-        // - extracted NPC objects
-        // - extracted event scripts
-        // - complete trainer database
-        // - extracted map objects
-        // - extracted map scripts
-        // - extracted coordinate events
-        //
-        // Map objects, map scripts, and coordinate
-        // events allow NPC classification to resolve
-        // scene-driven characters and coordinate-triggered
-        // battles that do not originate from a direct
-        // object interaction.
-        //========================================
-
-        if(
-            data.npcs
-            &&
-            data.events
-        )
-        {
-
-            console.log(
-                "Building NPC database..."
-            );
-
-
-            const trainerPath =
-                path.join(
-
-                    __dirname,
-
-                    "../../database/generated",
-
-                    game,
-
-                    "full-trainers.json"
-
-                );
-
-
-            if(
-                !fs.existsSync(
-                    trainerPath
-                )
-            )
-            {
-
-                throw new Error(
-
-                    `Trainer database missing: ${trainerPath}`
-
-                );
-
-            }
-
-
-            const trainers =
-                JSON.parse(
-
-                    fs.readFileSync(
-
-                        trainerPath,
-
-                        "utf8"
-
-                    )
-
-                );
-
-
-            new NPCEventGenerator()
-                .generate(
-
-                    data.npcs,
-
-                    data.events,
-
-                    trainers,
-
-                    game,
-
-                    data.objects || [],
-
-                    data.mapScripts || {},
-
-                    data.coordinateEvents || {}
-
-                );
-
-        }
 
 
         //========================================

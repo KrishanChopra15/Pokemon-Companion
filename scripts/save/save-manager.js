@@ -27,6 +27,10 @@ const PokemonMoveSlot =
     require("../domain/pokemon-move-slot");
 
 
+const TrainerState =
+    require("../domain/trainer-state");
+
+
 class SaveManager
 {
 
@@ -131,6 +135,10 @@ class SaveManager
         }
 
 
+        //--------------------------------
+        // Restore game and player
+        //--------------------------------
+
         session.game =
             record.data.game;
 
@@ -141,10 +149,82 @@ class SaveManager
             );
 
 
-        session.state =
+        //--------------------------------
+        // Restore saved state
+        //--------------------------------
+
+        const savedState =
             this.rehydrateState(
                 record.data.state
             );
+
+
+        //--------------------------------
+        // Reconstruct TrainerState
+        //--------------------------------
+
+        const trainerState =
+            new TrainerState(
+                savedState
+            );
+
+
+        //--------------------------------
+        // Restore additional runtime state
+        //--------------------------------
+
+        Object.assign(
+
+            trainerState,
+
+            {
+
+                started:
+                    savedState.started
+                    ?? false,
+
+                nextPokemonId:
+                    savedState.nextPokemonId
+                    ?? 1,
+
+                team:
+                    savedState.team
+                    ?? [],
+
+                activePokemon:
+                    savedState.activePokemon
+                    ?? null,
+
+                inventory:
+                    trainerState.items,
+
+                walkingSteps:
+                    savedState.walkingSteps
+                    ?? 0,
+
+                totalSteps:
+                    savedState.totalSteps
+                    ?? 0,
+
+                playTime:
+                    savedState.playTime
+                    ?? 0
+
+            }
+
+        );
+
+
+        //--------------------------------
+        // Restore shared session reference
+        //--------------------------------
+
+        session.trainerState =
+            trainerState;
+
+
+        session.state =
+            trainerState;
 
 
         return {
@@ -161,10 +241,15 @@ class SaveManager
 
     //--------------------------------
     // Rehydrate saved state
+    //
+    // WeakMap preserves shared object
+    // references across Pokémon, team,
+    // and active Pokémon state.
     //--------------------------------
 
     rehydrateState(
-        value
+        value,
+        seen = new WeakMap()
     )
     {
 
@@ -179,15 +264,52 @@ class SaveManager
         )
         {
 
-            return value.map(
+            if(
+                seen.has(
+                    value
+                )
+            )
+            {
 
-                item =>
+                return seen.get(
+                    value
+                );
+
+            }
+
+
+            const result =
+                [];
+
+
+            seen.set(
+                value,
+                result
+            );
+
+
+            for(
+                const item of
+                    value
+            )
+            {
+
+                result.push(
 
                     this.rehydrateState(
-                        item
+
+                        item,
+
+                        seen
+
                     )
 
-            );
+                );
+
+            }
+
+
+            return result;
 
         }
 
@@ -205,6 +327,25 @@ class SaveManager
         {
 
             return value;
+
+        }
+
+
+        //--------------------------------
+        // Preserve previously restored
+        // object references.
+        //--------------------------------
+
+        if(
+            seen.has(
+                value
+            )
+        )
+        {
+
+            return seen.get(
+                value
+            );
 
         }
 
@@ -244,24 +385,34 @@ class SaveManager
         )
         {
 
-            return new PokemonMoveSlot({
+            const moveSlot =
+                new PokemonMoveSlot({
 
-                constant:
-                    value.constant,
+                    constant:
+                        value.constant,
 
-                basePP:
-                    value.basePP,
+                    basePP:
+                        value.basePP,
 
-                ppUps:
-                    value.ppUps,
+                    ppUps:
+                        value.ppUps,
 
-                currentPP:
-                    value.currentPP,
+                    currentPP:
+                        value.currentPP,
 
-                maxPP:
-                    value.maxPP
+                    maxPP:
+                        value.maxPP
 
-            });
+                });
+
+
+            seen.set(
+                value,
+                moveSlot
+            );
+
+
+            return moveSlot;
 
         }
 
@@ -274,6 +425,12 @@ class SaveManager
             {};
 
 
+        seen.set(
+            value,
+            result
+        );
+
+
         for(
             const key of
                 Object.keys(value)
@@ -282,7 +439,11 @@ class SaveManager
 
             result[key] =
                 this.rehydrateState(
-                    value[key]
+
+                    value[key],
+
+                    seen
+
                 );
 
         }

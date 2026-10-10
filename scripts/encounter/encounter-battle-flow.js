@@ -118,32 +118,47 @@ class EncounterBattleFlow {
         const result =
             this.wildBattle
                 .startBattle(
-
+                
                     player,
-
+                
                     playerPokemon,
-
+                
                     encounter
-
+                
                 );
-
-
-
-
-
-
-
-
+            
+            
+        if (
+            !result ||
+            result.success === false
+        )
+        {
+            return {
+            
+                success: false,
+            
+                reason:
+                    result?.reason ||
+                    "Failed to start wild battle",
+            
+                encounter,
+            
+                battle:
+                    result
+            
+            };
+        }
+        
+        
         return {
-
-            success:true,
-
+        
+            success: true,
+        
             encounter,
-
+        
             battle:
-
                 result
-
+        
         };
 
 

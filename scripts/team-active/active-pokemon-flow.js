@@ -60,16 +60,35 @@ class ActivePokemonFlow {
     {
 
 
+        if (
+            !pokemon ||
+            !pokemon.species
+        )
+        {
+            return {
+                success: false,
+                reason: "Invalid Pokemon"
+            };
+        }
+        
+        
         const team =
             this.team
                 .getTeam();
-
-
-
+        
+        
         const exists =
             team.some(
                 member =>
-                    member.species === pokemon.species
+                    member === pokemon ||
+                    (
+                        pokemon.id != null &&
+                        member.id === pokemon.id
+                    ) ||
+                    (
+                        pokemon.trackerId != null &&
+                        member.trackerId === pokemon.trackerId
+                    )
             );
 
 

@@ -74,6 +74,10 @@ const LocationGateExtractor =
     require("../extractors/game-boy-advance/location-gate-extractor");
 
 
+const FireRedSourceGateExtractor =
+    require("../extractors/game-boy-advance/firered-source-gate-extractor");
+
+
 const FieldObstacleExtractor =
     require("../extractors/game-boy-advance/field-obstacle-extractor");
 
@@ -127,6 +131,14 @@ const LocationGateGenerator =
     require("../generators/raw/location-gate-generator");
 
 
+const SourceLocationGateGenerator =
+    require("../generators/raw/source-location-gate-generator");
+
+
+const SourceEventGenerator =
+    require("../generators/raw/source-event-generator");
+
+
 const FieldObstacleGenerator =
     require("../generators/raw/field-obstacle-generator");
 
@@ -154,6 +166,10 @@ const TerrainGenerator =
 
 const BuildManager =
     require("../builders/build-manager");
+
+
+const LocationGateMerger =
+    require("../builders/location-gate-merger");
 
 
 
@@ -405,6 +421,36 @@ class FireRedBuildPipeline
                     referencePath
 
                 );
+        
+        
+        console.log(
+            "Extracting source-derived FireRed location gates..."
+        );
+
+
+        const sourceLocationGates =
+            new FireRedSourceGateExtractor()
+                .extract(
+                    referencePath
+                );
+
+
+        console.log(
+            `Source-derived location gate locations: ${Object.keys(sourceLocationGates).length}`
+        );
+
+
+        //========================================
+        // Merge location gates
+        //========================================
+
+        const mergedLocationGates =
+            new LocationGateMerger()
+                .merge(
+                    locationGates,
+                    sourceLocationGates
+                );
+
 
 
         //========================================
@@ -747,11 +793,32 @@ class FireRedBuildPipeline
         new LocationGateGenerator()
             .generate(
 
-                locationGates,
+                mergedLocationGates,
 
                 "firered"
 
             );
+        
+        
+        new SourceLocationGateGenerator()
+            .generate(
+
+                sourceLocationGates,
+
+                "firered"
+
+            );
+
+
+        new SourceEventGenerator()
+            .generate(
+
+                events,
+
+                "firered"
+
+            );
+
 
 
         new FieldObstacleGenerator()

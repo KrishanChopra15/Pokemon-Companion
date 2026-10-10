@@ -1,3 +1,4 @@
+
 /**
  * Pokémon Companion
  * Trainer State
@@ -13,6 +14,7 @@
  * - Store story flags.
  * - Store inventory items.
  * - Store received Pokémon.
+ * - Store Pokémon in PC storage.
  * - Store money.
  * - Store completed battles/events.
  * - Store world event states.
@@ -33,31 +35,23 @@ class TrainerState {
     constructor(data = {})
     {
 
-
         //--------------------------------
         // Player location
         //--------------------------------
 
-
         this.currentLocation =
             data.currentLocation || null;
 
-
         this.visitedLocations =
             data.visitedLocations || [];
-
-
-
 
 
         //--------------------------------
         // Progression
         //--------------------------------
 
-
         this.badges =
             data.badges || [];
-
 
 
         //--------------------------------
@@ -68,14 +62,12 @@ class TrainerState {
             data.hms || [];
 
 
-
         //--------------------------------
         // HM usage permissions
         //--------------------------------
 
         this.hmAbilities =
             data.hmAbilities || [];
-
 
 
         //--------------------------------
@@ -86,92 +78,81 @@ class TrainerState {
             data.abilities || [];
 
 
+        //--------------------------------
+        // Key items and story flags
+        //--------------------------------
 
         this.keyItems =
             data.keyItems || [];
 
-
         this.storyFlags =
             data.storyFlags || [];
-
-
-
 
 
         //--------------------------------
         // Inventory
         //--------------------------------
 
-
         this.items =
             data.items || {};
 
 
-
-
-
         //--------------------------------
-        // Pokémon
+        // Pokémon collection
         //--------------------------------
-
 
         this.pokemon =
             data.pokemon || [];
 
 
+        //--------------------------------
+        // Selected starter
+        //--------------------------------
 
+        this.starter =
+            data.starter ?? null;
+
+
+        //--------------------------------
+        // PC Storage
+        //--------------------------------
+
+        this.storage =
+            data.storage || [];
 
 
         //--------------------------------
         // Economy
         //--------------------------------
 
-
         this.money =
             data.money ?? 3000;
-
-
-
 
 
         //--------------------------------
         // Completed actions
         //--------------------------------
 
-
         this.completedBattles =
             data.completedBattles || [];
 
-
         this.completedEvents =
             data.completedEvents || [];
-
-
-
 
 
         //--------------------------------
         // World State
         //--------------------------------
 
-
         this.eventStates =
             data.eventStates || {};
 
-
-
     }
-
-
-
-
-
 
 
     //--------------------------------
     // Location
     //--------------------------------
-
 
     setLocation(location)
     {
@@ -179,13 +160,11 @@ class TrainerState {
         this.currentLocation =
             location;
 
-
         this.visitLocation(
             location
         );
 
     }
-
 
 
     visitLocation(location)
@@ -206,7 +185,6 @@ class TrainerState {
     }
 
 
-
     hasVisited(location)
     {
 
@@ -217,17 +195,9 @@ class TrainerState {
     }
 
 
-
-
-
-
-
-
-
     //--------------------------------
     // Badges
     //--------------------------------
-
 
     addBadge(badge)
     {
@@ -246,7 +216,6 @@ class TrainerState {
     }
 
 
-
     hasBadge(badge)
     {
 
@@ -257,15 +226,9 @@ class TrainerState {
     }
 
 
-
-
-
-
-
     //--------------------------------
     // HM Items
     //--------------------------------
-
 
     addHM(hm)
     {
@@ -284,7 +247,6 @@ class TrainerState {
     }
 
 
-
     hasHM(hm)
     {
 
@@ -295,15 +257,9 @@ class TrainerState {
     }
 
 
-
-
-
-
-
     //--------------------------------
     // HM Usage Permissions
     //--------------------------------
-
 
     addHMAbility(move)
     {
@@ -322,9 +278,6 @@ class TrainerState {
     }
 
 
-
-
-
     hasHMAbility(move)
     {
 
@@ -335,15 +288,9 @@ class TrainerState {
     }
 
 
-
-
-
-
-
     //--------------------------------
     // General Field Abilities
     //--------------------------------
-
 
     addAbility(ability)
     {
@@ -362,9 +309,6 @@ class TrainerState {
     }
 
 
-
-
-
     hasAbility(ability)
     {
 
@@ -375,15 +319,9 @@ class TrainerState {
     }
 
 
-
-
-
-
-
     //--------------------------------
     // Key Items
     //--------------------------------
-
 
     addKeyItem(item)
     {
@@ -402,7 +340,6 @@ class TrainerState {
     }
 
 
-
     hasKeyItem(item)
     {
 
@@ -413,16 +350,9 @@ class TrainerState {
     }
 
 
-
-
-
-
-
-
     //--------------------------------
     // Items
     //--------------------------------
-
 
     addItem(
         item,
@@ -432,15 +362,11 @@ class TrainerState {
 
         this.items[item] =
             (
-                this.items[item]
-                ||
-                0
-            )
-            +
+                this.items[item] || 0
+            ) +
             quantity;
 
     }
-
 
 
     removeItem(
@@ -462,7 +388,6 @@ class TrainerState {
         this.items[item] -= quantity;
 
 
-
         if(
             this.items[item] <= 0
         )
@@ -473,11 +398,9 @@ class TrainerState {
         }
 
 
-
         return true;
 
     }
-
 
 
     hasItem(item)
@@ -485,11 +408,9 @@ class TrainerState {
 
         return (
             this.items[item] || 0
-        )
-        > 0;
+        ) > 0;
 
     }
-
 
 
     getItemCount(item)
@@ -500,15 +421,9 @@ class TrainerState {
     }
 
 
-
-
-
-
-
     //--------------------------------
     // Pokémon
     //--------------------------------
-
 
     addPokemon(pokemon)
     {
@@ -518,7 +433,6 @@ class TrainerState {
         );
 
     }
-
 
 
     hasPokemon(species)
@@ -534,15 +448,9 @@ class TrainerState {
     }
 
 
-
-
-
-
-
     //--------------------------------
     // Money
     //--------------------------------
-
 
     addMoney(amount)
     {
@@ -550,7 +458,6 @@ class TrainerState {
         this.money += amount;
 
     }
-
 
 
     removeMoney(amount)
@@ -568,11 +475,9 @@ class TrainerState {
 
         this.money -= amount;
 
-
         return true;
 
     }
-
 
 
     getMoney()
@@ -583,16 +488,9 @@ class TrainerState {
     }
 
 
-
-
-
-
-
-
     //--------------------------------
     // Story Flags
     //--------------------------------
-
 
     addStoryFlag(flag)
     {
@@ -611,18 +509,18 @@ class TrainerState {
     }
 
 
-
     removeStoryFlag(flag)
     {
 
         this.storyFlags =
             this.storyFlags.filter(
+
                 value =>
                     value !== flag
+
             );
 
     }
-
 
 
     hasStoryFlag(flag)
@@ -635,16 +533,9 @@ class TrainerState {
     }
 
 
-
-
-
-
-
-
     //--------------------------------
     // Battles
     //--------------------------------
-
 
     completeBattle(battle)
     {
@@ -663,7 +554,6 @@ class TrainerState {
     }
 
 
-
     hasCompletedBattle(battle)
     {
 
@@ -674,20 +564,12 @@ class TrainerState {
     }
 
 
-
-
-
-
-
-
     //--------------------------------
     // Events
     //--------------------------------
 
-
     completeEvent(event)
     {
-
 
         if(
             !this.completedEvents.includes(event)
@@ -701,23 +583,18 @@ class TrainerState {
         }
 
 
-
         this.eventStates[event] =
         {
 
             state:
                 "completed",
 
-
             completed:
                 true
 
         };
 
-
     }
-
-
 
 
     hasCompletedEvent(event)
@@ -730,9 +607,6 @@ class TrainerState {
     }
 
 
-
-
-
     getEventState(event)
     {
 
@@ -743,16 +617,13 @@ class TrainerState {
             ||
 
             {
-                state:"active",
-                completed:false
+                state: "active",
+                completed: false
             }
 
         );
 
     }
-
-
-
 
 
     setEventState(
@@ -767,101 +638,82 @@ class TrainerState {
     }
 
 
-
-
-
-
-
-
     //--------------------------------
     // State getter
     //--------------------------------
-    
+
     getState()
     {
-    
+
         return this.serialize();
-    
+
     }
-    
-    
-    
-    
-    
+
+
     //--------------------------------
     // Save serialization
     //--------------------------------
-    
-    
+
     serialize()
     {
-    
+
         return {
-        
+
             currentLocation:
                 this.currentLocation,
-        
-        
+
             visitedLocations:
                 this.visitedLocations,
-        
-        
+
             badges:
                 this.badges,
-        
-        
+
             hms:
                 this.hms,
-        
-        
+
             hmAbilities:
                 this.hmAbilities,
-        
-        
+
             abilities:
                 this.abilities,
-        
-        
+
             keyItems:
                 this.keyItems,
-        
-        
+
             storyFlags:
                 this.storyFlags,
-        
-        
+
             items:
                 this.items,
-        
-        
+
             pokemon:
                 this.pokemon,
-        
-        
+
+            starter:
+                this.starter,
+
+            storage:
+                this.storage,
+
             money:
                 this.money,
-        
-        
+
             completedBattles:
                 this.completedBattles,
-        
-        
+
             completedEvents:
                 this.completedEvents,
-        
-        
+
             eventStates:
                 this.eventStates
-        
+
         };
-    
+
     }
 
 
 }
 
 
-
 module.exports =
     TrainerState;
-

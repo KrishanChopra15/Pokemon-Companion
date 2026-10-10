@@ -26,11 +26,14 @@ class InventoryManager {
 
 
 
-    constructor()
+    constructor(
+        session
+    )
     {
 
 
-        this.items = {};
+        this.session =
+            session;
 
 
     }
@@ -78,12 +81,18 @@ class InventoryManager {
 
 
 
+        const inventory =
+            this.session
+                .getState()
+                .inventory;
+
+
         if(
-            !this.items[item]
+            !inventory[item]
         )
         {
 
-            this.items[item] =
+            inventory[item] =
                 0;
 
         }
@@ -95,7 +104,7 @@ class InventoryManager {
 
 
 
-        this.items[item] +=
+        inventory[item] +=
             quantity;
 
 
@@ -112,7 +121,7 @@ class InventoryManager {
             item,
 
             quantity:
-                this.items[item]
+                inventory[item]
 
         };
 
@@ -139,8 +148,14 @@ class InventoryManager {
     {
 
 
+        const inventory =
+            this.session
+                .getState()
+                .inventory;
+
+
         if(
-            !this.items[item]
+            !inventory[item]
         )
         {
 
@@ -163,7 +178,7 @@ class InventoryManager {
 
 
         if(
-            this.items[item] < quantity
+            inventory[item] < quantity
         )
         {
 
@@ -185,7 +200,7 @@ class InventoryManager {
 
 
 
-        this.items[item] -=
+        inventory[item] -=
             quantity;
 
 
@@ -202,7 +217,7 @@ class InventoryManager {
             item,
 
             quantity:
-                this.items[item]
+                inventory[item]
 
         };
 
@@ -228,9 +243,15 @@ class InventoryManager {
     {
 
 
+        const inventory =
+            this.session
+                .getState()
+                .inventory;
+
+
         return Boolean(
 
-            this.items[item]
+            inventory[item]
 
         );
 
@@ -251,7 +272,14 @@ class InventoryManager {
     {
 
 
-        return this.items[item] || 0;
+        const inventory =
+            this.session
+                .getState()
+                .inventory;
+
+
+        return inventory[item] ||
+            0;
 
 
     }
@@ -272,7 +300,11 @@ class InventoryManager {
     getInventory()
     {
 
-        return this.items;
+
+        return this.session
+            .getState()
+            .inventory;
+
 
     }
 
@@ -287,7 +319,22 @@ class InventoryManager {
     clear()
     {
 
-        this.items = {};
+
+        const inventory =
+            this.session
+                .getState()
+                .inventory;
+
+
+        Object.keys(
+            inventory
+        ).forEach(
+
+            item =>
+
+                delete inventory[item]
+
+        );
 
 
         return {

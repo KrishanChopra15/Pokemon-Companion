@@ -461,7 +461,13 @@
             "removeStoryFlags": [
                 "SYS_SPECIAL_WILD_BATTLE"
             ],
-            "battles": [],
+            "battles": [
+                {
+                    "type": "wild",
+                    "species": "DEOXYS",
+                    "level": 30
+                }
+            ],
             "objectStateChanges": [
                 {
                     "type": "ADD_OBJECT",
@@ -48655,7 +48661,13 @@
             "removeStoryFlags": [
                 "SYS_SPECIAL_WILD_BATTLE"
             ],
-            "battles": [],
+            "battles": [
+                {
+                    "type": "wild",
+                    "species": "LUGIA",
+                    "level": 70
+                }
+            ],
             "objectStateChanges": [],
             "movements": [],
             "warps": [],
@@ -49130,7 +49142,13 @@
             "removeStoryFlags": [
                 "SYS_SPECIAL_WILD_BATTLE"
             ],
-            "battles": [],
+            "battles": [
+                {
+                    "type": "wild",
+                    "species": "HO_OH",
+                    "level": 70
+                }
+            ],
             "objectStateChanges": [],
             "movements": [
                 {

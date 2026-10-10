@@ -30,12 +30,16 @@ class TeamManager {
 
 
 
-    constructor()
+    constructor(
+        session
+    )
     {
 
-        this.team = [];
+        this.session =
+            session;
 
-        this.maxSize = 6;
+        this.maxSize =
+            6;
 
     }
 
@@ -91,8 +95,14 @@ class TeamManager {
 
 
 
+        const team =
+            this.session
+                .getState()
+                .team;
+
+
         if(
-            this.team.length >= this.maxSize
+            team.length >= this.maxSize
         )
         {
 
@@ -114,7 +124,7 @@ class TeamManager {
 
 
 
-        this.team.push(
+        team.push(
             pokemon
         );
 
@@ -148,22 +158,59 @@ class TeamManager {
     // Remove Pokemon
     //--------------------------------
 
-
     removePokemon(
-        species
+        target
     )
     {
 
+        const team =
+            this.session
+                .getState()
+                .team;
+
 
         const index =
-            this.team.findIndex(
+            team.findIndex(
 
                 pokemon =>
+                {
 
-                    pokemon.species === species
+                    // Match the exact Pokémon object.
+                    if(
+                        target &&
+                        typeof target === "object"
+                    )
+                    {
+
+                        return (
+                            pokemon === target ||
+                            (
+                                target.id != null &&
+                                pokemon.id === target.id
+                            )
+                        );
+
+                    }
+
+
+                    // Match a numeric Pokémon ID.
+                    if(
+                        typeof target === "number"
+                    )
+                    {
+
+                        return pokemon.id === target;
+
+                    }
+
+
+                    // Preserve the existing
+                    // species-based behavior.
+                    return pokemon.species === target;
+
+                }
 
             );
-
 
 
         if(
@@ -173,7 +220,7 @@ class TeamManager {
 
             return {
 
-                success:false,
+                success: false,
 
                 reason:
                     "Pokemon not found"
@@ -183,14 +230,8 @@ class TeamManager {
         }
 
 
-
-
-
-
-
-
         const removed =
-            this.team.splice(
+            team.splice(
 
                 index,
 
@@ -199,21 +240,14 @@ class TeamManager {
             )[0];
 
 
-
-
-
-
-
-
         return {
 
-            success:true,
+            success: true,
 
             pokemon:
                 removed
 
         };
-
 
     }
 
@@ -237,9 +271,15 @@ class TeamManager {
     {
 
 
+        const team =
+            this.session
+                .getState()
+                .team;
+
+
         if(
-            !this.team[first] ||
-            !this.team[second]
+            !team[first] ||
+            !team[second]
         )
         {
 
@@ -262,16 +302,16 @@ class TeamManager {
 
 
         const temp =
-            this.team[first];
+            team[first];
 
 
 
-        this.team[first] =
-            this.team[second];
+        team[first] =
+            team[second];
 
 
 
-        this.team[second] =
+        team[second] =
             temp;
 
 
@@ -286,7 +326,7 @@ class TeamManager {
             success:true,
 
             team:
-                this.team
+                team
 
         };
 
@@ -309,7 +349,11 @@ class TeamManager {
     getTeam()
     {
 
-        return this.team;
+
+        return this.session
+            .getState()
+            .team;
+
 
     }
 
@@ -332,7 +376,13 @@ class TeamManager {
     {
 
 
-        return this.team.some(
+        const team =
+            this.session
+                .getState()
+                .team;
+
+
+        return team.some(
 
             pokemon =>
 
@@ -354,7 +404,12 @@ class TeamManager {
     getSize()
     {
 
-        return this.team.length;
+
+        return this.session
+            .getState()
+            .team
+            .length;
+
 
     }
 
@@ -369,7 +424,15 @@ class TeamManager {
     clear()
     {
 
-        this.team = [];
+
+        const team =
+            this.session
+                .getState()
+                .team;
+
+
+        team.length =
+            0;
 
 
         return {

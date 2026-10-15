@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_FIVE_ISLAND_HOUSE2",
+  "layoutId": "LAYOUT_HOUSE3",
+  "objectEventCount": 1,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/FiveIsland_House2/map.json",
+  "objectEvents": [
+    {
+      "index": 0,
+      "localId": null,
+      "graphicsId": "OBJ_EVENT_GFX_OLD_MAN_1",
+      "graphicsNumericId": 32,
+      "x": 2,
+      "y": 3,
+      "elevation": 3,
+      "movementType": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movementRangeX": 1,
+      "movementRangeY": 2,
+      "trainerType": "TRAINER_TYPE_NONE",
+      "trainerSightOrBerryTreeId": "0",
+      "script": "FiveIsland_House2_EventScript_OldMan",
+      "visibilityFlag": "0",
+      "spriteCatalogKey": "OBJ_EVENT_GFX_OLD_MAN_1",
+      "spriteAvailable": true,
+      "spriteImagePath": "assets/firered/npcs/sprites/people/old_man_1.png",
+      "sourceEvent": {
+        "type": "object",
+        "graphics_id": "OBJ_EVENT_GFX_OLD_MAN_1",
+        "x": 2,
+        "y": 3,
+        "elevation": 3,
+        "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+        "movement_range_x": 1,
+        "movement_range_y": 2,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "FiveIsland_House2_EventScript_OldMan",
+        "flag": "0"
+      }
+    }
+  ]
+}

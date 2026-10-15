@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_NAVEL_ROCK_EXTERIOR",
+  "layoutId": "LAYOUT_NAVEL_ROCK_EXTERIOR",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/NavelRock_Exterior/map.json",
+  "objectEvents": []
+}

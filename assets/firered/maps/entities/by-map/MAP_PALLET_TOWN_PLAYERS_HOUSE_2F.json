@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F",
+  "layoutId": "LAYOUT_PALLET_TOWN_PLAYERS_HOUSE_2F",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/PalletTown_PlayersHouse_2F/map.json",
+  "objectEvents": []
+}

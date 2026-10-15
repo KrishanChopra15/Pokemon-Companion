@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_ROUTE5",
+  "layoutId": "LAYOUT_ROUTE5",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/Route5/map.json",
+  "objectEvents": []
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_TRAINER_TOWER_ELEVATOR",
+  "layoutId": "LAYOUT_TRAINER_TOWER_ELEVATOR",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/TrainerTower_Elevator/map.json",
+  "objectEvents": []
+}

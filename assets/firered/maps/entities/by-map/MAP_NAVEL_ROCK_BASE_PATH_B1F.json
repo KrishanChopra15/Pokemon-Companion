@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_NAVEL_ROCK_BASE_PATH_B1F",
+  "layoutId": "LAYOUT_NAVEL_ROCK_BASE_PATH_B1F",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/NavelRock_BasePath_B1F/map.json",
+  "objectEvents": []
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_NAVEL_ROCK_SUMMIT",
+  "layoutId": "LAYOUT_NAVEL_ROCK_SUMMIT",
+  "objectEventCount": 1,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/NavelRock_Summit/map.json",
+  "objectEvents": [
+    {
+      "index": 0,
+      "localId": "LOCALID_NAVEL_ROCK_HO_OH",
+      "graphicsId": "OBJ_EVENT_GFX_HO_OH",
+      "graphicsNumericId": 145,
+      "x": 9,
+      "y": 6,
+      "elevation": 0,
+      "movementType": "MOVEMENT_TYPE_FACE_DOWN",
+      "movementRangeX": 1,
+      "movementRangeY": 1,
+      "trainerType": "TRAINER_TYPE_NONE",
+      "trainerSightOrBerryTreeId": "0",
+      "script": "0x0",
+      "visibilityFlag": "FLAG_HIDE_HO_OH",
+      "spriteCatalogKey": "OBJ_EVENT_GFX_HO_OH",
+      "spriteAvailable": true,
+      "spriteImagePath": "assets/firered/npcs/sprites/pokemon/ho_oh.png",
+      "sourceEvent": {
+        "local_id": "LOCALID_NAVEL_ROCK_HO_OH",
+        "type": "object",
+        "graphics_id": "OBJ_EVENT_GFX_HO_OH",
+        "x": 9,
+        "y": 6,
+        "elevation": 0,
+        "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+        "movement_range_x": 1,
+        "movement_range_y": 1,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "0x0",
+        "flag": "FLAG_HIDE_HO_OH"
+      }
+    }
+  ]
+}

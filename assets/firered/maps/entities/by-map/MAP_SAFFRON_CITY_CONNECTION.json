@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_SAFFRON_CITY_CONNECTION",
+  "layoutId": "LAYOUT_SAFFRON_CITY_CONNECTION",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/SaffronCity_Connection/map.json",
+  "objectEvents": []
+}

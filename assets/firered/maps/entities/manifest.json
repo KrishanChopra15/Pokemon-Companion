@@ -1,0 +1,3000 @@
+{
+  "schemaVersion": 1,
+  "game": "Pokemon FireRed",
+  "description": "Map object-event locations exported from source map definitions.",
+  "mapCount": 425,
+  "objectEventCount": 1648,
+  "mapsWithoutId": 0,
+  "duplicateMapIds": [],
+  "maps": [
+    {
+      "mapId": "MAP_BATTLE_COLOSSEUM_2P",
+      "layoutId": "LAYOUT_BATTLE_COLOSSEUM_2P",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_BATTLE_COLOSSEUM_2P.json",
+      "sourceFile": "data/maps/BattleColosseum_2P/map.json"
+    },
+    {
+      "mapId": "MAP_BATTLE_COLOSSEUM_4P",
+      "layoutId": "LAYOUT_BATTLE_COLOSSEUM_4P",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_BATTLE_COLOSSEUM_4P.json",
+      "sourceFile": "data/maps/BattleColosseum_4P/map.json"
+    },
+    {
+      "mapId": "MAP_BIRTH_ISLAND_EXTERIOR",
+      "layoutId": "LAYOUT_BIRTH_ISLAND_EXTERIOR",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_BIRTH_ISLAND_EXTERIOR.json",
+      "sourceFile": "data/maps/BirthIsland_Exterior/map.json"
+    },
+    {
+      "mapId": "MAP_BIRTH_ISLAND_HARBOR",
+      "layoutId": "LAYOUT_ISLAND_HARBOR",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_BIRTH_ISLAND_HARBOR.json",
+      "sourceFile": "data/maps/BirthIsland_Harbor/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY",
+      "layoutId": "LAYOUT_CELADON_CITY",
+      "objectEventCount": 15,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY.json",
+      "sourceFile": "data/maps/CeladonCity/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_CONDOMINIUMS_1F",
+      "layoutId": "LAYOUT_CELADON_CITY_CONDOMINIUMS_1F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_CONDOMINIUMS_1F.json",
+      "sourceFile": "data/maps/CeladonCity_Condominiums_1F/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_CONDOMINIUMS_2F",
+      "layoutId": "LAYOUT_CELADON_CITY_CONDOMINIUMS_2F",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_CONDOMINIUMS_2F.json",
+      "sourceFile": "data/maps/CeladonCity_Condominiums_2F/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_CONDOMINIUMS_3F",
+      "layoutId": "LAYOUT_CELADON_CITY_CONDOMINIUMS_3F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_CONDOMINIUMS_3F.json",
+      "sourceFile": "data/maps/CeladonCity_Condominiums_3F/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_CONDOMINIUMS_ROOF",
+      "layoutId": "LAYOUT_CELADON_CITY_CONDOMINIUMS_ROOF",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_CONDOMINIUMS_ROOF.json",
+      "sourceFile": "data/maps/CeladonCity_Condominiums_Roof/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_CONDOMINIUMS_ROOF_ROOM",
+      "layoutId": "LAYOUT_CELADON_CITY_CONDOMINIUMS_ROOF_ROOM",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_CONDOMINIUMS_ROOF_ROOM.json",
+      "sourceFile": "data/maps/CeladonCity_Condominiums_RoofRoom/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_DEPARTMENT_STORE_1F",
+      "layoutId": "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_1F",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_DEPARTMENT_STORE_1F.json",
+      "sourceFile": "data/maps/CeladonCity_DepartmentStore_1F/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_DEPARTMENT_STORE_2F",
+      "layoutId": "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_DEPARTMENT_STORE_2F.json",
+      "sourceFile": "data/maps/CeladonCity_DepartmentStore_2F/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_DEPARTMENT_STORE_3F",
+      "layoutId": "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_3F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_DEPARTMENT_STORE_3F.json",
+      "sourceFile": "data/maps/CeladonCity_DepartmentStore_3F/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_DEPARTMENT_STORE_4F",
+      "layoutId": "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_4F",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_DEPARTMENT_STORE_4F.json",
+      "sourceFile": "data/maps/CeladonCity_DepartmentStore_4F/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_DEPARTMENT_STORE_5F",
+      "layoutId": "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_5F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_DEPARTMENT_STORE_5F.json",
+      "sourceFile": "data/maps/CeladonCity_DepartmentStore_5F/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_DEPARTMENT_STORE_ELEVATOR",
+      "layoutId": "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_ELEVATOR",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_DEPARTMENT_STORE_ELEVATOR.json",
+      "sourceFile": "data/maps/CeladonCity_DepartmentStore_Elevator/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_DEPARTMENT_STORE_ROOF",
+      "layoutId": "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_ROOF",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_DEPARTMENT_STORE_ROOF.json",
+      "sourceFile": "data/maps/CeladonCity_DepartmentStore_Roof/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_GAME_CORNER",
+      "layoutId": "LAYOUT_CELADON_CITY_GAME_CORNER",
+      "objectEventCount": 11,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_GAME_CORNER.json",
+      "sourceFile": "data/maps/CeladonCity_GameCorner/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_GAME_CORNER_PRIZE_ROOM",
+      "layoutId": "LAYOUT_CELADON_CITY_GAME_CORNER_PRIZE_ROOM",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_GAME_CORNER_PRIZE_ROOM.json",
+      "sourceFile": "data/maps/CeladonCity_GameCorner_PrizeRoom/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_GYM",
+      "layoutId": "LAYOUT_CELADON_CITY_GYM",
+      "objectEventCount": 11,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_GYM.json",
+      "sourceFile": "data/maps/CeladonCity_Gym/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_HOTEL",
+      "layoutId": "LAYOUT_CELADON_CITY_HOTEL",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_HOTEL.json",
+      "sourceFile": "data/maps/CeladonCity_Hotel/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_HOUSE1",
+      "layoutId": "LAYOUT_HOUSE5",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_HOUSE1.json",
+      "sourceFile": "data/maps/CeladonCity_House1/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/CeladonCity_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/CeladonCity_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_CELADON_CITY_RESTAURANT",
+      "layoutId": "LAYOUT_CELADON_CITY_RESTAURANT",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_CELADON_CITY_RESTAURANT.json",
+      "sourceFile": "data/maps/CeladonCity_Restaurant/map.json"
+    },
+    {
+      "mapId": "MAP_CERULEAN_CAVE_1F",
+      "layoutId": "LAYOUT_CERULEAN_CAVE_1F",
+      "objectEventCount": 9,
+      "file": "assets/firered/maps/entities/by-map/MAP_CERULEAN_CAVE_1F.json",
+      "sourceFile": "data/maps/CeruleanCave_1F/map.json"
+    },
+    {
+      "mapId": "MAP_CERULEAN_CAVE_2F",
+      "layoutId": "LAYOUT_CERULEAN_CAVE_2F",
+      "objectEventCount": 13,
+      "file": "assets/firered/maps/entities/by-map/MAP_CERULEAN_CAVE_2F.json",
+      "sourceFile": "data/maps/CeruleanCave_2F/map.json"
+    },
+    {
+      "mapId": "MAP_CERULEAN_CAVE_B1F",
+      "layoutId": "LAYOUT_CERULEAN_CAVE_B1F",
+      "objectEventCount": 12,
+      "file": "assets/firered/maps/entities/by-map/MAP_CERULEAN_CAVE_B1F.json",
+      "sourceFile": "data/maps/CeruleanCave_B1F/map.json"
+    },
+    {
+      "mapId": "MAP_CERULEAN_CITY",
+      "layoutId": "LAYOUT_CERULEAN_CITY",
+      "objectEventCount": 12,
+      "file": "assets/firered/maps/entities/by-map/MAP_CERULEAN_CITY.json",
+      "sourceFile": "data/maps/CeruleanCity/map.json"
+    },
+    {
+      "mapId": "MAP_CERULEAN_CITY_BIKE_SHOP",
+      "layoutId": "LAYOUT_CERULEAN_CITY_BIKE_SHOP",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_CERULEAN_CITY_BIKE_SHOP.json",
+      "sourceFile": "data/maps/CeruleanCity_BikeShop/map.json"
+    },
+    {
+      "mapId": "MAP_CERULEAN_CITY_GYM",
+      "layoutId": "LAYOUT_CERULEAN_CITY_GYM",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_CERULEAN_CITY_GYM.json",
+      "sourceFile": "data/maps/CeruleanCity_Gym/map.json"
+    },
+    {
+      "mapId": "MAP_CERULEAN_CITY_HOUSE1",
+      "layoutId": "LAYOUT_CERULEAN_CITY_HOUSE1",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_CERULEAN_CITY_HOUSE1.json",
+      "sourceFile": "data/maps/CeruleanCity_House1/map.json"
+    },
+    {
+      "mapId": "MAP_CERULEAN_CITY_HOUSE2",
+      "layoutId": "LAYOUT_CERULEAN_CITY_HOUSE2",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_CERULEAN_CITY_HOUSE2.json",
+      "sourceFile": "data/maps/CeruleanCity_House2/map.json"
+    },
+    {
+      "mapId": "MAP_CERULEAN_CITY_HOUSE3",
+      "layoutId": "LAYOUT_HOUSE1",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_CERULEAN_CITY_HOUSE3.json",
+      "sourceFile": "data/maps/CeruleanCity_House3/map.json"
+    },
+    {
+      "mapId": "MAP_CERULEAN_CITY_HOUSE4",
+      "layoutId": "LAYOUT_HOUSE1",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_CERULEAN_CITY_HOUSE4.json",
+      "sourceFile": "data/maps/CeruleanCity_House4/map.json"
+    },
+    {
+      "mapId": "MAP_CERULEAN_CITY_HOUSE5",
+      "layoutId": "LAYOUT_CERULEAN_CITY_HOUSE5",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_CERULEAN_CITY_HOUSE5.json",
+      "sourceFile": "data/maps/CeruleanCity_House5/map.json"
+    },
+    {
+      "mapId": "MAP_CERULEAN_CITY_MART",
+      "layoutId": "LAYOUT_MART",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_CERULEAN_CITY_MART.json",
+      "sourceFile": "data/maps/CeruleanCity_Mart/map.json"
+    },
+    {
+      "mapId": "MAP_CERULEAN_CITY_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_CERULEAN_CITY_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/CeruleanCity_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_CERULEAN_CITY_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_CERULEAN_CITY_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/CeruleanCity_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_CINNABAR_ISLAND",
+      "layoutId": "LAYOUT_CINNABAR_ISLAND",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_CINNABAR_ISLAND.json",
+      "sourceFile": "data/maps/CinnabarIsland/map.json"
+    },
+    {
+      "mapId": "MAP_CINNABAR_ISLAND_GYM",
+      "layoutId": "LAYOUT_CINNABAR_ISLAND_GYM",
+      "objectEventCount": 9,
+      "file": "assets/firered/maps/entities/by-map/MAP_CINNABAR_ISLAND_GYM.json",
+      "sourceFile": "data/maps/CinnabarIsland_Gym/map.json"
+    },
+    {
+      "mapId": "MAP_CINNABAR_ISLAND_MART",
+      "layoutId": "LAYOUT_MART",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_CINNABAR_ISLAND_MART.json",
+      "sourceFile": "data/maps/CinnabarIsland_Mart/map.json"
+    },
+    {
+      "mapId": "MAP_CINNABAR_ISLAND_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_CINNABAR_ISLAND_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/CinnabarIsland_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_CINNABAR_ISLAND_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_CINNABAR_ISLAND_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/CinnabarIsland_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_CINNABAR_ISLAND_POKEMON_LAB_ENTRANCE",
+      "layoutId": "LAYOUT_CINNABAR_ISLAND_POKEMON_LAB_ENTRANCE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_CINNABAR_ISLAND_POKEMON_LAB_ENTRANCE.json",
+      "sourceFile": "data/maps/CinnabarIsland_PokemonLab_Entrance/map.json"
+    },
+    {
+      "mapId": "MAP_CINNABAR_ISLAND_POKEMON_LAB_EXPERIMENT_ROOM",
+      "layoutId": "LAYOUT_CINNABAR_ISLAND_POKEMON_LAB_EXPERIMENT_ROOM",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_CINNABAR_ISLAND_POKEMON_LAB_EXPERIMENT_ROOM.json",
+      "sourceFile": "data/maps/CinnabarIsland_PokemonLab_ExperimentRoom/map.json"
+    },
+    {
+      "mapId": "MAP_CINNABAR_ISLAND_POKEMON_LAB_LOUNGE",
+      "layoutId": "LAYOUT_CINNABAR_ISLAND_POKEMON_LAB_LOUNGE",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_CINNABAR_ISLAND_POKEMON_LAB_LOUNGE.json",
+      "sourceFile": "data/maps/CinnabarIsland_PokemonLab_Lounge/map.json"
+    },
+    {
+      "mapId": "MAP_CINNABAR_ISLAND_POKEMON_LAB_RESEARCH_ROOM",
+      "layoutId": "LAYOUT_CINNABAR_ISLAND_POKEMON_LAB_RESEARCH_ROOM",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_CINNABAR_ISLAND_POKEMON_LAB_RESEARCH_ROOM.json",
+      "sourceFile": "data/maps/CinnabarIsland_PokemonLab_ResearchRoom/map.json"
+    },
+    {
+      "mapId": "MAP_DIGLETTS_CAVE_B1F",
+      "layoutId": "LAYOUT_DIGLETTS_CAVE_B1F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_DIGLETTS_CAVE_B1F.json",
+      "sourceFile": "data/maps/DiglettsCave_B1F/map.json"
+    },
+    {
+      "mapId": "MAP_DIGLETTS_CAVE_NORTH_ENTRANCE",
+      "layoutId": "LAYOUT_DIGLETTS_CAVE_NORTH_ENTRANCE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_DIGLETTS_CAVE_NORTH_ENTRANCE.json",
+      "sourceFile": "data/maps/DiglettsCave_NorthEntrance/map.json"
+    },
+    {
+      "mapId": "MAP_DIGLETTS_CAVE_SOUTH_ENTRANCE",
+      "layoutId": "LAYOUT_DIGLETTS_CAVE_SOUTH_ENTRANCE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_DIGLETTS_CAVE_SOUTH_ENTRANCE.json",
+      "sourceFile": "data/maps/DiglettsCave_SouthEntrance/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND",
+      "layoutId": "LAYOUT_FIVE_ISLAND",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND.json",
+      "sourceFile": "data/maps/FiveIsland/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_HARBOR",
+      "layoutId": "LAYOUT_ISLAND_HARBOR",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_HARBOR.json",
+      "sourceFile": "data/maps/FiveIsland_Harbor/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_HOUSE1",
+      "layoutId": "LAYOUT_HOUSE3",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_HOUSE1.json",
+      "sourceFile": "data/maps/FiveIsland_House1/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_HOUSE2",
+      "layoutId": "LAYOUT_HOUSE3",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_HOUSE2.json",
+      "sourceFile": "data/maps/FiveIsland_House2/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ENTRANCE",
+      "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ENTRANCE",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_LOST_CAVE_ENTRANCE.json",
+      "sourceFile": "data/maps/FiveIsland_LostCave_Entrance/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM1",
+      "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM1",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_LOST_CAVE_ROOM1.json",
+      "sourceFile": "data/maps/FiveIsland_LostCave_Room1/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM10",
+      "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM10",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_LOST_CAVE_ROOM10.json",
+      "sourceFile": "data/maps/FiveIsland_LostCave_Room10/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM11",
+      "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM11",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_LOST_CAVE_ROOM11.json",
+      "sourceFile": "data/maps/FiveIsland_LostCave_Room11/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM12",
+      "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM12",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_LOST_CAVE_ROOM12.json",
+      "sourceFile": "data/maps/FiveIsland_LostCave_Room12/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM13",
+      "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM13",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_LOST_CAVE_ROOM13.json",
+      "sourceFile": "data/maps/FiveIsland_LostCave_Room13/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM14",
+      "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM14",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_LOST_CAVE_ROOM14.json",
+      "sourceFile": "data/maps/FiveIsland_LostCave_Room14/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM2",
+      "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM2",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_LOST_CAVE_ROOM2.json",
+      "sourceFile": "data/maps/FiveIsland_LostCave_Room2/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM3",
+      "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM3",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_LOST_CAVE_ROOM3.json",
+      "sourceFile": "data/maps/FiveIsland_LostCave_Room3/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM4",
+      "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM4",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_LOST_CAVE_ROOM4.json",
+      "sourceFile": "data/maps/FiveIsland_LostCave_Room4/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM5",
+      "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM5",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_LOST_CAVE_ROOM5.json",
+      "sourceFile": "data/maps/FiveIsland_LostCave_Room5/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM6",
+      "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM6",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_LOST_CAVE_ROOM6.json",
+      "sourceFile": "data/maps/FiveIsland_LostCave_Room6/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM7",
+      "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM7",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_LOST_CAVE_ROOM7.json",
+      "sourceFile": "data/maps/FiveIsland_LostCave_Room7/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM8",
+      "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM8",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_LOST_CAVE_ROOM8.json",
+      "sourceFile": "data/maps/FiveIsland_LostCave_Room8/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM9",
+      "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM9",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_LOST_CAVE_ROOM9.json",
+      "sourceFile": "data/maps/FiveIsland_LostCave_Room9/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_MEADOW",
+      "layoutId": "LAYOUT_FIVE_ISLAND_MEADOW",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_MEADOW.json",
+      "sourceFile": "data/maps/FiveIsland_Meadow/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_MEMORIAL_PILLAR",
+      "layoutId": "LAYOUT_FIVE_ISLAND_MEMORIAL_PILLAR",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_MEMORIAL_PILLAR.json",
+      "sourceFile": "data/maps/FiveIsland_MemorialPillar/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/FiveIsland_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/FiveIsland_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_RESORT_GORGEOUS",
+      "layoutId": "LAYOUT_FIVE_ISLAND_RESORT_GORGEOUS",
+      "objectEventCount": 8,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_RESORT_GORGEOUS.json",
+      "sourceFile": "data/maps/FiveIsland_ResortGorgeous/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_RESORT_GORGEOUS_HOUSE",
+      "layoutId": "LAYOUT_FIVE_ISLAND_RESORT_GORGEOUS_HOUSE",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_RESORT_GORGEOUS_HOUSE.json",
+      "sourceFile": "data/maps/FiveIsland_ResortGorgeous_House/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_ROCKET_WAREHOUSE",
+      "layoutId": "LAYOUT_FIVE_ISLAND_ROCKET_WAREHOUSE",
+      "objectEventCount": 10,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_ROCKET_WAREHOUSE.json",
+      "sourceFile": "data/maps/FiveIsland_RocketWarehouse/map.json"
+    },
+    {
+      "mapId": "MAP_FIVE_ISLAND_WATER_LABYRINTH",
+      "layoutId": "LAYOUT_FIVE_ISLAND_WATER_LABYRINTH",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_FIVE_ISLAND_WATER_LABYRINTH.json",
+      "sourceFile": "data/maps/FiveIsland_WaterLabyrinth/map.json"
+    },
+    {
+      "mapId": "MAP_FOUR_ISLAND",
+      "layoutId": "LAYOUT_FOUR_ISLAND",
+      "objectEventCount": 12,
+      "file": "assets/firered/maps/entities/by-map/MAP_FOUR_ISLAND.json",
+      "sourceFile": "data/maps/FourIsland/map.json"
+    },
+    {
+      "mapId": "MAP_FOUR_ISLAND_HARBOR",
+      "layoutId": "LAYOUT_ISLAND_HARBOR",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_FOUR_ISLAND_HARBOR.json",
+      "sourceFile": "data/maps/FourIsland_Harbor/map.json"
+    },
+    {
+      "mapId": "MAP_FOUR_ISLAND_HOUSE1",
+      "layoutId": "LAYOUT_HOUSE3",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_FOUR_ISLAND_HOUSE1.json",
+      "sourceFile": "data/maps/FourIsland_House1/map.json"
+    },
+    {
+      "mapId": "MAP_FOUR_ISLAND_HOUSE2",
+      "layoutId": "LAYOUT_HOUSE3",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_FOUR_ISLAND_HOUSE2.json",
+      "sourceFile": "data/maps/FourIsland_House2/map.json"
+    },
+    {
+      "mapId": "MAP_FOUR_ISLAND_ICEFALL_CAVE_1F",
+      "layoutId": "LAYOUT_FOUR_ISLAND_ICEFALL_CAVE_1F",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_FOUR_ISLAND_ICEFALL_CAVE_1F.json",
+      "sourceFile": "data/maps/FourIsland_IcefallCave_1F/map.json"
+    },
+    {
+      "mapId": "MAP_FOUR_ISLAND_ICEFALL_CAVE_B1F",
+      "layoutId": "LAYOUT_FOUR_ISLAND_ICEFALL_CAVE_B1F",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_FOUR_ISLAND_ICEFALL_CAVE_B1F.json",
+      "sourceFile": "data/maps/FourIsland_IcefallCave_B1F/map.json"
+    },
+    {
+      "mapId": "MAP_FOUR_ISLAND_ICEFALL_CAVE_BACK",
+      "layoutId": "LAYOUT_FOUR_ISLAND_ICEFALL_CAVE_BACK",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_FOUR_ISLAND_ICEFALL_CAVE_BACK.json",
+      "sourceFile": "data/maps/FourIsland_IcefallCave_Back/map.json"
+    },
+    {
+      "mapId": "MAP_FOUR_ISLAND_ICEFALL_CAVE_ENTRANCE",
+      "layoutId": "LAYOUT_FOUR_ISLAND_ICEFALL_CAVE_ENTRANCE",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_FOUR_ISLAND_ICEFALL_CAVE_ENTRANCE.json",
+      "sourceFile": "data/maps/FourIsland_IcefallCave_Entrance/map.json"
+    },
+    {
+      "mapId": "MAP_FOUR_ISLAND_LORELEIS_HOUSE",
+      "layoutId": "LAYOUT_FOUR_ISLAND_LORELEIS_HOUSE",
+      "objectEventCount": 15,
+      "file": "assets/firered/maps/entities/by-map/MAP_FOUR_ISLAND_LORELEIS_HOUSE.json",
+      "sourceFile": "data/maps/FourIsland_LoreleisHouse/map.json"
+    },
+    {
+      "mapId": "MAP_FOUR_ISLAND_MART",
+      "layoutId": "LAYOUT_MART",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_FOUR_ISLAND_MART.json",
+      "sourceFile": "data/maps/FourIsland_Mart/map.json"
+    },
+    {
+      "mapId": "MAP_FOUR_ISLAND_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_FOUR_ISLAND_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/FourIsland_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_FOUR_ISLAND_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_FOUR_ISLAND_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/FourIsland_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_FOUR_ISLAND_POKEMON_DAY_CARE",
+      "layoutId": "LAYOUT_FOUR_ISLAND_POKEMON_DAY_CARE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_FOUR_ISLAND_POKEMON_DAY_CARE.json",
+      "sourceFile": "data/maps/FourIsland_PokemonDayCare/map.json"
+    },
+    {
+      "mapId": "MAP_FUCHSIA_CITY",
+      "layoutId": "LAYOUT_FUCHSIA_CITY",
+      "objectEventCount": 16,
+      "file": "assets/firered/maps/entities/by-map/MAP_FUCHSIA_CITY.json",
+      "sourceFile": "data/maps/FuchsiaCity/map.json"
+    },
+    {
+      "mapId": "MAP_FUCHSIA_CITY_GYM",
+      "layoutId": "LAYOUT_FUCHSIA_CITY_GYM",
+      "objectEventCount": 8,
+      "file": "assets/firered/maps/entities/by-map/MAP_FUCHSIA_CITY_GYM.json",
+      "sourceFile": "data/maps/FuchsiaCity_Gym/map.json"
+    },
+    {
+      "mapId": "MAP_FUCHSIA_CITY_HOUSE1",
+      "layoutId": "LAYOUT_HOUSE1",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_FUCHSIA_CITY_HOUSE1.json",
+      "sourceFile": "data/maps/FuchsiaCity_House1/map.json"
+    },
+    {
+      "mapId": "MAP_FUCHSIA_CITY_HOUSE2",
+      "layoutId": "LAYOUT_FUCHSIA_CITY_HOUSE2",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_FUCHSIA_CITY_HOUSE2.json",
+      "sourceFile": "data/maps/FuchsiaCity_House2/map.json"
+    },
+    {
+      "mapId": "MAP_FUCHSIA_CITY_HOUSE3",
+      "layoutId": "LAYOUT_HOUSE1",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_FUCHSIA_CITY_HOUSE3.json",
+      "sourceFile": "data/maps/FuchsiaCity_House3/map.json"
+    },
+    {
+      "mapId": "MAP_FUCHSIA_CITY_MART",
+      "layoutId": "LAYOUT_MART",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_FUCHSIA_CITY_MART.json",
+      "sourceFile": "data/maps/FuchsiaCity_Mart/map.json"
+    },
+    {
+      "mapId": "MAP_FUCHSIA_CITY_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_FUCHSIA_CITY_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/FuchsiaCity_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_FUCHSIA_CITY_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_FUCHSIA_CITY_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/FuchsiaCity_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE",
+      "layoutId": "LAYOUT_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE.json",
+      "sourceFile": "data/maps/FuchsiaCity_SafariZone_Entrance/map.json"
+    },
+    {
+      "mapId": "MAP_FUCHSIA_CITY_SAFARI_ZONE_OFFICE",
+      "layoutId": "LAYOUT_FUCHSIA_CITY_SAFARI_ZONE_OFFICE",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_FUCHSIA_CITY_SAFARI_ZONE_OFFICE.json",
+      "sourceFile": "data/maps/FuchsiaCity_SafariZone_Office/map.json"
+    },
+    {
+      "mapId": "MAP_FUCHSIA_CITY_WARDENS_HOUSE",
+      "layoutId": "LAYOUT_FUCHSIA_CITY_WARDENS_HOUSE",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_FUCHSIA_CITY_WARDENS_HOUSE.json",
+      "sourceFile": "data/maps/FuchsiaCity_WardensHouse/map.json"
+    },
+    {
+      "mapId": "MAP_INDIGO_PLATEAU_EXTERIOR",
+      "layoutId": "LAYOUT_INDIGO_PLATEAU_EXTERIOR",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_INDIGO_PLATEAU_EXTERIOR.json",
+      "sourceFile": "data/maps/IndigoPlateau_Exterior/map.json"
+    },
+    {
+      "mapId": "MAP_INDIGO_PLATEAU_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_INDIGO_PLATEAU_POKEMON_CENTER_1F",
+      "objectEventCount": 8,
+      "file": "assets/firered/maps/entities/by-map/MAP_INDIGO_PLATEAU_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/IndigoPlateau_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_INDIGO_PLATEAU_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_INDIGO_PLATEAU_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/IndigoPlateau_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_LAVENDER_TOWN",
+      "layoutId": "LAYOUT_LAVENDER_TOWN",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_LAVENDER_TOWN.json",
+      "sourceFile": "data/maps/LavenderTown/map.json"
+    },
+    {
+      "mapId": "MAP_LAVENDER_TOWN_HOUSE1",
+      "layoutId": "LAYOUT_HOUSE5",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_LAVENDER_TOWN_HOUSE1.json",
+      "sourceFile": "data/maps/LavenderTown_House1/map.json"
+    },
+    {
+      "mapId": "MAP_LAVENDER_TOWN_HOUSE2",
+      "layoutId": "LAYOUT_HOUSE5",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_LAVENDER_TOWN_HOUSE2.json",
+      "sourceFile": "data/maps/LavenderTown_House2/map.json"
+    },
+    {
+      "mapId": "MAP_LAVENDER_TOWN_MART",
+      "layoutId": "LAYOUT_MART",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_LAVENDER_TOWN_MART.json",
+      "sourceFile": "data/maps/LavenderTown_Mart/map.json"
+    },
+    {
+      "mapId": "MAP_LAVENDER_TOWN_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_LAVENDER_TOWN_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/LavenderTown_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_LAVENDER_TOWN_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_LAVENDER_TOWN_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/LavenderTown_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_LAVENDER_TOWN_VOLUNTEER_POKEMON_HOUSE",
+      "layoutId": "LAYOUT_LAVENDER_TOWN_VOLUNTEER_POKEMON_HOUSE",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_LAVENDER_TOWN_VOLUNTEER_POKEMON_HOUSE.json",
+      "sourceFile": "data/maps/LavenderTown_VolunteerPokemonHouse/map.json"
+    },
+    {
+      "mapId": "MAP_MT_EMBER_EXTERIOR",
+      "layoutId": "LAYOUT_MT_EMBER_EXTERIOR",
+      "objectEventCount": 20,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_EMBER_EXTERIOR.json",
+      "sourceFile": "data/maps/MtEmber_Exterior/map.json"
+    },
+    {
+      "mapId": "MAP_MT_EMBER_RUBY_PATH_1F",
+      "layoutId": "LAYOUT_MT_EMBER_RUBY_PATH_1F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_EMBER_RUBY_PATH_1F.json",
+      "sourceFile": "data/maps/MtEmber_RubyPath_1F/map.json"
+    },
+    {
+      "mapId": "MAP_MT_EMBER_RUBY_PATH_B1F",
+      "layoutId": "LAYOUT_MT_EMBER_RUBY_PATH_B1F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_EMBER_RUBY_PATH_B1F.json",
+      "sourceFile": "data/maps/MtEmber_RubyPath_B1F/map.json"
+    },
+    {
+      "mapId": "MAP_MT_EMBER_RUBY_PATH_B1F_STAIRS",
+      "layoutId": "LAYOUT_MT_EMBER_RUBY_PATH_B1F_STAIRS",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_EMBER_RUBY_PATH_B1F_STAIRS.json",
+      "sourceFile": "data/maps/MtEmber_RubyPath_B1F_Stairs/map.json"
+    },
+    {
+      "mapId": "MAP_MT_EMBER_RUBY_PATH_B2F",
+      "layoutId": "LAYOUT_MT_EMBER_RUBY_PATH_B2F",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_EMBER_RUBY_PATH_B2F.json",
+      "sourceFile": "data/maps/MtEmber_RubyPath_B2F/map.json"
+    },
+    {
+      "mapId": "MAP_MT_EMBER_RUBY_PATH_B2F_STAIRS",
+      "layoutId": "LAYOUT_MT_EMBER_RUBY_PATH_B2F_STAIRS",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_EMBER_RUBY_PATH_B2F_STAIRS.json",
+      "sourceFile": "data/maps/MtEmber_RubyPath_B2F_Stairs/map.json"
+    },
+    {
+      "mapId": "MAP_MT_EMBER_RUBY_PATH_B3F",
+      "layoutId": "LAYOUT_MT_EMBER_RUBY_PATH_B3F",
+      "objectEventCount": 10,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_EMBER_RUBY_PATH_B3F.json",
+      "sourceFile": "data/maps/MtEmber_RubyPath_B3F/map.json"
+    },
+    {
+      "mapId": "MAP_MT_EMBER_RUBY_PATH_B4F",
+      "layoutId": "LAYOUT_MT_EMBER_RUBY_PATH_B4F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_EMBER_RUBY_PATH_B4F.json",
+      "sourceFile": "data/maps/MtEmber_RubyPath_B4F/map.json"
+    },
+    {
+      "mapId": "MAP_MT_EMBER_RUBY_PATH_B5F",
+      "layoutId": "LAYOUT_MT_EMBER_RUBY_PATH_B5F",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_EMBER_RUBY_PATH_B5F.json",
+      "sourceFile": "data/maps/MtEmber_RubyPath_B5F/map.json"
+    },
+    {
+      "mapId": "MAP_MT_EMBER_SUMMIT",
+      "layoutId": "LAYOUT_MT_EMBER_SUMMIT",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_EMBER_SUMMIT.json",
+      "sourceFile": "data/maps/MtEmber_Summit/map.json"
+    },
+    {
+      "mapId": "MAP_MT_EMBER_SUMMIT_PATH_1F",
+      "layoutId": "LAYOUT_MT_EMBER_SUMMIT_PATH_1F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_EMBER_SUMMIT_PATH_1F.json",
+      "sourceFile": "data/maps/MtEmber_SummitPath_1F/map.json"
+    },
+    {
+      "mapId": "MAP_MT_EMBER_SUMMIT_PATH_2F",
+      "layoutId": "LAYOUT_MT_EMBER_SUMMIT_PATH_2F",
+      "objectEventCount": 9,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_EMBER_SUMMIT_PATH_2F.json",
+      "sourceFile": "data/maps/MtEmber_SummitPath_2F/map.json"
+    },
+    {
+      "mapId": "MAP_MT_EMBER_SUMMIT_PATH_3F",
+      "layoutId": "LAYOUT_MT_EMBER_SUMMIT_PATH_3F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_EMBER_SUMMIT_PATH_3F.json",
+      "sourceFile": "data/maps/MtEmber_SummitPath_3F/map.json"
+    },
+    {
+      "mapId": "MAP_MT_MOON_1F",
+      "layoutId": "LAYOUT_MT_MOON_1F",
+      "objectEventCount": 14,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_MOON_1F.json",
+      "sourceFile": "data/maps/MtMoon_1F/map.json"
+    },
+    {
+      "mapId": "MAP_MT_MOON_B1F",
+      "layoutId": "LAYOUT_MT_MOON_B1F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_MOON_B1F.json",
+      "sourceFile": "data/maps/MtMoon_B1F/map.json"
+    },
+    {
+      "mapId": "MAP_MT_MOON_B2F",
+      "layoutId": "LAYOUT_MT_MOON_B2F",
+      "objectEventCount": 11,
+      "file": "assets/firered/maps/entities/by-map/MAP_MT_MOON_B2F.json",
+      "sourceFile": "data/maps/MtMoon_B2F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_1F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_1F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_1F.json",
+      "sourceFile": "data/maps/NavelRock_1F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_B1F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_B1F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_B1F.json",
+      "sourceFile": "data/maps/NavelRock_B1F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_BASE",
+      "layoutId": "LAYOUT_NAVEL_ROCK_BASE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_BASE.json",
+      "sourceFile": "data/maps/NavelRock_Base/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_BASE_PATH_B10F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_BASE_PATH_B10F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_BASE_PATH_B10F.json",
+      "sourceFile": "data/maps/NavelRock_BasePath_B10F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_BASE_PATH_B11F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_BASE_PATH_B11F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_BASE_PATH_B11F.json",
+      "sourceFile": "data/maps/NavelRock_BasePath_B11F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_BASE_PATH_B1F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_BASE_PATH_B1F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_BASE_PATH_B1F.json",
+      "sourceFile": "data/maps/NavelRock_BasePath_B1F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_BASE_PATH_B2F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_BASE_PATH_B2F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_BASE_PATH_B2F.json",
+      "sourceFile": "data/maps/NavelRock_BasePath_B2F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_BASE_PATH_B3F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_BASE_PATH_B3F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_BASE_PATH_B3F.json",
+      "sourceFile": "data/maps/NavelRock_BasePath_B3F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_BASE_PATH_B4F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_BASE_PATH_B4F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_BASE_PATH_B4F.json",
+      "sourceFile": "data/maps/NavelRock_BasePath_B4F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_BASE_PATH_B5F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_BASE_PATH_B5F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_BASE_PATH_B5F.json",
+      "sourceFile": "data/maps/NavelRock_BasePath_B5F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_BASE_PATH_B6F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_BASE_PATH_B6F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_BASE_PATH_B6F.json",
+      "sourceFile": "data/maps/NavelRock_BasePath_B6F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_BASE_PATH_B7F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_BASE_PATH_B7F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_BASE_PATH_B7F.json",
+      "sourceFile": "data/maps/NavelRock_BasePath_B7F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_BASE_PATH_B8F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_BASE_PATH_B8F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_BASE_PATH_B8F.json",
+      "sourceFile": "data/maps/NavelRock_BasePath_B8F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_BASE_PATH_B9F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_BASE_PATH_B9F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_BASE_PATH_B9F.json",
+      "sourceFile": "data/maps/NavelRock_BasePath_B9F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_EXTERIOR",
+      "layoutId": "LAYOUT_NAVEL_ROCK_EXTERIOR",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_EXTERIOR.json",
+      "sourceFile": "data/maps/NavelRock_Exterior/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_FORK",
+      "layoutId": "LAYOUT_NAVEL_ROCK_FORK",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_FORK.json",
+      "sourceFile": "data/maps/NavelRock_Fork/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_HARBOR",
+      "layoutId": "LAYOUT_ISLAND_HARBOR",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_HARBOR.json",
+      "sourceFile": "data/maps/NavelRock_Harbor/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_SUMMIT",
+      "layoutId": "LAYOUT_NAVEL_ROCK_SUMMIT",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_SUMMIT.json",
+      "sourceFile": "data/maps/NavelRock_Summit/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_SUMMIT_PATH_2F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_SUMMIT_PATH_2F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_SUMMIT_PATH_2F.json",
+      "sourceFile": "data/maps/NavelRock_SummitPath_2F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_SUMMIT_PATH_3F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_SUMMIT_PATH_3F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_SUMMIT_PATH_3F.json",
+      "sourceFile": "data/maps/NavelRock_SummitPath_3F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_SUMMIT_PATH_4F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_SUMMIT_PATH_4F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_SUMMIT_PATH_4F.json",
+      "sourceFile": "data/maps/NavelRock_SummitPath_4F/map.json"
+    },
+    {
+      "mapId": "MAP_NAVEL_ROCK_SUMMIT_PATH_5F",
+      "layoutId": "LAYOUT_NAVEL_ROCK_SUMMIT_PATH_5F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_NAVEL_ROCK_SUMMIT_PATH_5F.json",
+      "sourceFile": "data/maps/NavelRock_SummitPath_5F/map.json"
+    },
+    {
+      "mapId": "MAP_ONE_ISLAND",
+      "layoutId": "LAYOUT_ONE_ISLAND",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_ONE_ISLAND.json",
+      "sourceFile": "data/maps/OneIsland/map.json"
+    },
+    {
+      "mapId": "MAP_ONE_ISLAND_HARBOR",
+      "layoutId": "LAYOUT_ISLAND_HARBOR",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_ONE_ISLAND_HARBOR.json",
+      "sourceFile": "data/maps/OneIsland_Harbor/map.json"
+    },
+    {
+      "mapId": "MAP_ONE_ISLAND_HOUSE1",
+      "layoutId": "LAYOUT_HOUSE3",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_ONE_ISLAND_HOUSE1.json",
+      "sourceFile": "data/maps/OneIsland_House1/map.json"
+    },
+    {
+      "mapId": "MAP_ONE_ISLAND_HOUSE2",
+      "layoutId": "LAYOUT_HOUSE3",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ONE_ISLAND_HOUSE2.json",
+      "sourceFile": "data/maps/OneIsland_House2/map.json"
+    },
+    {
+      "mapId": "MAP_ONE_ISLAND_KINDLE_ROAD",
+      "layoutId": "LAYOUT_ONE_ISLAND_KINDLE_ROAD",
+      "objectEventCount": 29,
+      "file": "assets/firered/maps/entities/by-map/MAP_ONE_ISLAND_KINDLE_ROAD.json",
+      "sourceFile": "data/maps/OneIsland_KindleRoad/map.json"
+    },
+    {
+      "mapId": "MAP_ONE_ISLAND_KINDLE_ROAD_EMBER_SPA",
+      "layoutId": "LAYOUT_ONE_ISLAND_KINDLE_ROAD_EMBER_SPA",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_ONE_ISLAND_KINDLE_ROAD_EMBER_SPA.json",
+      "sourceFile": "data/maps/OneIsland_KindleRoad_EmberSpa/map.json"
+    },
+    {
+      "mapId": "MAP_ONE_ISLAND_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_ONE_ISLAND_POKEMON_CENTER_1F",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_ONE_ISLAND_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/OneIsland_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_ONE_ISLAND_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_ONE_ISLAND_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_ONE_ISLAND_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/OneIsland_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_ONE_ISLAND_TREASURE_BEACH",
+      "layoutId": "LAYOUT_ONE_ISLAND_TREASURE_BEACH",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_ONE_ISLAND_TREASURE_BEACH.json",
+      "sourceFile": "data/maps/OneIsland_TreasureBeach/map.json"
+    },
+    {
+      "mapId": "MAP_PALLET_TOWN",
+      "layoutId": "LAYOUT_PALLET_TOWN",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_PALLET_TOWN.json",
+      "sourceFile": "data/maps/PalletTown/map.json"
+    },
+    {
+      "mapId": "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F",
+      "layoutId": "LAYOUT_PALLET_TOWN_PLAYERS_HOUSE_1F",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_PALLET_TOWN_PLAYERS_HOUSE_1F.json",
+      "sourceFile": "data/maps/PalletTown_PlayersHouse_1F/map.json"
+    },
+    {
+      "mapId": "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F",
+      "layoutId": "LAYOUT_PALLET_TOWN_PLAYERS_HOUSE_2F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_PALLET_TOWN_PLAYERS_HOUSE_2F.json",
+      "sourceFile": "data/maps/PalletTown_PlayersHouse_2F/map.json"
+    },
+    {
+      "mapId": "MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB",
+      "layoutId": "LAYOUT_PALLET_TOWN_PROFESSOR_OAKS_LAB",
+      "objectEventCount": 10,
+      "file": "assets/firered/maps/entities/by-map/MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB.json",
+      "sourceFile": "data/maps/PalletTown_ProfessorOaksLab/map.json"
+    },
+    {
+      "mapId": "MAP_PALLET_TOWN_RIVALS_HOUSE",
+      "layoutId": "LAYOUT_PALLET_TOWN_RIVALS_HOUSE",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_PALLET_TOWN_RIVALS_HOUSE.json",
+      "sourceFile": "data/maps/PalletTown_RivalsHouse/map.json"
+    },
+    {
+      "mapId": "MAP_PEWTER_CITY",
+      "layoutId": "LAYOUT_PEWTER_CITY",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_PEWTER_CITY.json",
+      "sourceFile": "data/maps/PewterCity/map.json"
+    },
+    {
+      "mapId": "MAP_PEWTER_CITY_GYM",
+      "layoutId": "LAYOUT_PEWTER_CITY_GYM",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_PEWTER_CITY_GYM.json",
+      "sourceFile": "data/maps/PewterCity_Gym/map.json"
+    },
+    {
+      "mapId": "MAP_PEWTER_CITY_HOUSE1",
+      "layoutId": "LAYOUT_HOUSE2",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_PEWTER_CITY_HOUSE1.json",
+      "sourceFile": "data/maps/PewterCity_House1/map.json"
+    },
+    {
+      "mapId": "MAP_PEWTER_CITY_HOUSE2",
+      "layoutId": "LAYOUT_HOUSE2",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_PEWTER_CITY_HOUSE2.json",
+      "sourceFile": "data/maps/PewterCity_House2/map.json"
+    },
+    {
+      "mapId": "MAP_PEWTER_CITY_MART",
+      "layoutId": "LAYOUT_MART",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_PEWTER_CITY_MART.json",
+      "sourceFile": "data/maps/PewterCity_Mart/map.json"
+    },
+    {
+      "mapId": "MAP_PEWTER_CITY_MUSEUM_1F",
+      "layoutId": "LAYOUT_PEWTER_CITY_MUSEUM_1F",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_PEWTER_CITY_MUSEUM_1F.json",
+      "sourceFile": "data/maps/PewterCity_Museum_1F/map.json"
+    },
+    {
+      "mapId": "MAP_PEWTER_CITY_MUSEUM_2F",
+      "layoutId": "LAYOUT_PEWTER_CITY_MUSEUM_2F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_PEWTER_CITY_MUSEUM_2F.json",
+      "sourceFile": "data/maps/PewterCity_Museum_2F/map.json"
+    },
+    {
+      "mapId": "MAP_PEWTER_CITY_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_PEWTER_CITY_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/PewterCity_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_PEWTER_CITY_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_PEWTER_CITY_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/PewterCity_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_LEAGUE_AGATHAS_ROOM",
+      "layoutId": "LAYOUT_POKEMON_LEAGUE_AGATHAS_ROOM",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_LEAGUE_AGATHAS_ROOM.json",
+      "sourceFile": "data/maps/PokemonLeague_AgathasRoom/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_LEAGUE_BRUNOS_ROOM",
+      "layoutId": "LAYOUT_POKEMON_LEAGUE_BRUNOS_ROOM",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_LEAGUE_BRUNOS_ROOM.json",
+      "sourceFile": "data/maps/PokemonLeague_BrunosRoom/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_LEAGUE_CHAMPIONS_ROOM",
+      "layoutId": "LAYOUT_POKEMON_LEAGUE_CHAMPIONS_ROOM",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_LEAGUE_CHAMPIONS_ROOM.json",
+      "sourceFile": "data/maps/PokemonLeague_ChampionsRoom/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_LEAGUE_HALL_OF_FAME",
+      "layoutId": "LAYOUT_POKEMON_LEAGUE_HALL_OF_FAME",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_LEAGUE_HALL_OF_FAME.json",
+      "sourceFile": "data/maps/PokemonLeague_HallOfFame/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_LEAGUE_LANCES_ROOM",
+      "layoutId": "LAYOUT_POKEMON_LEAGUE_LANCES_ROOM",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_LEAGUE_LANCES_ROOM.json",
+      "sourceFile": "data/maps/PokemonLeague_LancesRoom/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_LEAGUE_LORELEIS_ROOM",
+      "layoutId": "LAYOUT_POKEMON_LEAGUE_LORELEIS_ROOM",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_LEAGUE_LORELEIS_ROOM.json",
+      "sourceFile": "data/maps/PokemonLeague_LoreleisRoom/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_MANSION_1F",
+      "layoutId": "LAYOUT_POKEMON_MANSION_1F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_MANSION_1F.json",
+      "sourceFile": "data/maps/PokemonMansion_1F/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_MANSION_2F",
+      "layoutId": "LAYOUT_POKEMON_MANSION_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_MANSION_2F.json",
+      "sourceFile": "data/maps/PokemonMansion_2F/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_MANSION_3F",
+      "layoutId": "LAYOUT_POKEMON_MANSION_3F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_MANSION_3F.json",
+      "sourceFile": "data/maps/PokemonMansion_3F/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_MANSION_B1F",
+      "layoutId": "LAYOUT_POKEMON_MANSION_B1F",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_MANSION_B1F.json",
+      "sourceFile": "data/maps/PokemonMansion_B1F/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_TOWER_1F",
+      "layoutId": "LAYOUT_POKEMON_TOWER_1F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_TOWER_1F.json",
+      "sourceFile": "data/maps/PokemonTower_1F/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_TOWER_2F",
+      "layoutId": "LAYOUT_POKEMON_TOWER_2F",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_TOWER_2F.json",
+      "sourceFile": "data/maps/PokemonTower_2F/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_TOWER_3F",
+      "layoutId": "LAYOUT_POKEMON_TOWER_3F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_TOWER_3F.json",
+      "sourceFile": "data/maps/PokemonTower_3F/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_TOWER_4F",
+      "layoutId": "LAYOUT_POKEMON_TOWER_4F",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_TOWER_4F.json",
+      "sourceFile": "data/maps/PokemonTower_4F/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_TOWER_5F",
+      "layoutId": "LAYOUT_POKEMON_TOWER_5F",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_TOWER_5F.json",
+      "sourceFile": "data/maps/PokemonTower_5F/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_TOWER_6F",
+      "layoutId": "LAYOUT_POKEMON_TOWER_6F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_TOWER_6F.json",
+      "sourceFile": "data/maps/PokemonTower_6F/map.json"
+    },
+    {
+      "mapId": "MAP_POKEMON_TOWER_7F",
+      "layoutId": "LAYOUT_POKEMON_TOWER_7F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_POKEMON_TOWER_7F.json",
+      "sourceFile": "data/maps/PokemonTower_7F/map.json"
+    },
+    {
+      "mapId": "MAP_POWER_PLANT",
+      "layoutId": "LAYOUT_POWER_PLANT",
+      "objectEventCount": 8,
+      "file": "assets/firered/maps/entities/by-map/MAP_POWER_PLANT.json",
+      "sourceFile": "data/maps/PowerPlant/map.json"
+    },
+    {
+      "mapId": "MAP_PROTOTYPE_SEVII_ISLE_6",
+      "layoutId": "LAYOUT_PROTOTYPE_SEVII_ISLE_6",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_PROTOTYPE_SEVII_ISLE_6.json",
+      "sourceFile": "data/maps/Prototype_SeviiIsle_6/map.json"
+    },
+    {
+      "mapId": "MAP_PROTOTYPE_SEVII_ISLE_7",
+      "layoutId": "LAYOUT_PROTOTYPE_SEVII_ISLE_7",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_PROTOTYPE_SEVII_ISLE_7.json",
+      "sourceFile": "data/maps/Prototype_SeviiIsle_7/map.json"
+    },
+    {
+      "mapId": "MAP_PROTOTYPE_SEVII_ISLE_8",
+      "layoutId": "LAYOUT_PROTOTYPE_SEVII_ISLE_8",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_PROTOTYPE_SEVII_ISLE_8.json",
+      "sourceFile": "data/maps/Prototype_SeviiIsle_8/map.json"
+    },
+    {
+      "mapId": "MAP_PROTOTYPE_SEVII_ISLE_9",
+      "layoutId": "LAYOUT_PROTOTYPE_SEVII_ISLE_9",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_PROTOTYPE_SEVII_ISLE_9.json",
+      "sourceFile": "data/maps/Prototype_SeviiIsle_9/map.json"
+    },
+    {
+      "mapId": "MAP_RECORD_CORNER",
+      "layoutId": "LAYOUT_RECORD_CORNER",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_RECORD_CORNER.json",
+      "sourceFile": "data/maps/RecordCorner/map.json"
+    },
+    {
+      "mapId": "MAP_ROCK_TUNNEL_1F",
+      "layoutId": "LAYOUT_ROCK_TUNNEL_1F",
+      "objectEventCount": 10,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROCK_TUNNEL_1F.json",
+      "sourceFile": "data/maps/RockTunnel_1F/map.json"
+    },
+    {
+      "mapId": "MAP_ROCK_TUNNEL_B1F",
+      "layoutId": "LAYOUT_ROCK_TUNNEL_B1F",
+      "objectEventCount": 26,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROCK_TUNNEL_B1F.json",
+      "sourceFile": "data/maps/RockTunnel_B1F/map.json"
+    },
+    {
+      "mapId": "MAP_ROCKET_HIDEOUT_B1F",
+      "layoutId": "LAYOUT_ROCKET_HIDEOUT_B1F",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROCKET_HIDEOUT_B1F.json",
+      "sourceFile": "data/maps/RocketHideout_B1F/map.json"
+    },
+    {
+      "mapId": "MAP_ROCKET_HIDEOUT_B2F",
+      "layoutId": "LAYOUT_ROCKET_HIDEOUT_B2F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROCKET_HIDEOUT_B2F.json",
+      "sourceFile": "data/maps/RocketHideout_B2F/map.json"
+    },
+    {
+      "mapId": "MAP_ROCKET_HIDEOUT_B3F",
+      "layoutId": "LAYOUT_ROCKET_HIDEOUT_B3F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROCKET_HIDEOUT_B3F.json",
+      "sourceFile": "data/maps/RocketHideout_B3F/map.json"
+    },
+    {
+      "mapId": "MAP_ROCKET_HIDEOUT_B4F",
+      "layoutId": "LAYOUT_ROCKET_HIDEOUT_B4F",
+      "objectEventCount": 9,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROCKET_HIDEOUT_B4F.json",
+      "sourceFile": "data/maps/RocketHideout_B4F/map.json"
+    },
+    {
+      "mapId": "MAP_ROCKET_HIDEOUT_ELEVATOR",
+      "layoutId": "LAYOUT_ROCKET_HIDEOUT_ELEVATOR",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROCKET_HIDEOUT_ELEVATOR.json",
+      "sourceFile": "data/maps/RocketHideout_Elevator/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE1",
+      "layoutId": "LAYOUT_ROUTE1",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE1.json",
+      "sourceFile": "data/maps/Route1/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE10",
+      "layoutId": "LAYOUT_ROUTE10",
+      "objectEventCount": 10,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE10.json",
+      "sourceFile": "data/maps/Route10/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE10_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE10_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/Route10_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE10_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE10_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/Route10_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE11",
+      "layoutId": "LAYOUT_ROUTE11",
+      "objectEventCount": 13,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE11.json",
+      "sourceFile": "data/maps/Route11/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE11_EAST_ENTRANCE_1F",
+      "layoutId": "LAYOUT_ENTRANCE_1F",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE11_EAST_ENTRANCE_1F.json",
+      "sourceFile": "data/maps/Route11_EastEntrance_1F/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE11_EAST_ENTRANCE_2F",
+      "layoutId": "LAYOUT_ENTRANCE_2F",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE11_EAST_ENTRANCE_2F.json",
+      "sourceFile": "data/maps/Route11_EastEntrance_2F/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE12",
+      "layoutId": "LAYOUT_ROUTE12",
+      "objectEventCount": 14,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE12.json",
+      "sourceFile": "data/maps/Route12/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE12_FISHING_HOUSE",
+      "layoutId": "LAYOUT_HOUSE4",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE12_FISHING_HOUSE.json",
+      "sourceFile": "data/maps/Route12_FishingHouse/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE12_NORTH_ENTRANCE_1F",
+      "layoutId": "LAYOUT_ROUTE12_NORTH_ENTRANCE_1F",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE12_NORTH_ENTRANCE_1F.json",
+      "sourceFile": "data/maps/Route12_NorthEntrance_1F/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE12_NORTH_ENTRANCE_2F",
+      "layoutId": "LAYOUT_ENTRANCE_2F",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE12_NORTH_ENTRANCE_2F.json",
+      "sourceFile": "data/maps/Route12_NorthEntrance_2F/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE13",
+      "layoutId": "LAYOUT_ROUTE13",
+      "objectEventCount": 11,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE13.json",
+      "sourceFile": "data/maps/Route13/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE14",
+      "layoutId": "LAYOUT_ROUTE14",
+      "objectEventCount": 15,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE14.json",
+      "sourceFile": "data/maps/Route14/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE15",
+      "layoutId": "LAYOUT_ROUTE15",
+      "objectEventCount": 14,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE15.json",
+      "sourceFile": "data/maps/Route15/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE15_WEST_ENTRANCE_1F",
+      "layoutId": "LAYOUT_ENTRANCE_1F",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE15_WEST_ENTRANCE_1F.json",
+      "sourceFile": "data/maps/Route15_WestEntrance_1F/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE15_WEST_ENTRANCE_2F",
+      "layoutId": "LAYOUT_ENTRANCE_2F",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE15_WEST_ENTRANCE_2F.json",
+      "sourceFile": "data/maps/Route15_WestEntrance_2F/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE16",
+      "layoutId": "LAYOUT_ROUTE16",
+      "objectEventCount": 10,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE16.json",
+      "sourceFile": "data/maps/Route16/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE16_HOUSE",
+      "layoutId": "LAYOUT_HOUSE1",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE16_HOUSE.json",
+      "sourceFile": "data/maps/Route16_House/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE16_NORTH_ENTRANCE_1F",
+      "layoutId": "LAYOUT_ROUTE16_NORTH_ENTRANCE_1F",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE16_NORTH_ENTRANCE_1F.json",
+      "sourceFile": "data/maps/Route16_NorthEntrance_1F/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE16_NORTH_ENTRANCE_2F",
+      "layoutId": "LAYOUT_ENTRANCE_2F",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE16_NORTH_ENTRANCE_2F.json",
+      "sourceFile": "data/maps/Route16_NorthEntrance_2F/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE17",
+      "layoutId": "LAYOUT_ROUTE17",
+      "objectEventCount": 10,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE17.json",
+      "sourceFile": "data/maps/Route17/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE18",
+      "layoutId": "LAYOUT_ROUTE18",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE18.json",
+      "sourceFile": "data/maps/Route18/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE18_EAST_ENTRANCE_1F",
+      "layoutId": "LAYOUT_ENTRANCE_1F",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE18_EAST_ENTRANCE_1F.json",
+      "sourceFile": "data/maps/Route18_EastEntrance_1F/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE18_EAST_ENTRANCE_2F",
+      "layoutId": "LAYOUT_ENTRANCE_2F",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE18_EAST_ENTRANCE_2F.json",
+      "sourceFile": "data/maps/Route18_EastEntrance_2F/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE19",
+      "layoutId": "LAYOUT_ROUTE19",
+      "objectEventCount": 12,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE19.json",
+      "sourceFile": "data/maps/Route19/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE19_UNUSED_HOUSE",
+      "layoutId": "LAYOUT_HOUSE2",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE19_UNUSED_HOUSE.json",
+      "sourceFile": "data/maps/Route19_UnusedHouse/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE2",
+      "layoutId": "LAYOUT_ROUTE2",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE2.json",
+      "sourceFile": "data/maps/Route2/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE2_EAST_BUILDING",
+      "layoutId": "LAYOUT_ROUTE2_ENTRANCE",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE2_EAST_BUILDING.json",
+      "sourceFile": "data/maps/Route2_EastBuilding/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE2_HOUSE",
+      "layoutId": "LAYOUT_HOUSE2",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE2_HOUSE.json",
+      "sourceFile": "data/maps/Route2_House/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE2_VIRIDIAN_FOREST_NORTH_ENTRANCE",
+      "layoutId": "LAYOUT_ROUTE2_ENTRANCE",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE2_VIRIDIAN_FOREST_NORTH_ENTRANCE.json",
+      "sourceFile": "data/maps/Route2_ViridianForest_NorthEntrance/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE2_VIRIDIAN_FOREST_SOUTH_ENTRANCE",
+      "layoutId": "LAYOUT_ROUTE2_ENTRANCE",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE2_VIRIDIAN_FOREST_SOUTH_ENTRANCE.json",
+      "sourceFile": "data/maps/Route2_ViridianForest_SouthEntrance/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE20",
+      "layoutId": "LAYOUT_ROUTE20",
+      "objectEventCount": 11,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE20.json",
+      "sourceFile": "data/maps/Route20/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE21_NORTH",
+      "layoutId": "LAYOUT_ROUTE21_NORTH",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE21_NORTH.json",
+      "sourceFile": "data/maps/Route21_North/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE21_SOUTH",
+      "layoutId": "LAYOUT_ROUTE21_SOUTH",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE21_SOUTH.json",
+      "sourceFile": "data/maps/Route21_South/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE22",
+      "layoutId": "LAYOUT_ROUTE22",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE22.json",
+      "sourceFile": "data/maps/Route22/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE22_NORTH_ENTRANCE",
+      "layoutId": "LAYOUT_ROUTE22_NORTH_ENTRANCE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE22_NORTH_ENTRANCE.json",
+      "sourceFile": "data/maps/Route22_NorthEntrance/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE23",
+      "layoutId": "LAYOUT_ROUTE23",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE23.json",
+      "sourceFile": "data/maps/Route23/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE23_UNUSED_HOUSE",
+      "layoutId": "LAYOUT_HOUSE2",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE23_UNUSED_HOUSE.json",
+      "sourceFile": "data/maps/Route23_UnusedHouse/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE24",
+      "layoutId": "LAYOUT_ROUTE24",
+      "objectEventCount": 8,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE24.json",
+      "sourceFile": "data/maps/Route24/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE25",
+      "layoutId": "LAYOUT_ROUTE25",
+      "objectEventCount": 13,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE25.json",
+      "sourceFile": "data/maps/Route25/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE25_SEA_COTTAGE",
+      "layoutId": "LAYOUT_ROUTE25_SEA_COTTAGE",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE25_SEA_COTTAGE.json",
+      "sourceFile": "data/maps/Route25_SeaCottage/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE3",
+      "layoutId": "LAYOUT_ROUTE3",
+      "objectEventCount": 9,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE3.json",
+      "sourceFile": "data/maps/Route3/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE4",
+      "layoutId": "LAYOUT_ROUTE4",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE4.json",
+      "sourceFile": "data/maps/Route4/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE4_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE4_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/Route4_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE4_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE4_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/Route4_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE5",
+      "layoutId": "LAYOUT_ROUTE5",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE5.json",
+      "sourceFile": "data/maps/Route5/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE5_POKEMON_DAY_CARE",
+      "layoutId": "LAYOUT_ROUTE5_POKEMON_DAY_CARE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE5_POKEMON_DAY_CARE.json",
+      "sourceFile": "data/maps/Route5_PokemonDayCare/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE5_SOUTH_ENTRANCE",
+      "layoutId": "LAYOUT_SAFFRON_CITY_NORTH_SOUTH_ENTRANCE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE5_SOUTH_ENTRANCE.json",
+      "sourceFile": "data/maps/Route5_SouthEntrance/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE6",
+      "layoutId": "LAYOUT_ROUTE6",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE6.json",
+      "sourceFile": "data/maps/Route6/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE6_NORTH_ENTRANCE",
+      "layoutId": "LAYOUT_SAFFRON_CITY_NORTH_SOUTH_ENTRANCE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE6_NORTH_ENTRANCE.json",
+      "sourceFile": "data/maps/Route6_NorthEntrance/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE6_UNUSED_HOUSE",
+      "layoutId": "LAYOUT_HOUSE2",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE6_UNUSED_HOUSE.json",
+      "sourceFile": "data/maps/Route6_UnusedHouse/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE7",
+      "layoutId": "LAYOUT_ROUTE7",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE7.json",
+      "sourceFile": "data/maps/Route7/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE7_EAST_ENTRANCE",
+      "layoutId": "LAYOUT_SAFFRON_CITY_EAST_WEST_ENTRANCE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE7_EAST_ENTRANCE.json",
+      "sourceFile": "data/maps/Route7_EastEntrance/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE8",
+      "layoutId": "LAYOUT_ROUTE8",
+      "objectEventCount": 15,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE8.json",
+      "sourceFile": "data/maps/Route8/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE8_WEST_ENTRANCE",
+      "layoutId": "LAYOUT_SAFFRON_CITY_EAST_WEST_ENTRANCE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE8_WEST_ENTRANCE.json",
+      "sourceFile": "data/maps/Route8_WestEntrance/map.json"
+    },
+    {
+      "mapId": "MAP_ROUTE9",
+      "layoutId": "LAYOUT_ROUTE9",
+      "objectEventCount": 12,
+      "file": "assets/firered/maps/entities/by-map/MAP_ROUTE9.json",
+      "sourceFile": "data/maps/Route9/map.json"
+    },
+    {
+      "mapId": "MAP_SAFARI_ZONE_CENTER",
+      "layoutId": "LAYOUT_SAFARI_ZONE_CENTER",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFARI_ZONE_CENTER.json",
+      "sourceFile": "data/maps/SafariZone_Center/map.json"
+    },
+    {
+      "mapId": "MAP_SAFARI_ZONE_CENTER_REST_HOUSE",
+      "layoutId": "LAYOUT_SAFARI_ZONE_REST_HOUSE",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFARI_ZONE_CENTER_REST_HOUSE.json",
+      "sourceFile": "data/maps/SafariZone_Center_RestHouse/map.json"
+    },
+    {
+      "mapId": "MAP_SAFARI_ZONE_EAST",
+      "layoutId": "LAYOUT_SAFARI_ZONE_EAST",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFARI_ZONE_EAST.json",
+      "sourceFile": "data/maps/SafariZone_East/map.json"
+    },
+    {
+      "mapId": "MAP_SAFARI_ZONE_EAST_REST_HOUSE",
+      "layoutId": "LAYOUT_SAFARI_ZONE_REST_HOUSE",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFARI_ZONE_EAST_REST_HOUSE.json",
+      "sourceFile": "data/maps/SafariZone_East_RestHouse/map.json"
+    },
+    {
+      "mapId": "MAP_SAFARI_ZONE_NORTH",
+      "layoutId": "LAYOUT_SAFARI_ZONE_NORTH",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFARI_ZONE_NORTH.json",
+      "sourceFile": "data/maps/SafariZone_North/map.json"
+    },
+    {
+      "mapId": "MAP_SAFARI_ZONE_NORTH_REST_HOUSE",
+      "layoutId": "LAYOUT_SAFARI_ZONE_REST_HOUSE",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFARI_ZONE_NORTH_REST_HOUSE.json",
+      "sourceFile": "data/maps/SafariZone_North_RestHouse/map.json"
+    },
+    {
+      "mapId": "MAP_SAFARI_ZONE_SECRET_HOUSE",
+      "layoutId": "LAYOUT_SAFARI_ZONE_SECRET_HOUSE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFARI_ZONE_SECRET_HOUSE.json",
+      "sourceFile": "data/maps/SafariZone_SecretHouse/map.json"
+    },
+    {
+      "mapId": "MAP_SAFARI_ZONE_WEST",
+      "layoutId": "LAYOUT_SAFARI_ZONE_WEST",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFARI_ZONE_WEST.json",
+      "sourceFile": "data/maps/SafariZone_West/map.json"
+    },
+    {
+      "mapId": "MAP_SAFARI_ZONE_WEST_REST_HOUSE",
+      "layoutId": "LAYOUT_SAFARI_ZONE_REST_HOUSE",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFARI_ZONE_WEST_REST_HOUSE.json",
+      "sourceFile": "data/maps/SafariZone_West_RestHouse/map.json"
+    },
+    {
+      "mapId": "MAP_SAFFRON_CITY",
+      "layoutId": "LAYOUT_SAFFRON_CITY",
+      "objectEventCount": 15,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFFRON_CITY.json",
+      "sourceFile": "data/maps/SaffronCity/map.json"
+    },
+    {
+      "mapId": "MAP_SAFFRON_CITY_CONNECTION",
+      "layoutId": "LAYOUT_SAFFRON_CITY_CONNECTION",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFFRON_CITY_CONNECTION.json",
+      "sourceFile": "data/maps/SaffronCity_Connection/map.json"
+    },
+    {
+      "mapId": "MAP_SAFFRON_CITY_COPYCATS_HOUSE_1F",
+      "layoutId": "LAYOUT_SAFFRON_CITY_COPYCATS_HOUSE_1F",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFFRON_CITY_COPYCATS_HOUSE_1F.json",
+      "sourceFile": "data/maps/SaffronCity_CopycatsHouse_1F/map.json"
+    },
+    {
+      "mapId": "MAP_SAFFRON_CITY_COPYCATS_HOUSE_2F",
+      "layoutId": "LAYOUT_SAFFRON_CITY_COPYCATS_HOUSE_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFFRON_CITY_COPYCATS_HOUSE_2F.json",
+      "sourceFile": "data/maps/SaffronCity_CopycatsHouse_2F/map.json"
+    },
+    {
+      "mapId": "MAP_SAFFRON_CITY_DOJO",
+      "layoutId": "LAYOUT_SAFFRON_CITY_DOJO",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFFRON_CITY_DOJO.json",
+      "sourceFile": "data/maps/SaffronCity_Dojo/map.json"
+    },
+    {
+      "mapId": "MAP_SAFFRON_CITY_GYM",
+      "layoutId": "LAYOUT_SAFFRON_CITY_GYM",
+      "objectEventCount": 9,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFFRON_CITY_GYM.json",
+      "sourceFile": "data/maps/SaffronCity_Gym/map.json"
+    },
+    {
+      "mapId": "MAP_SAFFRON_CITY_HOUSE",
+      "layoutId": "LAYOUT_HOUSE5",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFFRON_CITY_HOUSE.json",
+      "sourceFile": "data/maps/SaffronCity_House/map.json"
+    },
+    {
+      "mapId": "MAP_SAFFRON_CITY_MART",
+      "layoutId": "LAYOUT_MART",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFFRON_CITY_MART.json",
+      "sourceFile": "data/maps/SaffronCity_Mart/map.json"
+    },
+    {
+      "mapId": "MAP_SAFFRON_CITY_MR_PSYCHICS_HOUSE",
+      "layoutId": "LAYOUT_HOUSE5",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFFRON_CITY_MR_PSYCHICS_HOUSE.json",
+      "sourceFile": "data/maps/SaffronCity_MrPsychicsHouse/map.json"
+    },
+    {
+      "mapId": "MAP_SAFFRON_CITY_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFFRON_CITY_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/SaffronCity_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_SAFFRON_CITY_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFFRON_CITY_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/SaffronCity_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB",
+      "layoutId": "LAYOUT_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB",
+      "objectEventCount": 10,
+      "file": "assets/firered/maps/entities/by-map/MAP_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB.json",
+      "sourceFile": "data/maps/SaffronCity_PokemonTrainerFanClub/map.json"
+    },
+    {
+      "mapId": "MAP_SEAFOAM_ISLANDS_1F",
+      "layoutId": "LAYOUT_SEAFOAM_ISLANDS_1F",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEAFOAM_ISLANDS_1F.json",
+      "sourceFile": "data/maps/SeafoamIslands_1F/map.json"
+    },
+    {
+      "mapId": "MAP_SEAFOAM_ISLANDS_B1F",
+      "layoutId": "LAYOUT_SEAFOAM_ISLANDS_B1F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEAFOAM_ISLANDS_B1F.json",
+      "sourceFile": "data/maps/SeafoamIslands_B1F/map.json"
+    },
+    {
+      "mapId": "MAP_SEAFOAM_ISLANDS_B2F",
+      "layoutId": "LAYOUT_SEAFOAM_ISLANDS_B2F",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEAFOAM_ISLANDS_B2F.json",
+      "sourceFile": "data/maps/SeafoamIslands_B2F/map.json"
+    },
+    {
+      "mapId": "MAP_SEAFOAM_ISLANDS_B3F",
+      "layoutId": "LAYOUT_SEAFOAM_ISLANDS_B3F",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEAFOAM_ISLANDS_B3F.json",
+      "sourceFile": "data/maps/SeafoamIslands_B3F/map.json"
+    },
+    {
+      "mapId": "MAP_SEAFOAM_ISLANDS_B4F",
+      "layoutId": "LAYOUT_SEAFOAM_ISLANDS_B4F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEAFOAM_ISLANDS_B4F.json",
+      "sourceFile": "data/maps/SeafoamIslands_B4F/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND",
+      "layoutId": "LAYOUT_SEVEN_ISLAND",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND.json",
+      "sourceFile": "data/maps/SevenIsland/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_HARBOR",
+      "layoutId": "LAYOUT_ISLAND_HARBOR",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_HARBOR.json",
+      "sourceFile": "data/maps/SevenIsland_Harbor/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_HOUSE_ROOM1",
+      "layoutId": "LAYOUT_SEVEN_ISLAND_HOUSE_ROOM1",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_HOUSE_ROOM1.json",
+      "sourceFile": "data/maps/SevenIsland_House_Room1/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_HOUSE_ROOM2",
+      "layoutId": "LAYOUT_SEVEN_ISLAND_HOUSE_ROOM2",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_HOUSE_ROOM2.json",
+      "sourceFile": "data/maps/SevenIsland_House_Room2/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_MART",
+      "layoutId": "LAYOUT_MART",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_MART.json",
+      "sourceFile": "data/maps/SevenIsland_Mart/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/SevenIsland_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/SevenIsland_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_SEVAULT_CANYON",
+      "layoutId": "LAYOUT_SEVEN_ISLAND_SEVAULT_CANYON",
+      "objectEventCount": 20,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_SEVAULT_CANYON.json",
+      "sourceFile": "data/maps/SevenIsland_SevaultCanyon/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_SEVAULT_CANYON_ENTRANCE",
+      "layoutId": "LAYOUT_SEVEN_ISLAND_SEVAULT_CANYON_ENTRANCE",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_SEVAULT_CANYON_ENTRANCE.json",
+      "sourceFile": "data/maps/SevenIsland_SevaultCanyon_Entrance/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_SEVAULT_CANYON_HOUSE",
+      "layoutId": "LAYOUT_HOUSE3",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_SEVAULT_CANYON_HOUSE.json",
+      "sourceFile": "data/maps/SevenIsland_SevaultCanyon_House/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_SEVAULT_CANYON_TANOBY_KEY",
+      "layoutId": "LAYOUT_SEVEN_ISLAND_SEVAULT_CANYON_TANOBY_KEY",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_SEVAULT_CANYON_TANOBY_KEY.json",
+      "sourceFile": "data/maps/SevenIsland_SevaultCanyon_TanobyKey/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_TANOBY_RUINS",
+      "layoutId": "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_TANOBY_RUINS.json",
+      "sourceFile": "data/maps/SevenIsland_TanobyRuins/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_TANOBY_RUINS_DILFORD_CHAMBER",
+      "layoutId": "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS_DILFORD_CHAMBER",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_TANOBY_RUINS_DILFORD_CHAMBER.json",
+      "sourceFile": "data/maps/SevenIsland_TanobyRuins_DilfordChamber/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_TANOBY_RUINS_LIPTOO_CHAMBER",
+      "layoutId": "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS_LIPTOO_CHAMBER",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_TANOBY_RUINS_LIPTOO_CHAMBER.json",
+      "sourceFile": "data/maps/SevenIsland_TanobyRuins_LiptooChamber/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_TANOBY_RUINS_MONEAN_CHAMBER",
+      "layoutId": "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS_MONEAN_CHAMBER",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_TANOBY_RUINS_MONEAN_CHAMBER.json",
+      "sourceFile": "data/maps/SevenIsland_TanobyRuins_MoneanChamber/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_TANOBY_RUINS_RIXY_CHAMBER",
+      "layoutId": "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS_RIXY_CHAMBER",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_TANOBY_RUINS_RIXY_CHAMBER.json",
+      "sourceFile": "data/maps/SevenIsland_TanobyRuins_RixyChamber/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_TANOBY_RUINS_SCUFIB_CHAMBER",
+      "layoutId": "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS_SCUFIB_CHAMBER",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_TANOBY_RUINS_SCUFIB_CHAMBER.json",
+      "sourceFile": "data/maps/SevenIsland_TanobyRuins_ScufibChamber/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_TANOBY_RUINS_VIAPOIS_CHAMBER",
+      "layoutId": "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS_VIAPOIS_CHAMBER",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_TANOBY_RUINS_VIAPOIS_CHAMBER.json",
+      "sourceFile": "data/maps/SevenIsland_TanobyRuins_ViapoisChamber/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_TANOBY_RUINS_WEEPTH_CHAMBER",
+      "layoutId": "LAYOUT_SEVEN_ISLAND_TANOBY_RUINS_WEEPTH_CHAMBER",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_TANOBY_RUINS_WEEPTH_CHAMBER.json",
+      "sourceFile": "data/maps/SevenIsland_TanobyRuins_WeepthChamber/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_TRAINER_TOWER",
+      "layoutId": "LAYOUT_SEVEN_ISLAND_TRAINER_TOWER",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_TRAINER_TOWER.json",
+      "sourceFile": "data/maps/SevenIsland_TrainerTower/map.json"
+    },
+    {
+      "mapId": "MAP_SEVEN_ISLAND_UNUSED_HOUSE",
+      "layoutId": "LAYOUT_HOUSE4",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SEVEN_ISLAND_UNUSED_HOUSE.json",
+      "sourceFile": "data/maps/SevenIsland_UnusedHouse/map.json"
+    },
+    {
+      "mapId": "MAP_SILPH_CO_10F",
+      "layoutId": "LAYOUT_SILPH_CO_10F",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_SILPH_CO_10F.json",
+      "sourceFile": "data/maps/SilphCo_10F/map.json"
+    },
+    {
+      "mapId": "MAP_SILPH_CO_11F",
+      "layoutId": "LAYOUT_SILPH_CO_11F",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_SILPH_CO_11F.json",
+      "sourceFile": "data/maps/SilphCo_11F/map.json"
+    },
+    {
+      "mapId": "MAP_SILPH_CO_1F",
+      "layoutId": "LAYOUT_SILPH_CO_1F",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SILPH_CO_1F.json",
+      "sourceFile": "data/maps/SilphCo_1F/map.json"
+    },
+    {
+      "mapId": "MAP_SILPH_CO_2F",
+      "layoutId": "LAYOUT_SILPH_CO_2F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_SILPH_CO_2F.json",
+      "sourceFile": "data/maps/SilphCo_2F/map.json"
+    },
+    {
+      "mapId": "MAP_SILPH_CO_3F",
+      "layoutId": "LAYOUT_SILPH_CO_3F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SILPH_CO_3F.json",
+      "sourceFile": "data/maps/SilphCo_3F/map.json"
+    },
+    {
+      "mapId": "MAP_SILPH_CO_4F",
+      "layoutId": "LAYOUT_SILPH_CO_4F",
+      "objectEventCount": 8,
+      "file": "assets/firered/maps/entities/by-map/MAP_SILPH_CO_4F.json",
+      "sourceFile": "data/maps/SilphCo_4F/map.json"
+    },
+    {
+      "mapId": "MAP_SILPH_CO_5F",
+      "layoutId": "LAYOUT_SILPH_CO_5F",
+      "objectEventCount": 9,
+      "file": "assets/firered/maps/entities/by-map/MAP_SILPH_CO_5F.json",
+      "sourceFile": "data/maps/SilphCo_5F/map.json"
+    },
+    {
+      "mapId": "MAP_SILPH_CO_6F",
+      "layoutId": "LAYOUT_SILPH_CO_6F",
+      "objectEventCount": 10,
+      "file": "assets/firered/maps/entities/by-map/MAP_SILPH_CO_6F.json",
+      "sourceFile": "data/maps/SilphCo_6F/map.json"
+    },
+    {
+      "mapId": "MAP_SILPH_CO_7F",
+      "layoutId": "LAYOUT_SILPH_CO_7F",
+      "objectEventCount": 11,
+      "file": "assets/firered/maps/entities/by-map/MAP_SILPH_CO_7F.json",
+      "sourceFile": "data/maps/SilphCo_7F/map.json"
+    },
+    {
+      "mapId": "MAP_SILPH_CO_8F",
+      "layoutId": "LAYOUT_SILPH_CO_8F",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_SILPH_CO_8F.json",
+      "sourceFile": "data/maps/SilphCo_8F/map.json"
+    },
+    {
+      "mapId": "MAP_SILPH_CO_9F",
+      "layoutId": "LAYOUT_SILPH_CO_9F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SILPH_CO_9F.json",
+      "sourceFile": "data/maps/SilphCo_9F/map.json"
+    },
+    {
+      "mapId": "MAP_SILPH_CO_ELEVATOR",
+      "layoutId": "LAYOUT_SILPH_CO_ELEVATOR",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SILPH_CO_ELEVATOR.json",
+      "sourceFile": "data/maps/SilphCo_Elevator/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND",
+      "layoutId": "LAYOUT_SIX_ISLAND",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND.json",
+      "sourceFile": "data/maps/SixIsland/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_ALTERING_CAVE",
+      "layoutId": "LAYOUT_SIX_ISLAND_ALTERING_CAVE",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_ALTERING_CAVE.json",
+      "sourceFile": "data/maps/SixIsland_AlteringCave/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_DOTTED_HOLE_1F",
+      "layoutId": "LAYOUT_SIX_ISLAND_DOTTED_HOLE_1F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_DOTTED_HOLE_1F.json",
+      "sourceFile": "data/maps/SixIsland_DottedHole_1F/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_DOTTED_HOLE_B1F",
+      "layoutId": "LAYOUT_SIX_ISLAND_DOTTED_HOLE_B1F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_DOTTED_HOLE_B1F.json",
+      "sourceFile": "data/maps/SixIsland_DottedHole_B1F/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_DOTTED_HOLE_B2F",
+      "layoutId": "LAYOUT_SIX_ISLAND_DOTTED_HOLE_B2F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_DOTTED_HOLE_B2F.json",
+      "sourceFile": "data/maps/SixIsland_DottedHole_B2F/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_DOTTED_HOLE_B3F",
+      "layoutId": "LAYOUT_SIX_ISLAND_DOTTED_HOLE_B3F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_DOTTED_HOLE_B3F.json",
+      "sourceFile": "data/maps/SixIsland_DottedHole_B3F/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_DOTTED_HOLE_B4F",
+      "layoutId": "LAYOUT_SIX_ISLAND_DOTTED_HOLE_B4F",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_DOTTED_HOLE_B4F.json",
+      "sourceFile": "data/maps/SixIsland_DottedHole_B4F/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_DOTTED_HOLE_SAPPHIRE_ROOM",
+      "layoutId": "LAYOUT_SIX_ISLAND_DOTTED_HOLE_SAPPHIRE_ROOM",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_DOTTED_HOLE_SAPPHIRE_ROOM.json",
+      "sourceFile": "data/maps/SixIsland_DottedHole_SapphireRoom/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_GREEN_PATH",
+      "layoutId": "LAYOUT_SIX_ISLAND_GREEN_PATH",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_GREEN_PATH.json",
+      "sourceFile": "data/maps/SixIsland_GreenPath/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_HARBOR",
+      "layoutId": "LAYOUT_ISLAND_HARBOR",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_HARBOR.json",
+      "sourceFile": "data/maps/SixIsland_Harbor/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_HOUSE",
+      "layoutId": "LAYOUT_HOUSE3",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_HOUSE.json",
+      "sourceFile": "data/maps/SixIsland_House/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_MART",
+      "layoutId": "LAYOUT_MART",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_MART.json",
+      "sourceFile": "data/maps/SixIsland_Mart/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_OUTCAST_ISLAND",
+      "layoutId": "LAYOUT_SIX_ISLAND_OUTCAST_ISLAND",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_OUTCAST_ISLAND.json",
+      "sourceFile": "data/maps/SixIsland_OutcastIsland/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_PATTERN_BUSH",
+      "layoutId": "LAYOUT_SIX_ISLAND_PATTERN_BUSH",
+      "objectEventCount": 12,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_PATTERN_BUSH.json",
+      "sourceFile": "data/maps/SixIsland_PatternBush/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/SixIsland_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/SixIsland_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_RUIN_VALLEY",
+      "layoutId": "LAYOUT_SIX_ISLAND_RUIN_VALLEY",
+      "objectEventCount": 17,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_RUIN_VALLEY.json",
+      "sourceFile": "data/maps/SixIsland_RuinValley/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_WATER_PATH",
+      "layoutId": "LAYOUT_SIX_ISLAND_WATER_PATH",
+      "objectEventCount": 9,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_WATER_PATH.json",
+      "sourceFile": "data/maps/SixIsland_WaterPath/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_WATER_PATH_HOUSE1",
+      "layoutId": "LAYOUT_HOUSE4",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_WATER_PATH_HOUSE1.json",
+      "sourceFile": "data/maps/SixIsland_WaterPath_House1/map.json"
+    },
+    {
+      "mapId": "MAP_SIX_ISLAND_WATER_PATH_HOUSE2",
+      "layoutId": "LAYOUT_HOUSE3",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SIX_ISLAND_WATER_PATH_HOUSE2.json",
+      "sourceFile": "data/maps/SixIsland_WaterPath_House2/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_1F_CORRIDOR",
+      "layoutId": "LAYOUT_SSANNE_1F_CORRIDOR",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_1F_CORRIDOR.json",
+      "sourceFile": "data/maps/SSAnne_1F_Corridor/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_1F_ROOM1",
+      "layoutId": "LAYOUT_SSANNE_ROOM1",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_1F_ROOM1.json",
+      "sourceFile": "data/maps/SSAnne_1F_Room1/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_1F_ROOM2",
+      "layoutId": "LAYOUT_SSANNE_ROOM1",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_1F_ROOM2.json",
+      "sourceFile": "data/maps/SSAnne_1F_Room2/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_1F_ROOM3",
+      "layoutId": "LAYOUT_SSANNE_ROOM1",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_1F_ROOM3.json",
+      "sourceFile": "data/maps/SSAnne_1F_Room3/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_1F_ROOM4",
+      "layoutId": "LAYOUT_SSANNE_ROOM1",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_1F_ROOM4.json",
+      "sourceFile": "data/maps/SSAnne_1F_Room4/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_1F_ROOM5",
+      "layoutId": "LAYOUT_SSANNE_ROOM1",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_1F_ROOM5.json",
+      "sourceFile": "data/maps/SSAnne_1F_Room5/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_1F_ROOM6",
+      "layoutId": "LAYOUT_SSANNE_ROOM1",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_1F_ROOM6.json",
+      "sourceFile": "data/maps/SSAnne_1F_Room6/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_1F_ROOM7",
+      "layoutId": "LAYOUT_SSANNE_ROOM1",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_1F_ROOM7.json",
+      "sourceFile": "data/maps/SSAnne_1F_Room7/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_2F_CORRIDOR",
+      "layoutId": "LAYOUT_SSANNE_2F_CORRIDOR",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_2F_CORRIDOR.json",
+      "sourceFile": "data/maps/SSAnne_2F_Corridor/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_2F_ROOM1",
+      "layoutId": "LAYOUT_SSANNE_ROOM2",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_2F_ROOM1.json",
+      "sourceFile": "data/maps/SSAnne_2F_Room1/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_2F_ROOM2",
+      "layoutId": "LAYOUT_SSANNE_ROOM2",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_2F_ROOM2.json",
+      "sourceFile": "data/maps/SSAnne_2F_Room2/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_2F_ROOM3",
+      "layoutId": "LAYOUT_SSANNE_ROOM2",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_2F_ROOM3.json",
+      "sourceFile": "data/maps/SSAnne_2F_Room3/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_2F_ROOM4",
+      "layoutId": "LAYOUT_SSANNE_ROOM2",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_2F_ROOM4.json",
+      "sourceFile": "data/maps/SSAnne_2F_Room4/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_2F_ROOM5",
+      "layoutId": "LAYOUT_SSANNE_ROOM2",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_2F_ROOM5.json",
+      "sourceFile": "data/maps/SSAnne_2F_Room5/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_2F_ROOM6",
+      "layoutId": "LAYOUT_SSANNE_ROOM2",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_2F_ROOM6.json",
+      "sourceFile": "data/maps/SSAnne_2F_Room6/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_3F_CORRIDOR",
+      "layoutId": "LAYOUT_SSANNE_3F_CORRIDOR",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_3F_CORRIDOR.json",
+      "sourceFile": "data/maps/SSAnne_3F_Corridor/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_B1F_CORRIDOR",
+      "layoutId": "LAYOUT_SSANNE_B1F_CORRIDOR",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_B1F_CORRIDOR.json",
+      "sourceFile": "data/maps/SSAnne_B1F_Corridor/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_B1F_ROOM1",
+      "layoutId": "LAYOUT_SSANNE_ROOM2",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_B1F_ROOM1.json",
+      "sourceFile": "data/maps/SSAnne_B1F_Room1/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_B1F_ROOM2",
+      "layoutId": "LAYOUT_SSANNE_ROOM2",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_B1F_ROOM2.json",
+      "sourceFile": "data/maps/SSAnne_B1F_Room2/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_B1F_ROOM3",
+      "layoutId": "LAYOUT_SSANNE_ROOM2",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_B1F_ROOM3.json",
+      "sourceFile": "data/maps/SSAnne_B1F_Room3/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_B1F_ROOM4",
+      "layoutId": "LAYOUT_SSANNE_ROOM2",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_B1F_ROOM4.json",
+      "sourceFile": "data/maps/SSAnne_B1F_Room4/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_B1F_ROOM5",
+      "layoutId": "LAYOUT_SSANNE_ROOM2",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_B1F_ROOM5.json",
+      "sourceFile": "data/maps/SSAnne_B1F_Room5/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_CAPTAINS_OFFICE",
+      "layoutId": "LAYOUT_SSANNE_CAPTAINS_OFFICE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_CAPTAINS_OFFICE.json",
+      "sourceFile": "data/maps/SSAnne_CaptainsOffice/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_DECK",
+      "layoutId": "LAYOUT_SSANNE_DECK",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_DECK.json",
+      "sourceFile": "data/maps/SSAnne_Deck/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_EXTERIOR",
+      "layoutId": "LAYOUT_SSANNE_EXTERIOR",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_EXTERIOR.json",
+      "sourceFile": "data/maps/SSAnne_Exterior/map.json"
+    },
+    {
+      "mapId": "MAP_SSANNE_KITCHEN",
+      "layoutId": "LAYOUT_SSANNE_KITCHEN",
+      "objectEventCount": 8,
+      "file": "assets/firered/maps/entities/by-map/MAP_SSANNE_KITCHEN.json",
+      "sourceFile": "data/maps/SSAnne_Kitchen/map.json"
+    },
+    {
+      "mapId": "MAP_THREE_ISLAND",
+      "layoutId": "LAYOUT_THREE_ISLAND",
+      "objectEventCount": 14,
+      "file": "assets/firered/maps/entities/by-map/MAP_THREE_ISLAND.json",
+      "sourceFile": "data/maps/ThreeIsland/map.json"
+    },
+    {
+      "mapId": "MAP_THREE_ISLAND_BERRY_FOREST",
+      "layoutId": "LAYOUT_THREE_ISLAND_BERRY_FOREST",
+      "objectEventCount": 14,
+      "file": "assets/firered/maps/entities/by-map/MAP_THREE_ISLAND_BERRY_FOREST.json",
+      "sourceFile": "data/maps/ThreeIsland_BerryForest/map.json"
+    },
+    {
+      "mapId": "MAP_THREE_ISLAND_BOND_BRIDGE",
+      "layoutId": "LAYOUT_THREE_ISLAND_BOND_BRIDGE",
+      "objectEventCount": 9,
+      "file": "assets/firered/maps/entities/by-map/MAP_THREE_ISLAND_BOND_BRIDGE.json",
+      "sourceFile": "data/maps/ThreeIsland_BondBridge/map.json"
+    },
+    {
+      "mapId": "MAP_THREE_ISLAND_DUNSPARCE_TUNNEL",
+      "layoutId": "LAYOUT_THREE_ISLAND_DUNSPARCE_TUNNEL",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_THREE_ISLAND_DUNSPARCE_TUNNEL.json",
+      "sourceFile": "data/maps/ThreeIsland_DunsparceTunnel/map.json"
+    },
+    {
+      "mapId": "MAP_THREE_ISLAND_HARBOR",
+      "layoutId": "LAYOUT_ISLAND_HARBOR",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_THREE_ISLAND_HARBOR.json",
+      "sourceFile": "data/maps/ThreeIsland_Harbor/map.json"
+    },
+    {
+      "mapId": "MAP_THREE_ISLAND_HOUSE1",
+      "layoutId": "LAYOUT_THREE_ISLAND_HOUSE1",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_THREE_ISLAND_HOUSE1.json",
+      "sourceFile": "data/maps/ThreeIsland_House1/map.json"
+    },
+    {
+      "mapId": "MAP_THREE_ISLAND_HOUSE2",
+      "layoutId": "LAYOUT_HOUSE3",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_THREE_ISLAND_HOUSE2.json",
+      "sourceFile": "data/maps/ThreeIsland_House2/map.json"
+    },
+    {
+      "mapId": "MAP_THREE_ISLAND_HOUSE3",
+      "layoutId": "LAYOUT_HOUSE3",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_THREE_ISLAND_HOUSE3.json",
+      "sourceFile": "data/maps/ThreeIsland_House3/map.json"
+    },
+    {
+      "mapId": "MAP_THREE_ISLAND_HOUSE4",
+      "layoutId": "LAYOUT_HOUSE3",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_THREE_ISLAND_HOUSE4.json",
+      "sourceFile": "data/maps/ThreeIsland_House4/map.json"
+    },
+    {
+      "mapId": "MAP_THREE_ISLAND_HOUSE5",
+      "layoutId": "LAYOUT_HOUSE3",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_THREE_ISLAND_HOUSE5.json",
+      "sourceFile": "data/maps/ThreeIsland_House5/map.json"
+    },
+    {
+      "mapId": "MAP_THREE_ISLAND_MART",
+      "layoutId": "LAYOUT_MART",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_THREE_ISLAND_MART.json",
+      "sourceFile": "data/maps/ThreeIsland_Mart/map.json"
+    },
+    {
+      "mapId": "MAP_THREE_ISLAND_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_THREE_ISLAND_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/ThreeIsland_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_THREE_ISLAND_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_THREE_ISLAND_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/ThreeIsland_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_THREE_ISLAND_PORT",
+      "layoutId": "LAYOUT_THREE_ISLAND_PORT",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_THREE_ISLAND_PORT.json",
+      "sourceFile": "data/maps/ThreeIsland_Port/map.json"
+    },
+    {
+      "mapId": "MAP_TRADE_CENTER",
+      "layoutId": "LAYOUT_TRADE_CENTER",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_TRADE_CENTER.json",
+      "sourceFile": "data/maps/TradeCenter/map.json"
+    },
+    {
+      "mapId": "MAP_TRAINER_TOWER_1F",
+      "layoutId": "LAYOUT_TRAINER_TOWER_1F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_TRAINER_TOWER_1F.json",
+      "sourceFile": "data/maps/TrainerTower_1F/map.json"
+    },
+    {
+      "mapId": "MAP_TRAINER_TOWER_2F",
+      "layoutId": "LAYOUT_TRAINER_TOWER_2F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_TRAINER_TOWER_2F.json",
+      "sourceFile": "data/maps/TrainerTower_2F/map.json"
+    },
+    {
+      "mapId": "MAP_TRAINER_TOWER_3F",
+      "layoutId": "LAYOUT_TRAINER_TOWER_3F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_TRAINER_TOWER_3F.json",
+      "sourceFile": "data/maps/TrainerTower_3F/map.json"
+    },
+    {
+      "mapId": "MAP_TRAINER_TOWER_4F",
+      "layoutId": "LAYOUT_TRAINER_TOWER_4F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_TRAINER_TOWER_4F.json",
+      "sourceFile": "data/maps/TrainerTower_4F/map.json"
+    },
+    {
+      "mapId": "MAP_TRAINER_TOWER_5F",
+      "layoutId": "LAYOUT_TRAINER_TOWER_5F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_TRAINER_TOWER_5F.json",
+      "sourceFile": "data/maps/TrainerTower_5F/map.json"
+    },
+    {
+      "mapId": "MAP_TRAINER_TOWER_6F",
+      "layoutId": "LAYOUT_TRAINER_TOWER_6F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_TRAINER_TOWER_6F.json",
+      "sourceFile": "data/maps/TrainerTower_6F/map.json"
+    },
+    {
+      "mapId": "MAP_TRAINER_TOWER_7F",
+      "layoutId": "LAYOUT_TRAINER_TOWER_7F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_TRAINER_TOWER_7F.json",
+      "sourceFile": "data/maps/TrainerTower_7F/map.json"
+    },
+    {
+      "mapId": "MAP_TRAINER_TOWER_8F",
+      "layoutId": "LAYOUT_TRAINER_TOWER_8F",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_TRAINER_TOWER_8F.json",
+      "sourceFile": "data/maps/TrainerTower_8F/map.json"
+    },
+    {
+      "mapId": "MAP_TRAINER_TOWER_ELEVATOR",
+      "layoutId": "LAYOUT_TRAINER_TOWER_ELEVATOR",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_TRAINER_TOWER_ELEVATOR.json",
+      "sourceFile": "data/maps/TrainerTower_Elevator/map.json"
+    },
+    {
+      "mapId": "MAP_TRAINER_TOWER_LOBBY",
+      "layoutId": "LAYOUT_TRAINER_TOWER_LOBBY",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_TRAINER_TOWER_LOBBY.json",
+      "sourceFile": "data/maps/TrainerTower_Lobby/map.json"
+    },
+    {
+      "mapId": "MAP_TRAINER_TOWER_ROOF",
+      "layoutId": "LAYOUT_TRAINER_TOWER_ROOF",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_TRAINER_TOWER_ROOF.json",
+      "sourceFile": "data/maps/TrainerTower_Roof/map.json"
+    },
+    {
+      "mapId": "MAP_TWO_ISLAND",
+      "layoutId": "LAYOUT_TWO_ISLAND",
+      "objectEventCount": 9,
+      "file": "assets/firered/maps/entities/by-map/MAP_TWO_ISLAND.json",
+      "sourceFile": "data/maps/TwoIsland/map.json"
+    },
+    {
+      "mapId": "MAP_TWO_ISLAND_CAPE_BRINK",
+      "layoutId": "LAYOUT_TWO_ISLAND_CAPE_BRINK",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_TWO_ISLAND_CAPE_BRINK.json",
+      "sourceFile": "data/maps/TwoIsland_CapeBrink/map.json"
+    },
+    {
+      "mapId": "MAP_TWO_ISLAND_CAPE_BRINK_HOUSE",
+      "layoutId": "LAYOUT_HOUSE3",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_TWO_ISLAND_CAPE_BRINK_HOUSE.json",
+      "sourceFile": "data/maps/TwoIsland_CapeBrink_House/map.json"
+    },
+    {
+      "mapId": "MAP_TWO_ISLAND_HARBOR",
+      "layoutId": "LAYOUT_ISLAND_HARBOR",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_TWO_ISLAND_HARBOR.json",
+      "sourceFile": "data/maps/TwoIsland_Harbor/map.json"
+    },
+    {
+      "mapId": "MAP_TWO_ISLAND_HOUSE",
+      "layoutId": "LAYOUT_HOUSE3",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_TWO_ISLAND_HOUSE.json",
+      "sourceFile": "data/maps/TwoIsland_House/map.json"
+    },
+    {
+      "mapId": "MAP_TWO_ISLAND_JOYFUL_GAME_CORNER",
+      "layoutId": "LAYOUT_TWO_ISLAND_JOYFUL_GAME_CORNER",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_TWO_ISLAND_JOYFUL_GAME_CORNER.json",
+      "sourceFile": "data/maps/TwoIsland_JoyfulGameCorner/map.json"
+    },
+    {
+      "mapId": "MAP_TWO_ISLAND_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_TWO_ISLAND_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/TwoIsland_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_TWO_ISLAND_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_TWO_ISLAND_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/TwoIsland_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_UNDERGROUND_PATH_EAST_ENTRANCE",
+      "layoutId": "LAYOUT_UNDERGROUND_PATH_ENTRANCE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_UNDERGROUND_PATH_EAST_ENTRANCE.json",
+      "sourceFile": "data/maps/UndergroundPath_EastEntrance/map.json"
+    },
+    {
+      "mapId": "MAP_UNDERGROUND_PATH_EAST_WEST_TUNNEL",
+      "layoutId": "LAYOUT_UNDERGROUND_PATH_EAST_WEST_TUNNEL",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_UNDERGROUND_PATH_EAST_WEST_TUNNEL.json",
+      "sourceFile": "data/maps/UndergroundPath_EastWestTunnel/map.json"
+    },
+    {
+      "mapId": "MAP_UNDERGROUND_PATH_NORTH_ENTRANCE",
+      "layoutId": "LAYOUT_UNDERGROUND_PATH_ENTRANCE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_UNDERGROUND_PATH_NORTH_ENTRANCE.json",
+      "sourceFile": "data/maps/UndergroundPath_NorthEntrance/map.json"
+    },
+    {
+      "mapId": "MAP_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL",
+      "layoutId": "LAYOUT_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL",
+      "objectEventCount": 0,
+      "file": "assets/firered/maps/entities/by-map/MAP_UNDERGROUND_PATH_NORTH_SOUTH_TUNNEL.json",
+      "sourceFile": "data/maps/UndergroundPath_NorthSouthTunnel/map.json"
+    },
+    {
+      "mapId": "MAP_UNDERGROUND_PATH_SOUTH_ENTRANCE",
+      "layoutId": "LAYOUT_UNDERGROUND_PATH_ENTRANCE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_UNDERGROUND_PATH_SOUTH_ENTRANCE.json",
+      "sourceFile": "data/maps/UndergroundPath_SouthEntrance/map.json"
+    },
+    {
+      "mapId": "MAP_UNDERGROUND_PATH_WEST_ENTRANCE",
+      "layoutId": "LAYOUT_UNDERGROUND_PATH_ENTRANCE",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_UNDERGROUND_PATH_WEST_ENTRANCE.json",
+      "sourceFile": "data/maps/UndergroundPath_WestEntrance/map.json"
+    },
+    {
+      "mapId": "MAP_UNION_ROOM",
+      "layoutId": "LAYOUT_UNION_ROOM",
+      "objectEventCount": 9,
+      "file": "assets/firered/maps/entities/by-map/MAP_UNION_ROOM.json",
+      "sourceFile": "data/maps/UnionRoom/map.json"
+    },
+    {
+      "mapId": "MAP_VERMILION_CITY",
+      "layoutId": "LAYOUT_VERMILION_CITY",
+      "objectEventCount": 8,
+      "file": "assets/firered/maps/entities/by-map/MAP_VERMILION_CITY.json",
+      "sourceFile": "data/maps/VermilionCity/map.json"
+    },
+    {
+      "mapId": "MAP_VERMILION_CITY_GYM",
+      "layoutId": "LAYOUT_VERMILION_CITY_GYM",
+      "objectEventCount": 5,
+      "file": "assets/firered/maps/entities/by-map/MAP_VERMILION_CITY_GYM.json",
+      "sourceFile": "data/maps/VermilionCity_Gym/map.json"
+    },
+    {
+      "mapId": "MAP_VERMILION_CITY_HOUSE1",
+      "layoutId": "LAYOUT_HOUSE1",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_VERMILION_CITY_HOUSE1.json",
+      "sourceFile": "data/maps/VermilionCity_House1/map.json"
+    },
+    {
+      "mapId": "MAP_VERMILION_CITY_HOUSE2",
+      "layoutId": "LAYOUT_HOUSE1",
+      "objectEventCount": 1,
+      "file": "assets/firered/maps/entities/by-map/MAP_VERMILION_CITY_HOUSE2.json",
+      "sourceFile": "data/maps/VermilionCity_House2/map.json"
+    },
+    {
+      "mapId": "MAP_VERMILION_CITY_HOUSE3",
+      "layoutId": "LAYOUT_HOUSE1",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_VERMILION_CITY_HOUSE3.json",
+      "sourceFile": "data/maps/VermilionCity_House3/map.json"
+    },
+    {
+      "mapId": "MAP_VERMILION_CITY_MART",
+      "layoutId": "LAYOUT_MART",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_VERMILION_CITY_MART.json",
+      "sourceFile": "data/maps/VermilionCity_Mart/map.json"
+    },
+    {
+      "mapId": "MAP_VERMILION_CITY_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_VERMILION_CITY_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/VermilionCity_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_VERMILION_CITY_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_VERMILION_CITY_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/VermilionCity_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_VERMILION_CITY_POKEMON_FAN_CLUB",
+      "layoutId": "LAYOUT_VERMILION_CITY_POKEMON_FAN_CLUB",
+      "objectEventCount": 6,
+      "file": "assets/firered/maps/entities/by-map/MAP_VERMILION_CITY_POKEMON_FAN_CLUB.json",
+      "sourceFile": "data/maps/VermilionCity_PokemonFanClub/map.json"
+    },
+    {
+      "mapId": "MAP_VICTORY_ROAD_1F",
+      "layoutId": "LAYOUT_VICTORY_ROAD_1F",
+      "objectEventCount": 7,
+      "file": "assets/firered/maps/entities/by-map/MAP_VICTORY_ROAD_1F.json",
+      "sourceFile": "data/maps/VictoryRoad_1F/map.json"
+    },
+    {
+      "mapId": "MAP_VICTORY_ROAD_2F",
+      "layoutId": "LAYOUT_VICTORY_ROAD_2F",
+      "objectEventCount": 13,
+      "file": "assets/firered/maps/entities/by-map/MAP_VICTORY_ROAD_2F.json",
+      "sourceFile": "data/maps/VictoryRoad_2F/map.json"
+    },
+    {
+      "mapId": "MAP_VICTORY_ROAD_3F",
+      "layoutId": "LAYOUT_VICTORY_ROAD_3F",
+      "objectEventCount": 12,
+      "file": "assets/firered/maps/entities/by-map/MAP_VICTORY_ROAD_3F.json",
+      "sourceFile": "data/maps/VictoryRoad_3F/map.json"
+    },
+    {
+      "mapId": "MAP_VIRIDIAN_CITY",
+      "layoutId": "LAYOUT_VIRIDIAN_CITY",
+      "objectEventCount": 9,
+      "file": "assets/firered/maps/entities/by-map/MAP_VIRIDIAN_CITY.json",
+      "sourceFile": "data/maps/ViridianCity/map.json"
+    },
+    {
+      "mapId": "MAP_VIRIDIAN_CITY_GYM",
+      "layoutId": "LAYOUT_VIRIDIAN_CITY_GYM",
+      "objectEventCount": 10,
+      "file": "assets/firered/maps/entities/by-map/MAP_VIRIDIAN_CITY_GYM.json",
+      "sourceFile": "data/maps/ViridianCity_Gym/map.json"
+    },
+    {
+      "mapId": "MAP_VIRIDIAN_CITY_HOUSE",
+      "layoutId": "LAYOUT_VIRIDIAN_CITY_HOUSE",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_VIRIDIAN_CITY_HOUSE.json",
+      "sourceFile": "data/maps/ViridianCity_House/map.json"
+    },
+    {
+      "mapId": "MAP_VIRIDIAN_CITY_MART",
+      "layoutId": "LAYOUT_MART",
+      "objectEventCount": 3,
+      "file": "assets/firered/maps/entities/by-map/MAP_VIRIDIAN_CITY_MART.json",
+      "sourceFile": "data/maps/ViridianCity_Mart/map.json"
+    },
+    {
+      "mapId": "MAP_VIRIDIAN_CITY_POKEMON_CENTER_1F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_1F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_VIRIDIAN_CITY_POKEMON_CENTER_1F.json",
+      "sourceFile": "data/maps/ViridianCity_PokemonCenter_1F/map.json"
+    },
+    {
+      "mapId": "MAP_VIRIDIAN_CITY_POKEMON_CENTER_2F",
+      "layoutId": "LAYOUT_POKEMON_CENTER_2F",
+      "objectEventCount": 4,
+      "file": "assets/firered/maps/entities/by-map/MAP_VIRIDIAN_CITY_POKEMON_CENTER_2F.json",
+      "sourceFile": "data/maps/ViridianCity_PokemonCenter_2F/map.json"
+    },
+    {
+      "mapId": "MAP_VIRIDIAN_CITY_SCHOOL",
+      "layoutId": "LAYOUT_VIRIDIAN_CITY_SCHOOL",
+      "objectEventCount": 2,
+      "file": "assets/firered/maps/entities/by-map/MAP_VIRIDIAN_CITY_SCHOOL.json",
+      "sourceFile": "data/maps/ViridianCity_School/map.json"
+    },
+    {
+      "mapId": "MAP_VIRIDIAN_FOREST",
+      "layoutId": "LAYOUT_VIRIDIAN_FOREST",
+      "objectEventCount": 11,
+      "file": "assets/firered/maps/entities/by-map/MAP_VIRIDIAN_FOREST.json",
+      "sourceFile": "data/maps/ViridianForest/map.json"
+    }
+  ],
+  "diagnostics": {
+    "eventsWithoutAvailableSprite": 63,
+    "unresolvedGraphicsIds": [
+      "0",
+      "OBJ_EVENT_GFX_VAR_0",
+      "OBJ_EVENT_GFX_VAR_1",
+      "OBJ_EVENT_GFX_VAR_2",
+      "OBJ_EVENT_GFX_VAR_3",
+      "OBJ_EVENT_GFX_VAR_4",
+      "OBJ_EVENT_GFX_VAR_5",
+      "OBJ_EVENT_GFX_VAR_6",
+      "OBJ_EVENT_GFX_VAR_7"
+    ]
+  }
+}

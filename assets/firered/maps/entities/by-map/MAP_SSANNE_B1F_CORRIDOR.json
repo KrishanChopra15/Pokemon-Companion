@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_SSANNE_B1F_CORRIDOR",
+  "layoutId": "LAYOUT_SSANNE_B1F_CORRIDOR",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/SSAnne_B1F_Corridor/map.json",
+  "objectEvents": []
+}

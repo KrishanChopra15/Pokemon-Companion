@@ -1,0 +1,578 @@
+{
+  "game": "firered",
+  "assetSet": "legacy-rs-tilesets",
+  "source": "pret/pokeruby",
+  "sourceRules": {
+    "primaryTileCount": 512,
+    "primaryMetatileCount": 512,
+    "primaryPaletteCount": 6,
+    "totalPaletteCount": 12,
+    "metatileBytes": 16,
+    "attributeBytes": 2,
+    "layerTypeMask": 61440,
+    "layerTypeShift": 12
+  },
+  "layoutOverrides": {
+    "LAYOUT_LITTLEROOT_TOWN_MAYS_HOUSE_2F": {
+      "primary": "building",
+      "secondary": "brendans_mays_house"
+    },
+    "LAYOUT_LAVARIDGE_TOWN_HERB_SHOP": {
+      "primary": "building",
+      "secondary": "shop"
+    },
+    "LAYOUT_RS_SAFARI_ZONE_ENTRANCE": {
+      "primary": "building",
+      "secondary": "shop"
+    },
+    "LAYOUT_RS_SAFARI_ZONE_NORTHEAST": {
+      "primary": "general",
+      "secondary": "lilycove"
+    },
+    "LAYOUT_RS_SAFARI_ZONE_SOUTHWEST": {
+      "primary": "general",
+      "secondary": "lilycove"
+    },
+    "LAYOUT_RS_SAFARI_ZONE_SOUTHEAST": {
+      "primary": "general",
+      "secondary": "lilycove"
+    },
+    "LAYOUT_PACIFIDLOG_TOWN_HOUSE1": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_PACIFIDLOG_TOWN_HOUSE2": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_RUSTBORO_CITY_CUTTERS_HOUSE": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_FORTREE_CITY_HOUSE1": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_FORTREE_CITY_HOUSE2": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_FORTREE_CITY_DECORATION_SHOP": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_RUSTBORO_CITY_FLAT2_1F": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_RUSTBORO_CITY_FLAT2_2F": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_RUSTBORO_CITY_FLAT2_3F": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_SOOTOPOLIS_CITY_HOUSE1": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_SOOTOPOLIS_CITY_HOUSE2": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_SOOTOPOLIS_CITY_HOUSE3": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_RUSTBORO_CITY_FLAT1_1F": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_RUSTBORO_CITY_FLAT1_2F": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_RS_BATTLE_TOWER": {
+      "primary": "general",
+      "secondary": "dewford"
+    },
+    "LAYOUT_MOSSDEEP_CITY_EREADER_TRAINER_HOUSE_1F": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_MOSSDEEP_CITY_EREADER_TRAINER_HOUSE_2F": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_RS_SAFARI_ZONE_REST_HOUSE": {
+      "primary": "building",
+      "secondary": "generic_building"
+    },
+    "LAYOUT_SS_TIDAL_CORRIDOR": {
+      "primary": "general",
+      "secondary": "ship"
+    },
+    "LAYOUT_SS_TIDAL_LOWER_DECK": {
+      "primary": "general",
+      "secondary": "ship"
+    },
+    "LAYOUT_SS_TIDAL_ROOMS": {
+      "primary": "general",
+      "secondary": "ship"
+    },
+    "LAYOUT_EVER_GRANDE_CITY_HALL_OF_FAME": {
+      "primary": "building",
+      "secondary": "cable_club"
+    }
+  },
+  "tilesets": {
+    "building": {
+      "key": "building",
+      "role": "primary",
+      "source": "primary/building",
+      "graphics": {
+        "width": 128,
+        "height": 256,
+        "sourceBitDepth": 4,
+        "sourceColorType": 3,
+        "sourceTileSlots": 512,
+        "baseTileCount": 512,
+        "appendedGraphics": [],
+        "tileCount": 512,
+        "bytes": 16384
+      },
+      "metatileCount": 8,
+      "attributeCount": 8,
+      "assets": {
+        "tiles": "legacy-rs/tilesets/building/tiles.4bpp",
+        "metatiles": "legacy-rs/tilesets/building/metatiles.bin",
+        "attributes": "legacy-rs/tilesets/building/metatile_attributes.bin",
+        "palettes": [
+          {
+            "bank": 0,
+            "path": "legacy-rs/tilesets/building/palettes/00.gbapal"
+          },
+          {
+            "bank": 1,
+            "path": "legacy-rs/tilesets/building/palettes/01.gbapal"
+          },
+          {
+            "bank": 2,
+            "path": "legacy-rs/tilesets/building/palettes/02.gbapal"
+          },
+          {
+            "bank": 3,
+            "path": "legacy-rs/tilesets/building/palettes/03.gbapal"
+          },
+          {
+            "bank": 4,
+            "path": "legacy-rs/tilesets/building/palettes/04.gbapal"
+          },
+          {
+            "bank": 5,
+            "path": "legacy-rs/tilesets/building/palettes/05.gbapal"
+          }
+        ]
+      }
+    },
+    "general": {
+      "key": "general",
+      "role": "primary",
+      "source": "primary/general",
+      "graphics": {
+        "width": 128,
+        "height": 256,
+        "sourceBitDepth": 4,
+        "sourceColorType": 3,
+        "sourceTileSlots": 512,
+        "baseTileCount": 512,
+        "appendedGraphics": [],
+        "tileCount": 512,
+        "bytes": 16384
+      },
+      "metatileCount": 512,
+      "attributeCount": 512,
+      "assets": {
+        "tiles": "legacy-rs/tilesets/general/tiles.4bpp",
+        "metatiles": "legacy-rs/tilesets/general/metatiles.bin",
+        "attributes": "legacy-rs/tilesets/general/metatile_attributes.bin",
+        "palettes": [
+          {
+            "bank": 0,
+            "path": "legacy-rs/tilesets/general/palettes/00.gbapal"
+          },
+          {
+            "bank": 1,
+            "path": "legacy-rs/tilesets/general/palettes/01.gbapal"
+          },
+          {
+            "bank": 2,
+            "path": "legacy-rs/tilesets/general/palettes/02.gbapal"
+          },
+          {
+            "bank": 3,
+            "path": "legacy-rs/tilesets/general/palettes/03.gbapal"
+          },
+          {
+            "bank": 4,
+            "path": "legacy-rs/tilesets/general/palettes/04.gbapal"
+          },
+          {
+            "bank": 5,
+            "path": "legacy-rs/tilesets/general/palettes/05.gbapal"
+          }
+        ]
+      }
+    },
+    "brendans_mays_house": {
+      "key": "brendans_mays_house",
+      "role": "secondary",
+      "source": "secondary/brendans_mays_house",
+      "graphics": {
+        "width": 128,
+        "height": 240,
+        "sourceBitDepth": 4,
+        "sourceColorType": 3,
+        "sourceTileSlots": 480,
+        "baseTileCount": 480,
+        "appendedGraphics": [],
+        "tileCount": 480,
+        "bytes": 15360
+      },
+      "metatileCount": 171,
+      "attributeCount": 171,
+      "assets": {
+        "tiles": "legacy-rs/tilesets/brendans_mays_house/tiles.4bpp",
+        "metatiles": "legacy-rs/tilesets/brendans_mays_house/metatiles.bin",
+        "attributes": "legacy-rs/tilesets/brendans_mays_house/metatile_attributes.bin",
+        "palettes": [
+          {
+            "bank": 6,
+            "path": "legacy-rs/tilesets/brendans_mays_house/palettes/06.gbapal"
+          },
+          {
+            "bank": 7,
+            "path": "legacy-rs/tilesets/brendans_mays_house/palettes/07.gbapal"
+          },
+          {
+            "bank": 8,
+            "path": "legacy-rs/tilesets/brendans_mays_house/palettes/08.gbapal"
+          },
+          {
+            "bank": 9,
+            "path": "legacy-rs/tilesets/brendans_mays_house/palettes/09.gbapal"
+          },
+          {
+            "bank": 10,
+            "path": "legacy-rs/tilesets/brendans_mays_house/palettes/10.gbapal"
+          },
+          {
+            "bank": 11,
+            "path": "legacy-rs/tilesets/brendans_mays_house/palettes/11.gbapal"
+          }
+        ]
+      }
+    },
+    "shop": {
+      "key": "shop",
+      "role": "secondary",
+      "source": "secondary/shop",
+      "graphics": {
+        "width": 128,
+        "height": 256,
+        "sourceBitDepth": 4,
+        "sourceColorType": 3,
+        "sourceTileSlots": 512,
+        "baseTileCount": 512,
+        "appendedGraphics": [],
+        "tileCount": 512,
+        "bytes": 16384
+      },
+      "metatileCount": 280,
+      "attributeCount": 280,
+      "assets": {
+        "tiles": "legacy-rs/tilesets/shop/tiles.4bpp",
+        "metatiles": "legacy-rs/tilesets/shop/metatiles.bin",
+        "attributes": "legacy-rs/tilesets/shop/metatile_attributes.bin",
+        "palettes": [
+          {
+            "bank": 6,
+            "path": "legacy-rs/tilesets/shop/palettes/06.gbapal"
+          },
+          {
+            "bank": 7,
+            "path": "legacy-rs/tilesets/shop/palettes/07.gbapal"
+          },
+          {
+            "bank": 8,
+            "path": "legacy-rs/tilesets/shop/palettes/08.gbapal"
+          },
+          {
+            "bank": 9,
+            "path": "legacy-rs/tilesets/shop/palettes/09.gbapal"
+          },
+          {
+            "bank": 10,
+            "path": "legacy-rs/tilesets/shop/palettes/10.gbapal"
+          },
+          {
+            "bank": 11,
+            "path": "legacy-rs/tilesets/shop/palettes/11.gbapal"
+          }
+        ]
+      }
+    },
+    "lilycove": {
+      "key": "lilycove",
+      "role": "secondary",
+      "source": "secondary/lilycove",
+      "graphics": {
+        "width": 128,
+        "height": 216,
+        "sourceBitDepth": 4,
+        "sourceColorType": 3,
+        "sourceTileSlots": 432,
+        "baseTileCount": 432,
+        "appendedGraphics": [],
+        "tileCount": 432,
+        "bytes": 13824
+      },
+      "metatileCount": 351,
+      "attributeCount": 351,
+      "assets": {
+        "tiles": "legacy-rs/tilesets/lilycove/tiles.4bpp",
+        "metatiles": "legacy-rs/tilesets/lilycove/metatiles.bin",
+        "attributes": "legacy-rs/tilesets/lilycove/metatile_attributes.bin",
+        "palettes": [
+          {
+            "bank": 6,
+            "path": "legacy-rs/tilesets/lilycove/palettes/06.gbapal"
+          },
+          {
+            "bank": 7,
+            "path": "legacy-rs/tilesets/lilycove/palettes/07.gbapal"
+          },
+          {
+            "bank": 8,
+            "path": "legacy-rs/tilesets/lilycove/palettes/08.gbapal"
+          },
+          {
+            "bank": 9,
+            "path": "legacy-rs/tilesets/lilycove/palettes/09.gbapal"
+          },
+          {
+            "bank": 10,
+            "path": "legacy-rs/tilesets/lilycove/palettes/10.gbapal"
+          },
+          {
+            "bank": 11,
+            "path": "legacy-rs/tilesets/lilycove/palettes/11.gbapal"
+          }
+        ]
+      }
+    },
+    "generic_building": {
+      "key": "generic_building",
+      "role": "secondary",
+      "source": "secondary/generic_building",
+      "graphics": {
+        "width": 128,
+        "height": 256,
+        "sourceBitDepth": 4,
+        "sourceColorType": 3,
+        "sourceTileSlots": 512,
+        "baseTileCount": 509,
+        "appendedGraphics": [],
+        "tileCount": 509,
+        "bytes": 16288
+      },
+      "metatileCount": 512,
+      "attributeCount": 512,
+      "assets": {
+        "tiles": "legacy-rs/tilesets/generic_building/tiles.4bpp",
+        "metatiles": "legacy-rs/tilesets/generic_building/metatiles.bin",
+        "attributes": "legacy-rs/tilesets/generic_building/metatile_attributes.bin",
+        "palettes": [
+          {
+            "bank": 6,
+            "path": "legacy-rs/tilesets/generic_building/palettes/06.gbapal"
+          },
+          {
+            "bank": 7,
+            "path": "legacy-rs/tilesets/generic_building/palettes/07.gbapal"
+          },
+          {
+            "bank": 8,
+            "path": "legacy-rs/tilesets/generic_building/palettes/08.gbapal"
+          },
+          {
+            "bank": 9,
+            "path": "legacy-rs/tilesets/generic_building/palettes/09.gbapal"
+          },
+          {
+            "bank": 10,
+            "path": "legacy-rs/tilesets/generic_building/palettes/10.gbapal"
+          },
+          {
+            "bank": 11,
+            "path": "legacy-rs/tilesets/generic_building/palettes/11.gbapal"
+          }
+        ]
+      }
+    },
+    "dewford": {
+      "key": "dewford",
+      "role": "secondary",
+      "source": "secondary/dewford",
+      "graphics": {
+        "width": 128,
+        "height": 176,
+        "sourceBitDepth": 4,
+        "sourceColorType": 3,
+        "sourceTileSlots": 352,
+        "baseTileCount": 343,
+        "appendedGraphics": [],
+        "tileCount": 343,
+        "bytes": 10976
+      },
+      "metatileCount": 144,
+      "attributeCount": 144,
+      "assets": {
+        "tiles": "legacy-rs/tilesets/dewford/tiles.4bpp",
+        "metatiles": "legacy-rs/tilesets/dewford/metatiles.bin",
+        "attributes": "legacy-rs/tilesets/dewford/metatile_attributes.bin",
+        "palettes": [
+          {
+            "bank": 6,
+            "path": "legacy-rs/tilesets/dewford/palettes/06.gbapal"
+          },
+          {
+            "bank": 7,
+            "path": "legacy-rs/tilesets/dewford/palettes/07.gbapal"
+          },
+          {
+            "bank": 8,
+            "path": "legacy-rs/tilesets/dewford/palettes/08.gbapal"
+          },
+          {
+            "bank": 9,
+            "path": "legacy-rs/tilesets/dewford/palettes/09.gbapal"
+          },
+          {
+            "bank": 10,
+            "path": "legacy-rs/tilesets/dewford/palettes/10.gbapal"
+          },
+          {
+            "bank": 11,
+            "path": "legacy-rs/tilesets/dewford/palettes/11.gbapal"
+          }
+        ]
+      }
+    },
+    "ship": {
+      "key": "ship",
+      "role": "secondary",
+      "source": "secondary/ship",
+      "graphics": {
+        "width": 128,
+        "height": 176,
+        "sourceBitDepth": 4,
+        "sourceColorType": 3,
+        "sourceTileSlots": 352,
+        "baseTileCount": 342,
+        "appendedGraphics": [],
+        "tileCount": 342,
+        "bytes": 10944
+      },
+      "metatileCount": 252,
+      "attributeCount": 252,
+      "assets": {
+        "tiles": "legacy-rs/tilesets/ship/tiles.4bpp",
+        "metatiles": "legacy-rs/tilesets/ship/metatiles.bin",
+        "attributes": "legacy-rs/tilesets/ship/metatile_attributes.bin",
+        "palettes": [
+          {
+            "bank": 6,
+            "path": "legacy-rs/tilesets/ship/palettes/06.gbapal"
+          },
+          {
+            "bank": 7,
+            "path": "legacy-rs/tilesets/ship/palettes/07.gbapal"
+          },
+          {
+            "bank": 8,
+            "path": "legacy-rs/tilesets/ship/palettes/08.gbapal"
+          },
+          {
+            "bank": 9,
+            "path": "legacy-rs/tilesets/ship/palettes/09.gbapal"
+          },
+          {
+            "bank": 10,
+            "path": "legacy-rs/tilesets/ship/palettes/10.gbapal"
+          },
+          {
+            "bank": 11,
+            "path": "legacy-rs/tilesets/ship/palettes/11.gbapal"
+          }
+        ]
+      }
+    },
+    "cable_club": {
+      "key": "cable_club",
+      "role": "secondary",
+      "source": "secondary/cable_club",
+      "graphics": {
+        "width": 128,
+        "height": 256,
+        "sourceBitDepth": 4,
+        "sourceColorType": 3,
+        "sourceTileSlots": 512,
+        "baseTileCount": 512,
+        "appendedGraphics": [
+          {
+            "file": "unknown_tiles.png",
+            "tileCount": 120,
+            "bytes": 3840
+          }
+        ],
+        "tileCount": 632,
+        "bytes": 20224
+      },
+      "metatileCount": 256,
+      "attributeCount": 256,
+      "assets": {
+        "tiles": "legacy-rs/tilesets/cable_club/tiles.4bpp",
+        "metatiles": "legacy-rs/tilesets/cable_club/metatiles.bin",
+        "attributes": "legacy-rs/tilesets/cable_club/metatile_attributes.bin",
+        "palettes": [
+          {
+            "bank": 6,
+            "path": "legacy-rs/tilesets/cable_club/palettes/06.gbapal"
+          },
+          {
+            "bank": 7,
+            "path": "legacy-rs/tilesets/cable_club/palettes/07.gbapal"
+          },
+          {
+            "bank": 8,
+            "path": "legacy-rs/tilesets/cable_club/palettes/08.gbapal"
+          },
+          {
+            "bank": 9,
+            "path": "legacy-rs/tilesets/cable_club/palettes/09.gbapal"
+          },
+          {
+            "bank": 10,
+            "path": "legacy-rs/tilesets/cable_club/palettes/10.gbapal"
+          },
+          {
+            "bank": 11,
+            "path": "legacy-rs/tilesets/cable_club/palettes/11.gbapal"
+          }
+        ]
+      }
+    }
+  }
+}

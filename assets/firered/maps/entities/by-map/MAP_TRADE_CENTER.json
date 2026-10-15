@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_TRADE_CENTER",
+  "layoutId": "LAYOUT_TRADE_CENTER",
+  "objectEventCount": 1,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/TradeCenter/map.json",
+  "objectEvents": [
+    {
+      "index": 0,
+      "localId": null,
+      "graphicsId": "OBJ_EVENT_GFX_UNION_ROOM_RECEPTIONIST",
+      "graphicsNumericId": 66,
+      "x": 9,
+      "y": 6,
+      "elevation": 3,
+      "movementType": "MOVEMENT_TYPE_FACE_LEFT",
+      "movementRangeX": 0,
+      "movementRangeY": 0,
+      "trainerType": "TRAINER_TYPE_NONE",
+      "trainerSightOrBerryTreeId": "0",
+      "script": "TradeCenter_EventScript_Attendant",
+      "visibilityFlag": "0",
+      "spriteCatalogKey": "OBJ_EVENT_GFX_UNION_ROOM_RECEPTIONIST",
+      "spriteAvailable": true,
+      "spriteImagePath": "assets/firered/npcs/sprites/people/union_room_receptionist.png",
+      "sourceEvent": {
+        "type": "object",
+        "graphics_id": "OBJ_EVENT_GFX_UNION_ROOM_RECEPTIONIST",
+        "x": 9,
+        "y": 6,
+        "elevation": 3,
+        "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+        "movement_range_x": 0,
+        "movement_range_y": 0,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "TradeCenter_EventScript_Attendant",
+        "flag": "0"
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_MT_EMBER_RUBY_PATH_B1F_STAIRS",
+  "layoutId": "LAYOUT_MT_EMBER_RUBY_PATH_B1F_STAIRS",
+  "objectEventCount": 1,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/MtEmber_RubyPath_B1F_Stairs/map.json",
+  "objectEvents": [
+    {
+      "index": 0,
+      "localId": null,
+      "graphicsId": "OBJ_EVENT_GFX_ROCK_SMASH_ROCK",
+      "graphicsNumericId": 96,
+      "x": 4,
+      "y": 2,
+      "elevation": 3,
+      "movementType": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movementRangeX": 1,
+      "movementRangeY": 1,
+      "trainerType": "TRAINER_TYPE_NONE",
+      "trainerSightOrBerryTreeId": "0",
+      "script": "EventScript_RockSmash",
+      "visibilityFlag": "FLAG_TEMP_12",
+      "spriteCatalogKey": "OBJ_EVENT_GFX_ROCK_SMASH_ROCK",
+      "spriteAvailable": true,
+      "spriteImagePath": "assets/firered/npcs/sprites/misc/rock_smash_rock.png",
+      "sourceEvent": {
+        "type": "object",
+        "graphics_id": "OBJ_EVENT_GFX_ROCK_SMASH_ROCK",
+        "x": 4,
+        "y": 2,
+        "elevation": 3,
+        "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+        "movement_range_x": 1,
+        "movement_range_y": 1,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "EventScript_RockSmash",
+        "flag": "FLAG_TEMP_12"
+      }
+    }
+  ]
+}

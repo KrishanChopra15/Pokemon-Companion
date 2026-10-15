@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_CELADON_CITY_CONDOMINIUMS_ROOF",
+  "layoutId": "LAYOUT_CELADON_CITY_CONDOMINIUMS_ROOF",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/CeladonCity_Condominiums_Roof/map.json",
+  "objectEvents": []
+}

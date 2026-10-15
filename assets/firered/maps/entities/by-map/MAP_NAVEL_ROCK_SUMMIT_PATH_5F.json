@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_NAVEL_ROCK_SUMMIT_PATH_5F",
+  "layoutId": "LAYOUT_NAVEL_ROCK_SUMMIT_PATH_5F",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/NavelRock_SummitPath_5F/map.json",
+  "objectEvents": []
+}

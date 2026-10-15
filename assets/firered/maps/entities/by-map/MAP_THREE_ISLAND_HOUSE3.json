@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_THREE_ISLAND_HOUSE3",
+  "layoutId": "LAYOUT_HOUSE3",
+  "objectEventCount": 1,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/ThreeIsland_House3/map.json",
+  "objectEvents": [
+    {
+      "index": 0,
+      "localId": null,
+      "graphicsId": "OBJ_EVENT_GFX_BEAUTY",
+      "graphicsNumericId": 29,
+      "x": 8,
+      "y": 2,
+      "elevation": 3,
+      "movementType": "MOVEMENT_TYPE_FACE_UP",
+      "movementRangeX": 1,
+      "movementRangeY": 1,
+      "trainerType": "TRAINER_TYPE_NONE",
+      "trainerSightOrBerryTreeId": "0",
+      "script": "ThreeIsland_House3_EventScript_Beauty",
+      "visibilityFlag": "0",
+      "spriteCatalogKey": "OBJ_EVENT_GFX_BEAUTY",
+      "spriteAvailable": true,
+      "spriteImagePath": "assets/firered/npcs/sprites/people/beauty.png",
+      "sourceEvent": {
+        "type": "object",
+        "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
+        "x": 8,
+        "y": 2,
+        "elevation": 3,
+        "movement_type": "MOVEMENT_TYPE_FACE_UP",
+        "movement_range_x": 1,
+        "movement_range_y": 1,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "ThreeIsland_House3_EventScript_Beauty",
+        "flag": "0"
+      }
+    }
+  ]
+}

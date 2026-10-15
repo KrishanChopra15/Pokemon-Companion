@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_CELADON_CITY_DEPARTMENT_STORE_ELEVATOR",
+  "layoutId": "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_ELEVATOR",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/CeladonCity_DepartmentStore_Elevator/map.json",
+  "objectEvents": []
+}

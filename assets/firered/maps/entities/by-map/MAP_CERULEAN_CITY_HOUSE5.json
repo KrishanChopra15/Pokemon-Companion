@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_CERULEAN_CITY_HOUSE5",
+  "layoutId": "LAYOUT_CERULEAN_CITY_HOUSE5",
+  "objectEventCount": 1,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/CeruleanCity_House5/map.json",
+  "objectEvents": [
+    {
+      "index": 0,
+      "localId": null,
+      "graphicsId": "OBJ_EVENT_GFX_OLD_MAN_2",
+      "graphicsNumericId": 33,
+      "x": 7,
+      "y": 4,
+      "elevation": 3,
+      "movementType": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movementRangeX": 1,
+      "movementRangeY": 1,
+      "trainerType": "TRAINER_TYPE_NONE",
+      "trainerSightOrBerryTreeId": "0",
+      "script": "CeruleanCity_House5_EventScript_BerryPowderMan",
+      "visibilityFlag": "0",
+      "spriteCatalogKey": "OBJ_EVENT_GFX_OLD_MAN_2",
+      "spriteAvailable": true,
+      "spriteImagePath": "assets/firered/npcs/sprites/people/old_man_2.png",
+      "sourceEvent": {
+        "type": "object",
+        "graphics_id": "OBJ_EVENT_GFX_OLD_MAN_2",
+        "x": 7,
+        "y": 4,
+        "elevation": 3,
+        "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+        "movement_range_x": 1,
+        "movement_range_y": 1,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "CeruleanCity_House5_EventScript_BerryPowderMan",
+        "flag": "0"
+      }
+    }
+  ]
+}

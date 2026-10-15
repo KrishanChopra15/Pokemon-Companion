@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_FIVE_ISLAND_LOST_CAVE_ROOM5",
+  "layoutId": "LAYOUT_FIVE_ISLAND_LOST_CAVE_ROOM5",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/FiveIsland_LostCave_Room5/map.json",
+  "objectEvents": []
+}

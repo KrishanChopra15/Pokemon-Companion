@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_PROTOTYPE_SEVII_ISLE_8",
+  "layoutId": "LAYOUT_PROTOTYPE_SEVII_ISLE_8",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/Prototype_SeviiIsle_8/map.json",
+  "objectEvents": []
+}

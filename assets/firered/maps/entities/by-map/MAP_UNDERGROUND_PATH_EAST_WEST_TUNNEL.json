@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_UNDERGROUND_PATH_EAST_WEST_TUNNEL",
+  "layoutId": "LAYOUT_UNDERGROUND_PATH_EAST_WEST_TUNNEL",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/UndergroundPath_EastWestTunnel/map.json",
+  "objectEvents": []
+}

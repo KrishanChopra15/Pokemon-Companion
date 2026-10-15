@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_THREE_ISLAND_DUNSPARCE_TUNNEL",
+  "layoutId": "LAYOUT_THREE_ISLAND_DUNSPARCE_TUNNEL",
+  "objectEventCount": 1,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/ThreeIsland_DunsparceTunnel/map.json",
+  "objectEvents": [
+    {
+      "index": 0,
+      "localId": "LOCALID_PROSPECTOR",
+      "graphicsId": "OBJ_EVENT_GFX_FAT_MAN",
+      "graphicsNumericId": 27,
+      "x": 23,
+      "y": 2,
+      "elevation": 3,
+      "movementType": "MOVEMENT_TYPE_FACE_DOWN",
+      "movementRangeX": 1,
+      "movementRangeY": 1,
+      "trainerType": "TRAINER_TYPE_NONE",
+      "trainerSightOrBerryTreeId": "0",
+      "script": "ThreeIsland_DunsparceTunnel_EventScript_Prospector",
+      "visibilityFlag": "0",
+      "spriteCatalogKey": "OBJ_EVENT_GFX_FAT_MAN",
+      "spriteAvailable": true,
+      "spriteImagePath": "assets/firered/npcs/sprites/people/fat_man.png",
+      "sourceEvent": {
+        "local_id": "LOCALID_PROSPECTOR",
+        "type": "object",
+        "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
+        "x": 23,
+        "y": 2,
+        "elevation": 3,
+        "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+        "movement_range_x": 1,
+        "movement_range_y": 1,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "ThreeIsland_DunsparceTunnel_EventScript_Prospector",
+        "flag": "0"
+      }
+    }
+  ]
+}

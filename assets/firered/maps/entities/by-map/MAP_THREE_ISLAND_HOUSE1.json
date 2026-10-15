@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_THREE_ISLAND_HOUSE1",
+  "layoutId": "LAYOUT_THREE_ISLAND_HOUSE1",
+  "objectEventCount": 1,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/ThreeIsland_House1/map.json",
+  "objectEvents": [
+    {
+      "index": 0,
+      "localId": null,
+      "graphicsId": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "graphicsNumericId": 17,
+      "x": 3,
+      "y": 4,
+      "elevation": 0,
+      "movementType": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movementRangeX": 1,
+      "movementRangeY": 1,
+      "trainerType": "TRAINER_TYPE_NONE",
+      "trainerSightOrBerryTreeId": "0",
+      "script": "ThreeIsland_House1_EventScript_Lostelle",
+      "visibilityFlag": "FLAG_HIDE_LOSTELLE_IN_HER_HOME",
+      "spriteCatalogKey": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "spriteAvailable": true,
+      "spriteImagePath": "assets/firered/npcs/sprites/people/little_girl.png",
+      "sourceEvent": {
+        "type": "object",
+        "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+        "x": 3,
+        "y": 4,
+        "elevation": 0,
+        "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+        "movement_range_x": 1,
+        "movement_range_y": 1,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "ThreeIsland_House1_EventScript_Lostelle",
+        "flag": "FLAG_HIDE_LOSTELLE_IN_HER_HOME"
+      }
+    }
+  ]
+}

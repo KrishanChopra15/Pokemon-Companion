@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_FOUR_ISLAND_POKEMON_DAY_CARE",
+  "layoutId": "LAYOUT_FOUR_ISLAND_POKEMON_DAY_CARE",
+  "objectEventCount": 1,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/FourIsland_PokemonDayCare/map.json",
+  "objectEvents": [
+    {
+      "index": 0,
+      "localId": "LOCALID_FOUR_ISLAND_DAYCARE_WOMAN",
+      "graphicsId": "OBJ_EVENT_GFX_OLD_WOMAN",
+      "graphicsNumericId": 35,
+      "x": 2,
+      "y": 2,
+      "elevation": 3,
+      "movementType": "MOVEMENT_TYPE_FACE_DOWN",
+      "movementRangeX": 1,
+      "movementRangeY": 1,
+      "trainerType": "TRAINER_TYPE_NONE",
+      "trainerSightOrBerryTreeId": "0",
+      "script": "FourIsland_PokemonDayCare_EventScript_DaycareWoman",
+      "visibilityFlag": "0",
+      "spriteCatalogKey": "OBJ_EVENT_GFX_OLD_WOMAN",
+      "spriteAvailable": true,
+      "spriteImagePath": "assets/firered/npcs/sprites/people/old_woman.png",
+      "sourceEvent": {
+        "local_id": "LOCALID_FOUR_ISLAND_DAYCARE_WOMAN",
+        "type": "object",
+        "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN",
+        "x": 2,
+        "y": 2,
+        "elevation": 3,
+        "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+        "movement_range_x": 1,
+        "movement_range_y": 1,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "FourIsland_PokemonDayCare_EventScript_DaycareWoman",
+        "flag": "0"
+      }
+    }
+  ]
+}

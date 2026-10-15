@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_SEVEN_ISLAND_UNUSED_HOUSE",
+  "layoutId": "LAYOUT_HOUSE4",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/SevenIsland_UnusedHouse/map.json",
+  "objectEvents": []
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_BATTLE_COLOSSEUM_4P",
+  "layoutId": "LAYOUT_BATTLE_COLOSSEUM_4P",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/BattleColosseum_4P/map.json",
+  "objectEvents": []
+}

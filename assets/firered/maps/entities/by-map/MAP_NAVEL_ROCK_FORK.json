@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_NAVEL_ROCK_FORK",
+  "layoutId": "LAYOUT_NAVEL_ROCK_FORK",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/NavelRock_Fork/map.json",
+  "objectEvents": []
+}

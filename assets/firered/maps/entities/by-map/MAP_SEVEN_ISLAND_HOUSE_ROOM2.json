@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_SEVEN_ISLAND_HOUSE_ROOM2",
+  "layoutId": "LAYOUT_SEVEN_ISLAND_HOUSE_ROOM2",
+  "objectEventCount": 1,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/SevenIsland_House_Room2/map.json",
+  "objectEvents": [
+    {
+      "index": 0,
+      "localId": null,
+      "graphicsId": "OBJ_EVENT_GFX_VAR_0",
+      "graphicsNumericId": null,
+      "x": 6,
+      "y": 5,
+      "elevation": 0,
+      "movementType": "MOVEMENT_TYPE_FACE_LEFT",
+      "movementRangeX": 1,
+      "movementRangeY": 1,
+      "trainerType": "TRAINER_TYPE_NONE",
+      "trainerSightOrBerryTreeId": "0",
+      "script": "0x0",
+      "visibilityFlag": "0",
+      "spriteCatalogKey": "OBJ_EVENT_GFX_VAR_0",
+      "spriteAvailable": false,
+      "spriteImagePath": null,
+      "sourceEvent": {
+        "type": "object",
+        "graphics_id": "OBJ_EVENT_GFX_VAR_0",
+        "x": 6,
+        "y": 5,
+        "elevation": 0,
+        "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+        "movement_range_x": 1,
+        "movement_range_y": 1,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "0x0",
+        "flag": "0"
+      }
+    }
+  ]
+}

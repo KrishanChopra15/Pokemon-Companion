@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_FOUR_ISLAND_ICEFALL_CAVE_ENTRANCE",
+  "layoutId": "LAYOUT_FOUR_ISLAND_ICEFALL_CAVE_ENTRANCE",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/FourIsland_IcefallCave_Entrance/map.json",
+  "objectEvents": []
+}

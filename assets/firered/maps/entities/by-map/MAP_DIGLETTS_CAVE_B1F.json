@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_DIGLETTS_CAVE_B1F",
+  "layoutId": "LAYOUT_DIGLETTS_CAVE_B1F",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/DiglettsCave_B1F/map.json",
+  "objectEvents": []
+}

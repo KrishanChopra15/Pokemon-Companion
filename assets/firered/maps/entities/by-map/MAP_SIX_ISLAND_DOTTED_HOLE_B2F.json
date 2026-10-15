@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_SIX_ISLAND_DOTTED_HOLE_B2F",
+  "layoutId": "LAYOUT_SIX_ISLAND_DOTTED_HOLE_B2F",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/SixIsland_DottedHole_B2F/map.json",
+  "objectEvents": []
+}

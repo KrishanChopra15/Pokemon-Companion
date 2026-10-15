@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_SSANNE_1F_ROOM4",
+  "layoutId": "LAYOUT_SSANNE_ROOM1",
+  "objectEventCount": 1,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/SSAnne_1F_Room4/map.json",
+  "objectEvents": [
+    {
+      "index": 0,
+      "localId": null,
+      "graphicsId": "OBJ_EVENT_GFX_WOMAN_1",
+      "graphicsNumericId": 23,
+      "x": 2,
+      "y": 4,
+      "elevation": 3,
+      "movementType": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movementRangeX": 1,
+      "movementRangeY": 1,
+      "trainerType": "TRAINER_TYPE_NONE",
+      "trainerSightOrBerryTreeId": "0",
+      "script": "SSAnne_1F_Room4_EventScript_Woman",
+      "visibilityFlag": "0",
+      "spriteCatalogKey": "OBJ_EVENT_GFX_WOMAN_1",
+      "spriteAvailable": true,
+      "spriteImagePath": "assets/firered/npcs/sprites/people/woman_1.png",
+      "sourceEvent": {
+        "type": "object",
+        "graphics_id": "OBJ_EVENT_GFX_WOMAN_1",
+        "x": 2,
+        "y": 4,
+        "elevation": 3,
+        "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+        "movement_range_x": 1,
+        "movement_range_y": 1,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "SSAnne_1F_Room4_EventScript_Woman",
+        "flag": "0"
+      }
+    }
+  ]
+}

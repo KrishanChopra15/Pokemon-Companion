@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_TWO_ISLAND_CAPE_BRINK",
+  "layoutId": "LAYOUT_TWO_ISLAND_CAPE_BRINK",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/TwoIsland_CapeBrink/map.json",
+  "objectEvents": []
+}

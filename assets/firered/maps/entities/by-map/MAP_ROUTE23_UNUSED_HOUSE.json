@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_ROUTE23_UNUSED_HOUSE",
+  "layoutId": "LAYOUT_HOUSE2",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/Route23_UnusedHouse/map.json",
+  "objectEvents": []
+}

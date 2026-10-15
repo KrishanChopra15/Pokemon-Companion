@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_MT_EMBER_RUBY_PATH_B5F",
+  "layoutId": "LAYOUT_MT_EMBER_RUBY_PATH_B5F",
+  "objectEventCount": 1,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/MtEmber_RubyPath_B5F/map.json",
+  "objectEvents": [
+    {
+      "index": 0,
+      "localId": "LOCALID_RUBY",
+      "graphicsId": "OBJ_EVENT_GFX_RUBY",
+      "graphicsNumericId": 99,
+      "x": 7,
+      "y": 7,
+      "elevation": 0,
+      "movementType": "MOVEMENT_TYPE_FACE_DOWN",
+      "movementRangeX": 0,
+      "movementRangeY": 0,
+      "trainerType": "TRAINER_TYPE_NONE",
+      "trainerSightOrBerryTreeId": "0",
+      "script": "MtEmber_RubyPath_B5F_EventScript_Ruby",
+      "visibilityFlag": "FLAG_HIDE_RUBY",
+      "spriteCatalogKey": "OBJ_EVENT_GFX_RUBY",
+      "spriteAvailable": true,
+      "spriteImagePath": "assets/firered/npcs/sprites/misc/ruby.png",
+      "sourceEvent": {
+        "local_id": "LOCALID_RUBY",
+        "type": "object",
+        "graphics_id": "OBJ_EVENT_GFX_RUBY",
+        "x": 7,
+        "y": 7,
+        "elevation": 0,
+        "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+        "movement_range_x": 0,
+        "movement_range_y": 0,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "MtEmber_RubyPath_B5F_EventScript_Ruby",
+        "flag": "FLAG_HIDE_RUBY"
+      }
+    }
+  ]
+}

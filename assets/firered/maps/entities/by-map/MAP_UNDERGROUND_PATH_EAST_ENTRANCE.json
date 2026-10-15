@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_UNDERGROUND_PATH_EAST_ENTRANCE",
+  "layoutId": "LAYOUT_UNDERGROUND_PATH_ENTRANCE",
+  "objectEventCount": 1,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/UndergroundPath_EastEntrance/map.json",
+  "objectEvents": [
+    {
+      "index": 0,
+      "localId": null,
+      "graphicsId": "OBJ_EVENT_GFX_WOMAN_2",
+      "graphicsNumericId": 28,
+      "x": 5,
+      "y": 6,
+      "elevation": 3,
+      "movementType": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movementRangeX": 1,
+      "movementRangeY": 1,
+      "trainerType": "TRAINER_TYPE_NONE",
+      "trainerSightOrBerryTreeId": "0",
+      "script": "UndergroundPath_EastEntrance_EventScript_Woman",
+      "visibilityFlag": "0",
+      "spriteCatalogKey": "OBJ_EVENT_GFX_WOMAN_2",
+      "spriteAvailable": true,
+      "spriteImagePath": "assets/firered/npcs/sprites/people/woman_2.png",
+      "sourceEvent": {
+        "type": "object",
+        "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+        "x": 5,
+        "y": 6,
+        "elevation": 3,
+        "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+        "movement_range_x": 1,
+        "movement_range_y": 1,
+        "trainer_type": "TRAINER_TYPE_NONE",
+        "trainer_sight_or_berry_tree_id": "0",
+        "script": "UndergroundPath_EastEntrance_EventScript_Woman",
+        "flag": "0"
+      }
+    }
+  ]
+}

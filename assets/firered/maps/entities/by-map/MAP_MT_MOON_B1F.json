@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mapId": "MAP_MT_MOON_B1F",
+  "layoutId": "LAYOUT_MT_MOON_B1F",
+  "objectEventCount": 0,
+  "coordinateSystem": "map tiles",
+  "sourceFile": "data/maps/MtMoon_B1F/map.json",
+  "objectEvents": []
+}
